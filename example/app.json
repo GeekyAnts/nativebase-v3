@@ -1,0 +1,22 @@
+{
+  "name": "native-base-example",
+  "displayName": "NativeBase Example",
+  "expo": {
+    "name": "native-base-example",
+    "slug": "native-base-example",
+    "description": "Example app for native-base",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
