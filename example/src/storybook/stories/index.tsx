@@ -38,7 +38,7 @@ storiesOf('Primitives', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Spinner', () => <Spinner size={60} color="#ea6989" />)
+  .add('Spinner', () => <Spinner size="large" color="#ea6989" />)
   .add('VStack', () => (
     <VStack space={8}>
       <Text>Test Text</Text>
