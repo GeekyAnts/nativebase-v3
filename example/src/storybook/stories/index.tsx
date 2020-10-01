@@ -18,6 +18,7 @@ import {
   View,
   ZStack,
   Theme,
+  Spinner,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -37,6 +38,7 @@ storiesOf('Primitives', module)
       </View>
     </ThemeProvider>
   ))
+  .add('Spinner', () => <Spinner size={60} color="#ea6989" />)
   .add('VStack', () => (
     <VStack space={8}>
       <Text>Test Text</Text>
@@ -178,11 +180,7 @@ storiesOf('Composites', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Button', () => (
-    <Button rounded={50} colorScheme="danger">
-      Press Me
-    </Button>
-  ))
+  .add('Button', () => <Button colorScheme="danger">Press Me</Button>)
 
   .add('Badge', () => (
     <Badge variant="success" variantType="solid">

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
 import {
-  ColorProps,
+  // ColorProps,
   SpaceProps,
   TypographyProps,
   color,
@@ -41,7 +41,7 @@ export type IconType =
   | 'Zocial';
 
 export type IconProps = TypographyProps &
-  ColorProps &
+  // ColorProps &
   SpaceProps & {
     name: string;
     type?: IconType;

@@ -11,6 +11,7 @@ import HStack from './HStack';
 import ZStack from './ZStack';
 import Inline from './Inline';
 import Image from './Image';
+import Spinner, { ISpinnerProps } from './Spinner';
 
 export {
   View,
@@ -29,4 +30,6 @@ export {
   IconProps,
   Input,
   Image,
+  Spinner,
+  ISpinnerProps,
 };
