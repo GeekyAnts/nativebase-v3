@@ -20,7 +20,7 @@ type NBImageProps = ImageProps &
 
 const StyledImage = styled(Image)<NBImageProps>(layout, space, border, flex);
 
-const defaultImageProps: NBImageProps = {
+const defaultImageProps: any = {
   width: 100,
   height: 100,
 };

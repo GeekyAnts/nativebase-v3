@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import type { TextStyle } from 'react-native';
 import { ThemeContext } from 'styled-components';
 
-import type { IconProps } from '../../primitives';
+import { Icon, IconProps } from '../../primitives';
 
 import Button, { IButtonProps } from '../Button';
 
@@ -23,12 +23,9 @@ const IconButton = ({ name, type, iconStyle, ...props }: IconButtonProps) => {
   };
 
   return (
-    <Button
-      {...iconButtonDefaultprops}
-      variant="ghost"
-      icon={{ name, type, style: iconStyle }}
-      {...props}
-    />
+    <Button {...iconButtonDefaultprops} variant="ghost" {...props}>
+      <Icon type={type} style={iconStyle} name={name} />
+    </Button>
   );
 };
 
