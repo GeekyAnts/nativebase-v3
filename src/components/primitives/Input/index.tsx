@@ -1,5 +1,5 @@
-import React, { forwardRef } from "react";
-import { TextInput, TextInputProps } from "react-native";
+import React, { forwardRef } from 'react';
+import { TextInput, TextInputProps } from 'react-native';
 import {
   BorderProps,
   ColorProps,
@@ -11,8 +11,8 @@ import {
   layout,
   space,
   typography,
-} from "styled-system";
-import styled from "styled-components";
+} from 'styled-system';
+import styled from 'styled-components';
 
 type InputProps = TextInputProps &
   TypographyProps &
@@ -21,7 +21,13 @@ type InputProps = TextInputProps &
   BorderProps &
   ColorProps;
 
-const StyledInput = styled(TextInput)<InputProps>(typography, space, border, color, layout);
+const StyledInput = styled(TextInput)<InputProps>(
+  typography,
+  space,
+  border,
+  color,
+  layout
+);
 
 /* 
   Default styles for Input
@@ -30,7 +36,7 @@ const inputDefaultProps: InputProps = {
   p: 4,
   borderRadius: 4,
   borderWidth: 1,
-  borderColor: "gray.4",
+  borderColor: 'gray.4',
   fontSize: 2,
 };
 

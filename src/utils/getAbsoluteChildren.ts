@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default (children: JSX.Element[] | JSX.Element) => {
   const childrenArray = React.Children.toArray(children);
@@ -7,7 +7,11 @@ export default (children: JSX.Element[] | JSX.Element) => {
   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const trailingChildrenWithSpacing = childrenArray.map((child: any) => {
-    return React.cloneElement(child, { position: "absolute" }, child.props.children);
+    return React.cloneElement(
+      child,
+      { position: 'absolute' },
+      child.props.children
+    );
   });
   /*
   | New children array with applied margin to trailing children

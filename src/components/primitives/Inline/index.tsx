@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -10,9 +10,14 @@ import {
   flexbox,
   layout,
   space,
-} from "styled-system";
+} from 'styled-system';
 
-export type IStackProps = ColorProps | SpaceProps | LayoutProps | FlexboxProps | BorderProps;
+export type IStackProps =
+  | ColorProps
+  | SpaceProps
+  | LayoutProps
+  | FlexboxProps
+  | BorderProps;
 
 const Stack = styled.View<IStackProps>`
   flex-direction: row;

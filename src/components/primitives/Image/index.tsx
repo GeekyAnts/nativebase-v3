@@ -1,6 +1,6 @@
-import React, { forwardRef } from "react";
-import { Image, ImageProps } from "react-native";
-import styled from "styled-components";
+import React, { forwardRef } from 'react';
+import { Image, ImageProps } from 'react-native';
+import styled from 'styled-components';
 import {
   BorderProps,
   FlexboxProps,
@@ -10,9 +10,13 @@ import {
   flex,
   layout,
   space,
-} from "styled-system";
+} from 'styled-system';
 
-type NBImageProps = ImageProps & LayoutProps & SpaceProps & BorderProps & FlexboxProps;
+type NBImageProps = ImageProps &
+  LayoutProps &
+  SpaceProps &
+  BorderProps &
+  FlexboxProps;
 
 const StyledImage = styled(Image)<NBImageProps>(layout, space, border, flex);
 

@@ -1,3 +1,3 @@
-import Column from "../Box";
+import Column from '../Box';
 
 export default Column;

@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 import {
   ColorProps,
   SpaceProps,
@@ -7,7 +7,7 @@ import {
   position,
   space,
   typography,
-} from "styled-system";
+} from 'styled-system';
 
 export type TextProps = ColorProps | SpaceProps | TypographyProps;
 

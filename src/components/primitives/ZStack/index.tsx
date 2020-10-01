@@ -1,6 +1,6 @@
-import React from "react";
-import { ViewProps } from "react-native";
-import styled from "styled-components/native";
+import React from 'react';
+import type { ViewProps } from 'react-native';
+import styled from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -13,11 +13,16 @@ import {
   layout,
   position,
   space as spacing,
-} from "styled-system";
+} from 'styled-system';
 
-import { getAbsoluteChildren } from "../../../utils";
+import { getAbsoluteChildren } from '../../../utils';
 
-export type IZStackProps = ColorProps | SpaceProps | LayoutProps | FlexboxProps | BorderProps;
+export type IZStackProps =
+  | ColorProps
+  | SpaceProps
+  | LayoutProps
+  | FlexboxProps
+  | BorderProps;
 
 const StyledZStack = styled.View<IZStackProps>`
   ${color}

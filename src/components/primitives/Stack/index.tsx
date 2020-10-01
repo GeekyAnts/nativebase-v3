@@ -1,6 +1,6 @@
-import React from "react";
-import { ViewProps } from "react-native";
-import styled from "styled-components/native";
+import React from 'react';
+import type { ViewProps } from 'react-native';
+import styled from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -12,11 +12,16 @@ import {
   flexbox,
   layout,
   space as spacing,
-} from "styled-system";
+} from 'styled-system';
 
-import { getSpacedChildren } from "../../../utils";
+import { getSpacedChildren } from '../../../utils';
 
-export type IStackProps = ColorProps | SpaceProps | LayoutProps | FlexboxProps | BorderProps;
+export type IStackProps =
+  | ColorProps
+  | SpaceProps
+  | LayoutProps
+  | FlexboxProps
+  | BorderProps;
 
 const StyledStack = styled.View<IStackProps>`
   ${color}
@@ -33,7 +38,11 @@ type StackProps = IStackProps &
   };
 
 const Stack = ({ space, children, ...props }: StackProps) => {
-  return <StyledStack {...props}>{getSpacedChildren(children, space, "Y")}</StyledStack>;
+  return (
+    <StyledStack {...props}>
+      {getSpacedChildren(children, space, 'Y')}
+    </StyledStack>
+  );
 };
 
 export default Stack;

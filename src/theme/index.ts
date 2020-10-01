@@ -8,6 +8,13 @@ export default {
     neutral: '#747474',
     info: '#274788',
     promote: '#8c5bb2',
+    success: ['#c6f7d4', '#21543d', '#38a169'],
+    danger: ['#f8d7d9', '#731c23', '#e53e3e'],
+    warning: ['#fff3cd', '#866407', '#f7bd45'],
+    muted: ['#e2e3e5', '#65696d', '#acacac'],
+    dark: ['#d5d8d9', '#1b1f22', '#004466'],
+    light: ['#fefefe', '#818182', '#f8f9fb'],
+    default: ['#edf2f6', '#1a212c', '#718096'],
     gray: [
       '#f7fafc',
       '#edf2f7',

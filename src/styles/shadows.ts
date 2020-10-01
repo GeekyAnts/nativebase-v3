@@ -1,6 +1,6 @@
 export default [
   {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -10,7 +10,7 @@ export default [
     elevation: 1,
   },
   {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -20,7 +20,7 @@ export default [
     elevation: 2,
   },
   {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -30,7 +30,7 @@ export default [
     elevation: 3,
   },
   {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -40,7 +40,7 @@ export default [
     elevation: 4,
   },
   {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -50,7 +50,7 @@ export default [
     elevation: 5,
   },
   {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 3,
@@ -60,7 +60,7 @@ export default [
     elevation: 6,
   },
   {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 3,
@@ -70,7 +70,7 @@ export default [
     elevation: 7,
   },
   {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 4,
@@ -80,7 +80,7 @@ export default [
     elevation: 8,
   },
   {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 4,
@@ -90,7 +90,7 @@ export default [
     elevation: 9,
   },
   {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 5,

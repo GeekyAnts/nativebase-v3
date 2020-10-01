@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -10,9 +10,9 @@ import {
   flexbox,
   layout,
   space,
-} from "styled-system";
+} from 'styled-system';
 
-import Box, { IBoxProps } from "../Box";
+import Box, { IBoxProps } from '../Box';
 
 export type IViewProps =
   | ColorProps

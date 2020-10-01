@@ -1,6 +1,6 @@
-import React from "react";
-import { ViewProps } from "react-native";
-import styled from "styled-components/native";
+import React from 'react';
+import type { ViewProps } from 'react-native';
+import styled from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -12,11 +12,16 @@ import {
   flexbox,
   layout,
   space as spacing,
-} from "styled-system";
+} from 'styled-system';
 
-import { getSpacedChildren } from "../../../utils";
+import { getSpacedChildren } from '../../../utils';
 
-export type IVStackProps = ColorProps | SpaceProps | LayoutProps | FlexboxProps | BorderProps;
+export type IVStackProps =
+  | ColorProps
+  | SpaceProps
+  | LayoutProps
+  | FlexboxProps
+  | BorderProps;
 
 const StyledVStack = styled.View<IVStackProps>`
   ${color}
@@ -27,14 +32,14 @@ const StyledVStack = styled.View<IVStackProps>`
 `;
 
 type SpaceType =
-  | "gutter"
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
+  | 'gutter'
+  | 'xxsmall'
+  | 'xsmall'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'xlarge'
+  | 'xxlarge';
 
 type VStackProps = IVStackProps &
   ViewProps & {
@@ -43,7 +48,11 @@ type VStackProps = IVStackProps &
   };
 
 const VStack = ({ space, children, ...props }: VStackProps) => {
-  return <StyledVStack {...props}>{getSpacedChildren(children, space, "Y")}</StyledVStack>;
+  return (
+    <StyledVStack {...props}>
+      {getSpacedChildren(children, space, 'Y')}
+    </StyledVStack>
+  );
 };
 
 export default VStack;

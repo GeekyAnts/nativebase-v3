@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
 type SpaceType =
-  | "gutter"
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
+  | 'gutter'
+  | 'xxsmall'
+  | 'xsmall'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'xlarge'
+  | 'xxlarge';
 
 export default (
   children: JSX.Element[] | JSX.Element,
   space: number | undefined | SpaceType,
-  axis: "X" | "Y",
+  axis: 'X' | 'Y'
 ) => {
   const childrenArray = React.Children.toArray(children);
   /*
@@ -24,30 +24,30 @@ export default (
   | Set margin prop based on axis
   */
   let spaceValue;
-  if (typeof space === "string") {
+  if (typeof space === 'string') {
     switch (space) {
-      case "gutter":
+      case 'gutter':
         spaceValue = 0;
         break;
-      case "xxsmall":
+      case 'xxsmall':
         spaceValue = 1;
         break;
-      case "xsmall":
+      case 'xsmall':
         spaceValue = 2;
         break;
-      case "small":
+      case 'small':
         spaceValue = 3;
         break;
-      case "medium":
+      case 'medium':
         spaceValue = 4;
         break;
-      case "large":
+      case 'large':
         spaceValue = 6;
         break;
-      case "xlarge":
+      case 'xlarge':
         spaceValue = 7;
         break;
-      case "xxlarge":
+      case 'xxlarge':
         spaceValue = 8;
         break;
 
@@ -59,7 +59,9 @@ export default (
     spaceValue = space;
   }
 
-  const marginProp: object = { ...(axis === "X" ? { ml: spaceValue } : { mt: spaceValue }) };
+  const marginProp: object = {
+    ...(axis === 'X' ? { ml: spaceValue } : { mt: spaceValue }),
+  };
 
   /*
   | Add the margiin to the children

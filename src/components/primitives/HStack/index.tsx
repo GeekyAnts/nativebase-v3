@@ -1,6 +1,6 @@
-import React from "react";
-import { ViewProps } from "react-native";
-import styled from "styled-components/native";
+import React from 'react';
+import type { ViewProps } from 'react-native';
+import styled from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -12,11 +12,16 @@ import {
   flexbox,
   layout,
   space as spacing,
-} from "styled-system";
+} from 'styled-system';
 
-import { getSpacedChildren } from "../../../utils";
+import { getSpacedChildren } from '../../../utils';
 
-export type IHStackProps = ColorProps | SpaceProps | LayoutProps | FlexboxProps | BorderProps;
+export type IHStackProps =
+  | ColorProps
+  | SpaceProps
+  | LayoutProps
+  | FlexboxProps
+  | BorderProps;
 
 const StyledHStack = styled.View<IHStackProps>`
   flex-direction: row;
@@ -29,14 +34,14 @@ const StyledHStack = styled.View<IHStackProps>`
 `;
 
 type SpaceType =
-  | "gutter"
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
+  | 'gutter'
+  | 'xxsmall'
+  | 'xsmall'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'xlarge'
+  | 'xxlarge';
 
 type HStackProps = IHStackProps &
   ViewProps & {
@@ -45,7 +50,11 @@ type HStackProps = IHStackProps &
   };
 
 const HStack = ({ space, children, ...props }: HStackProps) => {
-  return <StyledHStack {...props}>{getSpacedChildren(children, space, "X")}</StyledHStack>;
+  return (
+    <StyledHStack {...props}>
+      {getSpacedChildren(children, space, 'X')}
+    </StyledHStack>
+  );
 };
 
 export default HStack;

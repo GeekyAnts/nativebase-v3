@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ViewProps, ViewStyle } from 'react-native';
+import { StyleSheet, ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
 import {
   BorderProps,
@@ -29,8 +29,7 @@ import {
   customShadow,
 } from '../../../utils/customProps';
 
-export type IBoxProps = ViewProps &
-  ColorProps &
+export type ISpinnerProps = ColorProps &
   SpaceProps &
   LayoutProps &
   FlexboxProps &
@@ -41,11 +40,11 @@ export type IBoxProps = ViewProps &
   customLayoutProps &
   customBackgroundProps &
   BorderProps & {
-    style?: ViewStyle;
+    style?: any | undefined;
     children?: JSX.Element | JSX.Element[];
   };
 
-const StyledBox = styled(View)<IBoxProps>(
+const StyledActivityIndicator = styled(ActivityIndicator)<ISpinnerProps>(
   color,
   space,
   layout,
@@ -58,8 +57,8 @@ const StyledBox = styled(View)<IBoxProps>(
   customExtra,
   customLayout
 );
-const Box = (props: IBoxProps) => {
-  return <StyledBox {...props} style={props.style} />;
+const Spinner = (props: ISpinnerProps) => {
+  return <StyledActivityIndicator {...props} />;
 };
 
-export default Box;
+export default Spinner;

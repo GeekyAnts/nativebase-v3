@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
-  TextStyle,
-  TouchableWithoutFeedbackProps,
+  View,
+  ViewProps,
+  ViewStyle,
+  TouchableHighlight,
+  Text,
 } from 'react-native';
-import Ripple from 'react-native-material-ripple';
-import styled, { ThemeContext } from 'styled-components';
+import styled from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -17,177 +19,292 @@ import {
   flexbox,
   layout,
   space,
+  height,
+  variant,
+  borderRadius,
 } from 'styled-system';
-
-import { shadows } from '../../../styles';
-import Theme from '../../../theme';
-
-import { Icon, IconProps, Text, TextProps } from '../../primitives';
-
-type RippleProps = BorderProps &
+import {
+  customBorder,
+  customBorderProps,
+  customBackground,
+  customBackgroundProps,
+  customOutline,
+  customOutlineProps,
+  customLayout,
+  customLayoutProps,
+  customExtra,
+  customExtraProps,
+  customShadowProps,
+  customShadow,
+} from '../../../utils/customProps';
+import theme from '../../../theme';
+import Spinner from '../../primitives/Spinner';
+type SpaceType = 'xs' | 'sm' | 'md' | 'lg';
+export type IButtonProps = ViewProps &
   ColorProps &
-  FlexboxProps &
+  SpaceProps &
   LayoutProps &
-  SpaceProps & {
-    rippleColor?: string;
-    rippleOpacity?: number;
-    rippleDuration?: number;
-    shadow?: number | 'none';
+  FlexboxProps &
+  customBorderProps &
+  customExtraProps &
+  customOutlineProps &
+  customShadowProps &
+  customLayoutProps &
+  customBackgroundProps &
+  BorderProps & {
+    style?: ViewStyle;
+    children?: any;
+    highlight?: number | undefined | 0 | 1 | 0.5 | 0.25 | 0.75;
+    highlightColor?: string | undefined;
+    colorScheme?: string | undefined;
+    variant?: string | undefined;
+    isLoading?: any | undefined;
+    size?: SpaceType | string | undefined;
+    onClick?: any | undefined;
   };
 
-const StyledRipple = styled(Ripple)(color, border, flexbox, layout, space);
-
-type iconProps = {
-  icon?: IconProps & {
-    position?: 'left' | 'right';
-  };
+let successStyle = {
+  backgroundColor: theme.colors.success[2],
+  borderColor: theme.colors.success[2],
+  color: theme.colors.success[1],
+};
+let dangerStyle = {
+  backgroundColor: theme.colors.danger[2],
+  borderColor: theme.colors.danger[2],
+  color: theme.colors.danger[1],
+};
+let warningStyle = {
+  backgroundColor: theme.colors.warning[2],
+  borderColor: theme.colors.warning[2],
+  color: theme.colors.warning[1],
+};
+let darkStyle = {
+  backgroundColor: theme.colors.dark[2],
+  borderColor: theme.colors.dark[2],
+  color: theme.colors.dark[1],
+};
+let lightStyle = {
+  backgroundColor: theme.colors.light[2],
+  borderColor: theme.colors.light[2],
+  color: theme.colors.light[1],
+};
+let mutedStyle = {
+  backgroundColor: theme.colors.muted[2],
+  borderColor: theme.colors.muted[2],
+  color: theme.colors.muted[1],
+};
+let defaultStyle = {
+  backgroundColor: theme.colors.indigo[4],
+  borderColor: theme.colors.indigo[4],
+  color: theme.colors.indigo[1],
 };
 
-export type ButtonProps = iconProps &
-  RippleProps &
-  TouchableWithoutFeedbackProps & {
-    label?: string;
-    disabled?: boolean;
-    block?: boolean;
-    rounded?: boolean;
-    outline?: boolean;
-    transparent?: boolean;
-    variant?:
-      | 'critical'
-      | 'caution'
-      | 'positive'
-      | 'neutral'
-      | 'info'
-      | 'promote';
-    labelStyle?: TextStyle;
-  };
+let outlineStyle = {
+  backgroundColor: 'transparent',
+  borderWidth: '1px',
+  // borderColor: 'white',
+};
+let ghostStyle = {
+  backgroundColor: 'transparent',
+  borderWidth: '0px',
+  // borderColor: 'white',
+};
+let linkStyle = {
+  backgroundColor: 'transparent',
+  borderWidth: '0px',
+  // borderColor: 'white',
+};
+let solidStyle = {
+  color: 'white',
+};
 
+const StyledView = styled(View)<{
+  colorScheme?: string | undefined;
+  variant?: string | undefined;
+}>(
+  color,
+  space,
+  layout,
+  flexbox,
+  border,
+  customBorder,
+  customBackground,
+  customOutline,
+  customShadow,
+  customExtra,
+  customLayout,
+  variant({
+    prop: 'colorScheme',
+    variants: {
+      success: successStyle,
+      green: successStyle,
+      danger: dangerStyle,
+      red: dangerStyle,
+      warning: warningStyle,
+      yellow: warningStyle,
+      light: lightStyle,
+      white: lightStyle,
+      dark: darkStyle,
+      black: darkStyle,
+      muted: mutedStyle,
+      secondary: mutedStyle,
+      grey: mutedStyle,
+      default: defaultStyle,
+    },
+  }),
+  variant({
+    variants: {
+      outline: outlineStyle,
+      ghost: ghostStyle,
+      solid: solidStyle,
+      link: linkStyle,
+    },
+  })
+);
+StyledView.defaultProps = {
+  colorScheme: 'default',
+  variant: 'solid',
+};
+const StyledButton = styled(TouchableHighlight)<IButtonProps>(
+  color,
+  space,
+  layout,
+  flexbox,
+  border,
+  customBorder,
+  customBackground,
+  customOutline,
+  customShadow,
+  customExtra,
+  customLayout
+);
 const Button = ({
-  block,
-  variant,
-  rounded,
-  transparent,
-  disabled,
-  label,
   style,
-  shadow,
-  labelStyle,
-  outline,
-  icon,
+  children,
+  highlight,
+  highlightColor,
+  variant,
+  colorScheme,
+  isLoading,
+  size,
+  p,
+  pr,
+  pt,
+  pb,
+  pl,
+  px,
+  py,
+  rounded,
+  onClick,
   ...props
-}: ButtonProps) => {
-  const theme: Theme = useContext(ThemeContext) ?? Theme;
-
-  /*
-  | Default button style
-  */
-  const buttonDefaultprops: RippleProps = {
-    shadow: 2,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    rippleColor: theme.colors.white,
-    px: 7,
-    py: 4,
-  };
-
-  /*
-  | Transparent button style
-  */
-  const transparentButtonProps: RippleProps = {
-    bg: 'transparent',
-    rippleColor: theme.colors.black,
-  };
-
-  /*
-  | Default button text style
-  */
-  const textDefaultProps: TextProps = {
-    color: theme.colors.white,
-    fontSize: 2,
-    fontWeight: 2,
-  };
-
-  let computedStyle = style;
-  /*
-  | If shadow prop exists, apply shadow style otherwise fallback to default shadow
-  */
-  const buttonShadow = shadow ?? buttonDefaultprops.shadow;
-  /*
-  | If shadow="none", don't apply styles
-  */
-  if (buttonShadow !== 'none' && !transparent && !outline) {
-    computedStyle = StyleSheet.flatten([
-      style,
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      shadows[buttonShadow! > shadows.length ? shadows.length : buttonShadow!],
-    ]);
+}: IButtonProps) => {
+  let spaceValue = 0;
+  if (size) {
+    switch (size) {
+      case 'xs':
+        spaceValue = 0;
+        break;
+      case 'sm':
+        spaceValue = 2;
+        break;
+      case 'md':
+        spaceValue = 3;
+        break;
+      case 'lg':
+        spaceValue = 4;
+        break;
+      default:
+        spaceValue = 2;
+        break;
+    }
+  } else {
+    spaceValue = 2;
   }
 
-  /*
-  | Updated button style based on props
-  */
-  const updatedButtonProps: ButtonProps = {
-    ...buttonDefaultprops,
-    bg: variant ?? 'indigo.6',
-    disabled: disabled ?? false,
-    ...(block ? { alignSelf: 'stretch' } : {}),
-    ...(rounded && {
-      borderRadius: props?.height ? props?.height / 2 : 20,
-    }),
-    ...(transparent ? transparentButtonProps : {}),
-    ...(outline
-      ? {
-          ...transparentButtonProps,
-          borderWidth: 1,
-          borderColor: variant ?? 'indigo.6',
-        }
-      : {}),
-  };
-
-  const updatedTextProps: TextProps = {
-    ...textDefaultProps,
-    ...(outline || transparent ? { color: variant ?? 'indigo.6' } : {}),
-  };
-
-  const styles = StyleSheet.create({
-    iconDefaultStyle: {
-      fontSize: 24,
-      color: theme.colors.white,
+  let lightBgColor: Array<string> = [];
+  if (colorScheme) {
+    switch (colorScheme) {
+      case 'success':
+      case 'green':
+        lightBgColor = [theme.colors.success[0], theme.colors.success[1]];
+        break;
+      case 'danger':
+      case 'red':
+        lightBgColor = [theme.colors.danger[0], theme.colors.danger[1]];
+        break;
+      case 'warning':
+      case 'yellow':
+        lightBgColor = [theme.colors.warning[0], theme.colors.warning[1]];
+        break;
+      case 'light':
+      case 'white':
+        lightBgColor = [theme.colors.light[0], theme.colors.light[1]];
+        break;
+      case 'dark':
+      case 'black':
+        lightBgColor = [theme.colors.dark[0], theme.colors.dark[1]];
+        break;
+      case 'muted':
+      case 'secondary':
+      case 'grey':
+        lightBgColor = [theme.colors.muted[0], theme.colors.success[1]];
+        break;
+      default:
+        lightBgColor = [theme.colors.default[0], theme.colors.default[1]];
+    }
+  }
+  let textColor = 'white';
+  if (variant == 'ghost' || variant == 'outline' || variant == 'link') {
+    highlightColor = highlightColor ? highlightColor : lightBgColor[0];
+    textColor = lightBgColor[1];
+  }
+  const defaultOnPress = () => {};
+  let computedStyle: any = style;
+  computedStyle = StyleSheet.flatten([
+    style,
+    {
+      opacity: isLoading ? 0.5 : 1,
+      alignItems: 'center',
+      borderRadius: rounded ? rounded : 3,
+      borderColor: textColor,
     },
-  });
-
-  const flattenedIconStyle: TextStyle = StyleSheet.flatten([
-    styles.iconDefaultStyle,
-    icon?.style,
   ]);
-
   return (
-    <StyledRipple {...updatedButtonProps} {...props} style={computedStyle}>
-      {icon && icon.position === 'left' && (
-        <Icon
-          name={icon.name}
-          style={flattenedIconStyle}
-          type={icon.type}
-          mr={3}
-        />
-      )}
-      <Text {...updatedTextProps} style={labelStyle}>
-        {label}
-      </Text>
-      {icon && icon.position === 'right' && (
-        <Icon
-          name={icon.name}
-          style={flattenedIconStyle}
-          type={icon.type}
-          ml={3}
-        />
-      )}
-      {icon && !icon.position && (
-        <Icon name={icon.name} style={flattenedIconStyle} type={icon.type} />
-      )}
-    </StyledRipple>
+    <StyledButton
+      disabled={isLoading ? true : false}
+      onPress={onClick ? onClick : defaultOnPress}
+      activeOpacity={highlight}
+      underlayColor={highlightColor}
+      style={{ borderRadius: 3 }}
+      {...props}
+    >
+      <StyledView
+        p={p ? p : 2}
+        pl={pl ? pl : ''}
+        pr={pr ? pr : ''}
+        pb={pb ? pb : ''}
+        pt={pt ? pt : ''}
+        px={px ? px : ''}
+        py={py ? py : ''}
+        style={computedStyle}
+        colorScheme={colorScheme}
+        variant={variant}
+      >
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <Text
+            style={{
+              color: textColor,
+              fontSize: theme.fontSizes[spaceValue],
+              textDecorationLine: variant == 'link' ? 'underline' : 'none',
+            }}
+          >
+            {children}
+          </Text>
+        )}
+      </StyledView>
+    </StyledButton>
   );
 };
 
