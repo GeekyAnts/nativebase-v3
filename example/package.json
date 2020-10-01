@@ -12,17 +12,32 @@
     "test": "jest"
   },
   "dependencies": {
+    "@expo/vector-icons": "^10.0.6",
     "expo": "^38.0.0",
     "expo-splash-screen": "^0.3.1",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-native": "0.62.2",
     "react-native-unimodules": "~0.10.1",
-    "react-native-web": "^0.12.3"
+    "react-native-web": "^0.12.3",
+    "react-native-screens": "~2.2.0",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5",
+    "react-native-material-ripple": "^0.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/runtime": "^7.9.6",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-info": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addon-ondevice-knobs": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react-native": "^5.3.18",
+    "@storybook/react-native-server": "^5.3.18",
+    "@types/styled-components": "^5.0.1",
+    "@types/styled-system": "^5.1.9",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-expo": "^8.2.3",
     "expo-cli": "^3.21.12"
