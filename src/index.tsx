@@ -31,12 +31,16 @@ import {
   Image,
   Spinner,
   ISpinnerProps,
+  Alert,
+  IAlertProps,
 } from './components/primitives';
 
 import Theme from './theme';
 
 export {
   AppBar,
+  Alert,
+  IAlertProps,
   Badge,
   Button,
   IconButton,

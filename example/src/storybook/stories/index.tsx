@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react-native';
 import { color, number, select, text, withKnobs } from '@storybook/addon-knobs';
 import {
   AppBar,
+  Alert,
   Badge,
   Button,
   IconButton,
@@ -37,6 +38,11 @@ storiesOf('Primitives', module)
         {getStory()}
       </View>
     </ThemeProvider>
+  ))
+  .add('Alert', () => (
+    <Alert variant="solid" status="success">
+      This is an NativeBase Alert
+    </Alert>
   ))
   .add('Spinner', () => <Spinner size={60} color="#ea6989" />)
   .add('VStack', () => (
