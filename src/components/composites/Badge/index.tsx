@@ -42,7 +42,6 @@ export type IBadgeProps = TextProps &
   customBackgroundProps &
   BorderProps & {
     style?: TextStyle;
-    ratio?: number;
     variantType?: string | undefined;
     variant?: string | undefined;
     children?: string | undefined;
@@ -184,7 +183,7 @@ const Badge = ({ style, ...props }: IBadgeProps) => {
   computedStyle = StyleSheet.flatten([
     style,
     variantType,
-    { fontSize: props.fontSize ? props.fontSize : '1rem', fontWeight: '600' },
+    { fontSize: props.fontSize ? props.fontSize : 18, fontWeight: '600' },
   ]);
 
   return <StyledBadge px="2" rounded="2" {...props} style={computedStyle} />;

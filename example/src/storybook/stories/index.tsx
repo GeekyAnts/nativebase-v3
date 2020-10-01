@@ -35,7 +35,7 @@ storiesOf('Primitives', module)
     <ThemeProvider theme={Theme}>
       <View
         flexGrow={1}
-        bg="gray.4"
+        bg="white"
         alignItems="center"
         p={3}
         justifyContent="center"
@@ -128,21 +128,9 @@ storiesOf('Primitives', module)
   ))
   .add('Box', () => (
     <Box
-      shadow={select(
-        'shadow',
-        {
-          1: 1,
-          2: 2,
-          3: 3,
-          4: 4,
-          5: 5,
-          6: 6,
-        },
-        2
-      )}
       height={70}
       width={[1, 1 / 2, 1 / 4]}
-      bg={color('bg', 'blue.3')}
+      bg="orange"
     />
   ))
   .add('Columns', () => (
@@ -198,54 +186,15 @@ storiesOf('Primitives', module)
 storiesOf('Composites', module)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={Theme}>
-      <View flexGrow={1} justifyContent="center" p={3} bg="gray.2">
+      <View flexGrow={1} justifyContent="center" p={3} bg="white">
         {getStory()}
       </View>
     </ThemeProvider>
   ))
-  .add('Button', () => (
-    <Button
-      block
-      rounded
-      disabled
-      // outline={boolean("Outline", true)}
-      variant={select(
-        'variant',
-        {
-          critical: 'critical',
-          promote: 'promote',
-          caution: 'caution',
-          positive: 'positive',
-          neutral: 'neutral',
-          info: 'info',
-        },
-        'critical'
-      )}
-      label={text('label', 'Login')}
-    />
-  ))
+  .add('Button', () => <Button rounded={50} colorScheme="danger">Press Me</Button>)
 
-  .add('Button with Icon', () => (
-    <Button
-      block
-      rounded
-      disabled
-      // outline={boolean("Outline", true)}
-      variant={select(
-        'variant',
-        {
-          critical: 'critical',
-          promote: 'promote',
-          caution: 'caution',
-          positive: 'positive',
-          neutral: 'neutral',
-          info: 'info',
-        },
-        'critical'
-      )}
-      label={text('label', 'Login')}
-      icon={{ name: 'menu', position: 'left' }}
-    />
+  .add('Badge', () => (
+    <Badge variant="success" variantType="solid">NativeBase Badge</Badge>
   ))
   .add('AppBar', () => (
     <AppBar
