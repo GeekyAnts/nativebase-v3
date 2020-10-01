@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -19,9 +19,7 @@ import {
   flexbox,
   layout,
   space,
-  height,
   variant,
-  borderRadius,
 } from 'styled-system';
 import {
   customBorder,

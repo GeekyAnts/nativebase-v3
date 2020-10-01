@@ -175,7 +175,7 @@ const Badge = ({ style, ...props }: IBadgeProps) => {
     }
   }
   let text = props.children;
-  if (text != undefined) {
+  if (text !== undefined) {
     props.children = text.toUpperCase();
   }
   let computedStyle: any = style;

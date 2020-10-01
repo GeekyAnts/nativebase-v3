@@ -1,14 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { storiesOf } from '@storybook/react-native';
-import {
-  boolean,
-  color,
-  number,
-  select,
-  text,
-  withKnobs,
-} from '@storybook/addon-knobs';
+import { color, number, select, text, withKnobs } from '@storybook/addon-knobs';
 import {
   AppBar,
   Badge,
@@ -27,7 +20,7 @@ import {
   Theme,
 } from 'native-base';
 
-type GetStory = () => JSX.Element | JSX.Element[];
+type GetStory = () => JSX.Element | JSX.Element[] | any;
 
 storiesOf('Primitives', module)
   .addDecorator(withKnobs)
@@ -126,13 +119,7 @@ storiesOf('Primitives', module)
       </Columns>
     </Stack>
   ))
-  .add('Box', () => (
-    <Box
-      height={70}
-      width={[1, 1 / 2, 1 / 4]}
-      bg="orange"
-    />
-  ))
+  .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange" />)
   .add('Columns', () => (
     <Columns
       space={number('space', 3)}
@@ -191,15 +178,20 @@ storiesOf('Composites', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Button', () => <Button rounded={50} colorScheme="danger">Press Me</Button>)
+  .add('Button', () => (
+    <Button rounded={50} colorScheme="danger">
+      Press Me
+    </Button>
+  ))
 
   .add('Badge', () => (
-    <Badge variant="success" variantType="solid">NativeBase Badge</Badge>
+    <Badge variant="success" variantType="solid">
+      NativeBase Badge
+    </Badge>
   ))
   .add('AppBar', () => (
     <AppBar
       leading={
-        // eslint-disable-next-line react/jsx-wrap-multilines
         <IconButton
           name={select(
             'icon',

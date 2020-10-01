@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, ActivityIndicator } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
 import {
   BorderProps,
@@ -12,7 +12,6 @@ import {
   flexbox,
   layout,
   space,
-  height,
 } from 'styled-system';
 import {
   customBorder,
