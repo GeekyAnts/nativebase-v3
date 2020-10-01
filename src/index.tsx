@@ -10,6 +10,8 @@ import {
   Button,
   IconButton,
   Variants,
+  AlertHeading,
+  Alert,
 } from './components/composites';
 
 import {
@@ -31,8 +33,8 @@ import {
   Image,
   Spinner,
   ISpinnerProps,
-  Alert,
-  IAlertProps,
+  Heading,
+  IHeadingProps,
 } from './components/primitives';
 
 import Theme from './theme';
@@ -40,10 +42,12 @@ import Theme from './theme';
 export {
   AppBar,
   Alert,
-  IAlertProps,
+  AlertHeading,
+  IHeadingProps,
   Badge,
   Button,
   IconButton,
+  Heading,
   Variants,
   View,
   Text,

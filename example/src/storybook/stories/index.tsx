@@ -5,6 +5,7 @@ import { color, number, select, text, withKnobs } from '@storybook/addon-knobs';
 import {
   AppBar,
   Alert,
+  AlertHeading,
   Badge,
   Button,
   IconButton,
@@ -41,7 +42,7 @@ storiesOf('Primitives', module)
   ))
   .add('Alert', () => (
     <Alert variant="solid" status="success">
-      This is an NativeBase Alert
+      <AlertHeading>Alert Heading</AlertHeading>This is an NativeBase Alert
     </Alert>
   ))
   .add('Spinner', () => <Spinner size={60} color="#ea6989" />)

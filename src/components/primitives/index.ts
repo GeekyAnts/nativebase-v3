@@ -12,8 +12,7 @@ import ZStack from './ZStack';
 import Inline from './Inline';
 import Image from './Image';
 import Spinner, { ISpinnerProps } from './Spinner';
-import Alert, { IAlertProps } from './Alert';
-
+import Heading, { IHeadingProps } from './Heading';
 export {
   View,
   Text,
@@ -33,6 +32,6 @@ export {
   Image,
   Spinner,
   ISpinnerProps,
-  Alert,
-  IAlertProps,
+  Heading,
+  IHeadingProps,
 };

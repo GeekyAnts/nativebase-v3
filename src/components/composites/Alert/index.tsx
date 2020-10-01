@@ -43,7 +43,7 @@ export type IAlertProps = TextProps &
   BorderProps & {
     style?: TextStyle;
     status?: string | undefined;
-    children?: string | undefined;
+    children?: JSX.Element | JSX.Element[] | string | any;
     variant?: string | undefined;
     fontSize?: number | undefined;
   };
