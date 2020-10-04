@@ -6,6 +6,7 @@ import {
   AppBar,
   Alert,
   AlertHeading,
+  AspectRatioBox,
   Badge,
   Button,
   IconButton,
@@ -187,6 +188,7 @@ storiesOf('Composites', module)
       </View>
     </ThemeProvider>
   ))
+  .add('AspectRatioBox', () => <AspectRatioBox ratio={4/3} height="300px" bg="black" />)
   .add('Button', () => <Button colorScheme="danger">Press Me</Button>)
 
   .add('Badge', () => (

@@ -12,6 +12,7 @@ import {
   Variants,
   AlertHeading,
   Alert,
+  AspectRatioBox,
 } from './components/composites';
 
 import {
@@ -43,6 +44,7 @@ export {
   AppBar,
   Alert,
   AlertHeading,
+  AspectRatioBox,
   IHeadingProps,
   Badge,
   Button,
