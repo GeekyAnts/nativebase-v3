@@ -201,7 +201,7 @@ const Alert = ({ style, children, ...props }: IAlertProps) => {
   ]);
 
   return (
-    <StyledAlert px="2" py="2" rounded="2" {...props} style={computedStyle}>
+    <StyledAlert px="2" py="2" rounded="2px" {...props} style={computedStyle}>
       {children}
     </StyledAlert>
   );
