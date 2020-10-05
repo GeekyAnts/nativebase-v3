@@ -1,63 +1,29 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
-import {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  color,
-  flexbox,
-  layout,
-  space,
-} from 'styled-system';
-import {
-  customBorder,
-  customBorderProps,
-  customBackground,
-  customBackgroundProps,
-  customOutline,
-  customOutlineProps,
-  customLayout,
-  customLayoutProps,
-  customExtra,
-  customExtraProps,
-  customShadowProps,
-  customShadow,
-} from '../../../utils/customProps';
+import { color, space } from 'styled-system';
 
-export type ISpinnerProps = ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  customBackgroundProps &
-  BorderProps & {
-    style?: any | undefined;
-    children?: JSX.Element | JSX.Element[];
-  };
+export type ISpinnerProps = {
+  color?: string | undefined;
+  style?: any | undefined;
+  show?: boolean | undefined;
+  hideWhenStopped?: boolean | undefined; // IOS only
+  size?: 'large' | 'small' | number | undefined;
+};
 
 const StyledActivityIndicator = styled(ActivityIndicator)<ISpinnerProps>(
   color,
-  space,
-  layout,
-  flexbox,
-  border,
-  customBorder,
-  customBackground,
-  customOutline,
-  customShadow,
-  customExtra,
-  customLayout
+  space
 );
-const Spinner = (props: ISpinnerProps) => {
-  return <StyledActivityIndicator {...props} />;
+const Spinner = ({ size, show, hideWhenStopped, ...props }: ISpinnerProps) => {
+  return (
+    <StyledActivityIndicator
+      size={size ? size : 'small'}
+      animating={show ? show : true}
+      hidesWhenStopped={hideWhenStopped ? hideWhenStopped : true}
+      {...props}
+    />
+  );
 };
 
 export default Spinner;

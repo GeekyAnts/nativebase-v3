@@ -2,33 +2,30 @@ import React, { useContext } from 'react';
 import type { TextStyle } from 'react-native';
 import { ThemeContext } from 'styled-components';
 
-import type { IconProps } from '../../primitives';
+import { Icon, IconProps } from '../../primitives';
 
-import Button, { ButtonProps } from '../Button';
+import Button, { IButtonProps } from '../Button';
 
 type iconProps = IconProps & {
   iconStyle?: TextStyle | {};
 };
 
-type IconButtonProps = ButtonProps & iconProps;
+type IconButtonProps = IButtonProps & iconProps;
 
 const IconButton = ({ name, type, iconStyle, ...props }: IconButtonProps) => {
   const theme: Theme = useContext(ThemeContext);
 
-  const iconButtonDefaultprops: ButtonProps = {
+  const iconButtonDefaultprops: IButtonProps = {
     borderRadius: 40,
     padding: 4,
     overflow: 'hidden',
-    rippleColor: theme.colors.white,
+    highlightColor: theme.colors.white,
   };
 
   return (
-    <Button
-      {...iconButtonDefaultprops}
-      transparent
-      icon={{ name, type, style: iconStyle }}
-      {...props}
-    />
+    <Button {...iconButtonDefaultprops} variant="ghost" {...props}>
+      <Icon type={type} style={iconStyle} name={name} />
+    </Button>
   );
 };
 

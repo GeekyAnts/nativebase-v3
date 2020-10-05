@@ -116,10 +116,12 @@ let solidStyle = {
   color: 'white',
 };
 
-const StyledView = styled(View)<{
-  colorScheme?: string | undefined;
-  variant?: string | undefined;
-}>(
+const StyledView = styled(View)<
+  IButtonProps & {
+    colorScheme?: string | undefined;
+    variant?: string | undefined;
+  }
+>(
   color,
   space,
   layout,

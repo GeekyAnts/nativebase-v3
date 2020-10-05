@@ -29,6 +29,8 @@ import {
   IconProps,
   Input,
   Image,
+  Spinner,
+  ISpinnerProps,
 } from './components/primitives';
 
 import Theme from './theme';
@@ -54,6 +56,8 @@ export {
   Icon,
   IconProps,
   Input,
+  Spinner,
+  ISpinnerProps,
   Image,
   Theme,
 };
