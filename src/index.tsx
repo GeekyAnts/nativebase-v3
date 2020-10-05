@@ -13,6 +13,8 @@ import {
   AlertHeading,
   Alert,
   AspectRatioBox,
+  Avatar,
+  AvatarBadge,
 } from './components/composites';
 
 import {
@@ -46,6 +48,8 @@ export {
   Alert,
   AlertHeading,
   AspectRatioBox,
+  Avatar,
+  AvatarBadge,
   IHeadingProps,
   Badge,
   Button,
