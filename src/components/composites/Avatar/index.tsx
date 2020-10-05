@@ -80,8 +80,6 @@ const StyledAvatar = styled(Image)<IAvatarProps>(
 const Avatar = ({
   avatarSize,
   style,
-  height,
-  width,
   name,
   children,
   ...props
