@@ -15,6 +15,7 @@ import {
   AspectRatioBox,
   Avatar,
   AvatarBadge,
+  Code,
 } from './components/composites';
 
 import {
@@ -58,6 +59,7 @@ export {
   Variants,
   View,
   Text,
+  Code,
   TextProps,
   Columns,
   Column,
