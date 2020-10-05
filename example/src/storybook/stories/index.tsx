@@ -22,6 +22,7 @@ import {
   ZStack,
   Theme,
   Spinner,
+  NBImage,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -47,6 +48,15 @@ storiesOf('Primitives', module)
     </Alert>
   ))
   .add('Spinner', () => <Spinner size={60} color="#ea6989" />)
+  .add('Image', () => (
+    <NBImage
+      source={{
+        uri: 'https://nativebase.io/assets/img/front-page-icon.png',
+      }}
+      boxSize={200}
+      alt="Image not found"
+    />
+  ))
   .add('VStack', () => (
     <VStack space={8}>
       <Text>Test Text</Text>

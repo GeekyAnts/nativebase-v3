@@ -31,7 +31,8 @@ import {
   Icon,
   IconProps,
   Input,
-  Image,
+  NBImage,
+  NBImageProps,
   Spinner,
   ISpinnerProps,
   Heading,
@@ -68,6 +69,7 @@ export {
   Input,
   Spinner,
   ISpinnerProps,
-  Image,
+  NBImage,
+  NBImageProps,
   Theme,
 };

@@ -10,7 +10,7 @@ import VStack from './VStack';
 import HStack from './HStack';
 import ZStack from './ZStack';
 import Inline from './Inline';
-import Image from './Image';
+import NBImage, { NBImageProps } from './Image';
 import Spinner, { ISpinnerProps } from './Spinner';
 import Heading, { IHeadingProps } from './Heading';
 export {
@@ -29,7 +29,8 @@ export {
   styledIcon as Icon,
   IconProps,
   Input,
-  Image,
+  NBImage,
+  NBImageProps,
   Spinner,
   ISpinnerProps,
   Heading,
