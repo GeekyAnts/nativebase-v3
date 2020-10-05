@@ -8,7 +8,7 @@ import Alert from './Alert';
 import AlertHeading from './AlertHeading';
 import AspectRatioBox from './AspectRatioBox';
 import Avatar, { AvatarBadge } from './Avatar';
-
+import Container from './Container';
 export {
   AppBar,
   Badge,
@@ -19,5 +19,6 @@ export {
   AspectRatioBox,
   AvatarBadge,
   Avatar,
+  Container,
   Variants,
 };

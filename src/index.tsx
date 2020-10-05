@@ -15,6 +15,7 @@ import {
   AspectRatioBox,
   Avatar,
   AvatarBadge,
+  Container,
 } from './components/composites';
 
 import {
@@ -76,4 +77,5 @@ export {
   NBImage,
   NBImageProps,
   Theme,
+  Container,
 };

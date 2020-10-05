@@ -25,6 +25,7 @@ import {
   Theme,
   Spinner,
   NBImage,
+  Container,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -248,10 +249,15 @@ storiesOf('Composites', module)
       bg={color('bg', 'blue.6')}
     />
   ))
+  .add('Container', () => (
+    <Container bg="seagreen">
+      <Box boxSize="100" m={2} bg="yellow"/>
+    </Container>
+  ))
   .add('IconButton', () => (
     <IconButton
       type="MaterialIcons"
       name={text('name', 'menu')}
-      bg={text('bg', 'blue.5')}
+      bg={text('bg', 'blue')}
     />
   ));
