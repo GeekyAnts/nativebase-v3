@@ -7,6 +7,8 @@ import {
   Alert,
   AlertHeading,
   AspectRatioBox,
+  Avatar,
+  AvatarBadge,
   Badge,
   Button,
   IconButton,
@@ -200,6 +202,18 @@ storiesOf('Composites', module)
   ))
   .add('AspectRatioBox', () => (
     <AspectRatioBox ratio={4 / 3} height="300px" bg="black" />
+  ))
+  .add('Avatar', () => (
+    <Avatar
+      avatarSize={100}
+      source={{
+        uri: 'https://nativebase.io/assets/img/front-page-icon.png',
+      }}
+      //Uncomment next line to get initials when the source is wrong or broken
+      //name="Native Base"
+    >
+      <AvatarBadge boxSize={13} badgeColor="seagreen" />
+    </Avatar>
   ))
   .add('Button', () => <Button colorScheme="danger">Press Me</Button>)
 
