@@ -46,7 +46,7 @@ storiesOf('Primitives', module)
       <AlertHeading>Alert Heading</AlertHeading>This is an NativeBase Alert
     </Alert>
   ))
-  .add('Spinner', () => <Spinner size={60} color="#ea6989" />)
+  .add('Spinner', () => <Spinner size="large" color="#ea6989" />)
   .add('VStack', () => (
     <VStack space={8}>
       <Text>Test Text</Text>
