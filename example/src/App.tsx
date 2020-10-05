@@ -1,25 +1,32 @@
-import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import NativeBase from 'native-base';
+// import * as React from 'react';
+// import { StyleSheet, View, Text } from 'react-native';
+// import { Box } from 'native-base';
 
-export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+// export default function App() {
+//   return (
+//     <View style={styles.container}>
+//       <Text>Box</Text>
+//       <Box
+//         bg="gray"
+//         height={55}
+//         width={100}
+//         justifyContent="center"
+//         alignItems="center"
+//       >
+//         <Text>Header</Text>
+//       </Box>
+//     </View>
+//   );
+// }
 
-  React.useEffect(() => {
-    NativeBase.multiply(3, 7).then(setResult);
-  }, []);
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
 
-  return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
-  );
-}
+import StorybookUIRoot from './storybook';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default StorybookUIRoot;
