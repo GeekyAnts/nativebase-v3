@@ -25,6 +25,7 @@ import {
   Theme,
   Spinner,
   NBImage,
+  InputBox,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -50,6 +51,15 @@ storiesOf('Primitives', module)
     </Alert>
   ))
   .add('Spinner', () => <Spinner size="large" color="#ea6989" />)
+  .add('InputBox', () => (
+    <InputBox
+      colorScheme="success"
+      mt={2}
+      px={2}
+      placeholder="Input text"
+      variant="rounded"
+    />
+  ))
   .add('Image', () => (
     <NBImage
       source={{

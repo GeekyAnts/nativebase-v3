@@ -1,6 +1,7 @@
 import Box, { IBoxProps } from './Box';
 import Text, { TextProps } from './Text';
 import Input from './Input';
+import InputBox, { IInputBoxProps } from './InputBox';
 import View from './View';
 import styledIcon, { IconProps } from './Icon';
 import Columns from './Columns';
@@ -13,6 +14,7 @@ import Inline from './Inline';
 import NBImage, { NBImageProps } from './Image';
 import Spinner, { ISpinnerProps } from './Spinner';
 import Heading, { IHeadingProps } from './Heading';
+import Flex, { IFlexProps } from './Flex';
 export {
   View,
   Text,
@@ -29,10 +31,14 @@ export {
   styledIcon as Icon,
   IconProps,
   Input,
+  InputBox,
+  IInputBoxProps,
   NBImage,
   NBImageProps,
   Spinner,
   ISpinnerProps,
   Heading,
   IHeadingProps,
+  Flex,
+  IFlexProps,
 };
