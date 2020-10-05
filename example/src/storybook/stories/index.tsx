@@ -20,7 +20,7 @@ import {
   VStack,
   View,
   ZStack,
-  Theme,
+  theme,
   Spinner,
   NBImage,
 } from 'native-base';
@@ -30,7 +30,7 @@ type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Primitives', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={theme}>
       <View
         flexGrow={1}
         bg="white"
@@ -192,7 +192,7 @@ storiesOf('Primitives', module)
 
 storiesOf('Composites', module)
   .addDecorator((getStory: GetStory) => (
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={theme}>
       <View flexGrow={1} justifyContent="center" p={3} bg="white">
         {getStory()}
       </View>

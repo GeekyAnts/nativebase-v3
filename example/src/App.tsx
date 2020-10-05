@@ -1,21 +1,12 @@
 // import * as React from 'react';
-// import { StyleSheet, View, Text } from 'react-native';
-// import { Box } from 'native-base';
+// import { StyleSheet, View } from 'react-native';
+// import { ThemeProvider, Theme, Spinner } from 'native-base';
 
 // export default function App() {
 //   return (
-//     <View style={styles.container}>
-//       <Text>Box</Text>
-//       <Box
-//         bg="gray"
-//         height={55}
-//         width={100}
-//         justifyContent="center"
-//         alignItems="center"
-//       >
-//         <Text>Header</Text>
-//       </Box>
-//     </View>
+//     <ThemeProvider theme={Theme}>
+//       <Spinner color="#ea6989" />
+//     </ThemeProvider>
 //   );
 // }
 

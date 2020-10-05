@@ -39,7 +39,13 @@ import {
   IHeadingProps,
 } from './components/primitives';
 
-import Theme from './theme';
+import {
+  darkTheme,
+  theme,
+  ThemeProvider,
+  ThemeConsumer,
+  ThemeContext,
+} from './theme';
 
 export {
   AppBar,
@@ -71,5 +77,9 @@ export {
   ISpinnerProps,
   NBImage,
   NBImageProps,
-  Theme,
+  darkTheme,
+  theme,
+  ThemeProvider,
+  ThemeConsumer,
+  ThemeContext,
 };
