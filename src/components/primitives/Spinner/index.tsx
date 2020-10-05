@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
-import { color, layout, space } from 'styled-system';
+import { color, space } from 'styled-system';
 
 export type ISpinnerProps = {
   color?: string | undefined;
@@ -13,8 +13,7 @@ export type ISpinnerProps = {
 
 const StyledActivityIndicator = styled(ActivityIndicator)<ISpinnerProps>(
   color,
-  space,
-  layout
+  space
 );
 const Spinner = ({ size, show, hideWhenStopped, ...props }: ISpinnerProps) => {
   return (
