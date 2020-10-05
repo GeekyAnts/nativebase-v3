@@ -10,6 +10,9 @@ import {
   Button,
   IconButton,
   Variants,
+  AlertHeading,
+  Alert,
+  AspectRatioBox,
 } from './components/composites';
 
 import {
@@ -31,15 +34,22 @@ import {
   Image,
   Spinner,
   ISpinnerProps,
+  Heading,
+  IHeadingProps,
 } from './components/primitives';
 
 import Theme from './theme';
 
 export {
   AppBar,
+  Alert,
+  AlertHeading,
+  AspectRatioBox,
+  IHeadingProps,
   Badge,
   Button,
   IconButton,
+  Heading,
   Variants,
   View,
   Text,

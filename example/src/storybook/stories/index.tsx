@@ -4,6 +4,9 @@ import { storiesOf } from '@storybook/react-native';
 import { color, number, select, text, withKnobs } from '@storybook/addon-knobs';
 import {
   AppBar,
+  Alert,
+  AlertHeading,
+  AspectRatioBox,
   Badge,
   Button,
   IconButton,
@@ -37,6 +40,11 @@ storiesOf('Primitives', module)
         {getStory()}
       </View>
     </ThemeProvider>
+  ))
+  .add('Alert', () => (
+    <Alert variant="solid" status="success">
+      <AlertHeading>Alert Heading</AlertHeading>This is an NativeBase Alert
+    </Alert>
   ))
   .add('Spinner', () => <Spinner size="large" color="#ea6989" />)
   .add('VStack', () => (
@@ -179,6 +187,9 @@ storiesOf('Composites', module)
         {getStory()}
       </View>
     </ThemeProvider>
+  ))
+  .add('AspectRatioBox', () => (
+    <AspectRatioBox ratio={4 / 3} height="300px" bg="black" />
   ))
   .add('Button', () => <Button colorScheme="danger">Press Me</Button>)
 
