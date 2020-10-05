@@ -1,5 +1,5 @@
-import React, { forwardRef } from 'react';
-import { Image, ImageProps } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Image, ImageProps, Text } from 'react-native';
 import styled from 'styled-components';
 import {
   BorderProps,
@@ -11,23 +11,64 @@ import {
   layout,
   space,
 } from 'styled-system';
+import { customBorder, customBorderProps } from '../../../utils/customProps';
 
-type NBImageProps = ImageProps &
+export type NBImageProps = ImageProps &
   LayoutProps &
   SpaceProps &
+  customBorderProps &
   BorderProps &
-  FlexboxProps;
+  FlexboxProps & {
+    boxSize?: number | undefined;
+    alt?: string | undefined;
+  };
 
-const StyledImage = styled(Image)<NBImageProps>(layout, space, border, flex);
-
-const defaultImageProps: any = {
-  width: 100,
-  height: 100,
-};
+const StyledImage = styled(Image)<NBImageProps>(
+  layout,
+  space,
+  border,
+  flex,
+  customBorder
+);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const NBImage = (props: NBImageProps, ref: any) => {
-  return <StyledImage {...defaultImageProps} ref={ref} {...props} />;
+const NBImage = ({
+  boxSize,
+  style,
+  height,
+  width,
+  alt,
+  ...props
+}: NBImageProps) => {
+  let [alternate, setAlternate] = useState(false);
+  let onImageLoadError = (event: any) => {
+    console.warn(event.nativeEvent.error);
+    setAlternate(true);
+  };
+  let computedStyle = style;
+  if (boxSize) {
+    computedStyle = StyleSheet.flatten([
+      style,
+      {
+        width: boxSize,
+        height: boxSize,
+      },
+    ]);
+  } else {
+    computedStyle = StyleSheet.flatten([
+      style,
+      {
+        width: width ? width : 100,
+        height: height ? height : 100,
+      },
+    ]);
+  }
+  if (alternate) {
+    return <Text>{alt}</Text>;
+  }
+  return (
+    <StyledImage style={computedStyle} {...props} onError={onImageLoadError} />
+  );
 };
 
-export default forwardRef(NBImage);
+export default NBImage;
