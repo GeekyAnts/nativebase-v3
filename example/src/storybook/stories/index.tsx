@@ -251,7 +251,7 @@ storiesOf('Composites', module)
   ))
   .add('Container', () => (
     <Container bg="seagreen">
-      <Box boxSize="100" m={2} bg="yellow"/>
+      <Box boxSize="100" m={2} bg="yellow" />
     </Container>
   ))
   .add('IconButton', () => (
