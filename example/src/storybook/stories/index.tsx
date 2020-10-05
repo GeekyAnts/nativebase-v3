@@ -25,6 +25,7 @@ import {
   Theme,
   Spinner,
   NBImage,
+  Center,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -247,6 +248,11 @@ storiesOf('Composites', module)
       ]}
       bg={color('bg', 'blue.6')}
     />
+  ))
+  .add('Center', () => (
+    <Center>
+      <Box bg="red" boxSize="100" />
+    </Center>
   ))
   .add('IconButton', () => (
     <IconButton
