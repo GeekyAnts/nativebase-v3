@@ -15,6 +15,7 @@ import {
   AspectRatioBox,
   Avatar,
   AvatarBadge,
+  Center,
 } from './components/composites';
 
 import {
@@ -67,6 +68,7 @@ export {
   TextProps,
   Columns,
   Column,
+  Center,
   Box,
   IBoxProps,
   Stack,
