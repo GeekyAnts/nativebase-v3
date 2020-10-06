@@ -40,6 +40,7 @@ import {
   ISpinnerProps,
   Heading,
   IHeadingProps,
+  Select,
 } from './components/primitives';
 
 import {
@@ -79,6 +80,7 @@ export {
   Icon,
   IconProps,
   Input,
+  Select,
   Spinner,
   ISpinnerProps,
   NBImage,

@@ -26,6 +26,7 @@ import {
   Spinner,
   NBImage,
   Center,
+  Select,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -59,6 +60,20 @@ storiesOf('Primitives', module)
       boxSize={200}
       alt="Image not found"
     />
+  ))
+  .add('Select', () => (
+    <>
+      <Text>sss</Text>
+      <Select
+        initValue="js"
+        options={[
+          { label: 'Java', value: 'java' },
+          { label: 'JavaScript', value: 'js' },
+          { label: 'Vue', value: 'vue' },
+          { label: 'Flutter', value: 'flutter' },
+        ]}
+      />
+    </>
   ))
   .add('VStack', () => (
     <VStack space={8}>

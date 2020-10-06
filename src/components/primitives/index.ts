@@ -13,6 +13,7 @@ import Inline from './Inline';
 import NBImage, { NBImageProps } from './Image';
 import Spinner, { ISpinnerProps } from './Spinner';
 import Heading, { IHeadingProps } from './Heading';
+import Select from './Select';
 export {
   View,
   Text,
@@ -31,6 +32,7 @@ export {
   Input,
   NBImage,
   NBImageProps,
+  Select,
   Spinner,
   ISpinnerProps,
   Heading,
