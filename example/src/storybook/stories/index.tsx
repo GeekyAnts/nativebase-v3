@@ -71,6 +71,7 @@ storiesOf('Primitives', module)
           { label: 'JavaScript', value: 'js' },
           { label: 'Vue', value: 'vue' },
           { label: 'Flutter', value: 'flutter' },
+          { label: 'React', value: 'react' },
         ]}
       />
     </>
