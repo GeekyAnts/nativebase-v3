@@ -13,7 +13,7 @@ import {
 } from 'styled-system';
 import { customBorder, customBorderProps } from '../../../utils/customProps';
 import { Box } from '../../primitives';
-import theme from '../../../theme';
+import { theme } from '../../../theme';
 
 export type IAvatarProps = LayoutProps &
   SpaceProps &
@@ -65,7 +65,7 @@ export const AvatarBadge = ({
       width={boxSize ? boxSize : 10}
       height={boxSize ? boxSize : 10}
       {...props}
-    ></Box>
+    />
   );
 };
 const StyledAvatar = styled(Image)<IAvatarProps>(

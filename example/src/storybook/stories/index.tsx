@@ -63,7 +63,7 @@ storiesOf('Primitives', module)
   ))
   .add('Select', () => (
     <>
-      <Text>sss</Text>
+      <Text>Label: </Text>
       <Select
         initValue="js"
         options={[
