@@ -13,6 +13,10 @@ import Inline from './Inline';
 import NBImage, { NBImageProps } from './Image';
 import Spinner, { ISpinnerProps } from './Spinner';
 import Heading, { IHeadingProps } from './Heading';
+import Flex, { IFlexProps } from './Flex';
+import Wrap, { IWrapProps } from './Wrap';
+import NBSwitch, { INBSwitchProps } from './Switch';
+
 export {
   View,
   Text,
@@ -35,4 +39,10 @@ export {
   ISpinnerProps,
   Heading,
   IHeadingProps,
+  Flex,
+  IFlexProps,
+  NBSwitch,
+  INBSwitchProps,
+  Wrap,
+  IWrapProps,
 };

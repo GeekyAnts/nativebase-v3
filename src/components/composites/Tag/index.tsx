@@ -28,9 +28,9 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
+import { CloseButton, IButtonProps } from '../../composites';
 import { theme } from '../../../theme';
-
-export type IAlertProps = TextProps &
+export type ITagProps = TextProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -43,13 +43,13 @@ export type IAlertProps = TextProps &
   customBackgroundProps &
   BorderProps & {
     style?: TextStyle;
-    status?: string | undefined;
-    children?: JSX.Element | JSX.Element[] | string | any;
+    ratio?: number;
+    variantType?: string | undefined;
     variant?: string | undefined;
+    children?: JSX.Element | JSX.Element[] | string;
     fontSize?: number | undefined;
+    tagSize?: string | undefined;
   };
-
-// Color Varients
 let successStyle = {
   backgroundColor: theme.colors.success[0],
   color: theme.colors.success[1],
@@ -79,7 +79,7 @@ let defaultStyle = {
   color: theme.colors.default[1],
 };
 
-const StyledAlert = styled(Text)<IAlertProps>(
+const StyledTag = styled(Text)<ITagProps>(
   color,
   space,
   layout,
@@ -92,11 +92,11 @@ const StyledAlert = styled(Text)<IAlertProps>(
   customExtra,
   customLayout,
   variant({
-    prop: 'status',
+    prop: 'variant',
     variants: {
       success: successStyle,
       green: successStyle,
-      error: dangerStyle,
+      danger: dangerStyle,
       red: dangerStyle,
       warning: warningStyle,
       yellow: warningStyle,
@@ -106,20 +106,45 @@ const StyledAlert = styled(Text)<IAlertProps>(
       black: darkStyle,
       muted: mutedStyle,
       secondary: mutedStyle,
-      comment: mutedStyle,
       grey: mutedStyle,
       default: defaultStyle,
     },
+  }),
+  variant({
+    prop: 'tagSize',
+    variants: {
+      '2xl': { fontSize: theme.fontSizes[5] },
+      'xl': { fontSize: theme.fontSizes[4] },
+      'lg': { fontSize: theme.fontSizes[3] },
+      'md': { fontSize: theme.fontSizes[2] },
+      'sm': { fontSize: theme.fontSizes[1] },
+      'xsm': { fontSize: theme.fontSizes[0] },
+    },
   })
 );
-StyledAlert.defaultProps = {
-  status: 'default',
+StyledTag.defaultProps = {
+  variant: 'default',
+  tagSize: '2xl',
 };
-const Alert = ({ style, children, ...props }: IAlertProps) => {
+export const TagCloseButton = ({ style, ...props }: IButtonProps) => {
+  let computedStyle: any = style;
+  computedStyle = StyleSheet.flatten([style, { fontWeight: '700' }]);
+  return (
+    <CloseButton
+      marginLeft="auto"
+      mr={2}
+      highlightColor="transparent"
+      style={computedStyle}
+      {...props}
+    />
+  );
+};
+const Tag = ({ style, ...props }: ITagProps) => {
+  // Color Varients
+
   let structureColor = theme.colors.default[2];
-  let lightColor = 'white';
-  if (props.status) {
-    switch (props.status) {
+  if (props.variant) {
+    switch (props.variant) {
       case 'success':
       case 'green':
         structureColor = theme.colors.success[2];
@@ -135,7 +160,6 @@ const Alert = ({ style, children, ...props }: IAlertProps) => {
       case 'light':
       case 'white':
         structureColor = theme.colors.light[2];
-        lightColor = theme.colors.dark[2];
         break;
       case 'dark':
       case 'black':
@@ -151,25 +175,23 @@ const Alert = ({ style, children, ...props }: IAlertProps) => {
     }
   }
   //   Varients
-  let leftAccentStyle = {
-    borderLeftWidth: 4,
-    borderLeftColor: props.variant ? structureColor : theme.colors.muted[2],
-  };
-  let topAccentStyle = {
-    borderTopWidth: 4,
-    borderTopColor: props.variant ? structureColor : theme.colors.muted[2],
+  let outlineStyle = {
+    backgroundColor: 'transparent',
+    border:
+      '1px solid ' + (props.variant ? structureColor : theme.colors.muted[1]),
+    color: props.variant ? structureColor : theme.colors.muted[1],
   };
   let solidStyle = {
-    backgroundColor: props.variant ? structureColor : theme.colors.muted[2],
-    color: lightColor === 'white' ? 'white' : lightColor,
+    backgroundColor: props.variant ? structureColor : theme.colors.muted[1],
+    color: 'white',
   };
   let subtleStyle = {}; // Default when no variantType is provided
 
   let variantType = subtleStyle;
-  if (props.variant) {
-    switch (props.variant) {
-      case 'left-accent':
-        variantType = leftAccentStyle;
+  if (props.variantType) {
+    switch (props.variantType) {
+      case 'outline':
+        variantType = outlineStyle;
         break;
       case 'solid':
         variantType = solidStyle;
@@ -177,31 +199,21 @@ const Alert = ({ style, children, ...props }: IAlertProps) => {
       case 'subtle':
         variantType = subtleStyle;
         break;
-      case 'top-accent':
-        variantType = topAccentStyle;
-        break;
       default:
-        variantType = topAccentStyle;
+        variantType = subtleStyle;
     }
   }
 
   let computedStyle: any = style;
+
   computedStyle = StyleSheet.flatten([
     style,
-    {
-      display: 'flex',
-      alignItems: 'center',
-      width: '100%',
-      fontSize: props.fontSize ? props.fontSize : 15,
-    },
+    { display: 'flex', alignItems: 'center', flexDirection: 'row' },
     variantType,
+    { fontWeight: '500' },
   ]);
 
-  return (
-    <StyledAlert px="2" py="2" rounded="2px" {...props} style={computedStyle}>
-      {children}
-    </StyledAlert>
-  );
+  return <StyledTag px="2" rounded="2" {...props} style={computedStyle} />;
 };
 
-export default Alert;
+export default Tag;
