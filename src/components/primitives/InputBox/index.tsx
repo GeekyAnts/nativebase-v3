@@ -19,6 +19,7 @@ import {
   flexbox,
   layout,
   variant,
+  space,
 } from 'styled-system';
 import {
   customBorder,
@@ -50,13 +51,12 @@ export type IInputBoxProps = ColorProps &
   BorderProps & {
     style?: TextStyle;
     children?: string | undefined | JSX.Element[] | JSX.Element;
-    fontSize?: string | undefined;
+    fontSize?: number | any;
     placeholder?: string | undefined;
     isInvalid?: boolean;
     variant?: string | undefined;
     isDisabled?: boolean | undefined;
     colorScheme?: string | undefined;
-    disabled?: boolean;
     errorMessage?: string | undefined;
     successMessage?: string | undefined;
     inputSize?: string | undefined;
@@ -77,13 +77,14 @@ const dangerStyle = {
   borderColor: theme.colors.danger[2],
 };
 const underlinedStyle = {
-  borderRadius: '0%',
-  borderWidth: 1,
+  borderRadius: 0,
+  borderWidth: 0,
   borderColor: 'black',
-  borderBottomWidth: '1px',
+  borderBottomWidth: 1,
 };
 const StyledBox = styled(View)<IInputBoxProps>(
   color,
+  space,
   layout,
   flexbox,
   border,
@@ -170,17 +171,18 @@ const InputBox = (
     style,
     isDisabled ? { backgroundColor: '#f6f6f6', borderColor: '#c0c4c7' } : {},
     isInvalid ? { borderWidth: 1, borderColor: 'red' } : {},
-    props.fontSize ? { fontSize: props.fontSize } : {},
     { display: 'flex', flexDirection: 'row', width: '100%' },
+    props.borderColor ? { borderColor: props.borderColor } : {},
   ]);
   return (
     <Box>
       <StyledBox p={1} {...props} style={computedStyle}>
         <StyledInputBox
+          style={props.fontSize ? { fontSize: props.fontSize } : {}}
           inputSize={inputSize}
           placeholder={placeholder}
           p={1}
-          disabled={isDisabled ? true : false}
+          editable={isDisabled ? false : true}
           {...props}
           ref={ref}
         />

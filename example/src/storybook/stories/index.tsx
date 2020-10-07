@@ -54,11 +54,13 @@ storiesOf('Primitives', module)
   .add('Spinner', () => <Spinner size="large" color="#ea6989" />)
   .add('InputBox', () => (
     <InputBox
+      inputSize="lg"
+      w="80%"
       colorScheme="success"
-      mt={2}
-      px={2}
+      p={3}
+      variant="underlined"
       placeholder="Input text"
-      variant="rounded"
+      successMessage="Submitted Successfully!"
     />
   ))
   .add('Image', () => (
