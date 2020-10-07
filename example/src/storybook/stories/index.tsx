@@ -44,14 +44,21 @@ import {
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
-
+const customTheme = {
+  ...theme,
+  colors: {
+    ...theme.colors,
+    success: ['#000', '#111', '#222'],
+    primary: '#7c83db',
+  },
+};
 storiesOf('Primitives', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={customTheme}>
       <View
         flexGrow={1}
-        bg="white"
+        bg="gray.4"
         alignItems="center"
         p={3}
         justifyContent="center"
@@ -121,12 +128,12 @@ storiesOf('Primitives', module)
   ))
   .add('Web Layout', () => (
     <Stack flexGrow={number('flexGrow', 1)}>
-      <Box bg="gray" height={55} justifyContent="center" alignItems="center">
+      <Box bg="gray.1" height={55} justifyContent="center" alignItems="center">
         <Text>Header</Text>
       </Box>
       <Columns flexGrow={number('flexGrow', 1)}>
         <Column
-          bg="gray"
+          bg="gray.1"
           width={0.15 / 1}
           justifyContent="center"
           alignItems="center"
@@ -134,27 +141,27 @@ storiesOf('Primitives', module)
         >
           <Text>Left Panel</Text>
         </Column>
-        <Column bg="gray" width={0.65 / 1} flexGrow={number('flexGrow', 1)}>
+        <Column bg="gray.1" width={0.65 / 1} flexGrow={number('flexGrow', 1)}>
           <Stack
             height={number('height', 200)}
             flexGrow={number('flexGrow', 1)}
           >
-            <Box bg="gray" height={65} />
+            <Box bg="gray.1" height={65} />
             <Columns flexGrow={number('flexGrow', 1)} m={30}>
               <Column
-                bg="green"
+                bg="primary"
                 borderRadius={number('borderRadius', 4)}
                 flexGrow={number('flexGrow', 1)}
                 mx={20}
               />
               <Column
-                bg="green"
+                bg="green.1"
                 borderRadius={number('borderRadius', 4)}
                 flexGrow={number('flexGrow', 1)}
                 mx={20}
               />
               <Column
-                bg="green"
+                bg="green.1"
                 borderRadius={number('borderRadius', 4)}
                 flexGrow={number('flexGrow', 1)}
                 mx={20}
@@ -162,14 +169,14 @@ storiesOf('Primitives', module)
             </Columns>
 
             <Box
-              bg="gray"
+              bg="gray.1"
               height={number('height', 80)}
               flexGrow={number('flexGrow', 1)}
             />
           </Stack>
         </Column>
         <Column
-          bg="gray"
+          bg="gray.1"
           width={0.2 / 1}
           justifyContent="center"
           alignItems="center"
@@ -180,7 +187,7 @@ storiesOf('Primitives', module)
       </Columns>
     </Stack>
   ))
-  .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange.1" />)
+  .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange.3" />)
   .add('Columns', () => (
     <Columns
       space={number('space', 3)}
