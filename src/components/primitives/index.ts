@@ -3,6 +3,8 @@ import Text, { TextProps } from './Text';
 import Input from './Input';
 import View from './View';
 import styledIcon, { IconProps } from './Icon';
+import Checkbox from './Checkbox';
+import Radio from './Radio';
 import Columns from './Columns';
 import Column from './Column';
 import Stack from './Stack';
@@ -17,6 +19,8 @@ export {
   View,
   Text,
   TextProps,
+  Checkbox,
+  Radio,
   Columns,
   Column,
   Box,

@@ -26,6 +26,8 @@ import {
   Spinner,
   NBImage,
   Center,
+  Checkbox,
+  Radio,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -143,6 +145,18 @@ storiesOf('Primitives', module)
     </Stack>
   ))
   .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange" />)
+  .add('Checkbox', () => (
+    <>
+      <Text>Label: </Text>
+      <Checkbox colorVarient="dark" checked={true} />
+    </>
+  ))
+  .add('Radio', () => (
+    <>
+      <Text>Label: </Text>
+      <Radio colorVarient="default" checked={true} />
+    </>
+  ))
   .add('Columns', () => (
     <Columns
       space={number('space', 3)}
