@@ -36,6 +36,7 @@ import {
   customShadow,
 } from '../../../utils/customProps';
 import { theme } from '../../../theme';
+import { shadows } from '../../../styles';
 import Spinner from '../../primitives/Spinner';
 type SpaceType = 'xs' | 'sm' | 'md' | 'lg';
 export type IButtonProps = ViewProps &
@@ -59,6 +60,7 @@ export type IButtonProps = ViewProps &
     isLoading?: any | undefined;
     size?: SpaceType | string | undefined;
     onClick?: any | undefined;
+    shadow?: number | undefined;
   };
 
 let successStyle = {
@@ -196,6 +198,7 @@ const Button = ({
   py,
   rounded,
   onClick,
+  shadow,
   ...props
 }: IButtonProps) => {
   let spaceValue = 0;
@@ -269,13 +272,21 @@ const Button = ({
       borderColor: textColor,
     },
   ]);
+  let shadowInd: number = shadow ? (shadow > 9 ? 9 : shadow) : 2;
+  let computedButtonStyle: any = style;
+  computedButtonStyle = StyleSheet.flatten([
+    shadows[shadowInd],
+    {
+      borderRadius: rounded ? rounded : 3,
+    },
+  ]);
   return (
     <StyledButton
       disabled={isLoading ? true : false}
       onPress={onClick ? onClick : defaultOnPress}
       activeOpacity={highlight}
       underlayColor={highlightColor}
-      style={{ borderRadius: 3 }}
+      style={computedButtonStyle}
       {...props}
     >
       <StyledView

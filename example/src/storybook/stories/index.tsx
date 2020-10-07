@@ -269,7 +269,11 @@ storiesOf('Composites', module)
       <AvatarBadge boxSize={13} badgeColor="seagreen" />
     </Avatar>
   ))
-  .add('Button', () => <Button colorScheme="danger">Press Me</Button>)
+  .add('Button', () => (
+    <Button shadow={6} colorScheme="danger">
+      Press Me
+    </Button>
+  ))
 
   .add('Badge', () => (
     <Badge variant="success" variantType="solid">
