@@ -1,21 +1,18 @@
 // import * as React from 'react';
-// import { StyleSheet, View, Text } from 'react-native';
-// import { Box } from 'native-base';
+// import { StyleSheet, View } from 'react-native';
+// import { ThemeProvider, theme, Spinner } from 'native-base';
 
 // export default function App() {
+//   const customeTheme = {
+//     test: 'testing',
+//     ...theme,
+//   };
 //   return (
-//     <View style={styles.container}>
-//       <Text>Box</Text>
-//       <Box
-//         bg="gray"
-//         height={55}
-//         width={100}
-//         justifyContent="center"
-//         alignItems="center"
-//       >
-//         <Text>Header</Text>
-//       </Box>
-//     </View>
+//     <ThemeProvider theme={customeTheme}>
+//       <View style={styles.container}>
+//         <Spinner color="#ea6989" size="large" />
+//       </View>
+//     </ThemeProvider>
 //   );
 // }
 

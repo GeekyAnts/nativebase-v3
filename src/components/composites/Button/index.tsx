@@ -35,7 +35,7 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-import theme from '../../../theme';
+import { theme } from '../../../theme';
 import Spinner from '../../primitives/Spinner';
 type SpaceType = 'xs' | 'sm' | 'md' | 'lg';
 export type IButtonProps = ViewProps &

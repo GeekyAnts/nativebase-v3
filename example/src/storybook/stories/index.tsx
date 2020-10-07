@@ -22,10 +22,11 @@ import {
   VStack,
   View,
   ZStack,
-  Theme,
+  theme,
   Spinner,
   NBImage,
   InputBox,
+  Center,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -33,7 +34,7 @@ type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Primitives', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={theme}>
       <View
         flexGrow={1}
         bg="white"
@@ -204,7 +205,7 @@ storiesOf('Primitives', module)
 
 storiesOf('Composites', module)
   .addDecorator((getStory: GetStory) => (
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={theme}>
       <View flexGrow={1} justifyContent="center" p={3} bg="white">
         {getStory()}
       </View>
@@ -257,6 +258,11 @@ storiesOf('Composites', module)
       ]}
       bg={color('bg', 'blue.6')}
     />
+  ))
+  .add('Center', () => (
+    <Center>
+      <Box bg="red" boxSize="100" />
+    </Center>
   ))
   .add('IconButton', () => (
     <IconButton

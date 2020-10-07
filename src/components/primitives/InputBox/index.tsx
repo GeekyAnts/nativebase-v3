@@ -5,6 +5,7 @@ import {
   TextStyle,
   TextInputProps,
   Text,
+  View,
 } from 'react-native';
 import styled from 'styled-components/native';
 import {
@@ -33,8 +34,8 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-import theme from '../../../theme';
-import { Flex, Box } from '../../primitives';
+import { theme } from '../../../index';
+import { Box } from '../../primitives';
 export type IInputBoxProps = ColorProps &
   TextInputProps &
   SpaceProps &
@@ -58,13 +59,16 @@ export type IInputBoxProps = ColorProps &
     disabled?: boolean;
     errorMessage?: string | undefined;
     successMessage?: string | undefined;
+    inputSize?: string | undefined;
   };
 const roundedStyle = {
   borderRadius: '50',
-  border: '1px solid black',
+  borderWidth: 1,
+  borderColor: 'black',
 };
 const defaultStyle = {
-  border: '1px solid black',
+  borderWidth: 1,
+  borderColor: 'black',
 };
 const successStyle = {
   borderColor: theme.colors.success[2],
@@ -74,12 +78,23 @@ const dangerStyle = {
 };
 const underlinedStyle = {
   borderRadius: '0%',
-  border: '0px solid black',
+  borderWidth: 1,
+  borderColor: 'black',
   borderBottomWidth: '1px',
 };
-const StyledBox = styled(Flex)<IInputBoxProps>(
+const StyledBox = styled(View)<IInputBoxProps>(
+  color,
+  layout,
+  flexbox,
+  border,
+  customBorder,
+  customBackground,
+  customOutline,
+  customShadow,
+  customExtra,
+  customLayout,
   variant({
-    prop: 'size',
+    prop: 'inputSize',
     variants: {
       '2xl': { fontSize: theme.fontSizes[5] },
       'xl': { fontSize: theme.fontSizes[4] },
@@ -90,7 +105,6 @@ const StyledBox = styled(Flex)<IInputBoxProps>(
     },
   }),
   variant({
-    prop: 'variant',
     variants: {
       underlined: underlinedStyle,
       rounded: roundedStyle,
@@ -118,7 +132,7 @@ const StyledInputBox = styled(TextInput)<IInputBoxProps>(
   customExtra,
   customLayout,
   variant({
-    prop: 'size',
+    prop: 'inputSize',
     variants: {
       '2xl': { fontSize: theme.fontSizes[5] },
       'xl': { fontSize: theme.fontSizes[4] },
@@ -131,12 +145,12 @@ const StyledInputBox = styled(TextInput)<IInputBoxProps>(
 );
 
 StyledBox.defaultProps = {
-  size: 'md',
+  inputSize: 'md',
   variant: 'default',
   colorScheme: 'default',
 };
 StyledInputBox.defaultProps = {
-  size: 'md',
+  inputSize: 'md',
 };
 const InputBox = (
   {
@@ -144,7 +158,7 @@ const InputBox = (
     isInvalid,
     isDisabled,
     placeholder,
-    size,
+    inputSize,
     errorMessage,
     successMessage,
     ...props
@@ -155,14 +169,15 @@ const InputBox = (
   computedStyle = StyleSheet.flatten([
     style,
     isDisabled ? { backgroundColor: '#f6f6f6', borderColor: '#c0c4c7' } : {},
-    isInvalid ? { border: '1px solid red' } : {},
+    isInvalid ? { borderWidth: 1, borderColor: 'red' } : {},
     props.fontSize ? { fontSize: props.fontSize } : {},
+    { display: 'flex', flexDirection: 'row', width: '100%' },
   ]);
   return (
     <Box>
       <StyledBox p={1} {...props} style={computedStyle}>
         <StyledInputBox
-          size={size}
+          inputSize={inputSize}
           placeholder={placeholder}
           p={1}
           disabled={isDisabled ? true : false}
@@ -171,9 +186,9 @@ const InputBox = (
         />
         {props.colorScheme ? (
           props.colorScheme === 'error' ? (
-            <>Error Icon</>
+            <Text>Error Icon</Text>
           ) : props.colorScheme === 'success' ? (
-            <>Success Icon</>
+            <Text>Success Icon</Text>
           ) : (
             <Box />
           )

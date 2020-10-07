@@ -13,7 +13,7 @@ import {
 } from 'styled-system';
 import { customBorder, customBorderProps } from '../../../utils/customProps';
 import { Box } from '../../primitives';
-import theme from '../../../theme';
+import { theme } from '../../../theme';
 
 export type IAvatarProps = LayoutProps &
   SpaceProps &

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../../theme';
 import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
 import { color, space } from 'styled-system';
@@ -16,6 +17,9 @@ const StyledActivityIndicator = styled(ActivityIndicator)<ISpinnerProps>(
   space
 );
 const Spinner = ({ size, show, hideWhenStopped, ...props }: ISpinnerProps) => {
+  const { theme } = useContext(ThemeContext);
+
+  console.log('Current theme: ', theme);
   return (
     <StyledActivityIndicator
       size={size ? size : 'small'}
