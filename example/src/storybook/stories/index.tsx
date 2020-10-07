@@ -48,7 +48,6 @@ const customTheme = {
   ...theme,
   colors: {
     ...theme.colors,
-    success: ['#000', '#111', '#222'],
     primary: '#7c83db',
   },
 };
