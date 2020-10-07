@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
 import { storiesOf } from '@storybook/react-native';
 import { color, number, select, text, withKnobs } from '@storybook/addon-knobs';
 import {
@@ -41,6 +40,7 @@ import {
   StatNumber,
   Tag,
   TextArea,
+  ThemeProvider,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -180,7 +180,7 @@ storiesOf('Primitives', module)
       </Columns>
     </Stack>
   ))
-  .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange" />)
+  .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange.1" />)
   .add('Columns', () => (
     <Columns
       space={number('space', 3)}
@@ -240,8 +240,8 @@ storiesOf('Composites', module)
   ))
   .add('Progress', () => (
     <Box>
-      <Progress bg="pink" size="md" mb={2} colorScheme="green" value={45} />
-      <Progress rounded="50" size="lg" colorScheme="red" mb={2} value={65} />
+      <Progress bg="pink" size="md" mb={2} colorScheme="green.1" value={45} />
+      <Progress rounded="50" size="lg" colorScheme="red.1" mb={2} value={65} />
       <Progress size="xl" colorScheme="warning" value={85} />
     </Box>
   ))
