@@ -51,8 +51,8 @@ export type IAlertProps = TextProps &
 
 // Color Varients
 let successStyle = {
-  backgroundColor: theme.colors.success[0],
-  color: theme.colors.success[1],
+  backgroundColor: 'success.0',
+  color: 'success.1',
 };
 let dangerStyle = {
   backgroundColor: theme.colors.danger[0],
