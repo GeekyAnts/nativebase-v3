@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Image, ImageProps, Text } from 'react-native';
 import styled from 'styled-components';
 import {
@@ -13,7 +13,7 @@ import {
 } from 'styled-system';
 import { customBorder, customBorderProps } from '../../../utils/customProps';
 import { Box } from '../../primitives';
-import { theme } from '../../../theme';
+import { ThemeContext } from '../../../theme';
 
 export type IAvatarProps = LayoutProps &
   SpaceProps &
@@ -44,6 +44,7 @@ export const AvatarBadge = ({
   badgeColor,
   ...props
 }: IAvatarProps & { badgeColor?: string | undefined }) => {
+  const { theme } = useContext(ThemeContext);
   let computedStyle = style;
   computedStyle = StyleSheet.flatten([
     style,
