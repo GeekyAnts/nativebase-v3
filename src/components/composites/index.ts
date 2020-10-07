@@ -9,8 +9,10 @@ import AlertHeading from './AlertHeading';
 import AspectRatioBox from './AspectRatioBox';
 import Avatar, { AvatarBadge } from './Avatar';
 import Code from './Code';
+import Center from './Center';
 export {
   AppBar,
+  Center,
   Badge,
   Button,
   Code,

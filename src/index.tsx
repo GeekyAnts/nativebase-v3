@@ -16,6 +16,7 @@ import {
   Avatar,
   AvatarBadge,
   Code,
+  Center,
 } from './components/composites';
 
 import {
@@ -42,7 +43,13 @@ import {
   IHeadingProps,
 } from './components/primitives';
 
-import Theme from './theme';
+import {
+  darkTheme,
+  theme,
+  ThemeProvider,
+  ThemeConsumer,
+  ThemeContext,
+} from './theme';
 
 export {
   AppBar,
@@ -63,6 +70,7 @@ export {
   TextProps,
   Columns,
   Column,
+  Center,
   Box,
   IBoxProps,
   Stack,
@@ -77,5 +85,9 @@ export {
   ISpinnerProps,
   NBImage,
   NBImageProps,
-  Theme,
+  darkTheme,
+  theme,
+  ThemeProvider,
+  ThemeConsumer,
+  ThemeContext,
 };

@@ -28,7 +28,7 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-import theme from '../../../theme';
+import { theme } from '../../../theme';
 export type IHeadingProps = ColorProps &
   SpaceProps &
   LayoutProps &
