@@ -180,7 +180,9 @@ storiesOf('Primitives', module)
       </Columns>
     </Stack>
   ))
-  .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange" />)
+  .add('Box', () => (
+    <Box height={70} shadow={5} width={[1, 1 / 2, 1 / 4]} bg="orange" />
+  ))
   .add('Columns', () => (
     <Columns
       space={number('space', 3)}
@@ -269,7 +271,11 @@ storiesOf('Composites', module)
       <AvatarBadge boxSize={13} badgeColor="seagreen" />
     </Avatar>
   ))
-  .add('Button', () => <Button colorScheme="danger">Press Me</Button>)
+  .add('Button', () => (
+    <Button shadow={6} colorScheme="danger">
+      Press Me
+    </Button>
+  ))
 
   .add('Badge', () => (
     <Badge variant="success" variantType="solid">

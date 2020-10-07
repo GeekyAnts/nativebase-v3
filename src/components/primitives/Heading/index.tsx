@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TextStyle } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { ThemeProvider } from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -84,11 +84,13 @@ const Heading = ({ style, isTruncated, ...props }: IHeadingProps) => {
     props.fontSize ? { fontSize: props.fontSize } : {},
   ]);
   return (
-    <StyledHeading
-      numberOfLines={isTruncated ? 1 : 999999}
-      {...props}
-      style={computedStyle}
-    />
+    <ThemeProvider theme={theme}>
+      <StyledHeading
+        numberOfLines={isTruncated ? 1 : 999999}
+        {...props}
+        style={computedStyle}
+      />
+    </ThemeProvider>
   );
 };
 

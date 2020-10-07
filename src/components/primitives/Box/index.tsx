@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, ViewProps, ViewStyle } from 'react-native';
+import { View, ViewProps, ViewStyle, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
+import { shadows } from '../../../styles';
 import {
   BorderProps,
   ColorProps,
@@ -42,6 +43,7 @@ export type IBoxProps = ViewProps &
   BorderProps & {
     style?: ViewStyle;
     children?: JSX.Element | JSX.Element[];
+    shadow?: number | undefined;
   };
 
 const StyledBox = styled(View)<IBoxProps>(
@@ -57,8 +59,14 @@ const StyledBox = styled(View)<IBoxProps>(
   customExtra,
   customLayout
 );
-const Box = (props: IBoxProps) => {
-  return <StyledBox {...props} style={props.style} />;
+const Box = ({ shadow, ...props }: IBoxProps) => {
+  let computedStyle: any = props.style;
+  let shadowInd: number = shadow ? (shadow > 9 ? 9 : shadow) : 2;
+  computedStyle = StyleSheet.flatten([
+    props.style,
+    shadowInd ? shadows[shadowInd] : {},
+  ]);
+  return <StyledBox {...props} style={computedStyle} />;
 };
 
 export default Box;
