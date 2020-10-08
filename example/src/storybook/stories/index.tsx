@@ -148,13 +148,29 @@ storiesOf('Primitives', module)
   .add('Checkbox', () => (
     <>
       <Text>Label: </Text>
-      <Checkbox colorVarient="dark" checked={true} />
+      <Checkbox
+        type={select('type', ['circle', 'rounded', 'square'], 'rounded')}
+        colorVarient={select(
+          'colorVarient',
+          ['default', 'light', 'dark', 'muted', 'warning', 'danger', 'success'],
+          'default'
+        )}
+        checked={true}
+      />
     </>
   ))
   .add('Radio', () => (
     <>
       <Text>Label: </Text>
-      <Radio colorVarient="default" checked={true} />
+      <Radio
+        type={select('type', ['circle', 'rounded', 'square'], 'circle')}
+        colorVarient={select(
+          'colorVarient',
+          ['default', 'light', 'dark', 'muted', 'warning', 'danger', 'success'],
+          'default'
+        )}
+        checked={false}
+      />
     </>
   ))
   .add('Columns', () => (
