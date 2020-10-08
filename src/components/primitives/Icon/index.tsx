@@ -1,114 +1,32 @@
 import React, { useContext } from 'react';
-import { StyleSheet, TextStyle } from 'react-native';
-import {
-  // ColorProps,
-  SpaceProps,
-  TypographyProps,
-  color,
-  space,
-  typography,
-} from 'styled-system';
-import styled, { ThemeContext } from 'styled-components';
-import {
-  AntDesign,
-  Entypo,
-  EvilIcons,
-  Feather,
-  FontAwesome,
-  FontAwesome5,
-  Foundation,
-  Ionicons,
-  MaterialCommunityIcons,
-  MaterialIcons,
-  Octicons,
-  SimpleLineIcons,
-  Zocial,
-} from '@expo/vector-icons';
+import { View, ViewProps, StyleSheet, ViewStyle } from 'react-native';
+import styled from 'styled-components/native';
+import { ColorProps, SpaceProps, color, space } from 'styled-system';
+import { ThemeContext } from '../../../theme';
 
-export type IconType =
-  | 'AntDesign'
-  | 'Entypo'
-  | 'EvilIcons'
-  | 'Feather'
-  | 'FontAwesome'
-  | 'FontAwesome5'
-  | 'Foundation'
-  | 'Ionicons'
-  | 'MaterialCommunityIcons'
-  | 'MaterialIcons'
-  | 'Octicons'
-  | 'SimpleLineIcons'
-  | 'Zocial';
-
-export type IconProps = TypographyProps &
-  // ColorProps &
+export type IBoxProps = ViewProps &
+  ColorProps &
   SpaceProps & {
+    style?: ViewStyle;
+    size?: number;
     name: string;
-    type?: IconType;
-    style?: TextStyle | {};
+    type: string;
   };
 
-const Icon = ({ name, type, style, ...props }: IconProps) => {
+const StyledBox = styled(View)<IBoxProps>(color, space);
+const Icon = ({ style, ...props }: IBoxProps) => {
+  console.log(props.color, 'fdsfdsf');
   const theme: Theme = useContext(ThemeContext);
-  const styles = StyleSheet.create({
-    iconDefaultStyle: {
-      fontSize: 30,
-      color: theme.colors.black,
-    },
-  });
-
-  const flattenedIconStyle: TextStyle = StyleSheet.flatten([
-    styles.iconDefaultStyle,
-    style,
+  let computedStyle: any = style;
+  computedStyle = StyleSheet.flatten([
+    props.size
+      ? { width: props.size, height: props.size }
+      : { width: 16, height: 16 },
+    props.color
+      ? { backgroundColor: 'white' }
+      : { backgroundColor: theme.colors.gray[5] },
   ]);
-  switch (type) {
-    case 'AntDesign':
-      return <AntDesign name={name} style={flattenedIconStyle} {...props} />;
-    case 'Entypo':
-      return <Entypo name={name} style={flattenedIconStyle} {...props} />;
-    case 'EvilIcons':
-      return <EvilIcons name={name} style={flattenedIconStyle} {...props} />;
-    case 'Feather':
-      return <Feather name={name} style={flattenedIconStyle} {...props} />;
-    case 'FontAwesome':
-      return <FontAwesome name={name} style={flattenedIconStyle} {...props} />;
-    case 'FontAwesome5':
-      return <FontAwesome5 name={name} style={flattenedIconStyle} {...props} />;
-    case 'Foundation':
-      return <Foundation name={name} style={flattenedIconStyle} {...props} />;
-    case 'Ionicons':
-      return <Ionicons name={name} style={flattenedIconStyle} {...props} />;
-    case 'MaterialCommunityIcons':
-      return (
-        <MaterialCommunityIcons
-          name={name}
-          style={flattenedIconStyle}
-          {...props}
-        />
-      );
-    case 'MaterialIcons':
-      return (
-        <MaterialIcons name={name} style={flattenedIconStyle} {...props} />
-      );
-    case 'Octicons':
-      return <Octicons name={name} style={flattenedIconStyle} {...props} />;
-    case 'SimpleLineIcons':
-      return (
-        <SimpleLineIcons name={name} style={flattenedIconStyle} {...props} />
-      );
-    case 'Zocial':
-      return <Zocial name={name} style={flattenedIconStyle} {...props} />;
-    default:
-      return (
-        <MaterialIcons name={name} style={flattenedIconStyle} {...props} />
-      );
-  }
+  return <StyledBox {...props} style={computedStyle} />;
 };
 
-const styledIcon = styled(Icon)<IconProps>`
-  ${color}
-  ${space}
-${typography}
-`;
-
-export default styledIcon;
+export default Icon;

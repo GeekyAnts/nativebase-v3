@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
 import { storiesOf } from '@storybook/react-native';
 import { color, number, select, text, withKnobs } from '@storybook/addon-knobs';
 import {
@@ -27,6 +26,7 @@ import {
   NBImage,
   Code,
   Center,
+  ThemeProvider,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -192,7 +192,9 @@ storiesOf('Primitives', module)
       />
     </Stack>
   ))
-  .add('Icon', () => <Icon name={text('name', 'menu')} type="MaterialIcons" />);
+  .add('Icon', () => (
+    <Icon name={text('name', 'menu')} size={30} type="MaterialIcons" />
+  ));
 
 storiesOf('Composites', module)
   .addDecorator((getStory: GetStory) => (
