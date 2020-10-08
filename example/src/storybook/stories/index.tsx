@@ -24,9 +24,10 @@ import {
   theme,
   Spinner,
   NBImage,
-  Code,
   Center,
   ThemeProvider,
+  Inline,
+  Heading,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -197,6 +198,7 @@ storiesOf('Primitives', module)
   ));
 
 storiesOf('Composites', module)
+  .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
       <View flexGrow={1} justifyContent="center" p={3} bg="white">
@@ -208,16 +210,32 @@ storiesOf('Composites', module)
     <AspectRatioBox ratio={4 / 3} height="300px" bg="black" />
   ))
   .add('Avatar', () => (
-    <Avatar
-      avatarSize={100}
-      source={{
-        uri: 'https://nativebase.io/assets/img/front-page-icon.png',
-      }}
-      //Uncomment next line to get initials when the source is wrong or broken
-      //name="Native Base"
-    >
-      <AvatarBadge boxSize={13} badgeColor="seagreen" />
-    </Avatar>
+    <View display="flex" justifyContent="space-between" alignItems="center">
+      <Inline mb={2} alignItems="baseline">
+        <Heading mt={3}>Avatar </Heading>
+        <Text>(with Knob) playaround</Text>
+      </Inline>
+      <Avatar
+        size={select('size', ['xs', 'sm', 'md', 'lg', 'xl', '2xl'], 'lg')}
+        src={text(
+          'src',
+          'https://nativebase.io/assets/img/front-page-icon.png'
+        )}
+        name={text('name', 'Native Base')}
+      >
+        <AvatarBadge
+          badgeSize={number('badgeSize', 10, { min: 10, max: 40 })}
+          badgeColor={color('badgeColor', 'green')}
+        />
+      </Avatar>
+      <Heading mt={3}>Different Sizes</Heading>
+      <Avatar m={2} size="xs" name="Xtra Small" />
+      <Avatar m={2} size="sm" name="Small" />
+      <Avatar m={2} size="md" name="Medium" />
+      <Avatar m={2} size="lg" name="Large" />
+      <Avatar m={2} size="xl" name="Xtra Large" />
+      <Avatar m={2} size="2xl" name="2 Xrta" />
+    </View>
   ))
   .add('Button', () => <Button colorScheme="danger">Press Me</Button>)
 
@@ -253,9 +271,7 @@ storiesOf('Composites', module)
     />
   ))
   .add('Code', () => (
-    <Box>
-      <Code>import Code from "nativebase";</Code>
-    </Box>
+    <Box>{/* <Code>import Code from "nativebase";</Code> */}</Box>
   ))
   .add('Center', () => (
     <Center>

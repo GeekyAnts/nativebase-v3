@@ -29,7 +29,7 @@ import {
   customShadow,
 } from '../../../utils/customProps';
 import { Text, TextProps } from '../../primitives';
-import theme from '../../../theme';
+import { theme } from '../../../theme';
 export type ICodeProps = TextProps &
   ColorProps &
   SpaceProps &

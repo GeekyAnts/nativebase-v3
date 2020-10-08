@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, ImageProps, Text } from 'react-native';
+import { StyleSheet, Image, Text } from 'react-native';
 import styled from 'styled-components';
 import {
   BorderProps,
@@ -10,20 +10,21 @@ import {
   flex,
   layout,
   space,
+  variant,
 } from 'styled-system';
 import { customBorder, customBorderProps } from '../../../utils/customProps';
 import { Box } from '../../primitives';
-import theme from '../../../theme';
+import { theme } from '../../../theme';
 
 export type IAvatarProps = LayoutProps &
   SpaceProps &
   customBorderProps &
   BorderProps &
   FlexboxProps & {
-    avatarSize?: number | undefined;
-    boxSize?: number | undefined;
     name?: string | undefined;
     style?: any;
+    size?: string | undefined;
+    src?: string | undefined;
   };
 const getInitials = (str: string) => {
   var nameArr = str.split(' ');
@@ -39,11 +40,14 @@ const getRandomColor = () => {
   return color;
 };
 export const AvatarBadge = ({
-  boxSize,
+  badgeSize,
   style,
   badgeColor,
   ...props
-}: IAvatarProps & { badgeColor?: string | undefined }) => {
+}: IAvatarProps & {
+  badgeColor?: string | undefined;
+  badgeSize?: number | undefined;
+}) => {
   let computedStyle = style;
   computedStyle = StyleSheet.flatten([
     style,
@@ -62,90 +66,101 @@ export const AvatarBadge = ({
     <Box
       borderRadius={50}
       style={computedStyle}
-      width={boxSize ? boxSize : 10}
-      height={boxSize ? boxSize : 10}
+      width={badgeSize ? badgeSize : 10}
+      height={badgeSize ? badgeSize : 10}
       {...props}
     ></Box>
   );
 };
-const StyledAvatar = styled(Image)<IAvatarProps>(
-  layout,
-  space,
-  border,
-  flex,
-  customBorder
-);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Avatar = ({
-  avatarSize,
-  style,
+  size,
   name,
+  style,
+  src,
   children,
   ...props
-}: IAvatarProps &
-  ImageProps & { children?: JSX.Element[] | JSX.Element | any }) => {
+}: {
+  children?: JSX.Element[] | JSX.Element | any | undefined;
+} & IAvatarProps) => {
+  const { fontSize, height, width } = style[0];
   let [alternate, setAlternate] = useState(false);
   let onImageLoadError = (event: any) => {
     console.warn(event.nativeEvent.error);
-    setAlternate(true);
+    size && setAlternate(true);
   };
-  let computedStyle = style;
-  if (avatarSize) {
-    computedStyle = StyleSheet.flatten([
-      style,
-      {
-        width: avatarSize,
-        height: avatarSize,
-      },
-    ]);
-  } else {
-    computedStyle = StyleSheet.flatten([
-      style,
-      {
-        width: 100,
-        height: 100,
-      },
-    ]);
-  }
-  var textStyle: any = {
+
+  let computedStyle = StyleSheet.create({
+    width: width,
+    height: height,
+  });
+  let textStyle: any = {
     color: 'white',
-    fontSize: 20,
+    fontSize: fontSize,
     fontWeight: '600',
   };
-  if (alternate) {
-    return (
-      <Box
-        bg={getRandomColor()}
-        borderRadius={50}
-        width={avatarSize ? avatarSize : 100}
-        height={avatarSize ? avatarSize : 100}
-        style={{ justifyContent: 'center', alignItems: 'center' }}
-      >
-        <Text style={textStyle}>{name ? getInitials(name) : '---'}</Text>
-        {children}
-      </Box>
-    );
-  }
   return (
     <Box
-      width={avatarSize ? avatarSize : 100}
-      height={avatarSize ? avatarSize : 100}
+      bg={getRandomColor()}
+      borderRadius={250}
+      width={width}
+      height={height}
       style={{
         position: 'relative',
         justifyContent: 'center',
         alignItems: 'center',
       }}
+      {...props}
     >
-      <StyledAvatar
-        borderRadius={50}
-        style={computedStyle}
-        {...props}
-        onError={onImageLoadError}
-      />
+      {!src || alternate ? (
+        <Text style={textStyle}>{name ? getInitials(name) : '---'}</Text>
+      ) : (
+        <Image
+          borderRadius={250}
+          style={computedStyle}
+          source={{ uri: src }}
+          onError={onImageLoadError}
+        />
+      )}
       {children}
     </Box>
   );
 };
 
-export default Avatar;
+const StyledAvatar = styled(Avatar)<IAvatarProps>(
+  layout,
+  space,
+  border,
+  flex,
+  customBorder,
+  variant({
+    prop: 'size',
+    variants: {
+      '2xl': {
+        fontSize: theme.fontSizes[5],
+        width: 128,
+        height: 128,
+      },
+      'xl': { fontSize: theme.fontSizes[4], width: 96, height: 96 },
+      'lg': { fontSize: theme.fontSizes[3], width: 64, height: 64 },
+      'md': { fontSize: theme.fontSizes[2], width: 48, height: 48 },
+      'sm': { fontSize: theme.fontSizes[1], width: 32, height: 32 },
+      'xs': { fontSize: theme.fontSizes[0], width: 24, height: 24 },
+    },
+  })
+);
+
+StyledAvatar.defaultProps = {
+  size: 'lg',
+};
+
+const NBAvatar = ({
+  children,
+  ...props
+}: IAvatarProps & {
+  children?: JSX.Element[] | JSX.Element | any | undefined;
+}) => {
+  return <StyledAvatar {...props}>{children}</StyledAvatar>;
+};
+
+export default NBAvatar;

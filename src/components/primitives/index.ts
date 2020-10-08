@@ -2,7 +2,8 @@ import Box, { IBoxProps } from './Box';
 import Text, { TextProps } from './Text';
 import Input from './Input';
 import View from './View';
-import styledIcon, { IconProps } from './Icon';
+// HACK: added `IBoxProps as` IconProps doesn't exist in ./Icon
+import styledIcon, { IBoxProps as IconProps } from './Icon';
 import Columns from './Columns';
 import Column from './Column';
 import Stack from './Stack';
