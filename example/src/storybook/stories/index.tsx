@@ -25,6 +25,7 @@ import {
   theme,
   Spinner,
   NBImage,
+  Code,
   Center,
 } from 'native-base';
 
@@ -248,6 +249,11 @@ storiesOf('Composites', module)
       ]}
       bg={color('bg', 'blue.6')}
     />
+  ))
+  .add('Code', () => (
+    <Box>
+      <Code>import Code from "nativebase";</Code>
+    </Box>
   ))
   .add('Center', () => (
     <Center>
