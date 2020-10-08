@@ -1,6 +1,7 @@
 import Box, { IBoxProps } from './Box';
 import Text, { TextProps } from './Text';
 import Input from './Input';
+import InputBox, { IInputBoxProps } from './InputBox';
 import View from './View';
 import styledIcon, { IconProps } from './Icon';
 import Columns from './Columns';
@@ -33,6 +34,8 @@ export {
   styledIcon as Icon,
   IconProps,
   Input,
+  InputBox,
+  IInputBoxProps,
   NBImage,
   NBImageProps,
   Spinner,

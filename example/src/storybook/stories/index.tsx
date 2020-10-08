@@ -42,6 +42,7 @@ import {
   TextArea,
   ThemeProvider,
   Code,
+  InputBox,
   Center,
 } from 'native-base';
 
@@ -92,6 +93,17 @@ storiesOf('Primitives', module)
       <Box boxSize="50" bg="black" />
       <Box w="100" h="50" bg="orange.4" />
     </Wrap>
+  ))
+  .add('InputBox', () => (
+    <InputBox
+      inputSize="lg"
+      w="80%"
+      colorScheme="success"
+      p={3}
+      variant="underlined"
+      placeholder="Input text"
+      successMessage="Submitted Successfully!"
+    />
   ))
   .add('Image', () => (
     <NBImage
