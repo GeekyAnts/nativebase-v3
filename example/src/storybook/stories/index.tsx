@@ -60,7 +60,7 @@ storiesOf('Primitives', module)
     <ThemeProvider theme={customTheme}>
       <View
         flexGrow={1}
-        bg="gray.4"
+        bg="white"
         alignItems="center"
         p={3}
         justifyContent="center"
@@ -352,7 +352,7 @@ storiesOf('Composites', module)
   ))
   .add('Center', () => (
     <Center>
-      <Box bg="red" boxSize="100" />
+      <Box bg="red.4" boxSize="100" />
     </Center>
   ))
   .add('IconButton', () => (
