@@ -143,7 +143,7 @@ const CloseButton = ({
       rounded={rounded ? rounded : '3'}
       onPress={onClick ? onClick : defaultOnPress}
       activeOpacity={highlight ? highlight : 0.5}
-      underlayColor={highlightColor ? highlightColor : '#e2e3e5'}
+      underlayColor={highlightColor ? highlightColor : '#f0f0f0'}
       style={{ height: 'auto', width: 'auto' }}
       {...props}
     >

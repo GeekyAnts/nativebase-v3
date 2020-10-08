@@ -6,6 +6,9 @@ import Button, { IButtonProps } from './Button';
 import IconButton from './IconButton';
 import Alert from './Alert';
 import AlertHeading from './AlertHeading';
+import AlertDescription from './AlertDescription';
+import AlertIcon from './AlertIcon';
+import AlertCloseButton from './AlertCloseButton';
 import AspectRatioBox from './AspectRatioBox';
 import Avatar, { AvatarBadge } from './Avatar';
 import BreadCrumb, { BreadCrumbItem, BreadCrumbLink } from './BreadCrumb';
@@ -30,6 +33,9 @@ export {
   IButtonProps,
   Alert,
   AlertHeading,
+  AlertDescription,
+  AlertIcon,
+  AlertCloseButton,
   AspectRatioBox,
   AvatarBadge,
   Avatar,
