@@ -21,6 +21,7 @@ import {
   VStack,
   View,
   ZStack,
+  Slider,
   theme,
   Spinner,
   NBImage,
@@ -191,6 +192,13 @@ storiesOf('Primitives', module)
         bg="yellow.4"
       />
     </Stack>
+  ))
+  .add('Slider', () => (
+    <Slider>
+      {/* <SliderTrack />
+      <SliderFilledTrack />
+      <SliderThumb /> */}
+    </Slider>
   ))
   .add('Icon', () => (
     <Icon name={text('name', 'menu')} size={30} type="MaterialIcons" />

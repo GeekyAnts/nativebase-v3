@@ -6,6 +6,7 @@ import styledIcon, { IconProps } from './Icon';
 import Columns from './Columns';
 import Column from './Column';
 import Stack from './Stack';
+import Slider from './Slider';
 import VStack from './VStack';
 import HStack from './HStack';
 import ZStack from './ZStack';
@@ -22,6 +23,7 @@ export {
   Box,
   IBoxProps,
   Stack,
+  Slider,
   VStack,
   HStack,
   ZStack,
