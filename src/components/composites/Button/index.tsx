@@ -275,7 +275,7 @@ const Button = ({
   let shadowInd: number = shadow ? (shadow > 9 ? 9 : shadow) : 2;
   let computedButtonStyle: any = style;
   computedButtonStyle = StyleSheet.flatten([
-    shadows[shadowInd],
+    shadow ? shadows[shadowInd] : {},
     {
       borderRadius: rounded ? rounded : 3,
     },

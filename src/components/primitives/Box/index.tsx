@@ -64,7 +64,7 @@ const Box = ({ shadow, ...props }: IBoxProps) => {
   let shadowInd: number = shadow ? (shadow > 9 ? 9 : shadow) : 2;
   computedStyle = StyleSheet.flatten([
     props.style,
-    shadowInd ? shadows[shadowInd] : {},
+    shadow ? shadows[shadowInd] : {},
   ]);
   return <StyledBox {...props} style={computedStyle} />;
 };

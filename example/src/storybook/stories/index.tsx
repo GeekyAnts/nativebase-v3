@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
-import { color, number, select, text, withKnobs } from '@storybook/addon-knobs';
+import { number, select, text, withKnobs } from '@storybook/addon-knobs';
 import {
   AppBar,
   Alert,
@@ -86,9 +86,9 @@ storiesOf('Primitives', module)
       <Switch />
       <Switch isEnabled switchTrackColor="#f8d7d9" />
       <Switch onColor="seagreen" offColor="blue" switchTrackColor="#f8d7d9" />
-      <Box boxSize="100" bg="orange" />
+      <Box boxSize="100" bg="orange.4" />
       <Box boxSize="50" bg="black" />
-      <Box w="100" h="50" bg="orange" />
+      <Box w="100" h="50" bg="orange.4" />
     </Wrap>
   ))
   .add('Image', () => (
@@ -196,25 +196,25 @@ storiesOf('Primitives', module)
       <Column
         borderRadius={number('borderRadius', 4)}
         flexGrow={number('flexGrow', 1)}
-        bg="green"
+        bg="green.1"
       />
       <Column
         borderRadius={number('borderRadius', 4)}
         width={1 / 2.5}
-        bg="pink"
+        bg="pink.1"
       />
       <Column
         borderRadius={number('borderRadius', 4)}
         flexGrow={number('flexGrow', 1.5)}
-        bg="indigo"
+        bg="indigo.4"
       />
     </Columns>
   ))
   .add('Stack', () => (
     <Stack space={number('space', 3)} mb={number('mb', 3)}>
-      <Box borderRadius={4} height={70} width={70} bg="blue" />
-      <Box borderRadius={4} height={70} width={70} bg="purple" />
-      <Box borderRadius={4} height={70} width={70} bg="yellow" />
+      <Box borderRadius={4} height={70} width={70} bg="blue.4" />
+      <Box borderRadius={4} height={70} width={70} bg="purple.4" />
+      <Box borderRadius={4} height={70} width={70} bg="yellow.4" />
     </Stack>
   ))
   .add('Icon', () => <Icon name={text('name', 'menu')} type="MaterialIcons" />);
@@ -246,8 +246,8 @@ storiesOf('Composites', module)
   ))
   .add('Progress', () => (
     <Box>
-      <Progress bg="pink" size="md" mb={2} colorScheme="green.1" value={45} />
-      <Progress rounded="50" size="lg" colorScheme="red.1" mb={2} value={65} />
+      <Progress bg="pink.1" size="md" mb={2} colorScheme="green" value={45} />
+      <Progress rounded="50" size="lg" colorScheme="red" mb={2} value={65} />
       <Progress size="xl" colorScheme="warning" value={85} />
     </Box>
   ))
@@ -286,7 +286,7 @@ storiesOf('Composites', module)
       NativeBase Badge
     </Badge>
   ))
-  .add('CloseButton', () => <CloseButton color="green" highlight={0.9} />)
+  .add('CloseButton', () => <CloseButton highlight={0.9} />)
   .add('TextArea', () => (
     <TextArea totalLines={5} p={2} mt={3} placeholder="placeholder"></TextArea>
   ))
@@ -328,13 +328,13 @@ storiesOf('Composites', module)
         <IconButton key="favourite" name="favorite" type="MaterialIcons" />,
         <IconButton key="loop" name="loop" type="MaterialIcons" />,
       ]}
-      bg={color('bg', 'blue')}
+      bg="blue.4"
     />
   ))
   .add('IconButton', () => (
     <IconButton
       type="MaterialIcons"
       name={text('name', 'menu')}
-      bg={text('bg', 'blue')}
+      bg={text('bg', 'blue.2')}
     />
   ));

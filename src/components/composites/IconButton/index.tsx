@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import type { TextStyle } from 'react-native';
-import { ThemeContext } from '../../../index';
 
 import { Icon, IconProps } from '../../primitives';
 
@@ -13,13 +12,11 @@ type iconProps = IconProps & {
 type IconButtonProps = IButtonProps & iconProps;
 
 const IconButton = ({ name, type, iconStyle, ...props }: IconButtonProps) => {
-  const { theme } = useContext(ThemeContext);
-
   const iconButtonDefaultprops: IButtonProps = {
     borderRadius: 40,
     padding: 4,
     overflow: 'hidden',
-    highlightColor: theme.colors.white,
+    highlightColor: 'white',
   };
 
   return (

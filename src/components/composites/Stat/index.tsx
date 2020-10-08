@@ -80,7 +80,7 @@ export const StatNumber = ({
 }: IStatProps & {
   children?: string | undefined;
 }) => {
-  const { theme } = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   let computedStyle: any = style;
   computedStyle = StyleSheet.flatten([
     style,

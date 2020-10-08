@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
 import {
   // ColorProps,
@@ -24,7 +24,6 @@ import {
   SimpleLineIcons,
   Zocial,
 } from '@expo/vector-icons';
-import { ThemeContext } from '../../../theme';
 
 export type IconType =
   | 'AntDesign'
@@ -50,11 +49,10 @@ export type IconProps = TypographyProps &
   };
 
 const Icon = ({ name, type, style, ...props }: IconProps) => {
-  const { theme } = useContext(ThemeContext);
   const styles = StyleSheet.create({
     iconDefaultStyle: {
       fontSize: 30,
-      color: theme.colors.black,
+      color: 'black',
     },
   });
 
