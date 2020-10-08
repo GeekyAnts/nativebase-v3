@@ -30,6 +30,8 @@ import {
   Tag,
   TagCloseButton,
   TextArea,
+  Code,
+  Center,
 } from './components/composites';
 
 import {
@@ -85,9 +87,11 @@ export {
   Variants,
   View,
   Text,
+  Code,
   TextProps,
   Columns,
   Column,
+  Center,
   Box,
   IBoxProps,
   Stack,

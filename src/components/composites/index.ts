@@ -18,10 +18,14 @@ import Tag, { TagCloseButton } from './Tag';
 import TextArea from './TextArea';
 import Kbd from './KBD';
 
+import Code from './Code';
+import Center from './Center';
 export {
   AppBar,
+  Center,
   Badge,
   Button,
+  Code,
   IconButton,
   IButtonProps,
   Alert,

@@ -41,6 +41,8 @@ import {
   Tag,
   TextArea,
   ThemeProvider,
+  Code,
+  Center,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -330,6 +332,16 @@ storiesOf('Composites', module)
       ]}
       bg="blue.4"
     />
+  ))
+  .add('Code', () => (
+    <Box>
+      <Code>import Code from "nativebase";</Code>
+    </Box>
+  ))
+  .add('Center', () => (
+    <Center>
+      <Box bg="red" boxSize="100" />
+    </Center>
   ))
   .add('IconButton', () => (
     <IconButton
