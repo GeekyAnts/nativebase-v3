@@ -228,6 +228,10 @@ storiesOf('Composites', module)
           badgeColor={color('badgeColor', 'green')}
         />
       </Avatar>
+      <Heading mt={3}>Simple Example</Heading>
+      <Avatar m={2} src="https://nativebase.io/assets/img/front-page-icon.png">
+        <AvatarBadge badgeColor="red" />
+      </Avatar>
       <Heading mt={3}>Different Sizes</Heading>
       <Avatar m={2} size="xs" name="Xtra Small" />
       <Avatar m={2} size="sm" name="Small" />
