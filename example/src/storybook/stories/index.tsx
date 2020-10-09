@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
-import { number, select, text, withKnobs } from '@storybook/addon-knobs';
+import { number, select, text, color, withKnobs } from '@storybook/addon-knobs';
 import {
   AppBar,
   Alert,
@@ -47,6 +47,8 @@ import {
   Code,
   InputBox,
   Center,
+  Inline,
+  Heading,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -234,6 +236,7 @@ storiesOf('Primitives', module)
   ));
 
 storiesOf('Composites', module)
+  .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
       <View flexGrow={1} justifyContent="center" p={3} bg="white">
@@ -289,7 +292,7 @@ storiesOf('Composites', module)
     </Stack>
   ))
   .add('AspectRatioBox', () => (
-    <AspectRatioBox ratio={4 / 3} height="300px" bg="black"></AspectRatioBox>
+    <AspectRatioBox ratio={4 / 3} height="300px" bg="black" />
   ))
   .add('KBD', () => (
     <Flex>
@@ -325,16 +328,36 @@ storiesOf('Composites', module)
     </Tag>
   ))
   .add('Avatar', () => (
-    <Avatar
-      avatarSize={100}
-      source={{
-        uri: 'https://nativebase.io/assets/img/front-page-icon.png',
-      }}
-      //Uncomment next line to get initials when the source is wrong or broken
-      //name="Native Base"
-    >
-      <AvatarBadge boxSize={13} badgeColor="seagreen" />
-    </Avatar>
+    <View display="flex" justifyContent="space-between" alignItems="center">
+      <Inline mb={2} alignItems="baseline">
+        <Heading mt={3}>Avatar </Heading>
+        <Text>(with Knob) playaround</Text>
+      </Inline>
+      <Avatar
+        size={select('size', ['xs', 'sm', 'md', 'lg', 'xl', '2xl'], 'lg')}
+        src={text(
+          'src',
+          'https://nativebase.io/assets/img/front-page-icon.png'
+        )}
+        name={text('name', 'Native Base')}
+      >
+        <AvatarBadge
+          badgeSize={number('badgeSize', 10, { min: 10, max: 40 })}
+          badgeColor={color('badgeColor', 'green')}
+        />
+      </Avatar>
+      <Heading mt={3}>Simple Example</Heading>
+      <Avatar m={2} src="https://nativebase.io/assets/img/front-page-icon.png">
+        <AvatarBadge badgeColor="red" />
+      </Avatar>
+      <Heading mt={3}>Different Sizes</Heading>
+      <Avatar m={2} size="xs" name="Xtra Small" />
+      <Avatar m={2} size="sm" name="Small" />
+      <Avatar m={2} size="md" name="Medium" />
+      <Avatar m={2} size="lg" name="Large" />
+      <Avatar m={2} size="xl" name="Xtra Large" />
+      <Avatar m={2} size="2xl" name="2 Xrta" />
+    </View>
   ))
   .add('Button', () => (
     <Stack space={4}>
@@ -449,7 +472,7 @@ storiesOf('Composites', module)
   ))
   .add('CloseButton', () => <CloseButton highlight={0.9} />)
   .add('TextArea', () => (
-    <TextArea totalLines={5} p={2} mt={3} placeholder="placeholder"></TextArea>
+    <TextArea totalLines={5} p={2} mt={3} placeholder="placeholder" />
   ))
   .add('BreadCrumb', () => (
     <BreadCrumb separator="|">
