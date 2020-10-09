@@ -51,6 +51,7 @@ import {
   Heading,
   Checkbox,
   Radio,
+  Input,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -76,7 +77,6 @@ storiesOf('Primitives', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Spinner', () => <Spinner size="large" color="#ea6989" />)
   .add('Switch', () => (
     <Switch
       size={2}
@@ -105,6 +105,12 @@ storiesOf('Primitives', module)
       variant="underlined"
       placeholder="Input text"
       successMessage="Submitted Successfully!"
+    />
+  ))
+  .add('Spinner', () => (
+    <Spinner
+      size={select('size', ['large', 'small'], 'large')}
+      color={color('color', '#ff0000')}
     />
   ))
   .add('Image', () => (
@@ -263,6 +269,44 @@ storiesOf('Primitives', module)
   ))
   .add('Icon', () => (
     <Icon name={text('name', 'menu')} size={30} type="MaterialIcons" />
+  ))
+  .add('Heading', () => (
+    <>
+      <Heading size="2xl">2xl Heading</Heading>
+      <Heading size="xl">Extra Large Heading</Heading>
+      <Heading size="lg">Large Heading (Default)</Heading>
+      <Heading size="md">Medium Heading</Heading>
+      <Heading size="sm">Small Heading</Heading>
+      <Heading size="xsm">Extra Small Heading</Heading>
+    </>
+  ))
+  .add('Inline', () => (
+    <Inline display="flex" alignItems="center">
+      <Text>Button Label : </Text>
+      <Button>Button</Button>
+    </Inline>
+  ))
+  .add('Input', () => <Input placeholder="something" />)
+  .add('View', () => (
+    <View
+      // border="1px solid red"
+      borderRadius="8px"
+      p="4"
+      bg="lightgray"
+      justifyContent="space-evenly"
+      alignItems="center"
+    >
+      <NBImage
+        source={{
+          uri: 'https://nativebase.io/assets/img/front-page-icon.png',
+        }}
+        alt="Image not found"
+      />
+      <Text color="#FFF" my="2">
+        NativeBase
+      </Text>
+      <Text>Simple example.</Text>
+    </View>
   ));
 
 storiesOf('Composites', module)
@@ -555,6 +599,22 @@ storiesOf('Composites', module)
       <Box bg="red.4" boxSize="100" />
     </Center>
   ))
+  .add('AspectRatioBox', () => (
+    <AspectRatioBox ratio={4 / 3} height="300px" bg="black" />
+  ))
+  .add('Avatar', () => (
+    <Avatar src="https://nativebase.io/assets/img/front-page-icon.png">
+      <AvatarBadge badgeSize={13} badgeColor="seagreen" />
+    </Avatar>
+  ))
+  .add('Button', () => <Button colorScheme="danger">Press Me</Button>)
+
+  .add('Badge', () => (
+    <Badge variant="success" variantType="solid">
+      NativeBase Badge
+    </Badge>
+  ))
+
   .add('IconButton', () => (
     <IconButton
       type="MaterialIcons"
