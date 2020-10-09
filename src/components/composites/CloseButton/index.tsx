@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   View,
@@ -34,7 +34,7 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-import { theme } from '../../../theme';
+import { ThemeContext } from '../../../theme';
 type SpaceType = 'xs' | 'sm' | 'md' | 'lg';
 export type ICloseButtonProps = ViewProps &
   ColorProps &
@@ -99,6 +99,7 @@ const CloseButton = ({
   onClick,
   ...props
 }: ICloseButtonProps) => {
+  const theme = useContext(ThemeContext);
   let spaceValue = 0;
   if (size) {
     switch (size) {

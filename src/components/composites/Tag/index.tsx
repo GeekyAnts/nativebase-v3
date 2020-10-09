@@ -126,16 +126,15 @@ StyledTag.defaultProps = {
   variant: 'default',
   tagSize: '2xl',
 };
-export const TagCloseButton = ({ style, ...props }: IButtonProps) => {
-  let computedStyle: any = style;
-  computedStyle = StyleSheet.flatten([style, { fontWeight: '700' }]);
+export const TagCloseButton = (props: IButtonProps) => {
+  let computedStyle: any = props.style;
+  computedStyle = StyleSheet.flatten([props.style, { fontWeight: '700' }]);
   return (
     <CloseButton
       marginLeft="auto"
       mr={2}
       highlightColor="transparent"
       style={computedStyle}
-      {...props}
     />
   );
 };

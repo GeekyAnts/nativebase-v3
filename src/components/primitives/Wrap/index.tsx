@@ -83,7 +83,7 @@ const Wrap = ({
       flexDirection: direction ? direction : 'row',
       alignItems: align,
       justifyContent: justify,
-      gap: spacing ? spacing : '2px',
+      gap: spacing ? spacing : 2,
       flexWrap: 'wrap',
       flexBasis: basis,
       flexGrow: grow,

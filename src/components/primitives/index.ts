@@ -3,7 +3,7 @@ import Text, { TextProps } from './Text';
 import Input from './Input';
 import InputBox, { IInputBoxProps } from './InputBox';
 import View from './View';
-import styledIcon, { IconProps } from './Icon';
+import Icon, { IconProps } from './Icon';
 import Columns from './Columns';
 import Column from './Column';
 import Stack from './Stack';
@@ -31,7 +31,7 @@ export {
   HStack,
   ZStack,
   Inline,
-  styledIcon as Icon,
+  Icon,
   IconProps,
   Input,
   InputBox,

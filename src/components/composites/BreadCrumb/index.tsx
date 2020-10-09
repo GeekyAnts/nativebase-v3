@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View, ViewProps, ViewStyle, Text } from 'react-native';
 import styled from 'styled-components/native';
 import type * as CSS from 'csstype';
@@ -30,7 +30,7 @@ import {
 } from '../../../utils/customProps';
 import { Flex } from '../../primitives';
 import Link, { ILinkProps } from '../Link';
-import { theme } from '../../../index';
+import { ThemeContext } from '../../../index';
 
 export type IBreadCrumbProps = ViewProps &
   ColorProps &
@@ -95,6 +95,7 @@ const BreadCrumbSeparator = (
   separator: string | undefined,
   size: number
 ) => {
+  const theme = useContext(ThemeContext);
   if (children.length == 1) {
     return children;
   }

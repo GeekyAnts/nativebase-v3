@@ -11,12 +11,16 @@ type iconProps = IconProps & {
 
 type IconButtonProps = IButtonProps & iconProps;
 
-const IconButton = ({ name, type, iconStyle, ...props }: IconButtonProps) => {
+const IconButton = ({
+  name,
+  type,
+  iconStyle,
+  ...props
+}: IconButtonProps & any) => {
   const iconButtonDefaultprops: IButtonProps = {
     borderRadius: 40,
     padding: 4,
     overflow: 'hidden',
-    highlightColor: 'white',
   };
 
   return (

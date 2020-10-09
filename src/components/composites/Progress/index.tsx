@@ -183,7 +183,7 @@ const Progress = ({ value, size, ...props }: IProgressProps) => {
     >
       <Box
         shadow={0}
-        roundedLeft={props.rounded}
+        rounded={props.rounded}
         style={computedStyle}
         w={value + '%'}
         height={customSize === '' ? theme.space[spaceValue] : customSize}

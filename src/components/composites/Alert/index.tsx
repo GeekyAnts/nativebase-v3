@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, ViewProps, View } from 'react-native';
 import styled from 'styled-components/native';
 import {
@@ -28,8 +28,8 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-import { theme } from '../../../theme';
-import { Box, CloseButton } from '../../../index';
+import { ThemeContext } from '../../../theme';
+import { CloseButton, Icon } from '../../../index';
 
 export type IAlertProps = ViewProps &
   ColorProps &
@@ -80,7 +80,16 @@ let defaultStyle = {
   color: 'default.1',
 };
 const getAlertIcon = (status: string | undefined) => {
-  return <Box p={3} mr={5} bg={status ? 'black' : 'black'}></Box>;
+  return (
+    <Icon
+      style={
+        status ? { backgroundColor: 'black' } : { backgroundColor: 'black' }
+      }
+      size={30}
+      type="MaterialIcons"
+      name="menu"
+    ></Icon>
+  );
 };
 const childStyling = (
   props: any,
@@ -140,6 +149,7 @@ StyledAlert.defaultProps = {
   status: 'default',
 };
 const Alert = ({ style, ...props }: IAlertProps) => {
+  const theme = useContext(ThemeContext);
   let structureColor = theme.colors.default[2];
   let childStatusStyle: any;
   let variantStyle;
@@ -231,10 +241,12 @@ const Alert = ({ style, ...props }: IAlertProps) => {
     },
     variantType,
   ]);
+
   let textComponents = [];
   let closeButtonComponent;
   let iconComponent;
   let textSpacingElem = <Text> </Text>;
+
   for (var ind = 0; ind < props.children.length; ind++) {
     if (
       props.children[ind].type.name == 'AlertHeading' ||
@@ -252,6 +264,7 @@ const Alert = ({ style, ...props }: IAlertProps) => {
           ml="auto"
           color={props.variant == 'solid' ? 'white' : childStatusStyle}
           highlightColor="#f0f0f0"
+          highlight={1}
         />
       );
     }

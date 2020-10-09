@@ -42,7 +42,7 @@ export type IBoxProps = ViewProps &
   customBackgroundProps &
   BorderProps & {
     style?: ViewStyle;
-    children?: JSX.Element | JSX.Element[];
+    children?: JSX.Element | JSX.Element[] | string;
     shadow?: number | undefined;
   };
 

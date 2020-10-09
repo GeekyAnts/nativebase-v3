@@ -27,6 +27,7 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
+import { shadows } from '../../../styles';
 export type IKbdProps = TextProps &
   ColorProps &
   SpaceProps &
@@ -43,6 +44,7 @@ export type IKbdProps = TextProps &
     ratio?: number;
     children?: string | undefined;
     fontSize?: number | undefined;
+    shadow?: number | undefined;
   };
 
 const StyledKbd = styled(Text)<IKbdProps>(
@@ -58,7 +60,7 @@ const StyledKbd = styled(Text)<IKbdProps>(
   customExtra,
   customLayout
 );
-const Kbd = ({ style, ...props }: IKbdProps) => {
+const Kbd = ({ style, shadow, ...props }: IKbdProps) => {
   let computedStyle: any = style;
 
   computedStyle = StyleSheet.flatten([
@@ -71,16 +73,8 @@ const Kbd = ({ style, ...props }: IKbdProps) => {
       fontSize: props.fontSize ? props.fontSize : 15,
       fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
       resizeMode: 'contain',
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.23,
-      shadowRadius: 2.62,
-
-      elevation: 4,
     },
+    shadows[shadow ? shadow : 2],
   ]);
 
   return (
