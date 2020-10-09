@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet, Text, TextProps, TextStyle } from 'react-native';
 import styled from 'styled-components/native';
 import {
@@ -28,8 +28,9 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-import { ThemeContext } from '../../../theme';
-export type IBadgeProps = TextProps &
+import { CloseButton, IButtonProps } from '../../composites';
+import { theme } from '../../../theme';
+export type ITagProps = TextProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -42,41 +43,43 @@ export type IBadgeProps = TextProps &
   customBackgroundProps &
   BorderProps & {
     style?: TextStyle;
+    ratio?: number;
     variantType?: string | undefined;
     variant?: string | undefined;
-    children?: string | undefined;
+    children?: JSX.Element | JSX.Element[] | string;
     fontSize?: number | undefined;
+    tagSize?: string | undefined;
   };
 let successStyle = {
-  backgroundColor: 'success.0',
-  color: 'success.1',
+  backgroundColor: theme.colors.success[0],
+  color: theme.colors.success[1],
 };
 let dangerStyle = {
-  backgroundColor: 'danger.0',
-  color: 'danger.1',
+  backgroundColor: theme.colors.danger[0],
+  color: theme.colors.danger[1],
 };
 let warningStyle = {
-  backgroundColor: 'warning.0',
-  color: 'warning.1',
+  backgroundColor: theme.colors.warning[0],
+  color: theme.colors.warning[1],
 };
 let darkStyle = {
-  backgroundColor: 'dark.0',
-  color: 'dark.1',
+  backgroundColor: theme.colors.dark[0],
+  color: theme.colors.dark[1],
 };
 let lightStyle = {
-  backgroundColor: 'light.0',
-  color: 'light.1',
+  backgroundColor: theme.colors.light[0],
+  color: theme.colors.light[1],
 };
 let mutedStyle = {
-  backgroundColor: 'muted.0',
-  color: 'muted.1',
+  backgroundColor: theme.colors.muted[0],
+  color: theme.colors.muted[1],
 };
 let defaultStyle = {
-  backgroundColor: 'default.0',
-  color: 'default.1',
+  backgroundColor: theme.colors.default[0],
+  color: theme.colors.default[1],
 };
 
-const StyledBadge = styled(Text)<IBadgeProps>(
+const StyledTag = styled(Text)<ITagProps>(
   color,
   space,
   layout,
@@ -89,6 +92,7 @@ const StyledBadge = styled(Text)<IBadgeProps>(
   customExtra,
   customLayout,
   variant({
+    prop: 'variant',
     variants: {
       success: successStyle,
       green: successStyle,
@@ -105,14 +109,38 @@ const StyledBadge = styled(Text)<IBadgeProps>(
       grey: mutedStyle,
       default: defaultStyle,
     },
+  }),
+  variant({
+    prop: 'tagSize',
+    variants: {
+      '2xl': { fontSize: theme.fontSizes[5] },
+      'xl': { fontSize: theme.fontSizes[4] },
+      'lg': { fontSize: theme.fontSizes[3] },
+      'md': { fontSize: theme.fontSizes[2] },
+      'sm': { fontSize: theme.fontSizes[1] },
+      'xsm': { fontSize: theme.fontSizes[0] },
+    },
   })
 );
-StyledBadge.defaultProps = {
+StyledTag.defaultProps = {
   variant: 'default',
+  tagSize: '2xl',
 };
-const Badge = ({ style, ...props }: IBadgeProps) => {
+export const TagCloseButton = (props: IButtonProps) => {
+  let computedStyle: any = props.style;
+  computedStyle = StyleSheet.flatten([props.style, { fontWeight: '700' }]);
+  return (
+    <CloseButton
+      marginLeft="auto"
+      mr={2}
+      highlightColor="transparent"
+      style={computedStyle}
+    />
+  );
+};
+const Tag = ({ style, ...props }: ITagProps) => {
   // Color Varients
-  let theme = useContext(ThemeContext);
+
   let structureColor = theme.colors.default[2];
   if (props.variant) {
     switch (props.variant) {
@@ -148,8 +176,8 @@ const Badge = ({ style, ...props }: IBadgeProps) => {
   //   Varients
   let outlineStyle = {
     backgroundColor: 'transparent',
-    borderWidth: 1,
-    borderColor: props.variant ? structureColor : theme.colors.muted[1],
+    border:
+      '1px solid ' + (props.variant ? structureColor : theme.colors.muted[1]),
     color: props.variant ? structureColor : theme.colors.muted[1],
   };
   let solidStyle = {
@@ -174,19 +202,17 @@ const Badge = ({ style, ...props }: IBadgeProps) => {
         variantType = subtleStyle;
     }
   }
-  let text = props.children;
-  if (text !== undefined) {
-    props.children = text.toUpperCase();
-  }
+
   let computedStyle: any = style;
 
   computedStyle = StyleSheet.flatten([
     style,
+    { display: 'flex', alignItems: 'center', flexDirection: 'row' },
     variantType,
-    { fontSize: props.fontSize ? props.fontSize : 18, fontWeight: '600' },
+    { fontWeight: '500' },
   ]);
 
-  return <StyledBadge px="2" rounded="2" {...props} style={computedStyle} />;
+  return <StyledTag px="2" rounded="2" {...props} style={computedStyle} />;
 };
 
-export default Badge;
+export default Tag;

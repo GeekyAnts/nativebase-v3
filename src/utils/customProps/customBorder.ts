@@ -76,22 +76,22 @@ const config: Config = {
 };
 
 export interface customBorderProps {
-  rounded?: string;
-  roundedTopLeft?: string;
-  roundedTopRight?: string;
-  borderTopLeftRadius?: string;
-  borderTopRightRadius?: string;
-  roundedBottomLeft?: string;
-  roundedBottomRight?: string;
-  borderBottomLeftRadius?: string;
-  borderBottomRightRadius?: string;
-  borderTopRadius?: string;
-  roundedTop?: string;
-  borderBottomRadius?: string;
-  roundedBottom?: string;
-  borderLeftRadius?: string;
-  roundedLeft?: string;
-  borderRightRadius?: string;
-  roundedRight?: string;
+  rounded?: string | number;
+  roundedTopLeft?: string | number;
+  roundedTopRight?: string | number;
+  borderTopLeftRadius?: string | number;
+  borderTopRightRadius?: string | number;
+  roundedBottomLeft?: string | number;
+  roundedBottomRight?: string | number;
+  borderBottomLeftRadius?: string | number;
+  borderBottomRightRadius?: string | number;
+  borderTopRadius?: string | number;
+  roundedTop?: string | number;
+  borderBottomRadius?: string | number;
+  roundedBottom?: string | number;
+  borderLeftRadius?: string | number;
+  roundedLeft?: string | number;
+  borderRightRadius?: string | number;
+  roundedRight?: string | number;
 }
 export const customBorder = system(config);

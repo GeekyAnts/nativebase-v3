@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, TextStyle } from 'react-native';
-import styled, { ThemeProvider } from 'styled-components/native';
+import { StyleSheet, TextInput, TextStyle, TextInputProps } from 'react-native';
+import styled from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -29,9 +29,10 @@ import {
   customShadow,
 } from '../../../utils/customProps';
 import { theme } from '../../../theme';
-export type IHeadingProps = ColorProps &
+export type ITextAreaProps = ColorProps &
   SpaceProps &
   LayoutProps &
+  TextInputProps &
   FlexboxProps &
   customBorderProps &
   customExtraProps &
@@ -43,11 +44,12 @@ export type IHeadingProps = ColorProps &
     style?: TextStyle;
     children?: string | undefined | JSX.Element[] | JSX.Element;
     fontSize?: string | undefined;
-    isTruncated?: any | undefined;
-    headerSize?: string | undefined;
+    totalLines?: number | undefined;
+    isInvalid?: boolean;
+    textSize?: string | undefined;
   };
 
-const StyledHeading = styled(Text)<IHeadingProps>(
+const StyledTextArea = styled(TextInput)<ITextAreaProps>(
   color,
   space,
   layout,
@@ -60,7 +62,7 @@ const StyledHeading = styled(Text)<IHeadingProps>(
   customExtra,
   customLayout,
   variant({
-    prop: 'headerSize',
+    prop: 'textSize',
     variants: {
       '2xl': { fontSize: theme.fontSizes[5] },
       'xl': { fontSize: theme.fontSizes[4] },
@@ -71,27 +73,35 @@ const StyledHeading = styled(Text)<IHeadingProps>(
     },
   })
 );
-StyledHeading.defaultProps = {
-  headerSize: 'lg',
+StyledTextArea.defaultProps = {
+  textSize: 'md',
 };
-const Heading = ({ style, isTruncated, ...props }: IHeadingProps) => {
+const TextArea = ({
+  style,
+  totalLines,
+  isInvalid,
+  ...props
+}: ITextAreaProps) => {
   let computedStyle: any = style;
   computedStyle = StyleSheet.flatten([
     style,
     {
-      fontWeight: '700',
+      borderWidth: 1,
+      borderColor: 'gray',
+      width: '100%',
     },
+    isInvalid ? { borderWidth: 1, borderColor: 'red' } : {},
     props.fontSize ? { fontSize: props.fontSize } : {},
   ]);
   return (
-    <ThemeProvider theme={theme}>
-      <StyledHeading
-        numberOfLines={isTruncated ? 1 : 999999}
-        {...props}
-        style={computedStyle}
-      />
-    </ThemeProvider>
+    <StyledTextArea
+      rounded="4"
+      numberOfLines={totalLines ? totalLines : 2}
+      multiline={true}
+      {...props}
+      style={computedStyle}
+    />
   );
 };
 
-export default Heading;
+export default TextArea;

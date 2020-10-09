@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, ViewProps, ViewStyle, StyleSheet } from 'react-native';
+import { StyleSheet, Text, TextProps, TextStyle, Platform } from 'react-native';
 import styled from 'styled-components/native';
-import { shadows } from '../../../styles';
 import {
   BorderProps,
   ColorProps,
@@ -28,8 +27,8 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-
-export type IBoxProps = ViewProps &
+import { shadows } from '../../../styles';
+export type IKbdProps = TextProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -41,12 +40,14 @@ export type IBoxProps = ViewProps &
   customLayoutProps &
   customBackgroundProps &
   BorderProps & {
-    style?: ViewStyle;
-    children?: JSX.Element | JSX.Element[] | string;
+    style?: TextStyle;
+    ratio?: number;
+    children?: string | undefined;
+    fontSize?: number | undefined;
     shadow?: number | undefined;
   };
 
-const StyledBox = styled(View)<IBoxProps>(
+const StyledKbd = styled(Text)<IKbdProps>(
   color,
   space,
   layout,
@@ -59,14 +60,26 @@ const StyledBox = styled(View)<IBoxProps>(
   customExtra,
   customLayout
 );
-const Box = ({ shadow, ...props }: IBoxProps) => {
-  let computedStyle: any = props.style;
-  let shadowInd: number = shadow ? (shadow > 9 ? 9 : shadow) : 2;
+const Kbd = ({ style, shadow, ...props }: IKbdProps) => {
+  let computedStyle: any = style;
+
   computedStyle = StyleSheet.flatten([
-    props.style,
-    shadow ? shadows[shadowInd] : {},
+    style,
+    // colorVarient,
+    {
+      width: 'auto',
+      backgroundColor: '#edf2f7',
+      fontWeight: '600',
+      fontSize: props.fontSize ? props.fontSize : 15,
+      fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+      resizeMode: 'contain',
+    },
+    shadows[shadow ? shadow : 2],
   ]);
-  return <StyledBox {...props} style={computedStyle} />;
+
+  return (
+    <StyledKbd px="2" py={1} rounded="2" {...props} style={computedStyle} />
+  );
 };
 
-export default Box;
+export default Kbd;

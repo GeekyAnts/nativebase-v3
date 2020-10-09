@@ -1,8 +1,9 @@
 import Box, { IBoxProps } from './Box';
 import Text, { TextProps } from './Text';
 import Input from './Input';
+import InputBox, { IInputBoxProps } from './InputBox';
 import View from './View';
-import styledIcon, { IconProps } from './Icon';
+import Icon, { IconProps } from './Icon';
 import Columns from './Columns';
 import Column from './Column';
 import Stack from './Stack';
@@ -13,6 +14,10 @@ import Inline from './Inline';
 import NBImage, { NBImageProps } from './Image';
 import Spinner, { ISpinnerProps } from './Spinner';
 import Heading, { IHeadingProps } from './Heading';
+import Flex, { IFlexProps } from './Flex';
+import Wrap, { IWrapProps } from './Wrap';
+import NBSwitch, { INBSwitchProps } from './Switch';
+
 export {
   View,
   Text,
@@ -26,13 +31,21 @@ export {
   HStack,
   ZStack,
   Inline,
-  styledIcon as Icon,
+  Icon,
   IconProps,
   Input,
+  InputBox,
+  IInputBoxProps,
   NBImage,
   NBImageProps,
   Spinner,
   ISpinnerProps,
   Heading,
   IHeadingProps,
+  Flex,
+  IFlexProps,
+  NBSwitch,
+  INBSwitchProps,
+  Wrap,
+  IWrapProps,
 };
