@@ -4,6 +4,8 @@ import Input from './Input';
 import InputBox, { IInputBoxProps } from './InputBox';
 import View from './View';
 import Icon, { IconProps } from './Icon';
+import Checkbox from './Checkbox';
+import Radio from './Radio';
 import Columns from './Columns';
 import Column from './Column';
 import Stack from './Stack';
@@ -22,6 +24,8 @@ export {
   View,
   Text,
   TextProps,
+  Checkbox,
+  Radio,
   Columns,
   Column,
   Box,

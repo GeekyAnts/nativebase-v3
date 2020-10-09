@@ -49,6 +49,8 @@ import {
   Center,
   Inline,
   Heading,
+  Checkbox,
+  Radio,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -200,7 +202,35 @@ storiesOf('Primitives', module)
       </Columns>
     </Stack>
   ))
-  .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange.3" />)
+  .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange" />)
+  .add('Checkbox', () => (
+    <>
+      <Text>Label: </Text>
+      <Checkbox
+        type={select('type', ['circle', 'rounded', 'square'], 'rounded')}
+        colorVarient={select(
+          'colorVarient',
+          ['default', 'light', 'dark', 'muted', 'warning', 'danger', 'success'],
+          'default'
+        )}
+        checked={true}
+      />
+    </>
+  ))
+  .add('Radio', () => (
+    <>
+      <Text>Label: </Text>
+      <Radio
+        type={select('type', ['circle', 'rounded', 'square'], 'circle')}
+        colorVarient={select(
+          'colorVarient',
+          ['default', 'light', 'dark', 'muted', 'warning', 'danger', 'success'],
+          'default'
+        )}
+        checked={false}
+      />
+    </>
+  ))
   .add('Columns', () => (
     <Columns
       space={number('space', 3)}
