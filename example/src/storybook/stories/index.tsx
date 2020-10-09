@@ -208,7 +208,7 @@ storiesOf('Primitives', module)
       </Columns>
     </Stack>
   ))
-  .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange" />)
+  .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange.3" />)
   .add('Checkbox', () => (
     <>
       <Text>Label: </Text>
@@ -272,12 +272,12 @@ storiesOf('Primitives', module)
   ))
   .add('Heading', () => (
     <>
-      <Heading size="2xl">2xl Heading</Heading>
-      <Heading size="xl">Extra Large Heading</Heading>
-      <Heading size="lg">Large Heading (Default)</Heading>
-      <Heading size="md">Medium Heading</Heading>
-      <Heading size="sm">Small Heading</Heading>
-      <Heading size="xsm">Extra Small Heading</Heading>
+      <Heading headerSize="2xl">2xl Heading</Heading>
+      <Heading headerSize="xl">Extra Large Heading</Heading>
+      <Heading headerSize="lg">Large Heading (Default)</Heading>
+      <Heading headerSize="md">Medium Heading</Heading>
+      <Heading headerSize="sm">Small Heading</Heading>
+      <Heading headerSize="xsm">Extra Small Heading</Heading>
     </>
   ))
   .add('Inline', () => (
@@ -602,13 +602,6 @@ storiesOf('Composites', module)
   .add('AspectRatioBox', () => (
     <AspectRatioBox ratio={4 / 3} height="300px" bg="black" />
   ))
-  .add('Avatar', () => (
-    <Avatar src="https://nativebase.io/assets/img/front-page-icon.png">
-      <AvatarBadge badgeSize={13} badgeColor="seagreen" />
-    </Avatar>
-  ))
-  .add('Button', () => <Button colorScheme="danger">Press Me</Button>)
-
   .add('Badge', () => (
     <Badge variant="success" variantType="solid">
       NativeBase Badge
