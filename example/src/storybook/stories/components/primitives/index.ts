@@ -1,3 +1,4 @@
+export { default as Text } from './Text';
 export { default as Box } from './Box';
 export { default as Columns } from './Columns';
 export { default as Flex } from './Flex';
