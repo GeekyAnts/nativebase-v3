@@ -413,7 +413,7 @@ const StyledButtonGroup = styled.View<ButtonGroupProps>`
   ${border}
 `;
 
-const applyProps = (children: any, props: any) => {
+const supplyPropsToChildren = (children: any, props: any) => {
   return children.map((child: JSX.Element) => {
     return React.cloneElement(child, props, child.props.children);
   });
@@ -422,7 +422,7 @@ const applyProps = (children: any, props: any) => {
 export const ButtonGroup = ({ children, ...props }: ButtonGroupProps) => {
   return (
     <StyledButtonGroup>
-      {applyProps(getAttachedChildren(children), props)}
+      {supplyPropsToChildren(getAttachedChildren(children), props)}
     </StyledButtonGroup>
   );
 };
