@@ -1,9 +1,7 @@
 import React from 'react';
 import type { TextStyle } from 'react-native';
 
-import { Icon, IconProps } from '../../primitives';
-
-import Button, { IButtonProps } from '../Button';
+import { Button, IButtonProps, Icon, IconProps } from '../../..';
 
 type iconProps = IconProps & {
   iconStyle?: TextStyle | {};

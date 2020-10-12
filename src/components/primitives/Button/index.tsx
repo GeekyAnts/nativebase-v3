@@ -40,6 +40,7 @@ import {
 } from '../../../utils/customProps';
 import { ThemeContext } from '../../../theme';
 import { shadows } from '../../../styles';
+import { getAttachedChildren } from '../../../utils';
 import { Spinner, Box, IBoxProps, Flex } from '../../primitives';
 type SpaceType = 'xs' | 'sm' | 'md' | 'lg';
 export type IButtonProps = ViewProps &
@@ -65,6 +66,9 @@ export type IButtonProps = ViewProps &
     leftIcon?: JSX.Element | JSX.Element[] | undefined;
     rightIcon?: JSX.Element | JSX.Element[] | undefined;
     isLoadingText?: string | undefined;
+    spinner?: JSX.Element | undefined;
+    isDisabled?: boolean | any;
+    ariaLabel?: string;
   };
 
 let successStyle = {
@@ -98,9 +102,9 @@ let mutedStyle = {
   color: 'muted.1',
 };
 let defaultStyle = {
-  backgroundColor: 'indigo.5',
-  borderColor: 'indigo.5',
-  color: 'indigo.1',
+  backgroundColor: 'default.2',
+  borderColor: 'default.2',
+  color: 'default.1',
 };
 
 let outlineStyle = {
@@ -168,7 +172,7 @@ StyledView.defaultProps = {
   colorScheme: 'default',
   variant: 'solid',
 };
-const StyledButton = styled(TouchableNativeFeedback)<
+const StyledAndroidButton = styled(TouchableNativeFeedback)<
   IButtonProps & TouchableNativeFeedbackProps
 >(
   color,
@@ -219,6 +223,9 @@ const Button = ({
   shadow,
   leftIcon,
   rightIcon,
+  isDisabled,
+  spinner,
+  ariaLabel,
   ...props
 }: IButtonProps & IBoxProps) => {
   const theme = useContext(ThemeContext);
@@ -245,7 +252,11 @@ const Button = ({
     spaceValue = 2;
   }
 
-  let lightBgColor: Array<string> = [];
+  let lightBgColor: Array<string> = [
+    theme.colors.default[0],
+    theme.colors.default[1],
+  ];
+
   if (colorScheme) {
     switch (colorScheme) {
       case 'success':
@@ -271,12 +282,13 @@ const Button = ({
       case 'muted':
       case 'secondary':
       case 'grey':
-        lightBgColor = [theme.colors.muted[0], theme.colors.success[1]];
+        lightBgColor = [theme.colors.muted[0], theme.colors.muted[1]];
         break;
       default:
         lightBgColor = [theme.colors.default[0], theme.colors.default[1]];
     }
   }
+
   let textColor = 'white';
   if (
     variant == 'ghost' ||
@@ -286,6 +298,7 @@ const Button = ({
   ) {
     textColor = lightBgColor[1];
   }
+
   const defaultOnPress = () => {};
   let computedStyle: any = style;
   computedStyle = StyleSheet.flatten([
@@ -299,7 +312,12 @@ const Button = ({
       borderRadius: rounded ? rounded : 3,
       borderColor: textColor,
     },
+    Platform.OS === 'ios' &&
+    (variant == 'ghost' || variant == 'outline' || variant == 'link')
+      ? { backgroundColor: lightBgColor[0] }
+      : {},
   ]);
+
   let shadowInd: number = shadow ? (shadow > 9 ? 9 : shadow) : 2;
   let computedButtonStyle: any = style;
   computedButtonStyle = StyleSheet.flatten([
@@ -309,92 +327,104 @@ const Button = ({
       overflow: 'hidden',
     },
   ]);
+
+  const innerButton = (
+    <StyledView
+      p={p ? p : 3}
+      pl={pl ? pl : ''}
+      pr={pr ? pr : ''}
+      pb={pb ? pb : ''}
+      pt={pt ? pt : ''}
+      px={px ? px : 5}
+      py={py ? py : ''}
+      style={computedStyle}
+      colorScheme={colorScheme}
+      variant={variant}
+      {...props}
+    >
+      {leftIcon ? <Box mr={3}>{leftIcon}</Box> : <></>}
+      {isLoading ? (
+        <Flex>
+          {spinner ? spinner : <Spinner color={lightBgColor[1]} />}
+          <Text>{isLoadingText ? ' ' + isLoadingText : ''}</Text>
+        </Flex>
+      ) : (
+        <Text
+          style={{
+            color: textColor,
+            fontSize: theme.fontSizes[spaceValue],
+            textDecorationLine: variant == 'link' ? 'underline' : 'none',
+          }}
+        >
+          {children}
+        </Text>
+      )}
+      {rightIcon ? <Box ml={3}>{rightIcon}</Box> : <></>}
+    </StyledView>
+  );
+
   if (Platform.OS === 'android' && Platform.Version >= 21) {
     return (
       <Box style={computedButtonStyle} {...props}>
-        <StyledButton
-          disabled={isLoading ? true : false}
+        <StyledAndroidButton
+          accessible={true}
+          accessibilityLabel={ariaLabel}
+          accessibilityRole="button"
+          disabled={isLoading || isDisabled ? true : false}
           onPress={onClick ? onClick : defaultOnPress}
           background={TouchableNativeFeedback.Ripple(lightBgColor[1], false)}
           {...props}
         >
-          <StyledView
-            p={p ? p : 3}
-            pl={pl ? pl : ''}
-            pr={pr ? pr : ''}
-            pb={pb ? pb : ''}
-            pt={pt ? pt : ''}
-            px={px ? px : 5}
-            py={py ? py : ''}
-            style={computedStyle}
-            colorScheme={colorScheme}
-            variant={variant}
-          >
-            {leftIcon ? <Box mr={3}>{leftIcon}</Box> : <></>}
-            {isLoading ? (
-              <Flex>
-                <Spinner color={lightBgColor[1]} />
-                <Text>{isLoadingText ? ' ' + isLoadingText : ''}</Text>
-              </Flex>
-            ) : (
-              <Text
-                style={{
-                  color: textColor,
-                  fontSize: theme.fontSizes[spaceValue],
-                  textDecorationLine: variant == 'link' ? 'underline' : 'none',
-                }}
-              >
-                {children}
-              </Text>
-            )}
-            {rightIcon ? <Box ml={3}>{rightIcon}</Box> : <></>}
-          </StyledView>
-        </StyledButton>
+          {innerButton}
+        </StyledAndroidButton>
       </Box>
     );
   } else {
     return (
       <StyledIOSButton
-        disabled={isLoading ? true : false}
+        accessible={true}
+        accessibilityLabel={ariaLabel}
+        accessibilityRole="button"
+        disabled={isLoading || isDisabled ? true : false}
         onPress={onClick ? onClick : defaultOnPress}
         activeOpacity={highlight ? highlight : 0.8}
         style={computedButtonStyle}
         {...props}
       >
-        <StyledView
-          p={p ? p : 3}
-          pl={pl ? pl : ''}
-          pr={pr ? pr : ''}
-          pb={pb ? pb : ''}
-          pt={pt ? pt : ''}
-          px={px ? px : 5}
-          py={py ? py : ''}
-          style={computedStyle}
-          colorScheme={colorScheme}
-          variant={variant}
-        >
-          {leftIcon ? <Box mr={3}>{leftIcon}</Box> : <></>}
-          {isLoading ? (
-            <Flex>
-              <Spinner color={lightBgColor[1]} />
-              <Text>{isLoadingText ? ' ' + isLoadingText : ''}</Text>
-            </Flex>
-          ) : (
-            <Text
-              style={{
-                color: textColor,
-                fontSize: theme.fontSizes[spaceValue],
-                textDecorationLine: variant == 'link' ? 'underline' : 'none',
-              }}
-            >
-              {children}
-            </Text>
-          )}
-          {rightIcon ? <Box ml={3}>{rightIcon}</Box> : <></>}
-        </StyledView>
+        {innerButton}
       </StyledIOSButton>
     );
   }
+};
+
+type ButtonGroupProps = {
+  children: Element | Element[];
+  variant?: string | undefined;
+  size?: SpaceType | string | undefined;
+  spacing?: number;
+};
+const StyledButtonGroup = styled.View<ButtonGroupProps>`
+  flex-direction: row;
+  flex-wrap: wrap;
+  ${color}
+  ${space}
+  ${layout}
+  ${flexbox}
+  ${border}
+`;
+
+const supplyPropsToChildren = (children: any, props: any) => {
+  return children.map((child: JSX.Element) => {
+    return React.cloneElement(child, props, child.props.children);
+  });
+};
+
+export const ButtonGroup = ({ children, ...props }: ButtonGroupProps) => {
+  return (
+    <StyledButtonGroup>
+      {supplyPropsToChildren(getAttachedChildren(children), props)}
+    </StyledButtonGroup>
+  );
 };
 
 export default Button;
