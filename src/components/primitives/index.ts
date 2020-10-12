@@ -6,6 +6,7 @@ import View from './View';
 import Icon, { IconProps } from './Icon';
 import Columns from './Columns';
 import Column from './Column';
+import Button, { IButtonProps, ButtonGroup } from './Button';
 import Stack from './Stack';
 import VStack from './VStack';
 import HStack from './HStack';
@@ -25,6 +26,9 @@ export {
   Columns,
   Column,
   Box,
+  IButtonProps,
+  Button,
+  ButtonGroup,
   IBoxProps,
   Stack,
   VStack,

@@ -28,7 +28,7 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-import { CloseButton, IButtonProps } from '../../composites';
+import { CloseButton, IButtonProps } from '../../..';
 import { theme } from '../../../theme';
 export type ITagProps = TextProps &
   ColorProps &

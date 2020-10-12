@@ -14,7 +14,6 @@ import {
   Stack,
   Switch,
   VStack,
-  WebLayout,
   Wrap,
   ZStack,
   // Composites
@@ -24,6 +23,7 @@ import {
   Avatar,
   Badge,
   Breadcrumb,
+  WebLayout,
   Button,
   Center,
   CloseButton,
@@ -36,6 +36,7 @@ import {
   Tag,
   TextArea,
 } from './components';
+
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 const customTheme = {
   ...theme,
@@ -69,12 +70,14 @@ storiesOf('Primitives', module)
   .add('Spinner', () => <Spinner />)
   .add('Stack', () => <Stack />)
   .add('Switch', () => <Switch />)
+  .add('Button', () => <Button />)
   .add('VStack', () => <VStack />)
   .add('Web Layout', () => <WebLayout />)
   .add('Wrap', () => <Wrap />)
   .add('ZStack', () => <ZStack />);
 
 storiesOf('Composites', module)
+  .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
       <View flexGrow={1} justifyContent="center" p={3} bg="white">
@@ -88,7 +91,6 @@ storiesOf('Composites', module)
   .add('Avatar', () => <Avatar />)
   .add('Badge', () => <Badge />)
   .add('Breadcrumb', () => <Breadcrumb />)
-  .add('Button', () => <Button />)
   .add('Center', () => <Center />)
   .add('CloseButton', () => <CloseButton />)
   .add('Code', () => <Code />)
