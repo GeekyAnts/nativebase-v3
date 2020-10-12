@@ -98,8 +98,6 @@ const TextArea = ({
   let computedStyle: any = style;
   computedStyle = StyleSheet.flatten([
     style,
-    props.width || props.w ? {} : { width: '100%' },
-    props.borderWidth ? {} : { borderWidth: 1 },
     props.borderColor ? {} : { borderColor: 'gray' },
     isDisabled ? { opacity: 0.5, backgroundColor: theme.colors.gray[1] } : {},
     isInvalid ? { borderWidth: 1, borderColor: theme.colors.danger[2] } : {},
@@ -119,6 +117,7 @@ const TextArea = ({
       numberOfLines={totalLines ? totalLines : 2}
       multiline={true}
       editable={!isDisabled}
+      borderWidth={1}
       placeholder="Enter your text here"
       {...props}
       style={computedStyle}
