@@ -34,6 +34,7 @@ import {
   Stat,
   Tag,
   TextArea,
+  Text,
 } from './components';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -53,6 +54,7 @@ storiesOf('Primitives', module)
       </View>
     </ThemeProvider>
   ))
+  .add('Text', () => <Text />)
   .add('Box', () => <Box />)
   .add('Columns', () => <Columns />)
   .add('Flex', () => <Flex />)
