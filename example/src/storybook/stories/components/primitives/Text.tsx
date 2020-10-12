@@ -6,7 +6,7 @@ export default function () {
   return (
     <View display="flex" justifyContent="space-between" alignItems="center">
       <Inline mb={2} alignItems="baseline">
-        <Heading mt={3}>Avatar </Heading>
+        <Heading mt={3}>Text </Heading>
         <Text>(with Knob) playaround</Text>
       </Inline>
       <Text
@@ -29,6 +29,10 @@ export default function () {
       </Text>
       <Heading mt={3}>Simple Example</Heading>
       <Text>This is the simplest text.</Text>
+      <Heading mt={3}>Nested Text</Heading>
+      <Text>
+        This is the <Text bold>nested</Text> example.
+      </Text>
       <Heading mt={3}>Different Sizes</Heading>
       <Text m={2} fontSize="xs">
         Extra Small

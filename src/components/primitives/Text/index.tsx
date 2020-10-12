@@ -17,7 +17,7 @@ export type TextProps = ColorProps &
   SpaceProps &
   PositionProps &
   TypographyProps & {
-    children?: JSX.Element[] | JSX.Element | string | undefined;
+    children?: React.ReactNode | string | undefined;
     fontSize?: string | number;
     numberOfLines?: number;
     style?: any;
@@ -57,15 +57,13 @@ const NBText = ({ children, style, fontSize, ...props }: TextProps) => {
 
   if (props.bold) style = StyleSheet.compose(style, addonStyle.boldStyle);
 
-  if (props.bold) style = StyleSheet.compose(addonStyle.boldStyle, style);
-
-  if (props.italic) style = StyleSheet.compose(addonStyle.italicStyle, style);
+  if (props.italic) style = StyleSheet.compose(style, addonStyle.italicStyle);
 
   if (props.underline)
-    style = StyleSheet.compose(addonStyle.underlineStyle, style);
+    style = StyleSheet.compose(style, addonStyle.underlineStyle);
 
   if (props.strikeThrough)
-    style = StyleSheet.compose(addonStyle.strikeThroughStyle, style);
+    style = StyleSheet.compose(style, addonStyle.strikeThroughStyle);
 
   switch (fontSize) {
     case 'xs':
