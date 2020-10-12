@@ -1,6 +1,6 @@
 import React from 'react';
-import { Heading, Text, View, Inline } from 'native-base';
-import { text, boolean, number, color } from '@storybook/addon-knobs';
+import { Heading, Text, View, Inline, VStack } from 'native-base';
+import { select, boolean, number, color } from '@storybook/addon-knobs';
 
 export default function () {
   return (
@@ -20,51 +20,33 @@ export default function () {
           max: 100,
           step: 1,
         })}
-        fontSize={text('size', 'xs')}
+        fontSize={select(
+          'Size',
+          ['xs', 'sm', 'md', 'lg', 'xl', "2xl",'3xl','4xl','5xl', "6xl"],
+          'xs')}
         color={color('color', 'black')}
       >
-        "The quick brown fox jumps over the lazy dog" is an English-language
+        The quick brown fox jumps over the lazy dog" is an English-language
         pangram—a sentence that contains all of the letters of the English
         alphabet. Owing to its existence, Chakra was created.
       </Text>
       <Heading mt={3}>Simple Example</Heading>
       <Text>This is the simplest text.</Text>
       <Heading mt={3}>Nested Text</Heading>
-      <Text>
-        This is the <Text bold>nested</Text> example.
-      </Text>
-      <Heading mt={3}>Different Sizes</Heading>
-      <Text m={2} fontSize="xs">
-        Extra Small
-      </Text>
-      <Text m={2} fontSize="sm">
-        Small
-      </Text>
-      <Text m={2} fontSize="md">
-        Medium
-      </Text>
-      <Text m={2} fontSize="lg">
-        Large
-      </Text>
-      <Text m={2} fontSize="xl">
-        Extra Large
-      </Text>
-      <Text m={2} fontSize="2xl">
-        2 Extra Large
-      </Text>
-      <Text m={2} fontSize="3xl">
-        3 Extra Large
-      </Text>
-      <Text m={2} fontSize="4xl">
-        4 Extra Large
-      </Text>
-      <Text m={2} fontSize="5xl">
-        5 Extra Large
-      </Text>
-      <Text m={2} fontSize="6xl">
-        6 Extra Large
-      </Text>
-
+      <Text>This is the <Text bold>nested</Text> example.</Text>
+      <Heading my={3}>Different Sizes</Heading>
+      <VStack space={2} alignItems="center">
+        <Text fontSize="xs">Extra Small</Text>
+        <Text fontSize="sm">Small</Text>
+        <Text fontSize="md">Medium</Text>
+        <Text fontSize="lg">Large</Text>
+        <Text fontSize="xl">Extra Large</Text>
+        <Text fontSize="2xl">2 Extra Large</Text>
+        <Text fontSize="3xl">3 Extra Large</Text>
+        <Text fontSize="4xl">4 Extra Large</Text>
+        <Text fontSize="5xl">5 Extra Large</Text>
+        <Text fontSize="6xl">6 Extra Large</Text>
+      </VStack>
       <Inline mb={2} alignItems="baseline">
         <Heading mt={3}>Boolean Props </Heading>
         <Text>for easy styling</Text>
