@@ -95,7 +95,6 @@ const TextArea = ({
   ...props
 }: ITextAreaProps) => {
   const theme = useContext(ThemeContext);
-  console.log(theme);
   let computedStyle: any = style;
   computedStyle = StyleSheet.flatten([
     style,
