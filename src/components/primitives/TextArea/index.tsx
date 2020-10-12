@@ -59,6 +59,14 @@ export type ITextAreaProps = ColorProps &
     fontSize?: number | undefined;
   };
 
+const defaultProps: ITextAreaProps = {
+  rounded: '4',
+  p: 2,
+  px: 4,
+  borderWidth: 1,
+  multiline: true,
+};
+
 const StyledTextArea = styled(TextInput)<ITextAreaProps>(
   color,
   space,
@@ -104,21 +112,18 @@ const TextArea = ({
     props.fontSize
       ? {
           fontSize:
-            props.fontSize > 5
+            props.fontSize > theme.fontSizes.length - 1 //if the fontSize passed is larger than theme fontSizes array's length then consider the passed value as fontSize
               ? props.fontSize
               : theme.fontSizes[props.fontSize],
         }
       : {},
   ]);
+
   return (
     <StyledTextArea
-      rounded="4"
-      p={2}
-      px={4}
       numberOfLines={totalLines ? totalLines : 2}
-      multiline={true}
       editable={!isDisabled}
-      borderWidth={1}
+      {...defaultProps}
       {...props}
       style={computedStyle}
     />
