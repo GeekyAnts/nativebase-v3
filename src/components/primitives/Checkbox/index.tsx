@@ -54,7 +54,7 @@ const CheckBox = ({ colorVarient, checked, ...props }: ICheckboxtProps) => {
             ? [style.checkboxMarked, props.style]
             : style.checkboxUnmarked
         }
-      ></View>
+      />
     </TouchableOpacity>
   );
 };

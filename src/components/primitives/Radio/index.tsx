@@ -52,7 +52,7 @@ const Radio = ({ colorVarient, checked, ...props }: IRadioProps) => {
         style={
           isSelected ? [style.radioMarked, props.style] : style.radioUnmarked
         }
-      ></View>
+      />
     </TouchableOpacity>
   );
 };
