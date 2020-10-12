@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, ViewProps, ViewStyle, Switch } from 'react-native';
 import styled from 'styled-components/native';
 import {isNil} from "lodash";
+import { ThemeContext } from '../../../theme';
 import {
   BorderProps,
   ColorProps,
@@ -86,6 +87,7 @@ const NBSwitch = ({
   ariaLabelledBy,
   ...props
 }: ISwitchProps) => {
+  const theme = useContext(ThemeContext);
   let switchSize: 'lg' | 'md' | 'sm' | number | undefined = 1;
   if (size) {
     if (typeof size == 'string') {
@@ -108,29 +110,29 @@ const NBSwitch = ({
     }
   }
   const [isActive, setIsActive] = useState(!isNil(defaultIsChecked) ?  defaultIsChecked : false);
-  const checked = !isNil(isDisabled) ? isDisabled : !isNil(isChecked) ? isChecked : isActive;
+  const checked = !isNil(isChecked) ? isChecked : isActive;
   let computedStyle: ViewStyle | any = style;
   computedStyle = StyleSheet.flatten([
     style,
     { transform: [{ scale: switchSize }] },
-    isInvalid ? { borderWidth: 1, borderColor: 'red', borderRadius: 16} : {},
+    isInvalid ? { borderWidth: 1, borderColor: theme.colors.danger[2], borderRadius: 16} : {},
   ]);
 
   return (
     <StyledNBSwitch
       trackColor={
         props.switchTrackColor
-          ? { false: 'dark.0', true: props.switchTrackColor }
+          ? { false: theme.colors.dark[0], true: props.switchTrackColor }
           : undefined
       }
       thumbColor={
         checked
           ? onColor
             ? onColor
-            : 'default.0'
+            : theme.colors.default[0]
           : offColor
           ? offColor
-          : 'default.1'
+          : theme.colors.default[1]
       }
       disabled={isDisabled}
       ios_backgroundColor={iosBgColor}
