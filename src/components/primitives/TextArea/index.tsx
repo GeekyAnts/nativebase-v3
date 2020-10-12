@@ -98,7 +98,7 @@ const TextArea = ({
   let computedStyle: any = style;
   computedStyle = StyleSheet.flatten([
     style,
-    props.borderColor ? {} : { borderColor: 'gray' },
+    props.borderColor ? {} : { borderColor: theme.colors.gray[4] },
     isDisabled ? { opacity: 0.5, backgroundColor: theme.colors.gray[1] } : {},
     isInvalid ? { borderWidth: 1, borderColor: theme.colors.danger[2] } : {},
     props.fontSize
@@ -114,11 +114,11 @@ const TextArea = ({
     <StyledTextArea
       rounded="4"
       p={2}
+      px={4}
       numberOfLines={totalLines ? totalLines : 2}
       multiline={true}
       editable={!isDisabled}
       borderWidth={1}
-      placeholder="Enter your text here"
       {...props}
       style={computedStyle}
     />
