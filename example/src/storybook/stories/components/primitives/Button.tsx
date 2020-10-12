@@ -7,7 +7,6 @@ import {
   Text,
   Icon,
   Heading,
-  Spinner,
   ButtonGroup,
 } from 'native-base';
 import { text, select } from '@storybook/addon-knobs';
@@ -35,12 +34,17 @@ export default function () {
       </Button>
       <Center>
         <Text>Button Sizes </Text>
-        <HStack space={2} mt={4}>
-          <Button
-            variant="solid"
-            size={select('Size', ['xs', 'sm', 'md', 'lg'], 'sm')}
-            colorScheme="green"
-          >
+        <HStack space={2} mt={4} alignItems="center">
+          <Button size="xs" colorScheme="green">
+            Button
+          </Button>
+          <Button size="sm" colorScheme="green">
+            Button
+          </Button>
+          <Button size="md" colorScheme="green">
+            Button
+          </Button>
+          <Button size="lg" colorScheme="green">
             Button
           </Button>
         </HStack>
@@ -48,9 +52,7 @@ export default function () {
       <Center>
         <Text>Loading button</Text>
         <HStack space={4} mt={4}>
-          <Button isLoading spinner={<Spinner color="#f08193" size="large" />}>
-            Button
-          </Button>
+          <Button isLoading>Button</Button>
           <Button colorScheme="warning" isLoading isLoadingText="Submitting">
             Button
           </Button>
@@ -136,6 +138,7 @@ export default function () {
             ['solid', 'ghost', 'link', 'outline'],
             'solid'
           )}
+          spacing={100}
         >
           <Button ariaLabel="button1 of ButtonGroup">Button 1</Button>
           <Button ariaLabel="button2 of ButtonGroup">Button 2</Button>

@@ -17,7 +17,7 @@ import Spinner, { ISpinnerProps } from './Spinner';
 import Heading, { IHeadingProps } from './Heading';
 import Flex, { IFlexProps } from './Flex';
 import Wrap, { IWrapProps } from './Wrap';
-import NBSwitch, { INBSwitchProps } from './Switch';
+import NBSwitch, { ISwitchProps } from './Switch';
 import TextArea from './TextArea';
 
 export {
@@ -50,7 +50,7 @@ export {
   Flex,
   IFlexProps,
   NBSwitch,
-  INBSwitchProps,
+  ISwitchProps,
   Wrap,
   IWrapProps,
   TextArea,
