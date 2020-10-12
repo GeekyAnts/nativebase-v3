@@ -31,7 +31,7 @@ export default function () {
       <Center>
         <Text>Define height of TextArea with size</Text>
       </Center>
-      <TextArea size={number('TextArea Size', 40)} />
+      <TextArea w="100%" size={number('TextArea Size', 40)} />
       <Center>
         <Text>Invalid TextArea</Text>
       </Center>
