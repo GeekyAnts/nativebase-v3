@@ -22,8 +22,9 @@ export default function () {
         })}
         fontSize={select(
           'Size',
-          ['xs', 'sm', 'md', 'lg', 'xl', "2xl",'3xl','4xl','5xl', "6xl"],
-          'xs')}
+          ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl'],
+          'xs'
+        )}
         color={color('color', 'black')}
       >
         The quick brown fox jumps over the lazy dog" is an English-language
@@ -33,7 +34,9 @@ export default function () {
       <Heading mt={3}>Simple Example</Heading>
       <Text>This is the simplest text.</Text>
       <Heading mt={3}>Nested Text</Heading>
-      <Text>This is the <Text bold>nested</Text> example.</Text>
+      <Text>
+        This is the <Text bold>nested</Text> example.
+      </Text>
       <Heading my={3}>Different Sizes</Heading>
       <VStack space={2} alignItems="center">
         <Text fontSize="xs">Extra Small</Text>
