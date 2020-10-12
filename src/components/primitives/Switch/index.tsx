@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, ViewProps, ViewStyle, Switch } from 'react-native';
 import styled from 'styled-components/native';
+import {isNil} from "lodash";
 import {
   BorderProps,
   ColorProps,
@@ -13,6 +14,7 @@ import {
   layout,
   space,
 } from 'styled-system';
+
 import {
   customBorder,
   customBorderProps,
@@ -28,7 +30,7 @@ import {
   customShadow,
 } from '../../../utils/customProps';
 
-export type INBSwitchProps = ViewProps &
+export type ISwitchProps = ViewProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -41,16 +43,22 @@ export type INBSwitchProps = ViewProps &
   customBackgroundProps &
   BorderProps & {
     style?: ViewStyle;
-    isEnabled?: boolean | undefined;
-    toggleSwitch?: any;
-    switchTrackColor?: undefined | string;
-    onColor?: undefined | string;
-    offColor?: undefined | string;
-    iosBgColor?: undefined | string;
-    size?: 'lg' | 'md' | 'sm' | number | undefined;
+    size?: 'lg' | 'md' | 'sm' | number;
+    onColor?: string;
+    offColor?: string;
+    isDisabled?: boolean;
+    name?: string;
+    onToggle?: any;
+    switchTrackColor?:  string;
+    iosBgColor?: string;
+    isChecked?: boolean;
+    defaultIsChecked?: boolean;
+    isInvalid?: boolean;
+    ariaLabel?: string;
+    ariaLabelledBy? : string;
   };
 
-const StyledNBSwitch = styled(Switch)<INBSwitchProps>(
+const StyledNBSwitch = styled(Switch)<ISwitchProps>(
   color,
   space,
   layout,
@@ -65,14 +73,19 @@ const StyledNBSwitch = styled(Switch)<INBSwitchProps>(
 );
 const NBSwitch = ({
   style,
-  toggleSwitch,
-  isEnabled,
+  size,
+  onToggle,
+  isDisabled,
+  isInvalid,
   onColor,
   offColor,
   iosBgColor,
-  size,
+  isChecked,
+  defaultIsChecked,
+  ariaLabel,
+  ariaLabelledBy,
   ...props
-}: INBSwitchProps) => {
+}: ISwitchProps) => {
   let switchSize: 'lg' | 'md' | 'sm' | number | undefined = 1;
   if (size) {
     if (typeof size == 'string') {
@@ -86,7 +99,6 @@ const NBSwitch = ({
         case 'lg':
           switchSize = 2.2;
           break;
-
         default:
           switchSize = 1;
           break;
@@ -95,35 +107,42 @@ const NBSwitch = ({
       switchSize = size;
     }
   }
-  const [isActive, setIsActive] = useState(false);
-  const checked = isEnabled ? isEnabled : isActive;
+  const [isActive, setIsActive] = useState(!isNil(defaultIsChecked) ?  defaultIsChecked : false);
+  const checked = !isNil(isDisabled) ? isDisabled : !isNil(isChecked) ? isChecked : isActive;
   let computedStyle: ViewStyle | any = style;
   computedStyle = StyleSheet.flatten([
     style,
     { transform: [{ scale: switchSize }] },
+    isInvalid ? { borderWidth: 1, borderColor: 'red', borderRadius: 16} : {},
   ]);
 
   return (
     <StyledNBSwitch
       trackColor={
         props.switchTrackColor
-          ? { false: '#767577', true: props.switchTrackColor }
-          : { false: '#767577', true: '#302c58' }
+          ? { false: 'dark.0', true: props.switchTrackColor }
+          : undefined
       }
       thumbColor={
         checked
           ? onColor
             ? onColor
-            : '#64a68d'
+            : 'default.0'
           : offColor
           ? offColor
-          : '#f4f8f6'
+          : 'default.1'
       }
-      ios_backgroundColor={iosBgColor ? iosBgColor : '#3e3e3e'}
-      onValueChange={toggleSwitch ? toggleSwitch : () => setIsActive(!isActive)}
+      disabled={isDisabled}
+      ios_backgroundColor={iosBgColor}
+      onValueChange={onToggle ? onToggle : () => setIsActive(!isActive)}
+      // might need to add onChange
+      // onChange={(e: any) => { console.log(e)}}
       value={checked}
       {...props}
       style={computedStyle}
+      accessibilityLabel={ariaLabel}
+      accessibilityRole="switch"
+      // TODO: could not find appropriate props for ariaLabelledBy
     />
   );
 };

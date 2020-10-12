@@ -143,9 +143,12 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.6",
+    "@types/lodash": "^4.14.162",
     "deepmerge": "^4.2.2",
     "expo-font": "^8.3.0",
     "hoist-non-react-statics": "^3.3.2",
+    "lodash": "^4.17.20",
+    "lodash.isnil": "^4.0.0",
     "react-native-material-ripple": "^0.9.1",
     "react-native-unimodules": "~0.10.1",
     "styled-components": "^5.2.0",

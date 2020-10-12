@@ -63,7 +63,7 @@ import {
   IHeadingProps,
   Flex,
   NBSwitch as Switch,
-  INBSwitchProps,
+  ISwitchProps,
   IFlexProps,
   IWrapProps,
   Wrap,
@@ -139,7 +139,7 @@ export {
   Tag,
   TagCloseButton,
   TextArea,
-  INBSwitchProps,
+  ISwitchProps,
   IFlexProps,
   IWrapProps,
 };
