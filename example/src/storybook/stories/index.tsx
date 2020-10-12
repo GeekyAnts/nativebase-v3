@@ -47,6 +47,8 @@ import {
   Code,
   InputBox,
   Center,
+  Heading,
+  ButtonGroup,
 } from 'native-base';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -234,6 +236,7 @@ storiesOf('Primitives', module)
   ));
 
 storiesOf('Composites', module)
+  .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
       <View flexGrow={1} justifyContent="center" p={3} bg="white">
@@ -339,94 +342,104 @@ storiesOf('Composites', module)
   .add('Button', () => (
     <Stack space={4}>
       <Center>
+        <Heading>Button</Heading>
+        <Text>(playaround using knobs)</Text>
+      </Center>
+      <Center>
         <Text>Button Variants</Text>
       </Center>
-      <HStack space={4}>
-        <Button variant="solid" size="xs" colorScheme="green">
-          Solid
-        </Button>
-        <Button variant="ghost" size="xs" colorScheme="green">
-          Ghost
-        </Button>
-        <Button variant="link" size="xs" colorScheme="green">
-          Link
-        </Button>
-        <Button variant="outline" size="xs" colorScheme="green">
-          Outline
-        </Button>
-      </HStack>
+      <Button
+        borderColor="orange.2"
+        variant={select(
+          'Variants',
+          ['solid', 'ghost', 'link', 'outline'],
+          'solid'
+        )}
+        size="xs"
+      >
+        Button Variants
+      </Button>
       <Center>
-        <Text>Button Sizes</Text>
+        <Text>Button Sizes </Text>
+        <HStack space={2} mt={4}>
+          <Button
+            variant="solid"
+            size={select('Size', ['xs', 'sm', 'md', 'lg'], 'sm')}
+            colorScheme="green"
+          >
+            Button
+          </Button>
+        </HStack>
       </Center>
-      <HStack space={2}>
-        <Button variant="solid" size="xs" colorScheme="green">
-          xs-btn
-        </Button>
-        <Button size="sm">sm-btn</Button>
-        <Button size="md" colorScheme="red">
-          md-btn
-        </Button>
-        <Button size="lg" colorScheme="dark">
-          lg-btn
-        </Button>
-      </HStack>
       <Center>
         <Text>Loading button</Text>
+        <HStack space={4} mt={4}>
+          <Button isLoading spinner={<Spinner color="#f08193" size="large" />}>
+            Button
+          </Button>
+          <Button colorScheme="warning" isLoading isLoadingText="Submitting">
+            Button
+          </Button>
+        </HStack>
       </Center>
-      <HStack space={4}>
-        <Button isLoading>Button</Button>
-        <Button colorScheme="warning" isLoading isLoadingText="Submitting">
-          Button
-        </Button>
-      </HStack>
       <Center>
         <Text>Color Schemes</Text>
       </Center>
-      <Button rounded={50} variant="solid" size="xs" colorScheme="green">
+      <Button
+        rounded={50}
+        variant="solid"
+        size="xs"
+        colorScheme={select(
+          'colorScheme',
+          [
+            'green',
+            'red',
+            'yellow',
+            'white',
+            'black',
+            'gray',
+            'success',
+            'danger',
+            'error',
+            'warning',
+            'light',
+            'dark',
+            'muted',
+            'secondary',
+            'default',
+          ],
+          'green'
+        )}
+      >
         Success/Green
-      </Button>
-      <Button variant="solid" size="xs" colorScheme="red">
-        Danger/Red
-      </Button>
-      <Button variant="solid" size="xs" colorScheme="yellow">
-        Warning/Yellow
-      </Button>
-      <Button variant="solid" size="xs" colorScheme="light">
-        Light/White
-      </Button>
-      <Button variant="solid" size="xs" colorScheme="dark">
-        Dark/Black
-      </Button>
-      <Button variant="solid" size="xs" colorScheme="muted">
-        Muted/Secondary/Gray
-      </Button>
-      <Button variant="solid" size="xs">
-        Default
       </Button>
       <Center>
         <Text>Button with icons</Text>
       </Center>
-      <Button
-        variant="solid"
-        leftIcon={
-          <Icon name={text('name', 'menu')} size={30} type="MaterialIcons" />
-        }
-        size="xs"
-        colorScheme="success"
-      >
-        Left Icon Button
-      </Button>
-      <Button
-        rightIcon={
-          <Icon name={text('name', 'menu')} size={30} type="MaterialIcons" />
-        }
-        variant="solid"
-        size="xs"
-        colorScheme="red"
-      >
-        Right Icon Button
-      </Button>
-      <Button
+      <HStack space={3}>
+        <Button
+          variant="solid"
+          leftIcon={
+            <Icon name={text('name', 'menu')} size={30} type="MaterialIcons" />
+          }
+          size="xs"
+          colorScheme="yellow"
+        >
+          Left Icon Button
+        </Button>
+        <Button
+          isDisabled
+          rightIcon={
+            <Icon name={text('name', 'menu')} size={30} type="MaterialIcons" />
+          }
+          variant="solid"
+          size="xs"
+          colorScheme="red"
+        >
+          Right Icon Button
+        </Button>
+      </HStack>
+      {/* <Button
         leftIcon={
           <Icon name={text('name', 'menu')} size={30} type="MaterialIcons" />
         }
@@ -438,7 +451,23 @@ storiesOf('Composites', module)
         colorScheme="yellow"
       >
         Left & Right Icon Button
-      </Button>
+      </Button> */}
+      <Center>
+        <Text>ButtonGroup with variants</Text>
+      </Center>
+      <Center>
+        <ButtonGroup
+          variant={select(
+            'ButtonGroup Variants',
+            ['solid', 'ghost', 'link', 'outline'],
+            'solid'
+          )}
+        >
+          <Button ariaLabel="button1 of ButtonGroup">Button 1</Button>
+          <Button ariaLabel="button2 of ButtonGroup">Button 2</Button>
+          <Button ariaLabel="button3 of ButtonGroup">Button 3</Button>
+        </ButtonGroup>
+      </Center>
     </Stack>
   ))
 
