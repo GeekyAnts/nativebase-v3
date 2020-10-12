@@ -6,7 +6,7 @@ export default function () {
     <Wrap spacing={20}>
       <Switch onColor="seagreen" offColor="red" switchTrackColor="#f8d7d9" />
       <Switch />
-      <Switch isEnabled switchTrackColor="#f8d7d9" />
+      <Switch switchTrackColor="#f8d7d9" />
       <Switch onColor="seagreen" offColor="blue" switchTrackColor="#f8d7d9" />
       <Box boxSize="100" bg="orange.4" />
       <Box boxSize="50" bg="black" />
