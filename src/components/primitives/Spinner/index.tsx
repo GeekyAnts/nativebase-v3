@@ -32,24 +32,15 @@ const Spinner = ({
   hideWhenStopped,
   ...props
 }: ISpinnerProps & {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'small' | 'large' | undefined;
+  size?: 'sm' | 'lg' | 'small' | 'large' | undefined;
 }) => {
   const theme = React.useContext(ThemeContext);
 
   switch (size) {
-    case 'xs':
-      size = 'small';
-      break;
     case 'sm':
       size = 'small';
       break;
-    case 'md':
-      size = 'large';
-      break;
     case 'lg':
-      size = 'large';
-      break;
-    case 'xl':
       size = 'large';
       break;
     default:

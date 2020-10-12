@@ -10,7 +10,7 @@ export default function () {
         <Text>(with Knob) playaround</Text>
       </Inline>
       <Spinner
-        size={select('size', ['xs', 'sm', 'md', 'lg', 'xl'], 'lg')}
+        size={select('size', ['sm', 'lg'], 'lg')}
         color={color('color', 'blue')}
       />
       <Heading mt={3}>Simple Example</Heading>
@@ -19,11 +19,8 @@ export default function () {
         <Heading mt={3}>Different Sizes </Heading>
         <Text>with color formats</Text>
       </Inline>
-      <Spinner m={2} size="xs" color="#00ff00" />
       <Spinner m={2} size="sm" color="danger" />
-      <Spinner m={2} size="md" color="pink" />
       <Spinner m={2} size="lg" color="warning" />
-      <Spinner m={2} size="xl" color="info" />
     </View>
   );
 }
