@@ -13,3 +13,4 @@ export { default as WebLayout } from './WebLayout';
 export { default as Wrap } from './Wrap';
 export { default as ZStack } from './ZStack';
 export { default as Button } from './Button';
+export { default as TextArea } from './TextArea';

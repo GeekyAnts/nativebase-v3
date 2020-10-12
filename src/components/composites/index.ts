@@ -17,7 +17,6 @@ import Link from './Link';
 import Progress from './Progress';
 import Stat, { StatHelpText, StatLabel, StatNumber } from './Stat';
 import Tag, { TagCloseButton } from './Tag';
-import TextArea from './TextArea';
 import Kbd from './KBD';
 
 import Code from './Code';
@@ -50,6 +49,5 @@ export {
   StatNumber,
   Tag,
   TagCloseButton,
-  TextArea,
   Variants,
 };
