@@ -1,4 +1,4 @@
-export * from "./components";
+export * from './components';
 
 // storiesOf("Composites", module)
 //   .addDecorator(withKnobs)
