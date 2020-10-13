@@ -2,7 +2,9 @@ import React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { withKnobs } from "@storybook/addon-knobs";
 import { View, theme, ThemeProvider } from "native-base";
-import Switch from "./example";
+import Basic from "./Basic";
+import Sizes from "./Sizes";
+import SwitchBgColor from "./SwitchBgColor";
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf("Switch", module)
@@ -20,4 +22,6 @@ storiesOf("Switch", module)
       </View>
     </ThemeProvider>
   ))
-  .add("Primary", () => <Switch />);
+  .add("Basic", () => <Basic />)
+  .add("Sizes", () => <Sizes />)
+  .add("Switch bgColor", () => <SwitchBgColor />);

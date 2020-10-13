@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
-import { StyleSheet, ViewProps, ViewStyle, Switch } from 'react-native';
-import styled from 'styled-components/native';
-import { isNil } from 'lodash';
-import { ThemeContext } from '../../../theme';
+import React, { useState, useContext } from "react";
+import { StyleSheet, ViewProps, ViewStyle, Switch } from "react-native";
+import styled from "styled-components/native";
+import { isNil } from "lodash";
+import { ThemeContext } from "../../../theme";
 import {
   BorderProps,
   ColorProps,
@@ -14,7 +14,7 @@ import {
   flexbox,
   layout,
   space,
-} from 'styled-system';
+} from "styled-system";
 
 import {
   customBorder,
@@ -29,7 +29,7 @@ import {
   customExtraProps,
   customShadowProps,
   customShadow,
-} from '../../../utils/customProps';
+} from "../../../utils/customProps";
 
 export type ISwitchProps = ViewProps &
   ColorProps &
@@ -44,13 +44,13 @@ export type ISwitchProps = ViewProps &
   customBackgroundProps &
   BorderProps & {
     style?: ViewStyle;
-    size?: 'lg' | 'md' | 'sm' | number;
+    size?: "lg" | "md" | "sm";
     onColor?: string;
     offColor?: string;
     isDisabled?: boolean;
     name?: string;
     onToggle?: any;
-    switchTrackColor?: string;
+    colorScheme?: string;
     iosBgColor?: string;
     isChecked?: boolean;
     defaultIsChecked?: boolean;
@@ -72,6 +72,7 @@ const StyledNBSwitch = styled(Switch)<ISwitchProps>(
   customExtra,
   customLayout
 );
+
 const NBSwitch = ({
   style,
   size,
@@ -88,25 +89,19 @@ const NBSwitch = ({
   ...props
 }: ISwitchProps) => {
   const theme = useContext(ThemeContext);
-  let switchSize: 'lg' | 'md' | 'sm' | number | undefined = 1;
+  let switchSize: number = 1;
   if (size) {
-    if (typeof size == 'string') {
-      switch (size) {
-        case 'sm':
-          switchSize = 0.7;
-          break;
-        case 'md':
-          switchSize = 1.2;
-          break;
-        case 'lg':
-          switchSize = 2.2;
-          break;
-        default:
-          switchSize = 1;
-          break;
-      }
-    } else if (typeof size == 'number') {
-      switchSize = size;
+    switch (size) {
+      case "sm":
+        switchSize = 0.5;
+        break;
+      case "lg":
+        switchSize = 1.5;
+        break;
+      case "md":
+      default:
+        switchSize = 1;
+        break;
     }
   }
   const [isActive, setIsActive] = useState(
@@ -114,14 +109,22 @@ const NBSwitch = ({
   );
   const checked = !isNil(isChecked) ? isChecked : isActive;
   let computedStyle: ViewStyle | any = style;
+  const marginFactor = 10;
+  const inValidPropFactors = {
+    borderWidth: 1,
+    borderRadius: 16,
+    borderColor: theme.colors.danger[2],
+  };
+
   computedStyle = StyleSheet.flatten([
+    {
+      transform: [{ scale: switchSize }],
+      margin: switchSize > 1 ? switchSize * marginFactor : undefined,
+    },
     style,
-    { transform: [{ scale: switchSize }] },
     isInvalid
       ? {
-          borderWidth: 1,
-          borderColor: theme.colors.danger[2],
-          borderRadius: 16,
+          ...inValidPropFactors,
         }
       : {},
   ]);
@@ -129,18 +132,18 @@ const NBSwitch = ({
   return (
     <StyledNBSwitch
       trackColor={
-        props.switchTrackColor
-          ? { false: theme.colors.dark[0], true: props.switchTrackColor }
+        props.colorScheme
+          ? { false: theme.colors.dark[0], true: props.colorScheme }
           : undefined
       }
       thumbColor={
         checked
           ? onColor
             ? onColor
-            : theme.colors.default[0]
+            : undefined
           : offColor
           ? offColor
-          : theme.colors.default[1]
+          : undefined
       }
       disabled={isDisabled}
       ios_backgroundColor={iosBgColor}
