@@ -1,0 +1,10 @@
+{
+    "singleQuote": false,
+    "jsxBracketSameLine": false,
+    "useTabs": false,
+    "eslintIntegration": false,
+    "tslintIntegration": true,
+    "parser": "typescript",
+    "requireConfig": false,
+    "stylelintIntegration": false
+}

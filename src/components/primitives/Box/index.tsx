@@ -1,6 +1,7 @@
-import React from 'react';
-import { View, ViewProps, ViewStyle } from 'react-native';
-import styled from 'styled-components/native';
+import React from "react";
+import { View, ViewProps, ViewStyle, StyleSheet } from "react-native";
+import styled from "styled-components/native";
+import { shadows } from "../../../styles";
 import {
   BorderProps,
   ColorProps,
@@ -12,7 +13,7 @@ import {
   flexbox,
   layout,
   space,
-} from 'styled-system';
+} from "styled-system";
 import {
   customBorder,
   customBorderProps,
@@ -26,7 +27,7 @@ import {
   customExtraProps,
   customShadowProps,
   customShadow,
-} from '../../../utils/customProps';
+} from "../../../utils/customProps";
 
 export type IBoxProps = ViewProps &
   ColorProps &
@@ -41,7 +42,8 @@ export type IBoxProps = ViewProps &
   customBackgroundProps &
   BorderProps & {
     style?: ViewStyle;
-    children?: JSX.Element | JSX.Element[];
+    children?: JSX.Element | JSX.Element[] | string;
+    shadow?: number | undefined;
   };
 
 const StyledBox = styled(View)<IBoxProps>(
@@ -57,8 +59,14 @@ const StyledBox = styled(View)<IBoxProps>(
   customExtra,
   customLayout
 );
-const Box = (props: IBoxProps) => {
-  return <StyledBox {...props} style={props.style} />;
+const Box = ({ shadow, ...props }: IBoxProps) => {
+  let computedStyle: any = props.style;
+  let shadowInd: number = shadow ? (shadow > 9 ? 9 : shadow) : 2;
+  computedStyle = StyleSheet.flatten([
+    props.style,
+    shadow ? shadows[shadowInd] : {},
+  ]);
+  return <StyledBox {...props} style={computedStyle} />;
 };
 
 export default Box;

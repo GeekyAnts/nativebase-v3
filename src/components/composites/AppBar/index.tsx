@@ -16,14 +16,14 @@ const defaultAppBarProps: IBoxProps = {
   height: 64,
   flexDirection: 'row',
   alignItems: 'center',
-  backgroundColor: 'blue.6',
+  backgroundColor: 'blue.4',
   px: 4,
 };
 
 const defaultTitleProps: TextProps = {
   color: 'white',
   fontSize: 3,
-  fontWeight: 2,
+  fontWeight: '600',
 };
 
 const AppBar = ({ actions, leading, title, ...props }: AppBarProps) => {

@@ -36,7 +36,7 @@ const inputDefaultProps: InputProps = {
   p: 4,
   borderRadius: 4,
   borderWidth: 1,
-  borderColor: 'gray.4',
+  borderColor: 'gray',
   fontSize: 2,
 };
 

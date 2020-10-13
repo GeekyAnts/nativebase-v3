@@ -45,6 +45,13 @@ export type IconProps = TypographyProps &
     type?: IconType;
     style?: TextStyle | {};
   };
+export type IconProps = TypographyProps &
+  // ColorProps &
+  SpaceProps & {
+    name: string;
+    type?: IconType;
+    style?: TextStyle | {};
+  };
 
 const Icon = ({ name, type, style, ...props }: IconProps) => {
   const theme: Theme = useContext(ThemeContext);

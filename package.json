@@ -144,8 +144,11 @@
     ]
   },
   "dependencies": {
+    "@types/lodash": "^4.14.162",
     "deepmerge": "^4.2.2",
     "hoist-non-react-statics": "^3.3.2",
+    "lodash": "^4.17.20",
+    "lodash.isnil": "^4.0.0",
     "react-native-material-ripple": "^0.9.1",
     "react-native-unimodules": "~0.10.1",
     "react-native-vector-icons": "^7.1.0",
