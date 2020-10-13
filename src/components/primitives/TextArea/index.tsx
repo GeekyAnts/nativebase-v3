@@ -1,5 +1,11 @@
-import React from 'react';
-import { StyleSheet, TextInput, TextStyle, TextInputProps } from 'react-native';
+import React, { useContext } from 'react';
+import {
+  StyleSheet,
+  TextInput,
+  TextStyle,
+  TextInputProps,
+  ViewStyle,
+} from 'react-native';
 import styled from 'styled-components/native';
 import {
   BorderProps,
@@ -13,6 +19,8 @@ import {
   layout,
   space,
   variant,
+  typography,
+  TypographyProps,
 } from 'styled-system';
 import {
   customBorder,
@@ -28,12 +36,14 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-import { theme } from '../../../theme';
+import { ThemeContext } from '../../../theme';
+type SizeType = 'xsm' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 export type ITextAreaProps = ColorProps &
   SpaceProps &
   LayoutProps &
   TextInputProps &
   FlexboxProps &
+  TypographyProps &
   customBorderProps &
   customExtraProps &
   customOutlineProps &
@@ -41,13 +51,21 @@ export type ITextAreaProps = ColorProps &
   customLayoutProps &
   customBackgroundProps &
   BorderProps & {
-    style?: TextStyle;
-    children?: string | undefined | JSX.Element[] | JSX.Element;
-    fontSize?: string | undefined;
+    style?: TextStyle & ViewStyle;
     totalLines?: number | undefined;
     isInvalid?: boolean;
-    textSize?: string | undefined;
+    isDisabled?: boolean;
+    textSize?: SizeType | undefined;
+    fontSize?: number | undefined;
   };
+
+const defaultProps: ITextAreaProps = {
+  rounded: '4',
+  p: 2,
+  px: 4,
+  borderWidth: 1,
+  multiline: true,
+};
 
 const StyledTextArea = styled(TextInput)<ITextAreaProps>(
   color,
@@ -55,6 +73,7 @@ const StyledTextArea = styled(TextInput)<ITextAreaProps>(
   layout,
   flexbox,
   border,
+  typography,
   customBorder,
   customBackground,
   customOutline,
@@ -64,40 +83,47 @@ const StyledTextArea = styled(TextInput)<ITextAreaProps>(
   variant({
     prop: 'textSize',
     variants: {
-      '2xl': { fontSize: theme.fontSizes[5] },
-      'xl': { fontSize: theme.fontSizes[4] },
-      'lg': { fontSize: theme.fontSizes[3] },
-      'md': { fontSize: theme.fontSizes[2] },
-      'sm': { fontSize: theme.fontSizes[1] },
-      'xsm': { fontSize: theme.fontSizes[0] },
+      '2xl': { fontSize: 5 },
+      'xl': { fontSize: 4 },
+      'lg': { fontSize: 3 },
+      'md': { fontSize: 2 },
+      'sm': { fontSize: 1 },
+      'xsm': { fontSize: 0 },
     },
   })
 );
 StyledTextArea.defaultProps = {
-  textSize: 'md',
+  textSize: 'sm',
 };
 const TextArea = ({
   style,
   totalLines,
   isInvalid,
+  isDisabled,
   ...props
 }: ITextAreaProps) => {
+  const theme = useContext(ThemeContext);
   let computedStyle: any = style;
   computedStyle = StyleSheet.flatten([
     style,
-    {
-      borderWidth: 1,
-      borderColor: 'gray',
-      width: '100%',
-    },
-    isInvalid ? { borderWidth: 1, borderColor: 'red' } : {},
-    props.fontSize ? { fontSize: props.fontSize } : {},
+    props.borderColor ? {} : { borderColor: theme.colors.gray[4] },
+    isDisabled ? { opacity: 0.5, backgroundColor: theme.colors.gray[1] } : {},
+    isInvalid ? { borderWidth: 1, borderColor: theme.colors.danger[2] } : {},
+    props.fontSize
+      ? {
+          fontSize:
+            props.fontSize > theme.fontSizes.length - 1 //if the fontSize passed is larger than theme fontSizes array's length then consider the passed value as fontSize
+              ? props.fontSize
+              : theme.fontSizes[props.fontSize],
+        }
+      : {},
   ]);
+
   return (
     <StyledTextArea
-      rounded="4"
       numberOfLines={totalLines ? totalLines : 2}
-      multiline={true}
+      editable={!isDisabled}
+      {...defaultProps}
       {...props}
       style={computedStyle}
     />

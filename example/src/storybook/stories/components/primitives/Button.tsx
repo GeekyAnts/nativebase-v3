@@ -29,7 +29,7 @@ export default function () {
           'solid'
         )}
         size="xs"
-        >
+      >
         Button Variants
       </Button>
       <Center>
@@ -38,10 +38,10 @@ export default function () {
           <Button size="xs" colorScheme="green">
             Button
           </Button>
-          <Button size="sm" colorScheme="green" >
+          <Button size="sm" colorScheme="green">
             Button
           </Button>
-          <Button size="md" colorScheme="green" >
+          <Button size="md" colorScheme="green">
             Button
           </Button>
           <Button size="lg" colorScheme="green">
@@ -52,9 +52,7 @@ export default function () {
       <Center>
         <Text>Loading button</Text>
         <HStack space={4} mt={4}>
-          <Button isLoading >
-            Button
-          </Button>
+          <Button isLoading>Button</Button>
           <Button colorScheme="warning" isLoading isLoadingText="Submitting">
             Button
           </Button>

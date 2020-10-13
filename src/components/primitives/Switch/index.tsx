@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { StyleSheet, ViewProps, ViewStyle, Switch } from 'react-native';
 import styled from 'styled-components/native';
-import {isNil} from "lodash";
+import { isNil } from 'lodash';
 import { ThemeContext } from '../../../theme';
 import {
   BorderProps,
@@ -50,13 +50,13 @@ export type ISwitchProps = ViewProps &
     isDisabled?: boolean;
     name?: string;
     onToggle?: any;
-    switchTrackColor?:  string;
+    switchTrackColor?: string;
     iosBgColor?: string;
     isChecked?: boolean;
     defaultIsChecked?: boolean;
     isInvalid?: boolean;
     ariaLabel?: string;
-    ariaLabelledBy? : string;
+    ariaLabelledBy?: string;
   };
 
 const StyledNBSwitch = styled(Switch)<ISwitchProps>(
@@ -84,7 +84,7 @@ const NBSwitch = ({
   isChecked,
   defaultIsChecked,
   ariaLabel,
-  ariaLabelledBy,
+  // ariaLabelledBy,
   ...props
 }: ISwitchProps) => {
   const theme = useContext(ThemeContext);
@@ -109,13 +109,21 @@ const NBSwitch = ({
       switchSize = size;
     }
   }
-  const [isActive, setIsActive] = useState(!isNil(defaultIsChecked) ?  defaultIsChecked : false);
+  const [isActive, setIsActive] = useState(
+    !isNil(defaultIsChecked) ? defaultIsChecked : false
+  );
   const checked = !isNil(isChecked) ? isChecked : isActive;
   let computedStyle: ViewStyle | any = style;
   computedStyle = StyleSheet.flatten([
     style,
     { transform: [{ scale: switchSize }] },
-    isInvalid ? { borderWidth: 1, borderColor: theme.colors.danger[2], borderRadius: 16} : {},
+    isInvalid
+      ? {
+          borderWidth: 1,
+          borderColor: theme.colors.danger[2],
+          borderRadius: 16,
+        }
+      : {},
   ]);
 
   return (
