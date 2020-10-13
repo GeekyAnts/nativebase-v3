@@ -4,6 +4,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import {
   Box,
+  Checkbox,
   Columns,
   Flex,
   HStack,
@@ -63,6 +64,7 @@ storiesOf('Primitives', module)
   ))
   .add('Text', () => <Text />)
   .add('Box', () => <Box />)
+  .add('Checkbox', () => <Checkbox />)
   .add('Columns', () => <Columns />)
   .add('Flex', () => <Flex />)
   .add('HStack', () => <HStack />)
