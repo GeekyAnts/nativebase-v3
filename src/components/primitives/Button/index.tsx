@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import {
   View,
   StyleSheet,
-  ViewProps,
-  ViewStyle,
   TouchableOpacity,
   TouchableOpacityProps,
   TouchableNativeFeedback,
@@ -12,116 +10,21 @@ import {
   Platform,
 } from 'react-native';
 import styled from 'styled-components/native';
-import {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  color,
-  flexbox,
-  layout,
-  space,
-  variant,
-} from 'styled-system';
+import { border, color, flexbox, layout, space, variant } from 'styled-system';
 import {
   customBorder,
-  customBorderProps,
   customBackground,
   customOutline,
-  customOutlineProps,
   customLayout,
-  customLayoutProps,
   customExtra,
-  customExtraProps,
-  customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
 import { ThemeContext } from '../../../theme';
 import { shadows } from '../../../styles';
-import { getAttachedChildren } from '../../../utils';
 import { Spinner, Box, IBoxProps, Flex } from '../../primitives';
-type SpaceType = 'xs' | 'sm' | 'md' | 'lg';
-export type IButtonProps = ViewProps &
-  ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  BorderProps & {
-    style?: ViewStyle;
-    children?: any;
-    highlight?: number | undefined | 0 | 1 | 0.5 | 0.25 | 0.75;
-    colorScheme?: string | undefined;
-    variant?: string | undefined;
-    isLoading?: any | undefined;
-    size?: SpaceType | string | undefined;
-    onClick?: any | undefined;
-    shadow?: number | undefined;
-    leftIcon?: JSX.Element | JSX.Element[] | undefined;
-    rightIcon?: JSX.Element | JSX.Element[] | undefined;
-    isLoadingText?: string | undefined;
-    spinner?: JSX.Element | undefined;
-    isDisabled?: boolean | any;
-    ariaLabel?: string;
-  };
 
-let successStyle = {
-  backgroundColor: 'success.2',
-  borderColor: 'success.2',
-  color: 'success.1',
-};
-let dangerStyle = {
-  backgroundColor: 'danger.2',
-  borderColor: 'danger.2',
-  color: 'danger.1',
-};
-let warningStyle = {
-  backgroundColor: 'warning.2',
-  borderColor: 'warning.2',
-  color: 'warning.1',
-};
-let darkStyle = {
-  backgroundColor: 'dark.2',
-  borderColor: 'dark.2',
-  color: 'dark.1',
-};
-let lightStyle = {
-  backgroundColor: 'light.2',
-  borderColor: 'light.2',
-  color: 'light.1',
-};
-let mutedStyle = {
-  backgroundColor: 'muted.2',
-  borderColor: 'muted.2',
-  color: 'muted.1',
-};
-let defaultStyle = {
-  backgroundColor: 'default.2',
-  borderColor: 'default.2',
-  color: 'default.1',
-};
-
-let outlineStyle = {
-  backgroundColor: 'transparent',
-  borderWidth: '1px',
-};
-let ghostStyle = {
-  backgroundColor: 'transparent',
-  borderWidth: '0px',
-};
-let linkStyle = {
-  backgroundColor: 'transparent',
-  borderWidth: '0px',
-};
-let solidStyle = {
-  color: 'white',
-};
+import * as StyleVariant from './styleVariants';
+import type { IButtonProps } from './IButtonProps';
 
 const StyledView = styled(View)<
   IButtonProps & {
@@ -143,28 +46,28 @@ const StyledView = styled(View)<
   variant({
     prop: 'colorScheme',
     variants: {
-      success: successStyle,
-      green: successStyle,
-      danger: dangerStyle,
-      red: dangerStyle,
-      warning: warningStyle,
-      yellow: warningStyle,
-      light: lightStyle,
-      white: lightStyle,
-      dark: darkStyle,
-      black: darkStyle,
-      muted: mutedStyle,
-      secondary: mutedStyle,
-      grey: mutedStyle,
-      default: defaultStyle,
+      success: StyleVariant.successStyle,
+      green: StyleVariant.successStyle,
+      danger: StyleVariant.dangerStyle,
+      red: StyleVariant.dangerStyle,
+      warning: StyleVariant.warningStyle,
+      yellow: StyleVariant.warningStyle,
+      light: StyleVariant.lightStyle,
+      white: StyleVariant.lightStyle,
+      dark: StyleVariant.darkStyle,
+      black: StyleVariant.darkStyle,
+      muted: StyleVariant.mutedStyle,
+      secondary: StyleVariant.mutedStyle,
+      grey: StyleVariant.mutedStyle,
+      default: StyleVariant.defaultStyle,
     },
   }),
   variant({
     variants: {
-      outline: outlineStyle,
-      ghost: ghostStyle,
-      solid: solidStyle,
-      link: linkStyle,
+      outline: StyleVariant.outlineStyle,
+      ghost: StyleVariant.ghostStyle,
+      solid: StyleVariant.solidStyle,
+      link: StyleVariant.linkStyle,
     },
   })
 );
@@ -397,34 +300,6 @@ const Button = ({
   }
 };
 
-type ButtonGroupProps = {
-  children: Element | Element[];
-  variant?: string | undefined;
-  size?: SpaceType | string | undefined;
-  spacing?: number;
-};
-const StyledButtonGroup = styled.View<ButtonGroupProps>`
-  flex-direction: row;
-  flex-wrap: wrap;
-  ${color}
-  ${space}
-  ${layout}
-  ${flexbox}
-  ${border}
-`;
-
-const supplyPropsToChildren = (children: any, props: any) => {
-  return children.map((child: JSX.Element) => {
-    return React.cloneElement(child, props, child.props.children);
-  });
-};
-
-export const ButtonGroup = ({ children, ...props }: ButtonGroupProps) => {
-  return (
-    <StyledButtonGroup>
-      {supplyPropsToChildren(getAttachedChildren(children), props)}
-    </StyledButtonGroup>
-  );
-};
-
+export { IButtonProps } from './IButtonProps';
+export { ButtonGroup, ButtonGroupProps } from './ButtonGroup';
 export default Button;

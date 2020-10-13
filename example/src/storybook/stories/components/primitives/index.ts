@@ -2,6 +2,7 @@ export * from './Box';
 export * from './Button';
 export * from './Columns';
 export * from './Flex';
+export * from './Heading';
 export * from './HStack';
 export * from './Icon';
 export * from './Image';
