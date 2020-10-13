@@ -13,4 +13,3 @@ export { default as Kbd } from './Kbd';
 export { default as Progress } from './Progress';
 export { default as Stat } from './Stat';
 export { default as Tag } from './Tag';
-export { default as TextArea } from './TextArea';

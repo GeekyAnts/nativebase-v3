@@ -18,6 +18,7 @@ import Heading, { IHeadingProps } from './Heading';
 import Flex, { IFlexProps } from './Flex';
 import Wrap, { IWrapProps } from './Wrap';
 import NBSwitch, { ISwitchProps } from './Switch';
+import TextArea from './TextArea';
 
 export {
   View,
@@ -52,4 +53,5 @@ export {
   ISwitchProps,
   Wrap,
   IWrapProps,
+  TextArea,
 };
