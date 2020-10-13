@@ -1,127 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import {
   View,
   StyleSheet,
-  ViewProps,
-  ViewStyle,
   TouchableOpacity,
   TouchableOpacityProps,
   TouchableNativeFeedback,
   TouchableNativeFeedbackProps,
   Text,
   Platform,
-} from 'react-native';
-import styled from 'styled-components/native';
-import {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  color,
-  flexbox,
-  layout,
-  space,
-  variant,
-} from 'styled-system';
+} from "react-native";
+import styled from "styled-components/native";
+import { border, color, flexbox, layout, space, variant } from "styled-system";
 import {
   customBorder,
-  customBorderProps,
   customBackground,
   customOutline,
-  customOutlineProps,
   customLayout,
-  customLayoutProps,
   customExtra,
-  customExtraProps,
-  customShadowProps,
   customShadow,
-} from '../../../utils/customProps';
-import { ThemeContext } from '../../../theme';
-import { shadows } from '../../../styles';
-import { getAttachedChildren } from '../../../utils';
-import { Spinner, Box, IBoxProps, Flex } from '../../primitives';
-type SpaceType = 'xs' | 'sm' | 'md' | 'lg';
-export type IButtonProps = ViewProps &
-  ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  BorderProps & {
-    style?: ViewStyle;
-    children?: any;
-    highlight?: number | undefined | 0 | 1 | 0.5 | 0.25 | 0.75;
-    colorScheme?: string | undefined;
-    variant?: string | undefined;
-    isLoading?: any | undefined;
-    size?: SpaceType | string | undefined;
-    onClick?: any | undefined;
-    shadow?: number | undefined;
-    leftIcon?: JSX.Element | JSX.Element[] | undefined;
-    rightIcon?: JSX.Element | JSX.Element[] | undefined;
-    isLoadingText?: string | undefined;
-    spinner?: JSX.Element | undefined;
-    isDisabled?: boolean | any;
-    ariaLabel?: string;
-  };
+} from "../../../utils/customProps";
+import { ThemeContext } from "../../../theme";
+import { shadows } from "../../../styles";
+import { Spinner, Box, IBoxProps, Flex } from "../../primitives";
 
-let successStyle = {
-  backgroundColor: 'success.2',
-  borderColor: 'success.2',
-  color: 'success.1',
-};
-let dangerStyle = {
-  backgroundColor: 'danger.2',
-  borderColor: 'danger.2',
-  color: 'danger.1',
-};
-let warningStyle = {
-  backgroundColor: 'warning.2',
-  borderColor: 'warning.2',
-  color: 'warning.1',
-};
-let darkStyle = {
-  backgroundColor: 'dark.2',
-  borderColor: 'dark.2',
-  color: 'dark.1',
-};
-let lightStyle = {
-  backgroundColor: 'light.2',
-  borderColor: 'light.2',
-  color: 'light.1',
-};
-let mutedStyle = {
-  backgroundColor: 'muted.2',
-  borderColor: 'muted.2',
-  color: 'muted.1',
-};
-let defaultStyle = {
-  backgroundColor: 'default.2',
-  borderColor: 'default.2',
-  color: 'default.1',
-};
-
-let outlineStyle = {
-  backgroundColor: 'transparent',
-  borderWidth: '1px',
-};
-let ghostStyle = {
-  backgroundColor: 'transparent',
-  borderWidth: '0px',
-};
-let linkStyle = {
-  backgroundColor: 'transparent',
-  borderWidth: '0px',
-};
-let solidStyle = {
-  color: 'white',
-};
+import * as StyleVariant from "./styleVariants";
+import type { IButtonProps } from "./IButtonProps";
 
 const StyledView = styled(View)<
   IButtonProps & {
@@ -141,36 +44,36 @@ const StyledView = styled(View)<
   customExtra,
   customLayout,
   variant({
-    prop: 'colorScheme',
+    prop: "colorScheme",
     variants: {
-      success: successStyle,
-      green: successStyle,
-      danger: dangerStyle,
-      red: dangerStyle,
-      warning: warningStyle,
-      yellow: warningStyle,
-      light: lightStyle,
-      white: lightStyle,
-      dark: darkStyle,
-      black: darkStyle,
-      muted: mutedStyle,
-      secondary: mutedStyle,
-      grey: mutedStyle,
-      default: defaultStyle,
+      success: StyleVariant.successStyle,
+      green: StyleVariant.successStyle,
+      danger: StyleVariant.dangerStyle,
+      red: StyleVariant.dangerStyle,
+      warning: StyleVariant.warningStyle,
+      yellow: StyleVariant.warningStyle,
+      light: StyleVariant.lightStyle,
+      white: StyleVariant.lightStyle,
+      dark: StyleVariant.darkStyle,
+      black: StyleVariant.darkStyle,
+      muted: StyleVariant.mutedStyle,
+      secondary: StyleVariant.mutedStyle,
+      grey: StyleVariant.mutedStyle,
+      default: StyleVariant.defaultStyle,
     },
   }),
   variant({
     variants: {
-      outline: outlineStyle,
-      ghost: ghostStyle,
-      solid: solidStyle,
-      link: linkStyle,
+      outline: StyleVariant.outlineStyle,
+      ghost: StyleVariant.ghostStyle,
+      solid: StyleVariant.solidStyle,
+      link: StyleVariant.linkStyle,
     },
   })
 );
 StyledView.defaultProps = {
-  colorScheme: 'default',
-  variant: 'solid',
+  colorScheme: "default",
+  variant: "solid",
 };
 const StyledAndroidButton = styled(TouchableNativeFeedback)<
   IButtonProps & TouchableNativeFeedbackProps
@@ -232,16 +135,16 @@ const Button = ({
   let spaceValue = 0;
   if (size) {
     switch (size) {
-      case 'xs':
+      case "xs":
         spaceValue = 0;
         break;
-      case 'sm':
+      case "sm":
         spaceValue = 2;
         break;
-      case 'md':
+      case "md":
         spaceValue = 3;
         break;
-      case 'lg':
+      case "lg":
         spaceValue = 4;
         break;
       default:
@@ -259,29 +162,29 @@ const Button = ({
 
   if (colorScheme) {
     switch (colorScheme) {
-      case 'success':
-      case 'green':
+      case "success":
+      case "green":
         lightBgColor = [theme.colors.success[0], theme.colors.success[1]];
         break;
-      case 'danger':
-      case 'red':
+      case "danger":
+      case "red":
         lightBgColor = [theme.colors.danger[0], theme.colors.danger[1]];
         break;
-      case 'warning':
-      case 'yellow':
+      case "warning":
+      case "yellow":
         lightBgColor = [theme.colors.warning[0], theme.colors.warning[1]];
         break;
-      case 'light':
-      case 'white':
+      case "light":
+      case "white":
         lightBgColor = [theme.colors.light[0], theme.colors.light[1]];
         break;
-      case 'dark':
-      case 'black':
+      case "dark":
+      case "black":
         lightBgColor = [theme.colors.dark[0], theme.colors.dark[1]];
         break;
-      case 'muted':
-      case 'secondary':
-      case 'grey':
+      case "muted":
+      case "secondary":
+      case "grey":
         lightBgColor = [theme.colors.muted[0], theme.colors.muted[1]];
         break;
       default:
@@ -289,12 +192,12 @@ const Button = ({
     }
   }
 
-  let textColor = 'white';
+  let textColor = "white";
   if (
-    variant == 'ghost' ||
-    variant == 'outline' ||
-    variant == 'link' ||
-    colorScheme == 'light'
+    variant == "ghost" ||
+    variant == "outline" ||
+    variant == "link" ||
+    colorScheme == "light"
   ) {
     textColor = lightBgColor[1];
   }
@@ -304,16 +207,16 @@ const Button = ({
   computedStyle = StyleSheet.flatten([
     style,
     {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'center',
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
       opacity: isLoading ? 0.5 : 1,
-      alignItems: 'center',
+      alignItems: "center",
       borderRadius: rounded ? rounded : 3,
       borderColor: textColor,
     },
-    Platform.OS === 'ios' &&
-    (variant == 'ghost' || variant == 'outline' || variant == 'link')
+    Platform.OS === "ios" &&
+    (variant == "ghost" || variant == "outline" || variant == "link")
       ? { backgroundColor: lightBgColor[0] }
       : {},
   ]);
@@ -324,19 +227,19 @@ const Button = ({
     shadow ? shadows[shadowInd] : {},
     {
       borderRadius: rounded ? rounded : 3,
-      overflow: 'hidden',
+      overflow: "hidden",
     },
   ]);
 
   const innerButton = (
     <StyledView
       p={p ? p : 3}
-      pl={pl ? pl : ''}
-      pr={pr ? pr : ''}
-      pb={pb ? pb : ''}
-      pt={pt ? pt : ''}
+      pl={pl ? pl : ""}
+      pr={pr ? pr : ""}
+      pb={pb ? pb : ""}
+      pt={pt ? pt : ""}
       px={px ? px : 5}
-      py={py ? py : ''}
+      py={py ? py : ""}
       style={computedStyle}
       colorScheme={colorScheme}
       variant={variant}
@@ -346,14 +249,14 @@ const Button = ({
       {isLoading ? (
         <Flex>
           {spinner ? spinner : <Spinner color={lightBgColor[1]} />}
-          <Text>{isLoadingText ? ' ' + isLoadingText : ''}</Text>
+          <Text>{isLoadingText ? " " + isLoadingText : ""}</Text>
         </Flex>
       ) : (
         <Text
           style={{
             color: textColor,
             fontSize: theme.fontSizes[spaceValue],
-            textDecorationLine: variant == 'link' ? 'underline' : 'none',
+            textDecorationLine: variant == "link" ? "underline" : "none",
           }}
         >
           {children}
@@ -363,7 +266,7 @@ const Button = ({
     </StyledView>
   );
 
-  if (Platform.OS === 'android' && Platform.Version >= 21) {
+  if (Platform.OS === "android" && Platform.Version >= 21) {
     return (
       <Box style={computedButtonStyle} {...props}>
         <StyledAndroidButton
@@ -397,34 +300,6 @@ const Button = ({
   }
 };
 
-type ButtonGroupProps = {
-  children: Element | Element[];
-  variant?: string | undefined;
-  size?: SpaceType | string | undefined;
-  spacing?: number;
-};
-const StyledButtonGroup = styled.View<ButtonGroupProps>`
-  flex-direction: row;
-  flex-wrap: wrap;
-  ${color}
-  ${space}
-  ${layout}
-  ${flexbox}
-  ${border}
-`;
-
-const supplyPropsToChildren = (children: any, props: any) => {
-  return children.map((child: JSX.Element) => {
-    return React.cloneElement(child, props, child.props.children);
-  });
-};
-
-export const ButtonGroup = ({ children, ...props }: ButtonGroupProps) => {
-  return (
-    <StyledButtonGroup>
-      {supplyPropsToChildren(getAttachedChildren(children), props)}
-    </StyledButtonGroup>
-  );
-};
-
+export { IButtonProps } from "./IButtonProps";
+export { ButtonGroup, ButtonGroupProps } from "./ButtonGroup";
 export default Button;
