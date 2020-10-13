@@ -84,7 +84,7 @@ const NBSwitch = ({
   isChecked,
   defaultIsChecked,
   ariaLabel,
-  ariaLabelledBy,
+  // ariaLabelledBy,
   ...props
 }: ISwitchProps) => {
   const theme = useContext(ThemeContext);

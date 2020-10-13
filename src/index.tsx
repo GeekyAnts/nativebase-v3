@@ -31,7 +31,6 @@ import {
   StatNumber,
   Tag,
   TagCloseButton,
-  TextArea,
   Code,
   Center,
 } from './components/composites';
@@ -70,6 +69,7 @@ import {
   ISwitchProps,
   IFlexProps,
   IWrapProps,
+  TextArea,
   Wrap,
 } from './components/primitives';
 
