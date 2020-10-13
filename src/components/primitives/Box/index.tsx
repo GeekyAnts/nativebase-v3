@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, ViewProps, ViewStyle, StyleSheet } from 'react-native';
-import styled from 'styled-components/native';
-import { shadows } from '../../../styles';
+import React from "react";
+import { View, ViewProps, ViewStyle, StyleSheet } from "react-native";
+import styled from "styled-components/native";
+import { shadows } from "../../../styles";
 import {
   BorderProps,
   ColorProps,
@@ -13,7 +13,7 @@ import {
   flexbox,
   layout,
   space,
-} from 'styled-system';
+} from "styled-system";
 import {
   customBorder,
   customBorderProps,
@@ -27,7 +27,7 @@ import {
   customExtraProps,
   customShadowProps,
   customShadow,
-} from '../../../utils/customProps';
+} from "../../../utils/customProps";
 
 export type IBoxProps = ViewProps &
   ColorProps &

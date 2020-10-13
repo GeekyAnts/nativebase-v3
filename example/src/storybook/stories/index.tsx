@@ -4,6 +4,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import {
   Box,
+  Button,
   Columns,
   Flex,
   HStack,
@@ -13,6 +14,8 @@ import {
   Spinner,
   Stack,
   Switch,
+  TextArea,
+  Text,
   VStack,
   Wrap,
   ZStack,
@@ -24,8 +27,7 @@ import {
   Badge,
   Breadcrumb,
   WebLayout,
-  Button,
-  Center,
+     Center,
   CloseButton,
   Code,
   Divider,
@@ -34,11 +36,9 @@ import {
   Progress,
   Stat,
   Tag,
-  TextArea,
-  Text,
 } from './components';
 
-type GetStory = () => JSX.Element | JSX.Element[] | any;
+type GetStory = () =>  JSX.Element | JSX.Element[] | any;
 const customTheme = {
   ...theme,
   colors: {
@@ -46,23 +46,39 @@ const customTheme = {
     primary: '#7c83db',
   },
 };
+// NOTE: Please maintain the order of components alphabetically. It helps in locating them.
+// storiesOf('Layout', module)
+//   .addDecorator(withKnobs)
+//   .addDecorator((getStory: GetStory) => (
+//     <ThemeProvider theme={customTheme}>
+//       <View
+//         flexGrow={1}
+//         bg="white"
+//         alignItems="center"
+//         p={3}
+//         justifyContent="center"
+//       >
+//         {getStory()}
+//       </View>
+//     </ThemeProvider>
+//   ));
 storiesOf('Primitives', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={customTheme}>
       <View
-        flexGrow={1}
-        bg="white"
-        alignItems="center"
-        p={3}
-        justifyContent="center"
+       style={{
+         flex: 1,
+          alignItems: "center",
+          justifyContent: "center"
+       }}
       >
         {getStory()}
       </View>
     </ThemeProvider>
   ))
-  .add('Text', () => <Text />)
   .add('Box', () => <Box />)
+  .add('Button', () => <Button />)
   .add('Columns', () => <Columns />)
   .add('Flex', () => <Flex />)
   .add('HStack', () => <HStack />)
@@ -72,7 +88,7 @@ storiesOf('Primitives', module)
   .add('Spinner', () => <Spinner />)
   .add('Stack', () => <Stack />)
   .add('Switch', () => <Switch />)
-  .add('Button', () => <Button />)
+  .add('Text', () => <Text />)
   .add('VStack', () => <VStack />)
   .add('Web Layout', () => <WebLayout />)
   .add('Wrap', () => <Wrap />)
