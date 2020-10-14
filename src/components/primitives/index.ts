@@ -7,6 +7,12 @@ import InputBox, {
   InputRightAddon,
 } from './InputBox';
 import View from './View';
+import Checkbox, {
+  ICheckboxProps,
+  CheckboxGroup,
+  ICheckboxGroupProps,
+} from './Checkbox';
+import Radio from './Radio';
 import Icon, { IconProps } from './Icon';
 import Columns from './Columns';
 import Column from './Column';
@@ -28,6 +34,11 @@ export {
   View,
   Text,
   TextProps,
+  Checkbox,
+  ICheckboxProps,
+  CheckboxGroup,
+  ICheckboxGroupProps,
+  Radio,
   Columns,
   Column,
   Box,
