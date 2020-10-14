@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
-import { StyleSheet, ViewProps, ViewStyle, Switch } from "react-native";
-import styled from "styled-components/native";
-import { isNil } from "lodash";
-import { ThemeContext } from "../../../theme";
+import React, { useState, useContext } from 'react';
+import { StyleSheet, ViewProps, ViewStyle, Switch } from 'react-native';
+import styled from 'styled-components/native';
+import { isNil } from 'lodash';
+import { ThemeContext } from '../../../theme';
 import {
   BorderProps,
   ColorProps,
@@ -14,7 +14,7 @@ import {
   flexbox,
   layout,
   space,
-} from "styled-system";
+} from 'styled-system';
 
 import {
   customBorder,
@@ -29,7 +29,7 @@ import {
   customExtraProps,
   customShadowProps,
   customShadow,
-} from "../../../utils/customProps";
+} from '../../../utils/customProps';
 
 export type ISwitchProps = ViewProps &
   ColorProps &
@@ -44,7 +44,7 @@ export type ISwitchProps = ViewProps &
   customBackgroundProps &
   BorderProps & {
     style?: ViewStyle;
-    size?: "lg" | "md" | "sm";
+    size?: 'lg' | 'md' | 'sm';
     onColor?: string;
     offColor?: string;
     isDisabled?: boolean;
@@ -92,13 +92,13 @@ const NBSwitch = ({
   let switchSize: number = 1;
   if (size) {
     switch (size) {
-      case "sm":
+      case 'sm':
         switchSize = 0.5;
         break;
-      case "lg":
+      case 'lg':
         switchSize = 1.5;
         break;
-      case "md":
+      case 'md':
       default:
         switchSize = 1;
         break;

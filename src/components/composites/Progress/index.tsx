@@ -188,7 +188,7 @@ const Progress = ({ value, size, ...props }: IProgressProps) => {
         w={value + '%'}
         height={customSize === '' ? theme.space[spaceValue] : customSize}
         bg="red.0"
-      ></Box>
+      />
     </StyledProgress>
   );
 };

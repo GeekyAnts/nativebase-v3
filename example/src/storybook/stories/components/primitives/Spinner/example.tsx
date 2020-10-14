@@ -1,6 +1,6 @@
-import React from "react";
-import { Heading, Spinner, View, Text, Inline } from "native-base";
-import { color, select } from "@storybook/addon-knobs";
+import React from 'react';
+import { Heading, Spinner, View, Text, Inline } from 'native-base';
+import { color, select } from '@storybook/addon-knobs';
 
 export default function () {
   return (
@@ -10,8 +10,8 @@ export default function () {
         <Text>(with Knob) playaround</Text>
       </Inline>
       <Spinner
-        size={select("size", ["sm", "lg"], "lg")}
-        color={color("color", "blue")}
+        size={select('size', ['sm', 'lg'], 'lg')}
+        color={color('color', 'blue')}
       />
       <Heading mt={3}>Simple Example</Heading>
       <Spinner />
