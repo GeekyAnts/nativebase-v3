@@ -5,7 +5,6 @@ import { View, theme, ThemeProvider } from 'native-base';
 
 import {
   DefaultInput,
-  InputBox
   SizeInput,
   VariantInput,
   InputAddons,
