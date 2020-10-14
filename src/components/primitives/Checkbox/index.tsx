@@ -9,9 +9,6 @@ export { default as CheckboxGroup, ICheckboxGroupProps } from './CheckboxGroup';
 
 export type ICheckboxProps = SpaceProps &
   TypographyProps & {
-    style?: any | undefined;
-    checboxGroupChild?: boolean;
-    // Chakra UI Porps
     id?: string;
     name?: string;
     value?: string | number;
@@ -19,7 +16,7 @@ export type ICheckboxProps = SpaceProps &
     defaultIsChecked?: boolean;
     isChecked?: boolean;
     isIndeterminate?: boolean;
-    isFullWidth?: boolean;
+    // isFullWidth?: boolean;
     isDisabled?: boolean;
     isInvalid?: boolean;
     size?: 'sm' | 'md' | 'lg';
@@ -30,10 +27,12 @@ export type ICheckboxProps = SpaceProps &
       currentState?: boolean,
       value?: string | number | undefined
     ) => void;
-    onBlur?: (event: any) => void;
-    onFocus?: (event: any) => void;
+    // onBlur?: (event: any) => void;
+    // onFocus?: (event: any) => void;
     ariaLabel?: string;
-    ariaLabelledby?: string;
+    // ariaLabelledby?: string;
+    // Custom Props
+    style?: any | undefined;
   };
 
 const CheckBox = ({
@@ -49,8 +48,6 @@ const CheckBox = ({
   icon,
   ...props
 }: ICheckboxProps) => {
-  // console.log('PROPS - ', props);
-
   const theme = React.useContext(ThemeContext);
   const colorScheme = props.colorScheme || 'default';
   const size = props.size || 'md';

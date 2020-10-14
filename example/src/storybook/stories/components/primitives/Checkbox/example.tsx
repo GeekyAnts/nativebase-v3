@@ -76,7 +76,6 @@ export default function () {
         <CheckboxGroup
           spacing={2}
           colorScheme="green"
-          // value={['naruto', 'sasuke']}
           defaultValue={['naruto', 'kakashi']}
           onChange={(values) => {
             console.log('values from example - ', values);
@@ -90,6 +89,9 @@ export default function () {
           </Checkbox>
           <Checkbox value="kakashi">
             <Text>Kakashi</Text>
+          </Checkbox>
+          <Checkbox isIndeterminate value="kabuto">
+            <Text>Kabuto</Text>
           </Checkbox>
         </CheckboxGroup>
       </View>
