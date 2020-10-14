@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import {
   StyleSheet,
   TextInput,
@@ -35,8 +35,9 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-import { theme } from '../../../index';
-import { Box } from '../../primitives';
+import { getAttachedChildren } from '../../../utils';
+import { ThemeContext } from '../../../index';
+import { Box, IBoxProps } from '../../primitives';
 export type IInputBoxProps = ColorProps &
   TextInputProps &
   SpaceProps &
@@ -60,28 +61,45 @@ export type IInputBoxProps = ColorProps &
     errorMessage?: string | undefined;
     successMessage?: string | undefined;
     inputSize?: string | undefined;
+    isRequired?: boolean;
+    isReadOnly?: boolean;
+    isFullWidth?: boolean;
+    focusBorderColor?: string;
+    errorBorderColor?: string;
+    errorMessageColor?: string;
+    ariaLabel?: string;
+    InputLeftElement?: JSX.Element | JSX.Element[];
+    InputRightElement?: JSX.Element | JSX.Element[];
+    type?: 'text' | 'password' | string;
   };
 const roundedStyle = {
   borderRadius: '50',
   borderWidth: 1,
-  borderColor: 'black',
+  borderColor: 'gray.4',
 };
 const defaultStyle = {
   borderWidth: 1,
-  borderColor: 'black',
+  borderColor: 'gray.4',
 };
 const successStyle = {
-  borderColor: theme.colors.success[2],
+  borderColor: 'success.2',
 };
 const dangerStyle = {
-  borderColor: theme.colors.danger[2],
+  borderColor: 'danger.2',
+};
+const filledStyle = {
+  backgroundColor: 'gray.2',
+};
+const unstyledStyle = {
+  borderWidth: 0,
 };
 const underlinedStyle = {
   borderRadius: 0,
   borderWidth: 0,
-  borderColor: 'black',
+  borderColor: 'gray.4',
   borderBottomWidth: 1,
 };
+
 const StyledBox = styled(View)<IInputBoxProps>(
   color,
   space,
@@ -97,18 +115,21 @@ const StyledBox = styled(View)<IInputBoxProps>(
   variant({
     prop: 'inputSize',
     variants: {
-      '2xl': { fontSize: theme.fontSizes[5] },
-      'xl': { fontSize: theme.fontSizes[4] },
-      'lg': { fontSize: theme.fontSizes[3] },
-      'md': { fontSize: theme.fontSizes[2] },
-      'sm': { fontSize: theme.fontSizes[1] },
-      'xsm': { fontSize: theme.fontSizes[0] },
+      '2xl': { fontSize: 5 },
+      'xl': { fontSize: 4 },
+      'lg': { fontSize: 3 },
+      'md': { fontSize: 2 },
+      'sm': { fontSize: 1 },
+      'xsm': { fontSize: 0 },
     },
   }),
   variant({
     variants: {
+      outline: defaultStyle,
       underlined: underlinedStyle,
       rounded: roundedStyle,
+      filled: filledStyle,
+      unstyled: unstyledStyle,
       default: defaultStyle,
     },
   }),
@@ -135,12 +156,12 @@ const StyledInputBox = styled(TextInput)<IInputBoxProps>(
   variant({
     prop: 'inputSize',
     variants: {
-      '2xl': { fontSize: theme.fontSizes[5] },
-      'xl': { fontSize: theme.fontSizes[4] },
-      'lg': { fontSize: theme.fontSizes[3] },
-      'md': { fontSize: theme.fontSizes[2] },
-      'sm': { fontSize: theme.fontSizes[1] },
-      'xsm': { fontSize: theme.fontSizes[0] },
+      '2xl': { fontSize: 5 },
+      'xl': { fontSize: 4 },
+      'lg': { fontSize: 3 },
+      'md': { fontSize: 2 },
+      'sm': { fontSize: 1 },
+      'xsm': { fontSize: 0 },
     },
   })
 );
@@ -162,45 +183,103 @@ const InputBox = (
     inputSize,
     errorMessage,
     successMessage,
+    // isRequired,
+    isReadOnly,
+    isFullWidth,
+    onFocus,
+    onBlur,
+    focusBorderColor,
+    errorBorderColor,
+    errorMessageColor,
+    ariaLabel,
+    InputLeftElement,
+    InputRightElement,
+    type,
     ...props
   }: IInputBoxProps,
   ref: any
 ) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const theme = React.useContext(ThemeContext);
+  const handleFocus = (focusState: boolean, callback: any) => {
+    setIsFocused(focusState);
+    console.log(isFocused);
+    callback();
+  };
+
+  const focusStyle = {
+    borderWidth: 1,
+    borderColor: focusBorderColor ? focusBorderColor : theme.colors.default[0],
+  };
+
+  const isInvalidStyle = {
+    borderColor: errorBorderColor ? errorBorderColor : theme.colors.danger[2],
+  };
+
+  const isDisabledStyle = {
+    backgroundColor: theme.colors.gray[1],
+    borderColor: theme.colors.gray[3],
+  };
+
   let computedStyle: any = style;
   computedStyle = StyleSheet.flatten([
     style,
-    isDisabled ? { backgroundColor: '#f6f6f6', borderColor: '#c0c4c7' } : {},
-    isInvalid ? { borderWidth: 1, borderColor: 'red' } : {},
+    isFullWidth ? { width: '100%' } : {},
+    isDisabled ? isDisabledStyle : {},
+    props.colorScheme == 'error' || isInvalid ? isInvalidStyle : {},
     { display: 'flex', flexDirection: 'row', width: '100%' },
     props.borderColor ? { borderColor: props.borderColor } : {},
+    isFocused && (!isInvalid || props.colorScheme) ? focusStyle : {},
   ]);
   return (
     <Box>
       <StyledBox p={1} {...props} style={computedStyle}>
+        <Box>{InputLeftElement}</Box>
         <StyledInputBox
+          secureTextEntry={type === 'password' ? true : false}
+          accessible={true}
+          accessibilityLabel={ariaLabel}
+          onKeyPress={(e: any) => {
+            e.persist();
+            console.log(e.target);
+          }}
+          onFocus={() => {
+            handleFocus(true, onFocus ? onFocus : () => {});
+          }}
+          onBlur={() => {
+            handleFocus(false, onBlur ? onBlur : () => {});
+          }}
           style={props.fontSize ? { fontSize: props.fontSize } : {}}
           inputSize={inputSize}
           placeholder={placeholder}
           p={1}
-          editable={isDisabled ? false : true}
+          editable={isDisabled || isReadOnly ? false : true}
           {...props}
           ref={ref}
         />
-        {props.colorScheme ? (
-          props.colorScheme === 'error' ? (
-            <Text>Error Icon</Text>
+        {props.colorScheme || isInvalid ? (
+          props.colorScheme == 'error' ? (
+            <Box bg="black" width="20" height="20" />
           ) : props.colorScheme === 'success' ? (
-            <Text>Success Icon</Text>
+            <Box bg="black" width="20" height="20" />
           ) : (
             <Box />
           )
         ) : (
           <Box />
         )}
+        <Box>{InputRightElement}</Box>
       </StyledBox>
 
-      {props.colorScheme == 'error' && errorMessage ? (
-        <Text style={{ marginLeft: 10, color: theme.colors.danger[2] }}>
+      {(props.colorScheme == 'error' || isInvalid) && errorMessage ? (
+        <Text
+          style={{
+            marginLeft: 10,
+            color: errorMessageColor
+              ? errorMessageColor
+              : theme.colors.danger[2],
+          }}
+        >
           {errorMessage}
         </Text>
       ) : (
@@ -214,6 +293,70 @@ const InputBox = (
         <Box />
       )}
     </Box>
+  );
+};
+
+//-------------------------------- InputGroup and other Child components -------------------------------
+
+const addonsDefaultStyle = {
+  p: 3,
+  borderColor: 'gray.3',
+  borderWidth: 1,
+};
+
+export const InputLeftAddon = (props: IBoxProps & IInputBoxProps) => {
+  return (
+    <Box
+      {...addonsDefaultStyle}
+      borderRightWidth={0}
+      roundedLeft={4}
+      bg="gray.2"
+      {...props}
+    >
+      <Box m="auto">{props.children}</Box>
+    </Box>
+  );
+};
+export const InputRightAddon = (props: IBoxProps & IInputBoxProps) => {
+  return (
+    <Box
+      {...addonsDefaultStyle}
+      borderLeftWidth={0}
+      roundedRight={4}
+      bg="gray.2"
+      {...props}
+    >
+      <Box m="auto">{props.children}</Box>
+    </Box>
+  );
+};
+
+type InputGroupProps = {
+  children: Element | Element[];
+  variant?: string | undefined;
+  inputSize?: string | undefined;
+};
+const StyledInputGroup = styled.View<InputGroupProps>`
+  flex-direction: row;
+  flex-wrap: wrap;
+  ${color}
+  ${space}
+  ${layout}
+  ${flexbox}
+  ${border}
+`;
+
+const supplyPropsToChildren = (children: any, props: any) => {
+  return children.map((child: JSX.Element) => {
+    return React.cloneElement(child, props, child.props.children);
+  });
+};
+
+export const InputGroup = ({ children, ...props }: InputGroupProps) => {
+  return (
+    <StyledInputGroup>
+      {supplyPropsToChildren(getAttachedChildren(children), props)}
+    </StyledInputGroup>
   );
 };
 
