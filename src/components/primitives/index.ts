@@ -1,77 +1,39 @@
-import Box, { IBoxProps } from './Box';
-import Text, { TextProps } from './Text';
-import InputBox, {
+export { default as Box, IBoxProps } from './Box';
+export { default as Text, TextProps } from './Text';
+export {
+  default as Input,
   IInputBoxProps,
   InputGroup,
   InputLeftAddon,
   InputRightAddon,
 } from './InputBox';
-import View from './View';
-import Checkbox, {
+export { default as View } from './View';
+export {
+  default as Checkbox,
   ICheckboxProps,
   CheckboxGroup,
   ICheckboxGroupProps,
 } from './Checkbox';
-import Radio, { IRadioProps, RadioGroup, IRadioGroupProps } from './Radio';
-import Icon, { IconProps } from './Icon';
-import Columns from './Columns';
-import Column from './Column';
-import Button, { IButtonProps, ButtonGroup } from './Button';
-import Stack from './Stack';
-import VStack from './VStack';
-import HStack from './HStack';
-import ZStack from './ZStack';
-import Inline from './Inline';
-import NBImage, { NBImageProps } from './Image';
-import Spinner, { ISpinnerProps } from './Spinner';
-import Heading, { IHeadingProps } from './Heading';
-import Flex, { IFlexProps } from './Flex';
-import Wrap, { IWrapProps } from './Wrap';
-import NBSwitch, { ISwitchProps } from './Switch';
-import TextArea from './TextArea';
-
 export {
-  View,
-  Text,
-  TextProps,
-  Checkbox,
-  ICheckboxProps,
-  CheckboxGroup,
-  ICheckboxGroupProps,
-  Radio,
+  default as Radio,
   IRadioProps,
   RadioGroup,
   IRadioGroupProps,
-  Columns,
-  Column,
-  Box,
-  IButtonProps,
-  Button,
-  ButtonGroup,
-  IBoxProps,
-  Stack,
-  VStack,
-  HStack,
-  ZStack,
-  Inline,
-  Icon,
-  IconProps,
-  InputBox as Input,
-  InputGroup,
-  InputLeftAddon,
-  InputRightAddon,
-  IInputBoxProps,
-  NBImage,
-  NBImageProps,
-  Spinner,
-  ISpinnerProps,
-  Heading,
-  IHeadingProps,
-  Flex,
-  IFlexProps,
-  NBSwitch,
-  ISwitchProps,
-  Wrap,
-  IWrapProps,
-  TextArea,
-};
+} from './Radio';
+export { default as Icon, IconProps } from './Icon';
+export { default as Columns } from './Columns';
+export { default as Column } from './Column';
+export { default as Button, IButtonProps, ButtonGroup } from './Button';
+export { default as Stack } from './Stack';
+export { default as VStack } from './VStack';
+export { default as HStack } from './HStack';
+export { default as ZStack } from './ZStack';
+export { default as Inline } from './Inline';
+export { default as NBImage, NBImageProps } from './Image';
+export { default as Spinner, ISpinnerProps } from './Spinner';
+export { default as Heading, IHeadingProps } from './Heading';
+export { default as Flex, IFlexProps } from './Flex';
+export { default as Wrap, IWrapProps } from './Wrap';
+export { default as NBSwitch, ISwitchProps } from './Switch';
+export { default as TextArea } from './TextArea';
+export { default as Link, ILinkProps } from './Link';

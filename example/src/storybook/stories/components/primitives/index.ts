@@ -11,6 +11,7 @@ export * from './Icon';
 export * from './Image';
 export * from './InputBox';
 export * from './Radio';
+export * from './Link';
 export * from './Spinner';
 export * from './Stack';
 export * from './Switch';
