@@ -1,5 +1,5 @@
-import React from "react";
-import { Wrap, Switch, Box } from "native-base";
+import React from 'react';
+import { Wrap, Switch, Box } from 'native-base';
 
 export default function () {
   return (

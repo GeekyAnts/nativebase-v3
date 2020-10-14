@@ -1,29 +1,23 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { ThemeContext } from '../../../theme';
-
 import styled from 'styled-components/native';
-import {
-  SpaceProps,
-  TypographyProps,
-  space,
-  layout,
-  variant,
-} from 'styled-system';
+import { SpaceProps, TypographyProps, space } from 'styled-system';
 import type { ReactElement } from 'react';
-import { View, Text } from 'native-base';
-// import View from '../View';
+import { View } from 'native-base';
+export { default as CheckboxGroup, ICheckboxGroupProps } from './CheckboxGroup';
 
-export type ICheckboxtProps = SpaceProps &
-  SpaceProps &
+export type ICheckboxProps = SpaceProps &
   TypographyProps & {
+    style?: any | undefined;
+    checboxGroupChild?: boolean;
     // Chakra UI Porps
     id?: string;
     name?: string;
     value?: string | number;
-    colorScheme?: string;
+    colorScheme?: string | 'default';
     defaultIsChecked?: boolean;
-    isChecked: boolean;
+    isChecked?: boolean;
     isIndeterminate?: boolean;
     isFullWidth?: boolean;
     isDisabled?: boolean;
@@ -31,93 +25,108 @@ export type ICheckboxtProps = SpaceProps &
     size?: 'sm' | 'md' | 'lg';
     icon?: ReactElement;
     children?: JSX.Element;
-    onChange: (event: any) => void;
+    onChange?: (
+      event?: any,
+      currentState?: boolean,
+      value?: string | number | undefined
+    ) => void;
     onBlur?: (event: any) => void;
     onFocus?: (event: any) => void;
     ariaLabel?: string;
     ariaLabelledby?: string;
-    // Custom props
-    style?: any | undefined;
-    type?: string | undefined;
-
-    // basic props from @react-native-community/checkbox
-    // disabled?: boolean;
-    // value?: any;
-    // onValueChange?: (value: boolean) => void;
   };
 
 const CheckBox = ({
-  size,
+  style,
   children,
   onChange,
-  colorScheme,
   isChecked,
   defaultIsChecked,
+  isDisabled,
+  value,
+  ariaLabel,
+  isInvalid,
   icon,
-  type,
   ...props
-}: ICheckboxtProps) => {
-  console.log('PROPS - ', props);
-
-  const [isSelected, setSelection] = React.useState(defaultIsChecked);
+}: ICheckboxProps) => {
+  // console.log('PROPS - ', props);
 
   const theme = React.useContext(ThemeContext);
+  const colorScheme = props.colorScheme || 'default';
+  const size = props.size || 'md';
+  let activeColor = theme.colors.default[2];
 
-  const style = StyleSheet.create({
+  const [checkboxState, setCheckboxState] = React.useState(
+    isChecked || defaultIsChecked
+  );
+  const pressHandler = (event: any) => {
+    isChecked = !checkboxState;
+    setCheckboxState(isChecked);
+    onChange && onChange(event, isChecked, value);
+  };
+
+  if (isDisabled) activeColor = theme.colors.gray[3];
+  else if (isInvalid) activeColor = theme.colors.danger[2];
+  else if (colorScheme in theme.colors && theme.colors[colorScheme])
+    activeColor =
+      typeof theme.colors[colorScheme] === 'string'
+        ? theme.colors[colorScheme]
+        : theme.colors[colorScheme][5] || theme.colors[colorScheme][2];
+
+  const baseStyle = StyleSheet.create({
     checkboxWrapper: {
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
     },
     checkbox: {
-      backgroundColor: theme.colors[colorScheme][0],
-      padding: 5,
-      borderColor: theme.colors[colorScheme][2],
-      borderWidth: 2,
+      backgroundColor: 'transparent',
+      borderColor: activeColor,
+      borderWidth: 1,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      borderRadius: 3,
     },
     checkboxMarked: {
-      backgroundColor: theme.colors[colorScheme][2],
+      backgroundColor: activeColor,
     },
     checkboxUnmarked: {
-      backgroundColor: theme.colors[colorScheme][0],
-    },
-    circle: {
-      borderRadius: 250,
-    },
-    rounded: {
-      borderRadius: 4,
-    },
-    square: {
-      borderRadius: 2,
+      backgroundColor: 'transparent',
     },
     sm: {
+      margin: 3,
       padding: 3,
+      borderRadius: 2,
     },
     md: {
-      padding: 5,
+      margin: 4,
+      padding: 4,
+      borderRadius: 2,
     },
     lg: {
-      padding: 7,
+      margin: 5,
+      padding: 5,
+      borderRadius: 3,
+    },
+    disabled: {
+      borderColor: theme.colors.gray[2],
     },
   });
 
-  // if (colorScheme in theme.colors && theme.colors[colorScheme])
-  //   colorScheme =
-  //     typeof theme.colors[colorScheme] === 'string'
-  //       ? theme.colors[colorScheme]
-  //       : theme.colors[colorScheme][5] || theme.colors[colorScheme][2];
-
   const iconSetter = () => {
-    if (icon) return icon;
+    if (icon)
+      return checkboxState ? (
+        icon
+      ) : (
+        <View style={[baseStyle.checkboxUnmarked, baseStyle[size]]} />
+      );
     return (
       <View
         style={
-          isChecked
-            ? [style.checkboxMarked, props.style, style[type], style[size]]
-            : [style.checkboxUnmarked, style[type], style[size]]
+          checkboxState
+            ? [baseStyle.checkboxMarked, baseStyle[size]]
+            : [baseStyle.checkboxUnmarked, baseStyle[size]]
         }
       />
     );
@@ -126,41 +135,30 @@ const CheckBox = ({
   return (
     <TouchableOpacity
       {...props}
-      style={[style.checkboxWrapper, props.style]}
-      onPress={(event) => onChange(event)}
+      disabled={isDisabled}
+      style={[baseStyle.checkboxWrapper, style]}
+      onPress={(event) => pressHandler(event)}
+      accessible={true}
+      accessibilityLabel={ariaLabel}
+      accessibilityRole="checkbox"
     >
-      <View style={[style.checkbox, style[type]]}>{iconSetter()}</View>
+      <View style={[baseStyle.checkbox]}>{iconSetter()}</View>
       {children}
     </TouchableOpacity>
   );
 };
 
-const StyledCheckbox = styled(CheckBox)<ICheckboxtProps>(
-  space
-  // layout
-  // variant({
-  //   prop: 'type',
-  //   variants: {
-  //     circle: { borderRadius: 50 },
-  //     rounded: { borderRadius: 5 },
-  //     square: { borderRadius: 2 },
-  //   },
-  // })
-);
+const StyledCheckbox = styled(CheckBox)<ICheckboxProps>(space);
 StyledCheckbox.defaultProps = {
+  defaultIsChecked: false,
   size: 'md',
-  type: 'rounded',
   colorScheme: 'default',
 };
 
-const NBCheckbox = ({ children, size, ...props }: ICheckboxtProps) => {
-  console.log('Props form Storybook -', props);
+const NBCheckbox = ({ children, ...props }: ICheckboxProps) => {
+  // console.log('Props form Storybook -', props);
 
-  return (
-    <StyledCheckbox size={size} {...props}>
-      {children}
-    </StyledCheckbox>
-  );
+  return <StyledCheckbox {...props}>{children}</StyledCheckbox>;
 };
 
 export default NBCheckbox;

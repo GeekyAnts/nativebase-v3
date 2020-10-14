@@ -1,5 +1,5 @@
-import React from "react";
-import { HStack, Text } from "native-base";
+import React from 'react';
+import { HStack, Text } from 'native-base';
 
 export default function () {
   return (

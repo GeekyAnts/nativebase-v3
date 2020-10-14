@@ -3,7 +3,11 @@ import Text, { TextProps } from './Text';
 import Input from './Input';
 import InputBox, { IInputBoxProps } from './InputBox';
 import View from './View';
-import Checkbox from './Checkbox';
+import Checkbox, {
+  ICheckboxProps,
+  CheckboxGroup,
+  ICheckboxGroupProps,
+} from './Checkbox';
 import Radio from './Radio';
 import Icon, { IconProps } from './Icon';
 import Columns from './Columns';
@@ -27,6 +31,9 @@ export {
   Text,
   TextProps,
   Checkbox,
+  ICheckboxProps,
+  CheckboxGroup,
+  ICheckboxGroupProps,
   Radio,
   Columns,
   Column,
