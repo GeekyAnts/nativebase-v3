@@ -1,7 +1,11 @@
 import Box, { IBoxProps } from './Box';
 import Text, { TextProps } from './Text';
-import Input from './Input';
-import InputBox, { IInputBoxProps } from './InputBox';
+import InputBox, {
+  IInputBoxProps,
+  InputGroup,
+  InputLeftAddon,
+  InputRightAddon,
+} from './InputBox';
 import View from './View';
 import Checkbox, {
   ICheckboxProps,
@@ -49,8 +53,10 @@ export {
   Inline,
   Icon,
   IconProps,
-  Input,
-  InputBox,
+  InputBox as Input,
+  InputGroup,
+  InputLeftAddon,
+  InputRightAddon,
   IInputBoxProps,
   NBImage,
   NBImageProps,

@@ -2,14 +2,14 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-// import Text from './example';
-import ChangingFontSize from './ChangingFontSize';
-import Overriden from './Overriden';
-import Truncated from './Truncated';
-import Nested from './Nested';
+import Basic from './Basic';
+import Sizes from './Sizes';
+import Truncate from './Truncate';
+import OverridenStyle from './OverridenStyle';
+import Composition from './Composition';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
-storiesOf('Text', module)
+storiesOf('Heading', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
@@ -24,7 +24,8 @@ storiesOf('Text', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Changing Font Size', () => <ChangingFontSize />)
-  .add('Truncated', () => <Truncated />)
-  .add('Overriden', () => <Overriden />)
-  .add('Nested', () => <Nested />);
+  .add('Basic', () => <Basic />)
+  .add('Sizes', () => <Sizes />)
+  .add('Truncate', () => <Truncate />)
+  .add('OverridenStyle', () => <OverridenStyle />)
+  .add('Composition', () => <Composition />);

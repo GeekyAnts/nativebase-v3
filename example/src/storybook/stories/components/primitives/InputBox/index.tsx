@@ -2,7 +2,17 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import InputBox from './example';
+
+import {
+  DefaultInput,
+  SizeInput,
+  VariantInput,
+  InputAddons,
+  InputELements,
+  PasswordInput,
+  ControlledInput,
+  FocusErrorBorderColor,
+} from './example';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('InputBox', module)
@@ -20,4 +30,11 @@ storiesOf('InputBox', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Primary', () => <InputBox />);
+  .add('Primary', () => <DefaultInput />)
+  .add('Size Input', () => <SizeInput />)
+  .add('Input Variants', () => <VariantInput />)
+  .add('Input Addons', () => <InputAddons />)
+  .add('Input Elements', () => <InputELements />)
+  .add('Input Password', () => <PasswordInput />)
+  .add('Value Controlled Input', () => <ControlledInput />)
+  .add('Focus and Error Border Color Change', () => <FocusErrorBorderColor />);
