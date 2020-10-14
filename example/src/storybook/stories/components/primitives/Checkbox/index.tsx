@@ -4,7 +4,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import Playground from './knobEnabled';
 import Disabled from './disabled';
-import CustomeColor from './customColor';
+import CustomColor from './customColor';
 import Size from './size';
 import Invalid from './invalid';
 import CheckboxGroup from './checkboxGroup';
@@ -27,7 +27,7 @@ storiesOf('Checkbox', module)
   ))
   .add('Playgroud', () => <Playground />)
   .add('Disabled', () => <Disabled />)
-  .add('CheckboxGroup', () => <CheckboxGroup />)
-  .add('Invalid', () => <Invalid />)
+  .add('CustomColor', () => <CustomColor />)
   .add('Size', () => <Size />)
-  .add('CustomeColor', () => <CustomeColor />);
+  .add('Invalid', () => <Invalid />)
+  .add('CheckboxGroup', () => <CheckboxGroup />);
