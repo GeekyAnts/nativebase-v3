@@ -25,6 +25,6 @@ storiesOf('Text', module)
     </ThemeProvider>
   ))
   .add('Changing Font Size', () => <ChangingFontSize />)
-  .add('Overriden', () => <Overriden />)
   .add('Truncated', () => <Truncated />)
+  .add('Overriden', () => <Overriden />)
   .add('Nested', () => <Nested />);
