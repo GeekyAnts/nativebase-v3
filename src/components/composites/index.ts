@@ -16,7 +16,6 @@ export {
 } from './BreadCrumb';
 export { default as CloseButton } from './CloseButton';
 export { default as Divider } from './Divider';
-export { default as Link } from './Link';
 export { default as Progress } from './Progress';
 export { default as Stat, StatHelpText, StatLabel, StatNumber } from './Stat';
 export { default as Tag, TagCloseButton } from './Tag';

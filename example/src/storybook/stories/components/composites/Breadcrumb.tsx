@@ -5,7 +5,7 @@ export default function () {
   return (
     <BreadCrumb separator="|">
       <BreadCrumbItem>
-        <BreadCrumbLink IsUnderlined={false} href="https://google.com">
+        <BreadCrumbLink isUnderlined={false} href="https://google.com">
           Google
         </BreadCrumbLink>
       </BreadCrumbItem>
