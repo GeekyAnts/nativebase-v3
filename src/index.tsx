@@ -23,7 +23,6 @@ import {
   CloseButton,
   Divider,
   Kbd,
-  Link,
   Progress,
   Stat,
   StatHelpText,
@@ -71,6 +70,8 @@ import {
   IWrapProps,
   TextArea,
   Wrap,
+  Link,
+  ILinkProps,
 } from './components/primitives';
 
 import {
@@ -139,6 +140,7 @@ export {
   CloseButton,
   Divider,
   Link,
+  ILinkProps,
   Progress,
   Stat,
   StatHelpText,

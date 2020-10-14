@@ -13,7 +13,6 @@ import Avatar, { AvatarBadge } from './Avatar';
 import BreadCrumb, { BreadCrumbItem, BreadCrumbLink } from './BreadCrumb';
 import CloseButton from './CloseButton';
 import Divider from './Divider';
-import Link from './Link';
 import Progress from './Progress';
 import Stat, { StatHelpText, StatLabel, StatNumber } from './Stat';
 import Tag, { TagCloseButton } from './Tag';
@@ -41,7 +40,6 @@ export {
   CloseButton,
   Divider,
   Kbd,
-  Link,
   Progress,
   Stat,
   StatHelpText,
