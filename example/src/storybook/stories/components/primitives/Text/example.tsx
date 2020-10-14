@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Text, View, Inline, VStack } from 'native-base';
+import { Heading, Text, View, Inline } from 'native-base';
 import { select, boolean, number, color } from '@storybook/addon-knobs';
 
 export default function () {
@@ -14,7 +14,7 @@ export default function () {
         italic={boolean('italic', false)}
         underline={boolean('underline', false)}
         strikeThrough={boolean('strikeThrough', false)}
-        numberOfLines={number('numberOfLines', 2, {
+        noOfLines={number('numberOfLines', 2, {
           range: true,
           min: 1,
           max: 100,
@@ -36,30 +36,6 @@ export default function () {
       <Heading mt={3}>Nested Text</Heading>
       <Text>
         This is the <Text bold>nested</Text> example.
-      </Text>
-      <Heading my={3}>Different Sizes</Heading>
-      <VStack space={2} alignItems="center">
-        <Text fontSize="xs">Extra Small</Text>
-        <Text fontSize="sm">Small</Text>
-        <Text fontSize="md">Medium</Text>
-        <Text fontSize="lg">Large</Text>
-        <Text fontSize="xl">Extra Large</Text>
-        <Text fontSize="2xl">2 Extra Large</Text>
-        <Text fontSize="3xl">3 Extra Large</Text>
-        <Text fontSize="4xl">4 Extra Large</Text>
-        <Text fontSize="5xl">5 Extra Large</Text>
-        <Text fontSize="6xl">6 Extra Large</Text>
-      </VStack>
-      <Inline mb={2} alignItems="baseline">
-        <Heading mt={3}>Boolean Props </Heading>
-        <Text>for easy styling</Text>
-      </Inline>
-      <Text bold>Bold</Text>
-      <Text italic>Italic</Text>
-      <Text underline>Underline</Text>
-      <Text strikeThrough>StrikeThrough</Text>
-      <Text bold italic underline>
-        Bold, Italic & Underline
       </Text>
     </View>
   );
