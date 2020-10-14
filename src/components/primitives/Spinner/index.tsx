@@ -53,7 +53,7 @@ const Spinner = ({
   if (color === undefined) color = theme.colors.default[2];
   else if (color in theme.colors && theme.colors[color])
     color =
-      typeof theme.colors[color] == 'string'
+      typeof theme.colors[color] === 'string'
         ? theme.colors[color]
         : theme.colors[color][5] || theme.colors[color][2];
 

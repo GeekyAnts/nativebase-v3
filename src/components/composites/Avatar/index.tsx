@@ -66,7 +66,7 @@ export const AvatarBadge = ({
       width={boxSize ? boxSize : 10}
       height={boxSize ? boxSize : 10}
       {...props}
-    ></Box>
+    />
   );
 };
 const StyledAvatar = styled(Image)<IAvatarProps>(

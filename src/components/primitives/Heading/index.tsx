@@ -1,6 +1,6 @@
-import React from "react";
-import { StyleSheet, Text, TextStyle } from "react-native";
-import styled, { ThemeProvider } from "styled-components/native";
+import React from 'react';
+import { StyleSheet, Text, TextStyle } from 'react-native';
+import styled, { ThemeProvider } from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -12,7 +12,7 @@ import {
   flexbox,
   layout,
   space,
-} from "styled-system";
+} from 'styled-system';
 import {
   customBorder,
   customBorderProps,
@@ -26,9 +26,9 @@ import {
   customExtraProps,
   customShadowProps,
   customShadow,
-} from "../../../utils/customProps";
-import { theme } from "../../../theme";
-const sizes = ["xs", "sm", "md", "lg", "xl", "2xl"];
+} from '../../../utils/customProps';
+import { theme } from '../../../theme';
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 export type IHeadingProps = ColorProps &
   SpaceProps &
   LayoutProps &
@@ -64,11 +64,11 @@ const Heading = ({ style, size, isTruncated, ...props }: IHeadingProps) => {
   let computedStyle: any = style;
   let fontSizeWRTHeading = size
     ? theme.fontSizes[sizes.indexOf(size)]
-    : theme.fontSizes[sizes.indexOf("xl")];
+    : theme.fontSizes[sizes.indexOf('xl')];
   computedStyle = StyleSheet.flatten([
     style,
     {
-      fontWeight: "700",
+      fontWeight: '700',
     },
     props.fontSize
       ? { fontSize: props.fontSize }

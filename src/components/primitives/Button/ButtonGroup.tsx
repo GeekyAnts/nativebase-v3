@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components/native";
-import { border, color, flexbox, layout, space } from "styled-system";
+import React from 'react';
+import styled from 'styled-components/native';
+import { border, color, flexbox, layout, space } from 'styled-system';
 
-import { getAttachedChildren } from "../../../utils";
-import type { SpaceType } from "./types";
+import { getAttachedChildren } from '../../../utils';
+import type { SpaceType } from './types';
 
 export type ButtonGroupProps = {
   children: Element | Element[];

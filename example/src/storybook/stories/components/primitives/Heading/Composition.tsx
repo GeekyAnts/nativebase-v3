@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Text, Button, Heading } from "native-base";
+import React from 'react';
+import { Box, Text, Button, Heading } from 'native-base';
 
 export default function () {
   return (

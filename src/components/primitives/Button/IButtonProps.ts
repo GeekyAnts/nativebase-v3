@@ -1,19 +1,19 @@
-import type { SpaceType } from "./types";
-import type { ViewProps, ViewStyle } from "react-native";
+import type { SpaceType } from './types';
+import type { ViewProps, ViewStyle } from 'react-native';
 import type {
   customBorderProps,
   customOutlineProps,
   customLayoutProps,
   customExtraProps,
   customShadowProps,
-} from "../../../utils/customProps";
+} from '../../../utils/customProps';
 import type {
   BorderProps,
   ColorProps,
   FlexboxProps,
   LayoutProps,
   SpaceProps,
-} from "styled-system";
+} from 'styled-system';
 
 export type IButtonProps = ViewProps &
   ColorProps &

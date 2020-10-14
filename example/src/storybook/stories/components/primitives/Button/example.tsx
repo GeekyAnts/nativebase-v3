@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   HStack,
@@ -8,8 +8,8 @@ import {
   Icon,
   Heading,
   ButtonGroup,
-} from "native-base";
-import { text, select } from "@storybook/addon-knobs";
+} from 'native-base';
+import { text, select } from '@storybook/addon-knobs';
 
 export default function () {
   return (
@@ -24,9 +24,9 @@ export default function () {
       <Button
         borderColor="orange.2"
         variant={select(
-          "Variants",
-          ["solid", "ghost", "link", "outline"],
-          "solid"
+          'Variants',
+          ['solid', 'ghost', 'link', 'outline'],
+          'solid'
         )}
         size="xs"
       >
@@ -66,25 +66,25 @@ export default function () {
         variant="solid"
         size="xs"
         colorScheme={select(
-          "colorScheme",
+          'colorScheme',
           [
-            "green",
-            "red",
-            "yellow",
-            "white",
-            "black",
-            "gray",
-            "success",
-            "danger",
-            "error",
-            "warning",
-            "light",
-            "dark",
-            "muted",
-            "secondary",
-            "default",
+            'green',
+            'red',
+            'yellow',
+            'white',
+            'black',
+            'gray',
+            'success',
+            'danger',
+            'error',
+            'warning',
+            'light',
+            'dark',
+            'muted',
+            'secondary',
+            'default',
           ],
-          "green"
+          'green'
         )}
       >
         Success/Green
@@ -96,7 +96,7 @@ export default function () {
         <Button
           variant="solid"
           leftIcon={
-            <Icon name={text("name", "menu")} size={30} type="MaterialIcons" />
+            <Icon name={text('name', 'menu')} size={30} type="MaterialIcons" />
           }
           size="xs"
           colorScheme="yellow"
@@ -106,7 +106,7 @@ export default function () {
         <Button
           isDisabled
           rightIcon={
-            <Icon name={text("name", "menu")} size={30} type="MaterialIcons" />
+            <Icon name={text('name', 'menu')} size={30} type="MaterialIcons" />
           }
           variant="solid"
           size="xs"
@@ -134,9 +134,9 @@ export default function () {
       <Center>
         <ButtonGroup
           variant={select(
-            "ButtonGroup Variants",
-            ["solid", "ghost", "link", "outline"],
-            "solid"
+            'ButtonGroup Variants',
+            ['solid', 'ghost', 'link', 'outline'],
+            'solid'
           )}
           spacing={100}
         >

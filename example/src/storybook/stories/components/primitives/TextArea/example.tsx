@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { TextArea, Heading, Center, Text, Stack } from "native-base";
-import { select, number, text } from "@storybook/addon-knobs";
+import React, { useState } from 'react';
+import { TextArea, Heading, Center, Text, Stack } from 'native-base';
+import { select, number, text } from '@storybook/addon-knobs';
 
 export default function () {
-  const [textAreaValue, setTextAreaValue] = useState("Value Controlled");
+  const [textAreaValue, setTextAreaValue] = useState('Value Controlled');
   const demoValueControlledTextArea = (e: any) => {
     setTextAreaValue(e.currentTarget.value());
   };
@@ -16,22 +16,22 @@ export default function () {
         <Text>Default TextArea</Text>
       </Center>
       <TextArea
-        placeholder={text("Placeholder", "Add custom placeholder using knobs")}
+        placeholder={text('Placeholder', 'Add custom placeholder using knobs')}
       />
       <Center>
         <Text>TextArea with different font sizes</Text>
       </Center>
       <TextArea
         textSize={select(
-          "Text Size",
-          ["xsm", "sm", "md", "lg", "xl", "2xl"],
-          "sm"
+          'Text Size',
+          ['xsm', 'sm', 'md', 'lg', 'xl', '2xl'],
+          'sm'
         )}
       />
       <Center>
         <Text>Define height of TextArea with size</Text>
       </Center>
-      <TextArea w="100%" size={number("TextArea Size", 40)} />
+      <TextArea w="100%" size={number('TextArea Size', 40)} />
       <Center>
         <Text>Invalid TextArea</Text>
       </Center>
