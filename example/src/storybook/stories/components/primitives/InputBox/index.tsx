@@ -2,8 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
+
 import {
   DefaultInput,
+  InputBox
   SizeInput,
   VariantInput,
   InputAddons,

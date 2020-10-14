@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Input,
   InputGroup,
@@ -10,6 +11,7 @@ import {
   Center,
   Heading,
   Button,
+  InputBox
 } from 'native-base';
 
 export const DefaultInput = () => {
