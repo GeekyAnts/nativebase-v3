@@ -29,6 +29,7 @@ import Flex, { IFlexProps } from './Flex';
 import Wrap, { IWrapProps } from './Wrap';
 import NBSwitch, { ISwitchProps } from './Switch';
 import TextArea from './TextArea';
+import Link, { ILinkProps } from '../primitives/Link';
 
 export {
   View,
@@ -71,4 +72,6 @@ export {
   Wrap,
   IWrapProps,
   TextArea,
+  Link,
+  ILinkProps,
 };

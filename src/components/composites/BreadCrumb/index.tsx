@@ -29,7 +29,7 @@ import {
   customShadow,
 } from '../../../utils/customProps';
 import { Flex } from '../../primitives';
-import Link, { ILinkProps } from '../Link';
+import { Link, ILinkProps } from '../../..';
 import { ThemeContext } from '../../../index';
 
 export type IBreadCrumbProps = ViewProps &
@@ -87,8 +87,8 @@ const StyledText = styled(Text)<ITextProps>(
 export const BreadCrumbItem = (props: IBreadCrumbProps) => {
   return <Flex {...props}>{props.children}</Flex>;
 };
-export const BreadCrumbLink = (props: ILinkProps) => {
-  return <Link {...props} />;
+export const BreadCrumbLink = ({ children, ...props }: ILinkProps) => {
+  return <Link {...props}>{children}</Link>;
 };
 const BreadCrumbSeparator = (
   children: JSX.Element[] | JSX.Element | any,
