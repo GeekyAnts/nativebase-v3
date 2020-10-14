@@ -10,7 +10,7 @@ export type ICheckboxGroupProps = SpaceProps &
     id?: string;
     value?: Array<any>;
     defaultValue?: Array<any>;
-    colorScheme?: string | 'default';
+    colorScheme?: string;
     size?: 'sm' | 'md' | 'lg';
     spacing?: string | number;
     children: JSX.Element[];
@@ -46,8 +46,12 @@ const CheckboxGroup = ({
     {
       defaultValue,
       spacing,
+      colorScheme,
+      size,
       ...suppliedProps
     }: {
+      size: string | number;
+      colorScheme: string;
       spacing: string | number;
       value: Array<any>;
       onChange?: (values: Array<any>) => void;
@@ -58,6 +62,8 @@ const CheckboxGroup = ({
     return {
       ...suppliedProps,
       m: spacing,
+      colorScheme: child.props.colorScheme || colorScheme,
+      size: child.props.size || size,
       onChange: (
         event: any,
         isChecked: boolean,

@@ -12,7 +12,7 @@ import Checkbox, {
   CheckboxGroup,
   ICheckboxGroupProps,
 } from './Checkbox';
-import Radio from './Radio';
+import Radio, { IRadioProps, RadioGroup, IRadioGroupProps } from './Radio';
 import Icon, { IconProps } from './Icon';
 import Columns from './Columns';
 import Column from './Column';
@@ -39,6 +39,9 @@ export {
   CheckboxGroup,
   ICheckboxGroupProps,
   Radio,
+  IRadioProps,
+  RadioGroup,
+  IRadioGroupProps,
   Columns,
   Column,
   Box,
