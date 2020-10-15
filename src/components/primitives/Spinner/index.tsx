@@ -3,11 +3,11 @@ import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
 import { ThemeContext } from '../../../theme';
 import { color, space, position } from 'styled-system';
-import type { SpinnerProps } from './props';
-export type { SpinnerProps };
+import type { ISpinnerProps } from './props';
+export type { ISpinnerProps };
 
 const StyledActivityIndicator = styled(ActivityIndicator)<
-  SpinnerProps & {
+  ISpinnerProps & {
     size?: 'small' | 'large';
   }
 >(color, space, position);
@@ -17,7 +17,7 @@ const Spinner = ({
   show,
   hideWhenStopped,
   ...props
-}: SpinnerProps & {
+}: ISpinnerProps & {
   size?: 'sm' | 'lg' | 'small' | 'large' | undefined;
 }) => {
   const theme = React.useContext(ThemeContext);

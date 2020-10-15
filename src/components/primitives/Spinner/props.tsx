@@ -1,6 +1,6 @@
 import type { ColorProps, SpaceProps, PositionProps } from 'styled-system';
 
-export type SpinnerProps = ColorProps &
+export type ISpinnerProps = ColorProps &
   SpaceProps &
   PositionProps & {
     color?: string | undefined;
