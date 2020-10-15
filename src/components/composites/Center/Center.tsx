@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, ViewStyle } from 'react-native';
-import { Box, IBoxProps } from '../../primitives';
+import { Box } from '../../primitives';
+import type { ICenterProps } from './props';
 
-const Center = ({ style, ...props }: IBoxProps) => {
+const Center = ({ style, ...props }: ICenterProps) => {
   let computedStyle: ViewStyle | undefined = style;
   computedStyle = StyleSheet.flatten([
     style,
