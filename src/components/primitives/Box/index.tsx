@@ -1,57 +1,27 @@
 import React from 'react';
-import { View, ViewProps, ViewStyle, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { shadows } from '../../../styles';
-import { Text } from '../../..';
+import { addTextAndPropsToStrings } from '../../../utils';
 import {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
   border,
   color,
   flexbox,
   layout,
   space,
   typography,
-  TypographyProps,
 } from 'styled-system';
 import {
   customBorder,
-  customBorderProps,
   customBackground,
-  customBackgroundProps,
   customOutline,
-  customOutlineProps,
   customLayout,
-  customLayoutProps,
   customExtra,
-  customExtraProps,
-  customShadowProps,
   customShadow,
   customTypography,
-  customTypographyProps,
 } from '../../../utils/customProps';
 
-export type IBoxProps = ViewProps &
-  ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  customTypographyProps &
-  customBackgroundProps &
-  TypographyProps &
-  BorderProps & {
-    style?: ViewStyle;
-    children?: JSX.Element | JSX.Element[] | string | any;
-    shadow?: number | undefined;
-  };
+import type { IBoxProps } from './props';
 
 const StyledBox = styled(View)<IBoxProps>(
   color,
@@ -69,41 +39,6 @@ const StyledBox = styled(View)<IBoxProps>(
   customLayout
 );
 
-const addTextAndPropsToStrings = (
-  children: JSX.Element | JSX.Element[] | string | any,
-  props: any
-) => {
-  if (Array.isArray(children)) {
-    return children.map((child: JSX.Element) => {
-      if (typeof child === 'string') {
-        return <Text {...props}>{child}</Text>;
-      } else {
-        if (
-          child &&
-          (child.type.name === 'NBText' || child.type.name === 'Heading')
-        ) {
-          return React.cloneElement(child, props, child.props.children);
-        } else {
-          return child;
-        }
-      }
-    });
-  } else {
-    if (typeof children === 'string') {
-      return <Text {...props}>{children}</Text>;
-    } else {
-      if (
-        children &&
-        (children.type.name === 'NBText' || children.type.name === 'Heading')
-      ) {
-        return React.cloneElement(children, props, children.props.children);
-      } else {
-        return children;
-      }
-    }
-  }
-};
-
 const Box = ({
   shadow,
   children,
@@ -117,9 +52,12 @@ const Box = ({
   whiteSpace,
   overflowWrap,
   fontFamily,
+  fontWeight,
   ...props
 }: IBoxProps) => {
+  // TextProps that contain all the props related to text and gets added to child text components using addTextAndPropsToStrings() method
   const textProps = {
+    fontWeight: fontWeight,
     fontFamily: fontFamily,
     fontSize: fontSize,
     color: color,
@@ -132,7 +70,14 @@ const Box = ({
     overflowWrap: overflowWrap,
   };
   let computedStyle: any = props.style;
-  let shadowInd: number = shadow ? (shadow > 9 ? 9 : shadow) : 2;
+
+  // Check Shadow Index to apply shadow from theme Shadows array
+  let shadowInd: number = shadow
+    ? shadow > shadows.length - 1
+      ? shadows.length - 1
+      : shadow
+    : 2; // By default shadow index is set to 2
+
   computedStyle = StyleSheet.flatten([
     props.style,
     shadow ? shadows[shadowInd] : {},
@@ -143,5 +88,7 @@ const Box = ({
     </StyledBox>
   );
 };
+
+export { IBoxProps } from './props';
 
 export default Box;

@@ -1,4 +1,10 @@
 import getSpacedChildren from './getSpacedChildren';
 import getAbsoluteChildren from './getAbsoluteChildren';
 import getAttachedChildren from './getAttachedChildren';
-export { getSpacedChildren, getAbsoluteChildren, getAttachedChildren };
+import { addTextAndPropsToStrings } from './addTextAndPropsToStrings';
+export {
+  getSpacedChildren,
+  getAbsoluteChildren,
+  getAttachedChildren,
+  addTextAndPropsToStrings,
+};
