@@ -78,6 +78,7 @@ import {
   Wrap,
   Link,
   ILinkProps,
+  Spacer,
 } from './components/primitives';
 
 import {
@@ -164,4 +165,5 @@ export {
   ISwitchProps,
   IFlexProps,
   IWrapProps,
+  Spacer,
 };

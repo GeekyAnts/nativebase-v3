@@ -40,7 +40,6 @@ export type IBreadCrumbProps = ViewProps &
   customBorderProps &
   customExtraProps &
   customOutlineProps &
-  customShadowProps &
   customLayoutProps &
   customBackgroundProps &
   BorderProps & {
