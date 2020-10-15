@@ -1,6 +1,6 @@
 import type { SpaceProps } from 'styled-system';
 
-export type RadioProps = SpaceProps & {
+export type IRadioProps = SpaceProps & {
   id?: string;
   name?: string;
   value?: string | number;
@@ -21,7 +21,7 @@ export type RadioProps = SpaceProps & {
   // Custom Props
   style?: any | undefined;
 };
-export type RadioGroupProps = SpaceProps & {
+export type IRadioGroupProps = SpaceProps & {
   id?: string;
   value?: string | number;
   defaultValue?: string | number;

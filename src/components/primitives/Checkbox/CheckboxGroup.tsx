@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { space } from 'styled-system';
 import { Box } from 'native-base';
 import { getAttachedChildren } from '../../../utils';
-import type { CheckboxGroupProps } from './props';
+import type { ICheckboxGroupProps } from './props';
 
 const CheckboxGroup = ({
   size,
@@ -14,7 +14,7 @@ const CheckboxGroup = ({
   value,
   defaultValue,
   ...props
-}: CheckboxGroupProps) => {
+}: ICheckboxGroupProps) => {
   const [values, setValues] = React.useState(value || defaultValue || []);
   const onChangeHandler = (
     event: any,
@@ -94,9 +94,9 @@ const CheckboxGroup = ({
   );
 };
 
-const StyledCheckboxGroup = styled(CheckboxGroup)<CheckboxGroupProps>(space);
+const StyledCheckboxGroup = styled(CheckboxGroup)<ICheckboxGroupProps>(space);
 
-const NBCheckboxGroup = ({ children, ...props }: CheckboxGroupProps) => {
+const NBCheckboxGroup = ({ children, ...props }: ICheckboxGroupProps) => {
   return <StyledCheckboxGroup {...props}>{children}</StyledCheckboxGroup>;
 };
 

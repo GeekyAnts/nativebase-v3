@@ -4,9 +4,9 @@ import { ThemeContext } from '../../../theme';
 import styled from 'styled-components/native';
 import { space } from 'styled-system';
 import { View } from 'native-base';
-import type { RadioProps, RadioGroupProps } from './props';
+import type { IRadioProps, IRadioGroupProps } from './props';
 export { default as RadioGroup } from './RadioGroup';
-export type { RadioProps, RadioGroupProps };
+export type { IRadioProps, IRadioGroupProps };
 
 const Radio = ({
   style,
@@ -19,7 +19,7 @@ const Radio = ({
   isInvalid,
   icon,
   ...props
-}: RadioProps) => {
+}: IRadioProps) => {
   const theme = React.useContext(ThemeContext);
   const colorScheme = props.colorScheme || 'default';
   const size = props.size || 'md';
@@ -111,14 +111,14 @@ const Radio = ({
   );
 };
 
-const StyledRadio = styled(Radio)<RadioProps>(space);
+const StyledRadio = styled(Radio)<IRadioProps>(space);
 StyledRadio.defaultProps = {
   defaultIsChecked: false,
   size: 'md',
   colorScheme: 'default',
 };
 
-const NBRadio = ({ children, ...props }: RadioProps) => {
+const NBRadio = ({ children, ...props }: IRadioProps) => {
   return <StyledRadio {...props}>{children}</StyledRadio>;
 };
 

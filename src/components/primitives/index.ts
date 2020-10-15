@@ -10,15 +10,15 @@ export {
 export { default as View } from './View';
 export {
   default as Checkbox,
-  CheckboxProps,
+  ICheckboxProps,
   CheckboxGroup,
-  CheckboxGroupProps,
+  ICheckboxGroupProps,
 } from './Checkbox';
 export {
   default as Radio,
-  RadioProps,
+  IRadioProps,
   RadioGroup,
-  RadioGroupProps,
+  IRadioGroupProps,
 } from './Radio';
 export { default as Icon, IconProps } from './Icon';
 export { default as Columns } from './Columns';

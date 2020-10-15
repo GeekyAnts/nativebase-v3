@@ -1,6 +1,6 @@
 import type { SpaceProps } from 'styled-system';
 
-export type CheckboxProps = SpaceProps & {
+export type ICheckboxProps = SpaceProps & {
   id?: string;
   name?: string;
   value?: string | number;
@@ -27,7 +27,7 @@ export type CheckboxProps = SpaceProps & {
   style?: any | undefined;
 };
 
-export type CheckboxGroupProps = SpaceProps & {
+export type ICheckboxGroupProps = SpaceProps & {
   id?: string;
   value?: Array<any>;
   defaultValue?: Array<any>;

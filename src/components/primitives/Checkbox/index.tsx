@@ -3,10 +3,10 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import { ThemeContext } from '../../../theme';
 import styled from 'styled-components/native';
 import { View } from 'native-base';
-import type { CheckboxProps, CheckboxGroupProps } from './props';
+import type { ICheckboxProps, ICheckboxGroupProps } from './props';
 import { space } from 'styled-system';
 export { default as CheckboxGroup } from './CheckboxGroup';
-export type { CheckboxProps, CheckboxGroupProps };
+export type { ICheckboxProps, ICheckboxGroupProps };
 
 const Checkbox = ({
   style,
@@ -20,7 +20,7 @@ const Checkbox = ({
   isInvalid,
   icon,
   ...props
-}: CheckboxProps) => {
+}: ICheckboxProps) => {
   const theme = React.useContext(ThemeContext);
   const colorScheme = props.colorScheme || 'default';
   const size = props.size || 'md';
@@ -119,14 +119,14 @@ const Checkbox = ({
   );
 };
 
-const StyledCheckbox = styled(Checkbox)<CheckboxProps>(space);
+const StyledCheckbox = styled(Checkbox)<ICheckboxProps>(space);
 StyledCheckbox.defaultProps = {
   defaultIsChecked: false,
   size: 'md',
   colorScheme: 'default',
 };
 
-const NBCheckbox = ({ children, ...props }: CheckboxProps) => {
+const NBCheckbox = ({ children, ...props }: ICheckboxProps) => {
   return <StyledCheckbox {...props}>{children}</StyledCheckbox>;
 };
 

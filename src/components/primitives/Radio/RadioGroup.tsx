@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { space } from 'styled-system';
 import { Box } from 'native-base';
 import { getAttachedChildren } from '../../../utils';
-import type { RadioGroupProps } from './props';
+import type { IRadioGroupProps } from './props';
 
 const RadioGroup = ({
   size,
@@ -14,7 +14,7 @@ const RadioGroup = ({
   value,
   defaultValue,
   ...props
-}: RadioGroupProps) => {
+}: IRadioGroupProps) => {
   const [selected, setSelected] = React.useState(value || defaultValue || []);
   const onChangeHandler = (event: any, radioValue: string | number) => {
     setSelected(radioValue);
@@ -69,9 +69,9 @@ const RadioGroup = ({
   );
 };
 
-const StyledRadioGroup = styled(RadioGroup)<RadioGroupProps>(space);
+const StyledRadioGroup = styled(RadioGroup)<IRadioGroupProps>(space);
 
-const NBRadioGroup = ({ children, ...props }: RadioGroupProps) => {
+const NBRadioGroup = ({ children, ...props }: IRadioGroupProps) => {
   return <StyledRadioGroup {...props}>{children}</StyledRadioGroup>;
 };
 
