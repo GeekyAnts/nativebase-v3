@@ -2,26 +2,12 @@ import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
 import { ThemeContext } from '../../../theme';
-import {
-  ColorProps,
-  SpaceProps,
-  PositionProps,
-  color,
-  space,
-  position,
-} from 'styled-system';
-
-export type ISpinnerProps = ColorProps &
-  SpaceProps &
-  PositionProps & {
-    color?: string | undefined;
-    style?: any | undefined;
-    show?: boolean | undefined;
-    hideWhenStopped?: boolean | undefined; // IOS only
-  };
+import { color, space, position } from 'styled-system';
+import type { SpinnerProps } from './props';
+export type { SpinnerProps };
 
 const StyledActivityIndicator = styled(ActivityIndicator)<
-  ISpinnerProps & {
+  SpinnerProps & {
     size?: 'small' | 'large';
   }
 >(color, space, position);
@@ -31,7 +17,7 @@ const Spinner = ({
   show,
   hideWhenStopped,
   ...props
-}: ISpinnerProps & {
+}: SpinnerProps & {
   size?: 'sm' | 'lg' | 'small' | 'large' | undefined;
 }) => {
   const theme = React.useContext(ThemeContext);

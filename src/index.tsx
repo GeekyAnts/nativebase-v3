@@ -68,7 +68,7 @@ import {
   Image,
   IImageProps,
   Spinner,
-  ISpinnerProps,
+  SpinnerProps,
   Heading,
   IHeadingProps,
   Flex,
@@ -80,6 +80,7 @@ import {
   Wrap,
   Link,
   ILinkProps,
+  Spacer,
 } from './components/primitives';
 
 import {
@@ -138,7 +139,7 @@ export {
   InputRightAddon,
   IInputBoxProps,
   Spinner,
-  ISpinnerProps,
+  SpinnerProps,
   Image,
   IImageProps,
   darkTheme,
@@ -168,4 +169,5 @@ export {
   ISwitchProps,
   IFlexProps,
   IWrapProps,
+  Spacer,
 };

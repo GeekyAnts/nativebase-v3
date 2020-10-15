@@ -13,14 +13,6 @@ export default function () {
         size={select('size', ['sm', 'lg'], 'lg')}
         color={color('color', 'blue')}
       />
-      <Heading mt={3}>Simple Example</Heading>
-      <Spinner />
-      <Inline mb={2} alignItems="baseline">
-        <Heading mt={3}>Different Sizes </Heading>
-        <Text>with color formats</Text>
-      </Inline>
-      <Spinner m={2} size="sm" color="danger" />
-      <Spinner m={2} size="lg" color="warning" />
     </View>
   );
 }
