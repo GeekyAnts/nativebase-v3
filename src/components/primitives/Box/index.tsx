@@ -78,7 +78,10 @@ const addTextAndPropsToStrings = (
       if (typeof child === 'string') {
         return <Text {...props}>{child}</Text>;
       } else {
-        if (child.type.name === 'NBText' || child.type.name === 'Heading') {
+        if (
+          child &&
+          (child.type.name === 'NBText' || child.type.name === 'Heading')
+        ) {
           return React.cloneElement(child, props, child.props.children);
         } else {
           return child;
@@ -89,7 +92,10 @@ const addTextAndPropsToStrings = (
     if (typeof children === 'string') {
       return <Text {...props}>{children}</Text>;
     } else {
-      if (children.type.name === 'NBText' || children.type.name === 'Heading') {
+      if (
+        children &&
+        (children.type.name === 'NBText' || children.type.name === 'Heading')
+      ) {
         return React.cloneElement(children, props, children.props.children);
       } else {
         return children;
