@@ -1,48 +1,27 @@
 import React from 'react';
-import { View, ViewProps, ViewStyle } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
+import { shadows } from '../../../styles';
+import { addTextAndPropsToStrings } from '../../../utils';
 import {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
   border,
   color,
   flexbox,
   layout,
   space,
+  typography,
 } from 'styled-system';
 import {
   customBorder,
-  customBorderProps,
   customBackground,
-  customBackgroundProps,
   customOutline,
-  customOutlineProps,
   customLayout,
-  customLayoutProps,
   customExtra,
-  customExtraProps,
-  customShadowProps,
   customShadow,
+  customTypography,
 } from '../../../utils/customProps';
 
-export type IBoxProps = ViewProps &
-  ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  customBackgroundProps &
-  BorderProps & {
-    style?: ViewStyle;
-    children?: JSX.Element | JSX.Element[];
-  };
+import type { IBoxProps } from './props';
 
 const StyledBox = styled(View)<IBoxProps>(
   color,
@@ -50,15 +29,66 @@ const StyledBox = styled(View)<IBoxProps>(
   layout,
   flexbox,
   border,
+  typography,
   customBorder,
   customBackground,
   customOutline,
   customShadow,
   customExtra,
+  customTypography,
   customLayout
 );
-const Box = (props: IBoxProps) => {
-  return <StyledBox {...props} style={props.style} />;
+
+const Box = ({
+  shadow,
+  children,
+  fontSize,
+  color,
+  textDecoration,
+  txtDecor,
+  wordBreak,
+  textOverflow,
+  textTransform,
+  whiteSpace,
+  overflowWrap,
+  fontFamily,
+  fontWeight,
+  ...props
+}: IBoxProps) => {
+  // TextProps that contain all the props related to text and gets added to child text components using addTextAndPropsToStrings() method
+  const textProps = {
+    fontWeight: fontWeight,
+    fontFamily: fontFamily,
+    fontSize: fontSize,
+    color: color,
+    textDecoration: textDecoration,
+    txtDecor: txtDecor,
+    wordBreak: wordBreak,
+    textOverflow: textOverflow,
+    textTransform: textTransform,
+    whiteSpace: whiteSpace,
+    overflowWrap: overflowWrap,
+  };
+  let computedStyle: any = props.style;
+
+  // Check Shadow Index to apply shadow from theme Shadows array
+  let shadowInd: number = shadow
+    ? shadow > shadows.length - 1
+      ? shadows.length - 1
+      : shadow
+    : 2; // By default shadow index is set to 2
+
+  computedStyle = StyleSheet.flatten([
+    props.style,
+    shadow ? shadows[shadowInd] : {},
+  ]);
+  return (
+    <StyledBox {...props} style={computedStyle}>
+      {addTextAndPropsToStrings(children, textProps)}
+    </StyledBox>
+  );
 };
+
+export { IBoxProps } from './props';
 
 export default Box;

@@ -29,7 +29,6 @@ import {
   customShadow,
 } from '../../../utils/customProps';
 import { Text, TextProps } from '../../primitives';
-import { theme } from '../../../theme';
 export type ICodeProps = TextProps &
   ColorProps &
   SpaceProps &
@@ -51,32 +50,32 @@ export type ICodeProps = TextProps &
 
 // Color Varients
 let successStyle = {
-  backgroundColor: theme.colors.success[0],
-  color: theme.colors.success[1],
+  backgroundColor: 'success.0',
+  color: 'success.1',
 };
 let dangerStyle = {
-  backgroundColor: theme.colors.danger[0],
-  color: theme.colors.danger[1],
+  backgroundColor: 'danger.0',
+  color: 'danger.1',
 };
 let warningStyle = {
-  backgroundColor: theme.colors.warning[0],
-  color: theme.colors.warning[1],
+  backgroundColor: 'warning.0',
+  color: 'warning.1',
 };
 let darkStyle = {
-  backgroundColor: theme.colors.dark[0],
-  color: theme.colors.dark[1],
+  backgroundColor: 'dark.0',
+  color: 'dark.1',
 };
 let lightStyle = {
-  backgroundColor: theme.colors.light[0],
-  color: theme.colors.light[1],
+  backgroundColor: 'light.0',
+  color: 'light.1',
 };
 let mutedStyle = {
-  backgroundColor: theme.colors.muted[0],
-  color: theme.colors.muted[1],
+  backgroundColor: 'muted.0',
+  color: 'muted.1',
 };
 let defaultStyle = {
-  backgroundColor: theme.colors.default[0],
-  color: theme.colors.default[1],
+  backgroundColor: 'default.0',
+  color: 'default.1',
 };
 
 const StyledCode = styled(Text)<ICodeProps>(
