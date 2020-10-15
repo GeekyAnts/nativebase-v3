@@ -21,4 +21,4 @@ export { default as Stat, StatHelpText, StatLabel, StatNumber } from './Stat';
 export { default as Tag, TagCloseButton } from './Tag';
 export { default as Kbd } from './KBD';
 export { default as Code } from './Code';
-export { default as Center } from './Center';
+export { Center, Square, Circle } from './Center';
