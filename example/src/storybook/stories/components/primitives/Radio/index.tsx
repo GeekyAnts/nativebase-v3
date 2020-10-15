@@ -2,11 +2,15 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import Flex from './basic';
-import { SpacerExample } from './spacer';
+import Playground from './knobEnabled';
+import Disabled from './disabled';
+import Usage from './usage';
+import CustomColor from './customeColor';
+import Size from './size';
+import Invalid from './invalid';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
-storiesOf('Flex', module)
+storiesOf('Radio', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
@@ -21,5 +25,9 @@ storiesOf('Flex', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Basic Usage', () => <Flex />)
-  .add('Spacer Example', () => <SpacerExample />);
+  .add('Playgroud', () => <Playground />)
+  .add('Usage', () => <Usage />)
+  .add('CustomColor', () => <CustomColor />)
+  .add('Size', () => <Size />)
+  .add('Disabled', () => <Disabled />)
+  .add('Invalid', () => <Invalid />);

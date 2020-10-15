@@ -29,20 +29,20 @@ export type TextProps = ColorProps &
     strikeThrough?: boolean;
   };
 
-const Text = styled.Text<TextProps>`
+const StyledText = styled.Text<TextProps>`
   ${position}
   ${color}
   ${space}
   ${typography}
 `;
-Text.defaultProps = {
+StyledText.defaultProps = {
   bold: false,
   italic: false,
   underline: false,
   strikeThrough: false,
 };
 
-const NBText = ({
+const Text = ({
   children,
   style,
   isTruncated,
@@ -110,15 +110,15 @@ const NBText = ({
       break;
   }
   return (
-    <Text
+    <StyledText
       style={style}
       fontSize={fontSize}
       numberOfLines={noOfLines ? noOfLines : isTruncated ? 1 : 999}
       {...props}
     >
       {children}
-    </Text>
+    </StyledText>
   );
 };
 
-export default NBText;
+export default Text;

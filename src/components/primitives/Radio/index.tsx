@@ -1,83 +1,125 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { theme } from '../../../theme';
-
+import { ThemeContext } from '../../../theme';
 import styled from 'styled-components/native';
-import { space, color, layout, typography, variant } from 'styled-system';
-import View from '../View';
+import { space } from 'styled-system';
+import { View } from 'native-base';
+import type { IRadioProps, IRadioGroupProps } from './props';
+export { default as RadioGroup } from './RadioGroup';
+export type { IRadioProps, IRadioGroupProps };
 
-export type IRadioProps = {
-  checked: boolean | false;
-  style?: any | undefined;
-  type?: string | undefined;
-  colorVarient:
-    | 'default'
-    | 'light'
-    | 'dark'
-    | 'muted'
-    | 'warning'
-    | 'danger'
-    | 'success';
-};
+const CustomRadio = ({
+  style,
+  children,
+  onChange,
+  isChecked,
+  isDisabled,
+  value,
+  ariaLabel,
+  isInvalid,
+  icon,
+  ...props
+}: IRadioProps) => {
+  const theme = React.useContext(ThemeContext);
+  const colorScheme = props.colorScheme || 'default';
+  const size = props.size || 'md';
+  let activeColor = theme.colors.default[2];
 
-const Radio = ({ colorVarient, checked, ...props }: IRadioProps) => {
-  const style = StyleSheet.create({
+  const pressHandler = (event: any) => {
+    onChange && onChange(event, value);
+  };
+
+  if (isDisabled) activeColor = theme.colors.gray[3];
+  else if (isInvalid) activeColor = theme.colors.danger[2];
+  else if (colorScheme in theme.colors && theme.colors[colorScheme]) {
+    activeColor =
+      typeof theme.colors[colorScheme] === 'string'
+        ? theme.colors[colorScheme]
+        : theme.colors[colorScheme][5] || theme.colors[colorScheme][2];
+  }
+  const baseStyle = StyleSheet.create({
+    radioWrapper: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
     radio: {
-      backgroundColor: theme.colors[colorVarient][0],
-      padding: 5,
-      borderColor: theme.colors[colorVarient][2],
-      borderWidth: 2,
+      backgroundColor: 'transparent',
+      borderColor: activeColor,
+      borderWidth: 1,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      borderRadius: 50,
     },
     radioMarked: {
-      padding: 7,
-      backgroundColor: theme.colors[colorVarient][2],
+      backgroundColor: activeColor,
+      borderRadius: 50,
     },
     radioUnmarked: {
-      padding: 7,
-      backgroundColor: theme.colors[colorVarient][0],
+      backgroundColor: 'transparent',
+    },
+    sm: {
+      margin: 3,
+      padding: 3,
+    },
+    md: {
+      margin: 4,
+      padding: 4,
+    },
+    lg: {
+      margin: 5,
+      padding: 5,
+    },
+    disabled: {
+      borderColor: theme.colors.gray[2],
     },
   });
 
-  const [isSelected, setSelection] = useState(checked);
-  return (
-    <TouchableOpacity
-      {...props}
-      style={[style.radio, props.style]}
-      onPress={() => setSelection(!isSelected)}
-    >
+  const iconSetter = () => {
+    if (icon)
+      return isChecked ? (
+        icon
+      ) : (
+        <View style={[baseStyle.radioUnmarked, baseStyle[size]]} />
+      );
+    return (
       <View
         style={
-          isSelected ? [style.radioMarked, props.style] : style.radioUnmarked
+          isChecked
+            ? [baseStyle.radioMarked, baseStyle[size]]
+            : [baseStyle.radioUnmarked, baseStyle[size]]
         }
       />
+    );
+  };
+
+  return (
+    <TouchableOpacity
+      activeOpacity={1}
+      {...props}
+      disabled={isDisabled}
+      style={[baseStyle.radioWrapper, style]}
+      onPress={(event) => pressHandler(event)}
+      accessible={true}
+      accessibilityLabel={ariaLabel}
+      accessibilityRole="radio"
+    >
+      <View style={[baseStyle.radio]}>{iconSetter()}</View>
+      {children}
     </TouchableOpacity>
   );
 };
 
-const StyledRadio = styled(Radio)<IRadioProps>(
-  space,
-  color,
-  layout,
-  typography,
-  variant({
-    prop: 'type',
-    variants: {
-      circle: { borderRadius: 50 },
-      rounded: { borderRadius: 5 },
-      square: { borderRadius: 2 },
-    },
-  })
-);
+const StyledRadio = styled(CustomRadio)<IRadioProps>(space);
 StyledRadio.defaultProps = {
-  type: 'circle',
-  colorVarient: 'default',
+  defaultIsChecked: false,
+  size: 'md',
+  colorScheme: 'default',
 };
 
-const NBRadio = ({ ...props }: IRadioProps) => {
-  return <StyledRadio {...props} />;
+const Radio = ({ children, ...props }: IRadioProps) => {
+  return <StyledRadio {...props}>{children}</StyledRadio>;
 };
 
-export default NBRadio;
+export default Radio;

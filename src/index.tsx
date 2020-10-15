@@ -33,6 +33,8 @@ import {
   TagCloseButton,
   Code,
   Center,
+  Square,
+  Circle,
 } from './components/composites';
 
 import {
@@ -44,6 +46,9 @@ import {
   CheckboxGroup,
   ICheckboxGroupProps,
   Radio,
+  IRadioProps,
+  RadioGroup,
+  IRadioGroupProps,
   Button,
   ButtonGroup,
   IButtonProps,
@@ -79,6 +84,7 @@ import {
   Wrap,
   Link,
   ILinkProps,
+  Spacer,
 } from './components/primitives';
 
 import {
@@ -117,9 +123,14 @@ export {
   CheckboxGroup,
   ICheckboxGroupProps,
   Radio,
+  IRadioProps,
+  RadioGroup,
+  IRadioGroupProps,
   Columns,
   Column,
   Center,
+  Square,
+  Circle,
   Box,
   IBoxProps,
   Stack,
@@ -166,4 +177,5 @@ export {
   ISwitchProps,
   IFlexProps,
   IWrapProps,
+  Spacer,
 };

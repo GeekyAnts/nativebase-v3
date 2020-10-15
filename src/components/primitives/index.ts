@@ -14,7 +14,12 @@ export {
   CheckboxGroup,
   ICheckboxGroupProps,
 } from './Checkbox';
-export { default as Radio } from './Radio';
+export {
+  default as Radio,
+  IRadioProps,
+  RadioGroup,
+  IRadioGroupProps,
+} from './Radio';
 export { default as Icon, IconProps } from './Icon';
 export { default as Columns } from './Columns';
 export { default as Column } from './Column';
@@ -27,7 +32,7 @@ export { default as Inline } from './Inline';
 export { default as Image, IImageProps } from './Image';
 export { default as Spinner, ISpinnerProps } from './Spinner';
 export { default as Heading, IHeadingProps } from './Heading';
-export { default as Flex, IFlexProps } from './Flex';
+export { default as Flex, IFlexProps, Spacer } from './Flex';
 export { default as Wrap, IWrapProps } from './Wrap';
 export { default as Switch, ISwitchProps } from './Switch';
 export { default as TextArea } from './TextArea';

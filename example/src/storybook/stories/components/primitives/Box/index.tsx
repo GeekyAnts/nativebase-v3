@@ -2,7 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import { Box, Text } from 'native-base';
+import { Basic } from './basic';
+import { Composite } from './composition';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Box', module)
@@ -20,8 +21,5 @@ storiesOf('Box', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Basic', () => (
-    <Box width="100%" bg="orange.3" p={4} color="white">
-      <Text>This is the box</Text>
-    </Box>
-  ));
+  .add('Basic Box', () => <Basic />)
+  .add('Composition using Box', () => <Composite />);

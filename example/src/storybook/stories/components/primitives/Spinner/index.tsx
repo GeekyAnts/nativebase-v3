@@ -2,7 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import Spinner from './example';
+import Usage from './usage';
+import Color from './color';
+import Size from './size';
+import Playground from './withKnob';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Spinner', module)
@@ -20,4 +23,7 @@ storiesOf('Spinner', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Primary', () => <Spinner />);
+  .add('Playground', () => <Playground />)
+  .add('Usage', () => <Usage />)
+  .add('Color', () => <Color />)
+  .add('Size', () => <Size />);
