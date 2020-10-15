@@ -1,8 +1,21 @@
 import React, { useContext } from 'react';
-import { View, ViewProps, StyleSheet, ViewStyle } from 'react-native';
+import {
+  View,
+  ViewProps,
+  StyleSheet,
+  ViewStyle,
+  TextStyle,
+} from 'react-native';
 import styled from 'styled-components/native';
-import { ColorProps, SpaceProps, color, space } from 'styled-system';
+import {
+  ColorProps,
+  SpaceProps,
+  color,
+  space,
+  TypographyProps,
+} from 'styled-system';
 import { ThemeContext } from '../../../theme';
+import type { IconType } from './iconIndex';
 
 export type IBoxProps = ViewProps &
   ColorProps &
@@ -11,6 +24,13 @@ export type IBoxProps = ViewProps &
     size?: number;
     name: string;
     type: string;
+  };
+export type IconProps = TypographyProps &
+  // ColorProps &
+  SpaceProps & {
+    name: string;
+    type?: IconType;
+    style?: TextStyle | {};
   };
 
 const StyledBox = styled(View)<IBoxProps>(color, space);

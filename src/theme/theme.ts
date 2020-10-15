@@ -14,7 +14,7 @@ export default {
     muted: ['#e2e3e5', '#65696d', '#acacac'],
     dark: ['#d5d8d9', '#1b1f22', '#004466'],
     light: ['#fefefe', '#818182', '#f8f9fb'],
-    default: ['#edf2f6', '#1a212c', '#718096'],
+    default: ['#c3dafe', '#434190', '#5a67d8'],
     gray: [
       '#f7fafc',
       '#edf2f7',
@@ -126,7 +126,7 @@ export default {
       '#702459',
     ],
   },
-  fontSizes: [12, 14, 16, 20, 24, 32],
+  fontSizes: [12, 14, 16, 18, 20, 24, 30],
   fontWeights: ['300', '400', '500', '600', '700'],
   space: [0, 2, 4, 8, 12, 16, 20, 24, 28, 32],
 };
