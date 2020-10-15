@@ -3,8 +3,6 @@ export * from './Button';
 export * from './Checkbox';
 export * from './Columns';
 export * from './Flex';
-export * from './Columns';
-export * from './Flex';
 export * from './Heading';
 export * from './HStack';
 export * from './Icon';

@@ -33,6 +33,8 @@ import {
   TagCloseButton,
   Code,
   Center,
+  Square,
+  Circle,
 } from './components/composites';
 
 import {
@@ -120,6 +122,8 @@ export {
   Columns,
   Column,
   Center,
+  Square,
+  Circle,
   Box,
   IBoxProps,
   Stack,
