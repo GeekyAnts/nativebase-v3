@@ -70,4 +70,4 @@ const Image = ({
 };
 
 export default Image;
-export { IImageProps };
+export { IImageProps } from './props';
