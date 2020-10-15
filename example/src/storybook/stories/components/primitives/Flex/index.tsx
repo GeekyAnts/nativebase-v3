@@ -2,7 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import Flex from './example';
+import Flex from './basic';
+import { SpacerExample } from './spacer';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Flex', module)
@@ -20,4 +21,5 @@ storiesOf('Flex', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Primary', () => <Flex />);
+  .add('Basic Usage', () => <Flex />)
+  .add('Spacer Example', () => <SpacerExample />);
