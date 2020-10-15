@@ -1,29 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, ImageProps, Text } from 'react-native';
+import { StyleSheet, Image as RNImage, Text } from 'react-native';
 import styled from 'styled-components';
-import {
-  BorderProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  flex,
-  layout,
-  space,
-} from 'styled-system';
-import { customBorder, customBorderProps } from '../../../utils/customProps';
+import { border, flex, layout, space } from 'styled-system';
+import { customBorder } from '../../../utils/customProps';
+import type { IImageProps } from './props';
 
-export type NBImageProps = ImageProps &
-  LayoutProps &
-  SpaceProps &
-  customBorderProps &
-  BorderProps &
-  FlexboxProps & {
-    boxSize?: number | undefined;
-    alt?: string | undefined;
-  };
-
-const StyledImage = styled(Image)<NBImageProps>(
+const StyledImage = styled(RNImage)<IImageProps>(
   layout,
   space,
   border,
@@ -31,19 +13,30 @@ const StyledImage = styled(Image)<NBImageProps>(
   customBorder
 );
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const NBImage = ({
+const Image = ({
   boxSize,
   style,
   height,
   width,
   alt,
+  fallbackSource,
+  source,
+  ignoreFallback,
   ...props
-}: NBImageProps) => {
+}: IImageProps) => {
+  let [renderedSource, setSource] = useState(source);
   let [alternate, setAlternate] = useState(false);
   let onImageLoadError = (event: any) => {
     console.warn(event.nativeEvent.error);
-    setAlternate(true);
+    if (
+      !ignoreFallback &&
+      fallbackSource &&
+      fallbackSource !== renderedSource
+    ) {
+      setSource(fallbackSource);
+    } else {
+      setAlternate(true);
+    }
   };
   let computedStyle = style;
   if (boxSize) {
@@ -67,8 +60,14 @@ const NBImage = ({
     return <Text>{alt}</Text>;
   }
   return (
-    <StyledImage style={computedStyle} {...props} onError={onImageLoadError} />
+    <StyledImage
+      style={computedStyle}
+      source={renderedSource}
+      {...props}
+      onError={props.onError ? props.onError : onImageLoadError}
+    />
   );
 };
 
-export default NBImage;
+export default Image;
+export { IImageProps };
