@@ -1,23 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { SpaceProps, TypographyProps, space } from 'styled-system';
+import { space } from 'styled-system';
 import { Box } from 'native-base';
 import { getAttachedChildren } from '../../../utils';
-
-export type ICheckboxGroupProps = SpaceProps &
-  SpaceProps &
-  TypographyProps & {
-    id?: string;
-    value?: Array<any>;
-    defaultValue?: Array<any>;
-    colorScheme?: string | 'default';
-    size?: 'sm' | 'md' | 'lg';
-    spacing?: string | number;
-    children: JSX.Element[];
-    onChange?: (values: Array<any>, event?: any) => void;
-    // Custom props
-    style?: any | undefined;
-  };
+import type { ICheckboxGroupProps } from './props';
 
 const CheckboxGroup = ({
   size,
@@ -46,8 +32,12 @@ const CheckboxGroup = ({
     {
       defaultValue,
       spacing,
+      colorScheme,
+      size,
       ...suppliedProps
     }: {
+      size: string | number;
+      colorScheme: string;
       spacing: string | number;
       value: Array<any>;
       onChange?: (values: Array<any>) => void;
@@ -58,10 +48,12 @@ const CheckboxGroup = ({
     return {
       ...suppliedProps,
       m: spacing,
+      colorScheme: child.props.colorScheme || colorScheme,
+      size: child.props.size || size,
       onChange: (
         event: any,
-        isChecked: boolean,
-        checkboxValue: string | number
+        checkboxValue: string | number,
+        isChecked: boolean
       ) => onChangeHandler(event, isChecked, checkboxValue),
       isChecked: values?.includes(child.props.value),
       defaultIsChecked: defaultValue?.includes(child.props.value),
