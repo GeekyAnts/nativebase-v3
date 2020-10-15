@@ -5,7 +5,7 @@ import { Box } from 'native-base';
 import { getAttachedChildren } from '../../../utils';
 import type { IRadioGroupProps } from './props';
 
-const RadioGroup = ({
+const CustomRadioGroup = ({
   size,
   spacing,
   children,
@@ -48,7 +48,7 @@ const RadioGroup = ({
 
   const supplyPropsToChildren = (children: any, suppliedProps: any) => {
     return children.map((child: JSX.Element) => {
-      if (child.type.name !== 'NBRadio') {
+      if (child.type.name !== 'Radio') {
         console.error('Only NativeBase Radio is allowed as child');
         return undefined;
       } else {
@@ -69,10 +69,10 @@ const RadioGroup = ({
   );
 };
 
-const StyledRadioGroup = styled(RadioGroup)<IRadioGroupProps>(space);
+const StyledRadioGroup = styled(CustomRadioGroup)<IRadioGroupProps>(space);
 
-const NBRadioGroup = ({ children, ...props }: IRadioGroupProps) => {
+const RadioGroup = ({ children, ...props }: IRadioGroupProps) => {
   return <StyledRadioGroup {...props}>{children}</StyledRadioGroup>;
 };
 
-export default NBRadioGroup;
+export default RadioGroup;

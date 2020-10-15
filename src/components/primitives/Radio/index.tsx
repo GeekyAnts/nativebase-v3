@@ -8,7 +8,7 @@ import type { IRadioProps, IRadioGroupProps } from './props';
 export { default as RadioGroup } from './RadioGroup';
 export type { IRadioProps, IRadioGroupProps };
 
-const Radio = ({
+const CustomRadio = ({
   style,
   children,
   onChange,
@@ -111,15 +111,15 @@ const Radio = ({
   );
 };
 
-const StyledRadio = styled(Radio)<IRadioProps>(space);
+const StyledRadio = styled(CustomRadio)<IRadioProps>(space);
 StyledRadio.defaultProps = {
   defaultIsChecked: false,
   size: 'md',
   colorScheme: 'default',
 };
 
-const NBRadio = ({ children, ...props }: IRadioProps) => {
+const Radio = ({ children, ...props }: IRadioProps) => {
   return <StyledRadio {...props}>{children}</StyledRadio>;
 };
 
-export default NBRadio;
+export default Radio;
