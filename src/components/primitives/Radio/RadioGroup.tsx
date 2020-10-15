@@ -1,23 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { SpaceProps, TypographyProps, space } from 'styled-system';
+import { space } from 'styled-system';
 import { Box } from 'native-base';
 import { getAttachedChildren } from '../../../utils';
-
-export type IRadioGroupProps = SpaceProps &
-  SpaceProps &
-  TypographyProps & {
-    id?: string;
-    value?: string | number;
-    defaultValue?: string | number;
-    colorScheme?: string;
-    size?: 'sm' | 'md' | 'lg';
-    spacing?: string | number;
-    children: JSX.Element[];
-    onChange?: (value: string | number, event?: any) => void;
-    // Custom props
-    style?: any | undefined;
-  };
+import type { RadioGroupProps } from './props';
 
 const RadioGroup = ({
   size,
@@ -28,14 +14,9 @@ const RadioGroup = ({
   value,
   defaultValue,
   ...props
-}: IRadioGroupProps) => {
+}: RadioGroupProps) => {
   const [selected, setSelected] = React.useState(value || defaultValue || []);
-  const onChangeHandler = (
-    event: any,
-    isChecked: boolean,
-    radioValue: string | number
-  ) => {
-    console.log(isChecked);
+  const onChangeHandler = (event: any, radioValue: string | number) => {
     setSelected(radioValue);
     onChange && onChange(radioValue, event);
   };
@@ -58,8 +39,8 @@ const RadioGroup = ({
       m: spacing,
       colorScheme: child.props.colorScheme || colorScheme,
       size: child.props.size || size,
-      onChange: (event: any, isChecked: boolean, radioValue: string | number) =>
-        onChangeHandler(event, isChecked, radioValue),
+      onChange: (event: any, radioValue: string | number) =>
+        onChangeHandler(event, radioValue),
       isChecked: selected === child.props.value,
       defaultIsChecked: selected === child.props.value,
     };
@@ -88,9 +69,9 @@ const RadioGroup = ({
   );
 };
 
-const StyledRadioGroup = styled(RadioGroup)<IRadioGroupProps>(space);
+const StyledRadioGroup = styled(RadioGroup)<RadioGroupProps>(space);
 
-const NBRadioGroup = ({ children, ...props }: IRadioGroupProps) => {
+const NBRadioGroup = ({ children, ...props }: RadioGroupProps) => {
   return <StyledRadioGroup {...props}>{children}</StyledRadioGroup>;
 };
 

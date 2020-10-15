@@ -2,39 +2,13 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { ThemeContext } from '../../../theme';
 import styled from 'styled-components/native';
-import { SpaceProps, TypographyProps, space } from 'styled-system';
-import type { ReactElement } from 'react';
+import { space } from 'styled-system';
 import { View } from 'native-base';
-export { default as RadioGroup, IRadioGroupProps } from './RadioGroup';
+import type { RadioProps, RadioGroupProps } from './props';
+export { default as RadioGroup } from './RadioGroup';
+export type { RadioProps, RadioGroupProps };
 
-export type IRadioProps = SpaceProps &
-  TypographyProps & {
-    id?: string;
-    name?: string;
-    value?: string | number;
-    colorScheme?: string | 'default';
-    defaultIsChecked?: boolean;
-    isChecked?: boolean;
-    // isFullWidth?: boolean;
-    isDisabled?: boolean;
-    isInvalid?: boolean;
-    size?: 'sm' | 'md' | 'lg';
-    icon?: ReactElement;
-    children?: JSX.Element;
-    onChange?: (
-      event?: any,
-      currentState?: boolean,
-      value?: string | number | undefined
-    ) => void;
-    // onBlur?: (event: any) => void;
-    // onFocus?: (event: any) => void;
-    ariaLabel?: string;
-    // ariaLabelledby?: string;
-    // Custom Props
-    style?: any | undefined;
-  };
-
-const CheckBox = ({
+const Radio = ({
   style,
   children,
   onChange,
@@ -45,31 +19,24 @@ const CheckBox = ({
   isInvalid,
   icon,
   ...props
-}: IRadioProps) => {
-  // console.log('PROPS === ', props);
-
+}: RadioProps) => {
   const theme = React.useContext(ThemeContext);
   const colorScheme = props.colorScheme || 'default';
   const size = props.size || 'md';
   let activeColor = theme.colors.default[2];
 
-  // const [radioState, setRadioState] = React.useState(
-  //   isChecked || defaultIsChecked
-  // );
   const pressHandler = (event: any) => {
-    // isChecked = !radioState;
-    // setRadioState(isChecked);
-    onChange && onChange(event, isChecked, value);
+    onChange && onChange(event, value);
   };
 
   if (isDisabled) activeColor = theme.colors.gray[3];
   else if (isInvalid) activeColor = theme.colors.danger[2];
-  else if (colorScheme in theme.colors && theme.colors[colorScheme])
+  else if (colorScheme in theme.colors && theme.colors[colorScheme]) {
     activeColor =
       typeof theme.colors[colorScheme] === 'string'
         ? theme.colors[colorScheme]
         : theme.colors[colorScheme][5] || theme.colors[colorScheme][2];
-
+  }
   const baseStyle = StyleSheet.create({
     radioWrapper: {
       display: 'flex',
@@ -129,6 +96,7 @@ const CheckBox = ({
 
   return (
     <TouchableOpacity
+      activeOpacity={1}
       {...props}
       disabled={isDisabled}
       style={[baseStyle.radioWrapper, style]}
@@ -143,16 +111,14 @@ const CheckBox = ({
   );
 };
 
-const StyledRadio = styled(CheckBox)<IRadioProps>(space);
+const StyledRadio = styled(Radio)<RadioProps>(space);
 StyledRadio.defaultProps = {
   defaultIsChecked: false,
   size: 'md',
   colorScheme: 'default',
 };
 
-const NBRadio = ({ children, ...props }: IRadioProps) => {
-  console.log('Props form Storybook -', props);
-
+const NBRadio = ({ children, ...props }: RadioProps) => {
   return <StyledRadio {...props}>{children}</StyledRadio>;
 };
 

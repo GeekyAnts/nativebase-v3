@@ -2,40 +2,13 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { ThemeContext } from '../../../theme';
 import styled from 'styled-components/native';
-import { SpaceProps, TypographyProps, space } from 'styled-system';
-import type { ReactElement } from 'react';
 import { View } from 'native-base';
-export { default as CheckboxGroup, ICheckboxGroupProps } from './CheckboxGroup';
+import type { CheckboxProps, CheckboxGroupProps } from './props';
+import { space } from 'styled-system';
+export { default as CheckboxGroup } from './CheckboxGroup';
+export type { CheckboxProps, CheckboxGroupProps };
 
-export type ICheckboxProps = SpaceProps &
-  TypographyProps & {
-    id?: string;
-    name?: string;
-    value?: string | number;
-    colorScheme?: string | 'default';
-    defaultIsChecked?: boolean;
-    isChecked?: boolean;
-    isIndeterminate?: boolean;
-    // isFullWidth?: boolean;
-    isDisabled?: boolean;
-    isInvalid?: boolean;
-    size?: 'sm' | 'md' | 'lg';
-    icon?: ReactElement;
-    children?: JSX.Element;
-    onChange?: (
-      event?: any,
-      currentState?: boolean,
-      value?: string | number | undefined
-    ) => void;
-    // onBlur?: (event: any) => void;
-    // onFocus?: (event: any) => void;
-    ariaLabel?: string;
-    // ariaLabelledby?: string;
-    // Custom Props
-    style?: any | undefined;
-  };
-
-const CheckBox = ({
+const Checkbox = ({
   style,
   children,
   onChange,
@@ -47,7 +20,7 @@ const CheckBox = ({
   isInvalid,
   icon,
   ...props
-}: ICheckboxProps) => {
+}: CheckboxProps) => {
   const theme = React.useContext(ThemeContext);
   const colorScheme = props.colorScheme || 'default';
   const size = props.size || 'md';
@@ -59,7 +32,7 @@ const CheckBox = ({
   const pressHandler = (event: any) => {
     isChecked = !checkboxState;
     setCheckboxState(isChecked);
-    onChange && onChange(event, isChecked, value);
+    onChange && onChange(event, value, isChecked);
   };
 
   if (isDisabled) activeColor = theme.colors.gray[3];
@@ -131,6 +104,7 @@ const CheckBox = ({
 
   return (
     <TouchableOpacity
+      activeOpacity={1}
       {...props}
       disabled={isDisabled}
       style={[baseStyle.checkboxWrapper, style]}
@@ -145,16 +119,14 @@ const CheckBox = ({
   );
 };
 
-const StyledCheckbox = styled(CheckBox)<ICheckboxProps>(space);
+const StyledCheckbox = styled(Checkbox)<CheckboxProps>(space);
 StyledCheckbox.defaultProps = {
   defaultIsChecked: false,
   size: 'md',
   colorScheme: 'default',
 };
 
-const NBCheckbox = ({ children, ...props }: ICheckboxProps) => {
-  // console.log('Props form Storybook -', props);
-
+const NBCheckbox = ({ children, ...props }: CheckboxProps) => {
   return <StyledCheckbox {...props}>{children}</StyledCheckbox>;
 };
 
