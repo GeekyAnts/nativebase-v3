@@ -25,7 +25,7 @@ export { default as HStack } from './HStack';
 export { default as ZStack } from './ZStack';
 export { default as Inline } from './Inline';
 export { default as Image, IImageProps } from './Image';
-export { default as Spinner, ISpinnerProps } from './Spinner';
+export { default as Spinner, SpinnerProps } from './Spinner';
 export { default as Heading, IHeadingProps } from './Heading';
 export { default as Flex, IFlexProps } from './Flex';
 export { default as Wrap, IWrapProps } from './Wrap';
