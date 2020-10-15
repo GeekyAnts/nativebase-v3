@@ -23,6 +23,7 @@ import {
   BreadCrumbLink,
   CloseButton,
   Divider,
+  IDividerProps,
   Kbd,
   Progress,
   Stat,
@@ -35,6 +36,9 @@ import {
   Center,
   Square,
   Circle,
+  ICenterProps,
+  ICircleProps,
+  ISquareProps,
 } from './components/composites';
 
 import {
@@ -130,6 +134,9 @@ export {
   Center,
   Square,
   Circle,
+  ICenterProps,
+  ICircleProps,
+  ISquareProps,
   Box,
   IBoxProps,
   Stack,
@@ -162,6 +169,7 @@ export {
   BreadCrumbLink,
   CloseButton,
   Divider,
+  IDividerProps,
   Link,
   ILinkProps,
   Progress,
