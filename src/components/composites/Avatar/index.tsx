@@ -1,30 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, ImageProps, Text } from 'react-native';
+import { StyleSheet, Image, Text } from 'react-native';
 import styled from 'styled-components';
-import {
-  BorderProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  flex,
-  layout,
-  space,
-} from 'styled-system';
-import { customBorder, customBorderProps } from '../../../utils/customProps';
+import { border, flex, layout, space, variant } from 'styled-system';
+import { customBorder } from '../../../utils/customProps';
 import { Box } from '../../primitives';
-import theme from '../../../theme';
+import { theme } from '../../../theme';
+import type { IAvatarProps } from './props';
+export type { IAvatarProps };
 
-export type IAvatarProps = LayoutProps &
-  SpaceProps &
-  customBorderProps &
-  BorderProps &
-  FlexboxProps & {
-    avatarSize?: number | undefined;
-    boxSize?: number | undefined;
-    name?: string | undefined;
-    style?: any;
-  };
 const getInitials = (str: string) => {
   var nameArr = str.split(' ');
   return nameArr[0].substr(0, 1) + nameArr[nameArr.length - 1].substr(0, 1);
@@ -33,7 +16,7 @@ const getInitials = (str: string) => {
 const getRandomColor = () => {
   var letters = '0123456789ABCDEF';
   var color = '#';
-  for (var i = 0; i < 6; i++) {
+  for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
@@ -41,21 +24,26 @@ const getRandomColor = () => {
 export const AvatarBadge = ({
   boxSize,
   style,
-  badgeColor,
+  bg,
+  borderColor,
   ...props
-}: IAvatarProps & { badgeColor?: string | undefined }) => {
+}: IAvatarProps & {
+  bg?: string;
+  boxSize?: number;
+  borderColor?: string;
+}) => {
   let computedStyle = style;
   computedStyle = StyleSheet.flatten([
     style,
     {
-      backgroundColor: badgeColor ? badgeColor : theme.colors.indigo[4],
+      backgroundColor: bg ? bg : theme.colors.indigo[4],
       position: 'absolute',
       right: 0,
       bottom: 0,
       marginRight: '7%',
       marginBottom: '7%',
       borderWidth: 2,
-      borderColor: 'white',
+      borderColor: borderColor || 'white',
     },
   ]);
   return (
@@ -65,87 +53,98 @@ export const AvatarBadge = ({
       width={boxSize ? boxSize : 10}
       height={boxSize ? boxSize : 10}
       {...props}
-    ></Box>
+    />
   );
 };
-const StyledAvatar = styled(Image)<IAvatarProps>(
-  layout,
-  space,
-  border,
-  flex,
-  customBorder
-);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Avatar = ({
-  avatarSize,
-  style,
+  size,
   name,
+  style,
+  src,
   children,
   ...props
-}: IAvatarProps &
-  ImageProps & { children?: JSX.Element[] | JSX.Element | any }) => {
+}: {
+  children?: JSX.Element[] | JSX.Element | any | undefined;
+} & IAvatarProps) => {
+  const { fontSize, height, width } = style[0];
   let [alternate, setAlternate] = useState(false);
   let onImageLoadError = (event: any) => {
     console.warn(event.nativeEvent.error);
-    setAlternate(true);
+    size && setAlternate(true);
   };
-  let computedStyle = style;
-  if (avatarSize) {
-    computedStyle = StyleSheet.flatten([
-      style,
-      {
-        width: avatarSize,
-        height: avatarSize,
-      },
-    ]);
-  } else {
-    computedStyle = StyleSheet.flatten([
-      style,
-      {
-        width: 100,
-        height: 100,
-      },
-    ]);
-  }
-  var textStyle: any = {
+
+  let computedStyle = StyleSheet.create({
+    width: width,
+    height: height,
+  });
+  let textStyle: any = {
     color: 'white',
-    fontSize: 20,
+    fontSize: fontSize,
     fontWeight: '600',
   };
-  if (alternate) {
-    return (
-      <Box
-        bg={getRandomColor()}
-        borderRadius={50}
-        width={avatarSize ? avatarSize : 100}
-        height={avatarSize ? avatarSize : 100}
-        style={{ justifyContent: 'center', alignItems: 'center' }}
-      >
-        <Text style={textStyle}>{name ? getInitials(name) : '---'}</Text>
-        {children}
-      </Box>
-    );
-  }
   return (
     <Box
-      width={avatarSize ? avatarSize : 100}
-      height={avatarSize ? avatarSize : 100}
+      bg={getRandomColor()}
+      borderRadius={250}
+      width={width}
+      height={height}
       style={{
         position: 'relative',
         justifyContent: 'center',
         alignItems: 'center',
       }}
+      {...props}
     >
-      <StyledAvatar
-        borderRadius={50}
-        style={computedStyle}
-        {...props}
-        onError={onImageLoadError}
-      />
+      {!src || alternate ? (
+        <Text style={textStyle}>{name ? getInitials(name) : '---'}</Text>
+      ) : (
+        <Image
+          borderRadius={250}
+          style={computedStyle}
+          source={{ uri: src }}
+          onError={onImageLoadError}
+        />
+      )}
       {children}
     </Box>
   );
 };
 
-export default Avatar;
+const StyledAvatar = styled(Avatar)<IAvatarProps>(
+  layout,
+  space,
+  border,
+  flex,
+  customBorder,
+  variant({
+    prop: 'size',
+    variants: {
+      '2xl': {
+        fontSize: theme.fontSizes[5],
+        width: 128,
+        height: 128,
+      },
+      'xl': { fontSize: theme.fontSizes[4], width: 96, height: 96 },
+      'lg': { fontSize: theme.fontSizes[3], width: 64, height: 64 },
+      'md': { fontSize: theme.fontSizes[2], width: 48, height: 48 },
+      'sm': { fontSize: theme.fontSizes[1], width: 32, height: 32 },
+      'xs': { fontSize: theme.fontSizes[0], width: 24, height: 24 },
+    },
+  })
+);
+
+StyledAvatar.defaultProps = {
+  size: 'lg',
+};
+
+const NBAvatar = ({
+  children,
+  ...props
+}: IAvatarProps & {
+  children?: JSX.Element[] | JSX.Element | any | undefined;
+}) => {
+  return <StyledAvatar {...props}>{children}</StyledAvatar>;
+};
+
+export default NBAvatar;

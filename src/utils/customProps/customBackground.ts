@@ -10,10 +10,6 @@ const config: Config = {
     property: 'backgroundColor',
     scale: 'colors',
   },
-  background: {
-    property: 'background',
-    scale: 'colors',
-  },
   backgroundColor: {
     property: 'backgroundColor',
     scale: 'colors',
@@ -55,8 +51,6 @@ export interface customBackgroundProps {
 
   bg?: CSS.Property.BackgroundColor;
   bgColor?: CSS.Property.BackgroundColor;
-
-  background?: CSS.Property.Background;
 
   backgroundColor?: CSS.Property.BackgroundColor;
 
