@@ -3,12 +3,15 @@ export { default as AspectRatio, IAspectRatioProps } from './AspectRatio';
 export { default as AppBar } from './AppBar';
 export { default as Badge } from './Badge';
 export { default as IconButton } from './IconButton';
-export { default as Alert } from './Alert';
-export { default as AlertHeading } from './AlertHeading';
-export { default as AlertDescription } from './AlertDescription';
-export { default as AlertIcon } from './AlertIcon';
-export { default as AlertCloseButton } from './AlertCloseButton';
-export { default as Avatar, AvatarBadge, IAvatarProps } from './Avatar';
+export {
+  default as Alert,
+  IAlertProps,
+  AlertTitle,
+  AlertDescription,
+  AlertIcon,
+  AlertCloseButton,
+} from './Alert';
+export { default as Avatar, AvatarBadge } from './Avatar';
 export {
   default as BreadCrumb,
   BreadCrumbItem,
