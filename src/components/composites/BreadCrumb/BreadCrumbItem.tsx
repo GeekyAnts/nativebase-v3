@@ -10,15 +10,9 @@ export const BreadCrumbItem = ({
   const computedProps = { ...props, isUnderlined: false };
   return (
     <Flex {...props}>
-      {Array.isArray(children)
-        ? children.map((child: any) => {
-            console.log(child);
-            return React.cloneElement(
-              child,
-              isCurrentPage ? computedProps : props
-            );
-          })
-        : React.cloneElement(children, isCurrentPage ? computedProps : props)}
+      {React.Children.map(children, (child: any) => {
+        return React.cloneElement(child, isCurrentPage ? computedProps : props);
+      })}
     </Flex>
   );
 };
