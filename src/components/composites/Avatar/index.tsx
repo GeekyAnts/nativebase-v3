@@ -1,31 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, Text } from 'react-native';
 import styled from 'styled-components';
-import {
-  BorderProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  flex,
-  layout,
-  space,
-  variant,
-} from 'styled-system';
-import { customBorder, customBorderProps } from '../../../utils/customProps';
+import { border, flex, layout, space, variant } from 'styled-system';
+import { customBorder } from '../../../utils/customProps';
 import { Box } from '../../primitives';
 import { theme } from '../../../theme';
+import type { IAvatarProps } from './props';
+export type { IAvatarProps };
 
-export type IAvatarProps = LayoutProps &
-  SpaceProps &
-  customBorderProps &
-  BorderProps &
-  FlexboxProps & {
-    name?: string | undefined;
-    style?: any;
-    size?: string | undefined;
-    src?: string | undefined;
-  };
 const getInitials = (str: string) => {
   var nameArr = str.split(' ');
   return nameArr[0].substr(0, 1) + nameArr[nameArr.length - 1].substr(0, 1);

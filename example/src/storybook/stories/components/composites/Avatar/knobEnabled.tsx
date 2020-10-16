@@ -1,10 +1,8 @@
 import React from 'react';
 import { Avatar, AvatarBadge, Heading, Inline, Text, View } from 'native-base';
-import { boolean, color, select, text } from '@storybook/addon-knobs';
+import { color, number, select, text } from '@storybook/addon-knobs';
 
 export default function () {
-  const [toggleCheckBox, setToggleCheckBox] = React.useState(true);
-  const radioValue = text('value', 'Cool');
   return (
     <View display="flex" justifyContent="space-between" alignItems="center">
       <Inline mb={2} alignItems="baseline">
@@ -19,14 +17,16 @@ export default function () {
         size={select('size', ['sm', 'md', 'lg'], 'md')}
         name={text('name', 'Native Base')}
       >
-        <AvatarBadge badgeColor={color('badgeColor', 'red')}>
-          Are you Awesome?
-        </AvatarBadge>
+        <AvatarBadge
+          badgeColor={color('badgeColor', 'red')}
+          badgeSize={number('badgeSize', 10, {
+            range: true,
+            min: 0,
+            max: 40,
+            step: 1,
+          })}
+        />
       </Avatar>
-      <Text>
-        {toggleCheckBox ? 'Yes, you are and also ' : 'No, But you are '}
-        {radioValue}
-      </Text>
     </View>
   );
 }

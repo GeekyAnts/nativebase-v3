@@ -22,6 +22,6 @@ storiesOf('Avatar', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Playgroud', () => <Playground />)
+  .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
   .add('Size', () => <Size />);
