@@ -5,6 +5,8 @@ import { View, theme, ThemeProvider } from 'native-base';
 import Playground from './knobEnabled';
 import Usage from './usage';
 import Size from './size';
+import Fallback from './Fallback';
+import AvatarBadge from './AvatarBadge';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Avatar', module)
@@ -24,4 +26,6 @@ storiesOf('Avatar', module)
   ))
   .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
-  .add('Size', () => <Size />);
+  .add('Size', () => <Size />)
+  .add('Fallback', () => <Fallback />)
+  .add('AvatarBadge', () => <AvatarBadge />);

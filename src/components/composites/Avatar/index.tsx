@@ -16,40 +16,42 @@ const getInitials = (str: string) => {
 const getRandomColor = () => {
   var letters = '0123456789ABCDEF';
   var color = '#';
-  for (var i = 0; i < 6; i++) {
+  for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
 };
 export const AvatarBadge = ({
-  badgeSize,
+  boxSize,
   style,
-  badgeColor,
+  bg,
+  borderColor,
   ...props
 }: IAvatarProps & {
-  badgeColor?: string | undefined;
-  badgeSize?: number | undefined;
+  bg?: string;
+  boxSize?: number;
+  borderColor?: string;
 }) => {
   let computedStyle = style;
   computedStyle = StyleSheet.flatten([
     style,
     {
-      backgroundColor: badgeColor ? badgeColor : theme.colors.indigo[4],
+      backgroundColor: bg ? bg : theme.colors.indigo[4],
       position: 'absolute',
       right: 0,
       bottom: 0,
       marginRight: '7%',
       marginBottom: '7%',
       borderWidth: 2,
-      borderColor: 'white',
+      borderColor: borderColor || 'white',
     },
   ]);
   return (
     <Box
       borderRadius={50}
       style={computedStyle}
-      width={badgeSize ? badgeSize : 10}
-      height={badgeSize ? badgeSize : 10}
+      width={boxSize ? boxSize : 10}
+      height={boxSize ? boxSize : 10}
       {...props}
     />
   );
@@ -123,11 +125,11 @@ const StyledAvatar = styled(Avatar)<IAvatarProps>(
         width: 128,
         height: 128,
       },
-      'xl': { fontSize: theme.fontSizes[4], width: 96, height: 96 },
-      'lg': { fontSize: theme.fontSizes[3], width: 64, height: 64 },
-      'md': { fontSize: theme.fontSizes[2], width: 48, height: 48 },
-      'sm': { fontSize: theme.fontSizes[1], width: 32, height: 32 },
-      'xs': { fontSize: theme.fontSizes[0], width: 24, height: 24 },
+      xl: { fontSize: theme.fontSizes[4], width: 96, height: 96 },
+      lg: { fontSize: theme.fontSizes[3], width: 64, height: 64 },
+      md: { fontSize: theme.fontSizes[2], width: 48, height: 48 },
+      sm: { fontSize: theme.fontSizes[1], width: 32, height: 32 },
+      xs: { fontSize: theme.fontSizes[0], width: 24, height: 24 },
     },
   })
 );
