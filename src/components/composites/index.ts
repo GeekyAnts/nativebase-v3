@@ -8,7 +8,7 @@ export { default as AlertHeading } from './AlertHeading';
 export { default as AlertDescription } from './AlertDescription';
 export { default as AlertIcon } from './AlertIcon';
 export { default as AlertCloseButton } from './AlertCloseButton';
-export { default as Avatar, AvatarBadge } from './Avatar';
+export { default as Avatar, AvatarBadge, IAvatarProps } from './Avatar';
 export {
   default as BreadCrumb,
   BreadCrumbItem,
