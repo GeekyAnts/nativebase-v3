@@ -40,6 +40,8 @@ import {
   ICenterProps,
   ICircleProps,
   ISquareProps,
+  Wrap,
+  IWrapProps,
 } from './components/composites';
 
 import {
@@ -83,9 +85,7 @@ import {
   Switch,
   ISwitchProps,
   IFlexProps,
-  IWrapProps,
   TextArea,
-  Wrap,
   Link,
   ILinkProps,
   Spacer,
@@ -163,7 +163,6 @@ export {
   ThemeConsumer,
   ThemeContext,
   Switch,
-  Wrap,
   Flex,
   Kbd,
   BreadCrumb,
@@ -184,6 +183,7 @@ export {
   TextArea,
   ISwitchProps,
   IFlexProps,
+  Wrap,
   IWrapProps,
   Spacer,
 };

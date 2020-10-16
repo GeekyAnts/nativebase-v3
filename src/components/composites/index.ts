@@ -32,3 +32,4 @@ export {
   ICircleProps,
   ISquareProps,
 } from './Center';
+export { default as Wrap, IWrapProps } from './Wrap';
