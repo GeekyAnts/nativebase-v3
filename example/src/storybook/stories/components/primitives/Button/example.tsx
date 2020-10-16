@@ -96,7 +96,11 @@ export default function () {
         <Button
           variant="solid"
           leftIcon={
-            <Icon name={text("name", "menu")} size={30} type="MaterialIcons" />
+            <Icon
+              name={text("name", "menu")}
+              // size={30}
+              type="MaterialIcons"
+            />
           }
           size="xs"
           colorScheme="yellow"
@@ -106,7 +110,11 @@ export default function () {
         <Button
           isDisabled
           rightIcon={
-            <Icon name={text("name", "menu")} size={30} type="MaterialIcons" />
+            <Icon
+              name={text("name", "menu")}
+              // size={30}
+              type="MaterialIcons"
+            />
           }
           variant="solid"
           size="xs"

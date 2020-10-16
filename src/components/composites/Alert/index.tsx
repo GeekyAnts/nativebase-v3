@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { StyleSheet, Text, ViewProps, View } from 'react-native';
-import styled from 'styled-components/native';
+import React, { useContext } from "react";
+import { StyleSheet, Text, ViewProps, View } from "react-native";
+import styled from "styled-components/native";
 import {
   BorderProps,
   ColorProps,
@@ -13,7 +13,7 @@ import {
   layout,
   space,
   variant,
-} from 'styled-system';
+} from "styled-system";
 import {
   customBorder,
   customBorderProps,
@@ -27,9 +27,9 @@ import {
   customExtraProps,
   customShadowProps,
   customShadow,
-} from '../../../utils/customProps';
-import { ThemeContext } from '../../../theme';
-import { CloseButton, Icon } from '../../../index';
+} from "../../../utils/customProps";
+import { ThemeContext } from "../../../theme";
+import { CloseButton, Icon } from "../../../index";
 
 export type IAlertProps = ViewProps &
   ColorProps &
@@ -52,40 +52,40 @@ export type IAlertProps = ViewProps &
 
 // Color Varients
 let successStyle = {
-  backgroundColor: 'success.0',
-  color: 'success.1',
+  backgroundColor: "success.0",
+  color: "success.1",
 };
 let dangerStyle = {
-  backgroundColor: 'danger.0',
-  color: 'danger.1',
+  backgroundColor: "danger.0",
+  color: "danger.1",
 };
 let warningStyle = {
-  backgroundColor: 'warning.0',
-  color: 'warning.1',
+  backgroundColor: "warning.0",
+  color: "warning.1",
 };
 let darkStyle = {
-  backgroundColor: 'dark.0',
-  color: 'dark.1',
+  backgroundColor: "dark.0",
+  color: "dark.1",
 };
 let lightStyle = {
-  backgroundColor: 'light.0',
-  color: 'light.1',
+  backgroundColor: "light.0",
+  color: "light.1",
 };
 let mutedStyle = {
-  backgroundColor: 'muted.0',
-  color: 'muted.1',
+  backgroundColor: "muted.0",
+  color: "muted.1",
 };
 let defaultStyle = {
-  backgroundColor: 'default.0',
-  color: 'default.1',
+  backgroundColor: "default.0",
+  color: "default.1",
 };
 const getAlertIcon = (status: string | undefined) => {
   return (
     <Icon
       style={
-        status ? { backgroundColor: 'black' } : { backgroundColor: 'black' }
+        status ? { backgroundColor: "black" } : { backgroundColor: "black" }
       }
-      size={30}
+      // size={30}
       type="MaterialIcons"
       name="menu"
     ></Icon>
@@ -101,7 +101,7 @@ const childStyling = (
   let computedStyle: any = {};
   computedStyle = StyleSheet.flatten([
     { color: statusStyle },
-    props.variant === 'solid' ? { color: 'white' } : {},
+    props.variant === "solid" ? { color: "white" } : {},
     variantStyle,
     fontSize != -1 ? { fontSize: fontSize } : {},
   ]);
@@ -125,7 +125,7 @@ const StyledAlert = styled(View)<IAlertProps>(
   customExtra,
   customLayout,
   variant({
-    prop: 'status',
+    prop: "status",
     variants: {
       success: successStyle,
       green: successStyle,
@@ -146,46 +146,46 @@ const StyledAlert = styled(View)<IAlertProps>(
   })
 );
 StyledAlert.defaultProps = {
-  status: 'default',
+  status: "default",
 };
 const Alert = ({ style, ...props }: IAlertProps) => {
   const theme = useContext(ThemeContext);
   let structureColor = theme.colors.default[2];
   let childStatusStyle: any;
   let variantStyle;
-  let lightColor = 'white';
+  let lightColor = "white";
   if (props.status) {
     switch (props.status) {
-      case 'success':
-      case 'green':
+      case "success":
+      case "green":
         childStatusStyle = theme.colors.success[1];
         structureColor = theme.colors.success[2];
         break;
-      case 'danger':
-      case 'error':
-      case 'red':
+      case "danger":
+      case "error":
+      case "red":
         childStatusStyle = theme.colors.danger[1];
         structureColor = theme.colors.danger[2];
         break;
-      case 'warning':
-      case 'yellow':
+      case "warning":
+      case "yellow":
         childStatusStyle = theme.colors.warning[1];
         structureColor = theme.colors.warning[2];
         break;
-      case 'light':
-      case 'white':
+      case "light":
+      case "white":
         childStatusStyle = theme.colors.light[1];
         structureColor = theme.colors.light[2];
         lightColor = theme.colors.dark[2];
         break;
-      case 'dark':
-      case 'black':
+      case "dark":
+      case "black":
         childStatusStyle = theme.colors.dark[1];
         structureColor = theme.colors.dark[2];
         break;
-      case 'muted':
-      case 'secondary':
-      case 'grey':
+      case "muted":
+      case "secondary":
+      case "grey":
         childStatusStyle = theme.colors.muted[1];
         structureColor = theme.colors.muted[2];
         break;
@@ -205,24 +205,24 @@ const Alert = ({ style, ...props }: IAlertProps) => {
   };
   let solidStyle = {
     backgroundColor: props.variant ? structureColor : theme.colors.muted[2],
-    color: lightColor === 'white' ? 'white' : lightColor,
+    color: lightColor === "white" ? "white" : lightColor,
   };
   let subtleStyle = {}; // Default when no variantType is provided
 
   let variantType = subtleStyle;
   if (props.variant) {
     switch (props.variant) {
-      case 'left-accent':
+      case "left-accent":
         variantType = leftAccentStyle;
         break;
-      case 'solid':
+      case "solid":
         variantType = solidStyle;
-        variantStyle = { color: lightColor === 'white' ? 'white' : lightColor };
+        variantStyle = { color: lightColor === "white" ? "white" : lightColor };
         break;
-      case 'subtle':
+      case "subtle":
         variantType = subtleStyle;
         break;
-      case 'top-accent':
+      case "top-accent":
         variantType = topAccentStyle;
         break;
       default:
@@ -234,10 +234,10 @@ const Alert = ({ style, ...props }: IAlertProps) => {
   computedStyle = StyleSheet.flatten([
     style,
     {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      width: '100%',
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      width: "100%",
     },
     variantType,
   ]);
@@ -249,20 +249,20 @@ const Alert = ({ style, ...props }: IAlertProps) => {
 
   for (var ind = 0; ind < props.children.length; ind++) {
     if (
-      props.children[ind].type.name == 'AlertHeading' ||
-      props.children[ind].type.name == 'AlertDescription'
+      props.children[ind].type.name == "AlertHeading" ||
+      props.children[ind].type.name == "AlertDescription"
     ) {
       textComponents.push(textSpacingElem);
       textComponents.push(props.children[ind]);
     }
-    if (props.children[ind].type.name == 'AlertIcon') {
+    if (props.children[ind].type.name == "AlertIcon") {
       iconComponent = getAlertIcon(props.status);
     }
-    if (props.children[ind].type.name == 'AlertCloseButton') {
+    if (props.children[ind].type.name == "AlertCloseButton") {
       closeButtonComponent = (
         <CloseButton
           ml="auto"
-          color={props.variant == 'solid' ? 'white' : childStatusStyle}
+          color={props.variant == "solid" ? "white" : childStatusStyle}
           highlightColor="#f0f0f0"
           highlight={1}
         />

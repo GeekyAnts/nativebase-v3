@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { StyleSheet, TextStyle } from 'react-native';
+import React, { useContext } from "react";
+import { StyleSheet, TextStyle } from "react-native";
 import {
   // ColorProps,
   SpaceProps,
@@ -7,44 +7,37 @@ import {
   color,
   space,
   typography,
-} from 'styled-system';
-import styled, { ThemeContext } from 'styled-components';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Foundation from 'react-native-vector-icons/Foundation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Octicons from 'react-native-vector-icons/Octicons';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import Zocial from 'react-native-vector-icons/Zocial';
+} from "styled-system";
+import styled, { ThemeContext } from "styled-components";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import Entypo from "react-native-vector-icons/Entypo";
+import EvilIcons from "react-native-vector-icons/EvilIcons";
+import Feather from "react-native-vector-icons/Feather";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import Foundation from "react-native-vector-icons/Foundation";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import Octicons from "react-native-vector-icons/Octicons";
+import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
+import Zocial from "react-native-vector-icons/Zocial";
 
 export type IconType =
-  | 'AntDesign'
-  | 'Entypo'
-  | 'EvilIcons'
-  | 'Feather'
-  | 'FontAwesome'
-  | 'FontAwesome5'
-  | 'Foundation'
-  | 'Ionicons'
-  | 'MaterialCommunityIcons'
-  | 'MaterialIcons'
-  | 'Octicons'
-  | 'SimpleLineIcons'
-  | 'Zocial';
+  | "AntDesign"
+  | "Entypo"
+  | "EvilIcons"
+  | "Feather"
+  | "FontAwesome"
+  | "FontAwesome5"
+  | "Foundation"
+  | "Ionicons"
+  | "MaterialCommunityIcons"
+  | "MaterialIcons"
+  | "Octicons"
+  | "SimpleLineIcons"
+  | "Zocial";
 
-export type IconProps = TypographyProps &
-  // ColorProps &
-  SpaceProps & {
-    name: string;
-    type?: IconType;
-    style?: TextStyle | {};
-  };
 export type IconProps = TypographyProps &
   // ColorProps &
   SpaceProps & {
@@ -67,23 +60,23 @@ const Icon = ({ name, type, style, ...props }: IconProps) => {
     style,
   ]);
   switch (type) {
-    case 'AntDesign':
+    case "AntDesign":
       return <AntDesign name={name} style={flattenedIconStyle} {...props} />;
-    case 'Entypo':
+    case "Entypo":
       return <Entypo name={name} style={flattenedIconStyle} {...props} />;
-    case 'EvilIcons':
+    case "EvilIcons":
       return <EvilIcons name={name} style={flattenedIconStyle} {...props} />;
-    case 'Feather':
+    case "Feather":
       return <Feather name={name} style={flattenedIconStyle} {...props} />;
-    case 'FontAwesome':
+    case "FontAwesome":
       return <FontAwesome name={name} style={flattenedIconStyle} {...props} />;
-    case 'FontAwesome5':
+    case "FontAwesome5":
       return <FontAwesome5 name={name} style={flattenedIconStyle} {...props} />;
-    case 'Foundation':
+    case "Foundation":
       return <Foundation name={name} style={flattenedIconStyle} {...props} />;
-    case 'Ionicons':
+    case "Ionicons":
       return <Ionicons name={name} style={flattenedIconStyle} {...props} />;
-    case 'MaterialCommunityIcons':
+    case "MaterialCommunityIcons":
       return (
         <MaterialCommunityIcons
           name={name}
@@ -91,17 +84,17 @@ const Icon = ({ name, type, style, ...props }: IconProps) => {
           {...props}
         />
       );
-    case 'MaterialIcons':
+    case "MaterialIcons":
       return (
         <MaterialIcons name={name} style={flattenedIconStyle} {...props} />
       );
-    case 'Octicons':
+    case "Octicons":
       return <Octicons name={name} style={flattenedIconStyle} {...props} />;
-    case 'SimpleLineIcons':
+    case "SimpleLineIcons":
       return (
         <SimpleLineIcons name={name} style={flattenedIconStyle} {...props} />
       );
-    case 'Zocial':
+    case "Zocial":
       return <Zocial name={name} style={flattenedIconStyle} {...props} />;
     default:
       return (
