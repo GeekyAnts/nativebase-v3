@@ -12,7 +12,6 @@ import {
   flexbox,
   layout,
   space,
-  variant,
 } from 'styled-system';
 import {
   customBorder,
@@ -29,6 +28,7 @@ import {
   customShadow,
 } from '../../../utils/customProps';
 import { theme } from '../../../theme';
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 export type IHeadingProps = ColorProps &
   SpaceProps &
   LayoutProps &
@@ -41,10 +41,10 @@ export type IHeadingProps = ColorProps &
   customBackgroundProps &
   BorderProps & {
     style?: TextStyle;
-    children?: string | undefined | JSX.Element[] | JSX.Element;
-    fontSize?: string | undefined;
-    isTruncated?: any | undefined;
-    headerSize?: string | undefined;
+    children?: string | JSX.Element[] | JSX.Element;
+    fontSize?: number;
+    isTruncated?: any;
+    size?: typeof sizes[number];
   };
 
 const StyledHeading = styled(Text)<IHeadingProps>(
@@ -58,30 +58,21 @@ const StyledHeading = styled(Text)<IHeadingProps>(
   customOutline,
   customShadow,
   customExtra,
-  customLayout,
-  variant({
-    prop: 'headerSize',
-    variants: {
-      '2xl': { fontSize: theme.fontSizes[5] },
-      'xl': { fontSize: theme.fontSizes[4] },
-      'lg': { fontSize: theme.fontSizes[3] },
-      'md': { fontSize: theme.fontSizes[2] },
-      'sm': { fontSize: theme.fontSizes[1] },
-      'xsm': { fontSize: theme.fontSizes[0] },
-    },
-  })
+  customLayout
 );
-StyledHeading.defaultProps = {
-  headerSize: 'lg',
-};
-const Heading = ({ style, isTruncated, ...props }: IHeadingProps) => {
+const Heading = ({ style, size, isTruncated, ...props }: IHeadingProps) => {
   let computedStyle: any = style;
+  let fontSizeWRTHeading = size
+    ? theme.fontSizes[sizes.indexOf(size)]
+    : theme.fontSizes[sizes.indexOf('xl')];
   computedStyle = StyleSheet.flatten([
     style,
     {
       fontWeight: '700',
     },
-    props.fontSize ? { fontSize: props.fontSize } : {},
+    props.fontSize
+      ? { fontSize: props.fontSize }
+      : { fontSize: fontSizeWRTHeading },
   ]);
   return (
     <ThemeProvider theme={theme}>

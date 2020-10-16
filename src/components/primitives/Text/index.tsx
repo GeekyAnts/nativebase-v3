@@ -12,34 +12,44 @@ import {
 } from 'styled-system';
 import { theme } from '../../../theme';
 import { StyleSheet } from 'react-native';
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', 'xl'];
 
 export type TextProps = ColorProps &
   SpaceProps &
   PositionProps &
   TypographyProps & {
     children?: React.ReactNode | string | undefined;
-    fontSize?: string | number;
-    numberOfLines?: number;
+    fontSize?: typeof sizes[number] | number;
+    noOfLines?: number;
     style?: any;
     bold?: boolean;
+    isTruncated?: any;
     italic?: boolean;
     underline?: boolean;
     strikeThrough?: boolean;
   };
 
-const Text = styled.Text<TextProps>`
+const StyledText = styled.Text<TextProps>`
   ${position}
   ${color}
   ${space}
   ${typography}
 `;
-Text.defaultProps = {
+StyledText.defaultProps = {
   bold: false,
   italic: false,
   underline: false,
   strikeThrough: false,
 };
-const NBText = ({ children, style, fontSize, ...props }: TextProps) => {
+
+const Text = ({
+  children,
+  style,
+  isTruncated,
+  fontSize,
+  noOfLines,
+  ...props
+}: TextProps) => {
   const addonStyle = StyleSheet.create({
     boldStyle: {
       fontWeight: 'bold',
@@ -85,24 +95,30 @@ const NBText = ({ children, style, fontSize, ...props }: TextProps) => {
       fontSize = theme.fontSizes[5];
       break;
     case '3xl':
-      fontSize = theme.fontSizes[5] + 6;
+      fontSize = theme.fontSizes[6];
       break;
     case '4xl':
-      fontSize = theme.fontSizes[5] + 12;
+      fontSize = theme.fontSizes[6] * 1.2;
       break;
     case '5xl':
-      fontSize = theme.fontSizes[5] + 20;
+      fontSize = theme.fontSizes[6] * 1.6;
       break;
     case '6xl':
-      fontSize = theme.fontSizes[5] + 28;
+      fontSize = theme.fontSizes[6] * 2.1333333;
+      break;
+    default:
       break;
   }
-
   return (
-    <Text style={style} fontSize={fontSize} {...props}>
+    <StyledText
+      style={style}
+      fontSize={fontSize}
+      numberOfLines={noOfLines ? noOfLines : isTruncated ? 1 : 999}
+      {...props}
+    >
       {children}
-    </Text>
+    </StyledText>
   );
 };
 
-export default NBText;
+export default Text;

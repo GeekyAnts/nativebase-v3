@@ -2,23 +2,9 @@ import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
 import { ThemeContext } from '../../../theme';
-import {
-  ColorProps,
-  SpaceProps,
-  PositionProps,
-  color,
-  space,
-  position,
-} from 'styled-system';
-
-export type ISpinnerProps = ColorProps &
-  SpaceProps &
-  PositionProps & {
-    color?: string | undefined;
-    style?: any | undefined;
-    show?: boolean | undefined;
-    hideWhenStopped?: boolean | undefined; // IOS only
-  };
+import { color, space, position } from 'styled-system';
+import type { ISpinnerProps } from './props';
+export type { ISpinnerProps };
 
 const StyledActivityIndicator = styled(ActivityIndicator)<
   ISpinnerProps & {
@@ -53,7 +39,7 @@ const Spinner = ({
   if (color === undefined) color = theme.colors.default[2];
   else if (color in theme.colors && theme.colors[color])
     color =
-      typeof theme.colors[color] == 'string'
+      typeof theme.colors[color] === 'string'
         ? theme.colors[color]
         : theme.colors[color][5] || theme.colors[color][2];
 

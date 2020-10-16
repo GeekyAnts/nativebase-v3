@@ -1,4 +1,4 @@
-export * from "./components";
+export * from './components';
 
 // storiesOf("Composites", module)
 //   .addDecorator(withKnobs)
@@ -11,7 +11,6 @@ export * from "./components";
 //   ))
 //   .add("Alert", () => <Alert />)
 //   .add("AppBar", () => <AppBar />)
-//   .add("AspectRatioBox", () => <AspectRatioBox />)
 //   .add("Avatar", () => <Avatar />)
 //   .add("Badge", () => <Badge />)
 //   .add("Breadcrumb", () => <Breadcrumb />)

@@ -88,7 +88,7 @@ const getAlertIcon = (status: string | undefined) => {
       // size={30}
       type="MaterialIcons"
       name="menu"
-    ></Icon>
+    />
   );
 };
 const childStyling = (
