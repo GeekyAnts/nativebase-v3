@@ -9,9 +9,12 @@ export const addTextAndPropsToStrings = (children: any, props: any) => {
       } else {
         if (
           child &&
-          (child.type.name === 'Text' || child.type.name === 'Heading')
+          (child.type.name === 'Text' ||
+            child.type.name === 'Heading' ||
+            child.type.name === 'BreadCrumbLink')
         ) {
-          return React.cloneElement(child, props, child.props.children);
+          const computedProp = { ...props, ...child.props };
+          return React.cloneElement(child, computedProp, child.props.children);
         } else {
           return child;
         }
@@ -23,9 +26,16 @@ export const addTextAndPropsToStrings = (children: any, props: any) => {
     } else {
       if (
         children &&
-        (children.type.name === 'Text' || children.type.name === 'Heading')
+        (children.type.name === 'Text' ||
+          children.type.name === 'Heading' ||
+          children.type.name === 'BreadCrumbLink')
       ) {
-        return React.cloneElement(children, props, children.props.children);
+        const computedProp = { ...props, ...children.props };
+        return React.cloneElement(
+          children,
+          computedProp,
+          children.props.children
+        );
       } else {
         return children;
       }

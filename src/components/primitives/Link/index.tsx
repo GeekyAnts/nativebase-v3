@@ -6,7 +6,6 @@ import {
   TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
   ViewProps,
-  Text,
 } from 'react-native';
 import styled from 'styled-components/native';
 import {
@@ -36,6 +35,7 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
+import { addTextAndPropsToStrings } from '../../../utils';
 import React from 'react';
 export type ILinkProps = ColorProps &
   ViewProps &
@@ -86,20 +86,6 @@ const StyledLink = styled(View)<ILinkProps>(
 );
 const linkToHREF = (URL: string) => {
   Linking.openURL(URL).catch((err) => console.error('An error occurred', err));
-};
-
-const addTextToStrings = (children: JSX.Element[]) => {
-  if (Array.isArray(children)) {
-    return children.map((child: JSX.Element) => {
-      if (typeof child === 'string') {
-        return <Text>{child}</Text>;
-      } else {
-        return child;
-      }
-    });
-  } else {
-    return <Text>{children}</Text>;
-  }
 };
 
 const addStyleAndPropsToChild = (
@@ -194,7 +180,7 @@ const Link = ({
         <StyledLink style={computedStyle}>
           {addStyleAndPropsToChild(
             props,
-            addTextToStrings(children),
+            addTextAndPropsToStrings(children, props),
             isUnderlined
           )}
         </StyledLink>
