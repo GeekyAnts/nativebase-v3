@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { StyleSheet, Image, ImageProps, Text } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Image, Text } from 'react-native';
 import styled from 'styled-components';
 import {
   BorderProps,
