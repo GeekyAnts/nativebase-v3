@@ -33,7 +33,6 @@ export { default as Image, IImageProps } from './Image';
 export { default as Spinner, ISpinnerProps } from './Spinner';
 export { default as Heading, IHeadingProps } from './Heading';
 export { default as Flex, IFlexProps, Spacer } from './Flex';
-export { default as Wrap, IWrapProps } from './Wrap';
 export { default as Switch, ISwitchProps } from './Switch';
 export { default as TextArea } from './TextArea';
 export { default as Link, ILinkProps } from './Link';
