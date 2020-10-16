@@ -2,7 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import Wrap from './example';
+import Basic from './Basic';
+import Spacing from './Spacing';
+import AlignmentAlign from './AlignmentAlign';
+import AlignmentJustify from './AlignmentJustify';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Wrap', module)
@@ -20,4 +23,7 @@ storiesOf('Wrap', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Primary', () => <Wrap />);
+  .add('Basic', () => <Basic />)
+  .add('Spacing', () => <Spacing />)
+  .add('AlignmentAlign', () => <AlignmentAlign />)
+  .add('AlignmentJustify', () => <AlignmentJustify />);

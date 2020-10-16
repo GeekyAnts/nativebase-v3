@@ -100,8 +100,8 @@ const CustomRadio = ({
       {...props}
       disabled={isDisabled}
       style={[baseStyle.radioWrapper, style]}
-      onPress={(event) => pressHandler(event)}
-      accessible={true}
+      onPress={pressHandler}
+      accessible
       accessibilityLabel={ariaLabel}
       accessibilityRole="radio"
     >

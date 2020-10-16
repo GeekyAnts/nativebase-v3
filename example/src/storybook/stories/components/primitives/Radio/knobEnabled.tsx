@@ -19,9 +19,7 @@ export default function () {
         isDisabled={boolean('isDisabled', false)}
         isInvalid={boolean('isInvalid', false)}
         value={radioValue}
-        onChange={() => {
-          setToggleCheckBox(!toggleCheckBox);
-        }}
+        onChange={() => setToggleCheckBox(!toggleCheckBox)}
       >
         <Text mx={2}>Are you Awesome?</Text>
       </Radio>

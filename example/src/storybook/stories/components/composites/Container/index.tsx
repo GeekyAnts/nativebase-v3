@@ -2,15 +2,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import Playground from './knobEnabled';
-import Disabled from './disabled';
 import Usage from './usage';
-import CustomColor from './customeColor';
-import Size from './size';
-import Invalid from './invalid';
+import Playground from './knobEnabled';
+import CenteringChildren from './centeringChildren';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
-storiesOf('Radio', module)
+storiesOf('Container', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
@@ -27,7 +24,4 @@ storiesOf('Radio', module)
   ))
   .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
-  .add('CustomColor', () => <CustomColor />)
-  .add('Size', () => <Size />)
-  .add('Disabled', () => <Disabled />)
-  .add('Invalid', () => <Invalid />);
+  .add('CenteringChildren', () => <CenteringChildren />);
