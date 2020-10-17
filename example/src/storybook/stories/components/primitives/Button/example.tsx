@@ -97,7 +97,7 @@ export default function () {
           variant="solid"
           leftIcon={
             <Icon
-              name={text("name", "menu")}
+              name={text('name', 'menu')}
               // size={30}
               type="MaterialIcons"
             />
@@ -111,7 +111,7 @@ export default function () {
           isDisabled
           rightIcon={
             <Icon
-              name={text("name", "menu")}
+              name={text('name', 'menu')}
               // size={30}
               type="MaterialIcons"
             />
