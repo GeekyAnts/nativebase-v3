@@ -9,3 +9,4 @@ export * from './Container';
 export * from './Divider';
 export * from './Wrap';
 export * from './Progress';
+export * from './Code';
