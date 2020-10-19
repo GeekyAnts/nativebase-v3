@@ -1,6 +1,7 @@
 export * from './Alert';
 export * from './AspectRatio';
 export * from './Avatar';
+export * from './Badge';
 export * from './BreadCrumb';
 export * from './Center';
 export * from './CloseButton';
