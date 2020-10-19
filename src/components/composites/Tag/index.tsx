@@ -129,14 +129,7 @@ StyledTag.defaultProps = {
 export const TagCloseButton = (props: IButtonProps) => {
   let computedStyle: any = props.style;
   computedStyle = StyleSheet.flatten([props.style, { fontWeight: '700' }]);
-  return (
-    <CloseButton
-      marginLeft="auto"
-      mr={2}
-      highlightColor="transparent"
-      style={computedStyle}
-    />
-  );
+  return <CloseButton marginLeft="auto" mr={2} style={computedStyle} />;
 };
 const Tag = ({ style, ...props }: ITagProps) => {
   // Color Varients

@@ -6,3 +6,5 @@ export * from './BreadCrumb';
 export * from './Divider';
 export * from './Alert';
 export * from './Wrap';
+export * from './Progress';
+export * from './Code';
