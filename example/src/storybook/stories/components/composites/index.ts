@@ -7,5 +7,6 @@ export * from './Center';
 export * from './CloseButton';
 export * from './Container';
 export * from './Divider';
+export * from './Kbd';
 export * from './Wrap';
 export * from './Progress';
