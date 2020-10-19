@@ -1,10 +1,12 @@
 import React from 'react';
-import { VStack, Text } from 'native-base';
+import { VStack, Text, StackDivider } from 'native-base';
 
 export default function () {
   return (
-    <VStack space={8}>
+    <VStack divider={<StackDivider borderColor="red.2" />} space={8}>
       <Text>Test Text</Text>
+      <Text>Testing this text with Stacks</Text>
+      <Text>Testing this text with Stacks</Text>
       <Text>Testing this text with Stacks</Text>
     </VStack>
   );

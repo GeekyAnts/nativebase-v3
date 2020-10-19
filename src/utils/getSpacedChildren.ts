@@ -13,13 +13,30 @@ type SpaceType =
 export default (
   children: JSX.Element[] | JSX.Element,
   space: number | undefined | SpaceType,
-  axis: 'X' | 'Y'
+  axis: 'X' | 'Y',
+  reverse: string,
+  divider: JSX.Element | undefined
 ) => {
-  const childrenArray = React.Children.toArray(children);
+  let childrenArray = React.Children.toArray(children);
+  const orientation = axis === 'X' ? 'vertical' : 'horizontal';
+  if (divider) {
+    divider = React.cloneElement(
+      divider,
+      { orientation: orientation, alignSelf: 'stretch' },
+      divider.props.children
+    );
+
+    childrenArray = childrenArray.reduce(
+      (r: any[], a: any) => r.concat(a, divider),
+      [divider]
+    );
+    childrenArray = childrenArray.slice(1, -1);
+  }
   /*
   | Separate the trailing (not first) children from the children array
   */
-  const trailingChildren = childrenArray.slice(1);
+  const trailingChildren =
+    reverse === 'reverse' ? childrenArray.slice(0, -1) : childrenArray.slice(1);
   /*
   | Set margin prop based on axis
   */
@@ -67,11 +84,25 @@ export default (
   | Add the margiin to the children
   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const trailingChildrenWithSpacing = trailingChildren.map((child: any) => {
-    return React.cloneElement(child, marginProp, child.props.children);
-  });
   /*
   | New children array with applied margin to trailing children
   */
-  return [childrenArray[0], trailingChildrenWithSpacing];
+  if (reverse === 'reverse') {
+    const trailingChildrenWithSpacingReverse = trailingChildren
+      .reverse()
+      .map((child: any) => {
+        return React.cloneElement(child, marginProp, child.props.children);
+      });
+
+    return [
+      childrenArray[childrenArray.length - 1],
+      trailingChildrenWithSpacingReverse,
+    ];
+  } else {
+    const trailingChildrenWithSpacing = trailingChildren.map((child: any) => {
+      return React.cloneElement(child, marginProp, child.props.children);
+    });
+
+    return [childrenArray[0], trailingChildrenWithSpacing];
+  }
 };

@@ -46,12 +46,13 @@ type ColumnsProps = IColumnsProps &
   ViewProps & {
     children: JSX.Element[] | JSX.Element;
     space?: number | SpaceType;
+    divider?: JSX.Element | undefined;
   };
 
-const Columns = ({ space, children, ...props }: ColumnsProps) => {
+const Columns = ({ space, children, divider, ...props }: ColumnsProps) => {
   return (
     <StyledColumns {...props}>
-      {getSpacedChildren(children, space, 'X')}
+      {getSpacedChildren(children, space, 'X', 'normal', divider)}
     </StyledColumns>
   );
 };

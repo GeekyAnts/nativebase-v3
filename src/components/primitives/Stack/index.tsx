@@ -34,15 +34,30 @@ const StyledStack = styled.View<IStackProps>`
 type StackProps = IStackProps &
   ViewProps & {
     children: JSX.Element[] | JSX.Element;
+    divider?: JSX.Element;
     space?: number;
+    reversed?: boolean;
   };
 
-const Stack = ({ space, children, ...props }: StackProps) => {
+const Stack = ({
+  space,
+  children,
+  divider,
+  reversed,
+  ...props
+}: StackProps) => {
   return (
     <StyledStack {...props}>
-      {getSpacedChildren(children, space, 'Y')}
+      {getSpacedChildren(
+        children,
+        space,
+        'Y',
+        reversed ? 'reverse' : 'normal',
+        divider
+      )}
     </StyledStack>
   );
 };
 
 export default Stack;
+export { StackDivider } from './StackDivider';

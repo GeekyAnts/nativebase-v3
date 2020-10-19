@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ViewProps } from 'react-native';
+import { ViewProps, View } from 'react-native';
 import styled from 'styled-components/native';
 import {
   BorderProps,
@@ -23,13 +23,13 @@ export type IVStackProps =
   | FlexboxProps
   | BorderProps;
 
-const StyledVStack = styled.View<IVStackProps>`
-  ${color}
-  ${spacing}
-  ${layout}
-  ${flexbox}
-  ${border}
-`;
+const StyledVStack = styled(View)<IVStackProps>(
+  color,
+  spacing,
+  layout,
+  flexbox,
+  border
+);
 
 type SpaceType =
   | 'gutter'
@@ -43,14 +43,23 @@ type SpaceType =
 
 type VStackProps = IVStackProps &
   ViewProps & {
+    divider?: JSX.Element;
     children: JSX.Element[] | JSX.Element;
     space?: number | SpaceType;
+    reversed?: any | undefined;
   };
 
-const VStack = ({ space, children, ...props }: VStackProps) => {
+const VStack = ({
+  space,
+  children,
+  reversed,
+  divider,
+  ...props
+}: VStackProps) => {
+  let reverse: string = reversed ? 'reverse' : 'normal';
   return (
     <StyledVStack {...props}>
-      {getSpacedChildren(children, space, 'Y')}
+      {getSpacedChildren(children, space, 'Y', reverse, divider)}
     </StyledVStack>
   );
 };
