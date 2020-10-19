@@ -24,7 +24,7 @@ export { default as Icon, IconProps } from './Icon';
 export { default as Column, IColumnProps } from './Column';
 export { default as Row, IRowProps } from './Row';
 export { default as Button, IButtonProps, ButtonGroup } from './Button';
-export { default as Stack } from './Stack';
+export { default as Stack, StackDivider } from './Stack';
 export { default as VStack } from './VStack';
 export { default as HStack } from './HStack';
 export { default as ZStack } from './ZStack';
