@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
 import {
-  // ColorProps,
+  ColorProps,
   SpaceProps,
   TypographyProps,
   color,
@@ -39,14 +39,14 @@ export type IconType =
   | 'Zocial';
 
 export type IconProps = TypographyProps &
-  // ColorProps &
+  ColorProps &
   SpaceProps & {
     name: string;
     type?: IconType;
     style?: TextStyle | {};
   };
 
-const Icon = ({ name, type, style, ...props }: IconProps) => {
+const Icon = ({ name, type, style, color, ...props }: IconProps) => {
   const theme: Theme = useContext(ThemeContext);
   const styles = StyleSheet.create({
     iconDefaultStyle: {
@@ -58,6 +58,7 @@ const Icon = ({ name, type, style, ...props }: IconProps) => {
   const flattenedIconStyle: TextStyle = StyleSheet.flatten([
     styles.iconDefaultStyle,
     style,
+    { color },
   ]);
   switch (type) {
     case 'AntDesign':
@@ -106,7 +107,7 @@ const Icon = ({ name, type, style, ...props }: IconProps) => {
 const styledIcon = styled(Icon)<IconProps>`
   ${color}
   ${space}
-${typography}
+  ${typography}
 `;
 
 export default styledIcon;
