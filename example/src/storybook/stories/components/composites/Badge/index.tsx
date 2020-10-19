@@ -5,7 +5,7 @@ import { View, theme, ThemeProvider } from 'native-base';
 import Usage from './usage';
 import Color from './color';
 import Playground from './knobEnabled';
-import CenteringChildren from './variants';
+import Variants from './variants';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Badge', module)
@@ -26,4 +26,4 @@ storiesOf('Badge', module)
   .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
   .add('Color', () => <Color />)
-  .add('CenteringChildren', () => <CenteringChildren />);
+  .add('Variants', () => <Variants />);

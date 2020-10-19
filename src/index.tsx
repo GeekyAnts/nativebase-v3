@@ -7,6 +7,7 @@ export default {
 import {
   AppBar,
   Badge,
+  IBadgeProps,
   IconButton,
   Variants,
   AlertTitle,
@@ -113,6 +114,7 @@ export {
   AvatarBadge,
   IHeadingProps,
   Badge,
+  IBadgeProps,
   IButtonProps,
   Button,
   ButtonGroup,
