@@ -87,7 +87,7 @@ const Flex = ({
     style,
     {
       display: 'flex',
-      flexDirection: direction ? direction : 'row',
+      flexDirection: direction ? direction : 'column',
       alignItems: align,
       justifyContent: justify,
       flexWrap: wrap,

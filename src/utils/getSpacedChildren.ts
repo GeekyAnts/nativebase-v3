@@ -2,13 +2,14 @@ import React from 'react';
 
 type SpaceType =
   | 'gutter'
-  | 'xxsmall'
-  | 'xsmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'xlarge'
-  | 'xxlarge';
+  | '2xs'
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+  | '3xl';
 
 export default (
   children: JSX.Element[] | JSX.Element,
@@ -29,28 +30,30 @@ export default (
       case 'gutter':
         spaceValue = 0;
         break;
-      case 'xxsmall':
+      case '2xs':
         spaceValue = 1;
         break;
-      case 'xsmall':
+      case 'xs':
         spaceValue = 2;
         break;
-      case 'small':
+      case 'sm':
         spaceValue = 3;
         break;
-      case 'medium':
+      case 'md':
         spaceValue = 4;
         break;
-      case 'large':
+      case 'lg':
+        spaceValue = 5;
+        break;
+      case 'xl':
         spaceValue = 6;
         break;
-      case 'xlarge':
+      case '2xl':
         spaceValue = 7;
         break;
-      case 'xxlarge':
+      case '3xl':
         spaceValue = 8;
         break;
-
       default:
         spaceValue = 1;
         break;
