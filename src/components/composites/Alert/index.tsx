@@ -232,8 +232,6 @@ const Alert = ({ style, ...props }: IAlertProps) => {
         <CloseButton
           ml="auto"
           color={props.variant === 'solid' ? 'white' : childStatusStyle}
-          highlightColor="#f0f0f0"
-          highlight={1}
         />
       );
     }

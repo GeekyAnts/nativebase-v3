@@ -1,53 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, TextProps, TextStyle, Platform } from 'react-native';
+import React, { useContext } from 'react';
+import { StyleSheet, Text, Platform, View } from 'react-native';
 import styled from 'styled-components/native';
-import {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  color,
-  flexbox,
-  layout,
-  space,
-} from 'styled-system';
+import { ThemeContext } from '../../../theme';
+import { border, color, flexbox, layout, space } from 'styled-system';
 import {
   customBorder,
-  customBorderProps,
   customBackground,
-  customBackgroundProps,
   customOutline,
-  customOutlineProps,
   customLayout,
-  customLayoutProps,
   customExtra,
-  customExtraProps,
-  customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
 import { shadows } from '../../../styles';
-export type IKbdProps = TextProps &
-  ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  customBackgroundProps &
-  BorderProps & {
-    style?: TextStyle;
-    ratio?: number;
-    children?: string | undefined;
-    fontSize?: number | undefined;
-    shadow?: number | undefined;
-  };
+import type { IKbdProps } from './props';
 
-const StyledKbd = styled(Text)<IKbdProps>(
+const StyledKbd = styled(View)<IKbdProps>(
   color,
   space,
   layout,
@@ -60,26 +27,35 @@ const StyledKbd = styled(Text)<IKbdProps>(
   customExtra,
   customLayout
 );
-const Kbd = ({ style, shadow, ...props }: IKbdProps) => {
+const Kbd = ({ style, shadow, children, ...props }: IKbdProps) => {
+  const theme = useContext(ThemeContext);
   let computedStyle: any = style;
-
   computedStyle = StyleSheet.flatten([
     style,
-    // colorVarient,
     {
-      width: 'auto',
-      backgroundColor: '#edf2f7',
-      fontWeight: '600',
-      fontSize: props.fontSize ? props.fontSize : 15,
-      fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
-      resizeMode: 'contain',
+      backgroundColor: theme.colors.muted[0],
+      borderColor: theme.colors.muted[1],
+      borderWidth: 2,
+      borderBottomWidth: 5,
+      borderRadius: 5,
     },
     shadows[shadow ? shadow : 2],
   ]);
 
   return (
-    <StyledKbd px="2" py={1} rounded="2" {...props} style={computedStyle} />
+    <StyledKbd px={2} {...props} style={computedStyle}>
+      <Text
+        style={{
+          fontWeight: '700',
+          fontSize: props.fontSize ? props.fontSize : theme.fontSizes[1],
+          fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+        }}
+      >
+        {children}
+      </Text>
+    </StyledKbd>
   );
 };
 
 export default Kbd;
+export { IKbdProps } from './props';
