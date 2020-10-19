@@ -1,14 +1,6 @@
 import React from 'react';
 
-type SpaceType =
-  | 'gutter'
-  | 'xxsmall'
-  | 'xsmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'xlarge'
-  | 'xxlarge';
+type SpaceType = 'gutter' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 export default (
   children: JSX.Element[] | JSX.Element,
@@ -20,11 +12,10 @@ export default (
   let childrenArray = React.Children.toArray(children);
   const orientation = axis === 'X' ? 'vertical' : 'horizontal';
   if (divider) {
-    divider = React.cloneElement(
-      divider,
-      { orientation: orientation, alignSelf: 'stretch' },
-      divider.props.children
-    );
+    divider = React.cloneElement(divider, {
+      ...divider.props,
+      orientation,
+    });
 
     childrenArray = childrenArray.reduce(
       (r: any[], a: any) => r.concat(a, divider),
@@ -46,25 +37,25 @@ export default (
       case 'gutter':
         spaceValue = 0;
         break;
-      case 'xxsmall':
+      case '2xs':
         spaceValue = 1;
         break;
-      case 'xsmall':
+      case 'xs':
         spaceValue = 2;
         break;
-      case 'small':
+      case 'sm':
         spaceValue = 3;
         break;
-      case 'medium':
+      case 'md':
         spaceValue = 4;
         break;
-      case 'large':
+      case 'lg':
         spaceValue = 6;
         break;
-      case 'xlarge':
+      case 'xl':
         spaceValue = 7;
         break;
-      case 'xxlarge':
+      case '2xl':
         spaceValue = 8;
         break;
 
@@ -91,7 +82,11 @@ export default (
     const trailingChildrenWithSpacingReverse = trailingChildren
       .reverse()
       .map((child: any) => {
-        return React.cloneElement(child, marginProp, child.props.children);
+        return React.cloneElement(
+          child,
+          { ...child.props, ...marginProp },
+          child.props.children
+        );
       });
 
     return [
@@ -100,9 +95,12 @@ export default (
     ];
   } else {
     const trailingChildrenWithSpacing = trailingChildren.map((child: any) => {
-      return React.cloneElement(child, marginProp, child.props.children);
+      return React.cloneElement(
+        child,
+        { ...child.props, ...marginProp },
+        child.props.children
+      );
     });
-
     return [childrenArray[0], trailingChildrenWithSpacing];
   }
 };

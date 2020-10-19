@@ -1,11 +1,11 @@
 import React from 'react';
-import { Divider, HStack, Text } from 'native-base';
+import { Divider, VStack, Text } from 'native-base';
 
 export default function () {
   return (
-    <HStack height={100} p={4}>
+    <VStack height={100}>
       <Divider orientation="vertical" />
       <Text>Nativebase</Text>
-    </HStack>
+    </VStack>
   );
 }
