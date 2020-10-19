@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ViewProps } from 'react-native';
+import { ViewProps, View } from 'react-native';
 import styled from 'styled-components/native';
 import {
   BorderProps,
@@ -23,25 +23,15 @@ export type IHStackProps =
   | FlexboxProps
   | BorderProps;
 
-const StyledHStack = styled.View<IHStackProps>`
-  flex-direction: row;
-  flex-wrap: wrap;
-  ${color}
-  ${spacing}
-  ${layout}
-  ${flexbox}
-  ${border}
-`;
+const StyledHStack = styled(View)<IHStackProps>(
+  color,
+  spacing,
+  layout,
+  flexbox,
+  border
+);
 
-type SpaceType =
-  | 'gutter'
-  | 'xxsmall'
-  | 'xsmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'xlarge'
-  | 'xxlarge';
+type SpaceType = 'gutter' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 type HStackProps = IHStackProps &
   ViewProps & {
@@ -60,7 +50,7 @@ const HStack = ({
 }: HStackProps) => {
   let reverse: string = reversed ? 'reverse' : 'normal';
   return (
-    <StyledHStack {...props}>
+    <StyledHStack flexDirection="row" {...props}>
       {getSpacedChildren(children, space, 'X', reverse, divider)}
     </StyledHStack>
   );

@@ -31,15 +31,7 @@ const StyledVStack = styled(View)<IVStackProps>(
   border
 );
 
-type SpaceType =
-  | 'gutter'
-  | 'xxsmall'
-  | 'xsmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'xlarge'
-  | 'xxlarge';
+type SpaceType = 'gutter' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 type VStackProps = IVStackProps &
   ViewProps & {

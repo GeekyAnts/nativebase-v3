@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ViewProps } from 'react-native';
+import { ViewProps, View } from 'react-native';
 import styled from 'styled-components/native';
 import {
   BorderProps,
@@ -23,19 +23,20 @@ export type IStackProps =
   | FlexboxProps
   | BorderProps;
 
-const StyledStack = styled.View<IStackProps>`
-  ${color}
-  ${spacing}
-  ${layout}
-  ${flexbox}
-  ${border}
-`;
+const StyledStack = styled(View)<IStackProps>(
+  color,
+  spacing,
+  layout,
+  flexbox,
+  border
+);
+type SpaceType = 'gutter' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 type StackProps = IStackProps &
   ViewProps & {
     children: JSX.Element[] | JSX.Element;
     divider?: JSX.Element;
-    space?: number;
+    space?: number | SpaceType;
     reversed?: boolean;
   };
 
