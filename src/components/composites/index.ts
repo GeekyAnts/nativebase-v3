@@ -18,6 +18,7 @@ export {
   BreadCrumbLink,
 } from './BreadCrumb';
 export { default as CloseButton } from './CloseButton';
+export { default as Container, IContainerProps } from './Container';
 export { default as Divider, IDividerProps } from './Divider';
 export { default as Progress } from './Progress';
 export { default as Stat, StatHelpText, StatLabel, StatNumber } from './Stat';

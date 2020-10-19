@@ -10,7 +10,7 @@ export default function () {
   return (
     <Box>
       <Heading mb={4}>BreadCrumb with Custom Separator</Heading>
-      <BreadCrumb spacing={4} separator={<Box bg="black" p={3}></Box>}>
+      <BreadCrumb spacing={4} separator={<Box bg="black" p={3} />}>
         <BreadCrumbItem isCurrentPage>
           <BreadCrumbLink>Home (This is currently active)</BreadCrumbLink>
         </BreadCrumbItem>

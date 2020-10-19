@@ -35,13 +35,14 @@ const StyledHStack = styled.View<IHStackProps>`
 
 type SpaceType =
   | 'gutter'
-  | 'xxsmall'
-  | 'xsmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'xlarge'
-  | 'xxlarge';
+  | '2xs'
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+  | '3xl';
 
 type HStackProps = IHStackProps &
   ViewProps & {

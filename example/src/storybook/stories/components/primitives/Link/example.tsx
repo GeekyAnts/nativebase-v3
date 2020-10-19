@@ -40,7 +40,7 @@ export const CustomOnClick = () => {
       <Link onClick={toggleState} mt={4}>
         Click here to toggle the color of box.
       </Link>
-      <Box h="100" w="100" bg={state ? 'orange.3' : 'blue.3'}></Box>
+      <Box h="100" w="100" bg={state ? 'orange.3' : 'blue.3'} />
     </View>
   );
 };

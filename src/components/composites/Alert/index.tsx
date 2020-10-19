@@ -54,7 +54,7 @@ const getAlertIcon = (status: string | undefined) => {
       style={
         status ? { backgroundColor: 'black' } : { backgroundColor: 'black' }
       }
-      size={30}
+      // size={30}
       type="MaterialIcons"
       name="menu"
     />

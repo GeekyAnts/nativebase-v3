@@ -2,10 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import Columns from './example';
+import Basic from './Basic';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
-storiesOf('Columns', module)
+storiesOf('Row', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
@@ -20,4 +20,4 @@ storiesOf('Columns', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Primary', () => <Columns />);
+  .add('Basic', () => <Basic />);
