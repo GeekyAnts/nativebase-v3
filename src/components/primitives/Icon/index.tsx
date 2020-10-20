@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
 import { color, space, typography } from 'styled-system';
-import styled, { ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -19,22 +19,19 @@ import type { IIconProps } from './props';
 import { SVGIcon } from './SVGIcon';
 
 const Icon = (iconProps: IIconProps) => {
-  const theme: Theme = useContext(ThemeContext);
   if (!iconProps.name) {
     return <SVGIcon {...iconProps} />;
   }
-  const { name, type, style, color, ...props } = iconProps;
+  const { name, type, style, ...props } = iconProps;
   const styles = StyleSheet.create({
     iconDefaultStyle: {
       fontSize: 30,
-      color: theme.colors.black,
     },
   });
 
   const flattenedIconStyle: TextStyle = StyleSheet.flatten([
     styles.iconDefaultStyle,
     style,
-    { color },
   ]);
   switch (type) {
     case 'AntDesign':
