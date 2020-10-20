@@ -29,5 +29,4 @@ export type IDividerProps = ViewProps &
   BorderProps & {
     style?: ViewStyle;
     orientation?: 'vertical' | 'horizontal';
-    colorScheme?: string;
   };

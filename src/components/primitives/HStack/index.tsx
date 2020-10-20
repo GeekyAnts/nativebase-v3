@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ViewProps } from 'react-native';
+import { ViewProps, View } from 'react-native';
 import styled from 'styled-components/native';
 import {
   BorderProps,
@@ -23,37 +23,35 @@ export type IHStackProps =
   | FlexboxProps
   | BorderProps;
 
-const StyledHStack = styled.View<IHStackProps>`
-  flex-direction: row;
-  flex-wrap: wrap;
-  ${color}
-  ${spacing}
-  ${layout}
-  ${flexbox}
-  ${border}
-`;
+const StyledHStack = styled(View)<IHStackProps>(
+  color,
+  spacing,
+  layout,
+  flexbox,
+  border
+);
 
-type SpaceType =
-  | 'gutter'
-  | '2xs'
-  | 'xs'
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-  | '3xl';
+type SpaceType = 'gutter' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 type HStackProps = IHStackProps &
   ViewProps & {
     children: JSX.Element[] | JSX.Element;
+    divider?: JSX.Element;
     space?: number | SpaceType;
+    reversed?: any | undefined;
   };
 
-const HStack = ({ space, children, ...props }: HStackProps) => {
+const HStack = ({
+  space,
+  children,
+  reversed,
+  divider,
+  ...props
+}: HStackProps) => {
+  let reverse: string = reversed ? 'reverse' : 'normal';
   return (
-    <StyledHStack {...props}>
-      {getSpacedChildren(children, space, 'X')}
+    <StyledHStack flexDirection="row" {...props}>
+      {getSpacedChildren(children, space, 'X', reverse, divider)}
     </StyledHStack>
   );
 };
