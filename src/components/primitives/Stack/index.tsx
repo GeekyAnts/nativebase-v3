@@ -16,7 +16,7 @@ import {
 
 import { getSpacedChildren } from '../../../utils';
 
-export type IStackProps =
+type IStackProps =
   | ColorProps
   | SpaceProps
   | LayoutProps
@@ -45,14 +45,15 @@ const Stack = ({
   children,
   divider,
   reversed,
+  direction,
   ...props
-}: StackProps) => {
+}: StackProps & { direction?: 'column' | 'row' }) => {
   return (
-    <StyledStack {...props}>
+    <StyledStack flexDirection={direction} {...props}>
       {getSpacedChildren(
         children,
         space,
-        'Y',
+        direction === 'row' ? 'X' : 'Y',
         reversed ? 'reverse' : 'normal',
         divider
       )}
@@ -60,5 +61,11 @@ const Stack = ({
   );
 };
 
+const VStack = (props: StackProps) => {
+  return Stack(props);
+};
+const HStack = (props: StackProps) => {
+  return Stack({ ...props, direction: 'row' });
+};
 export default Stack;
-export { StackDivider } from './StackDivider';
+export { VStack, HStack, IStackProps };
