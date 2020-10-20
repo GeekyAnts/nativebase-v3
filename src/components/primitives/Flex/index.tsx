@@ -87,7 +87,6 @@ const Flex = ({
     style,
     {
       display: 'flex',
-      flexDirection: direction ? direction : 'column',
       alignItems: align,
       justifyContent: justify,
       flexWrap: wrap,
@@ -98,7 +97,7 @@ const Flex = ({
   ]);
 
   return (
-    <StyledFlex {...props} style={computedStyle}>
+    <StyledFlex flexDirection={direction} {...props} style={computedStyle}>
       {addTextAndPropsToStrings(children, textProps)}
     </StyledFlex>
   );

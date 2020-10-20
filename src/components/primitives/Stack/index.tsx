@@ -16,7 +16,7 @@ import {
 
 import { getSpacedChildren } from '../../../utils';
 
-type IStackProps =
+export type IStackProps =
   | ColorProps
   | SpaceProps
   | LayoutProps
@@ -32,7 +32,7 @@ const StyledStack = styled(View)<IStackProps>(
 );
 type SpaceType = 'gutter' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
-type StackProps = IStackProps &
+export type StackProps = IStackProps &
   ViewProps & {
     children: JSX.Element[] | JSX.Element;
     divider?: JSX.Element;
@@ -61,11 +61,10 @@ const Stack = ({
   );
 };
 
-const VStack = (props: StackProps) => {
+export const VStack = (props: StackProps) => {
   return Stack(props);
 };
-const HStack = (props: StackProps) => {
+export const HStack = (props: StackProps) => {
   return Stack({ ...props, direction: 'row' });
 };
 export default Stack;
-export { VStack, HStack, IStackProps };
