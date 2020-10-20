@@ -21,6 +21,14 @@ export { default as CloseButton } from './CloseButton';
 export { default as Container, IContainerProps } from './Container';
 export { default as Divider, IDividerProps } from './Divider';
 export { default as Progress } from './Progress';
+export {
+  default as Skeleton,
+  ISkeletonProps,
+  SkeletonCircle,
+  ISkeletonCircleProps,
+  SkeletonText,
+  ISkeletonTextProps,
+} from './Skeleton';
 export { default as Stat, StatHelpText, StatLabel, StatNumber } from './Stat';
 export { default as Tag, TagCloseButton } from './Tag';
 export { default as Kbd, IKbdProps } from './KBD';

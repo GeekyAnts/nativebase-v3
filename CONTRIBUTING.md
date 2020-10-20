@@ -12,6 +12,20 @@ yarn bootstrap
 
 While developing, you can run the [example app](/example/) to test your changes.
 
+To install packages in example
+
+```sh
+cd example
+yarn
+```
+
+Update the pod files
+
+```sh
+cd example/ios
+pod update
+```
+
 To start the packager:
 
 ```sh
