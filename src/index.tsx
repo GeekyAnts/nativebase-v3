@@ -45,6 +45,10 @@ import {
   ISquareProps,
   Wrap,
   IWrapProps,
+  PinInput,
+  IPinInputProps,
+  PinInputField,
+  IPinInputFieldProps,
 } from './components/composites';
 
 import {
@@ -195,5 +199,9 @@ export {
   IFlexProps,
   Wrap,
   IWrapProps,
+  PinInput,
+  IPinInputProps,
+  PinInputField,
+  IPinInputFieldProps,
   Spacer,
 };
