@@ -19,11 +19,11 @@ import type { IIconProps } from './props';
 import { SVGIcon } from './SVGIcon';
 
 const Icon = (iconProps: IIconProps) => {
+  const theme: Theme = useContext(ThemeContext);
   if (!iconProps.name) {
     return <SVGIcon {...iconProps} />;
   }
   const { name, type, style, color, ...props } = iconProps;
-  const theme: Theme = useContext(ThemeContext);
   const styles = StyleSheet.create({
     iconDefaultStyle: {
       fontSize: 30,

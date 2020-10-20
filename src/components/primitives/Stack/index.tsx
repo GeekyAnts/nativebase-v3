@@ -16,7 +16,7 @@ import {
 
 import { getSpacedChildren } from '../../../utils';
 
-type IStackProps =
+export type IStackProps =
   | ColorProps
   | SpaceProps
   | LayoutProps
@@ -68,4 +68,4 @@ const HStack = (props: StackProps) => {
   return Stack({ ...props, direction: 'row' });
 };
 export default Stack;
-export { VStack, HStack, IStackProps };
+export { VStack, HStack };
