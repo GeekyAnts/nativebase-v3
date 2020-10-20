@@ -100,6 +100,8 @@ import {
   Link,
   ILinkProps,
   Spacer,
+  SVGIcon,
+  createIcon,
 } from './components/primitives';
 
 import {
@@ -208,4 +210,6 @@ export {
   Wrap,
   IWrapProps,
   Spacer,
+  SVGIcon,
+  createIcon,
 };

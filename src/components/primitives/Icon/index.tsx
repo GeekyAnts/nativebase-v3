@@ -1,13 +1,6 @@
 import React, { useContext } from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
-import {
-  ColorProps,
-  SpaceProps,
-  TypographyProps,
-  color,
-  space,
-  typography,
-} from 'styled-system';
+import { color, space, typography } from 'styled-system';
 import styled, { ThemeContext } from 'styled-components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -22,31 +15,14 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Zocial from 'react-native-vector-icons/Zocial';
+import type { IIconProps } from './props';
+import { SVGIcon } from './SVGIcon';
 
-export type IconType =
-  | 'AntDesign'
-  | 'Entypo'
-  | 'EvilIcons'
-  | 'Feather'
-  | 'FontAwesome'
-  | 'FontAwesome5'
-  | 'Foundation'
-  | 'Ionicons'
-  | 'MaterialCommunityIcons'
-  | 'MaterialIcons'
-  | 'Octicons'
-  | 'SimpleLineIcons'
-  | 'Zocial';
-
-export type IconProps = TypographyProps &
-  ColorProps &
-  SpaceProps & {
-    name: string;
-    type?: IconType;
-    style?: TextStyle | {};
-  };
-
-const Icon = ({ name, type, style, color, ...props }: IconProps) => {
+const Icon = (iconProps: IIconProps) => {
+  if (!iconProps.name) {
+    return <SVGIcon {...iconProps} />;
+  }
+  const { name, type, style, color, ...props } = iconProps;
   const theme: Theme = useContext(ThemeContext);
   const styles = StyleSheet.create({
     iconDefaultStyle: {
@@ -104,10 +80,12 @@ const Icon = ({ name, type, style, color, ...props }: IconProps) => {
   }
 };
 
-const styledIcon = styled(Icon)<IconProps>`
+const styledIcon = styled(Icon)<IIconProps>`
   ${color}
   ${space}
   ${typography}
 `;
 
 export default styledIcon;
+export { IIconProps, IconType } from './props';
+export { createIcon } from './createIcon';
