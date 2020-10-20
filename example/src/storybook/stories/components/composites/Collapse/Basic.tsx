@@ -4,7 +4,8 @@ export default function () {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
   const [color, setColor] = React.useState('default');
-  const handleColorToggle = () => setColor('green');
+  const handleColorToggle = () =>
+    setColor(color === 'green' ? 'default' : 'green');
   return (
     <Stack space={4}>
       <Heading>Default Collapse</Heading>
@@ -20,7 +21,7 @@ export default function () {
         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
         terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
         labore wes anderson cred nesciunt sapiente ea proident.
-        <Box p={8} bg="black"></Box>
+        <Box p={8} bg="black" />
       </Collapse>
       <Button colorScheme={color} size="sm" onClick={handleToggle}>
         Show {show ? 'Less' : 'More'}

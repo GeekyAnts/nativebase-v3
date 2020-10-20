@@ -1,6 +1,6 @@
-import React from 'react'; //import { useEffect, useRef } also
+import { isNil } from 'lodash';
+import React, { useEffect, useRef } from 'react'; //import  also
 import { ViewStyle, LayoutAnimation, View } from 'react-native';
-
 import { Box, IBoxProps } from '../../primitives';
 
 const functionType = () => {};
@@ -26,7 +26,7 @@ const Collapse = ({
   onAnimationStart,
   ...props
 }: ICollapseProps) => {
-  var CustomLayoutLinear = {
+  const CustomLayoutLinear = {
     duration: duration ? duration : 400,
     create: {
       type: LayoutAnimation.Types.linear,
@@ -36,30 +36,37 @@ const Collapse = ({
       type: LayoutAnimation.Types.easeInEaseOut,
     },
   };
-  let defaultStartHeight: any = startingHeight ? startingHeight : 0;
+  const defaultStartHeight: any = isOpen
+    ? endingHeight
+    : startingHeight
+    ? startingHeight
+    : 0;
   let animatedStyle = { height: defaultStartHeight };
-
-  // const isFirstRun = useRef(true);
-
-  let animateView = () => {
+  const animateView = () => {
     if (onAnimationStart) {
       onAnimationStart();
     }
-    let callback = onAnimationEnd ? onAnimationEnd : () => {};
-    LayoutAnimation.configureNext(CustomLayoutLinear, callback());
     animatedStyle = {
       height: isOpen ? endingHeight : defaultStartHeight,
     };
+    let callback = onAnimationEnd ? onAnimationEnd : () => {};
+    LayoutAnimation.configureNext(CustomLayoutLinear, callback());
   };
-  // useEffect(() => {
-  //   if (isFirstRun.current) {
-  //     isFirstRun.current = false;
-  //     return;
-  //   }
-  //   animateView();
-  // }, [animateView(), isOpen]);
-
-  animateView(); // Comment this line and uncomment other comments
+  function usePrevious(value: any) {
+    const ref = useRef();
+    function updatePrevious(newVal: any) {
+      ref.current = newVal;
+    }
+    useEffect(() => {
+      updatePrevious(value);
+    }, []);
+    return { value: ref.current, updatePrevious };
+  }
+  let wasOpen = usePrevious(isOpen);
+  if (!isNil(wasOpen.value) && wasOpen.value !== isOpen) {
+    animateView();
+    wasOpen.updatePrevious(isOpen);
+  }
   return (
     <View style={animatedStyle}>
       <Box overflow="scroll" style={props.style} {...props}></Box>
