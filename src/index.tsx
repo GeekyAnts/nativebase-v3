@@ -45,6 +45,7 @@ import {
   ISquareProps,
   Wrap,
   IWrapProps,
+  Collapse,
 } from './components/composites';
 
 import {
@@ -198,4 +199,5 @@ export {
   Wrap,
   IWrapProps,
   Spacer,
+  Collapse,
 };
