@@ -104,9 +104,7 @@ const Skeleton = ({ children, isLoaded, ...props }: ISkeletonProps) => {
 
   return (
     <StyledSkeleton width="100%" {...props}>
-      {children?.length
-        ? hiddenChildren()
-        : React.cloneElement(children, { opacity: 0 }, children.props.children)}
+      {children?.length ? hiddenChildren() : null}
     </StyledSkeleton>
   );
 };
