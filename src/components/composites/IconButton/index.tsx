@@ -1,9 +1,9 @@
 import React from 'react';
 import type { TextStyle } from 'react-native';
 
-import { Button, IButtonProps, Icon, IconProps } from '../../..';
+import { Button, IButtonProps, Icon, IIconProps } from '../../..';
 
-type iconProps = IconProps & {
+type iconProps = IIconProps & {
   iconStyle?: TextStyle | {};
 };
 

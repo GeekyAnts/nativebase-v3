@@ -80,7 +80,8 @@ import {
   ZStack,
   Inline,
   Icon,
-  IconProps,
+  createIcon,
+  IIconProps,
   Input,
   InputGroup,
   InputLeftAddon,
@@ -100,8 +101,6 @@ import {
   Link,
   ILinkProps,
   Spacer,
-  SVGIcon,
-  createIcon,
 } from './components/primitives';
 
 import {
@@ -163,7 +162,8 @@ export {
   ZStack,
   Inline,
   Icon,
-  IconProps,
+  createIcon,
+  IIconProps,
   Input,
   InputGroup,
   InputLeftAddon,
@@ -210,6 +210,4 @@ export {
   Wrap,
   IWrapProps,
   Spacer,
-  SVGIcon,
-  createIcon,
 };
