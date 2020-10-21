@@ -35,7 +35,7 @@ const NBSkeleton = ({
   let baseColor = endColor ? colorSetter(endColor) : 'transparent';
 
   React.useEffect(() => {
-    const test = Animated.sequence([
+    const blink = Animated.sequence([
       Animated.timing(fadeAnim, {
         toValue: 1,
         duration: 1000,
@@ -47,7 +47,7 @@ const NBSkeleton = ({
         useNativeDriver: true,
       }),
     ]);
-    Animated.loop(test).start();
+    Animated.loop(blink).start();
   }, [fadeAnim]);
 
   const skeletonStyle = {
