@@ -42,3 +42,4 @@ export {
   ISquareProps,
 } from './Center';
 export { default as Wrap, IWrapProps } from './Wrap';
+export { default as Collapse } from './Collapse';
