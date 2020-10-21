@@ -29,6 +29,14 @@ export {
   StatArrow,
   StatGroup,
 } from './Stat';
+export {
+  default as Skeleton,
+  ISkeletonProps,
+  SkeletonCircle,
+  ISkeletonCircleProps,
+  SkeletonText,
+  ISkeletonTextProps,
+} from './Skeleton';
 export { default as Tag, TagCloseButton } from './Tag';
 export { default as Kbd, IKbdProps } from './KBD';
 export { default as Code } from './Code';
