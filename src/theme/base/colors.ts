@@ -154,6 +154,17 @@ const colors = {
     8: '#702459',
     9: '#521B41',
   },
+  indigo: {
+    0: '#ebf4ff',
+    1: '#c3dafe',
+    2: '#a3bffa',
+    3: '#7f9cf5',
+    4: '#667eea',
+    5: '#5a67d8',
+    6: '#4c51bf',
+    7: '#434190',
+    8: '#3c366b',
+  },
 };
 
 export default colors;
