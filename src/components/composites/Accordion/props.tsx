@@ -1,4 +1,4 @@
-import type { IBoxProps } from 'native-base';
+import type { IBoxProps, IIconProps } from 'native-base';
 
 export type IAccordionProps = IBoxProps & {
   allowMultiple?: boolean;
@@ -28,4 +28,7 @@ export type IAccordionItemContextProps = {
   isDisabled?: boolean;
   onClose?: () => void;
   onOpen?: () => void;
+};
+export type IAccordionIconProps = IIconProps & {
+  style?: any;
 };

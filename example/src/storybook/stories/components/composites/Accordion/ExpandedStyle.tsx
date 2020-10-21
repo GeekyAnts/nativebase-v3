@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
+  AccordionIcon,
   Box,
 } from 'native-base';
 export default function () {
@@ -12,8 +13,8 @@ export default function () {
       <Accordion allowMultiple>
         <AccordionItem id={2}>
           <AccordionButton _expanded={{ backgroundColor: '#f6ad55' }}>
-            <Box>Section 1 title</Box>
-            <Box>+</Box>
+            <Box>Click me to see a different style</Box>
+            <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -24,8 +25,8 @@ export default function () {
         </AccordionItem>
         <AccordionItem id={9} isDisabled>
           <AccordionButton _disabled={{ backgroundColor: '#e2e3e5' }}>
-            <Box>Section 2 title</Box>
-            <Box>+</Box>
+            <Box>I'm Disabled 😢</Box>
+            <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

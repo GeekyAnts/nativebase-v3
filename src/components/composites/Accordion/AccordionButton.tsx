@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { Box, ThemeContext } from 'native-base';
 import { space, layout, border } from 'styled-system';
-import type { IAccordionButtonProps } from './props';
+import type {
+  IAccordionButtonProps,
+  IAccordionItemContextProps,
+} from './props';
 import { AccordionItemContext } from './AccordionItem';
-
 import { TouchableOpacity } from 'react-native';
-import type { IAccordionItemContextProps } from './props';
 
 const NBAccordionButton = ({
   children,

@@ -46,6 +46,10 @@ export {
   IAccordionButtonProps,
   AccordionPanel,
   IAccordionPanelProps,
+  AccordionIcon,
+  IAccordionIconProps,
+  IAccordionContextProps,
+  IAccordionItemContextProps,
 } from './Accordion';
 export { default as Tag, TagCloseButton } from './Tag';
 export { default as Kbd, IKbdProps } from './KBD';

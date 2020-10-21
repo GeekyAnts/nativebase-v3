@@ -6,11 +6,13 @@ import { space, layout, border } from 'styled-system';
 export { default as AccordionItem } from './AccordionItem';
 export { default as AccordionButton } from './AccordionButton';
 export { default as AccordionPanel } from './AccordionPanel';
+export { default as AccordionIcon } from './AccordionIcon';
 import type {
   IAccordionProps,
   IAccordionItemProps,
   IAccordionButtonProps,
   IAccordionPanelProps,
+  IAccordionIconProps,
   IAccordionContextProps,
   IAccordionItemContextProps,
 } from './props';
@@ -19,6 +21,7 @@ export type {
   IAccordionItemProps,
   IAccordionButtonProps,
   IAccordionPanelProps,
+  IAccordionIconProps,
   IAccordionContextProps,
   IAccordionItemContextProps,
 };
@@ -33,48 +36,25 @@ const NBAccordion = ({
   style,
   ...props
 }: IAccordionProps) => {
-  // const AccordionItemIdList: any[] = [];
-  // React.Children.map(children, (child) => {
-  //   if (child.type.name === 'AccordionItem') {
-  //     AccordionItemIdList.push(child.props.id);
-  //   }
-  //   console.log('kigode -', child.props.id);
-  // });
-
-  // const itemIdList: any[] = [];
-  // const addItemOnIdList = (id) => {
-  //   itemIdList.push(id);
-  // };
-  // const [index, setIndex] = React.useState([itemIdList[0]] || 0);
   const [index, setIndex] = React.useState(
     props.index || props.defaultIndex || []
   );
-
-  // const [defaultIndex, setDefaultIndex] = React.useState(
-  //   props.index || props.defaultIndex || []
-  // );
-
   const changeHandler = (isOpening: boolean, id: number) => {
     let temp = index.map((i) => i);
     if (allowToggle) {
       if (isOpening) {
-        console.log('allowToggle true opening');
-        console.log('acl - ', allowMultiple);
         temp.push(id);
         allowMultiple ? setIndex(temp) : setIndex([id]);
       } else {
-        console.log('allowToggle true closing');
         setIndex(index.splice(index.indexOf(id), 1));
       }
     } else {
       if (isOpening) {
-        console.log('allowToggle false opening');
         temp.push(id);
         allowMultiple ? setIndex(temp) : setIndex([id]);
       } else {
-        console.log('allowToggle false closing - ', temp);
         _.remove(temp, (n) => n === id);
-        index.length === 1 ? setIndex([]) : setIndex(temp);
+        setIndex(temp);
       }
     }
     onChange && onChange(temp);

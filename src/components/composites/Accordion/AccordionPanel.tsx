@@ -3,9 +3,8 @@ import styled from 'styled-components/native';
 import { Box, ThemeContext } from 'native-base';
 import { space, layout, border } from 'styled-system';
 import { AccordionItemContext } from './AccordionItem';
-import type { IAccordionPanelProps, IAccordionItemContextProps } from './props';
 import Collapse from '../Collapse';
-export type { IAccordionPanelProps };
+import type { IAccordionPanelProps, IAccordionItemContextProps } from './props';
 
 const NBAccordionPanel = ({ children, ...props }: IAccordionPanelProps) => {
   const theme = React.useContext(ThemeContext);

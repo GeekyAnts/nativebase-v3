@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
+  AccordionIcon,
   Box,
 } from 'native-base';
 import { boolean } from '@storybook/addon-knobs';
@@ -17,7 +18,7 @@ export default function () {
         <AccordionItem id={2}>
           <AccordionButton>
             <Box>Section 1 title</Box>
-            <Box>+</Box>
+            <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -29,7 +30,7 @@ export default function () {
         <AccordionItem id={9}>
           <AccordionButton>
             <Box>Section 2 title</Box>
-            <Box>+</Box>
+            <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -41,7 +42,7 @@ export default function () {
         <AccordionItem id={7}>
           <AccordionButton>
             <Box>Section 2 title</Box>
-            <Box>+</Box>
+            <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
