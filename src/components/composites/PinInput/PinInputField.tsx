@@ -27,9 +27,11 @@ const NBPinInputFiled = ({
   cValue = cValue && cValue[fieldIndex];
 
   const [pinInputField, setPinInputField] = React.useState(pValue || cValue);
-  const changeHandler = (value: any) => {
-    setPinInputField(value);
-    handleChange && handleChange(value, fieldIndex);
+  const changeHandler = (event: any) => {
+    if (event.nativeEvent.key >= 0 && event.nativeEvent.key <= 9) {
+      setPinInputField(event.nativeEvent.key);
+      handleChange && handleChange(event.nativeEvent.key, fieldIndex);
+    }
   };
 
   return (
@@ -38,7 +40,7 @@ const NBPinInputFiled = ({
       {...context}
       {...props}
       maxLength={1}
-      onChangeText={(value) => changeHandler(value)}
+      onKeyPress={(event) => changeHandler(event)}
       keyboardType="numeric"
       defaultValue={pDefaultValue || cDefaultValue}
       value={pinInputField}
