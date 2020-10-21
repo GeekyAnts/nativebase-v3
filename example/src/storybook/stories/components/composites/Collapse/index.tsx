@@ -4,6 +4,8 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 
 import Basic from './Basic';
+import Callback from './Callback';
+import Duration from './Duration';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Collapse', module)
@@ -21,4 +23,6 @@ storiesOf('Collapse', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Basic', () => <Basic />);
+  .add('Basic', () => <Basic />)
+  .add('Animation Duration', () => <Duration />)
+  .add('onAnimationStart and onAnimationEnd', () => <Callback />);

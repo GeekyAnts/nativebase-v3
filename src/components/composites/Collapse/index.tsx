@@ -59,7 +59,7 @@ const Collapse = ({
     }
     useEffect(() => {
       updatePrevious(value);
-    }, []);
+    }, [value]);
     return { value: ref.current, updatePrevious };
   }
   let wasOpen = usePrevious(isOpen);

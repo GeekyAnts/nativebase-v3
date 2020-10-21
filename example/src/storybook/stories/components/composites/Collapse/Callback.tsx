@@ -1,12 +1,30 @@
 import React from 'react';
-import { Collapse, Stack, Heading, Button, Box } from 'native-base';
+import { Collapse, Stack, Heading, Button, Box, Text } from 'native-base';
 export default function () {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
+  const [text, setText] = React.useState(
+    'This text would change when the collapse animation start'
+  );
+  const handleText = () =>
+    setText(
+      show
+        ? 'Collapse is open'
+        : 'This text would change when the collapse animation start'
+    );
+  const [color, setColor] = React.useState('default');
+  const handleColorToggle = () =>
+    setColor(color === 'green' ? 'default' : 'green');
   return (
     <Stack space={4}>
-      <Heading>Default Collapse</Heading>
-      <Collapse isOpen={show}>
+      <Heading>onAnimationStart & onAnimationEnd</Heading>
+      <Text>{text}</Text>
+      <Collapse
+        onAnimationEnd={handleColorToggle}
+        onAnimationStart={handleText}
+        startingHeight={40}
+        isOpen={show}
+      >
         Candy canes macaroon croissant carrot cake soufflé toffee topping
         pastry. Brownie lollipop brownie sesame snaps. Pastry gingerbread
         biscuit sweet I love macaroon bear claw fruitcake oat cake. Jelly sweet
@@ -17,7 +35,7 @@ export default function () {
         tart.
         <Box p={8} bg="black" />
       </Collapse>
-      <Button size="sm" onClick={handleToggle}>
+      <Button colorScheme={color} size="sm" onClick={handleToggle}>
         Show {show ? 'Less' : 'More'}
       </Button>
     </Stack>
