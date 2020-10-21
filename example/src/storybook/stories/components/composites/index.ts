@@ -12,3 +12,5 @@ export * from './Kbd';
 export * from './Wrap';
 export * from './Progress';
 export * from './Code';
+export * from './Stat';
+export * from './Collapse';
