@@ -125,11 +125,11 @@ const StyledAvatar = styled(Avatar)<IAvatarProps>(
         width: 128,
         height: 128,
       },
-      xl: { fontSize: theme.fontSizes['xl'], width: 96, height: 96 },
-      lg: { fontSize: theme.fontSizes['lg'], width: 64, height: 64 },
-      md: { fontSize: theme.fontSizes['md'], width: 48, height: 48 },
-      sm: { fontSize: theme.fontSizes['sm'], width: 32, height: 32 },
-      xs: { fontSize: theme.fontSizes['xs'], width: 24, height: 24 },
+      xl: { fontSize: theme.fontSizes.xl, width: 96, height: 96 },
+      lg: { fontSize: theme.fontSizes.lg, width: 64, height: 64 },
+      md: { fontSize: theme.fontSizes.md, width: 48, height: 48 },
+      sm: { fontSize: theme.fontSizes.sm, width: 32, height: 32 },
+      xs: { fontSize: theme.fontSizes.xs, width: 24, height: 24 },
     },
   })
 );

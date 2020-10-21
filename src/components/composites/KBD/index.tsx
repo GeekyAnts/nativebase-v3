@@ -47,7 +47,7 @@ const Kbd = ({ style, shadow, children, ...props }: IKbdProps) => {
       <Text
         style={{
           fontWeight: '700',
-          fontSize: props.fontSize ? props.fontSize : theme.fontSizes['sm'],
+          fontSize: props.fontSize ? props.fontSize : theme.fontSizes.sm,
           fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
         }}
       >
