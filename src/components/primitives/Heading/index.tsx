@@ -63,8 +63,9 @@ const StyledHeading = styled(Text)<IHeadingProps>(
 const Heading = ({ style, size, isTruncated, ...props }: IHeadingProps) => {
   let computedStyle: any = style;
   let fontSizeWRTHeading = size
-    ? theme.fontSizes[sizes.indexOf(size)]
-    : theme.fontSizes[sizes.indexOf('xl')];
+    ? // @ts-ignore
+      theme.fontSizes[size]
+    : theme.fontSizes['xl'];
   computedStyle = StyleSheet.flatten([
     style,
     {

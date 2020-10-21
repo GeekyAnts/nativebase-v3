@@ -50,24 +50,6 @@ const CloseButton = ({
   ...props
 }: ICloseButtonProps) => {
   const theme = useContext(ThemeContext);
-  let spaceValue = 2;
-  if (size) {
-    switch (size) {
-      case 'sm':
-        spaceValue = 5;
-        break;
-      case 'md':
-        spaceValue = 6;
-        break;
-      case 'lg':
-        spaceValue = 7;
-        break;
-      default:
-        spaceValue = 6;
-        break;
-    }
-  }
-
   const defaultOnPress = () => {};
   let computedStyle: any = style;
   computedStyle = StyleSheet.flatten([
@@ -96,7 +78,7 @@ const CloseButton = ({
         <Icon
           name="close"
           type="MaterialIcons"
-          fontSize={theme.fontSizes[spaceValue]}
+          fontSize={theme.fontSizes[size || 'md']}
           color={props.color}
         />
       </StyledView>

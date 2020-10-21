@@ -113,12 +113,12 @@ const StyledTag = styled(Text)<ITagProps>(
   variant({
     prop: 'tagSize',
     variants: {
-      '2xl': { fontSize: theme.fontSizes[5] },
-      'xl': { fontSize: theme.fontSizes[4] },
-      'lg': { fontSize: theme.fontSizes[3] },
-      'md': { fontSize: theme.fontSizes[2] },
-      'sm': { fontSize: theme.fontSizes[1] },
-      'xsm': { fontSize: theme.fontSizes[0] },
+      '2xl': { fontSize: theme.fontSizes['2xl'] },
+      xl: { fontSize: theme.fontSizes['xl'] },
+      lg: { fontSize: theme.fontSizes['lg'] },
+      md: { fontSize: theme.fontSizes['md'] },
+      sm: { fontSize: theme.fontSizes['sm'] },
+      xsm: { fontSize: theme.fontSizes['xs'] },
     },
   })
 );

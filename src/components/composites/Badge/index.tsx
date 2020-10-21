@@ -50,7 +50,7 @@ const NBBadge = ({ children, style, ...props }: IBadgeProps) => {
       borderRadius={3}
       fontWeight="600"
       // textTransform="uppercase"   // Not working
-      fontSize={theme.fontSizes[0]}
+      fontSize={theme.fontSizes['xs']}
       color={variant === 'solid' ? theme.colors.white : activeColor}
       textAlign="center"
       style={computedStyle}
