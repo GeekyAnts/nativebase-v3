@@ -37,7 +37,7 @@ export default function () {
         </AccordionItem>
         <AccordionItem id={7}>
           <AccordionButton>
-            <Box>Section 2 title</Box>
+            <Box>Section 3 title</Box>
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
