@@ -41,6 +41,3 @@ export const addTextAndPropsToStrings = (children: any, props: any) => {
     }
   }
 };
-// (child.type.name === 'Text' ||
-//             child.type.name === 'Heading' ||
-//             child.type.name === 'BreadCrumbLink')
