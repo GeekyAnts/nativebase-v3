@@ -1,7 +1,7 @@
 import React from 'react';
 import deepmerge from 'deepmerge';
 import darkTheme from './darkTheme';
-import theme from './theme';
+import { theme } from './';
 
 export const ThemeContext = React.createContext({
   theme,
@@ -12,9 +12,7 @@ export default class ThemeProvider extends React.Component {
   state: any;
   constructor(props: any) {
     super(props);
-
     const defaultColors = props.useDark ? darkTheme : theme;
-
     this.defaultTheme = deepmerge(
       {
         colors: defaultColors,

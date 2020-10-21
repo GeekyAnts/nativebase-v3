@@ -1,93 +1,38 @@
 import React from 'react';
-import { View, ViewProps, ViewStyle, StyleSheet } from 'react-native';
-import styled from 'styled-components/native';
-import {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  color,
-  flexbox,
-  layout,
-  space,
-} from 'styled-system';
-import {
-  customBorder,
-  customBorderProps,
-  customBackground,
-  customBackgroundProps,
-  customOutline,
-  customOutlineProps,
-  customLayout,
-  customLayoutProps,
-  customExtra,
-  customExtraProps,
-  customShadowProps,
-  customShadow,
-} from '../../../utils/customProps';
-import { Box } from '../../primitives';
-import { theme } from '../../../theme';
+import { ViewStyle, StyleSheet } from 'react-native';
+
+import { Box, IBoxProps } from '../../primitives';
+import { ThemeContext } from '../../../theme';
 
 type SpaceType = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-export type IProgressProps = ViewProps &
-  ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  customBackgroundProps &
-  BorderProps & {
-    style?: ViewStyle;
-    children?: JSX.Element | JSX.Element[];
-    value?: number | undefined;
-    size?: SpaceType | string | undefined;
-    colorScheme?: string | undefined;
-    isIndeterminate?: any | undefined;
-  };
 
-let successStyle = {
-  backgroundColor: theme.colors.success[2],
+export type IProgressProps = IBoxProps & {
+  style?: ViewStyle;
+  children?: JSX.Element | JSX.Element[];
+  value?: number | undefined;
+  size?: SpaceType | string | undefined;
+  colorScheme?: string | undefined;
+  isIndeterminate?: any | undefined;
 };
-let dangerStyle = {
-  backgroundColor: theme.colors.danger[2],
-};
-let warningStyle = {
-  backgroundColor: theme.colors.warning[2],
-};
-let darkStyle = {
-  backgroundColor: theme.colors.dark[2],
-};
-let lightStyle = {
-  backgroundColor: theme.colors.light[2],
-};
-let mutedStyle = {
-  backgroundColor: theme.colors.muted[2],
-};
-let defaultStyle = {
-  backgroundColor: theme.colors.default[2],
-};
+import * as StyleVariant from './styleVariants';
 
-const StyledProgress = styled(View)<IProgressProps>(
-  color,
-  space,
-  layout,
-  flexbox,
-  border,
-  customBorder,
-  customBackground,
-  customOutline,
-  customShadow,
-  customExtra,
-  customLayout
-);
-
-const Progress = ({ value, size, ...props }: IProgressProps) => {
+const Progress = ({
+  value,
+  size,
+  isIndeterminate,
+  ...props
+}: IProgressProps) => {
+  const theme = React.useContext(ThemeContext);
+  // const width = new Animated.Value(0);
+  // useEffect(() => {
+  //   Animated.loop(
+  //     Animated.timing(width, {
+  //       toValue: 270,
+  //       duration: 1000,
+  //       useNativeDriver: true,
+  //     })
+  //   ).start();
+  // });
   let spaceValue = 0;
   let customSize: string = '';
   if (size) {
@@ -126,47 +71,35 @@ const Progress = ({ value, size, ...props }: IProgressProps) => {
     switch (props.colorScheme) {
       case 'success':
       case 'green':
-        barBgColor = successStyle;
+        barBgColor = StyleVariant.successStyle;
         break;
       case 'danger':
       case 'red':
-        barBgColor = dangerStyle;
+        barBgColor = StyleVariant.dangerStyle;
         break;
       case 'warning':
       case 'yellow':
-        barBgColor = warningStyle;
+        barBgColor = StyleVariant.warningStyle;
         break;
       case 'light':
       case 'white':
-        barBgColor = lightStyle;
+        barBgColor = StyleVariant.lightStyle;
         break;
       case 'dark':
       case 'black':
-        barBgColor = darkStyle;
+        barBgColor = StyleVariant.darkStyle;
         break;
       case 'muted':
       case 'secondary':
       case 'grey':
-        barBgColor = mutedStyle;
+        barBgColor = StyleVariant.mutedStyle;
         break;
       default:
-        barBgColor = defaultStyle;
+        barBgColor = StyleVariant.defaultStyle;
     }
   }
-  if (barBgColor == defaultStyle && props.colorScheme) {
+  if (barBgColor === StyleVariant.defaultStyle && props.colorScheme) {
     barBgColor = { backgroundColor: props.colorScheme };
-  }
-  let mainBg = '#eaeaea';
-  if (props.bg) {
-    mainBg = props.bg;
-  } else if (props.backgroundColor) {
-    mainBg = props.backgroundColor;
-  }
-  let mainW = '100%';
-  if (props.w) {
-    mainW = props.w;
-  } else if (props.width) {
-    mainW = props.width + '';
   }
 
   let computedStyle: any = barBgColor;
@@ -174,22 +107,43 @@ const Progress = ({ value, size, ...props }: IProgressProps) => {
   computedStyle = StyleSheet.flatten([barBgColor, {}]);
 
   return (
-    <StyledProgress
-      {...props}
+    <Box
       height={customSize === '' ? theme.space[spaceValue] : customSize}
-      w={mainW}
-      bg={mainBg}
+      bg="gray.1"
       style={props.style}
+      {...props}
     >
-      <Box
-        shadow={0}
-        rounded={props.rounded}
-        style={computedStyle}
-        w={value + '%'}
-        height={customSize === '' ? theme.space[spaceValue] : customSize}
-        bg="red.0"
-      />
-    </StyledProgress>
+      {isIndeterminate ? (
+        // <Animated.View
+        //   style={[
+        //     {
+        //       transform: [
+        //         {
+        //           translateX: width,
+        //         },
+        //       ],
+        //     },
+        //   ]}
+        // >
+
+        // </Animated.View>
+        <Box
+          shadow={0}
+          rounded={props.rounded}
+          style={computedStyle}
+          w={value + '%'}
+          height={customSize === '' ? theme.space[spaceValue] : customSize}
+        />
+      ) : (
+        <Box
+          shadow={0}
+          rounded={props.rounded}
+          style={computedStyle}
+          w={value + '%'}
+          height={customSize === '' ? theme.space[spaceValue] : customSize}
+        />
+      )}
+    </Box>
   );
 };
 

@@ -1,7 +1,8 @@
 export * from './Box';
 export * from './Button';
 export * from './Checkbox';
-export * from './Columns';
+export * from './Row';
+export * from './Column';
 export * from './Flex';
 export * from './Heading';
 export * from './HStack';
@@ -17,5 +18,4 @@ export * from './Text';
 export * from './TextArea';
 export * from './VStack';
 export * from './WebLayout';
-export * from './Wrap';
 export * from './ZStack';

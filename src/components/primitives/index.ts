@@ -20,21 +20,18 @@ export {
   RadioGroup,
   IRadioGroupProps,
 } from './Radio';
-export { default as Icon, IconProps } from './Icon';
-export { default as Columns } from './Columns';
-export { default as Column } from './Column';
+export { default as Icon, IIconProps, createIcon } from './Icon';
+export { default as Column, IColumnProps } from './Column';
+export { default as Row, IRowProps } from './Row';
 export { default as Button, IButtonProps, ButtonGroup } from './Button';
 export { default as Slider } from './Slider';
-export { default as Stack } from './Stack';
-export { default as VStack } from './VStack';
-export { default as HStack } from './HStack';
+export { default as Stack, VStack, HStack, IStackProps } from './Stack';
 export { default as ZStack } from './ZStack';
 export { default as Inline } from './Inline';
 export { default as Image, IImageProps } from './Image';
 export { default as Spinner, ISpinnerProps } from './Spinner';
 export { default as Heading, IHeadingProps } from './Heading';
 export { default as Flex, IFlexProps, Spacer } from './Flex';
-export { default as Wrap, IWrapProps } from './Wrap';
 export { default as Switch, ISwitchProps } from './Switch';
 export { default as TextArea } from './TextArea';
 export { default as Link, ILinkProps } from './Link';

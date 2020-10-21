@@ -25,7 +25,7 @@ storiesOf('Radio', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Playgroud', () => <Playground />)
+  .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
   .add('CustomColor', () => <CustomColor />)
   .add('Size', () => <Size />)

@@ -1,54 +1,23 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, ViewProps, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native';
-import {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  color,
-  flexbox,
-  layout,
-  space,
-  variant,
-} from 'styled-system';
+import { border, color, flexbox, layout, space, variant } from 'styled-system';
 import {
   customBorder,
-  customBorderProps,
   customBackground,
-  customBackgroundProps,
   customOutline,
-  customOutlineProps,
   customLayout,
-  customLayoutProps,
   customExtra,
-  customExtraProps,
-  customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
 import { ThemeContext } from '../../../theme';
 import { CloseButton, Icon } from '../../../index';
-
-export type IAlertProps = ViewProps &
-  ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  customBackgroundProps &
-  BorderProps & {
-    style?: any;
-    status?: string | undefined;
-    children?: JSX.Element | JSX.Element[] | any;
-    variant?: string | undefined;
-    fontSize?: number | undefined;
-  };
+import type { IAlertProps } from './props';
+export type { IAlertProps };
+export { default as AlertCloseButton } from './AlertCloseButton';
+export { default as AlertDescription } from './AlertDescript';
+export { default as AlertIcon } from './AlertIcon';
+export { default as AlertTitle } from './AlertTitle';
 
 // Color Varients
 let successStyle = {
@@ -85,7 +54,7 @@ const getAlertIcon = (status: string | undefined) => {
       style={
         status ? { backgroundColor: 'black' } : { backgroundColor: 'black' }
       }
-      size={30}
+      // size={30}
       type="MaterialIcons"
       name="menu"
     />
@@ -103,7 +72,7 @@ const childStyling = (
     { color: statusStyle },
     props.variant === 'solid' ? { color: 'white' } : {},
     variantStyle,
-    fontSize != -1 ? { fontSize: fontSize } : {},
+    fontSize !== -1 ? { fontSize: fontSize } : {},
   ]);
   return children.map((child: any) => {
     return React.cloneElement(child, {
@@ -249,22 +218,20 @@ const Alert = ({ style, ...props }: IAlertProps) => {
 
   for (var ind = 0; ind < props.children.length; ind++) {
     if (
-      props.children[ind].type.name == 'AlertHeading' ||
-      props.children[ind].type.name == 'AlertDescription'
+      props.children[ind].type.name === 'AlertTitle' ||
+      props.children[ind].type.name === 'AlertDescription'
     ) {
       textComponents.push(textSpacingElem);
       textComponents.push(props.children[ind]);
     }
-    if (props.children[ind].type.name == 'AlertIcon') {
+    if (props.children[ind].type.name === 'AlertIcon') {
       iconComponent = getAlertIcon(props.status);
     }
-    if (props.children[ind].type.name == 'AlertCloseButton') {
+    if (props.children[ind].type.name === 'AlertCloseButton') {
       closeButtonComponent = (
         <CloseButton
           ml="auto"
-          color={props.variant == 'solid' ? 'white' : childStatusStyle}
-          highlightColor="#f0f0f0"
-          highlight={1}
+          color={props.variant === 'solid' ? 'white' : childStatusStyle}
         />
       );
     }
