@@ -16,6 +16,17 @@ export type ICollapseProps = IBoxProps & {
   onAnimationStart?: typeof functionType;
 };
 
+function usePrevious(value: any) {
+  const ref = useRef();
+  function updatePrevious(newVal: any) {
+    ref.current = newVal;
+  }
+  useEffect(() => {
+    updatePrevious(value);
+  }, [value]);
+  return { value: ref.current, updatePrevious };
+}
+
 const Collapse = ({
   endingHeight,
   startingHeight,
@@ -52,16 +63,7 @@ const Collapse = ({
     let callback = onAnimationEnd ? onAnimationEnd : () => {};
     LayoutAnimation.configureNext(CustomLayoutLinear, callback());
   };
-  function usePrevious(value: any) {
-    const ref = useRef();
-    function updatePrevious(newVal: any) {
-      ref.current = newVal;
-    }
-    useEffect(() => {
-      updatePrevious(value);
-    }, []);
-    return { value: ref.current, updatePrevious };
-  }
+
   let wasOpen = usePrevious(isOpen);
   if (!isNil(wasOpen.value) && wasOpen.value !== isOpen) {
     animateView();
