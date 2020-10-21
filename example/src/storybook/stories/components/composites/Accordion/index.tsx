@@ -4,11 +4,10 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import Usage from './Usage';
 import Playground from './Playground';
-import Wrapper from './Wrapper';
-import Color from './Color';
-import Circle from './Circle';
-import Text from './Text';
-import Loaded from './Loaded';
+import Multiple from './Multiple';
+import ExpandedStyle from './ExpandedStyle';
+import Toggle from './Toggle';
+import DefaultIndex from './DefaultIndex';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Accordion', module)
@@ -28,8 +27,7 @@ storiesOf('Accordion', module)
   ))
   .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
-  .add('Wrapper', () => <Wrapper />)
-  .add('Circle', () => <Circle />)
-  .add('Text', () => <Text />)
-  .add('Color', () => <Color />)
-  .add('Loaded', () => <Loaded />);
+  .add('Multiple', () => <Multiple />)
+  .add('Default Index', () => <DefaultIndex />)
+  .add('Toggle', () => <Toggle />)
+  .add('Expanded Style', () => <ExpandedStyle />);

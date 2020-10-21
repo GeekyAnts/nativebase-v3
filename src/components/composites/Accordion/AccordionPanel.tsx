@@ -1,42 +1,29 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Box, Text } from 'native-base';
-import { Animated, TouchableOpacity } from 'react-native';
+import { Box, ThemeContext } from 'native-base';
 import { space, layout, border } from 'styled-system';
-import { accordionItemContext, useAccordianAnimation } from './AccordionItem';
-import type { IAccordionPanelProps } from './props';
+import { AccordionItemContext } from './AccordionItem';
+import type { IAccordionPanelProps, IAccordionItemContextProps } from './props';
+import Collapse from '../Collapse';
 export type { IAccordionPanelProps };
 
 const NBAccordionPanel = ({ children, ...props }: IAccordionPanelProps) => {
-  // TODO: move panelAnim to context of AccordionItem as it'll be used but both child
-  const [panelAnim, growAnimation, shrinkAnimation] = useAccordianAnimation();
-  // const context = React.useContext(accordionItemContext);
-  const accordionStyle = {
-    panelAnimation: {
-      // height: panelAnim, // Bind height to animated value
-      height: panelAnim, // Bind height to animated value
-    },
-  };
-
+  const theme = React.useContext(ThemeContext);
+  const { isOpen }: IAccordionItemContextProps = React.useContext(
+    AccordionItemContext
+  );
   return (
-    <>
-      <TouchableOpacity
-        // activeOpacity={1}
-        // disabled={isDisabled}
-        // style={[baseStyle.checkboxWrapper, style]}
-        onPress={(event) => {
-          shrinkAnimation();
-        }}
-        accessible={true}
-        // accessibilityLabel={ariaLabel}
-        accessibilityRole="checkbox"
+    <Collapse isOpen={isOpen}>
+      <Box
+        p={3}
+        borderTopWidth={1}
+        borderBottomWidth={1}
+        borderColor={theme.colors.muted[2]}
+        {...props}
       >
-        <Text>sdasds</Text>
-      </TouchableOpacity>
-      <Animated.View style={[accordionStyle.panelAnimation]}>
-        <Box {...props}>{children}</Box>
-      </Animated.View>
-    </>
+        {children}
+      </Box>
+    </Collapse>
   );
 };
 

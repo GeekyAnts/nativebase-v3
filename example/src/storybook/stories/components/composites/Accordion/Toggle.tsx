@@ -9,7 +9,7 @@ import {
 export default function () {
   return (
     <Box m={3}>
-      <Accordion>
+      <Accordion allowToggle defaultIndex={[2]}>
         <AccordionItem id={2}>
           <AccordionButton>
             <Box>Section 1 title</Box>

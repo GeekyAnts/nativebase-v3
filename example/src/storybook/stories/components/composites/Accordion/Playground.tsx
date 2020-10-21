@@ -1,17 +1,56 @@
 import React from 'react';
-import { Skeleton, Stack, Text, Heading } from 'native-base';
-import { boolean, color } from '@storybook/addon-knobs';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  Box,
+} from 'native-base';
+import { boolean } from '@storybook/addon-knobs';
 export default function () {
   return (
-    <Stack width="90%">
-      <Skeleton
-        startColor={color('startColor', 'gray')}
-        endColor={color('endColor', 'transparent')}
-        isLoaded={boolean('isLoaded', false)}
+    <Box m={3}>
+      <Accordion
+        allowMultiple={boolean('allowMultiple', false)}
+        allowToggle={boolean('allowToggle', false)}
       >
-        <Heading>contents wrapped</Heading>
-        <Text>won't be visible</Text>
-      </Skeleton>
-    </Stack>
+        <AccordionItem id={2}>
+          <AccordionButton>
+            <Box>Section 1 title</Box>
+            <Box>+</Box>
+          </AccordionButton>
+          <AccordionPanel>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem id={9}>
+          <AccordionButton>
+            <Box>Section 2 title</Box>
+            <Box>+</Box>
+          </AccordionButton>
+          <AccordionPanel>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem id={7}>
+          <AccordionButton>
+            <Box>Section 2 title</Box>
+            <Box>+</Box>
+          </AccordionButton>
+          <AccordionPanel>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+    </Box>
   );
 }

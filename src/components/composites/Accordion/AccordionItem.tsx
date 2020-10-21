@@ -1,51 +1,55 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Animated } from 'react-native';
 import { Box } from 'native-base';
+import { AccordionContext } from './index';
 import { space, layout, border } from 'styled-system';
-import type { IAccordionItemProps } from './props';
-export type { IAccordionItemProps };
+import type { IAccordionItemProps, IAccordionContextProps } from './props';
 
-export const accordionItemContext = React.createContext({});
-export const useAccordianAnimation = () => {
-  const panelAnim = React.useRef(new Animated.Value(1)).current;
-  const bodyHeight = panelAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, 100],
-  });
-  const growAnimation = () => {
-    Animated.timing(panelAnim, {
-      toValue: 100,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
+export const AccordionItemContext = React.createContext({});
+// TODO: tried using hooks, but feels not required
+// export const useContextDefaultValue = () => {
+//   const [isOpen, setIsOpen] = React.useState(true);
+//   const [isDisabled, setIsDisabled] = React.useState(false);
+//   const onClose = (cb?: () => void) => {
+//     cb && cb();
+//     setIsOpen(false);
+//   };
+//   const onOpen = (cb?: () => void) => {
+//     cb && cb();
+//     setIsOpen(true);
+//   };
+//   return {
+//     isOpen,
+//     isDisabled,
+//     onClose,
+//     onOpen, ;
+const NBAccordionItem = ({
+  children,
+  isDisabled: pIsDisabled,
+  ...props
+}: IAccordionItemProps) => {
+  const { index, changeHandler }: IAccordionContextProps = React.useContext(
+    AccordionContext
+  );
+  const onClose = (cb?: () => void) => {
+    changeHandler && changeHandler(false, props.id);
+    cb && cb();
   };
-  const shrinkAnimation = () => {
-    console.log('shrinking - ', panelAnim);
-
-    Animated.timing(panelAnim, {
-      toValue: 10,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
-    console.log('shrinking done - ', panelAnim);
+  const onOpen = (cb?: () => void) => {
+    changeHandler && changeHandler(true, props.id);
+    cb && cb();
   };
-  return [bodyHeight, growAnimation, shrinkAnimation];
-};
-
-const NBAccordionItem = ({ children, ...props }: IAccordionItemProps) => {
   return (
-    <accordionItemContext.Provider
+    <AccordionItemContext.Provider
       value={{
-        useAccordianAnimation,
-        isOpen: false,
-        isDisabled: false,
-        onClose: false,
-        onOpen: false,
+        isOpen: index?.includes(props.id),
+        isDisabled: pIsDisabled,
+        onClose,
+        onOpen,
       }}
     >
       <Box {...props}>{children}</Box>
-    </accordionItemContext.Provider>
+    </AccordionItemContext.Provider>
   );
 };
 

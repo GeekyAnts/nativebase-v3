@@ -1,40 +1,52 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Box } from 'native-base';
+import { Box, ThemeContext } from 'native-base';
 import { space, layout, border } from 'styled-system';
 import type { IAccordionButtonProps } from './props';
-import { accordionItemContext, useAccordianAnimation } from './AccordionItem';
+import { AccordionItemContext } from './AccordionItem';
 
 import { TouchableOpacity } from 'react-native';
-export type { IAccordionButtonProps };
+import type { IAccordionItemContextProps } from './props';
 
-const NBAccordionButton = ({ children, ...props }: IAccordionButtonProps) => {
-  const [panelAnim, growAnimation, shrinkAnimation] = useAccordianAnimation();
+const NBAccordionButton = ({
+  children,
+  style,
+  _expanded,
+  _disabled,
+  ...props
+}: IAccordionButtonProps) => {
+  const theme = React.useContext(ThemeContext);
 
-  const pressHandler = (event: any) => {
-    shrinkAnimation();
-    console.log('panelAnim - ', panelAnim);
+  const {
+    isOpen,
+    isDisabled,
+    onOpen,
+    onClose,
+  }: IAccordionItemContextProps = React.useContext(AccordionItemContext);
 
-    // console.log(event);
+  const pressHandler = () => {
+    isOpen ? onClose && onClose() : onOpen && onOpen();
   };
 
   return (
     <TouchableOpacity
-      // activeOpacity={1}
-      // disabled={isDisabled}
-      // style={[baseStyle.checkboxWrapper, style]}
-      onPress={(event) => pressHandler(event)}
+      activeOpacity={1}
+      disabled={isDisabled}
+      onPress={() => pressHandler()}
       accessible={true}
-      // accessibilityLabel={ariaLabel}
       accessibilityRole="checkbox"
     >
       <Box
-        bg="#ddd"
+        p={3}
+        borderTopWidth={1}
+        borderBottomWidth={1}
+        borderColor={theme.colors.muted[2]}
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
         alignItems="center"
         {...props}
+        style={[style, isOpen && _expanded, isDisabled && _disabled]}
       >
         {children}
       </Box>
