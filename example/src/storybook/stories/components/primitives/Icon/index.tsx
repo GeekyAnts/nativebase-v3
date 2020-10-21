@@ -2,7 +2,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import Icon from './example';
+import Basic from './Basic';
+import CustomIcon from './CustomIcon';
+import CreateIcon from './CreateIcon';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Icon', module)
@@ -20,4 +22,6 @@ storiesOf('Icon', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Primary', () => <Icon />);
+  .add('Basic', () => <Basic />)
+  .add('CustomIcon', () => <CustomIcon />)
+  .add('CreateIcon', () => <CreateIcon />);

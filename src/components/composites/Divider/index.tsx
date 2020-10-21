@@ -26,17 +26,11 @@ const StyledDivider = styled(View)<IDividerProps>(
   customExtra,
   customLayout
 );
-const Divider = ({
-  style,
-  colorScheme,
-  orientation,
-  ...props
-}: IDividerProps) => {
+const Divider = ({ style, orientation, ...props }: IDividerProps) => {
   let computedStyle: ViewStyle = StyleSheet.flatten([
     style,
     {
       borderWidth: 1,
-      borderColor: colorScheme || 'inherit',
       opacity: 0.6,
     },
     orientation === 'vertical'

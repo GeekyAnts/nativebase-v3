@@ -21,7 +21,6 @@ export default (children: any) => {
   /*
   | Add the margiin to the children
   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const trailingChildrenWithSpacing = trailingChildren.map((child: any) => {
     return React.cloneElement(child, marginProp, child.props.children);
   });

@@ -1,34 +1,21 @@
-import React, { useContext } from 'react';
-import { StyleSheet, Text, TextProps, TextStyle } from 'react-native';
-import styled from 'styled-components/native';
-import {
+import React from 'react';
+import { StyleSheet, TextStyle } from 'react-native';
+import type {
   BorderProps,
   ColorProps,
   FlexboxProps,
   LayoutProps,
   SpaceProps,
-  border,
-  color,
-  flexbox,
-  layout,
-  space,
 } from 'styled-system';
-import {
-  customBorder,
+import type {
   customBorderProps,
-  customBackground,
   customBackgroundProps,
-  customOutline,
   customOutlineProps,
-  customLayout,
   customLayoutProps,
-  customExtra,
   customExtraProps,
   customShadowProps,
-  customShadow,
 } from '../../../utils/customProps';
-import { Box, IBoxProps } from '../../primitives';
-import { ThemeContext } from '../../../theme';
+import { Box, IBoxProps, Text, TextProps, Icon } from '../../..';
 export type IStatProps = TextProps &
   ColorProps &
   SpaceProps &
@@ -42,76 +29,82 @@ export type IStatProps = TextProps &
   customBackgroundProps &
   BorderProps & {
     style?: TextStyle;
-    fontSize?: number | undefined;
   };
 
-const StyledStat = styled(Text)<IStatProps>(
-  color,
-  space,
-  layout,
-  flexbox,
-  border,
-  customBorder,
-  customBackground,
-  customOutline,
-  customShadow,
-  customExtra,
-  customLayout
-);
-
-export const StatLabel = ({
-  style,
-  ...props
-}: IStatProps & {
-  children?: string | undefined;
-}) => {
-  let computedStyle: any = style;
-  computedStyle = StyleSheet.flatten([
-    style,
-    {
-      color: props.color ? props.color : 'black',
-    },
-  ]);
-  return <StyledStat style={computedStyle}>{props.children}</StyledStat>;
+export const StatLabel = ({ style, ...props }: TextProps) => {
+  return (
+    <Text style={style} {...props}>
+      {props.children}
+    </Text>
+  );
 };
 export const StatNumber = ({
   style,
+  fontSize,
+  fontWeight,
   ...props
-}: IStatProps & {
-  children?: string | undefined;
-}) => {
-  const theme = useContext(ThemeContext);
+}: TextProps) => {
+  return (
+    <Text
+      my={2}
+      style={style}
+      fontSize={fontSize ? fontSize : '3xl'}
+      fontWeight={fontWeight ? fontWeight : 700}
+      {...props}
+    >
+      {props.children}
+    </Text>
+  );
+};
+export const StatHelpText = ({ style, ...props }: IBoxProps) => {
   let computedStyle: any = style;
   computedStyle = StyleSheet.flatten([
     style,
     {
-      color: props.color ? props.color : 'black',
-      fontSize: props.fontSize ? props.fontSize : theme.fontSizes[3],
-      fontWeight: '600',
+      opacity: 0.7,
     },
   ]);
   return (
-    <StyledStat my={2} style={computedStyle}>
+    <Box
+      flexDirection="row"
+      alignItems="center"
+      style={computedStyle}
+      {...props}
+    >
       {props.children}
-    </StyledStat>
+    </Box>
   );
 };
-export const StatHelpText = ({
-  style,
+
+export const StatArrow = ({
+  type,
   ...props
-}: IStatProps & {
-  children?: string | undefined;
+}: {
+  type?: 'increase' | 'decrease';
 }) => {
+  return (
+    <Icon
+      type="MaterialIcons"
+      name={type === 'increase' ? 'arrow-drop-up' : 'arrow-drop-down'}
+      color={type === 'increase' ? 'green.5' : 'red.5'}
+      {...props}
+    />
+  );
+};
+
+export const StatGroup = ({ style, ...props }: IBoxProps) => {
   let computedStyle: any = style;
   computedStyle = StyleSheet.flatten([
     style,
     {
-      color: props.color ? props.color : '#6b717d',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
     },
   ]);
-  return <StyledStat style={computedStyle}>{props.children}</StyledStat>;
+  return <Box flexWrap="wrap" style={computedStyle} {...props} />;
 };
+
 const Stat = ({ style, ...props }: IBoxProps) => {
-  return <Box w="100%" {...props} style={style} />;
+  return <Box {...props} style={style} />;
 };
 export default Stat;

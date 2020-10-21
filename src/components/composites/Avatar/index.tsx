@@ -36,7 +36,7 @@ export const AvatarBadge = ({
   computedStyle = StyleSheet.flatten([
     style,
     {
-      backgroundColor: bg ? bg : theme.colors.indigo[4],
+      backgroundColor: bg ? bg : theme.colors.blue[4],
       position: 'absolute',
       right: 0,
       bottom: 0,
@@ -121,15 +121,15 @@ const StyledAvatar = styled(Avatar)<IAvatarProps>(
     prop: 'size',
     variants: {
       '2xl': {
-        fontSize: theme.fontSizes[5],
+        fontSize: theme.fontSizes['2xl'],
         width: 128,
         height: 128,
       },
-      'xl': { fontSize: theme.fontSizes[4], width: 96, height: 96 },
-      'lg': { fontSize: theme.fontSizes[3], width: 64, height: 64 },
-      'md': { fontSize: theme.fontSizes[2], width: 48, height: 48 },
-      'sm': { fontSize: theme.fontSizes[1], width: 32, height: 32 },
-      'xs': { fontSize: theme.fontSizes[0], width: 24, height: 24 },
+      xl: { fontSize: theme.fontSizes.xl, width: 96, height: 96 },
+      lg: { fontSize: theme.fontSizes.lg, width: 64, height: 64 },
+      md: { fontSize: theme.fontSizes.md, width: 48, height: 48 },
+      sm: { fontSize: theme.fontSizes.sm, width: 32, height: 32 },
+      xs: { fontSize: theme.fontSizes.xs, width: 24, height: 24 },
     },
   })
 );

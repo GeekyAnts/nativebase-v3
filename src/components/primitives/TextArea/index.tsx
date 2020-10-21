@@ -84,11 +84,11 @@ const StyledTextArea = styled(TextInput)<ITextAreaProps>(
     prop: 'textSize',
     variants: {
       '2xl': { fontSize: 5 },
-      'xl': { fontSize: 4 },
-      'lg': { fontSize: 3 },
-      'md': { fontSize: 2 },
-      'sm': { fontSize: 1 },
-      'xsm': { fontSize: 0 },
+      xl: { fontSize: 4 },
+      lg: { fontSize: 3 },
+      md: { fontSize: 2 },
+      sm: { fontSize: 1 },
+      xsm: { fontSize: 0 },
     },
   })
 );
@@ -100,6 +100,7 @@ const TextArea = ({
   totalLines,
   isInvalid,
   isDisabled,
+  fontSize,
   ...props
 }: ITextAreaProps) => {
   const theme = useContext(ThemeContext);
@@ -109,12 +110,12 @@ const TextArea = ({
     props.borderColor ? {} : { borderColor: theme.colors.gray[4] },
     isDisabled ? { opacity: 0.5, backgroundColor: theme.colors.gray[1] } : {},
     isInvalid ? { borderWidth: 1, borderColor: theme.colors.danger[2] } : {},
-    props.fontSize
+    fontSize
       ? {
           fontSize:
-            props.fontSize > theme.fontSizes.length - 1 //if the fontSize passed is larger than theme fontSizes array's length then consider the passed value as fontSize
-              ? props.fontSize
-              : theme.fontSizes[props.fontSize],
+            fontSize > theme.fontSizes.length - 1 //if the fontSize passed is larger than theme fontSizes array's length then consider the passed value as fontSize
+              ? fontSize
+              : theme.fontSizes[fontSize],
         }
       : {},
   ]);

@@ -69,6 +69,7 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
+    "react-native-svg": "*",
     "react-native-vector-icons": "*"
   },
   "jest": {
@@ -134,6 +135,7 @@
     "hoist-non-react-statics": "^3.3.2",
     "lodash": "^4.17.20",
     "react-native-material-ripple": "^0.9.1",
+    "react-native-svg": "^12.1.0",
     "react-native-unimodules": "~0.10.1",
     "react-native-vector-icons": "^7.1.0",
     "styled-components": "^5.2.0",

@@ -75,39 +75,10 @@ const Text = ({
   if (props.strikeThrough)
     style = StyleSheet.compose(style, addonStyle.strikeThroughStyle);
 
-  switch (fontSize) {
-    case 'xs':
-      fontSize = theme.fontSizes[0];
-      break;
-    case 'sm':
-      fontSize = theme.fontSizes[1];
-      break;
-    case 'md':
-      fontSize = theme.fontSizes[2];
-      break;
-    case 'lg':
-      fontSize = theme.fontSizes[3];
-      break;
-    case 'xl':
-      fontSize = theme.fontSizes[4];
-      break;
-    case '2xl':
-      fontSize = theme.fontSizes[5];
-      break;
-    case '3xl':
-      fontSize = theme.fontSizes[6];
-      break;
-    case '4xl':
-      fontSize = theme.fontSizes[6] * 1.2;
-      break;
-    case '5xl':
-      fontSize = theme.fontSizes[6] * 1.6;
-      break;
-    case '6xl':
-      fontSize = theme.fontSizes[6] * 2.1333333;
-      break;
-    default:
-      break;
+  // TODO: replace this, had some typing issues
+  if (fontSize && typeof fontSize === 'string' && sizes.includes(fontSize)) {
+    // @ts-ignore
+    fontSize = theme.fontSizes[fontSize];
   }
   return (
     <StyledText

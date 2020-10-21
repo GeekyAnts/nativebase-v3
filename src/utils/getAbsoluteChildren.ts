@@ -5,7 +5,6 @@ export default (children: JSX.Element[] | JSX.Element) => {
   /*
   | Add the position to the children
   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const trailingChildrenWithSpacing = childrenArray.map((child: any) => {
     return React.cloneElement(
       child,

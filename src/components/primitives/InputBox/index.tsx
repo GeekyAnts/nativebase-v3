@@ -116,11 +116,11 @@ const StyledBox = styled(View)<IInputBoxProps>(
     prop: 'inputSize',
     variants: {
       '2xl': { fontSize: 5 },
-      'xl': { fontSize: 4 },
-      'lg': { fontSize: 3 },
-      'md': { fontSize: 2 },
-      'sm': { fontSize: 1 },
-      'xsm': { fontSize: 0 },
+      xl: { fontSize: 4 },
+      lg: { fontSize: 3 },
+      md: { fontSize: 2 },
+      sm: { fontSize: 1 },
+      xsm: { fontSize: 0 },
     },
   }),
   variant({
@@ -157,11 +157,11 @@ const StyledInputBox = styled(TextInput)<IInputBoxProps>(
     prop: 'inputSize',
     variants: {
       '2xl': { fontSize: 5 },
-      'xl': { fontSize: 4 },
-      'lg': { fontSize: 3 },
-      'md': { fontSize: 2 },
-      'sm': { fontSize: 1 },
-      'xsm': { fontSize: 0 },
+      xl: { fontSize: 4 },
+      lg: { fontSize: 3 },
+      md: { fontSize: 2 },
+      sm: { fontSize: 1 },
+      xsm: { fontSize: 0 },
     },
   })
 );
@@ -226,7 +226,7 @@ const InputBox = (
     style,
     isFullWidth ? { width: '100%' } : {},
     isDisabled ? isDisabledStyle : {},
-    props.colorScheme == 'error' || isInvalid ? isInvalidStyle : {},
+    props.colorScheme === 'error' || isInvalid ? isInvalidStyle : {},
     { display: 'flex', flexDirection: 'row', width: '100%' },
     props.borderColor ? { borderColor: props.borderColor } : {},
     isFocused && (!isInvalid || props.colorScheme) ? focusStyle : {},
@@ -258,7 +258,7 @@ const InputBox = (
           ref={ref}
         />
         {props.colorScheme || isInvalid ? (
-          props.colorScheme == 'error' ? (
+          props.colorScheme === 'error' ? (
             <Box bg="black" width="20" height="20" />
           ) : props.colorScheme === 'success' ? (
             <Box bg="black" width="20" height="20" />
@@ -271,7 +271,7 @@ const InputBox = (
         <Box>{InputRightElement}</Box>
       </StyledBox>
 
-      {(props.colorScheme == 'error' || isInvalid) && errorMessage ? (
+      {(props.colorScheme === 'error' || isInvalid) && errorMessage ? (
         <Text
           style={{
             marginLeft: 10,
@@ -285,7 +285,7 @@ const InputBox = (
       ) : (
         <Box />
       )}
-      {props.colorScheme == 'success' && successMessage ? (
+      {props.colorScheme === 'success' && successMessage ? (
         <Text style={{ marginLeft: 10, color: theme.colors.success[2] }}>
           {successMessage}
         </Text>
