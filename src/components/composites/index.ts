@@ -22,6 +22,14 @@ export { default as Container, IContainerProps } from './Container';
 export { default as Divider, IDividerProps } from './Divider';
 export { default as Progress } from './Progress';
 export {
+  default as Stat,
+  StatHelpText,
+  StatLabel,
+  StatNumber,
+  StatArrow,
+  StatGroup,
+} from './Stat';
+export {
   default as Skeleton,
   ISkeletonProps,
   SkeletonCircle,
@@ -39,7 +47,6 @@ export {
   AccordionPanel,
   IAccordionPanelProps,
 } from './Accordion';
-export { default as Stat, StatHelpText, StatLabel, StatNumber } from './Stat';
 export { default as Tag, TagCloseButton } from './Tag';
 export { default as Kbd, IKbdProps } from './KBD';
 export { default as Code } from './Code';
@@ -52,3 +59,4 @@ export {
   ISquareProps,
 } from './Center';
 export { default as Wrap, IWrapProps } from './Wrap';
+export { default as Collapse } from './Collapse';

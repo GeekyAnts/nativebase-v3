@@ -48,6 +48,8 @@ import {
   StatHelpText,
   StatLabel,
   StatNumber,
+  StatArrow,
+  StatGroup,
   Tag,
   TagCloseButton,
   Code,
@@ -59,6 +61,7 @@ import {
   ISquareProps,
   Wrap,
   IWrapProps,
+  Collapse,
 } from './components/composites';
 
 import {
@@ -218,6 +221,8 @@ export {
   StatHelpText,
   StatLabel,
   StatNumber,
+  StatArrow,
+  StatGroup,
   Tag,
   TagCloseButton,
   TextArea,
@@ -226,4 +231,5 @@ export {
   Wrap,
   IWrapProps,
   Spacer,
+  Collapse,
 };
