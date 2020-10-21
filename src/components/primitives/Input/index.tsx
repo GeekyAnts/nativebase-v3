@@ -29,7 +29,7 @@ const StyledInput = styled(TextInput)<InputProps>(
   layout
 );
 
-/* 
+/*
   Default styles for Input
 */
 const inputDefaultProps: InputProps = {
@@ -40,7 +40,6 @@ const inputDefaultProps: InputProps = {
   fontSize: 2,
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Input = (props: InputProps, ref: any) => {
   return <StyledInput ref={ref} {...inputDefaultProps} {...props} />;
 };

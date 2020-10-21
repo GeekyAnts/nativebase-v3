@@ -6,7 +6,6 @@ import Svg, { G, Path, Circle } from 'react-native-svg';
 import type { IIconProps } from './props';
 
 const SVG = styled(Svg)<IIconProps>(color);
-
 const SVGIcon = ({
   viewBox,
   color,

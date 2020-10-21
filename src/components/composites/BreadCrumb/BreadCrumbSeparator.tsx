@@ -9,7 +9,7 @@ export const BreadCrumbSeparator = (
   spacing: number | undefined
 ) => {
   if (Array.isArray(children)) {
-    if (children.length == 1) {
+    if (children.length === 1) {
       return children;
     }
     const separatorElement = separator ? (

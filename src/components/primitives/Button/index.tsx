@@ -194,10 +194,10 @@ const Button = ({
 
   let textColor = 'white';
   if (
-    variant == 'ghost' ||
-    variant == 'outline' ||
-    variant == 'link' ||
-    colorScheme == 'light'
+    variant === 'ghost' ||
+    variant === 'outline' ||
+    variant === 'link' ||
+    colorScheme === 'light'
   ) {
     textColor = lightBgColor[1];
   }
@@ -216,7 +216,7 @@ const Button = ({
       borderColor: textColor,
     },
     Platform.OS === 'ios' &&
-    (variant == 'ghost' || variant == 'outline' || variant == 'link')
+    (variant === 'ghost' || variant === 'outline' || variant === 'link')
       ? { backgroundColor: lightBgColor[0] }
       : {},
   ]);
@@ -256,7 +256,7 @@ const Button = ({
           style={{
             color: textColor,
             fontSize: theme.fontSizes[spaceValue],
-            textDecorationLine: variant == 'link' ? 'underline' : 'none',
+            textDecorationLine: variant === 'link' ? 'underline' : 'none',
           }}
         >
           {children}

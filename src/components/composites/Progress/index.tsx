@@ -98,7 +98,7 @@ const Progress = ({
         barBgColor = StyleVariant.defaultStyle;
     }
   }
-  if (barBgColor == StyleVariant.defaultStyle && props.colorScheme) {
+  if (barBgColor === StyleVariant.defaultStyle && props.colorScheme) {
     barBgColor = { backgroundColor: props.colorScheme };
   }
 

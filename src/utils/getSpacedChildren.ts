@@ -74,7 +74,6 @@ export default (
   /*
   | Add the margiin to the children
   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   /*
   | New children array with applied margin to trailing children
   */
