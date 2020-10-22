@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, TextStyle } from 'react-native';
-import styled, { ThemeProvider } from 'styled-components/native';
+import styled from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -27,7 +27,7 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-import { theme } from '../../../theme';
+import { ThemeContext } from '../../../theme';
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 export type IHeadingProps = ColorProps &
   SpaceProps &
@@ -58,31 +58,31 @@ const StyledHeading = styled(Text)<IHeadingProps>(
   customOutline,
   customShadow,
   customExtra,
-  customLayout
+  customLayout,
+  { fontWeight: 700 }
 );
+
 const Heading = ({ style, size, isTruncated, ...props }: IHeadingProps) => {
-  let computedStyle: any = style;
-  let fontSizeWRTHeading = size
-    ? // @ts-ignore
-      theme.fontSizes[size]
-    : theme.fontSizes.xl;
-  computedStyle = StyleSheet.flatten([
+  const theme = useContext(ThemeContext);
+  const componentTheme = theme.components.Heading;
+
+  let fontSizeWRTHeading =
+    componentTheme.sizes[size ? size : componentTheme.defaultProps.size]
+      .fontSize;
+
+  const computedStyle: any = StyleSheet.flatten([
+    // componentTheme.baseStyle,
     style,
-    {
-      fontWeight: '700',
-    },
     props.fontSize
       ? { fontSize: props.fontSize }
-      : { fontSize: fontSizeWRTHeading },
+      : { fontSize: theme.fontSizes[fontSizeWRTHeading] },
   ]);
   return (
-    <ThemeProvider theme={theme}>
-      <StyledHeading
-        numberOfLines={isTruncated ? 1 : 999999}
-        {...props}
-        style={computedStyle}
-      />
-    </ThemeProvider>
+    <StyledHeading
+      numberOfLines={isTruncated ? 1 : 999999}
+      {...props}
+      style={computedStyle}
+    />
   );
 };
 
