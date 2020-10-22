@@ -14,3 +14,4 @@ export * from './Progress';
 export * from './Code';
 export * from './Stat';
 export * from './Collapse';
+export * from './CircularProgress';

@@ -54,6 +54,8 @@ import {
   Wrap,
   IWrapProps,
   Collapse,
+  CircularProgress,
+  CircularProgressLabel,
 } from './components/composites';
 
 import {
@@ -216,4 +218,6 @@ export {
   IWrapProps,
   Spacer,
   Collapse,
+  CircularProgress,
+  CircularProgressLabel,
 };

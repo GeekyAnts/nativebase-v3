@@ -50,3 +50,7 @@ export {
 } from './Center';
 export { default as Wrap, IWrapProps } from './Wrap';
 export { default as Collapse } from './Collapse';
+export {
+  default as CircularProgress,
+  CircularProgressLabel,
+} from './CircularProgress';
