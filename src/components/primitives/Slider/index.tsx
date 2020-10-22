@@ -7,23 +7,6 @@ import View from '../View';
 import type { ISliderProps } from './props';
 export type { ISliderProps };
 
-// export type ISliderProps = {
-// colorVarient: any;
-// checked: boolean | false;
-// style?: any | undefined;
-// type?: string | undefined;
-// colorVarient:
-//   | 'default'
-//   | 'light'
-//   | 'dark'
-//   | 'muted'
-//   | 'warning'
-//   | 'danger'
-//   | 'success';
-// };
-
-const theme = React.useContext(ThemeContext);
-
 const style = StyleSheet.create({
   slider: {
     width: '100%',
@@ -56,30 +39,34 @@ const style = StyleSheet.create({
     width: 20,
   },
 });
+
 export const SliderThumb = () => <View style={style.SliderThumb} />;
 export const SliderTrack = () => <View style={style.SliderTrack} />;
 export const SliderFilledTrack = () => <View style={style.SliderFilledTrack} />;
 
 const Slider = ({ colorVarient, ...props }: ISliderProps) => {
+  const theme = React.useContext(ThemeContext);
+
   console.log('PROPS ===', props);
   console.log('colorVarient -', colorVarient);
   const SliderContext = React.createContext({ status: 'context created' });
-  // const [value, setValue] = useState(30);
+  const [value, setValue] = React.useState(30);
+
   return (
-    // <View {...props} style={[style.slider, props.style]}>
-    <SliderContext.Provider value={{ name: 'init value' }}>
-      <TouchableOpacity
-        // style={[style.slider, props.style]}
-        onPress={(e) => {
-          console.log('coord = ', e.nativeEvent);
-        }}
-      >
-        <SliderTrack />
-        <SliderFilledTrack />
-        <SliderThumb />
-      </TouchableOpacity>
-    </SliderContext.Provider>
-    // </View>
+    <View {...props} style={[style.slider, props.style]}>
+      <SliderContext.Provider value={{ name: 'init value' }}>
+        <TouchableOpacity
+          style={[style.slider, props.style]}
+          onPress={(e) => {
+            console.log('coord = ', e.nativeEvent);
+          }}
+        >
+          <SliderTrack />
+          <SliderFilledTrack />
+          <SliderThumb />
+        </TouchableOpacity>
+      </SliderContext.Provider>
+    </View>
   );
 };
 
@@ -90,7 +77,7 @@ const StyledSlider = styled(Slider)<ISliderProps>(
   typography
 );
 StyledSlider.defaultProps = {
-  // colorVarient: 'default',
+  colorVarient: 'default',
 };
 
 const NBSlider = ({ ...props }: ISliderProps) => {

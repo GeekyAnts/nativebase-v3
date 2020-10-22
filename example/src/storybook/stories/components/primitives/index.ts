@@ -12,6 +12,7 @@ export * from './InputBox';
 export * from './Radio';
 export * from './Link';
 export * from './Spinner';
+export * from './Slider';
 export * from './Stack';
 export * from './Switch';
 export * from './Text';
