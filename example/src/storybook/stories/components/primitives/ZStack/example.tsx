@@ -1,11 +1,11 @@
 import React from 'react';
-import { ZStack, Text } from 'native-base';
+import { ZStack, Box } from 'native-base';
 
 export default function () {
   return (
-    <ZStack>
-      <Text>Test Text</Text>
-      <Text>Testing this text with ZStacks</Text>
+    <ZStack alignItems="center">
+      <Box p={16} bg="black" />
+      <Box p={10} bg="red.2" />
     </ZStack>
   );
 }
