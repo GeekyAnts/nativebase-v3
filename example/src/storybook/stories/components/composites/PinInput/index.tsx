@@ -27,9 +27,9 @@ storiesOf('PinInput', module)
     </ThemeProvider>
   ))
   .add('Playground', () => <Playground />)
-  .add('ManageFocus', () => <ManageFocus />)
   .add('Usage', () => <Usage />)
   .add('Size', () => <Size />)
-  .add('Variants', () => <Variants />)
   .add('DefaultValue', () => <DefaultValue />)
-  .add('Placeholder', () => <Placeholder />);
+  .add('Placeholder', () => <Placeholder />)
+  .add('ManageFocus', () => <ManageFocus />)
+  .add('Variants', () => <Variants />);

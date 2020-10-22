@@ -14,7 +14,7 @@ const NBPinInput = ({
   value,
   ...props
 }: IPinInputProps) => {
-  const RefList: any[] = [];
+  const RefList: Array<any> = [];
   const setRefList = (ref: any, index: number) => {
     RefList[index] = ref;
   };
@@ -30,8 +30,6 @@ const NBPinInput = ({
       RefList[fieldIndex + 1].current.focus();
     return temp.join('');
   };
-
-  console.log('refList - ', RefList);
 
   const indexSetter = (children: JSX.Element | JSX.Element[]) => {
     let pinInputFiledCounter = -1;
