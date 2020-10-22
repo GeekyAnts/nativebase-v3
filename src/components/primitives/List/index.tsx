@@ -74,16 +74,12 @@ export const ListItem = ({
           >
             {`\u2022`}
           </Text>
-        ) : (
-          <></>
-        )}
+        ) : null}
         {ordered || ol ? ( //Adding index number in front of ListItem
           <Text mr={2} fontSize={props.fontSize} color={props.color}>
             {props.index + startNum + '.'}
           </Text>
-        ) : (
-          <></>
-        )}
+        ) : null}
       </Box>
       <Box flexDirection="row" alignItems="center" {...props}>
         {children}
