@@ -29,8 +29,12 @@ const StyledList = styled(ScrollView)<ScrollViewProps>(
 );
 const List = ({ style, children, spacing, ...props }: IListProps) => {
   // add props to children
-  children = React.Children.map(children, (child: any) => {
-    return React.cloneElement(child, props, child.props.children);
+  children = React.Children.map(children, (child: any, ind: number) => {
+    return React.cloneElement(
+      child,
+      { index: ind, ...props },
+      child.props.children
+    );
   });
   return (
     <StyledList {...props} style={style}>
@@ -43,19 +47,40 @@ const List = ({ style, children, spacing, ...props }: IListProps) => {
 
 export const ListItem = ({
   children,
-  isStyled,
+  unordered,
+  ul,
+  ordered,
+  ol,
   ...props
-}: IBoxProps & { isStyled?: boolean; fontSize?: any }) => {
+}: IBoxProps & {
+  fontSize?: any;
+  unordered?: boolean;
+  ul?: boolean;
+  ordered?: boolean;
+  ol?: boolean;
+  index?: any;
+  start?: number;
+}) => {
+  const startNum = props.start ? props.start : 1; // Ordered list starting number
   return (
     <Box flexDirection="row" alignItems="center">
       <Box flexDirection="row" alignItems="center" {...props}>
-        {isStyled ? ( //Adding disc in front of ListItem
+        {unordered || ul ? ( //Adding disc in front of ListItem
           <Text
             mr={2}
             fontSize={props.fontSize}
             color={props.color}
             style={{ transform: [{ scale: 1.5 }] }}
-          >{`\u2022`}</Text>
+          >
+            {`\u2022`}
+          </Text>
+        ) : (
+          <></>
+        )}
+        {ordered || ol ? ( //Adding index number in front of ListItem
+          <Text mr={2} fontSize={props.fontSize} color={props.color}>
+            {props.index + startNum + '.'}
+          </Text>
         ) : (
           <></>
         )}

@@ -29,6 +29,10 @@ export type IListProps = ScrollViewProps &
   BorderProps & {
     style?: ViewStyle;
     spacing?: number;
-    isStyled?: boolean;
     children: JSX.Element[] | JSX.Element;
+    unordered?: boolean;
+    ul?: boolean;
+    ordered?: boolean;
+    ol?: boolean;
+    start?: number;
   };
