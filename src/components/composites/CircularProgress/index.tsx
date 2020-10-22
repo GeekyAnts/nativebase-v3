@@ -121,14 +121,14 @@ const CircularProgress = ({
             styles.secondProgressLayer,
             propStyle(percent - halfSide, 45),
           ]}
-        ></Box>
+        />
       );
     } else {
       return (
         <Box
           borderColor={trackColor ? trackColor : 'gray.2'}
           style={styles.offsetLayer}
-        ></Box>
+        />
       );
     }
   };
@@ -155,15 +155,12 @@ const CircularProgress = ({
           <Box
             borderColor={color ? color : 'green.4'}
             style={[styles.firstProgressLayer, firstProgressLayerStyle]}
-          ></Box>
+          />
           {renderThirdLayer(value)}
           <Box fontSize={size ? size / 4 : 14}>{props.children}</Box>
         </>
       ) : (
-        <StyleAnimatedView
-          borderColor={color}
-          style={styles.animateStyle}
-        ></StyleAnimatedView>
+        <StyleAnimatedView borderColor={color} style={styles.animateStyle} />
       )}
     </Box>
   );
