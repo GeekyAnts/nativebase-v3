@@ -5,6 +5,12 @@ import { get, omitBy, isNil } from 'lodash';
 import { themePropertyMap } from './base';
 import type { IThemeComponents } from './components';
 
+export type Dict = Record<string, any>;
+
+export function mode(light: any, dark: any) {
+  return (props: Dict) => (props.colorMode === 'dark' ? dark : light);
+}
+
 export function useStyleConfig(
   component: IThemeComponents,
   props: any

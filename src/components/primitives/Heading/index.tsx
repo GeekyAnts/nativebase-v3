@@ -29,6 +29,7 @@ import {
 } from '../../../utils/customProps';
 import { useStyleConfig } from '../../../theme';
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+
 export type IHeadingProps = ColorProps &
   SpaceProps &
   LayoutProps &

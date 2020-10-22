@@ -4,14 +4,12 @@ import sizes, { baseSizes } from './sizes';
 import typography from './typography';
 import borders from './borders';
 
-const space = baseSizes;
-
 const theme = {
   radii,
   colors,
   ...typography,
   sizes,
-  space,
+  space: baseSizes,
   borders,
 };
 
