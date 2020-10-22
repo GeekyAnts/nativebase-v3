@@ -1,7 +1,10 @@
 import React from 'react';
 
-export default (children: JSX.Element[] | JSX.Element) => {
-  const childrenArray = React.Children.toArray(children);
+export default (children: JSX.Element[] | JSX.Element, reverse?: boolean) => {
+  let childrenArray = React.Children.toArray(children);
+  if (reverse) {
+    childrenArray = childrenArray.reverse();
+  }
   /*
   | Add the position to the children
   */

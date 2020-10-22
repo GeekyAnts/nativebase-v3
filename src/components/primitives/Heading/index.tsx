@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, TextStyle } from 'react-native';
-import styled, { ThemeProvider } from 'styled-components/native';
+import { Text, TextStyle } from 'react-native';
+import styled from 'styled-components/native';
 import {
   BorderProps,
   ColorProps,
@@ -27,7 +27,7 @@ import {
   customShadowProps,
   customShadow,
 } from '../../../utils/customProps';
-import { theme } from '../../../theme';
+import { useStyleConfig } from '../../../theme';
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 export type IHeadingProps = ColorProps &
   SpaceProps &
@@ -60,29 +60,15 @@ const StyledHeading = styled(Text)<IHeadingProps>(
   customExtra,
   customLayout
 );
-const Heading = ({ style, size, isTruncated, ...props }: IHeadingProps) => {
-  let computedStyle: any = style;
-  let fontSizeWRTHeading = size
-    ? // @ts-ignore
-      theme.fontSizes[size]
-    : theme.fontSizes.xl;
-  computedStyle = StyleSheet.flatten([
-    style,
-    {
-      fontWeight: '700',
-    },
-    props.fontSize
-      ? { fontSize: props.fontSize }
-      : { fontSize: fontSizeWRTHeading },
-  ]);
+
+const Heading = ({ isTruncated, ...props }: IHeadingProps) => {
+  const { style, newProps } = useStyleConfig('Heading', props);
   return (
-    <ThemeProvider theme={theme}>
-      <StyledHeading
-        numberOfLines={isTruncated ? 1 : 999999}
-        {...props}
-        style={computedStyle}
-      />
-    </ThemeProvider>
+    <StyledHeading
+      numberOfLines={isTruncated ? 1 : 999999}
+      {...newProps}
+      style={style}
+    />
   );
 };
 

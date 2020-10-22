@@ -2,11 +2,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import ZStack from './example';
-import CenterStack from './CenterStack';
+import DefaultList from './DefaultList';
+import ListWithIcon from './ListWithIcon';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
-storiesOf('ZStack', module)
+storiesOf('List', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
@@ -21,5 +21,5 @@ storiesOf('ZStack', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Basic ZStack', () => <ZStack />)
-  .add('ZStack items centered', () => <CenterStack />);
+  .add('Default List', () => <DefaultList />)
+  .add('List with Icon', () => <ListWithIcon />);
