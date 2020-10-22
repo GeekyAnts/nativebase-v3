@@ -63,4 +63,10 @@ export {
   ISquareProps,
 } from './Center';
 export { default as Wrap, IWrapProps } from './Wrap';
+export {
+  default as PinInput,
+  IPinInputProps,
+  PinInputField,
+  IPinInputFieldProps,
+} from './PinInput';
 export { default as Collapse } from './Collapse';
