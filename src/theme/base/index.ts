@@ -17,4 +17,17 @@ const theme = {
 
 export type ITheme = typeof theme;
 
+export const themePropertyMap: any = {
+  radius: 'radii',
+  color: 'colors',
+  letterSpacing: 'letterSpacings',
+  lineHeight: 'lineHeights',
+  fontFamily: 'fonts',
+  fontSize: 'fontSizes',
+  fontWeight: 'fontWeights',
+  size: 'sizes',
+  space: 'space',
+  border: 'borders',
+};
+
 export default theme;
