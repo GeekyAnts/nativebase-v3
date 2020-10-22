@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import ZStack from './example';
+import CenterStack from './CenterStack';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('ZStack', module)
@@ -20,4 +21,5 @@ storiesOf('ZStack', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Primary', () => <ZStack />);
+  .add('Basic ZStack', () => <ZStack />)
+  .add('ZStack items centered', () => <CenterStack />);
