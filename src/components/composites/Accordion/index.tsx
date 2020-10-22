@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Box } from 'native-base';
-import _ from 'lodash';
+import { remove } from 'lodash';
 import { space, layout, border } from 'styled-system';
 export { default as AccordionItem } from './AccordionItem';
 export { default as AccordionButton } from './AccordionButton';
@@ -53,7 +53,7 @@ const NBAccordion = ({
         temp.push(activeIndex);
         allowMultiple ? setIndex(temp) : setIndex([activeIndex]);
       } else {
-        _.remove(temp, (n) => n === activeIndex);
+        remove(temp, (n) => n === activeIndex);
         setIndex(temp);
       }
     }
@@ -81,7 +81,7 @@ const NBAccordion = ({
 
   return (
     <AccordionContext.Provider value={{ index: index, changeHandler }}>
-      <Box style={[style]} {...props}>
+      <Box style={style} {...props}>
         {addingIndexTOChildren()}
       </Box>
     </AccordionContext.Provider>
