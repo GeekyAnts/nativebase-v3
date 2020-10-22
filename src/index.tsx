@@ -70,6 +70,8 @@ import {
   PinInputField,
   IPinInputFieldProps,
   Collapse,
+  CircularProgress,
+  CircularProgressLabel,
 } from './components/composites';
 
 import {
@@ -251,6 +253,8 @@ export {
   IPinInputFieldProps,
   Spacer,
   Collapse,
+  CircularProgress,
+  CircularProgressLabel,
   List,
   ListItem,
   ListIcon,
