@@ -8,6 +8,7 @@ export * from './components/composites/BreadCrumb';
 export * from './components/primitives/Button';
 export * from './components/composites/Center';
 export * from './components/primitives/Checkbox';
+export * from './components/composites/CircularProgress';
 export * from './components/composites/CloseButton';
 export * from './components/composites/Code';
 export * from './components/composites/Collapse';

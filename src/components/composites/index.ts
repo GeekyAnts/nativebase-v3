@@ -70,3 +70,7 @@ export {
   IPinInputFieldProps,
 } from './PinInput';
 export { default as Collapse } from './Collapse';
+export {
+  default as CircularProgress,
+  CircularProgressLabel,
+} from './CircularProgress';
