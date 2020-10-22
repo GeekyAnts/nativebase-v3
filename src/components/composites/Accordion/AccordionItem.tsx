@@ -25,24 +25,26 @@ export const AccordionItemContext = React.createContext({});
 //     onOpen, ;
 const NBAccordionItem = ({
   children,
+  index: pIndex = 0,
   isDisabled: pIsDisabled,
   ...props
 }: IAccordionItemProps) => {
-  const { index, changeHandler }: IAccordionContextProps = React.useContext(
-    AccordionContext
-  );
+  const {
+    index: cIndex,
+    changeHandler,
+  }: IAccordionContextProps = React.useContext(AccordionContext);
   const onClose = (cb?: () => void) => {
-    changeHandler && changeHandler(false, props.id);
+    changeHandler && changeHandler(false, pIndex);
     cb && cb();
   };
   const onOpen = (cb?: () => void) => {
-    changeHandler && changeHandler(true, props.id);
+    changeHandler && changeHandler(true, pIndex);
     cb && cb();
   };
   return (
     <AccordionItemContext.Provider
       value={{
-        isOpen: index?.includes(props.id),
+        isOpen: cIndex?.includes(pIndex),
         isDisabled: pIsDisabled,
         onClose,
         onOpen,

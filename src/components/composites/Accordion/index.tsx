@@ -39,31 +39,50 @@ const NBAccordion = ({
   const [index, setIndex] = React.useState(
     props.index || props.defaultIndex || []
   );
-  const changeHandler = (isOpening: boolean, id: number) => {
+  const changeHandler = (isOpening: boolean, activeIndex: number) => {
     let temp = index.map((i) => i);
     if (allowToggle) {
       if (isOpening) {
-        temp.push(id);
-        allowMultiple ? setIndex(temp) : setIndex([id]);
+        temp.push(activeIndex);
+        allowMultiple ? setIndex(temp) : setIndex([activeIndex]);
       } else {
-        setIndex(index.splice(index.indexOf(id), 1));
+        setIndex(index.splice(index.indexOf(activeIndex), 1));
       }
     } else {
       if (isOpening) {
-        temp.push(id);
-        allowMultiple ? setIndex(temp) : setIndex([id]);
+        temp.push(activeIndex);
+        allowMultiple ? setIndex(temp) : setIndex([activeIndex]);
       } else {
-        _.remove(temp, (n) => n === id);
+        _.remove(temp, (n) => n === activeIndex);
         setIndex(temp);
       }
     }
     onChange && onChange(temp);
   };
 
+  const addingIndexTOChildren = () => {
+    let accordionItemCounter = -1;
+    return React.Children.map(children, (child: JSX.Element) => {
+      if (child.type.name !== 'AccordionItem') {
+        // console.error('Only NativeBase Checkbox is allowed as child');
+        return child;
+      } else {
+        accordionItemCounter++;
+        return React.cloneElement(
+          child,
+          {
+            index: accordionItemCounter,
+          },
+          child.props.children
+        );
+      }
+    });
+  };
+
   return (
     <AccordionContext.Provider value={{ index: index, changeHandler }}>
       <Box style={[style]} {...props}>
-        {children}
+        {addingIndexTOChildren()}
       </Box>
     </AccordionContext.Provider>
   );

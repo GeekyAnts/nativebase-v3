@@ -15,7 +15,7 @@ export default function () {
         allowMultiple={boolean('allowMultiple', false)}
         allowToggle={boolean('allowToggle', false)}
       >
-        <AccordionItem id={2}>
+        <AccordionItem>
           <AccordionButton>
             <Box>Section 1 title</Box>
             <AccordionIcon />
@@ -27,7 +27,7 @@ export default function () {
             aliquip ex ea commodo consequat.
           </AccordionPanel>
         </AccordionItem>
-        <AccordionItem id={9}>
+        <AccordionItem>
           <AccordionButton>
             <Box>Section 2 title</Box>
             <AccordionIcon />
@@ -39,7 +39,7 @@ export default function () {
             aliquip ex ea commodo consequat.
           </AccordionPanel>
         </AccordionItem>
-        <AccordionItem id={7}>
+        <AccordionItem>
           <AccordionButton>
             <Box>Section 3 title</Box>
             <AccordionIcon />

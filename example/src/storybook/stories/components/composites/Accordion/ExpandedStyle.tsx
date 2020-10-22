@@ -11,7 +11,7 @@ export default function () {
   return (
     <Box m={3}>
       <Accordion allowMultiple>
-        <AccordionItem id={2}>
+        <AccordionItem>
           <AccordionButton _expanded={{ backgroundColor: '#f6ad55' }}>
             <Box>Click me to see a different style</Box>
             <AccordionIcon />

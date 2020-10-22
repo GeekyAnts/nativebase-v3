@@ -8,9 +8,10 @@ export type IAccordionProps = IBoxProps & {
   onChange?: (index?: number[]) => void;
 };
 export type IAccordionItemProps = IBoxProps & {
-  id: number;
+  index?: number;
   defaultIsOpen?: boolean;
   isDisabled?: boolean;
+  id?: number;
 };
 export type IAccordionButtonProps = IBoxProps & {
   style?: any;
