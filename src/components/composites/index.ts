@@ -37,6 +37,20 @@ export {
   SkeletonText,
   ISkeletonTextProps,
 } from './Skeleton';
+export {
+  default as Accordion,
+  IAccordionProps,
+  AccordionItem,
+  IAccordionItemProps,
+  AccordionButton,
+  IAccordionButtonProps,
+  AccordionPanel,
+  IAccordionPanelProps,
+  AccordionIcon,
+  IAccordionIconProps,
+  IAccordionContextProps,
+  IAccordionItemContextProps,
+} from './Accordion';
 export { default as Tag, TagCloseButton } from './Tag';
 export { default as Kbd, IKbdProps } from './KBD';
 export { default as Code } from './Code';
