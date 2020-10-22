@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import Usage from './Usage';
+import ManageFocus from './ManageFocus';
 import DefaultValue from './DefaultValue';
 import Size from './Size';
 import Playground from './Playground';
@@ -26,6 +27,7 @@ storiesOf('PinInput', module)
     </ThemeProvider>
   ))
   .add('Playground', () => <Playground />)
+  .add('ManageFocus', () => <ManageFocus />)
   .add('Usage', () => <Usage />)
   .add('Size', () => <Size />)
   .add('Variants', () => <Variants />)

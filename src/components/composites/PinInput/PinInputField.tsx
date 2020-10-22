@@ -6,15 +6,15 @@ import type { IPinInputFieldProps } from './props';
 import { PinInputContext, IPinInputProps } from './index';
 
 const NBPinInputFiled = ({
-  // TODO: remove pSize and cSize once Input will support size instead of inputSize
   value: pValue,
+  fieldIndex = 0,
   defaultValue: pDefaultValue,
   ...props
 }: IPinInputFieldProps) => {
-  const fieldIndex = props.fieldIndex || 0;
   let {
     handleChange,
     value: cValue,
+    setRefList,
     defaultValue: cDefaultValue,
     ...context
   }: IPinInputProps & {
@@ -22,6 +22,7 @@ const NBPinInputFiled = ({
     value?: string[] | string;
     size?: string;
     defaultValue?: string[] | string;
+    setRefList?: (ref: any, index: number) => void;
   } = React.useContext(PinInputContext);
   cDefaultValue = cDefaultValue && cDefaultValue[fieldIndex];
   cValue = cValue && cValue[fieldIndex];
@@ -31,12 +32,19 @@ const NBPinInputFiled = ({
     if (event.nativeEvent.key >= 0 && event.nativeEvent.key <= 9) {
       setPinInputField(event.nativeEvent.key);
       handleChange && handleChange(event.nativeEvent.key, fieldIndex);
+    } else if (event.nativeEvent.key === 'Backspace') {
+      setPinInputField('');
+      handleChange && handleChange('', fieldIndex);
     }
   };
-
+  const myRef = React.useRef(null);
+  React.useEffect(() => {
+    setRefList && setRefList(myRef, fieldIndex);
+  }, [myRef, fieldIndex, setRefList]);
   return (
     <Input
       p={2}
+      ref={myRef}
       {...context}
       {...props}
       maxLength={1}

@@ -115,12 +115,12 @@ const StyledBox = styled(View)<IInputBoxProps>(
   variant({
     prop: 'inputSize',
     variants: {
-      '2xl': { fontSize: 5 },
-      xl: { fontSize: 4 },
-      lg: { fontSize: 3 },
-      md: { fontSize: 2 },
-      sm: { fontSize: 1 },
-      xsm: { fontSize: 0 },
+      '2xl': { fontSize: '2xl' },
+      'xl': { fontSize: 'xl' },
+      'lg': { fontSize: 'lg' },
+      'md': { fontSize: 'md' },
+      'sm': { fontSize: 'sm' },
+      'xs': { fontSize: 'xs' },
     },
   }),
   variant({
@@ -156,12 +156,12 @@ const StyledInputBox = styled(TextInput)<IInputBoxProps>(
   variant({
     prop: 'inputSize',
     variants: {
-      '2xl': { fontSize: 5 },
-      xl: { fontSize: 4 },
-      lg: { fontSize: 3 },
-      md: { fontSize: 2 },
-      sm: { fontSize: 1 },
-      xsm: { fontSize: 0 },
+      '2xl': { fontSize: '2xl' },
+      'xl': { fontSize: 'xl' },
+      'lg': { fontSize: 'lg' },
+      'md': { fontSize: 'md' },
+      'sm': { fontSize: 'sm' },
+      'xs': { fontSize: 'xs' },
     },
   })
 );

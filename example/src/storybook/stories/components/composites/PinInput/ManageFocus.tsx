@@ -3,7 +3,7 @@ import { PinInput, PinInputField } from 'native-base';
 
 export default function () {
   return (
-    <PinInput inputSize="md" value="32" defaultValue="98">
+    <PinInput manageFocus={false}>
       <PinInputField />
       <PinInputField />
       <PinInputField />
