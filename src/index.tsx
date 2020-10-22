@@ -104,6 +104,9 @@ import {
   Link,
   ILinkProps,
   Spacer,
+  List,
+  ListItem,
+  ListIcon,
 } from './components/primitives';
 
 import {
@@ -216,4 +219,7 @@ export {
   IWrapProps,
   Spacer,
   Collapse,
+  List,
+  ListItem,
+  ListIcon,
 };

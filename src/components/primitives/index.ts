@@ -35,3 +35,4 @@ export { default as Flex, IFlexProps, Spacer } from './Flex';
 export { default as Switch, ISwitchProps } from './Switch';
 export { default as TextArea } from './TextArea';
 export { default as Link, ILinkProps } from './Link';
+export { default as List, ListItem, ListIcon } from './List';
