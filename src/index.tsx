@@ -72,6 +72,9 @@ import {
   Collapse,
   CircularProgress,
   CircularProgressLabel,
+  TagLabel,
+  TagLeftIcon,
+  TagRightIcon,
 } from './components/composites';
 
 import {
@@ -258,4 +261,7 @@ export {
   List,
   ListItem,
   ListIcon,
+  TagLabel,
+  TagLeftIcon,
+  TagRightIcon,
 };

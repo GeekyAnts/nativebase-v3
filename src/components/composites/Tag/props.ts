@@ -1,5 +1,4 @@
-import type { ViewProps, ViewStyle } from 'react-native';
-
+import type { TextStyle } from 'react-native';
 import type {
   BorderProps,
   ColorProps,
@@ -15,10 +14,9 @@ import type {
   customExtraProps,
   customShadowProps,
 } from '../../../utils/customProps';
+import type { IBoxProps } from '../../..';
 
-type SpaceType = 'sm' | 'md' | 'lg' | number;
-
-export type ICloseButtonProps = ViewProps &
+export type ITagProps = IBoxProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -30,12 +28,12 @@ export type ICloseButtonProps = ViewProps &
   customLayoutProps &
   customBackgroundProps &
   BorderProps & {
-    style?: ViewStyle | any;
-    children?: any;
-    color?: string | undefined;
-    size?: SpaceType;
-    isDisabled?: boolean;
-    onClick?: any | undefined;
-    ariaLabel?: string;
-    fontSize?: number;
+    style?: TextStyle;
+    ratio?: number;
+    variant?: string | undefined;
+    colorScheme?: string | undefined;
+    children?: JSX.Element | JSX.Element[] | string;
+    fontSize?: number | undefined;
+    tagSize?: string | undefined;
+    size?: string | number | undefined;
   };

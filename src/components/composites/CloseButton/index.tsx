@@ -47,6 +47,7 @@ const CloseButton = ({
   isDisabled,
   onClick,
   ariaLabel,
+  fontSize,
   ...props
 }: ICloseButtonProps) => {
   const theme = useContext(ThemeContext);
@@ -78,7 +79,7 @@ const CloseButton = ({
         <Icon
           name="close"
           type="MaterialIcons"
-          fontSize={theme.fontSizes[size || 'md']}
+          fontSize={fontSize ? fontSize : theme.fontSizes[size || 'md']}
           color={props.color}
         />
       </StyledView>
