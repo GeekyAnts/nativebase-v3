@@ -9,10 +9,13 @@ import {
 
 export default function () {
   return (
-    <Slider defaultValue={30}>
-      <SliderTrack />
-      <SliderFilledTrack />
-      <SliderThumb />
-    </Slider>
+    <Box mx={5}>
+      <Slider defaultValue={90}>
+        <SliderTrack>
+          <SliderFilledTrack />
+        </SliderTrack>
+        <SliderThumb />
+      </Slider>
+    </Box>
   );
 }

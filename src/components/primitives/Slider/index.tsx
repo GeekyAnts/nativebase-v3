@@ -1,72 +1,91 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, Animated, PanResponder } from 'react-native';
 import { ThemeContext } from '../../../theme';
 import styled from 'styled-components/native';
 import { space, color, layout, typography } from 'styled-system';
-import View from '../View';
+import { Box } from 'native-base';
+export { default as SliderThumb } from './SliderThumb';
+export { default as SliderFilledTrack } from './SliderFilledTrack';
+export { default as SliderTrack } from './SliderTrack';
 import type { ISliderProps } from './props';
 export type { ISliderProps };
 
-const style = StyleSheet.create({
-  slider: {
-    width: '100%',
-    height: 20,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  SliderTrack: {
-    position: 'absolute',
-    // backgroundColor: theme.colors[colorVarient][0],
-    backgroundColor: 'grey',
-    height: 10,
-    width: '100%',
-  },
-  SliderFilledTrack: {
-    position: 'absolute',
-    // backgroundColor: theme.colors[colorVarient][0],
-    left: 0,
-    backgroundColor: 'blue',
-    height: 10,
-    width: '30%',
-  },
-  SliderThumb: {
-    position: 'absolute',
-    // backgroundColor: theme.colors[colorVarient][0],
-    backgroundColor: 'red',
-    left: '30%',
-    height: 20,
-    width: 20,
-  },
-});
+export const SliderContext = React.createContext({});
 
-export const SliderThumb = () => <View style={style.SliderThumb} />;
-export const SliderTrack = () => <View style={style.SliderTrack} />;
-export const SliderFilledTrack = () => <View style={style.SliderFilledTrack} />;
-
-const Slider = ({ colorVarient, ...props }: ISliderProps) => {
+const Slider = ({ children, value, defaultValue, ...props }: ISliderProps) => {
+  // TODO: Add inner shaddow in slider
   const theme = React.useContext(ThemeContext);
+  let scaleX;
+  let sliderValue = value || defaultValue || 50;
+  const [sliderSize, setSliderSize] = React.useState(1);
+  const provideSliderSize = (layout) => {
+    setSliderSize(layout.width);
+    console.log('sliderSize wilie setting - ', layout.width);
+  };
+  const updateSliderValue = (gestureStatus) => {
+    console.log('sliderValue - ', sliderValue);
+    console.log(' gestureStatus.dx - ', gestureStatus.dx);
+    console.log('sliderSize - ', sliderSize);
+    if (sliderSize) sliderValue = gestureStatus.dx / sliderSize + sliderValue;
+    console.log('sliderValue - ', sliderValue);
+    // console.log('sliderSize - ', sliderSize);
+  };
 
-  console.log('PROPS ===', props);
-  console.log('colorVarient -', colorVarient);
-  const SliderContext = React.createContext({ status: 'context created' });
-  const [value, setValue] = React.useState(30);
+  const pan = React.useRef(new Animated.ValueXY()).current;
+
+  const panResponder = React.useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderGrant: (event, gestureStatus) => {
+        // console.log('gestureStatus at responder grant - ', gestureStatus);
+        // console.log('SCALE == ', scaleX);
+        // console.log('gestureStatus.x0 == ', gestureStatus.x0);
+        // console.log('sliderValue == ', sliderValue);
+        // console.log('event == ', event.nativeEvent);
+        // sliderValue = pan.x._value;
+        pan.setOffset({
+          sliderValue,
+          x: pan.x._value,
+          y: pan.y._value,
+        });
+      },
+      onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }]),
+
+      onPanResponderRelease: (event, gestureStatus) => {
+        scaleX = gestureStatus.x0 / sliderValue;
+        // console.log('ges - ', gestureStatus);
+        // console.log('SCALE == ', scaleX);
+        // console.log('gestureStatus.x0 == ', gestureStatus.x0);
+        // console.log('gestureStatus.dx == ', gestureStatus.dx);
+        // console.log('sliderValue == ', sliderValue);
+        updateSliderValue(gestureStatus);
+        // sliderValue = gestureStatus.dx / scaleX + sliderValue);
+        // setSliderValue(gestureStatus.dx / scaleX + sliderValue);
+        pan.flattenOffset();
+      },
+    })
+  ).current;
+  console.log(
+    '=================SLIDER IS RERENDERED==================',
+    sliderValue
+  );
 
   return (
-    <View {...props} style={[style.slider, props.style]}>
-      <SliderContext.Provider value={{ name: 'init value' }}>
-        <TouchableOpacity
-          style={[style.slider, props.style]}
-          onPress={(e) => {
-            console.log('coord = ', e.nativeEvent);
-          }}
-        >
-          <SliderTrack />
-          <SliderFilledTrack />
-          <SliderThumb />
-        </TouchableOpacity>
-      </SliderContext.Provider>
-    </View>
+    <SliderContext.Provider value={{ sliderValue, pan, panResponder }}>
+      <Box
+        position="relative"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minWidth="100%"
+        height={10}
+        backgroundColor="pink"
+        {...props}
+        onLayout={(e) => provideSliderSize(e.nativeEvent.layout)}
+      >
+        {children}
+      </Box>
+    </SliderContext.Provider>
   );
 };
 
@@ -76,9 +95,7 @@ const StyledSlider = styled(Slider)<ISliderProps>(
   layout,
   typography
 );
-StyledSlider.defaultProps = {
-  colorVarient: 'default',
-};
+StyledSlider.defaultProps = {};
 
 const NBSlider = ({ ...props }: ISliderProps) => {
   return <StyledSlider {...props} />;
