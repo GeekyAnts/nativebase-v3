@@ -3,7 +3,10 @@ import darkTheme from './darkTheme';
 import base from './base';
 import components from './components';
 import { useStyleConfig } from './utils';
-const theme = { ...base, components };
+const theme = {
+  ...base,
+  components,
+};
 
 import { ThemeConsumer, ThemeContext, ThemeProvider } from 'styled-components';
 

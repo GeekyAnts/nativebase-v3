@@ -5,7 +5,9 @@ export const DefaultLink = () => {
   return (
     <View>
       <Heading>This is default Link</Heading>
-      <Link mt={4}>Default Link</Link>
+      <Link mt={4} size="xl">
+        Default Link
+      </Link>
     </View>
   );
 };
