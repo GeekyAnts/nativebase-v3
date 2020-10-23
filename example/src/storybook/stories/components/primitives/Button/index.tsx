@@ -2,8 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Box, theme, ThemeProvider } from 'native-base';
-// import Button from './example';
+import Button from './example';
+import Sizes from './sizes';
 import Usage from './usage';
+import Variants from './variants';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Button', module)
@@ -21,5 +23,7 @@ storiesOf('Button', module)
       </Box>
     </ThemeProvider>
   ))
-  .add('Usage', () => <Usage />);
-// .add('Primary', () => <Button />);
+  .add('Usage', () => <Usage />)
+  .add('Sizes', () => <Sizes />)
+  .add('Variants', () => <Variants />)
+  .add('Example', () => <Button />);

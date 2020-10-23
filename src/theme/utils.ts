@@ -25,7 +25,17 @@ export function useStyleConfig(
 ): { style: any; newProps: any } {
   const theme = useContext(ThemeContext);
   const componentTheme = get(theme, `theme.components.${component}`);
-  let { style, newProps } = extractStyleFromProps(props, theme, componentTheme);
+  let { style } = extractStyleFromProps(
+    componentTheme.defaultProps,
+    theme,
+    componentTheme
+  );
+  let { style: exProps, newProps } = extractStyleFromProps(
+    props,
+    theme,
+    componentTheme
+  );
+  style = { ...style, ...exProps };
   for (let property in componentTheme.baseStyle) {
     style[property] = get(
       theme,
