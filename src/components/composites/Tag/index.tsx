@@ -1,192 +1,158 @@
 import React from 'react';
-import { StyleSheet, Text, TextProps, TextStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
-import {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  color,
-  flexbox,
-  layout,
-  space,
-  variant,
-} from 'styled-system';
-import {
-  customBorder,
-  customBorderProps,
-  customBackground,
-  customBackgroundProps,
-  customOutline,
-  customOutlineProps,
-  customLayout,
-  customLayoutProps,
-  customExtra,
-  customExtraProps,
-  customShadowProps,
-  customShadow,
-} from '../../../utils/customProps';
-import { CloseButton, IButtonProps } from '../../..';
-import { theme } from '../../../theme';
-export type ITagProps = TextProps &
-  ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  customBackgroundProps &
-  BorderProps & {
-    style?: TextStyle;
-    ratio?: number;
-    variantType?: string | undefined;
-    variant?: string | undefined;
-    children?: JSX.Element | JSX.Element[] | string;
-    fontSize?: number | undefined;
-    tagSize?: string | undefined;
-  };
-let successStyle = {
-  backgroundColor: theme.colors.success[0],
-  color: theme.colors.success[1],
-};
-let dangerStyle = {
-  backgroundColor: theme.colors.danger[0],
-  color: theme.colors.danger[1],
-};
-let warningStyle = {
-  backgroundColor: theme.colors.warning[0],
-  color: theme.colors.warning[1],
-};
-let darkStyle = {
-  backgroundColor: theme.colors.dark[0],
-  color: theme.colors.dark[1],
-};
-let lightStyle = {
-  backgroundColor: theme.colors.light[0],
-  color: theme.colors.light[1],
-};
-let mutedStyle = {
-  backgroundColor: theme.colors.muted[0],
-  color: theme.colors.muted[1],
-};
-let defaultStyle = {
-  backgroundColor: theme.colors.default[0],
-  color: theme.colors.default[1],
-};
-
-const StyledTag = styled(Text)<ITagProps>(
-  color,
-  space,
-  layout,
-  flexbox,
-  border,
-  customBorder,
-  customBackground,
-  customOutline,
-  customShadow,
-  customExtra,
-  customLayout,
+import { variant } from 'styled-system';
+import { CloseButton, Box, IIconProps, Icon, Text, TextProps } from '../../..';
+import { ThemeContext } from '../../../theme';
+import type { ICloseButtonProps } from '../CloseButton/props';
+import type { ITagProps } from './props';
+import * as StyleVariants from './variants';
+const StyledTag = styled(Box)<ITagProps>(
   variant({
-    prop: 'variant',
+    prop: 'colorScheme',
     variants: {
-      success: successStyle,
-      green: successStyle,
-      danger: dangerStyle,
-      red: dangerStyle,
-      warning: warningStyle,
-      yellow: warningStyle,
-      light: lightStyle,
-      white: lightStyle,
-      dark: darkStyle,
-      black: darkStyle,
-      muted: mutedStyle,
-      secondary: mutedStyle,
-      grey: mutedStyle,
-      default: defaultStyle,
-    },
-  }),
-  variant({
-    prop: 'tagSize',
-    variants: {
-      '2xl': { fontSize: theme.fontSizes['2xl'] },
-      xl: { fontSize: theme.fontSizes.xl },
-      lg: { fontSize: theme.fontSizes.lg },
-      md: { fontSize: theme.fontSizes.md },
-      sm: { fontSize: theme.fontSizes.sm },
-      xsm: { fontSize: theme.fontSizes.xs },
+      success: StyleVariants.successStyle,
+      green: StyleVariants.successStyle,
+      danger: StyleVariants.dangerStyle,
+      red: StyleVariants.dangerStyle,
+      warning: StyleVariants.warningStyle,
+      yellow: StyleVariants.warningStyle,
+      light: StyleVariants.lightStyle,
+      white: StyleVariants.lightStyle,
+      dark: StyleVariants.darkStyle,
+      black: StyleVariants.darkStyle,
+      muted: StyleVariants.mutedStyle,
+      secondary: StyleVariants.mutedStyle,
+      grey: StyleVariants.mutedStyle,
+      default: StyleVariants.defaultStyle,
     },
   })
 );
 StyledTag.defaultProps = {
-  variant: 'default',
-  tagSize: '2xl',
+  colorScheme: 'default',
 };
-export const TagCloseButton = (props: IButtonProps) => {
-  let computedStyle: any = props.style;
-  computedStyle = StyleSheet.flatten([props.style, { fontWeight: '700' }]);
-  return <CloseButton marginLeft="auto" mr={2} style={computedStyle} />;
+export const TagLabel = (props: TextProps) => {
+  return <Text {...props} />;
 };
-const Tag = ({ style, ...props }: ITagProps) => {
-  // Color Varients
-
+export const TagLeftIcon = (props: IIconProps) => {
+  return <Icon mr={2} {...props} />;
+};
+export const TagRightIcon = (props: IIconProps) => {
+  return <Icon ml={2} {...props} />;
+};
+export const TagCloseButton = ({
+  style,
+  ...props
+}: ICloseButtonProps & { fontSize?: number }) => {
+  let computedStyle: any = style;
+  computedStyle = StyleSheet.flatten([style, { fontWeight: '700' }]);
+  return (
+    <CloseButton
+      ml={2}
+      fontSize={props.fontSize}
+      style={computedStyle}
+      {...props}
+    />
+  );
+};
+const Tag = ({ style, size, ...props }: ITagProps) => {
+  const theme = React.useContext(ThemeContext);
+  let defaultFontSize: any = theme.fontSizes.md;
+  if (size) {
+    if (typeof size === 'string') {
+      switch (size) {
+        case 'xs':
+          defaultFontSize = theme.fontSizes.xs;
+          break;
+        case 'sm':
+          defaultFontSize = theme.fontSizes.sm;
+          break;
+        case 'md':
+          defaultFontSize = theme.fontSizes.md;
+          break;
+        case 'lg':
+          defaultFontSize = theme.fontSizes.lg;
+          break;
+        case 'xl':
+          defaultFontSize = theme.fontSizes.xl;
+          break;
+        case '2xl':
+          defaultFontSize = theme.fontSizes['2xl'];
+          break;
+        case '3xl':
+          defaultFontSize = theme.fontSizes['3xl'];
+          break;
+        case '4xl':
+          defaultFontSize = theme.fontSizes['4xl'];
+          break;
+        default:
+          defaultFontSize = theme.fontSizes.md;
+      }
+    } else {
+      defaultFontSize = size;
+    }
+  }
+  let fontColor = props.color;
   let structureColor = theme.colors.default[2];
-  if (props.variant) {
-    switch (props.variant) {
+  if (props.colorScheme) {
+    switch (props.colorScheme) {
       case 'success':
       case 'green':
         structureColor = theme.colors.success[2];
+        fontColor = theme.colors.success[1];
         break;
       case 'danger':
       case 'red':
         structureColor = theme.colors.danger[2];
+        fontColor = theme.colors.danger[1];
         break;
       case 'warning':
       case 'yellow':
         structureColor = theme.colors.warning[2];
+        fontColor = theme.colors.warning[1];
         break;
       case 'light':
       case 'white':
         structureColor = theme.colors.light[2];
+        fontColor = theme.colors.light[1];
         break;
       case 'dark':
       case 'black':
         structureColor = theme.colors.dark[2];
+        fontColor = theme.colors.dark[1];
         break;
       case 'muted':
       case 'secondary':
       case 'grey':
         structureColor = theme.colors.muted[2];
+        fontColor = theme.colors.muted[1];
         break;
       default:
         structureColor = theme.colors.default[2];
+        fontColor = theme.colors.default[1];
     }
   }
   //   Varients
   let outlineStyle = {
     backgroundColor: 'transparent',
-    border:
-      '1px solid ' + (props.variant ? structureColor : theme.colors.muted[1]),
-    color: props.variant ? structureColor : theme.colors.muted[1],
+    borderWidth: 1,
+    borderColor: props.variant ? structureColor : theme.colors.muted[1],
   };
   let solidStyle = {
     backgroundColor: props.variant ? structureColor : theme.colors.muted[1],
-    color: 'white',
   };
   let subtleStyle = {}; // Default when no variantType is provided
 
   let variantType = subtleStyle;
-  if (props.variantType) {
-    switch (props.variantType) {
+  if (props.variant) {
+    switch (props.variant) {
       case 'outline':
         variantType = outlineStyle;
+        fontColor = props.variant ? structureColor : theme.colors.default[1];
         break;
       case 'solid':
         variantType = solidStyle;
+        fontColor = 'white';
         break;
       case 'subtle':
         variantType = subtleStyle;
@@ -197,15 +163,23 @@ const Tag = ({ style, ...props }: ITagProps) => {
   }
 
   let computedStyle: any = style;
-
   computedStyle = StyleSheet.flatten([
     style,
     { display: 'flex', alignItems: 'center', flexDirection: 'row' },
     variantType,
-    { fontWeight: '500' },
   ]);
 
-  return <StyledTag px="2" rounded="2" {...props} style={computedStyle} />;
+  return (
+    <StyledTag
+      style={computedStyle}
+      px="2"
+      rounded="3"
+      fontWeight={500}
+      fontSize={defaultFontSize}
+      color={fontColor}
+      {...props}
+    />
+  );
 };
 
 export default Tag;
