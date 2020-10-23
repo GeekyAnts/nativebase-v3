@@ -15,7 +15,7 @@ storiesOf('Code', module)
         style={{
           flex: 1,
           alignItems: 'center',
-          justifyContent: 'center',
+          // justifyContent: 'center',
         }}
       >
         {getStory()}

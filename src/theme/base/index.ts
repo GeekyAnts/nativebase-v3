@@ -16,7 +16,7 @@ const theme = {
 export type ITheme = typeof theme;
 
 export const themePropertyMap: any = {
-  radius: 'radii',
+  borderRadius: 'radii',
   color: 'colors',
   letterSpacing: 'letterSpacings',
   lineHeight: 'lineHeights',

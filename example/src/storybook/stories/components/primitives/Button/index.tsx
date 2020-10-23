@@ -1,15 +1,16 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
-import { View, theme, ThemeProvider } from 'native-base';
-import Button from './example';
+import { Box, theme, ThemeProvider } from 'native-base';
+// import Button from './example';
+import Usage from './usage';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Button', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
-      <View
+      <Box
         style={{
           flex: 1,
           alignItems: 'center',
@@ -17,7 +18,8 @@ storiesOf('Button', module)
         }}
       >
         {getStory()}
-      </View>
+      </Box>
     </ThemeProvider>
   ))
-  .add('Primary', () => <Button />);
+  .add('Usage', () => <Usage />);
+// .add('Primary', () => <Button />);

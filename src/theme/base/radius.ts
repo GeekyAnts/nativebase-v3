@@ -1,9 +1,9 @@
 const radii = {
-  none: '0',
-  sm: '2px',
-  md: '4px',
-  lg: '8px',
-  full: '9999px',
+  none: 0,
+  sm: 2,
+  md: 4,
+  lg: 8,
+  full: 9999,
 };
 
 export type IRadii = typeof radii;

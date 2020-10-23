@@ -11,6 +11,14 @@ export function mode(light: any, dark: any) {
   return (props: Dict) => (props.colorMode === 'dark' ? dark : light);
 }
 
+export const isValidHex = (color: string): boolean => {
+  return new RegExp(/^#[0-9A-F]{6}$/i).test(color);
+};
+export const getColor = (theme: Dict, color: string, fallback?: string) => {
+  const hex = get(theme, `colors.${color}`, color);
+  return isValidHex(hex) ? hex : fallback;
+};
+
 export function useStyleConfig(
   component: IThemeComponents,
   props: any
@@ -18,7 +26,6 @@ export function useStyleConfig(
   const theme = useContext(ThemeContext);
   const componentTheme = get(theme, `theme.components.${component}`);
   let { style, newProps } = extractStyleFromProps(props, theme, componentTheme);
-
   for (let property in componentTheme.baseStyle) {
     style[property] = get(
       theme,

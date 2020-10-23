@@ -5,51 +5,30 @@ import { variant } from 'styled-system';
 import { Text } from '../../primitives';
 import type { ICodeProps } from './props';
 
-import * as StyleVariants from './styleVariants';
-
-// Color Varients
 const StyledCode = styled(Text)<ICodeProps>(
   variant({
     prop: 'colorScheme',
+    scale: 'components.Code.variants',
     variants: {
-      success: StyleVariants.successStyle,
-      green: StyleVariants.successStyle,
-      error: StyleVariants.dangerStyle,
-      danger: StyleVariants.dangerStyle,
-      red: StyleVariants.dangerStyle,
-      warning: StyleVariants.warningStyle,
-      yellow: StyleVariants.warningStyle,
-      light: StyleVariants.lightStyle,
-      white: StyleVariants.lightStyle,
-      dark: StyleVariants.darkStyle,
-      black: StyleVariants.darkStyle,
-      muted: StyleVariants.mutedStyle,
-      secondary: StyleVariants.mutedStyle,
-      comment: StyleVariants.mutedStyle,
-      grey: StyleVariants.mutedStyle,
-      default: StyleVariants.defaultStyle,
+      default: {},
     },
   })
 );
 StyledCode.defaultProps = {
   colorScheme: 'default',
-};
-const defaultCodeProps = {
   px: 2,
   py: 1,
   borderRadius: 2,
 };
 const Code = ({ style, ...props }: ICodeProps) => {
-  let computedStyle: any = style;
-
-  computedStyle = StyleSheet.flatten([
+  let computedStyle: any = StyleSheet.flatten([
     style,
     {
       fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
     },
   ]);
 
-  return <StyledCode {...defaultCodeProps} style={computedStyle} {...props} />;
+  return <StyledCode {...props} style={computedStyle} />;
 };
 
 export { ICodeProps } from './props';

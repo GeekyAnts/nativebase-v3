@@ -1,5 +1,5 @@
 const baseStyle = {
-  fontFamily: 'heading',
+  // fontFamily: 'heading',
   // lineHeight: 'shorter',
   fontWeight: 'bold',
 };

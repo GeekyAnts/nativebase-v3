@@ -7,11 +7,13 @@ import {
   FlexboxProps,
   LayoutProps,
   SpaceProps,
+  TypographyProps,
   border,
   color,
   flexbox,
   layout,
   space,
+  typography,
 } from 'styled-system';
 import {
   customBorder,
@@ -26,26 +28,28 @@ import {
   customExtraProps,
   customShadowProps,
   customShadow,
+  customTypography,
+  customTypographyProps,
 } from '../../../utils/customProps';
+
 import { useStyleConfig } from '../../../theme';
-const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 export type IHeadingProps = ColorProps &
   SpaceProps &
   LayoutProps &
   FlexboxProps &
+  TypographyProps &
   customBorderProps &
   customExtraProps &
   customOutlineProps &
   customShadowProps &
   customLayoutProps &
   customBackgroundProps &
+  customTypographyProps &
   BorderProps & {
     style?: TextStyle;
     children?: string | JSX.Element[] | JSX.Element;
-    fontSize?: number;
     isTruncated?: any;
-    size?: typeof sizes[number];
   };
 
 const StyledHeading = styled(Text)<IHeadingProps>(
@@ -54,12 +58,14 @@ const StyledHeading = styled(Text)<IHeadingProps>(
   layout,
   flexbox,
   border,
+  typography,
   customBorder,
   customBackground,
   customOutline,
   customShadow,
   customExtra,
-  customLayout
+  customLayout,
+  customTypography
 );
 
 const Heading = ({ isTruncated, ...props }: IHeadingProps) => {
