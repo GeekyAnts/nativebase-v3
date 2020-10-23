@@ -33,6 +33,7 @@ export * from './components/primitives/Spinner';
 export * from './components/primitives/Stack';
 export * from './components/composites/Stat';
 export * from './components/primitives/Switch';
+export * from './components/composites/Tag';
 export * from './components/primitives/Text';
 export * from './components/primitives/TextArea';
 export * from './components/primitives/VStack';

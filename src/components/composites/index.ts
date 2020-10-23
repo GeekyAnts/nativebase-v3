@@ -51,7 +51,13 @@ export {
   IAccordionContextProps,
   IAccordionItemContextProps,
 } from './Accordion';
-export { default as Tag, TagCloseButton } from './Tag';
+export {
+  default as Tag,
+  TagCloseButton,
+  TagLabel,
+  TagLeftIcon,
+  TagRightIcon,
+} from './Tag';
 export { default as Kbd, IKbdProps } from './KBD';
 export { default as Code } from './Code';
 export {
