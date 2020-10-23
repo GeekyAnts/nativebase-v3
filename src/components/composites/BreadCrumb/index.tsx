@@ -2,10 +2,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Flex } from '../../..';
 import type { IBreadCrumbProps } from './props';
-
 export { BreadCrumbItem } from './BreadCrumbItem';
 export { BreadCrumbLink } from './BreadCrumbLink';
-
 import { BreadCrumbSeparator } from './BreadCrumbSeparator';
 
 const BreadCrumb = ({
@@ -33,23 +31,23 @@ const BreadCrumb = ({
   ...props
 }: IBreadCrumbProps) => {
   const textProps = {
-    fontWeight: fontWeight,
-    fontFamily: fontFamily,
-    fontSize: fontSize,
-    color: color,
-    textDecoration: textDecoration,
-    txtDecor: txtDecor,
-    wordBreak: wordBreak,
-    textOverflow: textOverflow,
-    textTransform: textTransform,
-    whiteSpace: whiteSpace,
-    overflowWrap: overflowWrap,
-    bold: bold,
-    italic: italic,
-    underline: underline,
-    strikeThrough: strikeThrough,
-    isTruncated: isTruncated,
-    noOfLines: noOfLines,
+    fontWeight,
+    fontFamily,
+    fontSize,
+    color,
+    textDecoration,
+    txtDecor,
+    wordBreak,
+    textOverflow,
+    textTransform,
+    whiteSpace,
+    overflowWrap,
+    bold,
+    italic,
+    underline,
+    strikeThrough,
+    isTruncated,
+    noOfLines,
   };
 
   let computedStyle: any = style;
