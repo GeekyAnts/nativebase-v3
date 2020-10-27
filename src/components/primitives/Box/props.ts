@@ -6,6 +6,7 @@ import type {
   LayoutProps,
   SpaceProps,
   TypographyProps,
+  PositionProps,
 } from 'styled-system';
 import type {
   customBorderProps,
@@ -30,6 +31,7 @@ export type IBoxProps = ViewProps &
   customTypographyProps &
   customBackgroundProps &
   TypographyProps &
+  PositionProps &
   BorderProps & {
     style?: ViewStyle;
     children?: JSX.Element | JSX.Element[] | string | any;

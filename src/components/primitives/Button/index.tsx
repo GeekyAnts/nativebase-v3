@@ -45,6 +45,7 @@ const StyledView = styled(View)<
   customLayout,
   variant({
     prop: 'colorScheme',
+    // scale: 'components.Button.variants',
     variants: {
       success: StyleVariant.successStyle,
       green: StyleVariant.successStyle,
@@ -63,6 +64,7 @@ const StyledView = styled(View)<
     },
   }),
   variant({
+    // scale: 'components.Button.variants',
     variants: {
       outline: StyleVariant.outlineStyle,
       ghost: StyleVariant.ghostStyle,

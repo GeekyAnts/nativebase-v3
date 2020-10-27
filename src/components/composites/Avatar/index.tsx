@@ -135,7 +135,7 @@ const StyledAvatar = styled(Avatar)<IAvatarProps>(
 );
 
 StyledAvatar.defaultProps = {
-  size: 'lg',
+  size: 'xs',
 };
 
 const NBAvatar = ({

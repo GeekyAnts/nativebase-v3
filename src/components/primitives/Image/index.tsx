@@ -38,24 +38,14 @@ const Image = ({
       setAlternate(true);
     }
   };
-  let computedStyle = style;
-  if (boxSize) {
-    computedStyle = StyleSheet.flatten([
-      style,
-      {
-        width: boxSize,
-        height: boxSize,
-      },
-    ]);
-  } else {
-    computedStyle = StyleSheet.flatten([
-      style,
-      {
-        width: width ? width : 100,
-        height: height ? height : 100,
-      },
-    ]);
-  }
+  let computedStyle = StyleSheet.flatten([
+    style,
+    {
+      width: width ? width : boxSize ? boxSize : 100,
+      height: height ? height : boxSize ? boxSize : 100,
+    },
+  ]);
+
   if (alternate) {
     return <Text>{alt}</Text>;
   }
