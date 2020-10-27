@@ -33,4 +33,5 @@ export type IModalProps = ModalProps &
     finalFocusRef?: any;
     children: JSX.Element | JSX.Element[];
     size?: SpaceType | string | number;
+    id?: any;
   };

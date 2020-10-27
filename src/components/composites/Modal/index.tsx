@@ -12,7 +12,7 @@ import {
 } from '../../../utils/customProps';
 
 import type { IModalProps } from './props';
-import { Box, Heading, CloseButton } from '../../..';
+import { Box, Heading, CloseButton, View } from '../../..';
 
 const StyledModal = styled(RNModal)<IModalProps>(
   color,
@@ -45,6 +45,7 @@ const Modal = ({
   size,
   justifyContent,
   alignItems,
+  id,
   ...props
 }: IModalProps & { isOpen: boolean; onClose: any }) => {
   const [isVisible, setIsVisible] = React.useState(true);
@@ -61,27 +62,29 @@ const Modal = ({
 
   return (
     <ModalContext.Provider value={value}>
-      <StyledModal
-        visible={isVisible}
-        onShow={() => {
-          initialFocusRef?.current.focus();
-        }}
-        onDismiss={() => {
-          finalFocusRef?.current.focus();
-        }}
-        animationType="slide"
-        transparent={true}
-        {...props}
-      >
-        <Box
-          width="100%"
-          height="100%"
-          justifyContent={isCentered ? 'center' : justifyContent}
-          alignItems={isCentered ? 'center' : alignItems}
+      <View nativeID={id}>
+        <StyledModal
+          visible={isVisible}
+          onShow={() => {
+            initialFocusRef?.current.focus();
+          }}
+          onDismiss={() => {
+            finalFocusRef?.current.focus();
+          }}
+          animationType="slide"
+          transparent={true}
+          {...props}
         >
-          {children}
-        </Box>
-      </StyledModal>
+          <Box
+            width="100%"
+            height="100%"
+            justifyContent={isCentered ? 'center' : justifyContent}
+            alignItems={isCentered ? 'center' : alignItems}
+          >
+            {children}
+          </Box>
+        </StyledModal>
+      </View>
     </ModalContext.Provider>
   );
 };
