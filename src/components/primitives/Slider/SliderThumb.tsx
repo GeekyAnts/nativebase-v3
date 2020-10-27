@@ -1,43 +1,47 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { StyleSheet, Animated } from 'react-native';
 import { ThemeContext } from '../../../theme';
 import { SliderContext } from './index';
 import styled from 'styled-components/native';
-import { space, color, layout, typography, flex } from 'styled-system';
-import { Box, Text } from 'native-base';
-import type { ISliderProps } from './props';
-export type { ISliderProps };
+import { space, color, layout, typography } from 'styled-system';
+import { Box } from 'native-base';
+import type { ISliderProps, ISliderContextProps } from './props';
 
 const NBSliderThumb = ({ children, ...props }: ISliderProps) => {
   const theme = React.useContext(ThemeContext);
-  const [value, setValue] = React.useState(30);
-  const { sliderValue, pan, panResponder } = React.useContext(SliderContext);
+  const { sliderOffset, panResponder }: ISliderContextProps = React.useContext(
+    SliderContext
+  );
+
   const customStyle = StyleSheet.create({
     SliderThumb: {
       position: 'absolute',
-      left: `${sliderValue}%`,
       display: 'flex',
+      left: sliderOffset,
       justifyContent: 'center',
       alignItems: 'center',
     },
   });
+
   return (
     <Animated.View
-      style={[
-        customStyle.SliderThumb,
-        {
-          transform: [{ translateX: pan.x }],
-          // left: pan.x,
-        },
-      ]}
+      style={customStyle.SliderThumb}
       {...panResponder.panHandlers}
     >
       <Box
-        position="absolute"
-        borderRadius={300}
-        backgroundColor="red"
-        height={5}
-        width={5}
+        position="relative"
+        borderRadius={theme.radii.full}
+        backgroundColor={theme.colors.white}
+        shadow={1}
+        // minHeight={theme.sizes[5]}
+        // maxHeight={theme.sizes[5]}
+        // maxWidth={theme.sizes[5]}
+        // minWidth={theme.sizes[5]}
+        height={theme.sizes[5]}
+        width={theme.sizes[5]}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
         {...props}
       >
         {children}
