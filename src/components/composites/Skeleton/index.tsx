@@ -96,15 +96,15 @@ StyledSkeleton.defaultProps = {
 const Skeleton = ({ children, isLoaded, ...props }: ISkeletonProps) => {
   if (isLoaded) return <Box {...props}>{children}</Box>;
 
-  const hiddenChildren = () => {
-    return children?.map((child: JSX.Element) => {
+  const hideChildren = () => {
+    return React.Children.map(children, (child: JSX.Element) => {
       return React.cloneElement(child, { opacity: 0 }, child.props.children);
     });
   };
 
   return (
     <StyledSkeleton width="100%" {...props}>
-      {children?.length ? hiddenChildren() : null}
+      {children ? hideChildren() : null}
     </StyledSkeleton>
   );
 };
