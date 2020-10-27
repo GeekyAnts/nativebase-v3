@@ -5,15 +5,40 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
 } from 'native-base';
 export default function () {
+  const [value, setValue] = React.useState(20);
   return (
-    <NumberInput defaultValue={10} min={5} max={20} steps={2}>
-      <NumberInputField />
-      <NumberInputStepper>
-        <NumberIncrementStepper />
-        <NumberDecrementStepper />
-      </NumberInputStepper>
-    </NumberInput>
+    <>
+      <NumberInput
+        value={`${value}`}
+        step={5}
+        onChange={(v: any) => setValue(v)}
+      >
+        <NumberInputField />
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
+
+      <Slider
+        my={10}
+        defaultValue={value}
+        colorScheme="cyan.2"
+        onChange={(v) => {
+          setValue(Math.floor(v));
+        }}
+      >
+        <SliderTrack>
+          <SliderFilledTrack />
+        </SliderTrack>
+        <SliderThumb />
+      </Slider>
+    </>
   );
 }

@@ -18,8 +18,8 @@ const NBNumberInput = ({
   defaultValue,
   keepWithinRange,
   value,
-  min,
-  max,
+  min = 0,
+  max = 100,
   ...props
 }: INumberInputProps) => {
   // TODO: Needs refactoring after input is refactored.
@@ -27,9 +27,13 @@ const NBNumberInput = ({
     value || defaultValue || min
   );
   const handleChange = (newValue: number) => {
-    console.log('updating with - ', newValue);
-    if (keepWithinRange && newValue >= min && newValue <= max)
+    console.log(newValue);
+
+    if (keepWithinRange) {
+      if (newValue >= min && newValue <= max) setNumberInputValue(newValue);
+    } else {
       setNumberInputValue(newValue);
+    }
   };
   let numberInputStepper: JSX.Element | null = null;
 

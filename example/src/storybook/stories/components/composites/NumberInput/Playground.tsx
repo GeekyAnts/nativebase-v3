@@ -1,23 +1,28 @@
 import React from 'react';
-import { PinInput, PinInputField } from 'native-base';
-import { select, text } from '@storybook/addon-knobs';
+import {
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+} from 'native-base';
+import { boolean, number, text } from '@storybook/addon-knobs';
 
 export default function () {
   return (
-    <PinInput
-      placeholder={text('placeholder', '○')}
-      inputSize={text('inputSize', 'sm')}
-      colorScheme={text('colorScheme', '')}
-      variant={select(
-        'variantType',
-        ['outline', 'underlined', 'rounded', 'filled', 'unstyled'],
-        'outline'
-      )}
-      defaultValue={text('defaultValue', '96')}
+    <NumberInput
+      defaultValue={text('defaultValue', '20')}
+      min={number('min', 5)}
+      max={number('max', 40)}
+      step={number('step', 3)}
+      isDisabled={boolean('isDisabled', true)}
+      keepWithinRange={boolean('keepWithinRange', true)}
     >
-      <PinInputField />
-      <PinInputField />
-      <PinInputField />
-    </PinInput>
+      <NumberInputField />
+      <NumberInputStepper>
+        <NumberIncrementStepper />
+        <NumberDecrementStepper />
+      </NumberInputStepper>
+    </NumberInput>
   );
 }

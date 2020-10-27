@@ -8,7 +8,7 @@ import {
 } from 'native-base';
 export default function () {
   return (
-    <NumberInput defaultValue={10} min={5} max={20} steps={2}>
+    <NumberInput defaultValue="10" min={5} max={20} step={2}>
       <NumberInputField />
       <NumberInputStepper>
         <NumberIncrementStepper />

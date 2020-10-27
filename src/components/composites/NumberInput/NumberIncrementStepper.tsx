@@ -12,12 +12,14 @@ const NBNumberIncrementStepper = ({
   ariaLabel,
   ...props
 }: INumberInputFieldProps) => {
-  const {
-    value,
+  let {
+    value: numberValue,
+    step = 0,
     handleChange,
-    step,
     ...context
   }: INumberInputContext = React.useContext(NumberInputContext);
+  let value: number = numberValue || 1;
+  step = step ? step : 1;
   const pressHandler = () => {
     handleChange && handleChange(value + step);
   };

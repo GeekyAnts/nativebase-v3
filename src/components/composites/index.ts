@@ -59,6 +59,7 @@ export {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  INumberInputContext,
 } from './NumberInput';
 export {
   default as Tag,

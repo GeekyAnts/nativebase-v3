@@ -6,7 +6,7 @@ import Usage from './Usage';
 import Steps from './Steps';
 import DefaultValue from './DefaultValue';
 import Playground from './Playground';
-import Combination from './Combination';
+// import Combination from './Combination';
 import MinMax from './MinMax';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -23,5 +23,5 @@ storiesOf('NumberInput', module)
   .add('Usage', () => <Usage />)
   .add('DefaultValue', () => <DefaultValue />)
   .add('MinMax', () => <MinMax />)
-  .add('Steps', () => <Steps />)
-  .add('Combination', () => <Combination />);
+  .add('Steps', () => <Steps />);
+// .add('Combination', () => <Combination />);
