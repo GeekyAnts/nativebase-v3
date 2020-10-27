@@ -1,3 +1,5 @@
+import { transparentize } from '../tools/colors';
+
 const baseStyle = {
   px: 1,
   textTransform: 'uppercase',
@@ -30,9 +32,8 @@ function variantSolid(props: Record<string, any>) {
 function variantSubtle(props: Record<string, any>) {
   let activeColor = getActiveColor(props);
   return {
-    bg: activeColor + '90', // TODO: from old code, dont know how it works
-    color: props.theme.colors.white,
-    // TODO: change this
+    bg: transparentize(activeColor, 0.16)(props.theme),
+    color: activeColor,
   };
 }
 

@@ -8,13 +8,14 @@ import { omitUndefined } from './utils';
 export function usePropsConfig(component: IThemeComponents, props: any) {
   const theme = useContext(ThemeContext);
   const componentTheme = get(theme, `theme.components.${component}`);
-  // Extracting props from defaultProps
 
+  // Extracting props from defaultProps
   let newProps = extractProps(
     componentTheme.defaultProps,
     theme,
     componentTheme
   );
+
   // Extracting props from base style
   for (let property in componentTheme.baseStyle) {
     newProps[property] = get(
@@ -23,9 +24,11 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
       componentTheme.baseStyle[property]
     );
   }
+
   // Extracting props from normal props
   let extractedProps = extractProps(props, theme, componentTheme);
   newProps = { ...newProps, ...extractedProps };
+
   // Extracting props from variant
   if (
     componentTheme.variants &&
@@ -43,7 +46,6 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
     delete newProps.variant;
     delete newProps.colorScheme;
   }
-  // style = omitUndefined(style);
   newProps = omitUndefined(newProps);
   return newProps;
 }
