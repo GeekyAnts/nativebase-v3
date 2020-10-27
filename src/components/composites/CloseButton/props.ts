@@ -16,7 +16,7 @@ import type {
   customShadowProps,
 } from '../../../utils/customProps';
 
-type SpaceType = 'sm' | 'md' | 'lg';
+type SpaceType = 'sm' | 'md' | 'lg' | number;
 
 export type ICloseButtonProps = ViewProps &
   ColorProps &
@@ -37,4 +37,5 @@ export type ICloseButtonProps = ViewProps &
     isDisabled?: boolean;
     onClick?: any | undefined;
     ariaLabel?: string;
+    fontSize?: number;
   };

@@ -35,16 +35,16 @@ export default function () {
       <Center>
         <Text>Button Sizes </Text>
         <HStack space={2} mt={4} alignItems="center">
-          <Button size="xs" colorScheme="green">
+          <Button size="xs" colorScheme="light">
             Button
           </Button>
-          <Button size="sm" colorScheme="green">
+          <Button size="sm" colorScheme="dark">
             Button
           </Button>
-          <Button size="md" colorScheme="green">
+          <Button size="md" colorScheme="danger">
             Button
           </Button>
-          <Button size="lg" colorScheme="green">
+          <Button size="lg" colorScheme="warning">
             Button
           </Button>
         </HStack>
@@ -61,32 +61,7 @@ export default function () {
       <Center>
         <Text>Color Schemes</Text>
       </Center>
-      <Button
-        rounded={50}
-        variant="solid"
-        size="xs"
-        colorScheme={select(
-          'colorScheme',
-          [
-            'green',
-            'red',
-            'yellow',
-            'white',
-            'black',
-            'gray',
-            'success',
-            'danger',
-            'error',
-            'warning',
-            'light',
-            'dark',
-            'muted',
-            'secondary',
-            'default',
-          ],
-          'green'
-        )}
-      >
+      <Button rounded={50} variant="solid" size="xs" colorScheme={'success'}>
         Success/Green
       </Button>
       <Center>
@@ -103,7 +78,7 @@ export default function () {
             />
           }
           size="xs"
-          colorScheme="yellow"
+          colorScheme="dark"
         >
           Left Icon Button
         </Button>
@@ -118,7 +93,7 @@ export default function () {
           }
           variant="solid"
           size="xs"
-          colorScheme="red"
+          colorScheme="danger"
         >
           Right Icon Button
         </Button>

@@ -9,10 +9,11 @@ export default function () {
         source={{
           uri: 'https://nativebase.io/assets/img/front-page-icon.png',
         }}
-        alt="Segun Adebayo"
+        alt="nativebase"
       />
       <Image
         boxSize={100}
+        width={100}
         resizeMode="cover"
         source={{
           uri: 'https://nativebase.io/assets/img/front-page-icon.png',

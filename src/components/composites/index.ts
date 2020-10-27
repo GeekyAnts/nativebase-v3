@@ -37,7 +37,27 @@ export {
   SkeletonText,
   ISkeletonTextProps,
 } from './Skeleton';
-export { default as Tag, TagCloseButton } from './Tag';
+export {
+  default as Accordion,
+  IAccordionProps,
+  AccordionItem,
+  IAccordionItemProps,
+  AccordionButton,
+  IAccordionButtonProps,
+  AccordionPanel,
+  IAccordionPanelProps,
+  AccordionIcon,
+  IAccordionIconProps,
+  IAccordionContextProps,
+  IAccordionItemContextProps,
+} from './Accordion';
+export {
+  default as Tag,
+  TagCloseButton,
+  TagLabel,
+  TagLeftIcon,
+  TagRightIcon,
+} from './Tag';
 export { default as Kbd, IKbdProps } from './KBD';
 export { default as Code } from './Code';
 export {
@@ -49,4 +69,14 @@ export {
   ISquareProps,
 } from './Center';
 export { default as Wrap, IWrapProps } from './Wrap';
+export {
+  default as PinInput,
+  IPinInputProps,
+  PinInputField,
+  IPinInputFieldProps,
+} from './PinInput';
 export { default as Collapse } from './Collapse';
+export {
+  default as CircularProgress,
+  CircularProgressLabel,
+} from './CircularProgress';
