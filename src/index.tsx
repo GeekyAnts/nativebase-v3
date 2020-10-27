@@ -75,6 +75,13 @@ import {
   TagLabel,
   TagLeftIcon,
   TagRightIcon,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
 } from './components/composites';
 
 import {
@@ -272,4 +279,11 @@ export {
   TagLabel,
   TagLeftIcon,
   TagRightIcon,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
 };
