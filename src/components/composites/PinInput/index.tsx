@@ -26,8 +26,10 @@ const NBPinInput = ({
     temp[fieldIndex] = newValue;
     setPinInputValue(temp.join(''));
 
-    if (manageFocus && fieldIndex + 1 < RefList.length)
+    if (newValue && manageFocus && fieldIndex + 1 < RefList.length)
       RefList[fieldIndex + 1].current.focus();
+    if (!newValue && manageFocus && fieldIndex - 1 > -1)
+      RefList[fieldIndex - 1].current.focus();
     return temp.join('');
   };
 
