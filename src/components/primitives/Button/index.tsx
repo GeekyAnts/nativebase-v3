@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import {
   View,
   StyleSheet,
@@ -107,32 +107,36 @@ const StyledIOSButton = styled(TouchableOpacity)<
   customExtra,
   customLayout
 );
-const Button = ({
-  style,
-  children,
-  highlight,
-  variant,
-  colorScheme,
-  isLoading,
-  isLoadingText,
-  size,
-  p,
-  pr,
-  pt,
-  pb,
-  pl,
-  px,
-  py,
-  rounded,
-  onClick,
-  shadow,
-  leftIcon,
-  rightIcon,
-  isDisabled,
-  spinner,
-  ariaLabel,
-  ...props
-}: IButtonProps & IBoxProps) => {
+const Button = (
+  {
+    style,
+    children,
+    highlight,
+    variant,
+    colorScheme,
+    isLoading,
+    isLoadingText,
+    size,
+    p,
+    pr,
+    pt,
+    pb,
+    pl,
+    px,
+    py,
+    rounded,
+    onClick,
+    shadow,
+    leftIcon,
+    rightIcon,
+    isDisabled,
+    spinner,
+    ariaLabel,
+
+    ...props
+  }: IButtonProps & IBoxProps,
+  ref: any
+) => {
   const theme = useContext(ThemeContext);
   let spaceValue = 0;
   if (size) {
@@ -278,6 +282,7 @@ const Button = ({
           disabled={isLoading || isDisabled ? true : false}
           onPress={onClick ? onClick : defaultOnPress}
           background={TouchableNativeFeedback.Ripple(lightBgColor[1], false)}
+          ref={ref}
           {...props}
         >
           {innerButton}
@@ -294,6 +299,7 @@ const Button = ({
         onPress={onClick ? onClick : defaultOnPress}
         activeOpacity={highlight ? highlight : 0.8}
         style={computedButtonStyle}
+        ref={ref}
         {...props}
       >
         {innerButton}
@@ -304,4 +310,4 @@ const Button = ({
 
 export { IButtonProps } from './IButtonProps';
 export { ButtonGroup, ButtonGroupProps } from './ButtonGroup';
-export default Button;
+export default forwardRef(Button);
