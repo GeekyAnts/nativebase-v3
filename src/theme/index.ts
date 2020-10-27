@@ -2,7 +2,7 @@ import darkTheme from './darkTheme';
 // import theme from './theme';
 import base from './base';
 import components from './components';
-import { useStyleConfig } from './theme-tools/useStyleConfig';
+import { usePropsConfig } from './tools/usePropsConfig';
 const theme = {
   ...base,
   components,
@@ -16,5 +16,5 @@ export {
   ThemeProvider,
   ThemeConsumer,
   ThemeContext,
-  useStyleConfig,
+  usePropsConfig,
 };
