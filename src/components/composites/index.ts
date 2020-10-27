@@ -89,3 +89,12 @@ export {
   default as CircularProgress,
   CircularProgressLabel,
 } from './CircularProgress';
+export {
+  default as Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from './Modal';

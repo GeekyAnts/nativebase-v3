@@ -129,6 +129,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.6",
+    "@types/tinycolor2": "^1.4.2",
     "babel-eslint": "^10.1.0",
     "deepmerge": "^4.2.2",
     "expo-font": "^8.3.0",
@@ -139,6 +140,7 @@
     "react-native-unimodules": "~0.10.1",
     "react-native-vector-icons": "^7.1.0",
     "styled-components": "^5.2.0",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "tinycolor2": "^1.4.2"
   }
 }

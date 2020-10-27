@@ -1,12 +1,10 @@
-import type { ViewProps, ViewStyle } from 'react-native';
+import type { ViewStyle, ModalProps } from 'react-native';
 import type {
   BorderProps,
   ColorProps,
   FlexboxProps,
   LayoutProps,
   SpaceProps,
-  TypographyProps,
-  PositionProps,
 } from 'styled-system';
 import type {
   customBorderProps,
@@ -15,10 +13,9 @@ import type {
   customLayoutProps,
   customExtraProps,
   customShadowProps,
-  customTypographyProps,
 } from '../../../utils/customProps';
-
-export type IBoxProps = ViewProps &
+type SpaceType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
+export type IModalProps = ModalProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -28,12 +25,13 @@ export type IBoxProps = ViewProps &
   customOutlineProps &
   customShadowProps &
   customLayoutProps &
-  customTypographyProps &
   customBackgroundProps &
-  TypographyProps &
-  PositionProps &
   BorderProps & {
     style?: ViewStyle;
-    children?: JSX.Element | JSX.Element[] | string | any;
-    shadow?: number | undefined;
+    isCentered?: boolean;
+    initialFocusRef?: any;
+    finalFocusRef?: any;
+    children: JSX.Element | JSX.Element[];
+    size?: SpaceType | string | number;
+    id?: any;
   };

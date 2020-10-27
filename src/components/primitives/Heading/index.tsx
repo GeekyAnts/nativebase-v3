@@ -32,7 +32,7 @@ import {
   customTypographyProps,
 } from '../../../utils/customProps';
 
-import { useStyleConfig } from '../../../theme';
+import { usePropsConfig } from '../../../theme';
 
 export type IHeadingProps = ColorProps &
   SpaceProps &
@@ -68,8 +68,8 @@ const StyledHeading = styled(Text)<IHeadingProps>(
   customTypography
 );
 
-const Heading = ({ isTruncated, ...props }: IHeadingProps) => {
-  const { style, newProps } = useStyleConfig('Heading', props);
+const Heading = ({ isTruncated, style, ...props }: IHeadingProps) => {
+  const newProps = usePropsConfig('Heading', props);
   return (
     <StyledHeading
       numberOfLines={isTruncated ? 1 : 999999}
