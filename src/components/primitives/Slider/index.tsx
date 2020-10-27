@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import { get } from 'lodash';
 import { PanResponder } from 'react-native';
 import { ThemeContext } from '../../../theme';
 import styled from 'styled-components/native';
@@ -17,8 +17,6 @@ type StateType = {
   deltaValue: number;
   value: number;
 };
-// const min = 0;
-// const max = 100;
 
 class Slider extends React.Component<ISliderProps, StateType> {
   static contextType = ThemeContext;
@@ -28,7 +26,7 @@ class Slider extends React.Component<ISliderProps, StateType> {
     value: this.props.defaultValue || 0,
   };
   getColorScheme = (schemeColor: string) => {
-    return _.get(this.context.colors, schemeColor, 'default.0');
+    return get(this.context.colors, schemeColor, 'default.0');
   };
 
   panResponder = PanResponder.create({
@@ -54,7 +52,6 @@ class Slider extends React.Component<ISliderProps, StateType> {
   }
   onEndMove() {
     const { value, deltaValue } = this.state;
-
     this.props.onChangeEnd && this.props.onChangeEnd(value + deltaValue);
     this.setState({ value: value + deltaValue, deltaValue: 0 });
   }

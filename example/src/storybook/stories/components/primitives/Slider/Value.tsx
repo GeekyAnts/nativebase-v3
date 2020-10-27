@@ -14,7 +14,7 @@ export default function () {
   return (
     <Stack mx={5} space={4} alignItems="center">
       <Text>onChangeValue - {onChangeValue}</Text>
-      <Text>onChangeValue - {onChangeEndValue}</Text>
+      <Text>onChangeEndValue - {onChangeEndValue}</Text>
       <Slider
         defaultValue={70}
         colorScheme="cyan.2"

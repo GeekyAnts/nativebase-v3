@@ -28,7 +28,7 @@ const StyledSlider = styled(NBSliderTrack)<ISliderProps>(
   layout,
   typography
 );
-StyledSlider.defaultProps = {};
+// StyledSlider.defaultProps = {};
 
 const SliderTrack = ({ ...props }: ISliderProps) => {
   return <StyledSlider {...props} />;
