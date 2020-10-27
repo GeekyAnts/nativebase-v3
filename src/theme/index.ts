@@ -2,7 +2,7 @@ import darkTheme from './darkTheme';
 // import theme from './theme';
 import base from './base';
 import components from './components';
-import { useStyleConfig } from './utils';
+import { useStyleConfig } from './theme-tools/useStyleConfig';
 const theme = {
   ...base,
   components,
