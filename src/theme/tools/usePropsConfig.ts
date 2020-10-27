@@ -6,8 +6,8 @@ import type { IThemeComponents } from './../components';
 import { omitUndefined } from './utils';
 
 export function usePropsConfig(component: IThemeComponents, props: any) {
-  const theme = useContext(ThemeContext);
-  const componentTheme = get(theme, `theme.components.${component}`);
+  const theme = useContext(ThemeContext).theme;
+  const componentTheme = get(theme, `components.${component}`);
 
   // Extracting props from defaultProps
   let newProps = extractProps(
@@ -20,7 +20,7 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
   for (let property in componentTheme.baseStyle) {
     newProps[property] = get(
       theme,
-      `theme.${themePropertyMap[property]}.${componentTheme.baseStyle[property]}`,
+      `${themePropertyMap[property]}.${componentTheme.baseStyle[property]}`,
       componentTheme.baseStyle[property]
     );
   }
@@ -39,7 +39,7 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
       newProps.colorScheme || componentTheme.defaultProps.colorScheme;
     let extractedProps = componentTheme.variants[newProps.variant]({
       colorScheme,
-      theme: theme.theme,
+      theme,
     });
 
     newProps = { ...newProps, ...extractedProps };
@@ -65,7 +65,7 @@ function extractProps(props: any, theme: any, componentTheme: any) {
       for (let nestedProp in propValues) {
         newProps[nestedProp] = get(
           theme,
-          `theme.${themePropertyMap[nestedProp]}.${propValues[nestedProp]}`,
+          `${themePropertyMap[nestedProp]}.${propValues[nestedProp]}`,
           propValues[nestedProp]
         );
       }
