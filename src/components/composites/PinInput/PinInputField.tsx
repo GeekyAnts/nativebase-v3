@@ -41,6 +41,7 @@ const NBPinInputFiled = ({
   React.useEffect(() => {
     setRefList && setRefList(myRef, fieldIndex);
   }, [myRef, fieldIndex, setRefList]);
+
   return (
     <Input
       p={2}

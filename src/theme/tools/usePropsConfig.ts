@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ThemeContext } from './../ThemeProvider';
-import { forEach, get, isEmpty, isNil } from 'lodash';
+import { get, isNil } from 'lodash';
 import { themePropertyMap } from './../base';
 import type { IThemeComponents } from './../components';
 import { omitUndefined } from './utils';

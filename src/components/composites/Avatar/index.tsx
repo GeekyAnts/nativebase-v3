@@ -80,15 +80,15 @@ const Avatar = ({
     fontWeight: '600',
   };
   return (
-    <StyledAvatar {...newProps}>
+    <StyledAvatar {...newProps} style={style}>
       {!src || alternate ? (
         <Text style={textStyle}>{name ? getInitials(name) : '---'}</Text>
       ) : (
         <Image
           borderRadius={newProps.borderRadius}
           style={{
-            width: parseInt(get(theme.sizes, newProps.width)),
-            height: parseInt(get(theme.sizes, newProps.height)),
+            width: parseInt(get(theme.sizes, newProps.width), 10),
+            height: parseInt(get(theme.sizes, newProps.height), 10),
           }}
           source={{ uri: src }}
           onError={onImageLoadError}

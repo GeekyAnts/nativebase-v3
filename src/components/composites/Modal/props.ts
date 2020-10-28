@@ -15,7 +15,7 @@ import type {
   customShadowProps,
 } from '../../../utils/customProps';
 type SpaceType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
-export type IModalProps = ModalProps &
+export type IModalSemiProps = ModalProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -34,4 +34,7 @@ export type IModalProps = ModalProps &
     children: JSX.Element | JSX.Element[];
     size?: SpaceType | string | number;
     id?: any;
+    motionPreset?: 'slide' | 'fade' | 'none';
   };
+
+export type IModalProps = IModalSemiProps & { isOpen: boolean; onClose: any };
