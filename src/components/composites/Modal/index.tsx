@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal as RNModal } from 'react-native';
+import { Modal as RNModal, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
 import {
@@ -11,10 +11,10 @@ import {
   customShadow,
 } from '../../../utils/customProps';
 
-import type { IModalProps } from './props';
+import type { IModalProps, IModalSemiProps } from './props';
 import { Box, Heading, CloseButton, View } from '../../..';
 
-const StyledModal = styled(RNModal)<IModalProps>(
+const StyledModal = styled(RNModal)<IModalSemiProps>(
   color,
   space,
   layout,
@@ -35,19 +35,23 @@ const ModalContext = React.createContext({
   modalSize: 'lg',
 });
 
-const Modal = ({
-  children,
-  isOpen,
-  onClose,
-  isCentered,
-  initialFocusRef,
-  finalFocusRef,
-  size,
-  justifyContent,
-  alignItems,
-  id,
-  ...props
-}: IModalProps & { isOpen: boolean; onClose: any }) => {
+const Modal = (
+  {
+    children,
+    isOpen,
+    onClose,
+    isCentered,
+    initialFocusRef,
+    finalFocusRef,
+    size,
+    justifyContent,
+    alignItems,
+    id,
+    motionPreset,
+    ...props
+  }: IModalProps,
+  ref: any
+) => {
   const [isVisible, setIsVisible] = React.useState(true);
   React.useEffect(() => {
     setIsVisible(isOpen);
@@ -66,14 +70,15 @@ const Modal = ({
         <StyledModal
           visible={isVisible}
           onShow={() => {
-            initialFocusRef?.current.focus();
+            initialFocusRef?.current?.focus();
           }}
           onDismiss={() => {
-            finalFocusRef?.current.focus();
+            finalFocusRef?.current?.focus();
           }}
-          animationType="slide"
-          transparent={true}
+          animationType={motionPreset || 'slide'}
+          transparent
           {...props}
+          ref={ref}
         >
           <Box
             width="100%"
@@ -162,15 +167,32 @@ export const ModalCloseButton = (props: any) => {
     />
   );
 };
-export const ModalOverlay = ({ bg }: { bg?: string }) => {
+export const ModalOverlay = ({ children, ...props }: any) => {
+  const { toggleVisible, toggleOnClose } = React.useContext(ModalContext);
   return (
     <Box
-      style={{ position: 'absolute', left: 0, top: 0, opacity: 0.5 }}
-      width="100%"
-      height="100%"
-      bg={bg ? bg : 'black'}
-    />
+      {...props}
+      style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }}
+    >
+      <TouchableOpacity
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          opacity: 0.5,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'black',
+        }}
+        onPress={() => {
+          toggleVisible(false);
+          toggleOnClose(false);
+        }}
+      />
+      {children}
+    </Box>
   );
 };
 export default React.forwardRef(Modal);
+
 export type { IModalProps };
