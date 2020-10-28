@@ -15,5 +15,5 @@ export default function () {
     //   />,
     // ],
   });
-  return <CustomIcon color="red.2" boxSize={50} />;
+  return <CustomIcon color="red.2" boxSize={12} />;
 }

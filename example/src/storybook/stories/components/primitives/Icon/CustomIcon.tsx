@@ -2,8 +2,9 @@ import React from 'react';
 import { Icon } from 'native-base';
 export default function () {
   return (
-    <Icon viewBox="0 0 200 200" color="blue.3" boxSize={50}>
+    <Icon viewBox="0 0 200 200" color="blue.3" boxSize={12}>
       <path d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0" />
     </Icon>
   );
 }
+0;

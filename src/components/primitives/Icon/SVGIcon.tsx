@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { ThemeContext } from 'native-base';
 import styled from 'styled-components';
-import { color } from 'styled-system';
+import { color, space, typography } from 'styled-system';
 import Svg, { G, Path, Circle } from 'react-native-svg';
 import type { IIconProps } from './props';
 
-const SVG = styled(Svg)<IIconProps>(color);
+const SVG = styled(Svg)<IIconProps>(color, space, typography);
 const SVGIcon = ({
   viewBox,
   color,
@@ -15,21 +15,24 @@ const SVGIcon = ({
   boxSize,
   style,
 }: IIconProps) => {
-  const appliedStyle = StyleSheet.flatten([
-    style,
-    {
-      height: boxSize,
-      width: boxSize,
-    },
-  ]);
+  const theme = React.useContext(ThemeContext);
+  let size =
+    typeof boxSize === 'string'
+      ? theme.fontSizes[boxSize]
+      : typeof boxSize === 'number'
+      ? theme.sizes[boxSize]
+      : 20;
+  size = size ? parseInt(size, 10) : 20;
   return (
     <SVG
+      height={size}
+      width={size}
       viewBox={viewBox}
       color={color}
       stroke={stroke}
       focusable={focusable}
       accessibilityRole={'image'}
-      style={appliedStyle}
+      style={style}
     >
       {React.Children.count(children) > 0 ? (
         <G>
