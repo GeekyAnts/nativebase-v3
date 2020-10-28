@@ -41,8 +41,9 @@ const Image = ({
   let computedStyle = StyleSheet.flatten([
     style,
     {
-      width: width ? width : boxSize ? boxSize : 100,
-      height: height ? height : boxSize ? boxSize : 100,
+      width: width ? width : boxSize ? boxSize : undefined,
+      height: height ? height : boxSize ? boxSize : 'auto',
+      maxWidth: '100%',
     },
   ]);
 
