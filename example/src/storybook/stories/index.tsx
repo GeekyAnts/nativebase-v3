@@ -1,5 +1,6 @@
 export * from './components/composites/Accordion';
 export * from './components/composites/Alert';
+export * from './components/composites/AlertDialog';
 export * from './components/composites/AspectRatio';
 export * from './components/composites/Avatar';
 export * from './components/composites/Badge';

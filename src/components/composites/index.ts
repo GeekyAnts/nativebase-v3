@@ -89,3 +89,13 @@ export {
   ModalHeader,
   ModalOverlay,
 } from './Modal';
+
+export {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogBody,
+  AlertDialogCloseButton,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+} from './AlertDialog';

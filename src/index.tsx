@@ -82,6 +82,13 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogBody,
+  AlertDialogCloseButton,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
 } from './components/composites';
 
 import {
@@ -286,4 +293,11 @@ export {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogBody,
+  AlertDialogCloseButton,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
 };
