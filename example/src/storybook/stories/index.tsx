@@ -38,6 +38,7 @@ export * from './components/primitives/Switch';
 export * from './components/composites/Tag';
 export * from './components/primitives/Text';
 export * from './components/primitives/TextArea';
+export * from './components/composites/Transitions';
 export * from './components/primitives/VStack';
 export * from './components/primitives/WebLayout';
 export * from './components/composites/Wrap';
