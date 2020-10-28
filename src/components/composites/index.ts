@@ -52,6 +52,16 @@ export {
   IAccordionItemContextProps,
 } from './Accordion';
 export {
+  default as NumberInput,
+  INumberInputProps,
+  NumberInputField,
+  INumberInputFieldProps,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  INumberInputContext,
+} from './NumberInput';
+export {
   default as Tag,
   TagCloseButton,
   TagLabel,
