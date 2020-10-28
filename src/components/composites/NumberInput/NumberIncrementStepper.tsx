@@ -26,16 +26,16 @@ const NBNumberIncrementStepper = ({
   return (
     <TouchableOpacity
       activeOpacity={1}
-      disabled={numberInputValue + step >= max || isDisabled}
+      disabled={numberInputValue + step > max || isDisabled}
       onPress={() => pressHandler()}
-      accessible={true}
+      accessible
       accessibilityLabel={ariaLabel}
     >
       <Box
         borderBottomWidth={1}
         {...props}
         style={[
-          (numberInputValue + step >= max || isDisabled) && {
+          (numberInputValue + step > max || isDisabled) && {
             backgroundColor: 'lightgray',
           },
         ]}
