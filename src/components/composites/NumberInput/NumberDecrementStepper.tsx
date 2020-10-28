@@ -15,26 +15,30 @@ const NBNumberDecrementStepper = ({
   const {
     numberInputValue = 0,
     step = 1,
+    min = -Infinity,
     handleChange,
     ...context
   }: INumberInputContext = React.useContext(NumberInputContext);
-
-  // let value: number = numberValue || 0;
-  let isDisabled = pIsDisabled || context.isDisabled;
+  const isDisabled = pIsDisabled || context.isDisabled;
   const pressHandler = () => {
-    // isDisabled = value - step < min;
     handleChange && handleChange(numberInputValue - step);
   };
-
   return (
     <TouchableOpacity
       activeOpacity={1}
-      disabled={isDisabled}
+      disabled={numberInputValue - step <= min || isDisabled}
       onPress={() => pressHandler()}
       accessible={true}
       accessibilityLabel={ariaLabel}
     >
-      <Box {...props}>
+      <Box
+        {...props}
+        style={[
+          (numberInputValue - step <= min || isDisabled) && {
+            backgroundColor: 'lightgray',
+          },
+        ]}
+      >
         {children || <Icon name="arrow-drop-down" type="MaterialIcons" />}
       </Box>
     </TouchableOpacity>

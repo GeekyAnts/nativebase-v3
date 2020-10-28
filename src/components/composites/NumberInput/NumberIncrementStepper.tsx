@@ -8,30 +8,38 @@ import { TouchableOpacity } from 'react-native';
 
 const NBNumberIncrementStepper = ({
   children,
-  isDisabled,
+  isDisabled: pIsDisabled,
   ariaLabel,
   ...props
 }: INumberInputFieldProps) => {
-  let {
+  const {
     numberInputValue = 0,
     step = 1,
+    max = +Infinity,
     handleChange,
     ...context
   }: INumberInputContext = React.useContext(NumberInputContext);
-  // let value: number = numberValue || 1;
-  // step = step ? step : 1;
+  const isDisabled = pIsDisabled || context.isDisabled;
   const pressHandler = () => {
     handleChange && handleChange(numberInputValue + step);
   };
   return (
     <TouchableOpacity
       activeOpacity={1}
-      disabled={isDisabled || context.isDisabled}
+      disabled={numberInputValue + step >= max || isDisabled}
       onPress={() => pressHandler()}
       accessible={true}
       accessibilityLabel={ariaLabel}
     >
-      <Box borderBottomWidth={1} {...props}>
+      <Box
+        borderBottomWidth={1}
+        {...props}
+        style={[
+          (numberInputValue + step >= max || isDisabled) && {
+            backgroundColor: 'lightgray',
+          },
+        ]}
+      >
         {children || <Icon name="arrow-drop-up" type="MaterialIcons" />}
       </Box>
     </TouchableOpacity>

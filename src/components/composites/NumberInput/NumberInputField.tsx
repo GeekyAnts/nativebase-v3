@@ -11,6 +11,7 @@ const NBNumberInputFiled = ({
 }: INumberInputFieldProps) => {
   const {
     handleChange,
+    handleChangeWithoutCheck,
     numberInputStepper,
     numberInputValue,
     ...context
@@ -19,12 +20,17 @@ const NBNumberInputFiled = ({
     numberInputStepper?: any;
   } = React.useContext(NumberInputContext);
   const changeHandler = (inputValue: any) => {
-    const value = parseInt(inputValue);
-    if (value) {
-      handleChange && handleChange(value);
-    } else {
-      handleChange && handleChange('');
+    let minusIndex = inputValue.indexOf('-');
+    if (minusIndex !== -1 && minusIndex !== 0) {
+      inputValue = inputValue.replace('-', '');
+      inputValue = '-' + inputValue;
     }
+    const value = parseInt(inputValue);
+    if (value) handleChangeWithoutCheck && handleChangeWithoutCheck(value);
+    else handleChangeWithoutCheck && handleChangeWithoutCheck(0);
+  };
+  const blurHandler = () => {
+    if (numberInputValue) handleChange && handleChange(numberInputValue);
   };
   return (
     <Input
@@ -33,6 +39,7 @@ const NBNumberInputFiled = ({
       width="70%"
       {...context}
       {...props}
+      onBlur={() => blurHandler()}
       isDisabled={isDisabled || context.isDisabled}
       onChangeText={(inputValue) => changeHandler(inputValue)}
       keyboardType="numeric"

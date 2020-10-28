@@ -27,11 +27,16 @@ const NBNumberInput = ({
     parseInt(value) || parseInt(defaultValue)
   );
   const handleChange = (newValue: number) => {
+    const temp = newValue;
+    setNumberInputValue(temp);
     if (keepWithinRange) {
-      if (newValue >= min && newValue <= max) setNumberInputValue(newValue);
-    } else {
-      setNumberInputValue(newValue);
+      if (newValue < min) setNumberInputValue(min);
+      else if (newValue > max) setNumberInputValue(max);
     }
+  };
+  const handleChangeWithoutCheck = (newValue: number) => {
+    const temp = newValue;
+    setNumberInputValue(temp);
   };
   let numberInputStepper: JSX.Element | null = null;
 
@@ -50,10 +55,11 @@ const NBNumberInput = ({
   return (
     <NumberInputContext.Provider
       value={{
-        handleChange,
+        ...props,
         min,
         max,
-        ...props,
+        handleChange,
+        handleChangeWithoutCheck,
         numberInputValue,
         numberInputStepper,
       }}
