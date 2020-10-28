@@ -1,9 +1,25 @@
 import Heading from './heading';
-import Button from './button';
 import Code from './code';
 import Badge from './badge';
 import Tag from './tag';
+import Avatar from './avatar';
 
-export default { Heading, Button, Code, Badge, Tag };
+import Button from './button';
 
-export type IThemeComponents = 'Heading' | 'Button' | 'Code' | 'Badge' | 'Tag';
+export default {
+  Heading,
+  Code,
+  Badge,
+  Tag,
+  // not done
+  Avatar,
+  Button,
+};
+
+export type IThemeComponents =
+  | 'Heading'
+  | 'Code'
+  | 'Badge'
+  | 'Tag'
+  | 'Avatar'
+  | 'Button';

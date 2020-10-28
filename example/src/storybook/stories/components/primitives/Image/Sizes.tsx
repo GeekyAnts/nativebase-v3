@@ -18,14 +18,14 @@ export default function () {
         source={{
           uri: 'https://nativebase.io/assets/img/front-page-icon.png',
         }}
-        alt="Dan Abramov"
+        alt="nativebase"
       />
       <Image
         boxSize={150}
         source={{
           uri: 'https://nativebase.io/assets/img/front-page-icon.png',
         }}
-        alt="Dan Abramov"
+        alt="nativebase"
       />
     </HStack>
   );
