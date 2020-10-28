@@ -13,15 +13,15 @@ const NBNumberIncrementStepper = ({
   ...props
 }: INumberInputFieldProps) => {
   let {
-    value: numberValue,
-    step = 0,
+    numberInputValue = 0,
+    step = 1,
     handleChange,
     ...context
   }: INumberInputContext = React.useContext(NumberInputContext);
-  let value: number = numberValue || 1;
-  step = step ? step : 1;
+  // let value: number = numberValue || 1;
+  // step = step ? step : 1;
   const pressHandler = () => {
-    handleChange && handleChange(value + step);
+    handleChange && handleChange(numberInputValue + step);
   };
   return (
     <TouchableOpacity

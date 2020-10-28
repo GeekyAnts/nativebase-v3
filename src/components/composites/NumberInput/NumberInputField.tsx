@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { space } from 'styled-system';
 import { Input } from 'native-base';
 import type { INumberInputFieldProps } from './props';
-import { NumberInputContext, INumberInputProps } from './index';
+import { NumberInputContext, INumberInputContext } from './index';
 
 const NBNumberInputFiled = ({
   isDisabled,
@@ -12,9 +12,9 @@ const NBNumberInputFiled = ({
   const {
     handleChange,
     numberInputStepper,
-    value,
+    numberInputValue,
     ...context
-  }: INumberInputProps & {
+  }: INumberInputContext & {
     handleChange?: (value: string | number) => void;
     numberInputStepper?: any;
   } = React.useContext(NumberInputContext);
@@ -36,7 +36,7 @@ const NBNumberInputFiled = ({
       isDisabled={isDisabled || context.isDisabled}
       onChangeText={(inputValue) => changeHandler(inputValue)}
       keyboardType="numeric"
-      value={`${value}`}
+      value={`${numberInputValue}`}
       style={[context.style, props.style]}
       InputRightElement={numberInputStepper}
     />

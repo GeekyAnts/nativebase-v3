@@ -13,17 +13,17 @@ const NBNumberDecrementStepper = ({
   ...props
 }: INumberInputFieldProps) => {
   const {
-    value: numberValue,
+    numberInputValue = 0,
     step = 1,
     handleChange,
     ...context
   }: INumberInputContext = React.useContext(NumberInputContext);
 
-  let value: number = numberValue || 0;
+  // let value: number = numberValue || 0;
   let isDisabled = pIsDisabled || context.isDisabled;
   const pressHandler = () => {
     // isDisabled = value - step < min;
-    handleChange && handleChange(value - step);
+    handleChange && handleChange(numberInputValue - step);
   };
 
   return (

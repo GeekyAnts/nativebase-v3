@@ -15,20 +15,18 @@ export type { INumberInputProps, INumberInputFieldProps, INumberInputContext };
 export const NumberInputContext = React.createContext({});
 const NBNumberInput = ({
   children,
-  defaultValue,
-  keepWithinRange,
-  value,
+  defaultValue = '0',
+  keepWithinRange = true,
+  value = '0',
   min = 0,
   max = 100,
   ...props
 }: INumberInputProps) => {
   // TODO: Needs refactoring after input is refactored.
   const [numberInputValue, setNumberInputValue] = React.useState(
-    value || defaultValue || min
+    parseInt(value) || parseInt(defaultValue)
   );
   const handleChange = (newValue: number) => {
-    console.log(newValue);
-
     if (keepWithinRange) {
       if (newValue >= min && newValue <= max) setNumberInputValue(newValue);
     } else {
@@ -56,7 +54,7 @@ const NBNumberInput = ({
         min,
         max,
         ...props,
-        value: numberInputValue,
+        numberInputValue,
         numberInputStepper,
       }}
     >
@@ -69,8 +67,9 @@ const StyledNumberInput = styled(NBNumberInput)<INumberInputProps>(space);
 StyledNumberInput.defaultProps = {
   inputSize: 'sm',
   step: 1,
-  min: 0,
-  max: 100,
+  min: -Infinity,
+  max: Infinity,
+  defaultValue: '0',
   keepWithinRange: true,
   clampValueOnBlur: true,
   focusInputOnChange: true,

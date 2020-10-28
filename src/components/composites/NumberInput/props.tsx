@@ -20,6 +20,7 @@ export type INumberInputProps = IInputBoxProps &
 
 export type INumberInputFieldProps = INumberInputProps & {};
 export type INumberInputContext = INumberInputProps & {
+  numberInputValue?: number;
   value?: number;
   handleChange?: (value: number) => void;
   numberInputStepper?: any;
