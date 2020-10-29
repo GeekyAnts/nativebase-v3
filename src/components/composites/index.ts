@@ -96,6 +96,16 @@ export {
   PinInputField,
   IPinInputFieldProps,
 } from './PinInput';
+export {
+  Fade,
+  IFadeProps,
+  ScaleFade,
+  IScaleFadeProps,
+  Slide,
+  ISlideProps,
+  SlideFade,
+  ISlideFadeProps,
+} from './Transitions';
 export { default as Collapse } from './Collapse';
 export {
   default as CircularProgress,
