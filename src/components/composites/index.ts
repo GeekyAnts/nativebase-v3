@@ -52,6 +52,17 @@ export {
   IAccordionItemContextProps,
 } from './Accordion';
 export {
+  FormControl,
+  IFormControlProps,
+  FormLabel,
+  IFormLabelProps,
+  FormErrorMessage,
+  IFormErrorMessageProps,
+  FormHelperText,
+  IFormHelperTextProps,
+  IFormControlContext,
+} from './FormControl';
+export {
   default as NumberInput,
   INumberInputProps,
   NumberInputField,
@@ -85,6 +96,16 @@ export {
   PinInputField,
   IPinInputFieldProps,
 } from './PinInput';
+export {
+  Fade,
+  IFadeProps,
+  ScaleFade,
+  IScaleFadeProps,
+  Slide,
+  ISlideProps,
+  SlideFade,
+  ISlideFadeProps,
+} from './Transitions';
 export { default as Collapse } from './Collapse';
 export {
   default as CircularProgress,

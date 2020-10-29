@@ -1,5 +1,5 @@
 {
-  "name": "native-base",
+  "name": "v3",
   "version": "0.1.0",
   "description": "Essential cross-platform UI components for React Native",
   "main": "lib/commonjs/index",
@@ -34,7 +34,10 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/geekyants/native-base",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geekyants/native-base.git"
+  },
   "author": "GeekyAnts <npm@geekyants.com> (https://github.com/geekyants)",
   "license": "MIT",
   "bugs": {
@@ -142,5 +145,9 @@
     "styled-components": "^5.2.0",
     "styled-system": "^5.1.5",
     "tinycolor2": "^1.4.2"
+  },
+  "directories": {
+    "example": "example",
+    "lib": "lib"
   }
 }
