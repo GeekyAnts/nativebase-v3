@@ -97,6 +97,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
+  Menu,
+  MenuItem,
 } from './components/composites';
 
 import {
@@ -316,4 +318,6 @@ export {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
+  Menu,
+  MenuItem,
 };

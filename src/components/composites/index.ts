@@ -109,3 +109,5 @@ export {
   AlertDialogHeader,
   AlertDialogOverlay,
 } from './AlertDialog';
+
+export { Menu, MenuItem } from './Menu';
