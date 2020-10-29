@@ -9,13 +9,7 @@ storiesOf('Column', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
+      <View flex={1} justifyContent="center" alignItems="center">
         {getStory()}
       </View>
     </ThemeProvider>

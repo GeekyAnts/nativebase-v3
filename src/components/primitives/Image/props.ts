@@ -17,8 +17,8 @@ export type IImageProps = RNImageProps &
   customBorderProps &
   BorderProps &
   FlexboxProps & {
-    boxSize?: number | undefined;
-    alt?: string | undefined;
+    boxSize?: number | string;
+    alt?: string;
     fallbackSource?: ImageSourcePropType;
     ignoreFallback?: boolean;
   };

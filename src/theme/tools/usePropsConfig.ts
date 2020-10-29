@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ThemeContext } from './../ThemeProvider';
-import { get } from 'lodash';
+import { get, isNil } from 'lodash';
 import { themePropertyMap } from './../base';
 import type { IThemeComponents } from './../components';
 import { omitUndefined } from './utils';
@@ -15,16 +15,22 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
     theme,
     componentTheme
   );
-
   // Extracting props from base style
-  for (let property in componentTheme.baseStyle) {
+  let componentBaseStyle =
+    typeof componentTheme.baseStyle !== 'function'
+      ? componentTheme.baseStyle
+      : componentTheme.baseStyle({ theme, ...props });
+
+  for (let property in componentBaseStyle) {
     newProps[property] = get(
       theme,
       `${themePropertyMap[property]}.${componentTheme.baseStyle[property]}`,
       componentTheme.baseStyle[property]
     );
+    if (isNil(newProps[property])) {
+      newProps[property] = componentBaseStyle[property];
+    }
   }
-
   // Extracting props from normal props
   let extractedProps = extractProps(props, theme, componentTheme);
   newProps = { ...newProps, ...extractedProps };
