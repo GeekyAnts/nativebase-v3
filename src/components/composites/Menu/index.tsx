@@ -8,13 +8,15 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { getContainerStyles } from './getContainerStyles';
+import { getContainerStyles } from './utils/getContainerStyles';
 const STATES = {
   HIDDEN: 'HIDDEN',
   ANIMATING: 'ANIMATING',
   SHOWN: 'SHOWN',
 };
 import { IMenuProps, MenuContext } from './props';
+// import { MenuGroup } from './MenuGroup';
+import { MenuItem } from './MenuItem';
 const animationDuration = 300;
 const EASING = Easing.bezier(0.4, 0, 0.2, 1);
 
@@ -233,5 +235,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { Menu };
-export { default as MenuItem } from './MenuItem';
+export { Menu, MenuItem };

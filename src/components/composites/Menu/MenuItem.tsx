@@ -13,7 +13,7 @@ const Touchable: any =
     ? TouchableNativeFeedback
     : TouchableHighlight;
 
-const MenuItem = ({
+export const MenuItem = ({
   children,
   disabled,
   onPress,
@@ -61,5 +61,3 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
 });
-
-export default MenuItem;
