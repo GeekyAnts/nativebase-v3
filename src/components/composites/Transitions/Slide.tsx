@@ -12,9 +12,10 @@ const NBSlide = ({
   placement = 'bottom',
   ...props
 }: ISlideProps) => {
+  // TODO: Overiding placement props to bottom only, as other placement required implementation.
+  placement = 'bottom';
   const [size, setSize] = React.useState(10000);
   const provideSize = (layoutSize: any) => {
-    console.log('layoutSize - ', layoutSize);
     if (placement === 'right' || placement === 'left')
       setSize(layoutSize.width);
     else setSize(layoutSize.height);
@@ -38,7 +39,7 @@ const NBSlide = ({
     }).start();
   };
 
-  const holderStyle = {
+  const holderStyle: any = {
     top: {
       top: 0,
       right: 0,
@@ -60,7 +61,7 @@ const NBSlide = ({
       top: 0,
     },
   };
-  const animatioStyle = {
+  const animatioStyle: any = {
     top: { transform: [{ translateY: slideAnim }] },
     right: { transform: [{ translateX: slideAnim }] },
     bottom: { transform: [{ translateY: slideAnim }] },
