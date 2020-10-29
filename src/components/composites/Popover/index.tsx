@@ -29,7 +29,7 @@ const StyledPopover = styled(Tooltip)<IPopoverProps>(
 );
 
 const PopoverContext = React.createContext({
-  PopoverTrigger: <></>,
+  PopoverTrigger: null,
   setPopoverTrigger: (_child: JSX.Element[] | JSX.Element) => {},
   PopoverRef: null,
   initialFocusRef: null,
@@ -80,7 +80,7 @@ export const PopoverTrigger = ({ children }: any) => {
     setPopoverTrigger(children);
   }, [setPopoverTrigger, children]);
 
-  return <></>;
+  return null;
 };
 
 export const PopoverHeader = (props: IBoxProps) => {
