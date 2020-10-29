@@ -26,6 +26,7 @@ export * from './components/primitives/Link';
 export * from './components/primitives/List';
 export * from './components/composites/Modal';
 export * from './components/composites/PinInput';
+export * from './components/composites/Popover';
 export * from './components/composites/Progress';
 export * from './components/primitives/Radio';
 export * from './components/primitives/Row';

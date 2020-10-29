@@ -89,3 +89,12 @@ export {
   ModalHeader,
   ModalOverlay,
 } from './Modal';
+export {
+  default as Popover,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+} from './Popover';

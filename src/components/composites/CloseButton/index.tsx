@@ -66,7 +66,7 @@ const CloseButton = ({
     <StyledCloseButton
       disabled={isDisabled}
       rounded={rounded}
-      onPress={onClick ? onClick : defaultOnPress}
+      onPress={onClick}
       underlayColor={'rgba(255, 255, 255, 0.1)'}
       display="flex"
       justifyContent="center"
