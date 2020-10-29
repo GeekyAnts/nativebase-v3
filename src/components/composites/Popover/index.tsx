@@ -32,25 +32,38 @@ const PopoverContext = React.createContext({
   PopoverTrigger: <></>,
   setPopoverTrigger: (_child: JSX.Element[] | JSX.Element) => {},
   PopoverRef: null,
+  initialFocusRef: null,
+  finalFocusRef: null,
+  isVisible: false,
+  setIsVisible: (_bool: boolean) => {},
+  onOpen: () => {},
+  onClose: () => {},
+  closeOnBlur: true,
 });
 
 const Popover = ({
   children,
-  isCentered,
   initialFocusRef,
   finalFocusRef,
-  size,
-  justifyContent,
-  alignItems,
+  onOpen,
+  onClose,
+  closeOnBlur,
   id,
-  ...props
 }: IPopoverProps) => {
   const [trigger, setTrigger] = React.useState(<></>);
+  const [isVisible, setIsVisible] = React.useState(false);
   const popOverRef: any = React.useRef(null);
   const value: any = {
     PopoverTrigger: trigger,
     setPopoverTrigger: setTrigger,
     PopoverRef: popOverRef,
+    initialFocusRef: initialFocusRef,
+    finalFocusRef: finalFocusRef,
+    isVisible: isVisible,
+    setIsVisible: setIsVisible,
+    onOpen: onOpen,
+    onClose: onClose,
+    closeOnBlur: closeOnBlur,
   };
 
   return (
@@ -60,39 +73,50 @@ const Popover = ({
   );
 };
 
-export const PopoverTrigger = ({ children, ...props }: any) => {
+export const PopoverTrigger = ({ children }: any) => {
   const { setPopoverTrigger } = React.useContext(PopoverContext);
-  const triggerProps = {
-    isDisabled: true,
-  };
-  let trigger: JSX.Element[] = [];
-  React.Children.map(children, (child) => {
-    // console.log('child asdjahskj', child);
-    trigger.push(React.cloneElement(child, triggerProps, child.props));
-  });
+
   React.useEffect(() => {
     setPopoverTrigger(children);
-  }, []);
+  }, [setPopoverTrigger, children]);
 
   return <></>;
 };
+
 export const PopoverHeader = (props: IBoxProps) => {
   return <Box pb={3} px={3} {...props} />;
 };
-export const PopoverContent = ({ children, ...props }: any) => {
-  const { PopoverRef, PopoverTrigger } = React.useContext(PopoverContext);
+
+export const PopoverContent = ({
+  children,
+  ...props
+}: IPopoverProps & { ref?: any }) => {
+  const {
+    PopoverRef,
+    PopoverTrigger,
+    onOpen,
+    initialFocusRef,
+    onClose,
+    finalFocusRef,
+    closeOnBlur,
+  }: any = React.useContext(PopoverContext);
   const theme = React.useContext(ThemeContext);
   return (
     <StyledPopover
       backgroundColor={theme.colors.gray[1]}
       height={'auto'}
       ref={PopoverRef}
+      onOpen={() => {
+        onOpen ? onOpen() : '';
+        initialFocusRef?.current.focus();
+      }}
+      onClose={() => {
+        onClose ? onClose() : '';
+        finalFocusRef?.current.focus();
+      }}
+      closeOnBlur={closeOnBlur === false ? false : true}
       popover={
-        <Box
-          style={{
-            width: '100%',
-          }}
-        >
+        <Box width="100%">
           <Box>{children}</Box>
         </Box>
       }
@@ -102,6 +126,7 @@ export const PopoverContent = ({ children, ...props }: any) => {
     </StyledPopover>
   );
 };
+
 export const PopoverBody = (props: any) => {
   return (
     <Box
@@ -114,6 +139,7 @@ export const PopoverBody = (props: any) => {
     />
   );
 };
+
 export const PopoverFooter = (props: any) => {
   return (
     <Box
@@ -127,8 +153,9 @@ export const PopoverFooter = (props: any) => {
     />
   );
 };
+
 export const PopoverCloseButton = (props: any) => {
-  const { PopoverRef } = React.useContext(PopoverContext);
+  const { PopoverRef }: any = React.useContext(PopoverContext);
 
   return (
     <View
@@ -147,7 +174,6 @@ export const PopoverCloseButton = (props: any) => {
         }}
       />
     </View>
-    // <></>
   );
 };
 

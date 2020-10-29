@@ -44,9 +44,9 @@ const getTooltipCoordinate = (
   height: number,
   ScreenWidth: number,
   ScreenHeight: number,
-  receivedTooltipWidth: number | string,
-  receivedTooltipHeight: number | string,
-  withPointer: boolean
+  receivedTooltipWidth: number | string | any,
+  receivedTooltipHeight: number | string | any,
+  withPointer: boolean | any
 ): Coord => {
   const screenDims = Dimensions.get('screen');
 
@@ -129,7 +129,7 @@ const getTooltipCoordinate = (
 const constraintX = (
   newX: number,
   qIndex: number,
-  x: number,
+  _x: number,
   ScreenWidth: number,
   tooltipWidth: number
 ): number => {

@@ -15,7 +15,6 @@ import type {
   customExtraProps,
   customShadowProps,
 } from '../../../utils/customProps';
-type SpaceType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
 export type IPopoverProps = ColorProps &
   SpaceProps &
   LayoutProps &
@@ -29,10 +28,11 @@ export type IPopoverProps = ColorProps &
   tooltipProps &
   BorderProps & {
     style?: ViewStyle;
-    isCentered?: boolean;
     initialFocusRef?: any;
     finalFocusRef?: any;
     children: JSX.Element | JSX.Element[];
-    size?: SpaceType | string | number;
+    onOpen?: any;
+    onClose?: any;
+    closeOnBlur?: boolean;
     id?: any;
   };

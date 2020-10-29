@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import Basic from './Basic';
-
+import RefEg from './RefEg';
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Popover', module)
   .addDecorator(withKnobs)
@@ -20,4 +20,5 @@ storiesOf('Popover', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Basic', () => <Basic />);
+  .add('Basic', () => <Basic />)
+  .add('Focus on Open', () => <RefEg />);

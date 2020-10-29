@@ -7,9 +7,7 @@ type Props = {
 };
 
 const Triangle = ({ style, isDown }: Props) => (
-  <View style={{ zIndex: 9999, marginTop: 1 }}>
-    <View style={[styles.triangle, style, isDown ? styles.down : {}]} />
-  </View>
+  <View style={[styles.triangle, style, isDown ? styles.down : {}]} />
 );
 
 const styles = StyleSheet.create({
