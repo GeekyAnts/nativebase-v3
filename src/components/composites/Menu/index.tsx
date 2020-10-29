@@ -15,7 +15,7 @@ const STATES = {
   SHOWN: 'SHOWN',
 };
 import { IMenuProps, MenuContext } from './props';
-// import { MenuGroup } from './MenuGroup';
+import { MenuGroup } from './MenuGroup';
 import { MenuItem } from './MenuItem';
 const animationDuration = 300;
 const EASING = Easing.bezier(0.4, 0, 0.2, 1);
@@ -235,4 +235,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { Menu, MenuItem };
+export { Menu, MenuItem, MenuGroup };

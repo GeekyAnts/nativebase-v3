@@ -131,4 +131,4 @@ export {
   AlertDialogOverlay,
 } from './AlertDialog';
 
-export { Menu, MenuItem } from './Menu';
+export { Menu, MenuItem, MenuGroup } from './Menu';

@@ -6,12 +6,19 @@ import {
   Text,
   TouchableHighlight,
   TouchableNativeFeedback,
+  TouchableNativeFeedbackProps,
+  TouchableHighlightProps,
+  ViewStyle,
+  TextStyle,
 } from 'react-native';
 
-const Touchable: any =
-  Platform.OS === 'android' && Platform.Version >= 21
-    ? TouchableNativeFeedback
-    : TouchableHighlight;
+export type IMenuItemProps = TouchableNativeFeedbackProps &
+  TouchableHighlightProps & {
+    children: string | JSX.Element | Array<JSX.Element>;
+    disabled?: boolean;
+    style?: ViewStyle;
+    textStyle?: TextStyle;
+  };
 
 export const MenuItem = ({
   children,
@@ -20,7 +27,11 @@ export const MenuItem = ({
   style,
   textStyle,
   ...props
-}: any) => {
+}: IMenuItemProps) => {
+  const Touchable: any =
+    Platform.OS === 'android' && Platform.Version >= 21
+      ? TouchableNativeFeedback
+      : TouchableHighlight;
   const { closeMenu, closeOnSelect }: IMenuContextProps = React.useContext(
     MenuContext
   );
@@ -49,7 +60,6 @@ MenuItem.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
-    height: 48,
     justifyContent: 'center',
     maxWidth: 248,
     minWidth: 124,
@@ -57,7 +67,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 14,
     fontWeight: '400',
-    paddingHorizontal: 16,
+    padding: 10,
     textAlign: 'left',
   },
 });

@@ -116,6 +116,7 @@ import {
   AlertDialogOverlay,
   Menu,
   MenuItem,
+  MenuGroup,
 } from './components/composites';
 
 import {
@@ -354,4 +355,5 @@ export {
   AlertDialogOverlay,
   Menu,
   MenuItem,
+  MenuGroup,
 };

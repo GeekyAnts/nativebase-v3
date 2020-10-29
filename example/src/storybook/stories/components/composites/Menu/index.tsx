@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import Basic from './Basic';
+import Group from './Group';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Menu', module)
@@ -14,4 +15,5 @@ storiesOf('Menu', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Basic', () => <Basic />);
+  .add('Basic', () => <Basic />)
+  .add('Group', () => <Group />);
