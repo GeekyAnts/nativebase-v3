@@ -5,7 +5,7 @@ import { text } from '@storybook/addon-knobs';
 export default function () {
   return (
     <HStack space={4} alignItems="flex-start">
-      {['xs', 'md', '2xl'].map((size) => (
+      {['sm', 'md', 'lg'].map((size) => (
         <Tag
           colorScheme="green"
           variant="solid"

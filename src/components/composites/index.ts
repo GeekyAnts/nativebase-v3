@@ -52,6 +52,16 @@ export {
   IAccordionItemContextProps,
 } from './Accordion';
 export {
+  default as NumberInput,
+  INumberInputProps,
+  NumberInputField,
+  INumberInputFieldProps,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  INumberInputContext,
+} from './NumberInput';
+export {
   default as Tag,
   TagCloseButton,
   TagLabel,
@@ -98,3 +108,13 @@ export {
   PopoverHeader,
   PopoverTrigger,
 } from './Popover';
+
+export {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogBody,
+  AlertDialogCloseButton,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+} from './AlertDialog';

@@ -1,5 +1,6 @@
 export * from './components/composites/Accordion';
 export * from './components/composites/Alert';
+export * from './components/composites/AlertDialog';
 export * from './components/composites/AspectRatio';
 export * from './components/composites/Avatar';
 export * from './components/composites/Badge';
@@ -25,6 +26,7 @@ export * from './components/composites/Kbd';
 export * from './components/primitives/Link';
 export * from './components/primitives/List';
 export * from './components/composites/Modal';
+export * from './components/composites/NumberInput';
 export * from './components/composites/PinInput';
 export * from './components/composites/Popover';
 export * from './components/composites/Progress';
