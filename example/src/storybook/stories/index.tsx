@@ -17,6 +17,7 @@ export * from './components/primitives/Column';
 export * from './components/composites/Container';
 export * from './components/composites/Divider';
 export * from './components/primitives/Flex';
+export * from './components/composites/FormControl';
 export * from './components/primitives/Heading';
 export * from './components/primitives/HStack';
 export * from './components/primitives/Icon';

@@ -52,6 +52,17 @@ export {
   IAccordionItemContextProps,
 } from './Accordion';
 export {
+  FormControl,
+  IFormControlProps,
+  FormLabel,
+  IFormLabelProps,
+  FormErrorMessage,
+  IFormErrorMessageProps,
+  FormHelperText,
+  IFormHelperTextProps,
+  IFormControlContext,
+} from './FormControl';
+export {
   default as NumberInput,
   INumberInputProps,
   NumberInputField,
