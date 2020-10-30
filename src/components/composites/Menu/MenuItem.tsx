@@ -23,7 +23,6 @@ export type IMenuItemProps = TouchableNativeFeedbackProps &
 
 export const MenuItem = ({
   children,
-  // disabled,   Please check if required!
   onPress,
   style,
   textStyle,
@@ -41,9 +40,11 @@ export const MenuItem = ({
       {...props}
       style={[styles.container, style]}
       onPress={(e: any) => {
-        onPress && onPress(e);
-        if (closeOnSelect) {
-          closeMenu();
+        if (!props.disabled) {
+          onPress && onPress(e);
+          if (closeOnSelect) {
+            closeMenu();
+          }
         }
       }}
     >

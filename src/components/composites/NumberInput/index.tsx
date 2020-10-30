@@ -24,7 +24,7 @@ const NBNumberInput = ({
 }: INumberInputProps) => {
   // TODO: Needs refactoring after input is refactored.
   const [numberInputValue, setNumberInputValue] = React.useState(
-    parseInt(value) || parseInt(defaultValue)
+    parseInt(value || defaultValue, 10)
   );
   const handleChange = (newValue: number) => {
     const temp = newValue;
@@ -40,8 +40,8 @@ const NBNumberInput = ({
   };
   let numberInputStepper: JSX.Element | null = null;
 
-  const sepratingNumberInputStepper = (children: any) => {
-    return React.Children.map(children, (child: JSX.Element) => {
+  const separatingNumberInputStepper = (allChildren: any) => {
+    return React.Children.map(allChildren, (child: JSX.Element) => {
       if (child.type.name === 'NumberInputStepper') {
         numberInputStepper = child;
         return null;
@@ -50,7 +50,7 @@ const NBNumberInput = ({
       }
     });
   };
-  const updatedChildren = sepratingNumberInputStepper(children);
+  const updatedChildren = separatingNumberInputStepper(children);
 
   return (
     <NumberInputContext.Provider
