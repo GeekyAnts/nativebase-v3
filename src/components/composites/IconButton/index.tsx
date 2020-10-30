@@ -3,16 +3,18 @@ import type { TextStyle } from 'react-native';
 
 import { Button, IButtonProps, Icon, IIconProps } from '../../..';
 
-type iconProps = IIconProps & {
-  iconStyle?: TextStyle | {};
+type IconProps = IIconProps & {
+  iconStyle?: TextStyle;
+  iconProps?: IIconProps;
 };
 
-type IconButtonProps = IButtonProps & iconProps;
+type IconButtonProps = IButtonProps & IconProps;
 
 const IconButton = ({
   name,
   type,
   iconStyle,
+  iconProps,
   ...props
 }: IconButtonProps & any) => {
   const iconButtonDefaultprops: IButtonProps = {
@@ -23,7 +25,7 @@ const IconButton = ({
 
   return (
     <Button {...iconButtonDefaultprops} variant="ghost" {...props}>
-      <Icon type={type} style={iconStyle} name={name} />
+      <Icon type={type} name={name} {...iconProps} style={iconStyle} />
     </Button>
   );
 };

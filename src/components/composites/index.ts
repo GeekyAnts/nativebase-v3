@@ -130,3 +130,16 @@ export {
   AlertDialogHeader,
   AlertDialogOverlay,
 } from './AlertDialog';
+
+export {
+  Menu,
+  MenuItem,
+  MenuGroup,
+  MenuItemOption,
+  MenuOptionGroup,
+  IMenuProps,
+  IMenuItemProps,
+  IMenuItemOptionProps,
+  IMenuGroupProps,
+  IMenuOptionGroupProps,
+} from './Menu';
