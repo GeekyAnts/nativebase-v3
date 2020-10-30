@@ -25,7 +25,7 @@ const NBNumberInputFiled = ({
       inputValue = inputValue.replace('-', '');
       inputValue = '-' + inputValue;
     }
-    const value = parseInt(inputValue);
+    const value = parseInt(inputValue, 10);
     if (value) handleChangeWithoutCheck && handleChangeWithoutCheck(value);
     else handleChangeWithoutCheck && handleChangeWithoutCheck(0);
   };

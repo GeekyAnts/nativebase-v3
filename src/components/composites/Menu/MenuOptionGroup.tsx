@@ -24,18 +24,18 @@ export const MenuOptionGroup = ({
   let [internalValues, setValues] = React.useState<Array<string | number>>(
     internalDefaultValue
   );
-  onChange = (value: string | number) => {
+  onChange = (newValue: string | number) => {
     if (type === 'checkbox') {
       let newValues = [...internalValues];
-      if (internalValues.includes(value)) {
-        newValues.splice(newValues.indexOf(value), 1);
+      if (internalValues.includes(newValue)) {
+        newValues.splice(newValues.indexOf(newValue), 1);
         setValues(newValues);
       } else {
-        newValues.push(value);
+        newValues.push(newValue);
         setValues(newValues);
       }
     } else if (type === 'radio') {
-      setValues([value]);
+      setValues([newValue]);
     }
   };
   return (

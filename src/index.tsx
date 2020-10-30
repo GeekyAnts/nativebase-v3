@@ -188,6 +188,8 @@ import {
   List,
   ListItem,
   ListIcon,
+  IListProps,
+  IListItemProps,
 } from './components/primitives';
 
 import {
@@ -350,6 +352,8 @@ export {
   List,
   ListItem,
   ListIcon,
+  IListProps,
+  IListItemProps,
   TagLabel,
   TagLeftIcon,
   TagRightIcon,

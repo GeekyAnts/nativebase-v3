@@ -5,8 +5,7 @@ import { border, flex, get, layout, space } from 'styled-system';
 import { customBorder } from '../../../utils/customProps';
 import { Box } from '../../primitives';
 import { theme, usePropsConfig } from '../../../theme';
-import type { IAvatarProps } from './props';
-export type { IAvatarProps };
+import type { IAvatarProps, IAvatarBadgeProps } from './props';
 
 const getInitials = (str: string) => {
   let nameArr = str.split(' ');
@@ -14,17 +13,8 @@ const getInitials = (str: string) => {
 };
 
 // TODO: refactor this
-export const AvatarBadge = ({
-  boxSize,
-  style,
-  bg,
-  borderColor,
-  ...props
-}: IAvatarProps & {
-  bg?: string;
-  boxSize?: number;
-  borderColor?: string;
-}) => {
+export const AvatarBadge = (props: IAvatarBadgeProps) => {
+  const { boxSize, style, bg, borderColor, ...remainingProps } = props;
   let computedStyle = style;
   computedStyle = StyleSheet.flatten([
     style,
@@ -45,7 +35,7 @@ export const AvatarBadge = ({
       style={computedStyle}
       width={boxSize ? boxSize : 10}
       height={boxSize ? boxSize : 10}
-      {...props}
+      {...remainingProps}
     />
   );
 };
@@ -58,17 +48,14 @@ const StyledAvatar = styled(Box)<IAvatarProps>(
   customBorder
 );
 
-const Avatar = ({
-  size,
-  name,
-  style,
-  src,
-  children,
-  ...props
-}: IAvatarProps & {
-  children?: JSX.Element[] | JSX.Element | any | undefined;
-}) => {
-  const newProps = usePropsConfig('Avatar', { ...props, name, size });
+const Avatar = (
+  props: IAvatarProps & {
+    children?: JSX.Element[] | JSX.Element | any | undefined;
+  }
+) => {
+  const { size, name, style, src, children, ...remainingProps } = props;
+
+  const newProps = usePropsConfig('Avatar', { ...remainingProps, name, size });
   let [alternate, setAlternate] = useState(false);
   let onImageLoadError = (event: any) => {
     console.warn(event.nativeEvent.error);
@@ -100,3 +87,4 @@ const Avatar = ({
 };
 
 export default Avatar;
+export { IAvatarProps, IAvatarBadgeProps } from './props';

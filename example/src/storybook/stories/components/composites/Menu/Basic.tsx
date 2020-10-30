@@ -14,7 +14,7 @@ export default function () {
         );
       }}
     >
-      <MenuItem>Menu item 1</MenuItem>
+      <MenuItem disabled>Menu item 1</MenuItem>
       <MenuItem>Menu item 2</MenuItem>
       <MenuItem disabled>Menu item 3</MenuItem>
       <Divider />

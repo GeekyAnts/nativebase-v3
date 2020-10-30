@@ -43,12 +43,12 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
   ) {
     const colorScheme =
       newProps.colorScheme || componentTheme.defaultProps.colorScheme;
-    let extractedProps = componentTheme.variants[newProps.variant]({
+    let variantProps = componentTheme.variants[newProps.variant]({
       colorScheme,
       theme,
     });
 
-    newProps = { ...newProps, ...extractedProps };
+    newProps = { ...newProps, ...variantProps };
     delete newProps.variant;
     delete newProps.colorScheme;
   }

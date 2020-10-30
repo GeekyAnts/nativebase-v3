@@ -13,7 +13,8 @@
         "trailingComma": "es5",
         "useTabs": false
       }
-    ]
+    ],
+    "no-bitwise": 0
   },
   "plugins": [
     "prettier"

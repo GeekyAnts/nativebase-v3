@@ -33,9 +33,9 @@ const NBPinInput = ({
     return temp.join('');
   };
 
-  const indexSetter = (children: JSX.Element | JSX.Element[]) => {
+  const indexSetter = (allChildren: JSX.Element | JSX.Element[]) => {
     let pinInputFiledCounter = -1;
-    return React.Children.map(children, (child: JSX.Element) => {
+    return React.Children.map(allChildren, (child: JSX.Element) => {
       if (child.type.name !== 'PinInputFiled') return child;
       else {
         pinInputFiledCounter++;

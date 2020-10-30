@@ -40,16 +40,17 @@ export type StackProps = IStackProps &
     reversed?: boolean;
   };
 
-const Stack = ({
-  space,
-  children,
-  divider,
-  reversed,
-  direction,
-  ...props
-}: StackProps & { direction?: 'column' | 'row' }) => {
+const Stack = (props: StackProps & { direction?: 'column' | 'row' }) => {
+  const {
+    space,
+    children,
+    divider,
+    reversed,
+    direction,
+    ...remainingProps
+  } = props;
   return (
-    <StyledStack flexDirection={direction} {...props}>
+    <StyledStack flexDirection={direction} {...remainingProps}>
       {getSpacedChildren(
         children,
         space,
