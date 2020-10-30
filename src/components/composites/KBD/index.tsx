@@ -41,18 +41,16 @@ const Kbd = ({ style, shadow, children, ...props }: IKbdProps) => {
     },
     shadows[shadow ? shadow : 2],
   ]);
-
+  const styles = StyleSheet.create({
+    content: {
+      fontWeight: '700',
+      fontSize: props.fontSize ? props.fontSize : theme.fontSizes.sm,
+      fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+    },
+  });
   return (
     <StyledKbd px={2} {...props} style={computedStyle}>
-      <Text
-        style={{
-          fontWeight: '700',
-          fontSize: props.fontSize ? props.fontSize : theme.fontSizes.sm,
-          fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
-        }}
-      >
-        {children}
-      </Text>
+      <Text style={styles.content}>{children}</Text>
     </StyledKbd>
   );
 };

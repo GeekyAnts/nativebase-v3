@@ -6,6 +6,7 @@ import type {
   SpaceProps,
   TypographyProps,
 } from 'styled-system';
+import type { IBoxProps } from 'native-base';
 import type {
   customBorderProps,
   customBackgroundProps,
@@ -36,3 +37,13 @@ export type IListProps = ScrollViewProps &
     ol?: boolean;
     start?: number;
   };
+
+export type IListItemProps = IBoxProps & {
+  fontSize?: any;
+  unordered?: boolean;
+  ul?: boolean;
+  ordered?: boolean;
+  ol?: boolean;
+  index?: any;
+  start?: number;
+};

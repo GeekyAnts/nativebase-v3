@@ -8,7 +8,7 @@ import type { IIconProps } from './props';
 const SVG = styled(Svg)<IIconProps>(color, space, typography);
 const SVGIcon = ({
   viewBox,
-  color,
+  color: colorProp,
   stroke,
   children,
   focusable,
@@ -28,7 +28,7 @@ const SVGIcon = ({
       height={size}
       width={size}
       viewBox={viewBox}
-      color={color}
+      color={colorProp}
       stroke={stroke}
       focusable={focusable}
       accessibilityRole={'image'}

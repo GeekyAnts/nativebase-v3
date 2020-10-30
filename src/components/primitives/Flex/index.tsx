@@ -48,7 +48,7 @@ const Flex = ({
   shadow,
   children,
   fontSize,
-  color,
+  color: colorProp,
   textDecoration,
   txtDecor,
   wordBreak,
@@ -62,17 +62,17 @@ const Flex = ({
 }: IFlexProps) => {
   // TextProps that contain all the props related to text and gets added to child text components using addTextAndPropsToStrings() method
   const textProps = {
-    fontWeight: fontWeight,
-    fontFamily: fontFamily,
-    fontSize: fontSize,
-    color: color,
-    textDecoration: textDecoration,
-    txtDecor: txtDecor,
-    wordBreak: wordBreak,
-    textOverflow: textOverflow,
-    textTransform: textTransform,
-    whiteSpace: whiteSpace,
-    overflowWrap: overflowWrap,
+    fontWeight,
+    fontFamily,
+    fontSize,
+    color: colorProp,
+    textDecoration,
+    txtDecor,
+    wordBreak,
+    textOverflow,
+    textTransform,
+    whiteSpace,
+    overflowWrap,
   };
 
   // Check Shadow Index to apply shadow from theme Shadows array

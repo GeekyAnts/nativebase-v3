@@ -16,3 +16,9 @@ export type IAvatarProps = LayoutProps &
     size?: string | undefined;
     src?: string | undefined;
   };
+
+export type IAvatarBadgeProps = IAvatarProps & {
+  bg?: string;
+  boxSize?: number;
+  borderColor?: string;
+};
