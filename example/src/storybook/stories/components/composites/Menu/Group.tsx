@@ -7,7 +7,7 @@ export default function () {
       closeOnSelect={false}
       onOpen={() => console.log('opened')}
       onClose={() => console.log('closed')}
-      trigger={(triggerProps: any) => {
+      trigger={(triggerProps) => {
         return (
           <IconButton name="menu" {...triggerProps}>
             Show Menu

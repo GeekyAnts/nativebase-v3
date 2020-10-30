@@ -4,6 +4,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import Basic from './Basic';
 import Group from './Group';
+import MenuOptionsGroup from './MenuOptionsGroup';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Menu', module)
@@ -16,4 +17,5 @@ storiesOf('Menu', module)
     </ThemeProvider>
   ))
   .add('Basic', () => <Basic />)
-  .add('Group', () => <Group />);
+  .add('Group', () => <Group />)
+  .add('MenuOptionsGroup', () => <MenuOptionsGroup />);

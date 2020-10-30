@@ -1,5 +1,4 @@
 import React from 'react';
-import { MenuContext, IMenuContextProps } from './props';
 import {
   Platform,
   StyleSheet,
@@ -11,10 +10,12 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native';
+import type { IMenuContextProps } from './props';
+import { MenuContext } from './Menu';
 
 export type IMenuItemProps = TouchableNativeFeedbackProps &
   TouchableHighlightProps & {
-    children: string | JSX.Element | Array<JSX.Element>;
+    children: string | JSX.Element;
     disabled?: boolean;
     style?: ViewStyle;
     textStyle?: TextStyle;
@@ -46,7 +47,11 @@ export const MenuItem = ({
         }
       }}
     >
-      <Text style={[styles.title, textStyle]}>{children}</Text>
+      {typeof children === 'string' ? (
+        <Text style={[styles.title, textStyle]}>{children}</Text>
+      ) : (
+        children
+      )}
     </Touchable>
   );
 };

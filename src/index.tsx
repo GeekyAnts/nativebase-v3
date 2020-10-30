@@ -117,6 +117,13 @@ import {
   Menu,
   MenuItem,
   MenuGroup,
+  MenuItemOption,
+  MenuOptionGroup,
+  IMenuProps,
+  IMenuItemProps,
+  IMenuItemOptionProps,
+  IMenuGroupProps,
+  IMenuOptionGroupProps,
 } from './components/composites';
 
 import {
@@ -356,4 +363,11 @@ export {
   Menu,
   MenuItem,
   MenuGroup,
+  MenuItemOption,
+  MenuOptionGroup,
+  IMenuProps,
+  IMenuItemProps,
+  IMenuItemOptionProps,
+  IMenuGroupProps,
+  IMenuOptionGroupProps,
 };
