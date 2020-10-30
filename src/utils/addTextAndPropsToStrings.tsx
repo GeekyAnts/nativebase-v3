@@ -3,7 +3,7 @@ import { Text } from '../index';
 
 export const addTextAndPropsToStrings = (children: any, props: any) => {
   if (Array.isArray(children)) {
-    return children.map((child: JSX.Element) => {
+    return React.Children.map(children, (child: JSX.Element) => {
       if (typeof child === 'string') {
         return <Text {...props}>{child}</Text>;
       } else {

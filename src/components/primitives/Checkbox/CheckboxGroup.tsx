@@ -61,7 +61,7 @@ const CheckboxGroup = ({
   };
 
   const supplyPropsToChildren = (children: any, suppliedProps: any) => {
-    return children.map((child: JSX.Element) => {
+    return React.Children.map(children, (child: JSX.Element) => {
       if (child.type.name !== 'NBCheckbox') {
         console.error('Only NativeBase Checkbox is allowed as child');
         return undefined;
