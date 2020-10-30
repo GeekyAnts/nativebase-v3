@@ -121,6 +121,16 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
+  Menu,
+  MenuItem,
+  MenuGroup,
+  MenuItemOption,
+  MenuOptionGroup,
+  IMenuProps,
+  IMenuItemProps,
+  IMenuItemOptionProps,
+  IMenuGroupProps,
+  IMenuOptionGroupProps,
 } from './components/composites';
 
 import {
@@ -364,4 +374,14 @@ export {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
+  Menu,
+  MenuItem,
+  MenuGroup,
+  MenuItemOption,
+  MenuOptionGroup,
+  IMenuProps,
+  IMenuItemProps,
+  IMenuItemOptionProps,
+  IMenuGroupProps,
+  IMenuOptionGroupProps,
 };

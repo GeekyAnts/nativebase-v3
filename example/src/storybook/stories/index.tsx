@@ -26,6 +26,7 @@ export * from './components/primitives/InputBox';
 export * from './components/composites/Kbd';
 export * from './components/primitives/Link';
 export * from './components/primitives/List';
+export * from './components/composites/Menu';
 export * from './components/composites/Modal';
 export * from './components/composites/NumberInput';
 export * from './components/composites/PinInput';
