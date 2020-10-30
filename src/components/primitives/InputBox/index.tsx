@@ -203,7 +203,6 @@ const InputBox = (
   const theme = React.useContext(ThemeContext);
   const handleFocus = (focusState: boolean, callback: any) => {
     setIsFocused(focusState);
-    console.log(isFocused);
     callback();
   };
 
@@ -241,7 +240,6 @@ const InputBox = (
           accessibilityLabel={ariaLabel}
           onKeyPress={(e: any) => {
             e.persist();
-            console.log(e.target);
           }}
           onFocus={() => {
             handleFocus(true, onFocus ? onFocus : () => {});
