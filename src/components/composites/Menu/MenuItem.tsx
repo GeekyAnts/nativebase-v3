@@ -23,7 +23,7 @@ export type IMenuItemProps = TouchableNativeFeedbackProps &
 
 export const MenuItem = ({
   children,
-  disabled,
+  // disabled,   Please check if required!
   onPress,
   style,
   textStyle,
