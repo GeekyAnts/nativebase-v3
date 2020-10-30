@@ -56,8 +56,8 @@ class Tooltip extends React.Component<Props, State> {
     containerStyle: {};
     pointerStyle: {};
     backgroundColor: '#617080';
-    onClose: () => {};
-    onOpen: () => {};
+    onClose: () => void;
+    onOpen: () => void;
   };
 
   toggleTooltip = () => {
@@ -262,6 +262,20 @@ class Tooltip extends React.Component<Props, State> {
     );
   }
 }
+Tooltip.defaultProps = {
+  toggleWrapperProps: {},
+  withOverlay: true,
+  highlightColor: 'transparent',
+  withPointer: true,
+  actionType: 'press',
+  height: 40,
+  width: 150,
+  containerStyle: {},
+  pointerStyle: {},
+  backgroundColor: '#617080',
+  onClose: () => {},
+  onOpen: () => {},
+};
 const styles = {
   container: (withOverlay: any, overlayColor: any) => ({
     backgroundColor: withOverlay
