@@ -43,12 +43,12 @@ const Wrap = ({
   let newProps = usePropsConfig('Wrap', props);
   return (
     <StyledWrap
-      flexDir={direction}
+      {...newProps}
+      flexDirection={direction}
       alignItems={align}
       justifyContent={justify}
       flexGrow={grow}
       flexBasis={basis}
-      {...newProps}
       style={style}
     >
       {isNil(spacing)
