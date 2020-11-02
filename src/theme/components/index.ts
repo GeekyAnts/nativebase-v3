@@ -8,6 +8,7 @@ import Switch from './switch';
 import Image from './image';
 
 import Button from './button';
+import Wrap from './wrap';
 
 export default {
   Heading,
@@ -17,6 +18,7 @@ export default {
   Center,
   Avatar,
   Switch,
+  Wrap,
   Image,
   // not done
   Button,
@@ -31,5 +33,5 @@ export type IThemeComponents =
   | 'Button'
   | 'Center'
   | 'Switch'
-  | 'Image'
-  | 'Button';
+  | 'Wrap'
+  | 'Image';

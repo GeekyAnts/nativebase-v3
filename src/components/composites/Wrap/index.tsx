@@ -1,6 +1,5 @@
 import { isNil } from 'lodash';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
 import {
@@ -10,10 +9,13 @@ import {
   customLayout,
   customExtra,
   customShadow,
+  customFlexBox,
 } from '../../../utils/customProps';
 import type { IWrapProps } from './props';
+import { usePropsConfig } from '../../../theme';
+import { Box } from '../../..';
 
-const StyledWrap = styled(View)<IWrapProps>(
+const StyledWrap = styled(Box)<IWrapProps>(
   color,
   space,
   layout,
@@ -24,34 +26,31 @@ const StyledWrap = styled(View)<IWrapProps>(
   customOutline,
   customShadow,
   customExtra,
-  customLayout
+  customLayout,
+  customFlexBox
 );
 const Wrap = ({
   style,
+  spacing,
+  children,
   direction,
   align,
   justify,
-  basis,
   grow,
-  spacing,
-  children,
+  basis,
   ...props
 }: IWrapProps) => {
-  let computedStyle: any = style;
-  computedStyle = StyleSheet.flatten([
-    style,
-    {
-      display: 'flex',
-      flexDirection: direction ? direction : 'column',
-      alignItems: align,
-      justifyContent: justify,
-      flexWrap: 'wrap',
-      flexBasis: basis,
-      flexGrow: grow,
-    },
-  ]);
+  let newProps = usePropsConfig('Wrap', props);
   return (
-    <StyledWrap {...props} style={computedStyle}>
+    <StyledWrap
+      {...newProps}
+      flexDirection={direction}
+      alignItems={align}
+      justifyContent={justify}
+      flexGrow={grow}
+      flexBasis={basis}
+      style={style}
+    >
       {isNil(spacing)
         ? children
         : React.Children.map(children, (child: any) => {
