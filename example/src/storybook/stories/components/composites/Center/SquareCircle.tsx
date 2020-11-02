@@ -1,13 +1,20 @@
 import React from 'react';
-import { Circle, Square, Box, HStack } from 'native-base';
+import { Circle, Square, Box, HStack, Icon } from 'native-base';
 export default function () {
   return (
     <HStack>
-      <Circle size={100} bg="tomato" color="white">
-        <Box height={30} width={30} bg="red.3" />
+      <Circle size={98} bg="tomato">
+        <Icon
+          name="audiotrack"
+          type="MaterialIcons"
+          color="white"
+          boxSize={8}
+        />
       </Circle>
-      <Square size={100} bg="blue.3" color="white">
-        <Box height={30} width={30} bg="red.3" />
+      <Square size="lg" bg="blue.3">
+        <Box fontWeight="bold" fontSize="lg" color="white">
+          20
+        </Box>
       </Square>
     </HStack>
   );
