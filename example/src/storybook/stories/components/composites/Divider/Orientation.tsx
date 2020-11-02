@@ -1,10 +1,13 @@
 import React from 'react';
-import { Divider, Center } from 'native-base';
+import { Divider, Center, Box } from 'native-base';
 
 export default function () {
   return (
-    <Center height="50px">
-      <Divider orientation="vertical" />
-    </Center>
+    <Box w="100%">
+      <Divider orientation="horizontal" mb={4} />
+      <Center height="50px">
+        <Divider orientation="vertical" />
+      </Center>
+    </Box>
   );
 }
