@@ -1,3 +1,9 @@
-import { VStack } from 'native-base';
+import React from 'react';
+import Flex, { IFlexProps } from './../Flex';
 
-export default VStack;
+const Column = (props: IFlexProps) => {
+  return <Flex {...props} direction="column" />;
+};
+
+export default Column;
+export { IFlexProps as IColumnProps };
