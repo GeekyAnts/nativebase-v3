@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
 import { color, space, typography } from 'styled-system';
-import { ThemeContext } from 'native-base';
+import { usePropsConfig } from 'native-base';
 import styled from 'styled-components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -20,27 +20,14 @@ import type { IIconProps } from './props';
 import { SVGIcon } from './SVGIcon';
 
 const Icon = (iconProps: IIconProps) => {
-  const theme = React.useContext(ThemeContext);
   if (!iconProps.name) {
     return <SVGIcon {...iconProps} />;
   }
-  const { name, type, boxSize, style, ...props } = iconProps;
+  const { name, type, size, style, ...props } = iconProps;
+  const newProps = usePropsConfig('Icon', { size });
 
-  let fontSize =
-    typeof boxSize === 'string'
-      ? theme.fontSizes[boxSize]
-      : typeof boxSize === 'number'
-      ? theme.sizes[boxSize]
-      : 20;
-  fontSize = fontSize ? parseInt(fontSize, 10) : 20;
-
-  const styles = StyleSheet.create({
-    iconDefaultStyle: {
-      fontSize,
-    },
-  });
   const flattenedIconStyle: TextStyle = StyleSheet.flatten([
-    styles.iconDefaultStyle,
+    { fontSize: parseInt(newProps.size) },
     style,
   ]);
   switch (type) {
@@ -67,10 +54,6 @@ const Icon = (iconProps: IIconProps) => {
           style={flattenedIconStyle}
           {...props}
         />
-      );
-    case 'MaterialIcons':
-      return (
-        <MaterialIcons name={name} style={flattenedIconStyle} {...props} />
       );
     case 'Octicons':
       return <Octicons name={name} style={flattenedIconStyle} {...props} />;

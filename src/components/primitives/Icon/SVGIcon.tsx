@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeContext } from 'native-base';
+import { usePropsConfig } from 'native-base';
 import styled from 'styled-components';
 import { color, space, typography } from 'styled-system';
 import Svg, { G, Path, Circle } from 'react-native-svg';
@@ -12,21 +12,14 @@ const SVGIcon = ({
   stroke,
   children,
   focusable,
-  boxSize,
+  size,
   style,
 }: IIconProps) => {
-  const theme = React.useContext(ThemeContext);
-  let size =
-    typeof boxSize === 'string'
-      ? theme.fontSizes[boxSize]
-      : typeof boxSize === 'number'
-      ? theme.sizes[boxSize]
-      : 20;
-  size = size ? parseInt(size, 10) : 20;
+  const newProps = usePropsConfig('Icon', { size });
   return (
     <SVG
-      height={size}
-      width={size}
+      height={parseInt(newProps.size, 10)}
+      width={parseInt(newProps.size, 10)}
       viewBox={viewBox}
       color={colorProp}
       stroke={stroke}

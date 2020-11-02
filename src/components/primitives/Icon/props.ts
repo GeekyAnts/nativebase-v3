@@ -23,7 +23,7 @@ export type IIconProps = TypographyProps &
     type?: IconType;
     style?: TextStyle;
     viewBox?: string;
-    boxSize?: string | number;
+    size?: string | number;
     color?: string;
     focusable?: boolean;
     children?: JSX.Element[] | JSX.Element;

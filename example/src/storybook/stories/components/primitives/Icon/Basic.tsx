@@ -7,7 +7,7 @@ export default function () {
       name={text('name', 'menu')}
       type="MaterialIcons"
       color="teal.2"
-      boxSize={6}
+      size={20}
     />
   );
 }

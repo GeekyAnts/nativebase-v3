@@ -32,7 +32,6 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
   }
   // Extracting props from normal props
   let extractedProps = extractProps(props, theme, componentTheme);
-
   // added this to handle order of props
   // @ts-ignore
   newProps = mergeWith(newProps, extractedProps, (objValue, srcValue, key) => {
