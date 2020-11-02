@@ -4,7 +4,7 @@ import Badge from './badge';
 import Tag from './tag';
 import Avatar from './avatar';
 import Center from './center';
-
+import Switch from './switch';
 import Button from './button';
 
 export default {
@@ -13,8 +13,9 @@ export default {
   Badge,
   Tag,
   Center,
-  // not done
   Avatar,
+  Switch,
+  // not done
   Button,
 };
 
@@ -25,4 +26,5 @@ export type IThemeComponents =
   | 'Tag'
   | 'Avatar'
   | 'Button'
-  | 'Center';
+  | 'Center'
+  | 'Switch';
