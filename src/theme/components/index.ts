@@ -3,6 +3,7 @@ import Code from './code';
 import Badge from './badge';
 import Tag from './tag';
 import Avatar from './avatar';
+import Center from './center';
 
 import Button from './button';
 
@@ -11,6 +12,7 @@ export default {
   Code,
   Badge,
   Tag,
+  Center,
   // not done
   Avatar,
   Button,
@@ -22,4 +24,5 @@ export type IThemeComponents =
   | 'Badge'
   | 'Tag'
   | 'Avatar'
-  | 'Button';
+  | 'Button'
+  | 'Center';
