@@ -5,6 +5,8 @@ import Tag from './tag';
 import Avatar from './avatar';
 import Center from './center';
 import Switch from './switch';
+import Image from './image';
+
 import Button from './button';
 import Wrap from './wrap';
 
@@ -17,6 +19,7 @@ export default {
   Avatar,
   Switch,
   Wrap,
+  Image,
   // not done
   Button,
 };
@@ -30,4 +33,5 @@ export type IThemeComponents =
   | 'Button'
   | 'Center'
   | 'Switch'
-  | 'Wrap';
+  | 'Wrap'
+  | 'Image';

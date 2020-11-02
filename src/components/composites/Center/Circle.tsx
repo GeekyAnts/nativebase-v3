@@ -6,10 +6,10 @@ const Circle = ({ style, size, ...props }: ICircleProps) => {
   return (
     <Center
       rounded="100"
-      height={typeof size === 'number' ? size : 0}
-      width={typeof size === 'number' ? size : 0}
       size={size}
       {...props}
+      height={props.height ? props.height : undefined}
+      width={props.width ? props.width : undefined}
       style={style}
     />
   );
