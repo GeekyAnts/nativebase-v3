@@ -29,10 +29,28 @@ const StyledWrap = styled(Box)<IWrapProps>(
   customLayout,
   customFlexBox
 );
-const Wrap = ({ style, spacing, children, ...props }: IWrapProps) => {
+const Wrap = ({
+  style,
+  spacing,
+  children,
+  direction,
+  align,
+  justify,
+  grow,
+  basis,
+  ...props
+}: IWrapProps) => {
   let newProps = usePropsConfig('Wrap', props);
   return (
-    <StyledWrap {...newProps} style={style}>
+    <StyledWrap
+      flexDir={direction}
+      alignItems={align}
+      justifyContent={justify}
+      flexGrow={grow}
+      flexBasis={basis}
+      {...newProps}
+      style={style}
+    >
       {isNil(spacing)
         ? children
         : React.Children.map(children, (child: any) => {
