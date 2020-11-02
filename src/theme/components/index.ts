@@ -3,6 +3,7 @@ import Code from './code';
 import Badge from './badge';
 import Tag from './tag';
 import Avatar from './avatar';
+import Switch from './switch';
 
 import Button from './button';
 
@@ -11,8 +12,9 @@ export default {
   Code,
   Badge,
   Tag,
-  // not done
   Avatar,
+  Switch,
+  // not done
   Button,
 };
 
@@ -22,4 +24,5 @@ export type IThemeComponents =
   | 'Badge'
   | 'Tag'
   | 'Avatar'
+  | 'Switch'
   | 'Button';

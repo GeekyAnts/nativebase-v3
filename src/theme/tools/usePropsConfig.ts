@@ -19,8 +19,7 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
   let componentBaseStyle =
     typeof componentTheme.baseStyle !== 'function'
       ? componentTheme.baseStyle
-      : componentTheme.baseStyle({ theme, ...props });
-
+      : componentTheme.baseStyle({ theme, ...newProps, ...props });
   for (let property in componentBaseStyle) {
     newProps[property] = get(
       theme,
