@@ -1,9 +1,3 @@
-import React from 'react';
-import Flex, { IFlexProps } from './../Flex';
+import { HStack } from 'native-base';
 
-const Row = (props: IFlexProps) => {
-  return <Flex {...props} direction="row" />;
-};
-
-export default Row;
-export { IFlexProps as IRowProps };
+export default HStack;
