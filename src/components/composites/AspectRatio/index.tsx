@@ -1,8 +1,8 @@
-import { isNil } from 'lodash';
 import React from 'react';
 import { StyleSheet, ViewStyle } from 'react-native';
+import { Box, IBoxProps } from 'native-base';
+import { isNil } from 'lodash';
 
-import { Box, IBoxProps } from '../../primitives';
 export type IAspectRatioProps = IBoxProps & {
   style?: ViewStyle;
   ratio?: number;

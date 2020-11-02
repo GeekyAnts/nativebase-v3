@@ -1,9 +1,8 @@
 import React from 'react';
-import { AspectRatio } from 'native-base';
-import { Image } from 'react-native';
+import { AspectRatio, Image } from 'native-base';
 export default function () {
   return (
-    <AspectRatio ratio={0.5} height={200} bg="black">
+    <AspectRatio ratio={0.5} height={200}>
       <Image
         resizeMode="cover"
         source={{
