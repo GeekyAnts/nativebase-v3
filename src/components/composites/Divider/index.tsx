@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
 import {
@@ -12,6 +12,7 @@ import {
 } from '../../../utils/customProps';
 
 import type { IDividerProps } from './props';
+import { usePropsConfig } from '../../../theme';
 
 const StyledDivider = styled(View)<IDividerProps>(
   color,
@@ -27,12 +28,7 @@ const StyledDivider = styled(View)<IDividerProps>(
   customLayout
 );
 const Divider = ({ style, orientation, ...props }: IDividerProps) => {
-  let computedStyle: ViewStyle = StyleSheet.flatten([
-    style,
-    {
-      borderWidth: 1,
-      opacity: 0.6,
-    },
+  let orientationProps =
     orientation === 'vertical'
       ? {
           width: 0,
@@ -41,9 +37,10 @@ const Divider = ({ style, orientation, ...props }: IDividerProps) => {
       : {
           width: '100%',
           height: 0,
-        },
-  ]);
-  return <StyledDivider {...props} style={computedStyle} />;
+        };
+  let newProps = usePropsConfig('Divider', props);
+
+  return <StyledDivider {...orientationProps} {...newProps} style={style} />;
 };
 
 export default Divider;
