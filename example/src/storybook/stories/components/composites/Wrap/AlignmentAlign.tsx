@@ -2,7 +2,7 @@ import React from 'react';
 import { Wrap, Center } from 'native-base';
 export default function () {
   return (
-    <Wrap spacing={10} align="center" direction="row">
+    <Wrap spacing={10} alignItems="center" flexDir="row">
       <Center w="100px" h="80px" bg="red.2">
         Box 1
       </Center>
