@@ -21,8 +21,8 @@ export {
   IRadioGroupProps,
 } from './Radio';
 export { default as Icon, IIconProps, createIcon } from './Icon';
-export { default as Column } from './Column';
-export { default as Row } from './Row';
+export { Column } from './Column';
+export { Row } from './Row';
 export { default as Button, IButtonProps, ButtonGroup } from './Button';
 export {
   default as Slider,
