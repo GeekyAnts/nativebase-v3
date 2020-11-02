@@ -1,3 +1,2 @@
 import { VStack } from 'native-base';
-
-export default VStack;
+export { VStack as Column };

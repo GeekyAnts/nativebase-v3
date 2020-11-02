@@ -1,3 +1,2 @@
 import { HStack } from 'native-base';
-
-export default HStack;
+export { HStack as Row };
