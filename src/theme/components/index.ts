@@ -4,6 +4,7 @@ import Badge from './badge';
 import Tag from './tag';
 import Avatar from './avatar';
 import Switch from './switch';
+import Image from './image';
 
 import Button from './button';
 
@@ -14,6 +15,7 @@ export default {
   Tag,
   Avatar,
   Switch,
+  Image,
   // not done
   Button,
 };
@@ -25,4 +27,5 @@ export type IThemeComponents =
   | 'Tag'
   | 'Avatar'
   | 'Switch'
+  | 'Image'
   | 'Button';

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ThemeContext } from './../ThemeProvider';
-import { get, isNil } from 'lodash';
+import { get, isNil, mergeWith } from 'lodash';
 import { themePropertyMap } from './../base';
 import type { IThemeComponents } from './../components';
 import { omitUndefined } from './utils';
@@ -8,7 +8,7 @@ import { omitUndefined } from './utils';
 export function usePropsConfig(component: IThemeComponents, props: any) {
   const theme = useContext(ThemeContext).theme;
   const componentTheme = get(theme, `components.${component}`);
-
+  props = omitUndefined(props);
   // Extracting props from defaultProps
   let newProps = extractProps(
     componentTheme.defaultProps,
@@ -32,8 +32,14 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
   }
   // Extracting props from normal props
   let extractedProps = extractProps(props, theme, componentTheme);
-  newProps = { ...newProps, ...extractedProps };
 
+  // added this to handle order of props
+  // @ts-ignore
+  newProps = mergeWith(newProps, extractedProps, (objValue, srcValue, key) => {
+    if (!isNil(objValue)) {
+      delete newProps[key];
+    }
+  });
   // Extracting props from variant
   if (
     componentTheme.variants &&
@@ -67,12 +73,16 @@ function extractProps(props: any, theme: any, componentTheme: any) {
         componentTheme,
         `${themePropertyMap[property]}.${props[property]}`
       );
-      for (let nestedProp in propValues) {
-        newProps[nestedProp] = get(
-          theme,
-          `${themePropertyMap[nestedProp]}.${propValues[nestedProp]}`,
-          propValues[nestedProp]
-        );
+      if (!isNil(propValues)) {
+        for (let nestedProp in propValues) {
+          newProps[nestedProp] = get(
+            theme,
+            `${themePropertyMap[nestedProp]}.${propValues[nestedProp]}`,
+            propValues[nestedProp]
+          );
+        }
+      } else {
+        newProps[property] = props[property];
       }
     } else {
       newProps[property] = props[property];
