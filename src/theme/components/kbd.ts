@@ -10,18 +10,14 @@ function baseStyle(props: Record<string, any>) {
     fontSize: 'sm',
     fontWeight: 'bold',
     whiteSpace: 'nowrap',
-    shadowColor: mode('blackAlpha.7', 'whiteAlpha.7')(props),
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
     px: 2,
   };
 }
 
+const defaultProps = {
+  shadow: 1,
+};
 export default {
   baseStyle,
+  defaultProps,
 };
