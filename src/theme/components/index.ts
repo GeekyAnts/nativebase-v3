@@ -9,8 +9,8 @@ import Image from './image';
 import Wrap from './wrap';
 import Icon from './icon';
 import Divider from './divider';
-
 import Button from './button';
+import BreadCrumb from './breadcrumb';
 
 export default {
   Heading,
@@ -24,6 +24,7 @@ export default {
   Image,
   Divider,
   Icon,
+  BreadCrumb,
   // not done
   Button,
 };
@@ -40,4 +41,5 @@ export type IThemeComponents =
   | 'Wrap'
   | 'Image'
   | 'Icon'
-  | 'Divider';
+  | 'Divider'
+  | 'BreadCrumb';
