@@ -80,6 +80,14 @@ function extractProps(props: any, theme: any, componentTheme: any) {
             propValues[nestedProp]
           );
         }
+      } else if (property === 'shadow') {
+        let shadowProps = get(
+          theme,
+          `${themePropertyMap[property]}.${props[property]}`
+        );
+        if (!isNil(shadowProps)) {
+          newProps = { ...newProps, ...shadowProps };
+        }
       } else {
         newProps[property] = props[property];
       }
