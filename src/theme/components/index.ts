@@ -6,10 +6,11 @@ import Avatar from './avatar';
 import Center from './center';
 import Switch from './switch';
 import Image from './image';
+import Wrap from './wrap';
+import Icon from './icon';
+import Divider from './divider';
 
 import Button from './button';
-import Wrap from './wrap';
-import Divider from './divider';
 
 export default {
   Heading,
@@ -22,6 +23,7 @@ export default {
   Wrap,
   Image,
   Divider,
+  Icon,
   // not done
   Button,
 };
@@ -37,4 +39,5 @@ export type IThemeComponents =
   | 'Switch'
   | 'Wrap'
   | 'Image'
+  | 'Icon'
   | 'Divider';

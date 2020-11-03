@@ -164,6 +164,7 @@ import {
   Icon,
   createIcon,
   IIconProps,
+  Path,
   Input,
   InputGroup,
   InputLeftAddon,
@@ -196,6 +197,7 @@ import {
   ThemeProvider,
   ThemeConsumer,
   ThemeContext,
+  usePropsConfig,
 } from './theme';
 
 export {
@@ -253,6 +255,7 @@ export {
   Icon,
   createIcon,
   IIconProps,
+  Path,
   Input,
   InputGroup,
   InputLeftAddon,
@@ -267,6 +270,7 @@ export {
   ThemeProvider,
   ThemeConsumer,
   ThemeContext,
+  usePropsConfig,
   Switch,
   Flex,
   Kbd,
