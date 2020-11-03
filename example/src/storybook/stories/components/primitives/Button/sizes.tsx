@@ -4,10 +4,11 @@ import { Button, HStack } from 'native-base';
 export default function () {
   return (
     <HStack space={2}>
-      <Button size="xs">Button</Button>
-      <Button size="sm">Button</Button>
-      <Button size="md">Button</Button>
-      <Button size="lg">Button</Button>
+      {['xs', 'sm', 'md', 'lg'].map((size: any) => (
+        <Button size={size} colorScheme="teal">
+          Button
+        </Button>
+      ))}
     </HStack>
   );
 }

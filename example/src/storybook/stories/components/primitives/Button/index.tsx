@@ -2,10 +2,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Box, theme, ThemeProvider } from 'native-base';
-import Button from './example';
+import ButtonGroup from './ButtonGroup';
 import Sizes from './sizes';
 import Usage from './usage';
 import Variants from './variants';
+import Loading from './loading';
+import Icons from './icons';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Button', module)
@@ -20,4 +22,6 @@ storiesOf('Button', module)
   .add('Usage', () => <Usage />)
   .add('Sizes', () => <Sizes />)
   .add('Variants', () => <Variants />)
-  .add('Example', () => <Button />);
+  .add('Loading', () => <Loading />)
+  .add('Icons', () => <Icons />)
+  .add('ButtonGroup', () => <ButtonGroup />);

@@ -27,23 +27,21 @@ export default {
   Link,
   Icon,
   Kbd,
-  // not done
   Button,
 };
 
 export type IThemeComponents =
-  | 'Heading'
-  | 'Code'
-  | 'Badge'
-  | 'Tag'
   | 'Avatar'
   | 'Button'
+  | 'Badge'
   | 'Center'
-  | 'Switch'
-  | 'Wrap'
-  | 'Image'
+  | 'Code'
   | 'Divider'
-  | 'Link'
+  | 'Heading'
   | 'Icon'
-  | 'Divider'
-  | 'Kbd';
+  | 'Image'
+  | 'Kbd'
+  | 'Link'
+  | 'Switch'
+  | 'Tag'
+  | 'Wrap';
