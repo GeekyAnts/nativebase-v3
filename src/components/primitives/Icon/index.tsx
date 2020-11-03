@@ -21,14 +21,13 @@ import { SVGIcon } from './SVGIcon';
 import { Path } from 'react-native-svg';
 
 const Icon = (iconProps: IIconProps) => {
-  if (!iconProps.name) {
-    return <SVGIcon {...iconProps} />;
-  }
   const { name, type, size, style, ...props } = iconProps;
   const newProps = usePropsConfig('Icon', { size });
-
+  if (!name) {
+    return <SVGIcon {...iconProps} />;
+  }
   const flattenedIconStyle: TextStyle = StyleSheet.flatten([
-    { fontSize: parseInt(newProps.size) },
+    { fontSize: parseInt(newProps.size, 10) },
     style,
   ]);
   switch (type) {
