@@ -1,11 +1,21 @@
 import React from 'react';
-import { Divider, HStack, Text } from 'native-base';
+import { Divider, Flex, Text } from 'native-base';
 
 export default function () {
   return (
-    <HStack height={100} p={4}>
-      <Divider orientation="vertical" />
+    <Flex direction="row" p={4}>
+      <Text>Simple</Text>
+      <Divider
+        borderColor="red.5"
+        borderWidth={2}
+        mx={4}
+        orientation="vertical"
+      />
+      <Text>Easy</Text>
+      <Divider borderColor="blue.5" mx={4} orientation="vertical" />
+      <Text>Beautiful</Text>
+      <Divider borderColor="green.5" mx={4} orientation="vertical" />
       <Text>Nativebase</Text>
-    </HStack>
+    </Flex>
   );
 }
