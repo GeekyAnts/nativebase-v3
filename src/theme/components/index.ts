@@ -8,6 +8,7 @@ import Switch from './switch';
 import Image from './image';
 import Button from './button';
 import Wrap from './wrap';
+import Icon from './icon';
 import Divider from './divider';
 import Link from './link';
 
@@ -23,6 +24,7 @@ export default {
   Image,
   Divider,
   Link,
+  Icon,
   // not done
   Button,
 };
@@ -39,4 +41,6 @@ export type IThemeComponents =
   | 'Wrap'
   | 'Image'
   | 'Divider'
-  | 'Link';
+  | 'Link'
+  | 'Icon'
+  | 'Divider';
