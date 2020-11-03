@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
-import { shadows } from '../../../styles';
 import { addTextAndPropsToStrings } from '../../../utils';
 import {
   border,
@@ -69,21 +68,9 @@ const Box = ({
     whiteSpace,
     overflowWrap,
   };
-  let computedStyle: any = props.style;
 
-  // Check Shadow Index to apply shadow from theme Shadows array
-  let shadowInd: number = shadow
-    ? shadow > shadows.length - 1
-      ? shadows.length - 1
-      : shadow
-    : 2; // By default shadow index is set to 2
-
-  computedStyle = StyleSheet.flatten([
-    props.style,
-    shadow ? shadows[shadowInd] : {},
-  ]);
   return (
-    <StyledBox {...props} style={computedStyle}>
+    <StyledBox {...props}>
       {addTextAndPropsToStrings(children, textProps)}
     </StyledBox>
   );
