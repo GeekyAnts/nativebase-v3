@@ -1,4 +1,6 @@
 export * from './components/composites/Accordion';
+// Older version
+// export * from './components/composites/AppBar';
 export * from './components/composites/Alert';
 export * from './components/composites/AlertDialog';
 export * from './components/composites/AspectRatio';
@@ -21,14 +23,17 @@ export * from './components/composites/FormControl';
 export * from './components/primitives/Heading';
 export * from './components/primitives/HStack';
 export * from './components/primitives/Icon';
+export * from './components/composites/IconButton';
 export * from './components/primitives/Image';
 export * from './components/primitives/InputBox';
 export * from './components/composites/Kbd';
 export * from './components/primitives/Link';
 export * from './components/primitives/List';
+export * from './components/composites/Menu';
 export * from './components/composites/Modal';
 export * from './components/composites/NumberInput';
 export * from './components/composites/PinInput';
+export * from './components/composites/Popover';
 export * from './components/composites/Progress';
 export * from './components/primitives/Radio';
 export * from './components/primitives/Row';

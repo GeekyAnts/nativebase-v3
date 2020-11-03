@@ -2,9 +2,9 @@ import React from 'react';
 import { HStack, Image } from 'native-base';
 export default function () {
   return (
-    <HStack alignItems="center" justifyContent="center">
+    <HStack alignItems="center">
       <Image
-        boxSize={50}
+        size={12}
         resizeMode="cover"
         source={{
           uri: 'https://nativebase.io/assets/img/front-page-icon.png',
@@ -12,8 +12,7 @@ export default function () {
         alt="nativebase"
       />
       <Image
-        boxSize={100}
-        width={100}
+        size={20}
         resizeMode="cover"
         source={{
           uri: 'https://nativebase.io/assets/img/front-page-icon.png',
@@ -21,7 +20,7 @@ export default function () {
         alt="nativebase"
       />
       <Image
-        boxSize={150}
+        size={32}
         source={{
           uri: 'https://nativebase.io/assets/img/front-page-icon.png',
         }}

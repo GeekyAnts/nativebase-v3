@@ -128,6 +128,15 @@ export {
   ModalHeader,
   ModalOverlay,
 } from './Modal';
+export {
+  default as Popover,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+} from './Popover';
 
 export {
   AlertDialog,
@@ -138,3 +147,16 @@ export {
   AlertDialogHeader,
   AlertDialogOverlay,
 } from './AlertDialog';
+
+export {
+  Menu,
+  MenuItem,
+  MenuGroup,
+  MenuItemOption,
+  MenuOptionGroup,
+  IMenuProps,
+  IMenuItemProps,
+  IMenuItemOptionProps,
+  IMenuGroupProps,
+  IMenuOptionGroupProps,
+} from './Menu';

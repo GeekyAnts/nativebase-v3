@@ -10,9 +10,8 @@ import {
   customExtra,
   customTypography,
 } from '../../../utils/customProps';
-
-import { VStack, Box, IBoxProps, Text, IIconProps, Icon } from '../../..';
-import type { IListProps } from './props';
+import { VStack, Box, Text, IIconProps, Icon } from '../../..';
+import type { IListProps, IListItemProps } from './props';
 
 const StyledList = styled(ScrollView)<ScrollViewProps>(
   color,
@@ -45,43 +44,33 @@ const List = ({ style, children, spacing, ...props }: IListProps) => {
   );
 };
 
-export const ListItem = ({
-  children,
-  unordered,
-  ul,
-  ordered,
-  ol,
-  ...props
-}: IBoxProps & {
-  fontSize?: any;
-  unordered?: boolean;
-  ul?: boolean;
-  ordered?: boolean;
-  ol?: boolean;
-  index?: any;
-  start?: number;
-}) => {
-  const startNum = props.start ? props.start : 1; // Ordered list starting number
+export const ListItem = (props: IListItemProps) => {
+  const { children, unordered, ul, ordered, ol, ...remainingProps } = props;
+  const startNum = remainingProps.start ? remainingProps.start : 1; // Ordered list starting number
   return (
     <Box flexDirection="row" alignItems="center">
-      <Box flexDirection="row" alignItems="center" {...props}>
+      <Box flexDirection="row" alignItems="center" {...remainingProps}>
         {unordered || ul ? ( //Adding disc in front of ListItem
           <Text
             mr={2}
-            fontSize={props.fontSize}
-            color={props.color}
+            fontSize={remainingProps.fontSize}
+            color={remainingProps.color}
             style={{ transform: [{ scale: 1.5 }] }}
           >
             {`\u2022`}
           </Text>
         ) : null}
         {ordered || ol ? ( //Adding index number in front of ListItem
-          <Text mr={2} fontSize={props.fontSize} color={props.color}>
-            {props.index + startNum + '.'}
+          <Text
+            mr={2}
+            fontSize={remainingProps.fontSize}
+            color={remainingProps.color}
+          >
+            {remainingProps.index + startNum + '.'}
           </Text>
         ) : null}
       </Box>
-      <Box flexDirection="row" alignItems="center" {...props}>
+      <Box flexDirection="row" alignItems="center" {...remainingProps}>
         {children}
       </Box>
     </Box>
@@ -90,5 +79,5 @@ export const ListItem = ({
 export const ListIcon = (props: IIconProps) => {
   return <Icon mr={2} {...props} />;
 };
-export { IListProps } from './props';
+export { IListProps, IListItemProps } from './props';
 export default List;

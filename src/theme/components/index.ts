@@ -3,16 +3,31 @@ import Code from './code';
 import Badge from './badge';
 import Tag from './tag';
 import Avatar from './avatar';
-
+import Center from './center';
+import Switch from './switch';
+import Image from './image';
 import Button from './button';
+import Wrap from './wrap';
+import Icon from './icon';
+import Divider from './divider';
+import Link from './link';
+import Kbd from './kbd';
 
 export default {
   Heading,
   Code,
   Badge,
   Tag,
-  // not done
+  Center,
   Avatar,
+  Switch,
+  Wrap,
+  Image,
+  Divider,
+  Link,
+  Icon,
+  Kbd,
+  // not done
   Button,
 };
 
@@ -22,4 +37,13 @@ export type IThemeComponents =
   | 'Badge'
   | 'Tag'
   | 'Avatar'
-  | 'Button';
+  | 'Button'
+  | 'Center'
+  | 'Switch'
+  | 'Wrap'
+  | 'Image'
+  | 'Divider'
+  | 'Link'
+  | 'Icon'
+  | 'Divider'
+  | 'Kbd';

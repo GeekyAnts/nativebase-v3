@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image as RNImage, Text } from 'react-native';
+import { Image as RNImage, Text } from 'react-native';
 import styled from 'styled-components';
 import { border, flex, layout, space } from 'styled-system';
 import { customBorder } from '../../../utils/customProps';
+import { usePropsConfig } from '../../../theme';
 import type { IImageProps } from './props';
 
 const StyledImage = styled(RNImage)<IImageProps>(
@@ -14,10 +15,7 @@ const StyledImage = styled(RNImage)<IImageProps>(
 );
 
 const Image = ({
-  boxSize,
   style,
-  height,
-  width,
   alt,
   fallbackSource,
   source,
@@ -38,23 +36,15 @@ const Image = ({
       setAlternate(true);
     }
   };
-  let computedStyle = StyleSheet.flatten([
-    style,
-    {
-      width: width ? width : boxSize ? boxSize : undefined,
-      height: height ? height : boxSize ? boxSize : 'auto',
-      maxWidth: '100%',
-    },
-  ]);
-
+  const newProps = usePropsConfig('Image', props);
   if (alternate) {
     return <Text>{alt}</Text>;
   }
   return (
     <StyledImage
-      style={computedStyle}
+      style={style}
       source={renderedSource}
-      {...props}
+      {...newProps}
       onError={props.onError ? props.onError : onImageLoadError}
     />
   );

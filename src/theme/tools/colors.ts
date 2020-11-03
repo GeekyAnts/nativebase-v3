@@ -2,6 +2,10 @@ import { get, isEmpty } from 'lodash';
 import Color from 'tinycolor2';
 import type { Dict } from './utils';
 
+export function mode(light: any, dark: any) {
+  return (props: Dict) => (props.colorMode === 'dark' ? dark : light);
+}
+
 export const transparentize = (color: string, opacity: number) => (
   theme: Dict
 ) => {
