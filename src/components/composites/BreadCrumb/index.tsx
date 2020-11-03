@@ -51,7 +51,7 @@ const BreadCrumb = ({
   };
   let newProps = usePropsConfig('BreadCrumb', props);
   return (
-    <Flex wrap="wrap" {...newProps} style={style}>
+    <Flex {...newProps} style={style}>
       {children && !children.length
         ? children
         : BreadCrumbSeparator(children, separator, textProps, spacing)}

@@ -4,7 +4,11 @@ const baseStyle = {
   display: 'flex',
   flexDirection: 'row',
 };
+const defaultProps = {
+  wrap: 'wrap',
+};
 
 export default {
   baseStyle,
+  defaultProps,
 };
