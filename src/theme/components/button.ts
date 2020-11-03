@@ -13,7 +13,7 @@ function variantGhost(props: Dict) {
   const { colorScheme: c } = props;
   if (c === 'gray') {
     return {
-      color: mode(`inherit`, `whiteAlpha.9`)(props),
+      color: mode(`gray.6`, `whiteAlpha.9`)(props),
     };
   }
 

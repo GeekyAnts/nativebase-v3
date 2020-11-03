@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -20,7 +20,7 @@ import {
 import { usePropsConfig, Text } from 'native-base';
 import { Spinner, Box, IBoxProps, Flex } from '../../primitives';
 import type { IButtonProps } from './IButtonProps';
-
+import { ButtonGroupContext } from './ButtonGroup';
 const StyledView = styled(View)<
   IButtonProps & {
     colorScheme?: string | undefined;
@@ -70,8 +70,12 @@ const StyledIOSButton = styled(TouchableOpacity)<
   customExtra,
   customLayout
 );
-const Button = (
-  {
+const Button = (allProps: IButtonProps & IBoxProps, ref: any) => {
+  let buttonGroupProps = useContext(ButtonGroupContext);
+  if (buttonGroupProps) {
+    allProps = { ...buttonGroupProps, ...allProps };
+  }
+  let {
     style,
     children,
     highlight,
@@ -85,9 +89,8 @@ const Button = (
     spinner,
     ariaLabel,
     ...props
-  }: IButtonProps & IBoxProps,
-  ref: any
-) => {
+  } = allProps;
+
   const newProps = usePropsConfig('Button', {
     ...props,
     size,
@@ -109,7 +112,7 @@ const Button = (
   };
   const innerButton = (
     <StyledView {...viewProps} opacity={isLoading ? 0.5 : 1} style={style}>
-      {leftIcon ? <Box mr={3}>{leftIcon}</Box> : null}
+      {leftIcon ? <Box mr={viewProps.px / 2 || 2}>{leftIcon}</Box> : null}
       {isLoading ? (
         <Flex direction="row">
           {spinner ? spinner : <Spinner color={textProps.color} size="sm" />}
@@ -123,7 +126,7 @@ const Button = (
           {children}
         </Text>
       )}
-      {rightIcon ? <Box ml={3}>{rightIcon}</Box> : null}
+      {rightIcon ? <Box ml={viewProps.px / 2 || 2}>{rightIcon}</Box> : null}
     </StyledView>
   );
 
@@ -134,7 +137,7 @@ const Button = (
           accessible
           accessibilityLabel={ariaLabel}
           accessibilityRole="button"
-          disabled={isLoading || isDisabled ? true : false}
+          disabled={isLoading || isDisabled}
           onPress={onClick ? onClick : () => {}}
           background={TouchableNativeFeedback.Ripple(textProps.color, false)}
           ref={ref}
@@ -150,7 +153,7 @@ const Button = (
         accessible
         accessibilityLabel={ariaLabel}
         accessibilityRole="button"
-        disabled={isLoading || isDisabled ? true : false}
+        disabled={isLoading || isDisabled}
         onPress={onClick ? onClick : () => {}}
         activeOpacity={highlight ? highlight : 0.8}
         ref={ref}

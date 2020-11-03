@@ -5,21 +5,17 @@ export default function () {
   return (
     <HStack space={2}>
       <Button
-        variant="solid"
-        leftIcon={<Icon name="menu" size={10} type="MaterialIcons" />}
-        size="xs"
-        colorScheme="dark"
+        leftIcon={<Icon name="menu" size={6} type="MaterialIcons" />}
+        colorScheme="indigo"
       >
-        Left Icon Button
+        Menu
       </Button>
       <Button
         isDisabled
-        rightIcon={<Icon name="menu" size={10} type="MaterialIcons" />}
-        variant="solid"
-        size="xs"
-        colorScheme="danger"
+        rightIcon={<Icon name="menu" size={6} type="MaterialIcons" />}
+        colorScheme="cyan"
       >
-        Right Icon Button
+        Menu
       </Button>
     </HStack>
   );
