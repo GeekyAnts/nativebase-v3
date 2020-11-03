@@ -39,7 +39,6 @@ const StyledBox = styled(View)<IBoxProps>(
 );
 
 const Box = ({
-  shadow,
   children,
   fontSize,
   color: colorProp,
