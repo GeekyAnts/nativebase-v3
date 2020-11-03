@@ -21,7 +21,7 @@ import {
 } from '../../../utils/customProps';
 
 import type { IBoxProps } from './props';
-
+import { usePropsConfig } from '../../../theme';
 const StyledBox = styled(View)<IBoxProps>(
   color,
   space,
@@ -68,8 +68,9 @@ const Box = ({
     overflowWrap,
   };
 
+  let newProps = usePropsConfig('Box', props);
   return (
-    <StyledBox {...props}>
+    <StyledBox {...newProps}>
       {addTextAndPropsToStrings(children, textProps)}
     </StyledBox>
   );
