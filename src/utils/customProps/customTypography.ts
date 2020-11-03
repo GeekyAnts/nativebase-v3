@@ -9,6 +9,7 @@ const config: Config = {
   whiteSpace: true,
   textDecoration: true,
   txtDecor: { property: 'textDecoration' },
+  textDecorationLine: { property: 'textDecorationLine' },
 };
 
 /**
@@ -43,6 +44,10 @@ export interface customTypographyProps {
    * The CSS `text-decoration` property
    */
   txtDecor?: CSS.Property.TextDecoration;
+  /**
+   * The CSS `text-decoration-line` property
+   */
+  textDecorationLine?: CSS.Property.TextDecorationLine;
 }
 
 export const customTypography = system(config);
