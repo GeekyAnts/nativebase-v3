@@ -9,6 +9,7 @@ import Image from './image';
 import Wrap from './wrap';
 import Icon from './icon';
 import Divider from './divider';
+import Kbd from './kbd';
 
 import Button from './button';
 
@@ -24,6 +25,7 @@ export default {
   Image,
   Divider,
   Icon,
+  Kbd,
   // not done
   Button,
 };
@@ -40,4 +42,5 @@ export type IThemeComponents =
   | 'Wrap'
   | 'Image'
   | 'Icon'
-  | 'Divider';
+  | 'Divider'
+  | 'Kbd';
