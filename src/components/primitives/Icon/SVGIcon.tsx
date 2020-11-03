@@ -30,7 +30,7 @@ const SVGIcon = ({
       {React.Children.count(children) > 0 ? (
         <G>
           {React.Children.map(children, ({ props: childProps, type }: any) => {
-            if (type === 'path') {
+            if (type.name === 'Path') {
               return (
                 <Path
                   {...childProps}

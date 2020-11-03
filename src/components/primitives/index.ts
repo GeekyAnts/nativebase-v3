@@ -20,7 +20,13 @@ export {
   RadioGroup,
   IRadioGroupProps,
 } from './Radio';
-export { default as Icon, IIconProps, createIcon } from './Icon';
+export {
+  default as Icon,
+  IIconProps,
+  createIcon,
+  IconType,
+  Path,
+} from './Icon';
 export { Column } from './Column';
 export { Row } from './Row';
 export { default as Button, IButtonProps, ButtonGroup } from './Button';
