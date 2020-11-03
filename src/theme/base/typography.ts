@@ -8,7 +8,6 @@ const typography = {
     widest: '1.6px',
   },
   lineHeights: {
-    normal: 'normal',
     none: 1,
     shorter: 1.25,
     short: 1.375,

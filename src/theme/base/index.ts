@@ -3,6 +3,7 @@ import radii from './radius';
 import sizes, { baseSizes } from './sizes';
 import typography from './typography';
 import borders from './borders';
+import shadows from './shadows';
 
 const theme = {
   radii,
@@ -11,6 +12,7 @@ const theme = {
   sizes,
   space: baseSizes,
   borders,
+  shadows,
 };
 
 export type ITheme = typeof theme;
@@ -26,6 +28,7 @@ export const themePropertyMap: any = {
   size: 'sizes',
   space: 'space',
   border: 'borders',
+  shadow: 'shadows',
 };
 
 export default theme;

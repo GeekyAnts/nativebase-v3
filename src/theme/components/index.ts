@@ -11,6 +11,7 @@ import Wrap from './wrap';
 import Icon from './icon';
 import Divider from './divider';
 import Link from './link';
+import Kbd from './kbd';
 
 export default {
   Heading,
@@ -25,6 +26,7 @@ export default {
   Divider,
   Link,
   Icon,
+  Kbd,
   // not done
   Button,
 };
@@ -43,4 +45,5 @@ export type IThemeComponents =
   | 'Divider'
   | 'Link'
   | 'Icon'
-  | 'Divider';
+  | 'Divider'
+  | 'Kbd';
