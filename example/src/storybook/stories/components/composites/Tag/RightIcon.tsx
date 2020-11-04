@@ -1,6 +1,5 @@
 import React from 'react';
 import { Tag, TagLabel, TagRightIcon, HStack } from 'native-base';
-import { text } from '@storybook/addon-knobs';
 
 export default function () {
   return (
@@ -14,11 +13,7 @@ export default function () {
           size={size}
         >
           <TagLabel>Menu</TagLabel>
-          <TagRightIcon
-            name={text('name', 'menu')}
-            type="MaterialIcons"
-            color="white"
-          />
+          <TagRightIcon name={'menu'} type="MaterialIcons" color="white" />
         </Tag>
       ))}
     </HStack>
