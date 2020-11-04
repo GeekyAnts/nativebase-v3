@@ -13,6 +13,7 @@ import Divider from './divider';
 import BreadCrumb from './breadcrumb';
 import Link from './link';
 import Kbd from './kbd';
+import Container from './container';
 import Box from './box';
 
 export default {
@@ -30,6 +31,7 @@ export default {
   Icon,
   BreadCrumb,
   Kbd,
+  Container,
   Box,
   // not done
   Button,
@@ -50,6 +52,7 @@ export type IThemeComponents =
   | 'Link'
   | 'Icon'
   | 'Divider'
-  | 'BreadCrumb'
   | 'Kbd'
+  | 'Container'
+  | 'BreadCrumb'
   | 'Box';

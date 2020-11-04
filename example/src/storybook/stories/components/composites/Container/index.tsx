@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import Usage from './usage';
-import Playground from './knobEnabled';
+import Playground from './Playground';
 import CenteringChildren from './centeringChildren';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
