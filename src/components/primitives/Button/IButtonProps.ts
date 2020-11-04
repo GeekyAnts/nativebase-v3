@@ -31,8 +31,8 @@ export type IButtonProps = ViewProps &
     colorScheme?: string;
     variant?: string;
     isLoading?: any;
-    size?: string | number;
-    onClick?: any;
+    size?: 'xs' | 'sm' | 'md' | 'lg';
+    onPress?: any;
     shadow?: number;
     leftIcon?: JSX.Element | Array<JSX.Element>;
     rightIcon?: JSX.Element | Array<JSX.Element>;

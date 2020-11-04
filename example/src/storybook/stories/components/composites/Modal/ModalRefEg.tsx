@@ -43,7 +43,7 @@ export default function () {
               Save
             </Button>
             <Button
-              onClick={() => {
+              onPress={() => {
                 setModalVisible(!modalVisible);
               }}
             >
@@ -53,7 +53,7 @@ export default function () {
         </ModalContent>
       </Modal>
       <Button
-        onClick={() => {
+        onPress={() => {
           setModalVisible(!modalVisible);
         }}
       >

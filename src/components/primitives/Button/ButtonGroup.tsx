@@ -5,7 +5,7 @@ import { border, color, flexbox, layout, space } from 'styled-system';
 export type ButtonGroupProps = {
   children: JSX.Element | Array<JSX.Element>;
   variant?: string;
-  size?: string | number;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   spacing?: string | number;
 };
 const StyledButtonGroup = styled.View<ButtonGroupProps>(

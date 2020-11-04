@@ -77,7 +77,7 @@ const Button = (
     isLoading,
     isLoadingText,
     size,
-    onClick,
+    onPress,
     leftIcon,
     rightIcon,
     isDisabled,
@@ -162,7 +162,7 @@ const Button = (
         accessibilityLabel={ariaLabel}
         accessibilityRole="button"
         disabled={isLoading || isDisabled}
-        onPress={onClick ? onClick : () => {}}
+        onPress={onPress ? onPress : () => {}}
         background={TouchableNativeFeedback.Ripple(textProps.color, false)}
         ref={ref}
         {...layoutProps}
@@ -177,7 +177,7 @@ const Button = (
         accessibilityLabel={ariaLabel}
         accessibilityRole="button"
         disabled={isLoading || isDisabled}
-        onPress={onClick ? onClick : () => {}}
+        onPress={onPress ? onPress : () => {}}
         activeOpacity={highlight ? highlight : 0.8}
         ref={ref}
         {...layoutProps}

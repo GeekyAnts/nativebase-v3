@@ -5,7 +5,7 @@ export default function () {
 
   return (
     <>
-      <Button onClick={() => setIsOpen(!isOpen)}>
+      <Button onPress={() => setIsOpen(!isOpen)}>
         Click Me to {isOpen ? 'hide' : 'show'}
       </Button>
       <Slide in={isOpen}>
