@@ -1,48 +1,30 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Box, ThemeContext } from 'native-base';
+import { Box, usePropsConfig } from 'native-base';
 import { space, layout, border } from 'styled-system';
 import type { ISkeletonCircleProps } from './props';
 import { Animated } from 'react-native';
-export type { ISkeletonCircleProps };
 
-const NBSkeletonCircle = ({
-  children,
-  style,
-  startColor,
-  endColor,
-  ...props
-}: ISkeletonCircleProps) => {
-  const theme = React.useContext(ThemeContext);
-  const colorSetter = (color: string) => {
-    if (color[0] === '#') return color;
-    else if (color in theme.colors && theme.colors[color]) {
-      return typeof theme.colors[color] === 'string'
-        ? theme.colors[color]
-        : theme.colors[color][5] || theme.colors[color][2];
-    }
-  };
-  const fadeAnim = React.useRef(new Animated.Value(0)).current;
-  let skeletonColor = startColor
-    ? colorSetter(startColor)
-    : theme.colors.muted[2];
-  let baseColor = endColor ? colorSetter(endColor) : 'transparent';
+const NBSkeletonCircle = ({ children, ...props }: ISkeletonCircleProps) => {
+  const blinkAnim = React.useRef(new Animated.Value(0)).current;
+  const newProps = usePropsConfig('Skeleton', props);
+  const { style, skeletonColor, baseColor } = newProps;
 
   React.useEffect(() => {
-    const test = Animated.sequence([
-      Animated.timing(fadeAnim, {
+    const blink = Animated.sequence([
+      Animated.timing(blinkAnim, {
         toValue: 1,
         duration: 1000,
         useNativeDriver: true,
       }),
-      Animated.timing(fadeAnim, {
+      Animated.timing(blinkAnim, {
         toValue: 0,
         duration: 1000,
         useNativeDriver: true,
       }),
     ]);
-    Animated.loop(test).start();
-  }, [fadeAnim]);
+    Animated.loop(blink).start();
+  }, [blinkAnim]);
 
   const skeletonStyle = {
     skeleton: {
@@ -51,12 +33,12 @@ const NBSkeletonCircle = ({
       bottom: 0,
       left: 0,
       right: 0,
-      borderRadius: 300,
+      borderRadius: 999,
       backgroundColor: skeletonColor,
-      opacity: fadeAnim, // Bind opacity to animated value
+      opacity: blinkAnim, // Bind opacity to animated value
     },
     base: {
-      borderRadius: 300,
+      borderRadius: 999,
       backgroundColor: baseColor,
     },
   };

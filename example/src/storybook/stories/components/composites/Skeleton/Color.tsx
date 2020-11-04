@@ -1,11 +1,11 @@
 import React from 'react';
-import { Skeleton, Stack } from 'native-base';
+import { Skeleton, VStack } from 'native-base';
 export default function () {
   return (
-    <Stack width="90%">
-      <Skeleton my={2} startColor="pink" endColor="orange" height="20px" />
-      <Skeleton my={2} startColor="gray" endColor="#0dead0" height="20px" />
-      <Skeleton my={2} startColor="success" endColor="danger" height="20px" />
-    </Stack>
+    <VStack space={5} width="90%">
+      <Skeleton startColor="pink.6" endColor="purple.4" height="20px" />
+      <Skeleton startColor="#0dead0" endColor="#0face0" height="20px" />
+      <Skeleton startColor="warning.2" endColor="danger.2" height="20px" />
+    </VStack>
   );
 }

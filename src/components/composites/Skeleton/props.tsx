@@ -10,4 +10,5 @@ export type ISkeletonCircleProps = ISkeletonProps & {
 };
 export type ISkeletonTextProps = ISkeletonProps & {
   noOfLines?: number;
+  lineSize?: number;
 };

@@ -15,6 +15,8 @@ import Link from './link';
 import Kbd from './kbd';
 import Progress from './progress';
 import Container from './container';
+import Skeleton from './skeleton';
+import SkeletonText from './skeletonText';
 import Box from './box';
 import CloseButton from './close-button';
 import Flex from './flex';
@@ -36,6 +38,8 @@ export default {
   Kbd,
   Progress,
   Container,
+  Skeleton,
+  SkeletonText,
   Box,
   Flex,
   Button,
@@ -59,6 +63,8 @@ export type IThemeComponents =
   | 'Tag'
   | 'Wrap'
   | 'Container'
+  | 'Skeleton'
+  | 'SkeletonText'
   | 'BreadCrumb'
   | 'Box'
   | 'CloseButton'
