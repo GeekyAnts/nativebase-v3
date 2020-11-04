@@ -12,6 +12,7 @@ import Icon from './icon';
 import Divider from './divider';
 import Link from './link';
 import Kbd from './kbd';
+import Text from './text';
 
 export default {
   Heading,
@@ -27,6 +28,7 @@ export default {
   Link,
   Icon,
   Kbd,
+  Text,
   // not done
   Button,
 };
@@ -46,4 +48,5 @@ export type IThemeComponents =
   | 'Link'
   | 'Icon'
   | 'Divider'
-  | 'Kbd';
+  | 'Kbd'
+  | 'Text';

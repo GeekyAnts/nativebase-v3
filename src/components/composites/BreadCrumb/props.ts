@@ -15,11 +15,11 @@ import type {
   customShadowProps,
 } from '../../../utils/customProps';
 
-import type { IBoxProps, TextProps, IFlexProps } from '../../primitives';
+import type { IBoxProps, ITextProps, IFlexProps } from '../../primitives';
 
 export type IBreadCrumbProps = IBoxProps &
   IFlexProps &
-  TextProps & {
+  ITextProps & {
     style?: ViewStyle;
     children?: JSX.Element[] | JSX.Element | any;
     spacing?: number;

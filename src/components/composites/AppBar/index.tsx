@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { border, color, flexbox, layout, space } from 'styled-system';
 
-import { Box, IBoxProps, Text, TextProps } from '../../primitives';
+import { Box, IBoxProps, Text, ITextProps } from '../../primitives';
 
 type AppBarProps = IBoxProps & {
   actions?: Array<JSX.Element>;
@@ -20,7 +20,7 @@ const defaultAppBarProps: IBoxProps = {
   px: 4,
 };
 
-const defaultTitleProps: TextProps = {
+const defaultTitleProps: ITextProps = {
   color: 'white',
   fontSize: 3,
   fontWeight: '600',

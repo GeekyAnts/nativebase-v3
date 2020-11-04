@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
-import { CloseButton, Box, IIconProps, Icon, Text, TextProps } from '../../..';
+import { CloseButton, Box, IIconProps, Icon, Text, ITextProps } from '../../..';
 import type { ICloseButtonProps } from '../CloseButton/props';
 import type { ITagProps } from './props';
 import { usePropsConfig } from '../../../theme';
 
 const StyledTag = styled(Box)<ITagProps>({});
 
-export const TagLabel = (props: TextProps) => {
+export const TagLabel = (props: ITextProps) => {
   return <Text {...props} />;
 };
 export const TagLeftIcon = (props: IIconProps) => {

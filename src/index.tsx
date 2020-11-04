@@ -136,7 +136,7 @@ import {
 import {
   View,
   Text,
-  TextProps,
+  ITextProps,
   Checkbox,
   ICheckboxProps,
   CheckboxGroup,
@@ -224,7 +224,7 @@ export {
   View,
   Text,
   Code,
-  TextProps,
+  ITextProps,
   Checkbox,
   ICheckboxProps,
   CheckboxGroup,
