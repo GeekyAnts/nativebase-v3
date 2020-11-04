@@ -1,7 +1,7 @@
 import React from 'react';
 import { ViewStyle, StyleSheet, Animated, Easing } from 'react-native';
 
-import { Box, IBoxProps, TextProps, Text } from '../../..';
+import { Box, IBoxProps, ITextProps, Text } from '../../..';
 import styled from 'styled-components';
 import { color, border } from 'styled-system';
 
@@ -169,7 +169,7 @@ const CircularProgress = ({
   );
 };
 
-export const CircularProgressLabel = (props: TextProps) => {
+export const CircularProgressLabel = (props: ITextProps) => {
   return <Text {...props} />;
 };
 
