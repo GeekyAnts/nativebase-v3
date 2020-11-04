@@ -17,8 +17,8 @@ import type {
   customShadowProps,
 } from '../../../utils/customProps';
 
-import type { TextProps } from '../../primitives';
-export type ICodeProps = TextProps &
+import type { ITextProps } from '../../primitives';
+export type ICodeProps = ITextProps &
   ColorProps &
   SpaceProps &
   LayoutProps &

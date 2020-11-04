@@ -1,55 +1,36 @@
 import styled from 'styled-components/native';
 import * as React from 'react';
 import {
-  ColorProps,
-  SpaceProps,
-  TypographyProps,
-  PositionProps,
   color,
   position,
   space,
   typography,
+  layout,
+  flexbox,
+  border,
 } from 'styled-system';
-import { theme } from '../../../theme';
-import { StyleSheet } from 'react-native';
-const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', 'xl'];
 
-export type TextProps = ColorProps &
-  SpaceProps &
-  PositionProps &
-  TypographyProps & {
-    children?: React.ReactNode | string | undefined;
-    fontSize?: typeof sizes[number] | number;
-    noOfLines?: number;
-    style?: any;
-    bold?: boolean;
-    isTruncated?: any;
-    italic?: boolean;
-    underline?: boolean;
-    strikeThrough?: boolean;
-  };
+import {
+  customBorder,
+  customBackground,
+  customOutline,
+  customLayout,
+  customExtra,
+  customShadow,
+  customTypography,
+} from '../../../utils/customProps';
+import type { ITextProps } from './props';
+import { StyleSheet, Text as NativeText } from 'react-native';
+import { usePropsConfig } from '../../../theme';
 
-const StyledText = styled.Text<TextProps>`
-  ${position}
-  ${color}
-  ${space}
-  ${typography}
-`;
-StyledText.defaultProps = {
-  bold: false,
-  italic: false,
-  underline: false,
-  strikeThrough: false,
-};
-
-const Text = ({
+const NBText = ({
   children,
   style,
   isTruncated,
-  fontSize,
   noOfLines,
   ...props
-}: TextProps) => {
+}: ITextProps) => {
+  const newProps = usePropsConfig('Text', props);
   const addonStyle = StyleSheet.create({
     boldStyle: {
       fontWeight: 'bold',
@@ -63,6 +44,13 @@ const Text = ({
     strikeThroughStyle: {
       textDecorationLine: 'line-through',
     },
+    // TODO: fontSize should calclated in the theme. Currently adding static size
+    subStyle: {
+      fontSize: 10,
+    },
+    highlightedStyle: {
+      backgroundColor: 'yellow',
+    },
   });
 
   if (props.bold) style = StyleSheet.compose(style, addonStyle.boldStyle);
@@ -75,21 +63,48 @@ const Text = ({
   if (props.strikeThrough)
     style = StyleSheet.compose(style, addonStyle.strikeThroughStyle);
 
-  // TODO: replace this, had some typing issues
-  if (fontSize && typeof fontSize === 'string' && sizes.includes(fontSize)) {
-    // @ts-ignore
-    fontSize = theme.fontSizes[fontSize];
-  }
+  if (props.sub) style = StyleSheet.compose(style, addonStyle.subStyle);
+
+  if (props.highlight)
+    style = StyleSheet.compose(style, addonStyle.highlightedStyle);
+
   return (
-    <StyledText
+    <NativeText
       style={style}
-      fontSize={fontSize}
       numberOfLines={noOfLines ? noOfLines : isTruncated ? 1 : 999}
-      {...props}
+      {...newProps}
     >
       {children}
-    </StyledText>
+    </NativeText>
   );
 };
 
+const StyledText = styled(NBText)<ITextProps>(
+  color,
+  space,
+  position,
+  layout,
+  flexbox,
+  border,
+  typography,
+  customBorder,
+  customBackground,
+  customOutline,
+  customShadow,
+  customExtra,
+  customLayout,
+  customTypography
+);
+StyledText.defaultProps = {
+  bold: false,
+  italic: false,
+  underline: false,
+  strikeThrough: false,
+};
+
+const Text = ({ children, ...props }: ITextProps) => {
+  return <StyledText {...props}>{children}</StyledText>;
+};
+
 export default Text;
+export type { ITextProps };

@@ -1,5 +1,5 @@
 export { default as Box, IBoxProps } from './Box';
-export { default as Text, TextProps } from './Text';
+export { default as Text, ITextProps } from './Text';
 export {
   default as Input,
   IInputBoxProps,

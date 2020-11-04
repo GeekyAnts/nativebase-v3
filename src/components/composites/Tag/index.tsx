@@ -6,7 +6,7 @@ import {
   IIconProps,
   Icon,
   Text,
-  TextProps,
+  ITextProps,
   usePropsConfig,
 } from 'native-base';
 
@@ -15,7 +15,7 @@ import type { ITagProps } from './props';
 
 const StyledTag = styled(Box)<ITagProps>({});
 
-export const TagLabel = (props: TextProps) => {
+export const TagLabel = (props: ITextProps) => {
   return <Text {...props} />;
 };
 export const TagLeftIcon = (props: IIconProps) => {
