@@ -10,9 +10,13 @@ import Button from './button';
 import Wrap from './wrap';
 import Icon from './icon';
 import Divider from './divider';
+import BreadCrumb from './breadcrumb';
 import Link from './link';
 import Kbd from './kbd';
 import Text from './text';
+import Progress from './progress';
+import Container from './container';
+import Box from './box';
 
 export default {
   Heading,
@@ -27,26 +31,35 @@ export default {
   Divider,
   Link,
   Icon,
+  BreadCrumb,
   Kbd,
   Text,
   // not done
+  Progress,
+  Container,
+  Box,
   Button,
 };
 
 export type IThemeComponents =
-  | 'Heading'
-  | 'Code'
-  | 'Badge'
-  | 'Tag'
   | 'Avatar'
   | 'Button'
+  | 'Badge'
   | 'Center'
-  | 'Switch'
-  | 'Wrap'
-  | 'Image'
+  | 'Code'
   | 'Divider'
-  | 'Link'
+  | 'Heading'
   | 'Icon'
   | 'Divider'
   | 'Kbd'
-  | 'Text';
+  | 'Text'
+  | 'Image'
+  | 'Kbd'
+  | 'Progress'
+  | 'Link'
+  | 'Switch'
+  | 'Tag'
+  | 'Wrap'
+  | 'Container'
+  | 'BreadCrumb'
+  | 'Box';

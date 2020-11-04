@@ -15,6 +15,7 @@ import type {
   customShadowProps,
 } from '../../../utils/customProps';
 
+// @ts-ignore
 import type { IBoxProps, ITextProps, IFlexProps } from '../../primitives';
 
 export type IBreadCrumbProps = IBoxProps &

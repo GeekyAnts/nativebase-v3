@@ -2,35 +2,34 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
 
-import { getAttachedChildren } from '../../../utils';
-import type { SpaceType } from './types';
-
 export type ButtonGroupProps = {
-  children: Element | Element[];
-  variant?: string | undefined;
-  size?: SpaceType | string | undefined;
-  spacing?: number;
+  children: JSX.Element | Array<JSX.Element>;
+  variant?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+  spacing?: string | number;
 };
-const StyledButtonGroup = styled.View<ButtonGroupProps>`
-  flex-direction: row;
-  flex-wrap: wrap;
-  ${color}
-  ${space}
-  ${layout}
-  ${flexbox}
-  ${border}
-`;
+const StyledButtonGroup = styled.View<ButtonGroupProps>(
+  color,
+  space,
+  layout,
+  flexbox,
+  border,
+  { flexDirection: 'row', flexWrap: 'wrap' }
+);
 
-const supplyPropsToChildren = (children: any, props: any) => {
-  return React.Children.map(children, (child: JSX.Element) =>
-    React.cloneElement(child, props, child.props.children)
-  );
-};
-
-export const ButtonGroup = ({ children, ...props }: ButtonGroupProps) => {
+export const ButtonGroup = ({
+  children,
+  spacing,
+  ...props
+}: ButtonGroupProps) => {
   return (
     <StyledButtonGroup>
-      {supplyPropsToChildren(getAttachedChildren(children), props)}
+      {React.Children.map(children, (child: JSX.Element, index: number) => {
+        return React.cloneElement(child, {
+          ml: index !== 0 ? spacing : undefined,
+          ...props,
+        });
+      })}
     </StyledButtonGroup>
   );
 };

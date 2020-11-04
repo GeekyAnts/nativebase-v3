@@ -34,7 +34,7 @@ export default function () {
             deleted.
           </AlertDialogBody>
           <AlertDialogFooter>
-            <Button ref={cancelRef} onClick={onClose}>
+            <Button ref={cancelRef} onPress={onClose}>
               No
             </Button>
             <Button colorScheme="red" ml={3}>
@@ -43,7 +43,7 @@ export default function () {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-      <Button onClick={() => setIsOpen(!isOpen)}>Discard</Button>
+      <Button onPress={() => setIsOpen(!isOpen)}>Discard</Button>
     </Center>
   );
 }
