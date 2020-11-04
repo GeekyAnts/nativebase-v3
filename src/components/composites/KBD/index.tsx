@@ -5,7 +5,7 @@ import { usePropsConfig, Box, Text } from 'native-base';
 import type { IKbdProps } from './props';
 
 const StyledKbd = styled(Box)<IKbdProps>({});
-const Kbd = ({ style, textStyle, shadow, children, ...props }: IKbdProps) => {
+const Kbd = ({ style, textStyle, children, ...props }: IKbdProps) => {
   let newProps = usePropsConfig('Kbd', props);
   let { fontWeight, fontSize, lineHeight, ...viewProps } = newProps;
   const textProps = { fontWeight, fontSize, lineHeight };
