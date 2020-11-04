@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext } from 'react';
+import React, { forwardRef } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -17,10 +17,9 @@ import {
   customExtra,
   customShadow,
 } from '../../../utils/customProps';
-import { usePropsConfig, Text } from 'native-base';
+import { usePropsConfig, Text, themeTools } from 'native-base';
 import { Spinner, Box, IBoxProps, Flex } from '../../primitives';
 import type { IButtonProps } from './IButtonProps';
-import { ButtonGroupContext } from './ButtonGroup';
 const StyledView = styled(View)<
   IButtonProps & {
     colorScheme?: string | undefined;
@@ -70,12 +69,8 @@ const StyledIOSButton = styled(TouchableOpacity)<
   customExtra,
   customLayout
 );
-const Button = (allProps: IButtonProps & IBoxProps, ref: any) => {
-  let buttonGroupProps = useContext(ButtonGroupContext);
-  if (buttonGroupProps) {
-    allProps = { ...buttonGroupProps, ...allProps };
-  }
-  let {
+const Button = (
+  {
     style,
     children,
     highlight,
@@ -89,8 +84,9 @@ const Button = (allProps: IButtonProps & IBoxProps, ref: any) => {
     spinner,
     ariaLabel,
     ...props
-  } = allProps;
-
+  }: IButtonProps & IBoxProps,
+  ref: any
+) => {
   const newProps = usePropsConfig('Button', {
     ...props,
     size,
@@ -98,15 +94,44 @@ const Button = (allProps: IButtonProps & IBoxProps, ref: any) => {
   let {
     fontWeight,
     fontSize,
-    lineHeight,
     textDecorationLine,
     color,
+    m,
+    margin,
+    mt,
+    marginTop,
+    mr,
+    marginRight,
+    mb,
+    marginBottom,
+    ml,
+    marginLeft,
+    mx,
+    marginX,
+    my,
+    marginY,
     ...viewProps
   } = newProps;
+
+  const layoutProps = themeTools.omitUndefined({
+    m,
+    margin,
+    mt,
+    marginTop,
+    mr,
+    marginRight,
+    mb,
+    marginBottom,
+    ml,
+    marginLeft,
+    mx,
+    marginX,
+    my,
+    marginY,
+  });
   const textProps = {
     fontWeight,
     fontSize,
-    // lineHeight,
     textDecorationLine,
     color,
   };
@@ -132,20 +157,18 @@ const Button = (allProps: IButtonProps & IBoxProps, ref: any) => {
 
   if (Platform.OS === 'android' && Platform.Version >= 21) {
     return (
-      <Box {...props} style={style}>
-        <StyledAndroidButton
-          accessible
-          accessibilityLabel={ariaLabel}
-          accessibilityRole="button"
-          disabled={isLoading || isDisabled}
-          onPress={onClick ? onClick : () => {}}
-          background={TouchableNativeFeedback.Ripple(textProps.color, false)}
-          ref={ref}
-          {...props}
-        >
-          {innerButton}
-        </StyledAndroidButton>
-      </Box>
+      <StyledAndroidButton
+        accessible
+        accessibilityLabel={ariaLabel}
+        accessibilityRole="button"
+        disabled={isLoading || isDisabled}
+        onPress={onClick ? onClick : () => {}}
+        background={TouchableNativeFeedback.Ripple(textProps.color, false)}
+        ref={ref}
+        {...layoutProps}
+      >
+        {innerButton}
+      </StyledAndroidButton>
     );
   } else {
     return (
@@ -157,8 +180,7 @@ const Button = (allProps: IButtonProps & IBoxProps, ref: any) => {
         onPress={onClick ? onClick : () => {}}
         activeOpacity={highlight ? highlight : 0.8}
         ref={ref}
-        {...props}
-        style={style}
+        {...layoutProps}
       >
         {innerButton}
       </StyledIOSButton>
@@ -168,5 +190,4 @@ const Button = (allProps: IButtonProps & IBoxProps, ref: any) => {
 
 export { IButtonProps } from './IButtonProps';
 export { ButtonGroup, ButtonGroupProps } from './ButtonGroup';
-import OldButton from './OldButton';
 export default forwardRef(Button);

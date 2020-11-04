@@ -8,6 +8,7 @@ import Usage from './usage';
 import Variants from './variants';
 import Loading from './loading';
 import Icons from './icons';
+import Composition from './Composition';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Button', module)
@@ -24,4 +25,5 @@ storiesOf('Button', module)
   .add('Variants', () => <Variants />)
   .add('Loading', () => <Loading />)
   .add('Icons', () => <Icons />)
-  .add('ButtonGroup', () => <ButtonGroup />);
+  .add('ButtonGroup', () => <ButtonGroup />)
+  .add('Composition', () => <Composition />);

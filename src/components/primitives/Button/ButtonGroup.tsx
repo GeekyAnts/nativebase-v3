@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
-import type { SpaceType } from './types';
 
 export type ButtonGroupProps = {
-  children: Element | Element[];
-  variant?: string | undefined;
-  size?: SpaceType | string | undefined;
-  spacing?: number;
+  children: JSX.Element | Array<JSX.Element>;
+  variant?: string;
+  size?: string | number;
+  spacing?: string | number;
 };
 const StyledButtonGroup = styled.View<ButtonGroupProps>(
   color,
@@ -18,11 +17,19 @@ const StyledButtonGroup = styled.View<ButtonGroupProps>(
   { flexDirection: 'row', flexWrap: 'wrap' }
 );
 
-export const ButtonGroupContext = React.createContext({});
-export const ButtonGroup = ({ children, ...props }: ButtonGroupProps) => {
+export const ButtonGroup = ({
+  children,
+  spacing,
+  ...props
+}: ButtonGroupProps) => {
   return (
-    <ButtonGroupContext.Provider value={props}>
-      <StyledButtonGroup>{children}</StyledButtonGroup>
-    </ButtonGroupContext.Provider>
+    <StyledButtonGroup>
+      {React.Children.map(children, (child: JSX.Element, index: number) => {
+        return React.cloneElement(child, {
+          ml: index !== 0 ? spacing : undefined,
+          ...props,
+        });
+      })}
+    </StyledButtonGroup>
   );
 };
