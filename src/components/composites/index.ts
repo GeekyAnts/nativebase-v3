@@ -17,7 +17,7 @@ export {
   BreadCrumbItem,
   BreadCrumbLink,
 } from './BreadCrumb';
-export { default as CloseButton } from './CloseButton';
+export { default as CloseButton, ICloseButtonProps } from './CloseButton';
 export { default as Container, IContainerProps } from './Container';
 export { default as Divider, IDividerProps } from './Divider';
 export { default as Progress } from './Progress';
@@ -52,6 +52,17 @@ export {
   IAccordionItemContextProps,
 } from './Accordion';
 export {
+  FormControl,
+  IFormControlProps,
+  FormLabel,
+  IFormLabelProps,
+  FormErrorMessage,
+  IFormErrorMessageProps,
+  FormHelperText,
+  IFormHelperTextProps,
+  IFormControlContext,
+} from './FormControl';
+export {
   default as NumberInput,
   INumberInputProps,
   NumberInputField,
@@ -80,11 +91,29 @@ export {
 } from './Center';
 export { default as Wrap, IWrapProps } from './Wrap';
 export {
+  Toast,
+  IToastProps,
+  useToast,
+  ToastCard,
+  IToastCardProps,
+  IuseToast,
+} from './Toast';
+export {
   default as PinInput,
   IPinInputProps,
   PinInputField,
   IPinInputFieldProps,
 } from './PinInput';
+export {
+  Fade,
+  IFadeProps,
+  ScaleFade,
+  IScaleFadeProps,
+  Slide,
+  ISlideProps,
+  SlideFade,
+  ISlideFadeProps,
+} from './Transitions';
 export { default as Collapse } from './Collapse';
 export {
   default as CircularProgress,
@@ -99,6 +128,15 @@ export {
   ModalHeader,
   ModalOverlay,
 } from './Modal';
+export {
+  default as Popover,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+} from './Popover';
 
 export {
   AlertDialog,
@@ -109,3 +147,16 @@ export {
   AlertDialogHeader,
   AlertDialogOverlay,
 } from './AlertDialog';
+
+export {
+  Menu,
+  MenuItem,
+  MenuGroup,
+  MenuItemOption,
+  MenuOptionGroup,
+  IMenuProps,
+  IMenuItemProps,
+  IMenuItemOptionProps,
+  IMenuGroupProps,
+  IMenuOptionGroupProps,
+} from './Menu';

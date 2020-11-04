@@ -1,5 +1,5 @@
 import { isDark, randomColor } from './../tools/colors';
-import { mode } from './../tools/utils';
+import { mode } from './../tools';
 
 const baseStyle = (props: Record<string, any>) => {
   const { name, theme } = props;

@@ -47,7 +47,7 @@ const CustomRadioGroup = ({
   };
 
   const supplyPropsToChildren = (children: any, suppliedProps: any) => {
-    return children.map((child: JSX.Element) => {
+    return React.Children.map(children, (child: JSX.Element) => {
       if (child.type.name !== 'Radio') {
         console.error('Only NativeBase Radio is allowed as child');
         return undefined;

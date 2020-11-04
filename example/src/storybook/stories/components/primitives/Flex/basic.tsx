@@ -10,7 +10,7 @@ export default function () {
       <Center bg="blue.3" h="100" w="100">
         <Text>Box 2</Text>
       </Center>
-      <Box flex="1" bg="tomato">
+      <Box flex={1} bg="tomato">
         Box 3
       </Box>
     </Flex>

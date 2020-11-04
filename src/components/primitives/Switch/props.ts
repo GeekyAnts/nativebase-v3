@@ -1,5 +1,4 @@
-import type { ViewProps, ViewStyle } from 'react-native';
-
+import type { SwitchProps, ViewStyle } from 'react-native';
 import type {
   BorderProps,
   ColorProps,
@@ -7,6 +6,7 @@ import type {
   LayoutProps,
   SpaceProps,
 } from 'styled-system';
+
 import type {
   customBorderProps,
   customBackgroundProps,
@@ -16,9 +16,7 @@ import type {
   customShadowProps,
 } from '../../../utils/customProps';
 
-type SpaceType = 'sm' | 'md' | 'lg' | number;
-
-export type ICloseButtonProps = ViewProps &
+export type ISwitchProps = SwitchProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -30,12 +28,17 @@ export type ICloseButtonProps = ViewProps &
   customLayoutProps &
   customBackgroundProps &
   BorderProps & {
-    style?: ViewStyle | any;
-    children?: any;
-    color?: string | undefined;
-    size?: SpaceType;
+    style?: ViewStyle;
+    size?: 'lg' | 'md' | 'sm';
+    onColor?: string;
+    offColor?: string;
     isDisabled?: boolean;
-    onClick?: any | undefined;
+    name?: string;
+    onToggle?: any;
+    colorScheme?: string;
+    iosBgColor?: string;
+    isChecked?: boolean;
+    defaultIsChecked?: boolean;
+    isInvalid?: boolean;
     ariaLabel?: string;
-    fontSize?: number;
   };

@@ -24,14 +24,14 @@ export type IZStackProps =
   | FlexboxProps
   | BorderProps;
 
-const StyledZStack = styled(View)<IZStackProps>`
-  ${color}
-  ${spacing}
-  ${layout}
-  ${flexbox}
-  ${border}
-  ${position}
-`;
+const StyledZStack = styled(View)<IZStackProps>(
+  color,
+  spacing,
+  layout,
+  flexbox,
+  border,
+  position
+);
 
 type ZStackProps = IZStackProps &
   ViewProps & {

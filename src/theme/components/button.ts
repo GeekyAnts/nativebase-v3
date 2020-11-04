@@ -1,98 +1,120 @@
-// import { Dict, mode } from './../utils';
+import { Dict, mode } from './../tools';
 
 const baseStyle = {
-  lineHeight: '1.2',
+  // lineHeight: 1.2,
   borderRadius: 'md',
   fontWeight: 'semibold',
-  // _focus: {
-  //   boxShadow: "outline",
-  // },
-  // _disabled: {
-  //   opacity: 0.4,
-  //   cursor: "not-allowed",
-  //   boxShadow: "none",
-  // },
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+function variantGhost(props: Dict) {
+  const { colorScheme: c } = props;
+  if (c === 'gray') {
+    return {
+      color: mode(`gray.6`, `whiteAlpha.9`)(props),
+    };
+  }
+
+  return {
+    color: mode(`${c}.6`, `${c}.2`)(props),
+    bg: 'transparent',
+  };
+}
+
+function variantOutline(props: Dict) {
+  const { colorScheme: c } = props;
+  const borderColor = mode(`gray.2`, `whiteAlpha.3`)(props);
+  return {
+    border: '1px solid',
+    borderColor: c === 'gray' ? borderColor : mode(`${c}.6`, `${c}.2`)(props),
+    ...variantGhost(props),
+  };
+}
+
+type AccessibleColor = {
+  bg?: string;
+  color?: string;
 };
 
-const variants = {
-  success: () => ({
-    bg: 'success.2',
-    borderColor: 'success.2',
-    color: 'success.1',
-  }),
-  danger: () => ({
-    bg: 'danger.2',
-    borderColor: 'danger.2',
-    color: 'danger.1',
-  }),
-  warning: () => ({
-    bg: 'warning.2',
-    borderColor: 'warning.2',
-    color: 'warning.1',
-  }),
-  dark: () => ({
-    bg: 'dark.2',
-    borderColor: 'dark.2',
-    color: 'dark.1',
-  }),
-  light: () => ({
-    bg: 'light.2',
-    borderColor: 'light.2',
-    color: 'light.1',
-  }),
-  muted: () => ({
-    bg: 'muted.2',
-    borderColor: 'muted.2',
-    color: 'muted.1',
-  }),
-  default: () => ({
-    bg: 'default.2',
-    borderColor: 'default.2',
-    color: 'default.1',
-  }),
+/** Accessible color overrides for less accessible colors. */
+const accessibleColorMap: { [key: string]: AccessibleColor } = {
+  yellow: {
+    bg: 'yellow.4',
+    color: 'black',
+  },
+  cyan: {
+    bg: 'cyan.4',
+    color: 'black',
+  },
+};
 
-  outline: () => ({
-    bg: 'transparent',
-    borderWidth: '1px',
-  }),
-  ghost: () => ({
-    bg: 'transparent',
-    borderWidth: '0px',
-  }),
-  link: () => ({
-    bg: 'transparent',
-    borderWidth: '0px',
-  }),
-  solid: () => ({
-    color: 'white',
-  }),
+function variantSolid(props: Dict) {
+  const { colorScheme: c } = props;
+  if (c === 'gray')
+    return {
+      bg: mode(`gray.1`, `whiteAlpha.2`)(props),
+    };
+  const { bg = `${c}.4`, color = 'white' } = accessibleColorMap[c] || {};
+  return {
+    bg: mode(bg, `${c}.2`)(props),
+    color: mode(color, `gray.8`)(props),
+  };
+}
+
+function variantLink(props: Dict) {
+  const { colorScheme: c } = props;
+  return {
+    padding: 0,
+    height: 'auto',
+    // lineHeight: 'normal',
+    color: mode(`${c}.5`, `${c}.2`)(props),
+    textDecorationLine: 'underline',
+  };
+}
+
+const variantUnstyled = {
+  bg: 'none',
+  color: 'inherit',
+  display: 'inline',
+  lineHeight: 'inherit',
+  m: 0,
+  p: 0,
+};
+const variants = {
+  ghost: variantGhost,
+  outline: variantOutline,
+  solid: variantSolid,
+  link: variantLink,
+  unstyled: variantUnstyled,
 };
 
 const sizes = {
-  // lg: {
-  //   h: 12,
-  //   minW: 12,
-  //   fontSize: 'lg',
-  //   px: 6,
-  // },
-  // md: {
-  //   h: 10,
-  //   minW: 10,
-  //   fontSize: 'md',
-  //   px: 4,
-  // },
-  // sm: {
-  //   h: 8,
-  //   minW: 8,
-  //   fontSize: 'sm',
-  //   px: 3,
-  // },
-  // xs: {
-  //   h: 6,
-  //   minW: 6,
-  //   fontSize: 'xs',
-  //   px: 2,
-  // },
+  lg: {
+    minH: 12,
+    minW: 12,
+    fontSize: 'lg',
+    px: 6,
+  },
+  md: {
+    minH: 10,
+    minW: 10,
+    fontSize: 'md',
+    px: 4,
+  },
+  sm: {
+    minH: 8,
+    minW: 8,
+    fontSize: 'sm',
+    px: 3,
+  },
+  xs: {
+    minH: 6,
+    minW: 6,
+    fontSize: 'xs',
+    px: 2,
+  },
 };
 
 const defaultProps = {

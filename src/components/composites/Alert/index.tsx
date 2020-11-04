@@ -74,11 +74,11 @@ const childStyling = (
     variantStyle,
     fontSize !== -1 ? { fontSize: fontSize } : {},
   ]);
-  return children.map((child: any) => {
-    return React.cloneElement(child, {
+  return React.Children.map(children, (child: any) =>
+    React.cloneElement(child, {
       style: computedStyle,
-    });
-  });
+    })
+  );
 };
 
 const StyledAlert = styled(View)<IAlertProps>(

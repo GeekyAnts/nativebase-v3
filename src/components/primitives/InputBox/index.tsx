@@ -116,11 +116,11 @@ const StyledBox = styled(View)<IInputBoxProps>(
     prop: 'inputSize',
     variants: {
       '2xl': { fontSize: '2xl' },
-      'xl': { fontSize: 'xl' },
-      'lg': { fontSize: 'lg' },
-      'md': { fontSize: 'md' },
-      'sm': { fontSize: 'sm' },
-      'xs': { fontSize: 'xs' },
+      xl: { fontSize: 'xl' },
+      lg: { fontSize: 'lg' },
+      md: { fontSize: 'md' },
+      sm: { fontSize: 'sm' },
+      xs: { fontSize: 'xs' },
     },
   }),
   variant({
@@ -157,11 +157,11 @@ const StyledInputBox = styled(TextInput)<IInputBoxProps>(
     prop: 'inputSize',
     variants: {
       '2xl': { fontSize: '2xl' },
-      'xl': { fontSize: 'xl' },
-      'lg': { fontSize: 'lg' },
-      'md': { fontSize: 'md' },
-      'sm': { fontSize: 'sm' },
-      'xs': { fontSize: 'xs' },
+      xl: { fontSize: 'xl' },
+      lg: { fontSize: 'lg' },
+      md: { fontSize: 'md' },
+      sm: { fontSize: 'sm' },
+      xs: { fontSize: 'xs' },
     },
   })
 );
@@ -203,7 +203,6 @@ const InputBox = (
   const theme = React.useContext(ThemeContext);
   const handleFocus = (focusState: boolean, callback: any) => {
     setIsFocused(focusState);
-    console.log(isFocused);
     callback();
   };
 
@@ -241,7 +240,6 @@ const InputBox = (
           accessibilityLabel={ariaLabel}
           onKeyPress={(e: any) => {
             e.persist();
-            console.log(e.target);
           }}
           onFocus={() => {
             handleFocus(true, onFocus ? onFocus : () => {});
@@ -347,7 +345,7 @@ const StyledInputGroup = styled.View<InputGroupProps>`
 `;
 
 const supplyPropsToChildren = (children: any, props: any) => {
-  return children.map((child: JSX.Element) => {
+  return React.Children.map(children, (child: JSX.Element) => {
     return React.cloneElement(child, props, child.props.children);
   });
 };

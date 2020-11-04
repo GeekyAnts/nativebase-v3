@@ -1,14 +1,15 @@
 import React from 'react';
-import { Center, Box, HStack } from 'native-base';
+import { Center, Box, HStack, Icon } from 'native-base';
 export default function () {
   return (
     <HStack>
       <Center w="40px" h="40px" bg="blue.2" color="white">
-        {/* <Icon name=""/> */}
-        <Box height={20} width={20} bg="red.3" />
+        <Icon name="audiotrack" type="MaterialIcons" color="red.3" size={6} />
       </Center>
-      <Center w="40px" h="40px" bg="tomato" color="white">
-        1
+      <Center w="40px" h="40px" bg="tomato">
+        <Box fontWeight="bold" fontSize="lg" color="white">
+          20
+        </Box>
       </Center>
     </HStack>
   );

@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
-import { shadows } from '../../../styles';
 import { addTextAndPropsToStrings } from '../../../utils';
 import {
   border,
@@ -22,7 +21,7 @@ import {
 } from '../../../utils/customProps';
 
 import type { IBoxProps } from './props';
-
+import { usePropsConfig } from '../../../theme';
 const StyledBox = styled(View)<IBoxProps>(
   color,
   space,
@@ -40,10 +39,9 @@ const StyledBox = styled(View)<IBoxProps>(
 );
 
 const Box = ({
-  shadow,
   children,
   fontSize,
-  color,
+  color: colorProp,
   textDecoration,
   txtDecor,
   wordBreak,
@@ -57,33 +55,22 @@ const Box = ({
 }: IBoxProps) => {
   // TextProps that contain all the props related to text and gets added to child text components using addTextAndPropsToStrings() method
   const textProps = {
-    fontWeight: fontWeight,
-    fontFamily: fontFamily,
-    fontSize: fontSize,
-    color: color,
-    textDecoration: textDecoration,
-    txtDecor: txtDecor,
-    wordBreak: wordBreak,
-    textOverflow: textOverflow,
-    textTransform: textTransform,
-    whiteSpace: whiteSpace,
-    overflowWrap: overflowWrap,
+    fontWeight,
+    fontFamily,
+    fontSize,
+    color: colorProp,
+    textDecoration,
+    txtDecor,
+    wordBreak,
+    textOverflow,
+    textTransform,
+    whiteSpace,
+    overflowWrap,
   };
-  let computedStyle: any = props.style;
 
-  // Check Shadow Index to apply shadow from theme Shadows array
-  let shadowInd: number = shadow
-    ? shadow > shadows.length - 1
-      ? shadows.length - 1
-      : shadow
-    : 2; // By default shadow index is set to 2
-
-  computedStyle = StyleSheet.flatten([
-    props.style,
-    shadow ? shadows[shadowInd] : {},
-  ]);
+  let newProps = usePropsConfig('Box', props);
   return (
-    <StyledBox {...props} style={computedStyle}>
+    <StyledBox {...newProps}>
       {addTextAndPropsToStrings(children, textProps)}
     </StyledBox>
   );

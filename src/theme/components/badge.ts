@@ -1,4 +1,4 @@
-import { transparentize } from '../tools/colors';
+import { transparentize } from '../tools';
 
 const baseStyle = {
   px: 1,

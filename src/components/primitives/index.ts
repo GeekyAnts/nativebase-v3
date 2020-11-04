@@ -1,5 +1,5 @@
 export { default as Box, IBoxProps } from './Box';
-export { default as Text, TextProps } from './Text';
+export { default as Text, ITextProps } from './Text';
 export {
   default as Input,
   IInputBoxProps,
@@ -20,9 +20,15 @@ export {
   RadioGroup,
   IRadioGroupProps,
 } from './Radio';
-export { default as Icon, IIconProps, createIcon } from './Icon';
-export { default as Column, IColumnProps } from './Column';
-export { default as Row, IRowProps } from './Row';
+export {
+  default as Icon,
+  IIconProps,
+  createIcon,
+  IconType,
+  Path,
+} from './Icon';
+export { Column } from './Column';
+export { Row } from './Row';
 export { default as Button, IButtonProps, ButtonGroup } from './Button';
 export {
   default as Slider,
@@ -40,4 +46,10 @@ export { default as Flex, IFlexProps, Spacer } from './Flex';
 export { default as Switch, ISwitchProps } from './Switch';
 export { default as TextArea } from './TextArea';
 export { default as Link, ILinkProps } from './Link';
-export { default as List, ListItem, ListIcon } from './List';
+export {
+  default as List,
+  ListItem,
+  ListIcon,
+  IListProps,
+  IListItemProps,
+} from './List';

@@ -3,7 +3,7 @@ import { Flex, Text, Spacer, Center } from 'native-base';
 
 export const SpacerExample = () => {
   return (
-    <Flex>
+    <Flex direction="row">
       <Center w="100px" bg="tomato">
         <Text>Box 1</Text>
       </Center>

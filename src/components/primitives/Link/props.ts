@@ -17,6 +17,7 @@ import type {
   customLayoutProps,
   customExtraProps,
   customShadowProps,
+  customTypographyProps,
 } from '../../../utils/customProps';
 
 export type ILinkProps = ColorProps &
@@ -31,6 +32,7 @@ export type ILinkProps = ColorProps &
   customShadowProps &
   customLayoutProps &
   customBackgroundProps &
+  customTypographyProps &
   BorderProps & {
     style?: ViewStyle;
     children?: string | JSX.Element | JSX.Element[] | any;

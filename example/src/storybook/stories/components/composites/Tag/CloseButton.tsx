@@ -3,7 +3,7 @@ import { Tag, TagLabel, TagCloseButton, HStack } from 'native-base';
 
 export default function () {
   return (
-    <HStack space={1} alignItems="flex-start">
+    <HStack space={2} alignItems="flex-start">
       {['sm', 'md', 'lg'].map((size) => (
         <Tag
           colorScheme="green"

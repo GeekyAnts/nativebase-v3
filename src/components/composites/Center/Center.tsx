@@ -1,16 +1,11 @@
 import React from 'react';
-import { StyleSheet, ViewStyle } from 'react-native';
 import { Box } from '../../primitives';
 import type { ICenterProps } from './props';
+import { usePropsConfig } from '../../../theme';
 
 const Center = ({ style, ...props }: ICenterProps) => {
-  let computedStyle: ViewStyle | undefined = style;
-  computedStyle = StyleSheet.flatten([
-    style,
-    { display: 'flex', alignItems: 'center', justifyContent: 'center' },
-  ]);
-
-  return <Box {...props} style={computedStyle} />;
+  let newProps = usePropsConfig('Center', props);
+  return <Box {...newProps} style={style} />;
 };
 
 export default Center;

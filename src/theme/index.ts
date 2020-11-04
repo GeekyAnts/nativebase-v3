@@ -1,8 +1,8 @@
 import darkTheme from './darkTheme';
-// import theme from './theme';
 import base from './base';
 import components from './components';
 import { usePropsConfig } from './tools/usePropsConfig';
+import * as tools from './tools';
 const theme = {
   ...base,
   components,
@@ -17,4 +17,5 @@ export {
   ThemeConsumer,
   ThemeContext,
   usePropsConfig,
+  tools as themeTools,
 };

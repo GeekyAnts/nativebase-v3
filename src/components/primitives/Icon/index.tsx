@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
 import { color, space, typography } from 'styled-system';
-import { ThemeContext } from 'native-base';
+import { usePropsConfig } from 'native-base';
 import styled from 'styled-components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -18,29 +18,16 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Zocial from 'react-native-vector-icons/Zocial';
 import type { IIconProps } from './props';
 import { SVGIcon } from './SVGIcon';
+import { Path } from 'react-native-svg';
 
 const Icon = (iconProps: IIconProps) => {
-  const theme = React.useContext(ThemeContext);
-  if (!iconProps.name) {
+  const { name, type, size, style, ...props } = iconProps;
+  const newProps = usePropsConfig('Icon', { size });
+  if (!name) {
     return <SVGIcon {...iconProps} />;
   }
-  const { name, type, boxSize, style, ...props } = iconProps;
-
-  let fontSize =
-    typeof boxSize === 'string'
-      ? theme.fontSizes[boxSize]
-      : typeof boxSize === 'number'
-      ? theme.sizes[boxSize]
-      : 20;
-  fontSize = fontSize ? parseInt(fontSize, 10) : 20;
-
-  const styles = StyleSheet.create({
-    iconDefaultStyle: {
-      fontSize,
-    },
-  });
   const flattenedIconStyle: TextStyle = StyleSheet.flatten([
-    styles.iconDefaultStyle,
+    { fontSize: parseInt(newProps.size, 10) },
     style,
   ]);
   switch (type) {
@@ -68,10 +55,6 @@ const Icon = (iconProps: IIconProps) => {
           {...props}
         />
       );
-    case 'MaterialIcons':
-      return (
-        <MaterialIcons name={name} style={flattenedIconStyle} {...props} />
-      );
     case 'Octicons':
       return <Octicons name={name} style={flattenedIconStyle} {...props} />;
     case 'SimpleLineIcons':
@@ -90,5 +73,6 @@ const Icon = (iconProps: IIconProps) => {
 const styledIcon = styled(Icon)<IIconProps>(color, space, typography);
 
 export default styledIcon;
+export { Path };
 export { IIconProps, IconType } from './props';
 export { createIcon } from './createIcon';

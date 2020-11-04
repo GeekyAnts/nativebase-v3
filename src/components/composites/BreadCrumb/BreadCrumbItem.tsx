@@ -2,16 +2,18 @@ import React from 'react';
 import { Flex } from '../../..';
 import type { IBreadCrumbProps } from './props';
 
-export const BreadCrumbItem = ({
-  children,
-  isCurrentPage,
-  ...props
-}: IBreadCrumbProps & { isCurrentPage?: boolean }) => {
-  const computedProps = { ...props, isUnderlined: false };
+export const BreadCrumbItem = (
+  props: IBreadCrumbProps & { isCurrentPage?: boolean }
+) => {
+  const { children, isCurrentPage, ...remainingProps } = props;
+  const computedProps = { ...remainingProps, isUnderlined: false };
   return (
-    <Flex {...props}>
+    <Flex {...remainingProps}>
       {React.Children.map(children, (child: any) => {
-        return React.cloneElement(child, isCurrentPage ? computedProps : props);
+        return React.cloneElement(
+          child,
+          isCurrentPage ? computedProps : remainingProps
+        );
       })}
     </Flex>
   );

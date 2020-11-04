@@ -15,6 +15,7 @@ import type {
   customLayoutProps,
   customExtraProps,
   customShadowProps,
+  customFlexboxProps,
 } from '../../../utils/customProps';
 
 export type IWrapProps = ViewProps &
@@ -28,6 +29,7 @@ export type IWrapProps = ViewProps &
   customShadowProps &
   customLayoutProps &
   customBackgroundProps &
+  customFlexboxProps &
   BorderProps & {
     style?: ViewStyle;
     children?: JSX.Element | JSX.Element[];

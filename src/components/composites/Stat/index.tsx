@@ -15,8 +15,8 @@ import type {
   customExtraProps,
   customShadowProps,
 } from '../../../utils/customProps';
-import { Box, IBoxProps, Text, TextProps, Icon } from '../../..';
-export type IStatProps = TextProps &
+import { Box, IBoxProps, Text, ITextProps, Icon } from '../../..';
+export type IStatProps = ITextProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -31,7 +31,7 @@ export type IStatProps = TextProps &
     style?: TextStyle;
   };
 
-export const StatLabel = ({ style, ...props }: TextProps) => {
+export const StatLabel = ({ style, ...props }: ITextProps) => {
   return (
     <Text style={style} {...props}>
       {props.children}
@@ -43,7 +43,7 @@ export const StatNumber = ({
   fontSize,
   fontWeight,
   ...props
-}: TextProps) => {
+}: ITextProps) => {
   return (
     <Text
       my={2}

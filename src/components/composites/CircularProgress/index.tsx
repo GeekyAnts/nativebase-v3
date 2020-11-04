@@ -1,7 +1,7 @@
 import React from 'react';
 import { ViewStyle, StyleSheet, Animated, Easing } from 'react-native';
 
-import { Box, IBoxProps, TextProps, Text } from '../../..';
+import { Box, IBoxProps, ITextProps, Text } from '../../..';
 import styled from 'styled-components';
 import { color, border } from 'styled-system';
 
@@ -25,7 +25,7 @@ const CircularProgress = ({
   size,
   isIndeterminate,
   thickness,
-  color,
+  color: colorProp,
   trackColor,
   max,
   min,
@@ -116,7 +116,7 @@ const CircularProgress = ({
     if (percent > halfSide) {
       return (
         <Box
-          borderColor={color ? color : 'green.4'}
+          borderColor={colorProp ? colorProp : 'green.4'}
           style={[
             styles.secondProgressLayer,
             propStyle(percent - halfSide, 45),
@@ -153,20 +153,23 @@ const CircularProgress = ({
       {!isIndeterminate ? (
         <>
           <Box
-            borderColor={color ? color : 'green.4'}
+            borderColor={colorProp ? colorProp : 'green.4'}
             style={[styles.firstProgressLayer, firstProgressLayerStyle]}
           />
           {renderThirdLayer(value)}
           <Box fontSize={size ? size / 4 : 14}>{props.children}</Box>
         </>
       ) : (
-        <StyleAnimatedView borderColor={color} style={styles.animateStyle} />
+        <StyleAnimatedView
+          borderColor={colorProp}
+          style={styles.animateStyle}
+        />
       )}
     </Box>
   );
 };
 
-export const CircularProgressLabel = (props: TextProps) => {
+export const CircularProgressLabel = (props: ITextProps) => {
   return <Text {...props} />;
 };
 
