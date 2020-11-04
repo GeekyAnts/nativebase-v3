@@ -32,7 +32,7 @@ export type ITextProps = ColorProps &
     noOfLines?: number;
     style?: any;
     bold?: boolean;
-    isTruncated?: any;
+    isTruncated?: boolean;
     italic?: boolean;
     underline?: boolean;
     strikeThrough?: boolean;
