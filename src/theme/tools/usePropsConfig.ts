@@ -20,16 +20,17 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
     typeof componentTheme.baseStyle !== 'function'
       ? componentTheme.baseStyle
       : componentTheme.baseStyle({ theme, ...newProps, ...props });
-  for (let property in componentBaseStyle) {
-    newProps[property] = get(
-      theme,
-      `${themePropertyMap[property]}.${componentTheme.baseStyle[property]}`,
-      componentTheme.baseStyle[property]
-    );
-    if (isNil(newProps[property])) {
-      newProps[property] = componentBaseStyle[property];
+
+  newProps = mergeWith(
+    newProps,
+    componentBaseStyle,
+    // @ts-ignore
+    (objValue, srcValue, key) => {
+      if (!isNil(objValue)) {
+        delete newProps[key];
+      }
     }
-  }
+  );
 
   // Extracting props from normal props
   let extractedProps = extractProps(props, theme, componentTheme);
@@ -40,6 +41,7 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
       delete newProps[key];
     }
   });
+
   // Extracting props from variant
   if (
     componentTheme.variants &&
@@ -52,8 +54,12 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
       colorScheme,
       theme,
     });
-
-    newProps = { ...newProps, ...variantProps };
+    // @ts-ignore
+    newProps = mergeWith(newProps, variantProps, (objValue, srcValue, key) => {
+      if (!isNil(objValue)) {
+        delete newProps[key];
+      }
+    });
     delete newProps.variant;
     delete newProps.colorScheme;
   }
