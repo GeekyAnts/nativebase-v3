@@ -33,10 +33,10 @@ export type IFlexProps = ViewProps &
     shadow?: number;
     style?: ViewStyle;
     children?: JSX.Element | JSX.Element[] | any;
-    direction?: CSS.Property.FlexDirection | undefined;
-    align?: CSS.Property.AlignItems | undefined;
-    justify?: CSS.Property.JustifyContent | undefined;
-    wrap?: CSS.Property.FlexWrap | undefined;
-    basis?: CSS.Property.FlexBasis | undefined;
-    grow?: CSS.Property.FlexGrow | undefined;
+    direction?: CSS.Property.FlexDirection;
+    align?: CSS.Property.AlignItems;
+    justify?: CSS.Property.JustifyContent;
+    wrap?: CSS.Property.FlexWrap;
+    basis?: CSS.Property.FlexBasis;
+    grow?: CSS.Property.FlexGrow;
   };

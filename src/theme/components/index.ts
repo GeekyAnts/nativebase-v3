@@ -15,6 +15,7 @@ import Link from './link';
 import Kbd from './kbd';
 import Progress from './progress';
 import Box from './box';
+import Flex from './flex';
 
 export default {
   Heading,
@@ -33,6 +34,7 @@ export default {
   Kbd,
   Progress,
   Box,
+  Flex,
   // not done
   Button,
 };
@@ -55,4 +57,5 @@ export type IThemeComponents =
   | 'BreadCrumb'
   | 'Kbd'
   | 'Progress'
-  | 'Box';
+  | 'Box'
+  | 'Flex';
