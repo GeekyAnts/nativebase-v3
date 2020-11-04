@@ -1,8 +1,15 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
-import { CloseButton, Box, IIconProps, Icon, Text, TextProps } from '../../..';
-import type { ICloseButtonProps } from '../CloseButton/props';
+import {
+  CloseButton,
+  Box,
+  IIconProps,
+  Icon,
+  Text,
+  TextProps,
+  ICloseButtonProps,
+} from 'native-base';
 import type { ITagProps } from './props';
 import { usePropsConfig } from '../../../theme';
 
