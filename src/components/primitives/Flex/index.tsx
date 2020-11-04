@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
 import {
   border,
@@ -18,7 +18,7 @@ import {
   customShadow,
   customTypography,
 } from '../../../utils/customProps';
-import { shadows } from '../../../styles';
+import { usePropsConfig } from '../../../theme';
 import { addTextAndPropsToStrings } from '../../../utils';
 
 import type { IFlexProps } from './props';
@@ -42,10 +42,8 @@ const Flex = ({
   direction,
   align,
   justify,
-  wrap,
   basis,
   grow,
-  shadow,
   children,
   fontSize,
   color: colorProp,
@@ -74,33 +72,17 @@ const Flex = ({
     whiteSpace,
     overflowWrap,
   };
-
-  // Check Shadow Index to apply shadow from theme Shadows array
-  let shadowInd: number | (string & {}) = shadow
-    ? shadow > shadows.length - 1
-      ? shadows.length - 1
-      : shadow
-    : 2; // By default shadow index is set to 2
-
-  let computedStyle: any = style;
-  computedStyle = StyleSheet.flatten([
-    style,
-    {
-      display: 'flex',
-      alignItems: align,
-      justifyContent: justify,
-      flexWrap: wrap,
-      flexBasis: basis,
-      flexGrow: grow,
-    },
-    shadow ? shadows[shadowInd] : {},
-  ]);
+  let newProps = usePropsConfig('Flex', props);
 
   return (
     <StyledFlex
-      flexDirection={direction ? direction : 'column'}
-      {...props}
-      style={computedStyle}
+      {...newProps}
+      flexDirection={direction}
+      alignItems={align}
+      justifyContent={justify}
+      flexGrow={grow}
+      flexBasis={basis}
+      style={style}
     >
       {addTextAndPropsToStrings(children, textProps)}
     </StyledFlex>

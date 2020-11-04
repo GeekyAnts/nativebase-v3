@@ -16,6 +16,7 @@ import Kbd from './kbd';
 import Progress from './progress';
 import Container from './container';
 import Box from './box';
+import Flex from './flex';
 
 export default {
   Heading,
@@ -35,6 +36,8 @@ export default {
   Progress,
   Container,
   Box,
+  Flex,
+  // not done
   Button,
 };
 
@@ -56,4 +59,5 @@ export type IThemeComponents =
   | 'Wrap'
   | 'Container'
   | 'BreadCrumb'
-  | 'Box';
+  | 'Box'
+  | 'Flex';
