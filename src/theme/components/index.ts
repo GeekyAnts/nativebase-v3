@@ -16,6 +16,7 @@ import Kbd from './kbd';
 import Progress from './progress';
 import Container from './container';
 import Box from './box';
+import CloseButton from './close-button';
 
 export default {
   Heading,
@@ -36,6 +37,7 @@ export default {
   Container,
   Box,
   Button,
+  CloseButton,
 };
 
 export type IThemeComponents =
@@ -56,4 +58,5 @@ export type IThemeComponents =
   | 'Wrap'
   | 'Container'
   | 'BreadCrumb'
-  | 'Box';
+  | 'Box'
+  | 'CloseButton';

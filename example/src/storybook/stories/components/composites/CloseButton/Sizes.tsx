@@ -3,9 +3,9 @@ import { CloseButton, HStack } from 'native-base';
 export default function () {
   return (
     <HStack space="md">
-      <CloseButton size="sm" color="rgba(25,255,255,1)" />
-      <CloseButton size="md" />
-      <CloseButton size="lg" />
+      <CloseButton size="sm" color="teal.2" />
+      <CloseButton size="md" color="red.2" />
+      <CloseButton size="lg" color="blue.2" />
     </HStack>
   );
 }
