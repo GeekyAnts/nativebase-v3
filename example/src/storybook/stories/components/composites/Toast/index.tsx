@@ -2,12 +2,16 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import Usage from './usage';
-import Playground from './Playground';
-import CenteringChildren from './centeringChildren';
+import Usage from './Usage';
+import Size from './Size';
+import CustomIcon from './CustomIcon';
+import DefaultValue from './Colors';
+// import Playground from './Playground';
+import Custom from './Custom';
+import Position from './Position';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
-storiesOf('Container', module)
+storiesOf('Toast', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
@@ -16,6 +20,10 @@ storiesOf('Container', module)
       </View>
     </ThemeProvider>
   ))
-  .add('Playground', () => <Playground />)
+  // .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
-  .add('CenteringChildren', () => <CenteringChildren />);
+  .add('DefaultValue', () => <DefaultValue />)
+  .add('Custom', () => <Custom />)
+  .add('CustomIcon', () => <CustomIcon />)
+  .add('Size', () => <Size />)
+  .add('Position', () => <Position />);
