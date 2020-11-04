@@ -1,6 +1,7 @@
 const defaultProps = {
   bg: 'gray.2',
   colorScheme: 'default',
+  size: 'md',
 };
 
 function baseStyle(props: Record<string, any>) {
@@ -10,23 +11,23 @@ function baseStyle(props: Record<string, any>) {
 }
 
 const sizes = {
-  'xs': {
+  xs: {
+    height: 1,
+  },
+  sm: {
+    height: 2,
+  },
+  md: {
+    height: 3,
+  },
+  lg: {
     height: 4,
   },
-  'sm': {
-    height: 6,
-  },
-  'md': {
-    height: 8,
-  },
-  'lg': {
-    height: 10,
-  },
-  'xl': {
-    height: 16,
+  xl: {
+    height: 5,
   },
   '2xl': {
-    height: 24,
+    height: 6,
   },
 };
 

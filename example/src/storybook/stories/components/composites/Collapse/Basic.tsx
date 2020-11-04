@@ -17,7 +17,7 @@ export default function () {
         tart.
         <Box p={8} bg="black" />
       </Collapse>
-      <Button size="sm" onClick={handleToggle}>
+      <Button size="sm" onPress={handleToggle}>
         Show {show ? 'Less' : 'More'}
       </Button>
     </Stack>

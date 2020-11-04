@@ -14,6 +14,7 @@ import BreadCrumb from './breadcrumb';
 import Link from './link';
 import Kbd from './kbd';
 import Progress from './progress';
+import Container from './container';
 import Box from './box';
 import Flex from './flex';
 
@@ -33,6 +34,7 @@ export default {
   BreadCrumb,
   Kbd,
   Progress,
+  Container,
   Box,
   Flex,
   // not done
@@ -40,22 +42,22 @@ export default {
 };
 
 export type IThemeComponents =
-  | 'Heading'
-  | 'Code'
-  | 'Badge'
-  | 'Tag'
   | 'Avatar'
   | 'Button'
+  | 'Badge'
   | 'Center'
-  | 'Switch'
-  | 'Wrap'
-  | 'Image'
+  | 'Code'
   | 'Divider'
-  | 'Link'
+  | 'Heading'
   | 'Icon'
-  | 'Divider'
-  | 'BreadCrumb'
+  | 'Image'
   | 'Kbd'
   | 'Progress'
+  | 'Link'
+  | 'Switch'
+  | 'Tag'
+  | 'Wrap'
+  | 'Container'
+  | 'BreadCrumb'
   | 'Box'
   | 'Flex';

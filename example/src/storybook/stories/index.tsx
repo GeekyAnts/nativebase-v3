@@ -1,6 +1,6 @@
-export * from './components/composites/Accordion';
 // Older version
 // export * from './components/composites/AppBar';
+export * from './components/composites/Accordion';
 export * from './components/composites/Alert';
 export * from './components/composites/AlertDialog';
 export * from './components/composites/AspectRatio';
@@ -46,6 +46,7 @@ export * from './components/primitives/Switch';
 export * from './components/composites/Tag';
 export * from './components/primitives/Text';
 export * from './components/primitives/TextArea';
+export * from './components/composites/Toast';
 export * from './components/composites/Transitions';
 export * from './components/primitives/VStack';
 export * from './components/primitives/WebLayout';

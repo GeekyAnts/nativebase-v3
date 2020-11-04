@@ -31,17 +31,17 @@ export default function () {
               Are you sure? You can't undo this action afterwards.
             </AlertDialogBody>
             <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
+              <Button ref={cancelRef} onPress={onClose}>
                 Cancel
               </Button>
-              <Button colorScheme="red" onClick={onClose} ml={3}>
+              <Button colorScheme="red" onPress={onClose} ml={3}>
                 Delete
               </Button>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
-      <Button colorScheme="danger" onClick={() => setIsOpen(!isOpen)}>
+      <Button colorScheme="danger" onPress={() => setIsOpen(!isOpen)}>
         Delete Customer
       </Button>
     </Center>
