@@ -8,7 +8,7 @@ export default function () {
     <>
       <VStack space={2}>
         <Button
-          onClick={() => {
+          onPress={() => {
             toast({
               title: 'Small',
               description: 'description : include a lot of words',
@@ -20,7 +20,7 @@ export default function () {
           Small
         </Button>
         <Button
-          onClick={() => {
+          onPress={() => {
             toast({
               title: 'Medium',
               description: 'description : include a lot of words',
@@ -32,7 +32,7 @@ export default function () {
           Medium
         </Button>
         <Button
-          onClick={() => {
+          onPress={() => {
             toast({
               title: 'Large',
               description: 'description : include a lot of words',
@@ -43,7 +43,7 @@ export default function () {
           Large
         </Button>
         <Button
-          onClick={() => {
+          onPress={() => {
             toast({
               title: 'Full',
               description: 'description : include a lot of words',
