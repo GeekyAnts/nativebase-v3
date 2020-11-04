@@ -3,9 +3,10 @@ import { StyleSheet, Image, Text } from 'react-native';
 import styled from 'styled-components';
 import { border, flex, get, layout, space } from 'styled-system';
 import { customBorder } from '../../../utils/customProps';
-import { Box } from '../../primitives';
+import { Box, Flex } from '../../primitives';
 import { theme, usePropsConfig } from '../../../theme';
 import type { IAvatarProps, IAvatarBadgeProps } from './props';
+import { isNil } from 'lodash';
 
 const getInitials = (str: string) => {
   let nameArr = str.split(' ');
@@ -88,3 +89,63 @@ const Avatar = (
 
 export default Avatar;
 export { IAvatarProps, IAvatarBadgeProps } from './props';
+
+// -------------------------------------------------- Avatar Group -------------------------------------------------
+
+const getAvatarGroupChildren = (
+  children?: JSX.Element[] | JSX.Element,
+  spacing?: number,
+  max?: number,
+  props?: any
+) => {
+  let childrenArray: any = React.Children.toArray(children);
+  let plusAvatars: number = 0;
+  if (!isNil(max) && max < childrenArray.length && max > 0) {
+    plusAvatars = childrenArray.length - max;
+    childrenArray = childrenArray.slice(0, max);
+  }
+  let trailingChildren = childrenArray.slice(1);
+  const defaultProps = {
+    ml: isNil(spacing) ? -4 : spacing,
+  };
+  return [
+    plusAvatars != 0 ? (
+      <Avatar
+        bg="gray.3"
+        name={'+ ' + plusAvatars}
+        src="avatargroup"
+        {...props}
+        {...defaultProps}
+      />
+    ) : null,
+    React.Children.map(trailingChildren.reverse(), (child: any) => {
+      return React.cloneElement(
+        child,
+        { ...props, ...defaultProps, ...child.props },
+        child.props.children
+      );
+    }),
+    React.cloneElement(
+      childrenArray[0],
+      { ...props, ...childrenArray[0].props },
+      childrenArray[0].props.children
+    ),
+  ];
+};
+
+export const AvatarGroup = ({
+  children,
+  spacing,
+  max,
+  ...props
+}: IAvatarProps & {
+  children?: JSX.Element[] | JSX.Element;
+  spacing?: number;
+  max?: number;
+}) => {
+  return (
+    <Flex direction="row-reverse">
+      {getAvatarGroupChildren(children, spacing, max, props)}
+    </Flex>
+  );
+};
