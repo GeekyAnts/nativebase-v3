@@ -17,6 +17,8 @@ import Text from './text';
 import Progress from './progress';
 import Container from './container';
 import Box from './box';
+import CloseButton from './close-button';
+import Flex from './flex';
 
 export default {
   Heading,
@@ -38,7 +40,9 @@ export default {
   Progress,
   Container,
   Box,
+  Flex,
   Button,
+  CloseButton,
 };
 
 export type IThemeComponents =
@@ -62,4 +66,6 @@ export type IThemeComponents =
   | 'Wrap'
   | 'Container'
   | 'BreadCrumb'
-  | 'Box';
+  | 'Box'
+  | 'CloseButton'
+  | 'Flex';

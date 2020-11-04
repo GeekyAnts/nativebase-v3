@@ -1,27 +1,12 @@
 import React from 'react';
-import { Code, Stack, Text, Heading } from 'native-base';
-// import { select } from '@storybook/addon-knobs';
+import { Code, Stack } from 'native-base';
 export default function () {
   return (
     <Stack space={4}>
-      <Heading>Variants</Heading>
-      <Text>Default :</Text>
-      <Code>console.log('This is code block');</Code>
-      <Text>Danger/Error/Red :</Text>
-      <Code colorScheme="danger">console.log('This is code block');</Code>
-      <Text>Success/Green :</Text>
-      <Code colorScheme="success">console.log('This is code block');</Code>
-      <Text>Knobs example :</Text>
-      <Code
-        colorScheme="dark"
-        // colorScheme={select(
-        //   'colorScheme',
-        //   ['success', 'danger', 'warning', 'dark', 'light', 'muted', 'default'],
-        //   'light'
-        // )}
-      >
-        console.log('This is code block');
-      </Code>
+      <Code>let direction = "row";</Code>
+      <Code colorScheme="danger">console.log('Hey there!');</Code>
+      <Code colorScheme="success">yarn add native-base</Code>
+      <Code colorScheme="dark">React Native</Code>
     </Stack>
   );
 }

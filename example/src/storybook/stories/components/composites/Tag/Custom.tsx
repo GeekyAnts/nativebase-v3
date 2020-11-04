@@ -18,7 +18,7 @@ export default function () {
         height={10}
         my={1}
       >
-        <AvatarBadge bg={'red'} boxSize={2} />
+        <AvatarBadge bg={'blue.1'} boxSize={2} />
       </Avatar>
       <TagLabel>Custom Tag</TagLabel>
       <TagCloseButton />
