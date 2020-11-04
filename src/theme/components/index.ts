@@ -14,6 +14,7 @@ import BreadCrumb from './breadcrumb';
 import Link from './link';
 import Kbd from './kbd';
 import Progress from './progress';
+import Box from './box';
 
 export default {
   Heading,
@@ -31,6 +32,7 @@ export default {
   BreadCrumb,
   Kbd,
   Progress,
+  Box,
   // not done
   Button,
 };
@@ -52,4 +54,5 @@ export type IThemeComponents =
   | 'Divider'
   | 'BreadCrumb'
   | 'Kbd'
-  | 'Progress';
+  | 'Progress'
+  | 'Box';

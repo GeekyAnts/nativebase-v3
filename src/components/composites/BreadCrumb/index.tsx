@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex } from '../../..';
 import type { IBreadCrumbProps } from './props';
 export { BreadCrumbItem } from './BreadCrumbItem';
-export { BreadCrumbLink } from './BreadCrumbLink';
+export { Link as BreadCrumbLink } from 'native-base';
 import { BreadCrumbSeparator } from './BreadCrumbSeparator';
 import { usePropsConfig } from '../../../theme';
 
