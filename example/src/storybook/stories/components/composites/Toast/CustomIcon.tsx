@@ -11,7 +11,7 @@ export default function () {
           toast({
             title: 'Toast ',
             status: 'success',
-            icon: <Icon name="checkcircle" type="AntDesign" boxSize={6} />,
+            icon: <Icon name="checkcircle" type="AntDesign" size={6} />,
             description: 'description : include a lot of words',
           });
         }}

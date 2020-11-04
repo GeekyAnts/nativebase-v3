@@ -40,7 +40,7 @@ const ToastCard = ({
       {...props}
     >
       <Box flexDirection="row" justifyContent="flex-start">
-        {icon ? icon : <Icon name="infocirlce" type="AntDesign" boxSize={6} />}
+        {icon ? icon : <Icon name="infocirlce" type="AntDesign" size={6} />}
         <Box ml={2} flex={1}>
           <Text bold fontSize="md">
             {title}

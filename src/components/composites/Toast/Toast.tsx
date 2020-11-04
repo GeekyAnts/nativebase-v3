@@ -69,7 +69,6 @@ const NBToast = () => {
 };
 
 const StyledToast = styled(NBToast)<IToastProps>(space);
-StyledToast.defaultProps = {};
 
 const Toast = ({ children, ...props }: IToastProps) => {
   return <StyledToast {...props}>{children}</StyledToast>;
