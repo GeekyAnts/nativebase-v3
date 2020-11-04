@@ -1,5 +1,5 @@
 import React from 'react';
 import { SkeletonCircle } from 'native-base';
 export default function () {
-  return <SkeletonCircle size="100" />;
+  return <SkeletonCircle size={40} />;
 }
