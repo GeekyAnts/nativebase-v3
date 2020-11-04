@@ -21,8 +21,6 @@ const NBSlide = ({
     else setSize(layoutSize.height);
   };
   const slideAnim = React.useRef(new Animated.Value(size)).current;
-  console.log('size - ', size);
-
   const slideIn = () => {
     Animated.timing(slideAnim, {
       toValue: 0,
