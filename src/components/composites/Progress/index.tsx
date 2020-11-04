@@ -1,17 +1,17 @@
 import React from 'react';
 import type { ViewStyle } from 'react-native';
 import { Box, IBoxProps } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from 'native-base';
 
-type SpaceType = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+type SpaceType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 export type IProgressProps = IBoxProps & {
   style?: ViewStyle;
   children?: JSX.Element | JSX.Element[] | string;
-  value?: number | undefined;
-  size?: SpaceType | string | undefined;
-  colorScheme?: string | undefined;
-  isIndeterminate?: any | undefined;
+  value?: number;
+  size?: SpaceType | string;
+  colorScheme?: string;
+  isIndeterminate?: any;
 };
 
 const Progress = ({ value, isIndeterminate, ...props }: IProgressProps) => {
@@ -40,7 +40,7 @@ const Progress = ({ value, isIndeterminate, ...props }: IProgressProps) => {
     color: 'white',
   };
   return (
-    <Box bg="gray.1" style={props.style} {...newProps}>
+    <Box {...newProps} style={props.style}>
       {isIndeterminate ? (
         // <Animated.View
         //   style={[
@@ -53,7 +53,6 @@ const Progress = ({ value, isIndeterminate, ...props }: IProgressProps) => {
         //     },
         //   ]}
         // >
-
         // </Animated.View>
         <Box {...innerProps} children={newProps.children} />
       ) : (

@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import Progress from './Progress';
+import Composition from './Composition';
 import Basic from './Basic';
 import Rounded from './Rounded';
 import CustomBgColor from './CustomBgColor';
@@ -22,4 +22,4 @@ storiesOf('Progress', module)
   .add('ColorSchemes', () => <ColorScheme />)
   .add('Rounded', () => <Rounded />)
   .add('CustomBgColor', () => <CustomBgColor />)
-  .add('Composition', () => <Progress />);
+  .add('Composition', () => <Composition />);
