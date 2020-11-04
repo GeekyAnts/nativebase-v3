@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { Flex } from '../../..';
 import type { IBreadCrumbProps } from './props';
 export { BreadCrumbItem } from './BreadCrumbItem';
-export { BreadCrumbLink } from './BreadCrumbLink';
+export { Link as BreadCrumbLink } from 'native-base';
 import { BreadCrumbSeparator } from './BreadCrumbSeparator';
+import { usePropsConfig } from '../../../theme';
 
 const BreadCrumb = ({
   style,
@@ -49,20 +49,9 @@ const BreadCrumb = ({
     isTruncated,
     noOfLines,
   };
-
-  let computedStyle: any = style;
-  computedStyle = StyleSheet.flatten([
-    style,
-    {
-      width: 'auto',
-      height: 'auto',
-      display: 'flex',
-      flexDirection: 'row',
-    },
-  ]);
-
+  let newProps = usePropsConfig('BreadCrumb', props);
   return (
-    <Flex wrap="wrap" {...props} style={computedStyle}>
+    <Flex {...newProps} style={style}>
       {children && !children.length
         ? children
         : BreadCrumbSeparator(children, separator, textProps, spacing)}
