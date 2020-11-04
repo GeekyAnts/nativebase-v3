@@ -10,9 +10,11 @@ import Button from './button';
 import Wrap from './wrap';
 import Icon from './icon';
 import Divider from './divider';
+import BreadCrumb from './breadcrumb';
 import Link from './link';
 import Kbd from './kbd';
 import Container from './container';
+import Box from './box';
 
 export default {
   Heading,
@@ -27,8 +29,10 @@ export default {
   Divider,
   Link,
   Icon,
+  BreadCrumb,
   Kbd,
   Container,
+  Box,
   // not done
   Button,
 };
@@ -49,4 +53,6 @@ export type IThemeComponents =
   | 'Icon'
   | 'Divider'
   | 'Kbd'
-  | 'Container';
+  | 'Container'
+  | 'BreadCrumb'
+  | 'Box';
