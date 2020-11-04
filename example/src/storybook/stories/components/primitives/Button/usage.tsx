@@ -3,7 +3,7 @@ import { Button } from 'native-base';
 
 export default function () {
   return (
-    <Button variant={'solid'} size="xs">
+    <Button size="sm" colorScheme="teal" variant={'solid'}>
       Button Variants
     </Button>
   );
