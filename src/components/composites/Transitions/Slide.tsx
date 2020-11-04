@@ -79,7 +79,6 @@ const NBSlide = ({
 };
 
 const StyledSlide = styled(NBSlide)<ISlideProps>(space, layout, border);
-StyledSlide.defaultProps = {};
 
 const Slide = ({ children, ...props }: ISlideProps) => {
   return <StyledSlide {...props}>{children}</StyledSlide>;

@@ -11,10 +11,11 @@ export type IAvatarProps = LayoutProps &
   customBorderProps &
   BorderProps &
   FlexboxProps & {
-    name?: string | undefined;
+    name?: string;
     style?: any;
-    size?: string | undefined;
-    src?: string | undefined;
+    size?: string;
+    src?: string;
+    children?: JSX.Element[] | JSX.Element | any;
   };
 
 export type IAvatarBadgeProps = IAvatarProps & {

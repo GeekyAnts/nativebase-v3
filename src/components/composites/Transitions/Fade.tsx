@@ -39,7 +39,6 @@ const NBFade = ({
 };
 
 const StyledFade = styled(NBFade)<IFadeProps>(space, layout, border);
-StyledFade.defaultProps = {};
 
 const Fade = ({ children, ...props }: IFadeProps) => {
   return <StyledFade {...props}>{children}</StyledFade>;

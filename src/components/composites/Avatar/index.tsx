@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, Text } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import styled from 'styled-components';
 import { border, flex, get, layout, space } from 'styled-system';
 import { customBorder } from '../../../utils/customProps';
-import { Box } from '../../primitives';
-import { theme, usePropsConfig } from '../../../theme';
+import { theme, usePropsConfig, Box, Text } from 'native-base';
 import type { IAvatarProps, IAvatarBadgeProps } from './props';
 
 const getInitials = (str: string) => {
@@ -48,14 +47,10 @@ const StyledAvatar = styled(Box)<IAvatarProps>(
   customBorder
 );
 
-const Avatar = (
-  props: IAvatarProps & {
-    children?: JSX.Element[] | JSX.Element | any | undefined;
-  }
-) => {
+const Avatar = (props: IAvatarProps) => {
   const { size, name, style, src, children, ...remainingProps } = props;
 
-  const newProps = usePropsConfig('Avatar', { ...remainingProps, name, size });
+  const newProps = usePropsConfig('Avatar', { name, size, ...remainingProps });
   let [alternate, setAlternate] = useState(false);
   let onImageLoadError = (event: any) => {
     console.warn(event.nativeEvent.error);
