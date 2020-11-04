@@ -9,7 +9,7 @@ export default function () {
       <VStack space={2}>
         <Box justifyContent="space-between" flexDirection="row">
           <Button
-            onClick={() => {
+            onPress={() => {
               toast({
                 title: 'Top Left ',
                 description: 'description : include a lot of words',
@@ -21,7 +21,7 @@ export default function () {
             Top Left
           </Button>
           <Button
-            onClick={() => {
+            onPress={() => {
               toast({
                 position: 'top',
                 title: 'Top',
@@ -33,7 +33,7 @@ export default function () {
             Top
           </Button>
           <Button
-            onClick={() => {
+            onPress={() => {
               toast({
                 position: 'top-right',
                 title: 'Top Right',
@@ -46,7 +46,7 @@ export default function () {
         </Box>
         <Box justifyContent="space-between" flexDirection="row">
           <Button
-            onClick={() => {
+            onPress={() => {
               toast({
                 title: 'Bottom Left ',
                 description: 'description : include a lot of words',
@@ -59,7 +59,7 @@ export default function () {
           </Button>
           <Button
             mx={2}
-            onClick={() => {
+            onPress={() => {
               toast({
                 title: 'Bottom',
                 description: 'description : include a lot of words',
@@ -70,7 +70,7 @@ export default function () {
             Bottom
           </Button>
           <Button
-            onClick={() => {
+            onPress={() => {
               toast({
                 position: 'bottom-right',
                 title: 'Bottom Right',

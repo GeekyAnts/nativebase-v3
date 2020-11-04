@@ -1,6 +1,6 @@
-export * from './components/composites/Accordion';
 // Older version
 // export * from './components/composites/AppBar';
+export * from './components/composites/Accordion';
 export * from './components/composites/Alert';
 export * from './components/composites/AlertDialog';
 export * from './components/composites/AspectRatio';

@@ -46,7 +46,7 @@ export default function () {
               Save
             </Button>
             <Button
-              onClick={() => {
+              onPress={() => {
                 setModalVisible(!modalVisible);
               }}
             >
@@ -56,32 +56,32 @@ export default function () {
         </ModalContent>
       </Modal>
       <Button
-        onClick={() => handleSizeClick('xs')}
+        onPress={() => handleSizeClick('xs')}
         key={'xs'}
         m={4}
       >{`Open ${'xs'} Modal`}</Button>
       <Button
-        onClick={() => handleSizeClick('sm')}
+        onPress={() => handleSizeClick('sm')}
         key={'sm'}
         m={4}
       >{`Open ${'sm'} Modal`}</Button>
       <Button
-        onClick={() => handleSizeClick('md')}
+        onPress={() => handleSizeClick('md')}
         key={'md'}
         m={4}
       >{`Open ${'md'} Modal`}</Button>
       <Button
-        onClick={() => handleSizeClick('lg')}
+        onPress={() => handleSizeClick('lg')}
         key={'lg'}
         m={4}
       >{`Open ${'lg'} Modal`}</Button>
       <Button
-        onClick={() => handleSizeClick('xl')}
+        onPress={() => handleSizeClick('xl')}
         key={'xl'}
         m={4}
       >{`Open ${'xl'} Modal`}</Button>
       <Button
-        onClick={() => handleSizeClick('full')}
+        onPress={() => handleSizeClick('full')}
         key={'full'}
         m={4}
       >{`Open ${'full'} Modal`}</Button>

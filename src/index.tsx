@@ -204,6 +204,7 @@ import {
   ThemeConsumer,
   ThemeContext,
   usePropsConfig,
+  themeTools,
 } from './theme';
 
 export {
@@ -277,6 +278,7 @@ export {
   ThemeConsumer,
   ThemeContext,
   usePropsConfig,
+  themeTools,
   Switch,
   Flex,
   Kbd,

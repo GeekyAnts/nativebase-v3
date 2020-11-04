@@ -9,7 +9,7 @@ export default function () {
         <Heading fontSize="xs">
           This is an example to show how slider can be used.
         </Heading>
-        <Button my={2} onClick={() => setIsOpen(!isOpen)}>
+        <Button my={2} onPress={() => setIsOpen(!isOpen)}>
           Click Me to {isOpen ? 'hide' : 'show'}
         </Button>
         <Center>

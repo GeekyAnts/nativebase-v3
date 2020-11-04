@@ -8,7 +8,7 @@ export default function () {
     <>
       <VStack space={2}>
         <Button
-          onClick={() => {
+          onPress={() => {
             toast({
               render: () => (
                 <Box p={2} backgroundColor="cyan">

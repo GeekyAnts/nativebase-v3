@@ -33,26 +33,24 @@ export default {
   Kbd,
   Container,
   Box,
-  // not done
   Button,
 };
 
 export type IThemeComponents =
-  | 'Heading'
-  | 'Code'
-  | 'Badge'
-  | 'Tag'
   | 'Avatar'
   | 'Button'
+  | 'Badge'
   | 'Center'
-  | 'Switch'
-  | 'Wrap'
-  | 'Image'
+  | 'Code'
   | 'Divider'
-  | 'Link'
+  | 'Heading'
   | 'Icon'
-  | 'Divider'
+  | 'Image'
   | 'Kbd'
+  | 'Link'
+  | 'Switch'
+  | 'Tag'
+  | 'Wrap'
   | 'Container'
   | 'BreadCrumb'
   | 'Box';

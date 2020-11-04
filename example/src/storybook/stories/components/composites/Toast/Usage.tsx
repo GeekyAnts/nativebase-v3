@@ -7,7 +7,7 @@ export default function () {
   return (
     <>
       <Button
-        onClick={() => {
+        onPress={() => {
           toast({
             title: 'Toast ',
             description: 'description : include a lot of words',

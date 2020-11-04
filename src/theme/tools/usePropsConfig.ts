@@ -30,6 +30,7 @@ export function usePropsConfig(component: IThemeComponents, props: any) {
       newProps[property] = componentBaseStyle[property];
     }
   }
+
   // Extracting props from normal props
   let extractedProps = extractProps(props, theme, componentTheme);
   // added this to handle order of props

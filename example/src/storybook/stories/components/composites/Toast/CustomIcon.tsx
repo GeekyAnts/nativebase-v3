@@ -7,7 +7,7 @@ export default function () {
   return (
     <>
       <Button
-        onClick={() => {
+        onPress={() => {
           toast({
             title: 'Toast ',
             status: 'success',

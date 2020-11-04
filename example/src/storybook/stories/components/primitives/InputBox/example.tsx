@@ -77,7 +77,7 @@ export const PasswordInput = () => {
       p={3}
       type={show ? 'text' : 'password'}
       InputRightElement={
-        <Button ml={1} onClick={handleClick}>
+        <Button ml={1} onPress={handleClick}>
           {show ? 'Hide' : 'Show'}
         </Button>
       }
