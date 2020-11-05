@@ -22,6 +22,7 @@ import SkeletonText from './skeletonText';
 import Box from './box';
 import CloseButton from './close-button';
 import Flex from './flex';
+import TextArea from './textarea';
 
 export default {
   Heading,
@@ -40,6 +41,7 @@ export default {
   BreadCrumb,
   Kbd,
   Text,
+  TextArea,
   Progress,
   Container,
   Skeleton,
@@ -76,4 +78,5 @@ export type IThemeComponents =
   | 'BreadCrumb'
   | 'Box'
   | 'CloseButton'
-  | 'Flex';
+  | 'Flex'
+  | 'TextArea';
