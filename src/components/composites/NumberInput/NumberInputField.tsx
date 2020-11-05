@@ -1,14 +1,9 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { space } from 'styled-system';
 import { Input } from 'native-base';
 import type { INumberInputFieldProps } from './props';
 import { NumberInputContext, INumberInputContext } from './index';
 
-const NBNumberInputFiled = ({
-  isDisabled,
-  ...props
-}: INumberInputFieldProps) => {
+const NumberInputFiled = ({ isDisabled, ...props }: INumberInputFieldProps) => {
   const {
     handleChange,
     handleChangeWithoutCheck,
@@ -36,6 +31,7 @@ const NBNumberInputFiled = ({
     <Input
       p={0}
       pl={2}
+      // TODO: shouldn't provide width like this.
       width="70%"
       {...context}
       {...props}
@@ -48,13 +44,6 @@ const NBNumberInputFiled = ({
       InputRightElement={numberInputStepper}
     />
   );
-};
-
-const StyledNumberInputFiled = styled(NBNumberInputFiled)<
-  INumberInputFieldProps
->(space);
-const NumberInputFiled = ({ children, ...props }: INumberInputFieldProps) => {
-  return <StyledNumberInputFiled {...props}>{children}</StyledNumberInputFiled>;
 };
 
 export default NumberInputFiled;
