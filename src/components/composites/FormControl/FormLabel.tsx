@@ -1,11 +1,9 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { space } from 'styled-system';
 import { Box, Text, ThemeContext } from 'native-base';
 import { FormControlContext } from './FormControl';
 import type { IFormLabelProps, IFormControlContext } from './props';
 
-const NBFormLabel = ({
+const FormLabel = ({
   children,
   style,
   _disabled,
@@ -34,10 +32,4 @@ const NBFormLabel = ({
     </Box>
   );
 };
-
-const StyledFormLabel = styled(NBFormLabel)<IFormLabelProps>(space);
-const FormLabel = ({ children, ...props }: IFormLabelProps) => {
-  return <StyledFormLabel {...props}>{children}</StyledFormLabel>;
-};
-
 export default FormLabel;

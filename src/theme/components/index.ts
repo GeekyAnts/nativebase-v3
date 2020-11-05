@@ -11,6 +11,7 @@ import Wrap from './wrap';
 import Icon from './icon';
 import Divider from './divider';
 import BreadCrumb from './breadcrumb';
+import PinInput from './pin-input';
 import Link from './link';
 import Kbd from './kbd';
 import Text from './text';
@@ -34,6 +35,7 @@ export default {
   Link,
   Icon,
   BreadCrumb,
+  PinInput,
   Kbd,
   Text,
   // not done
@@ -66,6 +68,7 @@ export type IThemeComponents =
   | 'Wrap'
   | 'Container'
   | 'BreadCrumb'
+  | 'PinInput'
   | 'Box'
   | 'CloseButton'
   | 'Flex';
