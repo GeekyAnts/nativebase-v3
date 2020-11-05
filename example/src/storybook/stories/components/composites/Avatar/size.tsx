@@ -8,38 +8,56 @@ export default function () {
         <Avatar
           mr={1}
           size="xs"
-          name="Dan Abrahmov"
-          src="https://bit.ly/dan-abramov"
+          name="Sanket Sahu"
+          source={{
+            uri:
+              'https://pbs.twimg.com/profile_images/1188747996843761665/8CiUdKZW_400x400.jpg',
+          }}
         />
         <Avatar
           mr={1}
           size="sm"
-          name="Kola Tioluwani"
-          src="https://bit.ly/tioluwani-kolawole"
+          name="Himanshu Satija"
+          source={{
+            uri:
+              'https://pbs.twimg.com/profile_images/929409889788510208/gRr2f7rZ_400x400.jpg',
+          }}
         />
         <Avatar
           mr={1}
           size="md"
-          name="Ryan Florence"
-          src="https://bit.ly/ryan-florence"
+          name="Rohit Singh"
+          source={{
+            uri:
+              'https://pbs.twimg.com/profile_images/1260766060401188864/ySJfMIbZ_400x400.jpg',
+          }}
         />
         <Avatar
           mr={1}
           size="lg"
-          name="Prosper Otemuyiwa"
-          src="https://bit.ly/prosper-baba"
+          name="Ankur Kedia"
+          source={{
+            uri:
+              'https://pbs.twimg.com/profile_images/1309797238651060226/18cm6VhQ_400x400.jpg',
+          }}
         />
         <Avatar
           mr={1}
           size="xl"
-          name="Christian Nwamba"
-          src="https://bit.ly/code-beast"
+          name="Gaurav Guha"
+          source={{
+            uri:
+              'https://pbs.twimg.com/profile_images/1177303899243343872/B0sUJIH0_400x400.jpg',
+          }}
         />
         <Avatar
           mr={1}
           size="2xl"
-          name="Segun Adebayo"
-          src="https://bit.ly/sage-adebayo"
+          name="Rehman Baig"
+          source={{
+            uri:
+              'https://pbs.twimg.com/profile_images/1320985200663293952/lE_Kg6vr_400x400.jpg',
+          }}
         />
       </HStack>
     </View>
