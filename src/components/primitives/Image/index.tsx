@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Image as RNImage, Text } from 'react-native';
+import { Image as RNImage } from 'react-native';
 import styled from 'styled-components';
 import { border, flex, layout, space } from 'styled-system';
 import { customBorder } from '../../../utils/customProps';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig, Text } from 'native-base';
 import type { IImageProps } from './props';
 
 const StyledImage = styled(RNImage)<IImageProps>(
@@ -20,6 +20,7 @@ const Image = ({
   fallbackSource,
   source,
   ignoreFallback,
+  textProps,
   ...props
 }: IImageProps) => {
   let [renderedSource, setSource] = useState(source);
@@ -38,7 +39,7 @@ const Image = ({
   };
   const newProps = usePropsConfig('Image', props);
   if (alternate) {
-    return <Text>{alt}</Text>;
+    return <Text {...textProps}>{alt}</Text>;
   }
   return (
     <StyledImage

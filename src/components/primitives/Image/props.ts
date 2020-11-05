@@ -2,22 +2,34 @@ import type {
   ImageProps as RNImageProps,
   ImageSourcePropType,
 } from 'react-native';
-
+import type { ITextProps } from 'native-base';
 import type {
   BorderProps,
   FlexboxProps,
   LayoutProps,
   SpaceProps,
+  PositionProps,
 } from 'styled-system';
-import type { customBorderProps } from '../../../utils/customProps';
+import type {
+  customLayoutProps,
+  customExtraProps,
+  customShadowProps,
+} from '../../../utils/customProps';
 
 export type IImageProps = RNImageProps &
   LayoutProps &
   SpaceProps &
-  customBorderProps &
   BorderProps &
-  FlexboxProps & {
+  FlexboxProps &
+  SpaceProps &
+  LayoutProps &
+  FlexboxProps &
+  customExtraProps &
+  customShadowProps &
+  customLayoutProps &
+  PositionProps & {
     alt?: string;
     fallbackSource?: ImageSourcePropType;
     ignoreFallback?: boolean;
+    textProps?: ITextProps;
   };

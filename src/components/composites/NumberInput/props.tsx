@@ -19,6 +19,10 @@ export type INumberInputProps = IInputProps &
   };
 
 export type INumberInputFieldProps = INumberInputProps & {};
+export type INumberInputStepperProps = INumberInputProps & {
+  _disabled?: any;
+  _active?: any;
+};
 export type INumberInputContext = INumberInputProps & {
   numberInputValue?: number;
   value?: number;

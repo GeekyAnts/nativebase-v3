@@ -7,6 +7,7 @@ import Usage from './usage';
 import Size from './size';
 import Fallback from './Fallback';
 import AvatarBadge from './AvatarBadge';
+import AvatarGroup from './AvatarGroup';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Avatar', module)
@@ -22,4 +23,5 @@ storiesOf('Avatar', module)
   .add('Usage', () => <Usage />)
   .add('Size', () => <Size />)
   .add('Fallback', () => <Fallback />)
-  .add('AvatarBadge', () => <AvatarBadge />);
+  .add('AvatarBadge', () => <AvatarBadge />)
+  .add('AvatarGroup', () => <AvatarGroup />);

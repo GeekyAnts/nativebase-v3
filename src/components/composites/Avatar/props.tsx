@@ -4,6 +4,7 @@ import type {
   SpaceProps,
   FlexboxProps,
 } from 'styled-system';
+import type { ImageSourcePropType } from 'react-native';
 import type { customBorderProps } from '../../../utils/customProps';
 
 export type IAvatarProps = LayoutProps &
@@ -14,7 +15,7 @@ export type IAvatarProps = LayoutProps &
     name?: string | undefined;
     style?: any;
     size?: string | undefined;
-    src?: string | undefined;
+    source?: ImageSourcePropType;
   };
 
 export type IAvatarBadgeProps = IAvatarProps & {

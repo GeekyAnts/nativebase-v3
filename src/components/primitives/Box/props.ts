@@ -35,5 +35,5 @@ export type IBoxProps = ViewProps &
   BorderProps & {
     style?: ViewStyle;
     children?: JSX.Element | JSX.Element[] | string | any;
-    shadow?: number | undefined;
+    shadow?: number;
   };

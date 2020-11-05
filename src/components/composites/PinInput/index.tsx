@@ -1,19 +1,22 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { Stack } from 'native-base';
-import type { IPinInputProps, IPinInputFieldProps } from './props';
-import { space } from 'styled-system';
-export { default as PinInputField } from './PinInputField';
-export type { IPinInputProps, IPinInputFieldProps };
+import { Stack, usePropsConfig } from 'native-base';
+import type {
+  IPinInputProps,
+  IPinInputFieldProps,
+  IPinInputContext,
+} from './props';
+import { FormControlContext, IFormControlContext } from '../FormControl';
 
 export const PinInputContext = React.createContext({});
-const NBPinInput = ({
-  children,
-  defaultValue,
-  manageFocus = true,
-  value,
-  ...props
-}: IPinInputProps) => {
+
+const PinInput = ({ children, ...props }: IPinInputProps) => {
+  const { manageFocus, defaultValue, value, ...newProps } = usePropsConfig(
+    'PinInput',
+    props
+  );
+  const formControlContext: IFormControlContext = React.useContext(
+    FormControlContext
+  );
   const RefList: Array<any> = [];
   const setRefList = (ref: any, index: number) => {
     RefList[index] = ref;
@@ -32,6 +35,16 @@ const NBPinInput = ({
       RefList[fieldIndex - 1].current.focus();
     return temp.join('');
   };
+  const handleMultiValueChange = (newValue: string) => {
+    const pinFieldLength = RefList.length;
+    const newValueLength = newValue.length;
+    if (newValueLength >= pinFieldLength) {
+      let splicedValue = newValue ? [...newValue] : [];
+      splicedValue.splice(pinFieldLength);
+      RefList[pinFieldLength - 1].current.focus();
+      setPinInputValue(splicedValue.join(''));
+    }
+  };
 
   const indexSetter = (allChildren: JSX.Element | JSX.Element[]) => {
     let pinInputFiledCounter = -1;
@@ -49,23 +62,23 @@ const NBPinInput = ({
       }
     });
   };
+
   return (
     <PinInputContext.Provider
-      value={{ setRefList, handleChange, ...props, value: pinInputValue }}
+      value={{
+        ...formControlContext,
+        ...newProps,
+        setRefList,
+        handleChange,
+        handleMultiValueChange,
+        value: pinInputValue,
+      }}
     >
       {children && <Stack flexDirection="row">{indexSetter(children)}</Stack>}
     </PinInputContext.Provider>
   );
 };
 
-const StyledPinInput = styled(NBPinInput)<IPinInputProps>(space);
-StyledPinInput.defaultProps = {
-  placeholder: '○',
-  size: 'sm',
-};
-
-const PinInput = ({ children, ...props }: IPinInputProps) => {
-  return <StyledPinInput {...props}>{children}</StyledPinInput>;
-};
-
 export default PinInput;
+export { default as PinInputField } from './PinInputField';
+export type { IPinInputProps, IPinInputFieldProps, IPinInputContext };
