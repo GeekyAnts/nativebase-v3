@@ -30,17 +30,15 @@ const NumberDecrementStepper = ({
     <TouchableOpacity
       activeOpacity={1}
       disabled={numberInputValue - step < min || isDisabled}
-      onPress={() => pressHandler()}
-      accessible={true}
+      onPress={pressHandler}
+      accessible
       accessibilityLabel={ariaLabel}
     >
       <Box
         {...newProps}
-        style={[
-          style,
-          _active,
-          (numberInputValue - step < min || isDisabled) && _disabled,
-        ]}
+        {..._active}
+        {...(numberInputValue - step < min || isDisabled ? _disabled : {})}
+        style={style}
       >
         {children || <Icon name="arrow-drop-down" type="MaterialIcons" />}
       </Box>
