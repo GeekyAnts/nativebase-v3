@@ -12,7 +12,7 @@ export function usePropsConfig(component: string, props: any) {
   const componentTheme = get(theme, `components.${component}`);
   if (!componentTheme) {
     console.warn(
-      `NB Warning: If are seeing this, then you probable don't need to use usePropsConfig in ${component}.`
+      `NB Warning: If you are seeing this, you probably don't need to use usePropsConfig in ${component}.`
     );
     return props;
   }
