@@ -15,7 +15,6 @@ import BreadCrumb from './breadcrumb';
 import PinInput from './pin-input';
 import Link from './link';
 import Kbd from './kbd';
-import Text from './text';
 import Progress from './progress';
 import Container from './container';
 import Skeleton from './skeleton';
@@ -41,7 +40,6 @@ export default {
   BreadCrumb,
   PinInput,
   Kbd,
-  Text,
   TextArea,
   Progress,
   Container,
