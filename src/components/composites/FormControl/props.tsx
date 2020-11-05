@@ -5,12 +5,14 @@ export type IFormControlProps = IBoxProps & {
   isRequired?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
+  id?: number;
 };
 export type IFormControlContext = {
   isInvalid?: boolean;
   isRequired?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
+  id?: number;
 };
 export type IFormLabelProps = IFormControlProps & {
   style?: any;
