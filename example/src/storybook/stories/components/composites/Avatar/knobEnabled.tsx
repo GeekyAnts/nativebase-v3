@@ -5,12 +5,20 @@ import { color, select, number, text } from '@storybook/addon-knobs';
 export default function () {
   return (
     <Avatar
-      src={text('src', 'https://nativebase.io/assets/img/front-page-icon.png')}
+      source={{
+        uri: text(
+          'source',
+          'https://nativebase.io/assets/img/front-page-icon.png'
+        ),
+      }}
+      borderRadius={999}
+      borderWidth={2}
+      borderColor={'black'}
       size={select('size', ['sm', 'md', 'lg'], 'md')}
       name={text('name', 'NativeBase')}
     >
       <AvatarBadge
-        bg={color('badgeColor', 'red')}
+        bg={color('bg', 'red.2')}
         boxSize={number('badgeSize', 5, {
           range: true,
           min: 0,

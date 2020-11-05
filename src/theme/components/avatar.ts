@@ -4,7 +4,7 @@ import { mode } from './../tools';
 const baseStyle = (props: Record<string, any>) => {
   const { name, theme } = props;
   const bg = name ? randomColor({ string: name }) : 'gray.4';
-  const color = name ? (isDark(bg)(theme) ? 'white' : 'gray.8') : 'white';
+  const color = name ? (isDark(bg)(theme) ? 'dark.1' : 'light.0') : 'white';
   const borderColor = mode('white', 'gray.8')(props);
   return {
     bg,
@@ -13,8 +13,8 @@ const baseStyle = (props: Record<string, any>) => {
     position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 999,
-    // verticalAlign: 'top',
+    borderRadius: 'full',
+    fontWeight: 600,
   };
 };
 
@@ -42,7 +42,6 @@ const defaultProps = {
 };
 
 export default {
-  // parts,
   baseStyle,
   sizes,
   defaultProps,

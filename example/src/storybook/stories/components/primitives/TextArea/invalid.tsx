@@ -8,9 +8,13 @@ export default function () {
         <Heading>TextArea</Heading>
       </Center>
       <Center>
-        <Text>Default TextArea</Text>
+        <Text>Invalid TextArea</Text>
       </Center>
-      <TextArea w="90%" h="100" placeholder="Text Area Placeholder" />
+      <TextArea placeholder="Invalid TextArea" w="90%" isInvalid />
+      <Center>
+        <Text>Disabled TextArea</Text>
+      </Center>
+      <TextArea placeholder="Disabled TextArea" w="90%" isDisabled />
     </Stack>
   );
 }

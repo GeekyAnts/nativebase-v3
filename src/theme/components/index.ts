@@ -3,6 +3,7 @@ import Code from './code';
 import Badge from './badge';
 import Tag from './tag';
 import Avatar from './avatar';
+import AvatarBadge from './avatar-badge';
 import Center from './center';
 import Switch from './switch';
 import Image from './image';
@@ -18,9 +19,11 @@ import Kbd from './kbd';
 import Text from './text';
 import Progress from './progress';
 import Container from './container';
-import Box from './box';
+import Skeleton from './skeleton';
+import SkeletonText from './skeletonText';
 import CloseButton from './close-button';
 import Flex from './flex';
+import TextArea from './textarea';
 
 export default {
   Heading,
@@ -29,6 +32,7 @@ export default {
   Tag,
   Center,
   Avatar,
+  AvatarBadge,
   Switch,
   Wrap,
   Image,
@@ -41,39 +45,12 @@ export default {
   NumberInputStepper,
   Kbd,
   Text,
-  // not done
+  TextArea,
   Progress,
   Container,
-  Box,
+  Skeleton,
+  SkeletonText,
   Flex,
   Button,
   CloseButton,
 };
-
-export type IThemeComponents =
-  | 'Avatar'
-  | 'Button'
-  | 'Badge'
-  | 'Center'
-  | 'Code'
-  | 'Divider'
-  | 'Heading'
-  | 'Icon'
-  | 'Divider'
-  | 'Kbd'
-  | 'Text'
-  | 'Image'
-  | 'Kbd'
-  | 'Progress'
-  | 'Link'
-  | 'Switch'
-  | 'Tag'
-  | 'Wrap'
-  | 'Container'
-  | 'BreadCrumb'
-  | 'PinInput'
-  | 'NumberInput'
-  | 'NumberInputStepper'
-  | 'Box'
-  | 'CloseButton'
-  | 'Flex';

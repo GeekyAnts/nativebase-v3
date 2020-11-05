@@ -1,12 +1,11 @@
 import React from 'react';
-import { Avatar, HStack, View } from 'native-base';
+import { Avatar, AvatarGroup, View } from 'native-base';
 
 export default function () {
   return (
     <View display="flex" justifyContent="space-between" alignItems="center">
-      <HStack>
+      <AvatarGroup size="lg" max={4}>
         <Avatar
-          mr={2}
           name="Sanket Sahu"
           source={{
             uri:
@@ -14,23 +13,6 @@ export default function () {
           }}
         />
         <Avatar
-          mr={2}
-          name="Gaurav Guha"
-          source={{
-            uri:
-              'https://pbs.twimg.com/profile_images/1177303899243343872/B0sUJIH0_400x400.jpg',
-          }}
-        />
-        <Avatar
-          mr={2}
-          name="Rohit Singh"
-          source={{
-            uri:
-              'https://pbs.twimg.com/profile_images/1260766060401188864/ySJfMIbZ_400x400.jpg',
-          }}
-        />
-        <Avatar
-          mr={2}
           name="Ankur Kedia"
           source={{
             uri:
@@ -38,22 +20,31 @@ export default function () {
           }}
         />
         <Avatar
-          mr={2}
-          name="Suraj Ahmed"
+          name="Rohit Singh"
           source={{
             uri:
-              'https://pbs.twimg.com/profile_images/983582580372004864/h9ccP0Ea_400x400.jpg',
+              'https://pbs.twimg.com/profile_images/1260766060401188864/ySJfMIbZ_400x400.jpg',
           }}
         />
         <Avatar
-          mr={2}
           name="Rehman Baig"
           source={{
             uri:
               'https://pbs.twimg.com/profile_images/1320985200663293952/lE_Kg6vr_400x400.jpg',
           }}
         />
-      </HStack>
+        <Avatar
+          name="Christian Nwamba"
+          source={{ uri: 'https://bit.ly/code-beast' }}
+        />
+        <Avatar
+          name="Gaurav Guha"
+          source={{
+            uri:
+              'https://pbs.twimg.com/profile_images/1177303899243343872/B0sUJIH0_400x400.jpg',
+          }}
+        />
+      </AvatarGroup>
     </View>
   );
 }

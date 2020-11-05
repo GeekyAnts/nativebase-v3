@@ -11,7 +11,7 @@ export {
   AlertIcon,
   AlertCloseButton,
 } from './Alert';
-export { default as Avatar, AvatarBadge } from './Avatar';
+export { Avatar, AvatarBadge, AvatarGroup } from './Avatar';
 export {
   default as BreadCrumb,
   BreadCrumbItem,
