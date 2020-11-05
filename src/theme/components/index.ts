@@ -3,6 +3,7 @@ import Code from './code';
 import Badge from './badge';
 import Tag from './tag';
 import Avatar from './avatar';
+import AvatarBadge from './avatar-badge';
 import Center from './center';
 import Switch from './switch';
 import Image from './image';
@@ -29,6 +30,7 @@ export default {
   Tag,
   Center,
   Avatar,
+  AvatarBadge,
   Switch,
   Wrap,
   Image,
@@ -38,7 +40,6 @@ export default {
   BreadCrumb,
   Kbd,
   Text,
-  // not done
   Progress,
   Container,
   Skeleton,
@@ -51,6 +52,7 @@ export default {
 
 export type IThemeComponents =
   | 'Avatar'
+  | 'AvatarBadge'
   | 'Button'
   | 'Badge'
   | 'Center'
