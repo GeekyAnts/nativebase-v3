@@ -12,6 +12,7 @@ import Icon from './icon';
 import Divider from './divider';
 import BreadCrumb from './breadcrumb';
 import PinInput from './pin-input';
+import { default as NumberInput, NumberInputStepper } from './number-input';
 import Link from './link';
 import Kbd from './kbd';
 import Text from './text';
@@ -36,6 +37,8 @@ export default {
   Icon,
   BreadCrumb,
   PinInput,
+  NumberInput,
+  NumberInputStepper,
   Kbd,
   Text,
   // not done
@@ -69,6 +72,8 @@ export type IThemeComponents =
   | 'Container'
   | 'BreadCrumb'
   | 'PinInput'
+  | 'NumberInput'
+  | 'NumberInputStepper'
   | 'Box'
   | 'CloseButton'
   | 'Flex';

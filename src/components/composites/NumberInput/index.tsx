@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { space } from 'styled-system';
+import { usePropsConfig } from 'native-base';
+import { FormControlContext, IFormControlContext } from '../FormControl';
 export { default as NumberInputField } from './NumberInputField';
 export { default as NumberInputStepper } from './NumberInputStepper';
 export { default as NumberIncrementStepper } from './NumberIncrementStepper';
@@ -9,20 +9,30 @@ import type {
   INumberInputProps,
   INumberInputFieldProps,
   INumberInputContext,
+  INumberInputStepperProps,
 } from './props';
-export type { INumberInputProps, INumberInputFieldProps, INumberInputContext };
+export type {
+  INumberInputProps,
+  INumberInputFieldProps,
+  INumberInputContext,
+  INumberInputStepperProps,
+};
 
 export const NumberInputContext = React.createContext({});
-const NBNumberInput = ({
-  children,
-  defaultValue = '0',
-  keepWithinRange = true,
-  value = '0',
-  min = 0,
-  max = 100,
-  ...props
-}: INumberInputProps) => {
+
+const NumberInput = ({ children, ...props }: INumberInputProps) => {
   // TODO: Needs refactoring after input is refactored.
+  const {
+    defaultValue,
+    keepWithinRange,
+    value,
+    min,
+    max,
+    ...newProps
+  } = usePropsConfig('NumberInput', props);
+  const formControlContext: IFormControlContext = React.useContext(
+    FormControlContext
+  );
   const [numberInputValue, setNumberInputValue] = React.useState(
     parseInt(value || defaultValue, 10)
   );
@@ -55,7 +65,8 @@ const NBNumberInput = ({
   return (
     <NumberInputContext.Provider
       value={{
-        ...props,
+        ...formControlContext,
+        ...newProps,
         min,
         max,
         handleChange,
@@ -67,23 +78,6 @@ const NBNumberInput = ({
       {updatedChildren}
     </NumberInputContext.Provider>
   );
-};
-
-const StyledNumberInput = styled(NBNumberInput)<INumberInputProps>(space);
-StyledNumberInput.defaultProps = {
-  inputSize: 'sm',
-  step: 1,
-  min: -Infinity,
-  max: Infinity,
-  defaultValue: '0',
-  keepWithinRange: true,
-  clampValueOnBlur: true,
-  focusInputOnChange: true,
-  getAriaValueText: true,
-};
-
-const NumberInput = ({ children, ...props }: INumberInputProps) => {
-  return <StyledNumberInput {...props}>{children}</StyledNumberInput>;
 };
 
 export default NumberInput;
