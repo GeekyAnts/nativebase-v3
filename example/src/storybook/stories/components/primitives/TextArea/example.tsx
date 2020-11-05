@@ -5,7 +5,7 @@ import { select, number, text } from '@storybook/addon-knobs';
 export default function () {
   const [textAreaValue, setTextAreaValue] = useState('Value Controlled');
   const demoValueControlledTextArea = (e: any) => {
-    setTextAreaValue(e.currentTarget.value());
+    setTextAreaValue(e.currentTarget.value);
   };
   return (
     <Stack space={4}>
@@ -16,13 +16,14 @@ export default function () {
         <Text>Default TextArea</Text>
       </Center>
       <TextArea
+        isInvalid
         placeholder={text('Placeholder', 'Add custom placeholder using knobs')}
       />
       <Center>
         <Text>TextArea with different font sizes</Text>
       </Center>
       <TextArea
-        textSize={select(
+        inputSize={select(
           'Text Size',
           ['xsm', 'sm', 'md', 'lg', 'xl', '2xl'],
           'sm'
