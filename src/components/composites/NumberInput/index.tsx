@@ -1,22 +1,13 @@
 import React from 'react';
 import { usePropsConfig } from 'native-base';
 import { FormControlContext, IFormControlContext } from '../FormControl';
-export { default as NumberInputField } from './NumberInputField';
-export { default as NumberInputStepper } from './NumberInputStepper';
-export { default as NumberIncrementStepper } from './NumberIncrementStepper';
-export { default as NumberDecrementStepper } from './NumberDecrementStepper';
+
 import type {
   INumberInputProps,
   INumberInputFieldProps,
   INumberInputContext,
   INumberInputStepperProps,
 } from './props';
-export type {
-  INumberInputProps,
-  INumberInputFieldProps,
-  INumberInputContext,
-  INumberInputStepperProps,
-};
 
 export const NumberInputContext = React.createContext({});
 
@@ -56,7 +47,7 @@ const NumberInput = ({ children, ...props }: INumberInputProps) => {
         numberInputStepper = child;
         return null;
       } else {
-        return React.cloneElement(child, {}, child.props.children);
+        return child;
       }
     });
   };
@@ -81,3 +72,13 @@ const NumberInput = ({ children, ...props }: INumberInputProps) => {
 };
 
 export default NumberInput;
+export { default as NumberInputField } from './NumberInputField';
+export { default as NumberInputStepper } from './NumberInputStepper';
+export { default as NumberIncrementStepper } from './NumberIncrementStepper';
+export { default as NumberDecrementStepper } from './NumberDecrementStepper';
+export type {
+  INumberInputProps,
+  INumberInputFieldProps,
+  INumberInputContext,
+  INumberInputStepperProps,
+};

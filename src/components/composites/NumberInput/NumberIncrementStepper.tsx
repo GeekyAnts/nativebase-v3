@@ -35,11 +35,9 @@ const NumberIncrementStepper = ({
     >
       <Box
         {...newProps}
-        style={[
-          style,
-          _active,
-          (numberInputValue + step > max || isDisabled) && _disabled,
-        ]}
+        {..._active}
+        {...(numberInputValue + step > max || isDisabled ? _disabled : {})}
+        style={style}
       >
         {children || <Icon name="arrow-drop-up" type="MaterialIcons" />}
       </Box>

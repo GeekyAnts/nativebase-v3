@@ -1,5 +1,3 @@
-const baseStyle = {};
-
 const defaultProps = {
   inputSize: 'sm',
   step: 1,
@@ -13,21 +11,18 @@ const defaultProps = {
 };
 
 export default {
-  baseStyle,
   defaultProps,
 };
 
 //Steppers
-const stepperBaseStyle = {};
 
 const stepperDefaultProps = {
   _active: {},
   _disabled: {
-    backgroundColor: 'lightgray',
+    bg: 'gray.3',
   },
 };
 
 export const NumberInputStepper = {
-  baseStyle: stepperBaseStyle,
   defaultProps: stepperDefaultProps,
 };
