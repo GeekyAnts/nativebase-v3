@@ -1,6 +1,4 @@
-const defaultProps = {
-  shadow: 1,
-};
+const defaultProps = {};
 export default {
   defaultProps,
 };

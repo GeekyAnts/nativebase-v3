@@ -4,9 +4,13 @@ import { Avatar, HStack } from 'native-base';
 export default function () {
   return (
     <HStack>
-      <Avatar mr={1} name="Rohit" src="https://bit.ly/broken-link" />
-      <Avatar name="Rehman" src="https://bit.ly/broken-link" />
-      <Avatar src="https://bit.ly/broken-link" />
+      <Avatar
+        mr={1}
+        name="Rohit"
+        source={{ uri: 'https://bit.ly/broken-link' }}
+      />
+      <Avatar name="Rehman" source={{ uri: 'https://bit.ly/broken-link' }} />
+      <Avatar source={{ uri: 'https://bit.ly/broken-link' }} />
     </HStack>
   );
 }
