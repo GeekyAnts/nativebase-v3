@@ -2,12 +2,17 @@ import { useContext } from 'react';
 import { ThemeContext } from './../ThemeProvider';
 import { get, isNil, mergeWith } from 'lodash';
 import { themePropertyMap } from './../base';
-import type { IThemeComponents } from './../components';
 import { omitUndefined } from './utils';
 
-export function usePropsConfig(component: IThemeComponents, props: any) {
+export function usePropsConfig(component: string, props: any) {
   const theme = useContext(ThemeContext).theme;
+  if (!props) {
+    props = {};
+  }
   const componentTheme = get(theme, `components.${component}`);
+  if (!componentTheme) {
+    return props;
+  }
   props = omitUndefined(props);
   // Extracting props from defaultProps
   let newProps = extractProps(

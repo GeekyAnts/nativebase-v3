@@ -20,7 +20,6 @@ import Progress from './progress';
 import Container from './container';
 import Skeleton from './skeleton';
 import SkeletonText from './skeletonText';
-import Box from './box';
 import CloseButton from './close-button';
 import Flex from './flex';
 import TextArea from './textarea';
@@ -48,38 +47,7 @@ export default {
   Container,
   Skeleton,
   SkeletonText,
-  Box,
   Flex,
   Button,
   CloseButton,
 };
-
-export type IThemeComponents =
-  | 'Avatar'
-  | 'AvatarBadge'
-  | 'Button'
-  | 'Badge'
-  | 'Center'
-  | 'Code'
-  | 'Divider'
-  | 'Heading'
-  | 'Icon'
-  | 'Divider'
-  | 'Kbd'
-  | 'Text'
-  | 'Image'
-  | 'Kbd'
-  | 'Progress'
-  | 'Link'
-  | 'Switch'
-  | 'Tag'
-  | 'Wrap'
-  | 'Container'
-  | 'Skeleton'
-  | 'SkeletonText'
-  | 'BreadCrumb'
-  | 'PinInput'
-  | 'Box'
-  | 'CloseButton'
-  | 'Flex'
-  | 'TextArea';
