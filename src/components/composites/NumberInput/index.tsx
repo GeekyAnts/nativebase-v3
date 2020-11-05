@@ -71,7 +71,7 @@ const NBNumberInput = ({
 
 const StyledNumberInput = styled(NBNumberInput)<INumberInputProps>(space);
 StyledNumberInput.defaultProps = {
-  inputSize: 'sm',
+  size: 'sm',
   step: 1,
   min: -Infinity,
   max: Infinity,

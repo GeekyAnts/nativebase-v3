@@ -61,7 +61,7 @@ const NBPinInput = ({
 const StyledPinInput = styled(NBPinInput)<IPinInputProps>(space);
 StyledPinInput.defaultProps = {
   placeholder: '○',
-  inputSize: 'sm',
+  size: 'sm',
 };
 
 const PinInput = ({ children, ...props }: IPinInputProps) => {

@@ -22,6 +22,7 @@ import Box from './box';
 import CloseButton from './close-button';
 import Flex from './flex';
 import TextArea from './textarea';
+import Input from './input';
 
 export default {
   Heading,
@@ -40,6 +41,7 @@ export default {
   Kbd,
   Text,
   TextArea,
+  Input,
   // not done
   Progress,
   Container,
@@ -77,4 +79,5 @@ export type IThemeComponents =
   | 'Box'
   | 'CloseButton'
   | 'Flex'
-  | 'TextArea';
+  | 'TextArea'
+  | 'Input';

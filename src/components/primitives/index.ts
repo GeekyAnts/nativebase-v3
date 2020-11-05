@@ -2,11 +2,11 @@ export { default as Box, IBoxProps } from './Box';
 export { default as Text, ITextProps } from './Text';
 export {
   default as Input,
-  IInputBoxProps,
+  IInputProps,
   InputGroup,
   InputLeftAddon,
   InputRightAddon,
-} from './InputBox';
+} from './Input';
 export { default as View } from './View';
 export {
   default as Checkbox,
