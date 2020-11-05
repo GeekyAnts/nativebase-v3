@@ -16,7 +16,6 @@ import PinInput from './pin-input';
 import { default as NumberInput, NumberInputStepper } from './number-input';
 import Link from './link';
 import Kbd from './kbd';
-import Text from './text';
 import Progress from './progress';
 import Container from './container';
 import Skeleton from './skeleton';
@@ -44,7 +43,6 @@ export default {
   NumberInput,
   NumberInputStepper,
   Kbd,
-  Text,
   TextArea,
   Progress,
   Container,
