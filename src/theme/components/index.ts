@@ -24,6 +24,7 @@ import CloseButton from './close-button';
 import Flex from './flex';
 import TextArea from './textarea';
 import Input from './input';
+import Stat from './stat';
 
 export default {
   Heading,
@@ -46,6 +47,7 @@ export default {
   Kbd,
   TextArea,
   Input,
+  Stat,
   // not done
   Progress,
   Container,

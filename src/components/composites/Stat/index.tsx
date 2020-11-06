@@ -1,35 +1,6 @@
 import React from 'react';
-import { StyleSheet, TextStyle } from 'react-native';
-import type {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-} from 'styled-system';
-import type {
-  customBorderProps,
-  customBackgroundProps,
-  customOutlineProps,
-  customLayoutProps,
-  customExtraProps,
-  customShadowProps,
-} from '../../../utils/customProps';
 import { Box, IBoxProps, Text, ITextProps, Icon } from '../../..';
-export type IStatProps = ITextProps &
-  ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  customBackgroundProps &
-  BorderProps & {
-    style?: TextStyle;
-  };
+import { usePropsConfig } from '../../../theme';
 
 export const StatLabel = ({ style, ...props }: ITextProps) => {
   return (
@@ -38,39 +9,20 @@ export const StatLabel = ({ style, ...props }: ITextProps) => {
     </Text>
   );
 };
-export const StatNumber = ({
-  style,
-  fontSize,
-  fontWeight,
-  ...props
-}: ITextProps) => {
+
+export const StatNumber = ({ style, ...props }: ITextProps) => {
+  let newProps = usePropsConfig('Stat', props);
   return (
-    <Text
-      my={2}
-      style={style}
-      fontSize={fontSize ? fontSize : '3xl'}
-      fontWeight={fontWeight ? fontWeight : 700}
-      {...props}
-    >
+    <Text {...newProps._statNumber} {...newProps} style={style}>
       {props.children}
     </Text>
   );
 };
+
 export const StatHelpText = ({ style, ...props }: IBoxProps) => {
-  let computedStyle: any = style;
-  computedStyle = StyleSheet.flatten([
-    style,
-    {
-      opacity: 0.7,
-    },
-  ]);
+  let newProps = usePropsConfig('Stat', props);
   return (
-    <Box
-      flexDirection="row"
-      alignItems="center"
-      style={computedStyle}
-      {...props}
-    >
+    <Box {...newProps._statHelpText} {...newProps} style={style}>
       {props.children}
     </Box>
   );
@@ -84,24 +36,18 @@ export const StatArrow = ({
 }) => {
   return (
     <Icon
-      type="MaterialIcons"
-      name={type === 'increase' ? 'arrow-drop-up' : 'arrow-drop-down'}
-      color={type === 'increase' ? 'green.5' : 'red.5'}
+      ml={-1}
+      type="Entypo"
+      name={type === 'increase' ? 'triangle-up' : 'triangle-down'}
       {...props}
+      color={type === 'increase' ? 'green.5' : 'red.5'}
     />
   );
 };
 
 export const StatGroup = ({ style, ...props }: IBoxProps) => {
-  let computedStyle: any = style;
-  computedStyle = StyleSheet.flatten([
-    style,
-    {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-  ]);
-  return <Box flexWrap="wrap" style={computedStyle} {...props} />;
+  let newProps = usePropsConfig('Stat', props);
+  return <Box {...newProps._statGroup} {...newProps} style={style} />;
 };
 
 const Stat = ({ style, ...props }: IBoxProps) => {
