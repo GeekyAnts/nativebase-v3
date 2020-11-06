@@ -16,16 +16,18 @@ import PinInput from './pin-input';
 import { default as NumberInput, NumberInputStepper } from './number-input';
 import { default as Menu, MenuItem, MenuGroup } from './menu';
 import Link from './link';
+import Checkbox from './checkbox';
 import Kbd from './kbd';
 import Progress from './progress';
 import Container from './container';
 import Skeleton from './skeleton';
 import SkeletonText from './skeletonText';
-import CloseButton from './close-button';
+import IconButton from './icon-button';
 import Flex from './flex';
 import TextArea from './textarea';
 import Input from './input';
 import Stat from './stat';
+import Spinner from './spinner';
 
 export default {
   Heading,
@@ -40,6 +42,7 @@ export default {
   Image,
   Divider,
   Link,
+  Checkbox,
   Icon,
   BreadCrumb,
   PinInput,
@@ -55,8 +58,9 @@ export default {
   SkeletonText,
   Flex,
   Button,
-  CloseButton,
+  IconButton,
   Menu,
   MenuItem,
   MenuGroup,
+  Spinner,
 };

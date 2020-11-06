@@ -7,7 +7,7 @@ function getSizes() {
     if (key !== 'container') {
       spaceValues[key] = {
         // @ts-ignore
-        size: baseSizes[key],
+        dimension: baseSizes[key],
       };
     }
   }
@@ -15,7 +15,7 @@ function getSizes() {
   for (let key in typography.fontSizes) {
     fontValues[key] = {
       // @ts-ignore
-      size: typography.fontSizes[key],
+      dimension: typography.fontSizes[key],
     };
   }
   return { ...fontValues, ...spaceValues };
