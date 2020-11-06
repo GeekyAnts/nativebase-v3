@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Box, Icon, usePropsConfig } from 'native-base';
+import { Center, Icon, usePropsConfig } from 'native-base';
 import {
   FormControlContext,
   IFormControlContext,
@@ -30,7 +30,7 @@ const Checkbox = ({ children, ...props }: ICheckboxProps) => {
     ariaLabel,
     icon,
     size,
-    newProps,
+    ...newProps
   } = usePropsConfig('Checkbox', {
     ...context,
     ...formControlContext,
@@ -65,23 +65,15 @@ const Checkbox = ({ children, ...props }: ICheckboxProps) => {
       activeOpacity={1}
       disabled={isDisabled}
       onPress={() => pressHandler()}
-      accessible={true}
+      accessible
       accessibilityLabel={ariaLabel}
       accessibilityRole="checkbox"
     >
-      <Box
-        {...newProps}
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Box
+      <Center {...newProps} flexDirection="row">
+        <Center
           backgroundColor={checkboxState ? activeColor : 'transparent'}
           borderColor={checkboxState ? activeColor : borderColor}
           borderWidth={2}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
           borderRadius={5}
         >
           {icon && checkboxState ? (
@@ -95,9 +87,9 @@ const Checkbox = ({ children, ...props }: ICheckboxProps) => {
               opacity={checkboxState ? 1 : 0}
             />
           )}
-        </Box>
+        </Center>
         {children}
-      </Box>
+      </Center>
     </TouchableOpacity>
   );
 };

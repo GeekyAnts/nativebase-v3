@@ -1,19 +1,19 @@
 import { getColor } from '../tools';
 
 const baseStyle = (props: Record<string, any>) => {
-  const { theme, isInvalid } = props;
+  const { isInvalid } = props;
   const activeColor = activeColorSetter(props);
   return {
     activeColor,
-    borderColor: isInvalid ? theme.colors.danger[2] : theme.colors.muted[0],
-    iconColor: theme.colors.light[2],
+    borderColor: isInvalid ? 'danger.2' : 'muted.0',
+    iconColor: 'light.2',
   };
 };
 
 const activeColorSetter = (props: Record<string, any>) => {
   const { theme, colorScheme, isDisabled } = props;
-  if (isDisabled) return theme.colors.gray[3];
-  else return getColor(theme, colorScheme, theme.colors.default[0]);
+  if (isDisabled) return 'gray.3';
+  else return getColor(theme, colorScheme, 'default.2');
 };
 
 const sizes = {
@@ -33,18 +33,3 @@ export default {
   sizes,
   defaultProps,
 };
-
-//Grouop
-// const stepperBaseStyle = {};
-
-// const stepperDefaultProps = {
-//   _active: {},
-//   _disabled: {
-//     backgroundColor: 'lightgray',
-//   },
-// };
-
-// export const NumberInputStepper = {
-//   baseStyle: stepperBaseStyle,
-//   defaultProps: stepperDefaultProps,
-// };
