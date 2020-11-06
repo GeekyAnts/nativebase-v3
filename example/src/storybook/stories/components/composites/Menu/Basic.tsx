@@ -4,11 +4,9 @@ import { Menu, MenuItem, Divider, IconButton } from 'native-base';
 export default function () {
   return (
     <Menu
-      onOpen={() => console.log('opened')}
-      onClose={() => console.log('closed')}
       trigger={(triggerProps: any) => {
         return (
-          <IconButton name="menu" {...triggerProps}>
+          <IconButton name="menu" {...triggerProps} bg="teal.2">
             Show Menu
           </IconButton>
         );
