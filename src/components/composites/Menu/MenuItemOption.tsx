@@ -1,7 +1,7 @@
 import React from 'react';
-import { Flex, Icon } from 'native-base';
-import { IMenuItemProps, MenuItem } from './MenuItem';
-import type { IMenuOptionContextProps } from './props';
+import { Flex, Icon, usePropsConfig } from 'native-base';
+import { MenuItem } from './MenuItem';
+import type { IMenuItemProps, IMenuOptionContextProps } from './props';
 import { MenuOptionContext } from './MenuOptionGroup';
 export type IMenuItemOptionProps = IMenuItemProps & {
   value: string | number;
@@ -28,10 +28,11 @@ export const MenuItemOption = ({
       : values.includes(value)
       ? 'radio-button-checked'
       : 'radio-button-unchecked';
+  const newProps = usePropsConfig('MenuItem', props);
   return (
     <MenuItem {...props} onPress={modifiedOnPress}>
-      <Flex direction="row" fontSize={14} p={2}>
-        <Icon name={iconName} pr={2} />
+      <Flex direction="row" px={newProps.px} py={newProps.py}>
+        <Icon name={iconName} pr={newProps.px} size={newProps.fontSize} />
         {children}
       </Flex>
     </MenuItem>
