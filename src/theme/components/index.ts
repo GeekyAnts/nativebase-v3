@@ -15,6 +15,7 @@ import BreadCrumb from './breadcrumb';
 import PinInput from './pin-input';
 import { default as NumberInput, NumberInputStepper } from './number-input';
 import Link from './link';
+import Checkbox from './checkbox';
 import Kbd from './kbd';
 import Text from './text';
 import Progress from './progress';
@@ -38,6 +39,7 @@ export default {
   Image,
   Divider,
   Link,
+  Checkbox,
   Icon,
   BreadCrumb,
   PinInput,

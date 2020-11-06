@@ -16,8 +16,7 @@ export default function () {
         <Heading mt={3}>CheckboxGroup </Heading>
       </Inline>
       <CheckboxGroup
-        spacing={2}
-        colorScheme="green"
+        colorScheme="green.2"
         defaultValue={groupValue}
         onChange={(values) => {
           setGroupValue(values);
@@ -32,7 +31,11 @@ export default function () {
         <Checkbox value="Item 3 ">
           <Text mx={2}>Item 3</Text>
         </Checkbox>
-        <Checkbox isIndeterminate value="Indeterminate Item ">
+        <Checkbox
+          colorScheme="orange.3"
+          isIndeterminate
+          value="Indeterminate Item "
+        >
           <Text mx={2}>Indeterminate Item</Text>
         </Checkbox>
       </CheckboxGroup>

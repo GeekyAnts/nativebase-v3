@@ -1,6 +1,6 @@
-import type { SpaceProps } from 'styled-system';
+import type { IBoxProps, IFormControlContext } from 'native-base';
 
-export type ICheckboxProps = SpaceProps & {
+export type ICheckboxProps = IBoxProps & {
   id?: string;
   name?: string;
   value?: string | number;
@@ -15,7 +15,6 @@ export type ICheckboxProps = SpaceProps & {
   icon?: JSX.Element;
   children?: JSX.Element;
   onChange?: (
-    event?: any,
     value?: string | number | undefined,
     currentState?: boolean
   ) => void;
@@ -27,15 +26,23 @@ export type ICheckboxProps = SpaceProps & {
   style?: any | undefined;
 };
 
-export type ICheckboxGroupProps = SpaceProps & {
+export type ICheckboxGroupProps = IBoxProps & {
   id?: string;
   value?: Array<any>;
   defaultValue?: Array<any>;
   colorScheme?: string;
   size?: 'sm' | 'md' | 'lg';
-  spacing?: string | number;
   children: JSX.Element[];
-  onChange?: (values: Array<any>, event?: any) => void;
+  onChange?: (values: Array<any>) => void;
   // Custom props
   style?: any | undefined;
+};
+export type ICheckboxContext = IFormControlContext & {
+  value?: Array<any>;
+  colorScheme?: string;
+  size?: 'sm' | 'md' | 'lg';
+  groupValueChangeHandler?: (
+    value: string | number | undefined,
+    currentState: boolean
+  ) => void;
 };

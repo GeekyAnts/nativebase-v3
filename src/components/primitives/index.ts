@@ -9,7 +9,7 @@ export {
 } from './InputBox';
 export { default as View } from './View';
 export {
-  default as Checkbox,
+  Checkbox,
   ICheckboxProps,
   CheckboxGroup,
   ICheckboxGroupProps,
