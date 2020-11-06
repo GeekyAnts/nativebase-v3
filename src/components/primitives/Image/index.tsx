@@ -38,9 +38,8 @@ const Image = ({
     }
   };
   const newProps = usePropsConfig('Image', props);
-  const newTextProps = usePropsConfig('Text', textProps);
   if (alternate) {
-    return <Text {...newTextProps}>{alt}</Text>;
+    return <Text {...textProps}>{alt}</Text>;
   }
   return (
     <StyledImage

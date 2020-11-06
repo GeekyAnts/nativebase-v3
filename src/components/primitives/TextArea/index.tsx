@@ -1,7 +1,7 @@
 import React from 'react';
-import { Input, IInputBoxProps } from '../../..';
+import { Input, IInputProps } from '../../..';
 import { usePropsConfig } from '../../../theme';
-export type ITextAreaProps = IInputBoxProps & {
+export type ITextAreaProps = IInputProps & {
   totalLines?: number;
 };
 

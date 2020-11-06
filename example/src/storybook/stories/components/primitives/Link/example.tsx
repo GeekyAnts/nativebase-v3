@@ -56,9 +56,7 @@ export const CompositeLink = () => {
             Box
           </Text>
         </Box>
-        <Text style={{ color: 'gray' }}>
-          Clicking anywhere will trigger the link
-        </Text>
+        <Text>Clicking anywhere will trigger the link</Text>
         <Box my={3} p={8} bg="blue.3">
           <Text color="white" fontSize={16}>
             Box

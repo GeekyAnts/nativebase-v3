@@ -42,15 +42,19 @@ export function getContainerStyles(
       translateY: Animated.multiply(menuSizeAnimation.y, -1),
     });
     top = windowHeight - SCREEN_INDENT;
-    top = Math.min(windowHeight - SCREEN_INDENT, top + buttonHeight);
+    top = Math.min(
+      windowHeight - menuHeight + SCREEN_INDENT,
+      top + buttonHeight
+    );
   } else if (top < SCREEN_INDENT) {
-    top = SCREEN_INDENT;
+    top = SCREEN_INDENT + 50;
+  } else {
+    top += 50;
   }
   const menuContainerStyle = {
     opacity: opacityAnimation,
     transform: transforms,
     top,
-
     // Switch left to right for rtl devices
     ...(isRTL ? { right: left } : { left }),
   };

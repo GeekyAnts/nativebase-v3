@@ -18,8 +18,8 @@ const SVGIcon = ({
   const newProps = usePropsConfig('Icon', { size });
   return (
     <SVG
-      height={parseInt(newProps.size, 10)}
-      width={parseInt(newProps.size, 10)}
+      height={parseInt(newProps.dimension || newProps.size, 10)}
+      width={parseInt(newProps.dimension || newProps.size, 10)}
       viewBox={viewBox}
       color={colorProp}
       stroke={stroke}

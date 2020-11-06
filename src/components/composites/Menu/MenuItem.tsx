@@ -1,25 +1,9 @@
 import React from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableNativeFeedback,
-  TouchableNativeFeedbackProps,
-  TouchableHighlightProps,
-  ViewStyle,
-  TextStyle,
-} from 'react-native';
 import type { IMenuContextProps } from './props';
 import { MenuContext } from './Menu';
-
-export type IMenuItemProps = TouchableNativeFeedbackProps &
-  TouchableHighlightProps & {
-    children: string | JSX.Element;
-    disabled?: boolean;
-    style?: ViewStyle;
-    textStyle?: TextStyle;
-  };
+import { usePropsConfig, Text, themeTools } from 'native-base';
+import { TouchableItem } from './TouchableItem';
+import type { IMenuItemProps } from './props';
 
 export const MenuItem = ({
   children,
@@ -28,19 +12,32 @@ export const MenuItem = ({
   textStyle,
   ...props
 }: IMenuItemProps) => {
-  const Touchable: any =
-    Platform.OS === 'android' && Platform.Version >= 21
-      ? TouchableNativeFeedback
-      : TouchableHighlight;
   const { closeMenu, closeOnSelect }: IMenuContextProps = React.useContext(
     MenuContext
   );
+  const newProps = usePropsConfig('MenuItem', props);
+  let allProps = {
+    ...newProps,
+    ...(newProps.isDisabled ? newProps._disabled : {}),
+  };
+
+  const [textProps, touchProps] = themeTools.extractInObject(allProps, [
+    'color',
+    'fontWeight',
+    'fontStyle',
+    'fontFamily',
+    'fontSize',
+    'padding',
+    'px',
+    'py',
+    'textAlign',
+  ]);
   return (
-    <Touchable
-      {...props}
-      style={[styles.container, style]}
+    <TouchableItem
+      {...touchProps}
+      style={style}
       onPress={(e: any) => {
-        if (!props.disabled) {
+        if (!props.isDisabled) {
           onPress && onPress(e);
           if (closeOnSelect) {
             closeMenu();
@@ -48,32 +45,19 @@ export const MenuItem = ({
         }
       }}
     >
-      {typeof children === 'string' ? (
-        <Text style={[styles.title, textStyle]}>{children}</Text>
-      ) : (
-        children
-      )}
-    </Touchable>
+      <>
+        {React.Children.map(children, (child) => {
+          if (typeof child === 'string') {
+            return (
+              <Text {...textProps} style={textStyle}>
+                {child}
+              </Text>
+            );
+          } else {
+            return child;
+          }
+        })}
+      </>
+    </TouchableItem>
   );
 };
-
-MenuItem.defaultProps = {
-  disabled: false,
-  disabledTextColor: '#bdbdbd',
-  ellipsizeMode: Platform.OS === 'ios' ? 'clip' : 'tail',
-  underlayColor: '#e0e0e0',
-};
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    maxWidth: 248,
-    minWidth: 124,
-  },
-  title: {
-    fontSize: 14,
-    fontWeight: '400',
-    padding: 10,
-    textAlign: 'left',
-  },
-});

@@ -5,6 +5,7 @@ import {
   IconButton,
   MenuOptionGroup,
   Divider,
+  Icon,
 } from 'native-base';
 
 export default function () {
@@ -15,7 +16,7 @@ export default function () {
       onClose={() => console.log('closed')}
       trigger={(triggerProps) => {
         return (
-          <IconButton name="menu" {...triggerProps}>
+          <IconButton icon={<Icon name="menu" />} {...triggerProps}>
             Show Menu
           </IconButton>
         );

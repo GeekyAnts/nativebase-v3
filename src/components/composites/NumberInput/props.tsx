@@ -1,6 +1,6 @@
-import type { IInputBoxProps, IBoxProps } from 'native-base';
+import type { IInputProps, IBoxProps } from 'native-base';
 
-export type INumberInputProps = IInputBoxProps &
+export type INumberInputProps = IInputProps &
   IBoxProps & {
     onChange?: (value: number) => void;
     min?: number;

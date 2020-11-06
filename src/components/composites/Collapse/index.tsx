@@ -1,9 +1,7 @@
 import { isNil } from 'lodash';
 import React, { useEffect, useRef } from 'react'; //import  also
-import { ViewStyle, LayoutAnimation, View } from 'react-native';
+import { ViewStyle, LayoutAnimation } from 'react-native';
 import { Box, IBoxProps } from '../../primitives';
-
-const functionType = () => {};
 
 export type ICollapseProps = IBoxProps & {
   style?: ViewStyle;
@@ -12,8 +10,8 @@ export type ICollapseProps = IBoxProps & {
   duration?: number;
   animateOpacity?: boolean;
   isOpen?: boolean;
-  onAnimationEnd?: any;
-  onAnimationStart?: typeof functionType;
+  onAnimationEnd?: Function;
+  onAnimationStart?: Function;
 };
 
 function usePrevious(value: any) {
@@ -70,9 +68,9 @@ const Collapse = ({
     wasOpen.updatePrevious(isOpen);
   }
   return (
-    <View style={animatedStyle}>
-      <Box overflow="scroll" style={props.style} {...props} />
-    </View>
+    <Box style={animatedStyle}>
+      <Box overflow="scroll" {...props} />
+    </Box>
   );
 };
 
