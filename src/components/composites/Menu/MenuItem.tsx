@@ -18,7 +18,7 @@ export const MenuItem = ({
   const newProps = usePropsConfig('MenuItem', props);
   let allProps = {
     ...newProps,
-    ...(newProps.disabled ? newProps._disabled : {}),
+    ...(newProps.isDisabled ? newProps._disabled : {}),
   };
 
   const [textProps, touchProps] = themeTools.extractInObject(allProps, [
@@ -37,7 +37,7 @@ export const MenuItem = ({
       {...touchProps}
       style={style}
       onPress={(e: any) => {
-        if (!props.disabled) {
+        if (!props.isDisabled) {
           onPress && onPress(e);
           if (closeOnSelect) {
             closeMenu();

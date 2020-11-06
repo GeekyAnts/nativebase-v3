@@ -59,7 +59,7 @@ export type IMenuItemProps = BorderProps &
   TouchableNativeFeedbackProps &
   TouchableHighlightProps & {
     children: string | JSX.Element | Array<JSX.Element>;
-    disabled?: boolean;
+    isDisabled?: boolean;
     style?: ViewStyle;
     textStyle?: TextStyle;
   };
