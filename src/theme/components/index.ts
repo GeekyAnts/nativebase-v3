@@ -14,6 +14,7 @@ import Divider from './divider';
 import BreadCrumb from './breadcrumb';
 import PinInput from './pin-input';
 import { default as NumberInput, NumberInputStepper } from './number-input';
+import { default as Menu, MenuItem, MenuGroup } from './menu';
 import Link from './link';
 import Kbd from './kbd';
 import Progress from './progress';
@@ -56,4 +57,7 @@ export default {
   Flex,
   Button,
   CloseButton,
+  Menu,
+  MenuItem,
+  MenuGroup,
 };

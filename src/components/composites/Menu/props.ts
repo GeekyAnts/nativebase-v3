@@ -4,22 +4,62 @@ import type {
   TouchableNativeFeedbackProps,
   TouchableHighlightProps,
 } from 'react-native';
+import type {
+  BorderProps,
+  ColorProps,
+  FlexboxProps,
+  LayoutProps,
+  SpaceProps,
+  TypographyProps,
+  PositionProps,
+} from 'styled-system';
+import type {
+  customBorderProps,
+  customBackgroundProps,
+  customOutlineProps,
+  customLayoutProps,
+  customExtraProps,
+  customShadowProps,
+  customTypographyProps,
+} from '../../../utils/customProps';
 
-export type IMenuProps = {
-  trigger: (_props: any, state: { open: boolean }) => Element;
-  children: JSX.Element | Array<JSX.Element>;
-  onOpen?: () => void;
-  onClose?: () => void;
-  offsetSpace?: number;
-  closeOnSelect?: boolean;
-  testID?: string;
-  style?: ViewStyle;
-};
+export type IMenuProps = BorderProps &
+  ColorProps &
+  SpaceProps &
+  LayoutProps &
+  FlexboxProps &
+  customBorderProps &
+  customExtraProps &
+  customOutlineProps &
+  customShadowProps &
+  customLayoutProps &
+  customTypographyProps &
+  customBackgroundProps &
+  TypographyProps &
+  PositionProps &
+  BorderProps & {
+    trigger: (_props: any, state: { open: boolean }) => Element;
+    children: JSX.Element | Array<JSX.Element>;
+    onOpen?: () => void;
+    onClose?: () => void;
+    offsetSpace?: number;
+    closeOnSelect?: boolean;
+    testID?: string;
+    style?: ViewStyle;
+    shadowOffset?: any;
+    shadowOpacity?: number;
+    shadowColor?: string;
+    elevation?: number;
+    shadow?: number;
+  };
 
-export type IMenuItemProps = TouchableNativeFeedbackProps &
+export type IMenuItemProps = BorderProps &
+  customBorderProps &
+  customBackgroundProps &
+  TouchableNativeFeedbackProps &
   TouchableHighlightProps & {
-    children: string | JSX.Element;
-    disabled?: boolean;
+    children: string | JSX.Element | Array<JSX.Element>;
+    isDisabled?: boolean;
     style?: ViewStyle;
     textStyle?: TextStyle;
   };
