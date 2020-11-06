@@ -1,5 +1,5 @@
 const defaultProps = {
-  inputSize: 'sm',
+  size: 'sm',
   step: 1,
   min: -Infinity,
   max: Infinity,

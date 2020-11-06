@@ -1,11 +1,11 @@
-import type { IInputBoxProps } from 'native-base';
+import type { IInputProps } from 'native-base';
 
-export type IPinInputProps = IInputBoxProps & {
+export type IPinInputProps = IInputProps & {
   children?: JSX.Element[] | JSX.Element;
   manageFocus?: boolean;
 };
 
-export type IPinInputFieldProps = IInputBoxProps & {
+export type IPinInputFieldProps = IInputProps & {
   fieldIndex?: number;
   inputSize?: any;
 };

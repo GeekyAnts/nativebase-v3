@@ -15,7 +15,7 @@ import {
 } from './example';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
-storiesOf('InputBox', module)
+storiesOf('Input', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>

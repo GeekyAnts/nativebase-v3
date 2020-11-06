@@ -6,8 +6,7 @@ export default function () {
   return (
     <PinInput
       placeholder={text('placeholder', '○')}
-      inputSize={text('inputSize', 'sm')}
-      colorScheme={text('colorScheme', '')}
+      size={text('Size', 'sm')}
       variant={select(
         'variantType',
         ['outline', 'underlined', 'rounded', 'filled', 'unstyled'],

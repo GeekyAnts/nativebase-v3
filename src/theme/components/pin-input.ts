@@ -2,7 +2,7 @@ const baseStyle = {};
 
 const defaultProps = {
   placeholder: '○',
-  inputSize: 'sm',
+  size: 'sm',
   manageFocus: true,
 };
 

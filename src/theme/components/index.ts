@@ -24,6 +24,7 @@ import SkeletonText from './skeletonText';
 import CloseButton from './close-button';
 import Flex from './flex';
 import TextArea from './textarea';
+import Input from './input';
 
 export default {
   Heading,
@@ -45,6 +46,8 @@ export default {
   NumberInputStepper,
   Kbd,
   TextArea,
+  Input,
+  // not done
   Progress,
   Container,
   Skeleton,
