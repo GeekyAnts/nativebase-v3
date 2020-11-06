@@ -16,6 +16,7 @@ import PinInput from './pin-input';
 import { default as NumberInput, NumberInputStepper } from './number-input';
 import { default as Menu, MenuItem, MenuGroup } from './menu';
 import Link from './link';
+import Checkbox from './checkbox';
 import Kbd from './kbd';
 import Progress from './progress';
 import Container from './container';
@@ -40,6 +41,7 @@ export default {
   Image,
   Divider,
   Link,
+  Checkbox,
   Icon,
   BreadCrumb,
   PinInput,
