@@ -7,11 +7,7 @@ export type IIconButtonProps = IButtonProps & {
 
 const IconButton = ({ icon, ...props }: IIconButtonProps) => {
   const newProps = usePropsConfig('IconButton', props);
-  return (
-    <Button variant="ghost" {...newProps}>
-      {icon}
-    </Button>
-  );
+  return <Button {...newProps}>{icon}</Button>;
 };
 
 export default IconButton;

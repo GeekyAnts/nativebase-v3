@@ -7,7 +7,7 @@ export default function () {
         <IconButton
           variant={variant}
           colorScheme="teal"
-          icon={<Icon name={'menu'} size={6} />}
+          icon={<Icon name={'menu'} size={'lg'} />}
         />
       ))}
     </HStack>
