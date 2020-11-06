@@ -21,7 +21,7 @@ import Progress from './progress';
 import Container from './container';
 import Skeleton from './skeleton';
 import SkeletonText from './skeletonText';
-import CloseButton from './close-button';
+import IconButton from './icon-button';
 import Flex from './flex';
 import TextArea from './textarea';
 import Input from './input';
@@ -55,7 +55,7 @@ export default {
   SkeletonText,
   Flex,
   Button,
-  CloseButton,
+  IconButton,
   Menu,
   MenuItem,
   MenuGroup,

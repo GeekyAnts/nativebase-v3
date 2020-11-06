@@ -1,12 +1,12 @@
 import React from 'react';
-import { Menu, MenuItem, Divider, IconButton } from 'native-base';
+import { Menu, MenuItem, Divider, IconButton, Icon } from 'native-base';
 
 export default function () {
   return (
     <Menu
       trigger={(triggerProps: any) => {
         return (
-          <IconButton name="menu" {...triggerProps} bg="teal.2">
+          <IconButton icon={<Icon name="menu" />} {...triggerProps} bg="teal.2">
             Show Menu
           </IconButton>
         );
