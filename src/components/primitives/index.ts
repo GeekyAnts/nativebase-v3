@@ -48,6 +48,8 @@ export { default as TextArea } from './TextArea';
 export { default as Link, ILinkProps } from './Link';
 export {
   default as List,
+  Ol,
+  Ul,
   ListItem,
   ListIcon,
   IListProps,
