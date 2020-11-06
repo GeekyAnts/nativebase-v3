@@ -49,7 +49,6 @@ export default {
   TextArea,
   Input,
   Stat,
-  // not done
   Progress,
   Container,
   Skeleton,
