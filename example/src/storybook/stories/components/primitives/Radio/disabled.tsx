@@ -1,22 +1,18 @@
 import React from 'react';
-import { Radio, Inline, Text, View, RadioGroup } from 'native-base';
+import { Radio, Text, RadioGroup } from 'native-base';
 
 export default function () {
   return (
-    <View display="flex" justifyContent="space-between" alignItems="center">
-      <Inline>
-        <RadioGroup spacing={2} defaultValue="1">
-          <Radio value="1" isDisabled>
-            <Text mx={2}>First</Text>
-          </Radio>
-          <Radio value="2">
-            <Text mx={2}>Second</Text>
-          </Radio>
-          <Radio value="3">
-            <Text mx={2}>Third</Text>
-          </Radio>
-        </RadioGroup>
-      </Inline>
-    </View>
+    <RadioGroup defaultValue="1">
+      <Radio value="1" isDisabled>
+        <Text mx={2}>First</Text>
+      </Radio>
+      <Radio value="2">
+        <Text mx={2}>Second</Text>
+      </Radio>
+      <Radio value="3">
+        <Text mx={2}>Third</Text>
+      </Radio>
+    </RadioGroup>
   );
 }

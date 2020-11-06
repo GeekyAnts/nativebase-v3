@@ -12,7 +12,7 @@ export default function () {
         <Text>(with Knob) playaround</Text>
       </Inline>
       <Radio
-        colorScheme={text('colorScheme', 'default')}
+        colorScheme={text('colorScheme', 'default.2')}
         size={select('size', ['sm', 'md', 'lg'], 'md')}
         defaultIsChecked={boolean('defaultIsChecked', true)}
         isChecked={boolean('isChecked', true)}

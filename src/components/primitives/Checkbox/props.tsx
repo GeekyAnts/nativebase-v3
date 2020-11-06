@@ -14,16 +14,13 @@ export type ICheckboxProps = IBoxProps & {
   size?: 'sm' | 'md' | 'lg';
   icon?: JSX.Element;
   children?: JSX.Element;
-  onChange?: (
-    value?: string | number | undefined,
-    currentState?: boolean
-  ) => void;
+  onChange?: (value: string | number, currentState?: boolean) => void;
   // onBlur?: (event: any) => void;
   // onFocus?: (event: any) => void;
   ariaLabel?: string;
   // ariaLabelledby?: string;
   // Custom Props
-  style?: any | undefined;
+  style?: any;
 };
 
 export type ICheckboxGroupProps = IBoxProps & {
@@ -32,17 +29,17 @@ export type ICheckboxGroupProps = IBoxProps & {
   defaultValue?: Array<any>;
   colorScheme?: string;
   size?: 'sm' | 'md' | 'lg';
-  children: JSX.Element[];
+  children: React.ReactNode;
   onChange?: (values: Array<any>) => void;
   // Custom props
-  style?: any | undefined;
+  style?: any;
 };
 export type ICheckboxContext = IFormControlContext & {
   value?: Array<any>;
   colorScheme?: string;
   size?: 'sm' | 'md' | 'lg';
   groupValueChangeHandler?: (
-    value: string | number | undefined,
+    value: string | number,
     currentState: boolean
   ) => void;
 };

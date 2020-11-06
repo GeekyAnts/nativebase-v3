@@ -16,6 +16,7 @@ import PinInput from './pin-input';
 import { default as NumberInput, NumberInputStepper } from './number-input';
 import Link from './link';
 import Checkbox from './checkbox';
+import Radio from './radio';
 import Kbd from './kbd';
 import Text from './text';
 import Progress from './progress';
@@ -40,6 +41,7 @@ export default {
   Divider,
   Link,
   Checkbox,
+  Radio,
   Icon,
   BreadCrumb,
   PinInput,
