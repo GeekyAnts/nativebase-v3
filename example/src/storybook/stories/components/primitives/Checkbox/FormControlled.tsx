@@ -18,7 +18,7 @@ export default function () {
       <FormControl isRequired isInvalid>
         <FormLabel>Select Item</FormLabel>
         <CheckboxGroup
-          colorScheme="green.2"
+          colorScheme="green"
           defaultValue={groupValue}
           onChange={(values) => {
             setGroupValue(values);

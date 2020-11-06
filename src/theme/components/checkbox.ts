@@ -1,5 +1,3 @@
-import { getColor } from '../tools';
-
 const baseStyle = (props: Record<string, any>) => {
   const { isInvalid } = props;
   const activeColor = activeColorSetter(props);
@@ -12,10 +10,16 @@ const baseStyle = (props: Record<string, any>) => {
 
 const activeColorSetter = (props: Record<string, any>) => {
   const { theme, colorScheme, isDisabled } = props;
-  if (isDisabled) return 'gray.3';
-  else return getColor(theme, colorScheme, 'default.2');
-};
+  const simpleColorScheme = colorScheme.split('.')[0];
 
+  if (isDisabled) return 'gray.3';
+  else if (simpleColorScheme in theme.colors) {
+    return theme.colors[simpleColorScheme][0] === '#'
+      ? simpleColorScheme
+      : theme.colors[simpleColorScheme][4] ||
+          theme.colors[simpleColorScheme][2];
+  } else return 'default.2';
+};
 const sizes = {
   lg: { size: 5 },
   md: { size: 4 },

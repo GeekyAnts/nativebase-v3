@@ -22,8 +22,6 @@ const RadioGroup = ({
   );
   const [selected, setSelected] = React.useState(value || defaultValue || []);
   const onChangeHandler = (radioValue: string | number) => {
-    console.log('radioValue - ', radioValue);
-
     setSelected(radioValue);
     onChange && onChange(radioValue);
   };

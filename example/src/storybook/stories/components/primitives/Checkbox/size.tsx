@@ -8,7 +8,7 @@ export default function () {
         <Text mx={2}>Checkbox</Text>
       </Checkbox>
       <Checkbox
-        colorScheme="green.2"
+        colorScheme="green"
         size="md"
         icon={<Icon name="done" type="MaterialIcons" size={40} />}
         defaultIsChecked
