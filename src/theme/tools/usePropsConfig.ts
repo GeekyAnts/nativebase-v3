@@ -87,7 +87,9 @@ function extractProps(props: any, theme: any, componentTheme: any) {
         componentTheme,
         `${themePropertyMap[property]}.${props[property]}`
       );
-      if (!isNil(propValues)) {
+      if (typeof propValues === 'string' || typeof propValues === 'number') {
+        newProps[property] = propValues;
+      } else if (!isNil(propValues)) {
         for (let nestedProp in propValues) {
           newProps[nestedProp] = get(
             theme,
