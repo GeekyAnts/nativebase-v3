@@ -31,6 +31,7 @@ export const Avatar = (
     { ...remainingProps, name, size }
   );
   const textProps = { color, fontSize, fontWeight };
+  const imageFitStyle = { height: '100%', width: '100%' };
   return (
     <StyledAvatar {...newProps} style={style}>
       {source ? (
@@ -43,7 +44,7 @@ export const Avatar = (
             fontSize,
             fontWeight,
           }}
-          style={{ height: '100%', width: '100%' }}
+          style={[style, imageFitStyle]}
         />
       ) : (
         <Text {...textProps}>{name ? initials(name) : '--'}</Text>

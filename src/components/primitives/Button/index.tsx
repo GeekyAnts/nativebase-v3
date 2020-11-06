@@ -91,50 +91,29 @@ const Button = (
     ...props,
     size,
   });
-  let {
-    fontWeight,
-    fontSize,
-    textDecorationLine,
-    color,
-    m,
-    margin,
-    mt,
-    marginTop,
-    mr,
-    marginRight,
-    mb,
-    marginBottom,
-    ml,
-    marginLeft,
-    mx,
-    marginX,
-    my,
-    marginY,
-    ...viewProps
-  } = newProps;
+  let [textProps, remainingProps] = themeTools.extractInObject(newProps, [
+    'fontWeight',
+    'fontSize',
+    'textDecorationLine',
+    'color',
+  ]);
+  let [layoutProps, viewProps] = themeTools.extractInObject(remainingProps, [
+    'm',
+    'margin',
+    'mt',
+    'marginTop',
+    'mr',
+    'marginRight',
+    'mb',
+    'marginBottom',
+    'ml',
+    'marginLeft',
+    'mx',
+    'marginX',
+    'my',
+    'marginY',
+  ]);
 
-  const layoutProps = themeTools.omitUndefined({
-    m,
-    margin,
-    mt,
-    marginTop,
-    mr,
-    marginRight,
-    mb,
-    marginBottom,
-    ml,
-    marginLeft,
-    mx,
-    marginX,
-    my,
-    marginY,
-  });
-  const textProps = {
-    fontWeight,
-    fontSize,
-    textDecorationLine,
-    color,
-  };
   const innerButton = (
     <StyledView {...viewProps} opacity={isLoading ? 0.5 : 1} style={style}>
       {leftIcon ? <Box mr={viewProps.px / 2 || 2}>{leftIcon}</Box> : null}

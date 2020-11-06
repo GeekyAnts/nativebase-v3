@@ -7,5 +7,8 @@ export function omitUndefined(obj: any) {
 }
 
 export function extractInObject(parent: any, values: Array<string>) {
-  return [pick(parent, values), omit(parent, values)];
+  return [
+    omitUndefined(pick(parent, values)),
+    omitUndefined(omit(parent, values)),
+  ];
 }
