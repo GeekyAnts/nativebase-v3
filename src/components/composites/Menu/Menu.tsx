@@ -162,7 +162,7 @@ class MenuClass extends React.Component<IMenuProps, any> {
     } = this.state;
 
     let { menuSize, menuContainerStyle } = getContainerStyles(
-      this.state.top + 50,
+      this.state.top,
       this.state.left,
       menuSizeAnimation,
       menuWidth,
