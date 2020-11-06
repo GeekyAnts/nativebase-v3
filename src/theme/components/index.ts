@@ -27,6 +27,7 @@ import Flex from './flex';
 import TextArea from './textarea';
 import Input from './input';
 import Stat from './stat';
+import Spinner from './spinner';
 
 export default {
   Heading,
@@ -61,4 +62,5 @@ export default {
   Menu,
   MenuItem,
   MenuGroup,
+  Spinner,
 };
