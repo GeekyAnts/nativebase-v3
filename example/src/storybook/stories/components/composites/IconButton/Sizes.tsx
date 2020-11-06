@@ -8,7 +8,7 @@ export default function () {
           size={size}
           variant="solid"
           colorScheme="blue"
-          icon={<Icon name={'menu'} size={6} />}
+          icon={<Icon name={'menu'} size={'lg'} />}
         />
       ))}
     </HStack>
