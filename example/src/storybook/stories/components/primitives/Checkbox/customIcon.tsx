@@ -5,7 +5,7 @@ export default function () {
   return (
     <HStack>
       <Checkbox
-        colorScheme="orange.2"
+        colorScheme="orange"
         size="md"
         icon={<Icon name="bullseye" type="MaterialCommunityIcons" />}
         defaultIsChecked
@@ -13,7 +13,7 @@ export default function () {
         <Text mx={2}>Darts</Text>
       </Checkbox>
       <Checkbox
-        colorScheme="dark.1"
+        colorScheme="dark"
         size="md"
         icon={<Icon name="bat" type="MaterialCommunityIcons" />}
         defaultIsChecked
@@ -21,7 +21,7 @@ export default function () {
         <Text mx={2}>Movie</Text>
       </Checkbox>
       <Checkbox
-        colorScheme="red.4"
+        colorScheme="red"
         size="md"
         icon={<Icon name="campfire" type="MaterialCommunityIcons" />}
         defaultIsChecked
@@ -29,7 +29,7 @@ export default function () {
         <Text mx={2}>Camping</Text>
       </Checkbox>
       <Checkbox
-        colorScheme="blue.3"
+        colorScheme="blue"
         size="md"
         icon={<Icon name="chess-knight" type="MaterialCommunityIcons" />}
         defaultIsChecked

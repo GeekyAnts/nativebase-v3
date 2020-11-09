@@ -17,6 +17,7 @@ import { default as NumberInput, NumberInputStepper } from './number-input';
 import { default as Menu, MenuItem, MenuGroup } from './menu';
 import Link from './link';
 import Checkbox from './checkbox';
+import Radio from './radio';
 import Kbd from './kbd';
 import Progress from './progress';
 import Container from './container';
@@ -44,6 +45,7 @@ export default {
   Divider,
   Link,
   Checkbox,
+  Radio,
   Icon,
   BreadCrumb,
   PinInput,

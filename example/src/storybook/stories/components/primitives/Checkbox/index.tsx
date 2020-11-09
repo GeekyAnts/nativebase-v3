@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
-import Playground from './knobEnabled';
+import Playground from './playground';
 import Disabled from './disabled';
 import Usage from './usage';
 import CustomColor from './customColor';

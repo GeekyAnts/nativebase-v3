@@ -1,13 +1,15 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { space } from 'styled-system';
 import { Box } from 'native-base';
-import { getAttachedChildren } from '../../../utils';
+import {
+  FormControlContext,
+  IFormControlContext,
+} from '../../composites/FormControl';
 import type { IRadioGroupProps } from './props';
 
-const CustomRadioGroup = ({
+export const RadioContext = React.createContext({});
+
+const RadioGroup = ({
   size,
-  spacing,
   children,
   onChange,
   colorScheme,
@@ -15,64 +17,30 @@ const CustomRadioGroup = ({
   defaultValue,
   ...props
 }: IRadioGroupProps) => {
+  const formControlContext: IFormControlContext = React.useContext(
+    FormControlContext
+  );
   const [selected, setSelected] = React.useState(value || defaultValue || []);
-  const onChangeHandler = (event: any, radioValue: string | number) => {
+  const onChangeHandler = (radioValue: string | number) => {
     setSelected(radioValue);
-    onChange && onChange(radioValue, event);
-  };
-
-  const childPropsGenerator = (
-    {
-      size,
-      colorScheme,
-      spacing,
-      ...suppliedProps
-    }: {
-      size: string | number;
-      colorScheme: string;
-      spacing: string | number;
-    },
-    child: JSX.Element
-  ) => {
-    return {
-      ...suppliedProps,
-      m: spacing,
-      colorScheme: child.props.colorScheme || colorScheme,
-      size: child.props.size || size,
-      onChange: (event: any, radioValue: string | number) =>
-        onChangeHandler(event, radioValue),
-      isChecked: selected === child.props.value,
-      defaultIsChecked: selected === child.props.value,
-    };
-  };
-
-  const supplyPropsToChildren = (children: any, suppliedProps: any) => {
-    return React.Children.map(children, (child: JSX.Element) => {
-      if (child.type.name !== 'Radio') {
-        console.error('Only NativeBase Radio is allowed as child');
-        return undefined;
-      } else {
-        const childProps = childPropsGenerator({ ...suppliedProps }, child);
-        return React.cloneElement(child, childProps, child.props.children);
-      }
-    });
+    onChange && onChange(radioValue);
   };
 
   return (
-    <Box {...props}>
-      {supplyPropsToChildren(getAttachedChildren(children), {
-        colorScheme,
+    <RadioContext.Provider
+      value={{
+        ...formControlContext,
+        onChangeHandler,
         size,
-        spacing,
-      })}
-    </Box>
+        colorScheme,
+        value: selected,
+      }}
+    >
+      <Box alignItems="flex-start" {...props}>
+        {children}
+      </Box>
+    </RadioContext.Provider>
   );
-};
-
-const StyledRadioGroup = styled(CustomRadioGroup)<IRadioGroupProps>(space);
-
-const RadioGroup = ({ children, ...props }: IRadioGroupProps) => {
-  return <StyledRadioGroup {...props}>{children}</StyledRadioGroup>;
 };
 
 export default RadioGroup;
