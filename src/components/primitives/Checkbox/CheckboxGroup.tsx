@@ -41,7 +41,9 @@ const CheckboxGroup = ({
         value: values,
       }}
     >
-      <Box {...props}>{children}</Box>
+      <Box alignItems="flex-start" {...props}>
+        {children}
+      </Box>
     </CheckboxContext.Provider>
   );
 };

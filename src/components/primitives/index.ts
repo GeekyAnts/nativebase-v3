@@ -14,12 +14,7 @@ export {
   CheckboxGroup,
   ICheckboxGroupProps,
 } from './Checkbox';
-export {
-  default as Radio,
-  IRadioProps,
-  RadioGroup,
-  IRadioGroupProps,
-} from './Radio';
+export { Radio, IRadioProps, RadioGroup, IRadioGroupProps } from './Radio';
 export {
   default as Icon,
   IIconProps,
@@ -38,7 +33,6 @@ export {
 } from './Slider';
 export { default as Stack, VStack, HStack, IStackProps } from './Stack';
 export { default as ZStack } from './ZStack';
-export { default as Inline } from './Inline';
 export { default as Image, IImageProps } from './Image';
 export { default as Spinner, ISpinnerProps } from './Spinner';
 export { default as Heading, IHeadingProps } from './Heading';

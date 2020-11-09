@@ -5,17 +5,11 @@ import {
   Center,
   CircularProgressLabel,
 } from 'native-base';
-import { text, number } from '@storybook/addon-knobs';
 export default function () {
   return (
     <Center>
       <Heading>Adding label</Heading>
-      <CircularProgress
-        mt={6}
-        value={45}
-        size={number('Size(in px)', 60)}
-        color={text('Color', 'red.2')}
-      >
+      <CircularProgress mt={6} value={45} size={60} color="red.2">
         <CircularProgressLabel>45%</CircularProgressLabel>
       </CircularProgress>
     </Center>

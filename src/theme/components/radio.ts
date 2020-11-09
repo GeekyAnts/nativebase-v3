@@ -20,6 +20,7 @@ const activeColorSetter = (props: Record<string, any>) => {
           theme.colors[simpleColorScheme][2];
   } else return 'default.2';
 };
+
 const sizes = {
   lg: { size: 5 },
   md: { size: 4 },

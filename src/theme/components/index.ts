@@ -17,6 +17,7 @@ import { default as NumberInput, NumberInputStepper } from './number-input';
 import { default as Menu, MenuItem, MenuGroup } from './menu';
 import Link from './link';
 import Checkbox from './checkbox';
+import Radio from './radio';
 import Kbd from './kbd';
 import Progress from './progress';
 import Container from './container';
@@ -28,6 +29,7 @@ import TextArea from './textarea';
 import Input from './input';
 import Stat from './stat';
 import Spinner from './spinner';
+import CircularProgress from './circular-progress';
 
 export default {
   Heading,
@@ -43,6 +45,7 @@ export default {
   Divider,
   Link,
   Checkbox,
+  Radio,
   Icon,
   BreadCrumb,
   PinInput,
@@ -63,4 +66,5 @@ export default {
   MenuItem,
   MenuGroup,
   Spinner,
+  CircularProgress,
 };
