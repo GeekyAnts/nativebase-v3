@@ -12,7 +12,14 @@ import {
 } from '../../../utils/customProps';
 
 import type { IModalProps, IModalSemiProps } from './props';
-import { Box, CloseButton, View, usePropsConfig, IBoxProps } from '../../..';
+import {
+  Box,
+  CloseButton,
+  View,
+  usePropsConfig,
+  IBoxProps,
+  ICloseButtonProps,
+} from '../../..';
 
 const StyledModal = styled(RNModal)<IModalSemiProps>(
   color,
@@ -109,7 +116,7 @@ export const ModalHeader = (props: IBoxProps) => {
   return <Box {...newProps.modalHeaderProps} {...props} />;
 };
 
-export const ModalContent = (props: any) => {
+export const ModalContent = (props: IBoxProps) => {
   const { newProps } = React.useContext(ModalContext);
   return (
     <Box
@@ -130,7 +137,7 @@ export const ModalFooter = (props: IBoxProps) => {
   return <Box {...newProps.modalFooterProps} {...props} />;
 };
 
-export const ModalCloseButton = (props: any) => {
+export const ModalCloseButton = (props: ICloseButtonProps) => {
   const { toggleVisible, toggleOnClose, newProps } = React.useContext(
     ModalContext
   );
