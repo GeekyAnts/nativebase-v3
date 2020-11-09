@@ -1,10 +1,10 @@
 import React from 'react';
-import { get } from 'lodash';
 import { PanResponder } from 'react-native';
-import { ThemeContext } from '../../../theme';
-import styled from 'styled-components/native';
-import { space, color, layout, typography } from 'styled-system';
-import { Box } from 'native-base';
+import {
+  FormControlContext,
+  IFormControlContext,
+} from '../../composites/FormControl';
+import { Box, usePropsConfig } from 'native-base';
 export { default as SliderThumb } from './SliderThumb';
 export { default as SliderFilledTrack } from './SliderFilledTrack';
 export { default as SliderTrack } from './SliderTrack';
@@ -18,15 +18,18 @@ type StateType = {
   value: number;
 };
 
-class Slider extends React.Component<ISliderProps, StateType> {
-  static contextType = ThemeContext;
+class NBSlider extends React.Component<
+  ISliderProps & {
+    thumbSize?: number;
+    sliderSize?: number;
+    activeColor?: string;
+  },
+  StateType
+> {
   state = {
     barSize: null,
     deltaValue: 0,
     value: this.props.defaultValue || 0,
-  };
-  getColorScheme = (schemeColor: string) => {
-    return get(this.context.colors, schemeColor, 'default.0');
   };
 
   panResponder = PanResponder.create({
@@ -107,12 +110,12 @@ class Slider extends React.Component<ISliderProps, StateType> {
       <SliderContext.Provider
         value={{
           sliderOffset,
-          colorScheme: this.getColorScheme(
-            this.props.colorScheme || 'default.2'
-          ),
+          colorScheme: this.props.activeColor,
           barSize: this.state.barSize,
           panResponder: this.panResponder,
           isReversed: this.props.isReversed,
+          thumbSize: this.props.thumbSize,
+          sliderSize: this.props.sliderSize,
         }}
       >
         <Box
@@ -131,20 +134,16 @@ class Slider extends React.Component<ISliderProps, StateType> {
   }
 }
 
-const StyledSlider = styled(Slider)<ISliderProps>(
-  space,
-  color,
-  layout,
-  typography
-);
-StyledSlider.defaultProps = {
-  min: 0,
-  max: 100,
-  step: 1,
+const Slider = ({ ...props }: ISliderProps) => {
+  const formControlContext: IFormControlContext = React.useContext(
+    FormControlContext
+  );
+  const newProps = usePropsConfig('Slider', {
+    ...formControlContext,
+    ...props,
+  });
+
+  return <NBSlider {...newProps} />;
 };
 
-const NBSlider = ({ ...props }: ISliderProps) => {
-  return <StyledSlider {...props} />;
-};
-
-export default NBSlider;
+export default Slider;

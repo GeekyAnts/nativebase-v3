@@ -28,7 +28,10 @@ export type ISliderProps = IBoxProps & {
 export type ISliderContextProps = {
   sliderOffset?: number;
   colorScheme?: string;
+  activeColor?: string;
   barSize?: number;
+  sliderSize?: number;
+  thumbSize?: number;
   panResponder?: any;
   isReversed?: boolean;
 };
