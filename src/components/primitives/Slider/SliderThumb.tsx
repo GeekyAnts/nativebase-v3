@@ -1,12 +1,10 @@
 import React from 'react';
 import { StyleSheet, Animated } from 'react-native';
-import { ThemeContext } from '../../../theme';
 import { SliderContext } from './index';
 import { Box, Icon } from 'native-base';
 import type { ISliderProps, ISliderContextProps } from './props';
 
 const SliderThumb = ({ children, ...props }: ISliderProps) => {
-  const theme = React.useContext(ThemeContext);
   const {
     sliderOffset,
     panResponder,
@@ -41,8 +39,8 @@ const SliderThumb = ({ children, ...props }: ISliderProps) => {
     >
       <Box
         position="relative"
-        borderRadius={theme.radii.full}
-        backgroundColor={theme.colors.white}
+        borderRadius={999}
+        backgroundColor="light.0"
         shadow={1}
         p={1}
         display="flex"

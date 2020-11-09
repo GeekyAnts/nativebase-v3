@@ -7,9 +7,7 @@ const baseStyle = (props: Record<string, any>) => {
 
 const activeColorSetter = (props: Record<string, any>) => {
   const { theme, colorScheme, isDisabled } = props;
-  const simpleColorScheme = colorScheme
-    ? colorScheme?.split('.')[0]
-    : 'default';
+  const simpleColorScheme = colorScheme.split('.')[0];
 
   if (isDisabled) return 'gray.3';
   else if (simpleColorScheme in theme.colors) {
@@ -20,16 +18,16 @@ const activeColorSetter = (props: Record<string, any>) => {
   }
 };
 const sizes = {
-  lg: { thumbSize: 5, sliderSize: 3 },
-  md: { thumbSize: 4, sliderSize: 2 },
-  sm: { thumbSize: 3, sliderSize: 1 },
+  lg: { thumbSize: '10px', sliderSize: '9px' },
+  md: { thumbSize: '8px', sliderSize: '8px' },
+  sm: { thumbSize: '6px', sliderSize: '7px' },
 };
 
 const defaultProps = {
   colorScheme: 'default',
   size: 'md',
-  min: -Infinity,
-  max: +Infinity,
+  min: 0,
+  max: 100,
   step: 1,
 };
 

@@ -23,6 +23,7 @@ export type ISliderProps = IBoxProps & {
   name?: string;
   id?: string;
   children?: React.ReactNode;
+  isDisabled?: boolean;
   isReversed?: boolean;
 };
 export type ISliderContextProps = {

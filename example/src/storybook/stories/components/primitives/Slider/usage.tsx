@@ -10,7 +10,7 @@ import {
 export default function () {
   return (
     <Box mx={5}>
-      <Slider step={10} defaultValue={70} colorScheme="cyan.1">
+      <Slider step={10} defaultValue={70} colorScheme="cyan">
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>

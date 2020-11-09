@@ -26,10 +26,12 @@ export { Column } from './Column';
 export { Row } from './Row';
 export { default as Button, IButtonProps, ButtonGroup } from './Button';
 export {
-  default as Slider,
+  Slider,
   SliderThumb,
   SliderTrack,
   SliderFilledTrack,
+  ISliderProps,
+  ISliderContextProps,
 } from './Slider';
 export { default as Stack, VStack, HStack, IStackProps } from './Stack';
 export { default as ZStack } from './ZStack';

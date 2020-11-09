@@ -10,7 +10,6 @@ const SliderFilledTrack = ({ ...props }: ISliderProps) => {
     barSize = 0,
     sliderOffset = 0,
   }: ISliderContextProps = React.useContext(SliderContext);
-
   return (
     <Box
       left={isReversed ? sliderOffset : sliderOffset - barSize}

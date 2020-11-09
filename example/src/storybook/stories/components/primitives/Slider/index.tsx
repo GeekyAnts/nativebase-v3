@@ -3,8 +3,10 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import Usage from './usage';
+import Size from './Size';
 import Color from './color';
 import Value from './Value';
+import FormControlled from './FormControlled';
 import Customized from './Customized';
 import Playground from './Playground';
 
@@ -20,6 +22,8 @@ storiesOf('Slider', module)
   ))
   .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
+  .add('Size', () => <Size />)
   .add('Color', () => <Color />)
   .add('Value', () => <Value />)
-  .add('Customized', () => <Customized />);
+  .add('Customized', () => <Customized />)
+  .add('Form Controlled', () => <FormControlled />);
