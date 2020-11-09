@@ -1,9 +1,9 @@
 import React from 'react';
-import { Badge, Inline } from 'native-base';
+import { Badge, HStack } from 'native-base';
 
 export default function () {
   return (
-    <Inline>
+    <HStack>
       <Badge m={2} colorScheme="success">
         SUCCESS
       </Badge>
@@ -16,6 +16,6 @@ export default function () {
       <Badge m={2} colorScheme="dark">
         DARK
       </Badge>
-    </Inline>
+    </HStack>
   );
 }

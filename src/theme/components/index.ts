@@ -30,6 +30,7 @@ import TextArea from './textarea';
 import Input from './input';
 import Stat from './stat';
 import Spinner from './spinner';
+import CircularProgress from './circular-progress';
 
 export default {
   Heading,
@@ -67,4 +68,5 @@ export default {
   MenuItem,
   MenuGroup,
   Spinner,
+  CircularProgress,
 };

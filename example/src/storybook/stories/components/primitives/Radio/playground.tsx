@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radio, Heading, Inline, Text, View } from 'native-base';
+import { Radio, Text, View } from 'native-base';
 import { boolean, select, text } from '@storybook/addon-knobs';
 
 export default function () {
@@ -7,10 +7,6 @@ export default function () {
   const radioValue = text('value', 'Cool');
   return (
     <View display="flex" justifyContent="space-between" alignItems="center">
-      <Inline mb={2} alignItems="baseline">
-        <Heading mt={3}>Radio </Heading>
-        <Text>(with Knob) playaround</Text>
-      </Inline>
       <Radio
         colorScheme={text('colorScheme', 'default')}
         size={select('size', ['sm', 'md', 'lg'], 'md')}
