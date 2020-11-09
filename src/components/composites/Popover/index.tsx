@@ -12,7 +12,7 @@ import {
 } from '../../../utils/customProps';
 
 import type { IPopoverProps } from './props';
-import { Box, CloseButton, View, IBoxProps, ThemeContext } from '../../..';
+import { Box, CloseButton, View, IBoxProps, usePropsConfig } from '../../..';
 
 const StyledPopover = styled(Tooltip)<IPopoverProps>(
   color,
@@ -32,6 +32,9 @@ const PopoverContext = React.createContext({
   PopoverTrigger: null,
   setPopoverTrigger: (_child: JSX.Element[] | JSX.Element) => {},
   PopoverRef: null,
+  backgroundColor: '',
+  borderColor: '',
+  borderWidth: null,
   initialFocusRef: null,
   finalFocusRef: null,
   isVisible: false,
@@ -39,6 +42,14 @@ const PopoverContext = React.createContext({
   onOpen: () => {},
   onClose: () => {},
   closeOnBlur: true,
+  newProps: {
+    popoverCloseButtonStyle: {},
+    popoverCloseButtonProps: {},
+    popoverFooterProps: {},
+    popoverBodyProps: {},
+    popoverContentProps: {},
+    popoverHeaderProps: {},
+  },
 });
 
 const Popover = ({
@@ -49,10 +60,16 @@ const Popover = ({
   onClose,
   closeOnBlur,
   id,
+  backgroundColor,
+  bg,
+  borderWidth,
+  borderColor,
+  ...props
 }: IPopoverProps) => {
   const [trigger, setTrigger] = React.useState(<></>);
   const [isVisible, setIsVisible] = React.useState(false);
   const popOverRef: any = React.useRef(null);
+  const newProps = usePropsConfig('Popover', props);
   const value: any = {
     PopoverTrigger: trigger,
     setPopoverTrigger: setTrigger,
@@ -63,7 +80,12 @@ const Popover = ({
     setIsVisible: setIsVisible,
     onOpen: onOpen,
     onClose: onClose,
+    newProps: newProps,
     closeOnBlur: closeOnBlur,
+    backgroundColor:
+      bg || backgroundColor || { ...newProps.popoverProps }.backgroundColor,
+    borderColor: borderColor || { ...newProps.popoverProps }.borderColor,
+    borderWidth: borderWidth || { ...newProps.popoverProps }.borderWidth,
   };
 
   return (
@@ -75,16 +97,24 @@ const Popover = ({
 
 export const PopoverTrigger = ({ children }: any) => {
   const { setPopoverTrigger } = React.useContext(PopoverContext);
-
   React.useEffect(() => {
-    setPopoverTrigger(children);
+    setPopoverTrigger(
+      React.Children.map(children, (child) => {
+        return React.cloneElement(
+          child,
+          { isDisabled: true, disabled: true },
+          child.props.children
+        );
+      })
+    );
   }, [setPopoverTrigger, children]);
 
   return null;
 };
 
 export const PopoverHeader = (props: IBoxProps) => {
-  return <Box pb={3} px={3} {...props} />;
+  const { newProps } = React.useContext(PopoverContext);
+  return <Box {...newProps.popoverHeaderProps} {...props} />;
 };
 
 export const PopoverContent = ({
@@ -99,12 +129,17 @@ export const PopoverContent = ({
     onClose,
     finalFocusRef,
     closeOnBlur,
+    newProps,
+    backgroundColor,
+    borderColor,
+    borderWidth,
   }: any = React.useContext(PopoverContext);
-  const theme = React.useContext(ThemeContext);
   return (
     <StyledPopover
-      backgroundColor={theme.colors.gray[1]}
-      height={'auto'}
+      {...newProps.popoverContentProps}
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}
+      borderWidth={borderWidth}
       ref={PopoverRef}
       onOpen={() => {
         onOpen ? onOpen() : '';
@@ -128,48 +163,42 @@ export const PopoverContent = ({
 };
 
 export const PopoverBody = (props: any) => {
+  const { newProps, borderColor, borderWidth } = React.useContext(
+    PopoverContext
+  );
   return (
     <Box
-      mb={3}
-      pt={3}
-      px={3}
-      borderTopWidth={1}
-      borderTopColor="gray.3"
+      {...newProps.popoverBodyProps}
+      borderTopColor={borderColor}
+      borderTopWidth={borderWidth}
       {...props}
     />
   );
 };
 
 export const PopoverFooter = (props: any) => {
+  const { newProps, borderColor, borderWidth } = React.useContext(
+    PopoverContext
+  );
   return (
     <Box
-      pb={3}
-      pt={3}
-      px={3}
-      flexDirection="row"
-      borderTopWidth={1}
-      borderTopColor="gray.3"
+      {...newProps.popoverFooterProps}
+      borderTopColor={borderColor}
+      borderTopWidth={borderWidth}
       {...props}
     />
   );
 };
 
 export const PopoverCloseButton = (props: any) => {
-  const { PopoverRef }: any = React.useContext(PopoverContext);
+  const { PopoverRef, newProps }: any = React.useContext(PopoverContext);
 
   return (
-    <View
-      style={{
-        position: 'absolute',
-        right: 2.5,
-        top: 0,
-        zIndex: 1,
-      }}
-    >
+    <View style={newProps.popoverCloseButtonStyle}>
       <CloseButton
-        size="lg"
+        {...newProps.popoverCloseButtonProps}
         {...props}
-        onClick={() => {
+        onPress={() => {
           PopoverRef?.current.toggleTooltip();
         }}
       />

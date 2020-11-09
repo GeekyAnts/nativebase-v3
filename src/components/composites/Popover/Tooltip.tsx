@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { TouchableOpacity, Modal, View, I18nManager } from 'react-native';
+import { TouchableOpacity, Modal, I18nManager } from 'react-native';
 import Triangle from './Triangle';
 import { ScreenWidth, ScreenHeight, isIOS } from './helpers';
 import getTooltipCoordinate from './getTooltipCoordinate';
-
+import { View } from '../../..';
 type State = {
   isVisible: boolean;
   yOffset: number;
@@ -31,6 +31,8 @@ export type Props = {
   closeOnPopoverPress?: boolean;
   closeOnBlur?: boolean;
   actionType?: 'press' | 'longPress' | 'none';
+  borderColor?: string;
+  borderWidth?: number;
 };
 
 class Tooltip extends React.Component<Props, State> {
@@ -101,13 +103,7 @@ class Tooltip extends React.Component<Props, State> {
 
   getTooltipStyle = () => {
     const { yOffset, xOffset, elementHeight, elementWidth } = this.state;
-    const {
-      height,
-      backgroundColor,
-      width,
-      withPointer,
-      containerStyle,
-    } = this.props;
+    const { height, width, withPointer, containerStyle } = this.props;
 
     const { x, y } = getTooltipCoordinate(
       xOffset,
@@ -128,7 +124,6 @@ class Tooltip extends React.Component<Props, State> {
       top: y,
       width,
       height,
-      backgroundColor,
       // default styles
       display: 'flex',
       alignItems: 'center',
@@ -137,15 +132,15 @@ class Tooltip extends React.Component<Props, State> {
       borderRadius: 10,
       paddingTop: 10,
       paddingBottom: 10,
-      borderWidth: 1,
-      borderColor: '#CBD5E0',
+      // borderWidth: 1,
+      // borderColor: '#CBD5E0',
       ...containerStyle,
     };
   };
 
   renderPointer = (tooltipY: any) => {
     const { yOffset, xOffset, elementHeight, elementWidth } = this.state;
-    const { backgroundColor, pointerColor, pointerStyle } = this.props;
+    const { backgroundColor, pointerStyle } = this.props;
     const pastMiddleLine = yOffset > tooltipY;
     const styling: any = {
       position: 'absolute',
@@ -156,8 +151,8 @@ class Tooltip extends React.Component<Props, State> {
     return (
       <View style={styling}>
         <Triangle
+          borderBottomColor={backgroundColor}
           style={{
-            borderBottomColor: pointerColor || backgroundColor,
             ...pointerStyle,
           }}
           isDown={pastMiddleLine}
@@ -187,7 +182,14 @@ class Tooltip extends React.Component<Props, State> {
       <View>
         <View style={styling}>{this.props.children}</View>
         {withPointer && this.renderPointer(tooltipStyle.top)}
-        <View style={tooltipStyle}>{popover}</View>
+        <View
+          bg={this.props.backgroundColor}
+          borderColor={this.props.borderColor}
+          borderWidth={this.props.borderWidth}
+          style={tooltipStyle}
+        >
+          {popover}
+        </View>
       </View>
     );
   };

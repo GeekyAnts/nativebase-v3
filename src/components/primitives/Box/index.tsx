@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { View } from 'react-native';
 import styled from 'styled-components/native';
 import { addTextAndPropsToStrings } from '../../../utils';
@@ -37,21 +37,24 @@ const StyledBox = styled(View)<IBoxProps>(
   customLayout
 );
 
-const Box = ({
-  children,
-  fontSize,
-  color: colorProp,
-  textDecoration,
-  txtDecor,
-  wordBreak,
-  textOverflow,
-  textTransform,
-  whiteSpace,
-  overflowWrap,
-  fontFamily,
-  fontWeight,
-  ...props
-}: IBoxProps) => {
+const Box = (
+  {
+    children,
+    fontSize,
+    color: colorProp,
+    textDecoration,
+    txtDecor,
+    wordBreak,
+    textOverflow,
+    textTransform,
+    whiteSpace,
+    overflowWrap,
+    fontFamily,
+    fontWeight,
+    ...props
+  }: IBoxProps,
+  ref: any
+) => {
   // TextProps that contain all the props related to text and gets added to child text components using addTextAndPropsToStrings() method
   const textProps = {
     fontWeight,
@@ -68,7 +71,7 @@ const Box = ({
   };
 
   return (
-    <StyledBox {...props}>
+    <StyledBox ref={ref} {...props}>
       {addTextAndPropsToStrings(children, textProps)}
     </StyledBox>
   );
@@ -76,4 +79,4 @@ const Box = ({
 
 export { IBoxProps } from './props';
 
-export default Box;
+export default forwardRef(Box);

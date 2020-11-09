@@ -13,7 +13,7 @@ export default function () {
   return (
     <Popover>
       <PopoverTrigger>
-        <Button isDisabled>Trigger</Button>
+        <Button>Trigger</Button>
       </PopoverTrigger>
       <PopoverContent width={250}>
         <PopoverCloseButton />
