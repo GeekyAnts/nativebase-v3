@@ -5,19 +5,19 @@ export type ISliderProps = IBoxProps & {
   defaultValue?: number;
   min?: number;
   max?: number;
-  main?: number;
   step?: number;
   onChange?: (value: number) => void;
   onChangeEnd?: (value: number) => void;
   isReadOnly?: boolean;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  onMouse?: () => void;
+  // TODO: need to be implemented
+  // onFocus?: () => void;
+  // onBlur?: () => void;
+  // onMouse?: () => void;
+  // orientation?: string;
+  // getAriaValueText?: (value?: number) => string;
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaValueText?: string;
-  orientation?: string;
-  getAriaValueText?: (value?: number) => string;
   size?: 'sm' | 'md' | 'lg';
   colorScheme?: string;
   name?: string;

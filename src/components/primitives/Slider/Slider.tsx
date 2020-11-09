@@ -32,7 +32,8 @@ class NBSlider extends React.Component<
   panResponder = PanResponder.create({
     onMoveShouldSetPanResponderCapture: () => true,
     onPanResponderMove: (_event, gestureState) =>
-      !this.props.isDisabled && this.onMove(gestureState),
+      !(this.props.isDisabled || this.props.isReadOnly) &&
+      this.onMove(gestureState),
     onPanResponderRelease: () => this.onEndMove(),
     onPanResponderTerminate: () => {},
   });
