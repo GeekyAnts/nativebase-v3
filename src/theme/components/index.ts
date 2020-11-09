@@ -30,6 +30,7 @@ import Input from './input';
 import Stat from './stat';
 import Spinner from './spinner';
 import CircularProgress from './circular-progress';
+import Modal from './modal';
 
 export default {
   Heading,
@@ -67,4 +68,5 @@ export default {
   MenuGroup,
   Spinner,
   CircularProgress,
+  Modal,
 };

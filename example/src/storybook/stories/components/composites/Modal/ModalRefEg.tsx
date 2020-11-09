@@ -28,7 +28,7 @@ export default function () {
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
-          <ModalHeader mt={-2} size={'2xl'}>
+          <ModalHeader fontSize="4xl" fontWeight="bold">
             Hello World
           </ModalHeader>
           <ModalBody>
@@ -39,7 +39,7 @@ export default function () {
             <Input mt={4} ref={initialRef} placeholder="First name" />
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="muted" mr={1}>
+            <Button colorScheme="blue" mr={1}>
               Save
             </Button>
             <Button

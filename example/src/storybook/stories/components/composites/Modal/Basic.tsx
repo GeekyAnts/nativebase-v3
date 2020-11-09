@@ -16,15 +16,11 @@ export default function () {
   const [modalVisible, setModalVisible] = React.useState(false);
   return (
     <Center>
-      <Modal
-        justifyContent="center"
-        isOpen={modalVisible}
-        onClose={setModalVisible}
-      >
+      <Modal isCentered isOpen={modalVisible} onClose={setModalVisible}>
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
-          <ModalHeader mt={-2} size={'2xl'}>
+          <ModalHeader fontSize="4xl" fontWeight="bold">
             Hello World
           </ModalHeader>
           <ModalBody>
@@ -35,7 +31,7 @@ export default function () {
             <Input mt={4} placeholder="Lorem ipsum dolor sit" />
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="muted" mr={1}>
+            <Button colorScheme="blue" mr={1}>
               Save
             </Button>
             <Button
