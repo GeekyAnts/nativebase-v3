@@ -3,7 +3,7 @@ import {
   Checkbox,
   CheckboxGroup,
   Heading,
-  Inline,
+  HStack,
   Text,
   View,
 } from 'native-base';
@@ -12,9 +12,9 @@ export default function () {
   const [groupValue, setGroupValue] = React.useState(['Item 1 ', 'Item 3 ']);
   return (
     <View display="flex" justifyContent="space-between" alignItems="center">
-      <Inline mb={2} alignItems="baseline">
+      <HStack mb={2} alignItems="baseline">
         <Heading mt={3}>CheckboxGroup </Heading>
-      </Inline>
+      </HStack>
       <CheckboxGroup
         colorScheme="green"
         defaultValue={groupValue}
@@ -39,12 +39,12 @@ export default function () {
           <Text mx={2}>Indeterminate Item</Text>
         </Checkbox>
       </CheckboxGroup>
-      <Inline mt={3} alignItems="baseline">
+      <HStack mt={3} alignItems="baseline">
         <Text fontSize="md">Selected Values: </Text>
         <Text fontSize="md" bold>
           {groupValue}
         </Text>
-      </Inline>
+      </HStack>
     </View>
   );
 }
