@@ -1,5 +1,5 @@
 import React from 'react';
-import { Center, Box, HStack, Icon } from 'native-base';
+import { Center, Box, HStack, Icon } from '@native-base/v3';
 export default function () {
   return (
     <HStack>

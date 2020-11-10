@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, ThemeContext } from 'native-base';
+import { Box, ThemeContext } from '@native-base/v3';
 import type {
   IAccordionButtonProps,
   IAccordionItemContextProps,

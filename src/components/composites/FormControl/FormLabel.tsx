@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, ThemeContext } from 'native-base';
+import { Box, Text, ThemeContext } from '@native-base/v3';
 import { FormControlContext } from './FormControl';
 import type { IFormLabelProps, IFormControlContext } from './props';
 

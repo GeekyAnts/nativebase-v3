@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Icon, usePropsConfig } from 'native-base';
+import { Flex, Icon, usePropsConfig } from '@native-base/v3';
 import { MenuItem } from './MenuItem';
 import type { IMenuItemProps, IMenuOptionContextProps } from './props';
 import { MenuOptionContext } from './MenuOptionGroup';

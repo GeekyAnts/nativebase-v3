@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, usePropsConfig } from 'native-base';
+import { Box, usePropsConfig } from '@native-base/v3';
 import type { IFlexProps } from './props';
 
 const Flex = ({

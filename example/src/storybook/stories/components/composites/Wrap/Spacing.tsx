@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrap, Center } from 'native-base';
+import { Wrap, Center } from '@native-base/v3';
 export default function () {
   return (
     <Wrap spacing={10} direction="row">

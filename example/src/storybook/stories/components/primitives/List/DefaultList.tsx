@@ -1,5 +1,5 @@
 import React from 'react';
-import { Li, Heading, Ul, Ol, Box } from 'native-base';
+import { Li, Heading, Ul, Ol, Box } from '@native-base/v3';
 
 export default function () {
   return (

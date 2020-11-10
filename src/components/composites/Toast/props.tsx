@@ -1,4 +1,4 @@
-import type { IBoxProps } from 'native-base';
+import type { IBoxProps } from '@native-base/v3';
 
 export type IToastProps = IBoxProps & {
   title?: string;

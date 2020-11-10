@@ -5,7 +5,7 @@ import {
   AlertTitle,
   AlertIcon,
   AlertCloseButton,
-} from 'native-base';
+} from '@native-base/v3';
 import { select } from '@storybook/addon-knobs';
 
 export default function () {

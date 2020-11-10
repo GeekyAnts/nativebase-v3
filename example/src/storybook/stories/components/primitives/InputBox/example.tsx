@@ -11,7 +11,7 @@ import {
   Heading,
   Button,
   Icon,
-} from 'native-base';
+} from '@native-base/v3';
 
 export const DefaultInput = () => {
   return <Input placeholder="Default Input" />;

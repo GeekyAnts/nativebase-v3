@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, usePropsConfig } from 'native-base';
+import { Text, usePropsConfig } from '@native-base/v3';
 import { TouchableItem } from './TouchableItem';
 import type { IMenuGroupProps } from './props';
 

@@ -6,7 +6,7 @@ import {
   SliderThumb,
   Stack,
   Text,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   const [onChangeValue, setOnChangeValue] = React.useState(70);

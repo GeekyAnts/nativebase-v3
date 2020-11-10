@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from 'native-base';
+import { Input } from '@native-base/v3';
 import type { IPinInputFieldProps, IPinInputContext } from './props';
 import { PinInputContext } from './index';
 

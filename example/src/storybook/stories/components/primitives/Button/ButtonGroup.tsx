@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonGroup } from 'native-base';
+import { Button, ButtonGroup } from '@native-base/v3';
 
 export default function () {
   return (

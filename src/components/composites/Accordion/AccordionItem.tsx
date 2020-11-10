@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from 'native-base';
+import { Box } from '@native-base/v3';
 import { AccordionContext } from './index';
 import type { IAccordionItemProps, IAccordionContextProps } from './props';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, HStack } from 'native-base';
+import { Button, HStack } from '@native-base/v3';
 
 export default function () {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IIconButtonProps, IconButton, Icon } from 'native-base';
+import { IIconButtonProps, IconButton, Icon } from '@native-base/v3';
 
 export type ICloseButtonProps = IIconButtonProps;
 

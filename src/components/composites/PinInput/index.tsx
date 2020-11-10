@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, usePropsConfig } from 'native-base';
+import { Stack, usePropsConfig } from '@native-base/v3';
 import type {
   IPinInputProps,
   IPinInputFieldProps,

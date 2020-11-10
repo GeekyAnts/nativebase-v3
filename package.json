@@ -1,5 +1,5 @@
 {
-  "name": "native-base",
+  "name": "@native-base/v3",
   "version": "0.1.0",
   "description": "Essential cross-platform UI components for React Native",
   "main": "lib/commonjs/index",
@@ -13,7 +13,7 @@
     "android",
     "ios",
     "cpp",
-    "native-base.podspec",
+    "@native-base/v3.podspec",
     "!lib/typescript/example",
     "!**/__tests__",
     "!**/__fixtures__",

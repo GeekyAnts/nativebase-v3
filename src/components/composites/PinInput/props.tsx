@@ -1,4 +1,4 @@
-import type { IInputProps } from 'native-base';
+import type { IInputProps } from '@native-base/v3';
 
 export type IPinInputProps = IInputProps & {
   children?: JSX.Element[] | JSX.Element;

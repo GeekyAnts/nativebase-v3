@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { border, flex, layout, space } from 'styled-system';
 import { customBorder } from '../../../utils/customProps';
-import { Box, usePropsConfig, Image, Text } from 'native-base';
+import { Box, usePropsConfig, Image, Text } from '@native-base/v3';
 import type { IAvatarProps } from './props';
 
 const initials = (name: string) => {

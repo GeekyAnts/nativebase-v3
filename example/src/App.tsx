@@ -1,6 +1,6 @@
 // import * as React from 'react';
 // import { StyleSheet, View } from 'react-native';
-// import { ThemeProvider, theme, Spinner } from 'native-base';
+// import { ThemeProvider, theme, Spinner } from '@native-base/v3';
 
 // export default function App() {
 //   const customeTheme = {

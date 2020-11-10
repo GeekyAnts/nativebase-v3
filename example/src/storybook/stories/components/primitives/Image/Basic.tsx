@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Image } from 'native-base';
+import { Box, Image } from '@native-base/v3';
 export default function () {
   return (
     <Box size={200}>

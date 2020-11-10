@@ -8,7 +8,7 @@ import {
   AlertDialogOverlay,
   Button,
   Center,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   const [isOpen, setIsOpen] = React.useState(false);

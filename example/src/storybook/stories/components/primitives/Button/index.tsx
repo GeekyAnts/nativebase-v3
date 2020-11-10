@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
-import { Box, theme, ThemeProvider } from 'native-base';
+import { Box, theme, ThemeProvider } from '@native-base/v3';
 import ButtonGroup from './ButtonGroup';
 import Sizes from './sizes';
 import Usage from './usage';

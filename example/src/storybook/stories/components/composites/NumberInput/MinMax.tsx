@@ -5,7 +5,7 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-} from 'native-base';
+} from '@native-base/v3';
 export default function () {
   return (
     <NumberInput defaultValue="10" min={5} max={20}>

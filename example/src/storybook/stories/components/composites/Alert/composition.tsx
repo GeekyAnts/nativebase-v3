@@ -1,5 +1,10 @@
 import React from 'react';
-import { Alert, AlertDescription, AlertTitle, AlertIcon } from 'native-base';
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  AlertIcon,
+} from '@native-base/v3';
 
 export default function () {
   return (

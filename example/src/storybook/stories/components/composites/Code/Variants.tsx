@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Stack } from 'native-base';
+import { Code, Stack } from '@native-base/v3';
 export default function () {
   return (
     <Stack space={4}>

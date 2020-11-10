@@ -4,7 +4,7 @@ import { PanResponder } from 'react-native';
 import { ThemeContext } from '../../../theme';
 import styled from 'styled-components/native';
 import { space, color, layout, typography } from 'styled-system';
-import { Box } from 'native-base';
+import { Box } from '@native-base/v3';
 export { default as SliderThumb } from './SliderThumb';
 export { default as SliderFilledTrack } from './SliderFilledTrack';
 export { default as SliderTrack } from './SliderTrack';

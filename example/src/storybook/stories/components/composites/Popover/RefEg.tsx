@@ -9,7 +9,7 @@ import {
   PopoverTrigger,
   Button,
   Input,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   const initialFocusRef = React.useRef();

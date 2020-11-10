@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Heading, Box, ListIcon, Li } from 'native-base';
+import { List, Heading, Box, ListIcon, Li } from '@native-base/v3';
 
 export default function () {
   return (

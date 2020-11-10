@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeContext } from '../../../theme';
 import styled from 'styled-components/native';
 import { space, color, layout, typography } from 'styled-system';
-import { Box } from 'native-base';
+import { Box } from '@native-base/v3';
 import type { ISliderProps } from './props';
 
 const NBSliderTrack = ({ children, ...props }: ISliderProps) => {

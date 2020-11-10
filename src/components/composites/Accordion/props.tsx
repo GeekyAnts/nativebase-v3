@@ -1,4 +1,4 @@
-import type { IBoxProps, IIconProps } from 'native-base';
+import type { IBoxProps, IIconProps } from '@native-base/v3';
 
 export type IAccordionProps = IBoxProps & {
   allowMultiple?: boolean;

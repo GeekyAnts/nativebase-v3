@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, usePropsConfig } from 'native-base';
+import { Box, usePropsConfig } from '@native-base/v3';
 import { Animated } from 'react-native';
 import type { ISkeletonProps } from './props';
 

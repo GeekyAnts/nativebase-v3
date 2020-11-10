@@ -6,7 +6,7 @@ import {
   AlertTitle,
   AlertIcon,
   AlertCloseButton,
-} from 'native-base';
+} from '@native-base/v3';
 export default function () {
   return (
     <View display="flex" justifyContent="space-between" alignItems="center">
