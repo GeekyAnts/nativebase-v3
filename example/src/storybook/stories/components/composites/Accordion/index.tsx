@@ -5,6 +5,7 @@ import { View, theme, ThemeProvider } from 'native-base';
 import Usage from './Usage';
 import Playground from './Playground';
 import Multiple from './Multiple';
+import AccessingInternalState from './AccessingInternalState';
 import ExpandedStyle from './ExpandedStyle';
 import Toggle from './Toggle';
 import DefaultIndex from './DefaultIndex';
@@ -24,4 +25,6 @@ storiesOf('Accordion', module)
   .add('Multiple', () => <Multiple />)
   .add('Default Index', () => <DefaultIndex />)
   .add('Toggle', () => <Toggle />)
-  .add('Expanded Style', () => <ExpandedStyle />);
+  .add('Expanded Style', () => <ExpandedStyle />)
+
+  .add('Accessing Internal State', () => <AccessingInternalState />);

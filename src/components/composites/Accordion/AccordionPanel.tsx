@@ -1,12 +1,10 @@
 import React from 'react';
-import styled from 'styled-components/native';
 import { Box, ThemeContext } from 'native-base';
-import { space, layout, border } from 'styled-system';
 import { AccordionItemContext } from './AccordionItem';
 import Collapse from '../Collapse';
 import type { IAccordionPanelProps, IAccordionItemContextProps } from './props';
 
-const NBAccordionPanel = ({ children, ...props }: IAccordionPanelProps) => {
+const AccordionPanel = ({ children, ...props }: IAccordionPanelProps) => {
   const theme = React.useContext(ThemeContext);
   const { isOpen }: IAccordionItemContextProps = React.useContext(
     AccordionItemContext
@@ -24,17 +22,6 @@ const NBAccordionPanel = ({ children, ...props }: IAccordionPanelProps) => {
       </Box>
     </Collapse>
   );
-};
-
-const StyledAccordion = styled(NBAccordionPanel)<IAccordionPanelProps>(
-  space,
-  layout,
-  border
-);
-StyledAccordion.defaultProps = {};
-
-const AccordionPanel = ({ children, ...props }: IAccordionPanelProps) => {
-  return <StyledAccordion {...props}>{children}</StyledAccordion>;
 };
 
 export default AccordionPanel;

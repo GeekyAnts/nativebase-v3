@@ -1,7 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/native';
 import { Box, ThemeContext } from 'native-base';
-import { space, layout, border } from 'styled-system';
 import type {
   IAccordionButtonProps,
   IAccordionItemContextProps,
@@ -9,7 +7,7 @@ import type {
 import { AccordionItemContext } from './AccordionItem';
 import { TouchableOpacity } from 'react-native';
 
-const NBAccordionButton = ({
+const AccordionButton = ({
   children,
   style,
   _expanded,
@@ -53,17 +51,6 @@ const NBAccordionButton = ({
       </Box>
     </TouchableOpacity>
   );
-};
-
-const StyledAccordion = styled(NBAccordionButton)<IAccordionButtonProps>(
-  space,
-  layout,
-  border
-);
-StyledAccordion.defaultProps = {};
-
-const AccordionButton = ({ children, ...props }: IAccordionButtonProps) => {
-  return <StyledAccordion {...props}>{children}</StyledAccordion>;
 };
 
 export default AccordionButton;
