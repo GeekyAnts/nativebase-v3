@@ -73,7 +73,9 @@
     "react": "*",
     "react-native": "*",
     "react-native-svg": "*",
-    "react-native-vector-icons": "*"
+    "react-native-vector-icons": "*",
+    "styled-components": "*",
+    "styled-system": "*"
   },
   "jest": {
     "preset": "react-native",
