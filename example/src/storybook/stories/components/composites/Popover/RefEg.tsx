@@ -16,7 +16,7 @@ export default function () {
   return (
     <Popover initialFocusRef={initialFocusRef} closeOnBlur={false}>
       <PopoverTrigger>
-        <Button isDisabled>Trigger</Button>
+        <Button>Trigger</Button>
       </PopoverTrigger>
       <PopoverContent width={250}>
         <PopoverCloseButton />

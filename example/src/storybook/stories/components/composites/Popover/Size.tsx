@@ -11,9 +11,9 @@ import {
 
 export default function () {
   return (
-    <Popover>
+    <Popover size="lg">
       <PopoverTrigger>
-        <Button>Trigger</Button>
+        <Button>Trigger for size</Button>
       </PopoverTrigger>
       <PopoverContent>
         <PopoverCloseButton />

@@ -1,3 +1,24 @@
+const sizes = {
+  xs: {
+    _width: '40%',
+  },
+  sm: {
+    _width: '48%',
+  },
+  md: {
+    _width: '60%',
+  },
+  lg: {
+    _width: '75%',
+  },
+  xl: {
+    _width: '90%',
+  },
+  full: {
+    _width: '100%',
+  },
+};
+
 const defaultProps = {
   popoverCloseButtonStyle: {
     position: 'absolute',
@@ -22,6 +43,7 @@ const defaultProps = {
   },
   popoverContentProps: {
     height: 'auto',
+    size: 'md',
   },
   popoverHeaderProps: {
     pt: 2,
@@ -38,4 +60,4 @@ const defaultProps = {
   },
 };
 
-export default { defaultProps };
+export default { defaultProps, sizes };

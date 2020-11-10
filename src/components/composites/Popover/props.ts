@@ -15,6 +15,7 @@ import type {
   customExtraProps,
   customShadowProps,
 } from '../../../utils/customProps';
+type SpaceType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
 export type IPopoverProps = ColorProps &
   SpaceProps &
   LayoutProps &
@@ -35,4 +36,5 @@ export type IPopoverProps = ColorProps &
     onClose?: any;
     closeOnBlur?: boolean;
     id?: any;
+    size?: SpaceType | string | number;
   };
