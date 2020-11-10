@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Center, Icon, usePropsConfig } from '@native-base/v3';
+import { Center, Icon, usePropsConfig } from '../../..';
 import {
   FormControlContext,
   IFormControlContext,

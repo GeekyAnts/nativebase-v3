@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Skeleton, Stack, usePropsConfig } from '@native-base/v3';
+import { Box, Skeleton, Stack, usePropsConfig } from '../../..';
 import type { ISkeletonTextProps } from './props';
 
 const NBSkeletonText = ({ ...props }: ISkeletonTextProps) => {

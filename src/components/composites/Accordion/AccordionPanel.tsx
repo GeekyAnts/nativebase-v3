@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, ThemeContext } from '@native-base/v3';
+import { Box, ThemeContext } from '../../..';
 import { AccordionItemContext } from './AccordionItem';
 import Collapse from '../Collapse';
 import type { IAccordionPanelProps, IAccordionItemContextProps } from './props';

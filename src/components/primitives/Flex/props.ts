@@ -1,5 +1,5 @@
 import type * as CSS from 'csstype';
-import type { IBoxProps } from '@native-base/v3';
+import type { IBoxProps } from '../../..';
 
 export type IFlexProps = IBoxProps & {
   direction?: CSS.Property.FlexDirection;

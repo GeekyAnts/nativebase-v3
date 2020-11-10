@@ -16,7 +16,7 @@ const STATES = {
   SHOWN: 'SHOWN',
 };
 import type { IMenuProps, IMenuContextProps } from './props';
-import { usePropsConfig, IBoxProps, themeTools } from '@native-base/v3';
+import { usePropsConfig, IBoxProps, themeTools } from '../../..';
 import styled from 'styled-components/native';
 import {
   border,

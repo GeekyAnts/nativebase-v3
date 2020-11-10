@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, IButtonProps, usePropsConfig } from '@native-base/v3';
+import { Button, IButtonProps, usePropsConfig } from '../../..';
 
 export type IIconButtonProps = IButtonProps & {
   icon?: JSX.Element;

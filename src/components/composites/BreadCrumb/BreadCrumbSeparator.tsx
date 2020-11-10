@@ -1,6 +1,6 @@
 import React from 'react';
 import { isNil } from 'lodash';
-import { Text } from '@native-base/v3';
+import { Text } from '../../..';
 
 export const BreadCrumbSeparator = (
   children: JSX.Element[] | JSX.Element | any,

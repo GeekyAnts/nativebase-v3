@@ -1,5 +1,5 @@
 import React from 'react';
-import { VStack, Divider } from '@native-base/v3';
+import { VStack, Divider } from '../../..';
 import type { INumberInputFieldProps } from './props';
 
 const NumberInputStepper = ({ children, ...props }: INumberInputFieldProps) => {

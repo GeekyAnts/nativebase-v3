@@ -1,2 +1,2 @@
-import { HStack } from '@native-base/v3';
+import { HStack } from '../../..';
 export { HStack as Row };

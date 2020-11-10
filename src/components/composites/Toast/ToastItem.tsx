@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text } from '@native-base/v3';
+import { Box, Text } from '../../..';
 import type { IToastProps } from './props';
 
 const ToastItem = ({ title, offset, ...props }: IToastProps) => {

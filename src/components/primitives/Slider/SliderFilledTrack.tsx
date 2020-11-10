@@ -2,7 +2,7 @@ import React from 'react';
 import { SliderContext } from './index';
 import styled from 'styled-components/native';
 import { space, color, layout, typography } from 'styled-system';
-import { Box } from '@native-base/v3';
+import { Box } from '../../..';
 import type { ISliderProps, ISliderContextProps } from './props';
 
 const NBSliderFilledTrack = ({ ...props }: ISliderProps) => {

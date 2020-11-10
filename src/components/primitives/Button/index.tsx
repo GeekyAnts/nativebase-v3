@@ -17,7 +17,7 @@ import {
   customExtra,
   customShadow,
 } from '../../../utils/customProps';
-import { usePropsConfig, Text, themeTools } from '@native-base/v3';
+import { usePropsConfig, Text, themeTools } from '../../..';
 import { Spinner, Box, IBoxProps, Flex } from '../../primitives';
 import type { IButtonProps } from './IButtonProps';
 const StyledView = styled(View)<

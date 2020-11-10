@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@native-base/v3';
+import { Box } from '../../..';
 import type { IFormControlProps } from './props';
 
 export const FormControlContext = React.createContext({});

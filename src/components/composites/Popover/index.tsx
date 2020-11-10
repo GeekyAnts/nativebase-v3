@@ -12,13 +12,7 @@ import {
 } from '../../../utils/customProps';
 
 import type { IPopoverProps } from './props';
-import {
-  Box,
-  CloseButton,
-  View,
-  IBoxProps,
-  usePropsConfig,
-} from '@native-base/v3';
+import { Box, CloseButton, View, IBoxProps, usePropsConfig } from '../../..';
 
 const StyledPopover = styled(Tooltip)<IPopoverProps>(
   color,

@@ -6,7 +6,7 @@ import type {
   SpaceProps,
   TypographyProps,
 } from 'styled-system';
-import type { IBoxProps } from '@native-base/v3';
+import type { IBoxProps } from '../../..';
 import type {
   customBorderProps,
   customBackgroundProps,

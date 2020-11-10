@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, usePropsConfig } from '@native-base/v3';
+import { Flex, usePropsConfig } from '../../..';
 import { isNil } from 'lodash';
 import type { IAvatarProps } from './props';
 import { Avatar } from './Avatar';

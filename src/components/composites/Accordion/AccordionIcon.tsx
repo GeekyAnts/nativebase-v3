@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '@native-base/v3';
+import { Icon } from '../../..';
 import type { IAccordionIconProps, IAccordionItemContextProps } from './props';
 import { AccordionItemContext } from './AccordionItem';
 

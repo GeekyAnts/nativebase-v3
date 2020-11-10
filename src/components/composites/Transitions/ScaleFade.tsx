@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Box } from '@native-base/v3';
+import { Box } from '../../..';
 import { space, layout, border } from 'styled-system';
 import { Animated } from 'react-native';
 import type { IScaleFadeProps } from './props';

@@ -8,7 +8,7 @@ import {
   Text,
   ITextProps,
   usePropsConfig,
-} from '@native-base/v3';
+} from '../../..';
 
 export { CloseButton as TagCloseButton };
 import type { ITagProps } from './props';

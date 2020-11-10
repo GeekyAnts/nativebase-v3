@@ -1,4 +1,4 @@
-import type { IBoxProps, IFormControlContext } from '@native-base/v3';
+import type { IBoxProps, IFormControlContext } from '../../..';
 
 export type ICheckboxProps = IBoxProps & {
   id?: string;

@@ -1,4 +1,4 @@
-import type { IBoxProps } from '@native-base/v3';
+import type { IBoxProps } from '../../..';
 
 export type IFadeProps = IBoxProps & {
   in?: boolean;

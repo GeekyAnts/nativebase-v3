@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePropsConfig } from '@native-base/v3';
+import { usePropsConfig } from '../../..';
 import styled from 'styled-components';
 import { color, space, typography } from 'styled-system';
 import Svg, { G, Path, Circle } from 'react-native-svg';

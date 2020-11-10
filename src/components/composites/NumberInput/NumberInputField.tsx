@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '@native-base/v3';
+import { Input } from '../../..';
 import type { INumberInputFieldProps } from './props';
 import { NumberInputContext, INumberInputContext } from './index';
 
