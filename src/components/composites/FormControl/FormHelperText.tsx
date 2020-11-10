@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '../../primitives';
-import { ThemeContext } from '../../../theme';
+import { useTheme } from '../../../theme';
 import { FormControlContext } from './FormControl';
 import type { IFormHelperTextProps, IFormControlContext } from './props';
 
@@ -16,7 +16,7 @@ const FormHelperText = ({
     FormControlContext
   );
 
-  const theme = React.useContext(ThemeContext);
+  const theme = useTheme();
   return (
     <Box
       {...props}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '../../primitives';
-import { ThemeContext } from '../../../theme';
+import { useTheme } from '../../../theme';
 import type {
   IAccordionButtonProps,
   IAccordionItemContextProps,
@@ -15,8 +15,7 @@ const AccordionButton = ({
   _disabled,
   ...props
 }: IAccordionButtonProps) => {
-  const theme = React.useContext(ThemeContext);
-
+  const theme = useTheme();
   const {
     isOpen,
     isDisabled,

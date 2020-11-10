@@ -1,11 +1,10 @@
-import { useContext } from 'react';
-import { ThemeContext } from './../';
 import { get, isNil, mergeWith } from 'lodash';
+import { useTheme } from './useTheme';
 import { themePropertyMap } from './../base';
-import { omitUndefined } from './utils';
+import { omitUndefined } from './../tools/';
 
 export function usePropsConfig(component: string, props: any) {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   if (!props) {
     props = {};
   }
