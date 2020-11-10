@@ -1,13 +1,18 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { View } from '../../..';
 
 type Props = {
   style: any;
   isDown: boolean;
+  borderBottomColor?: string;
 };
 
-const Triangle = ({ style, isDown }: Props) => (
-  <View style={[styles.triangle, style, isDown ? styles.down : {}]} />
+const Triangle = ({ style, isDown, borderBottomColor }: Props) => (
+  <View
+    borderBottomColor={borderBottomColor}
+    style={[styles.triangle, style, isDown ? styles.down : {}]}
+  />
 );
 
 const styles = StyleSheet.create({
@@ -24,7 +29,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 15,
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
-    borderBottomColor: 'white',
   },
 });
 

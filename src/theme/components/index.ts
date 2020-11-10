@@ -31,6 +31,7 @@ import Stat from './stat';
 import Spinner from './spinner';
 import CircularProgress from './circular-progress';
 import Modal from './modal';
+import Popover from './popover';
 
 export default {
   Heading,
@@ -69,4 +70,5 @@ export default {
   Spinner,
   CircularProgress,
   Modal,
+  Popover,
 };
