@@ -3,11 +3,6 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import Usage from './Usage';
-import Size from './Size';
-import CustomIcon from './CustomIcon';
-import DefaultValue from './Colors';
-// import Playground from './Playground';
-import Custom from './Custom';
 import Position from './Position';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
@@ -20,10 +15,5 @@ storiesOf('Toast', module)
       </View>
     </ThemeProvider>
   ))
-  // .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
-  .add('DefaultValue', () => <DefaultValue />)
-  .add('Custom', () => <Custom />)
-  .add('CustomIcon', () => <CustomIcon />)
-  .add('Size', () => <Size />)
   .add('Position', () => <Position />);
