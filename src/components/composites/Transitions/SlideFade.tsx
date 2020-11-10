@@ -1,18 +1,13 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { Box } from 'native-base';
-import { space, layout, border } from 'styled-system';
+import { Box, usePropsConfig } from 'native-base';
 import { Animated } from 'react-native';
 import type { ISlideFadeProps } from './props';
 
-const NBSlideFade = ({
-  children,
-  in: animationState,
-  duration = 500,
-  offsetX = 10,
-  offsetY = 10,
-  ...props
-}: ISlideFadeProps) => {
+const SlideFade = ({ children, ...props }: ISlideFadeProps) => {
+  const { in: animationState, duration, offsetX, offsetY } = usePropsConfig(
+    'SlideFade',
+    props
+  );
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const slideAnimX = React.useRef(new Animated.Value(0)).current;
   const slideAnimY = React.useRef(new Animated.Value(0)).current;
@@ -23,7 +18,6 @@ const NBSlideFade = ({
       duration: duration,
       useNativeDriver: true,
     }).start();
-
     Animated.timing(slideAnimX, {
       toValue: 0,
       duration: duration,
@@ -68,16 +62,6 @@ const NBSlideFade = ({
       <Box {...props}>{children}</Box>
     </Animated.View>
   );
-};
-
-const StyledSlideFade = styled(NBSlideFade)<ISlideFadeProps>(
-  space,
-  layout,
-  border
-);
-
-const SlideFade = ({ children, ...props }: ISlideFadeProps) => {
-  return <StyledSlideFade {...props}>{children}</StyledSlideFade>;
 };
 
 export default SlideFade;
