@@ -23,7 +23,7 @@ import Progress from './progress';
 import Container from './container';
 import Skeleton from './skeleton';
 import SkeletonText from './skeletonText';
-import Slider from './slider';
+import { default as Slider, SliderThumb } from './slider';
 import IconButton from './icon-button';
 import Flex from './flex';
 import TextArea from './textarea';
@@ -61,6 +61,7 @@ export default {
   Skeleton,
   SkeletonText,
   Slider,
+  SliderThumb,
   Flex,
   Button,
   IconButton,

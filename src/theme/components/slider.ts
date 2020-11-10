@@ -36,3 +36,11 @@ export default {
   sizes,
   defaultProps,
 };
+
+// SliderThumb
+const sliderThumbDefaultProps = {
+  shadow: 2,
+};
+export const SliderThumb = {
+  defaultProps: sliderThumbDefaultProps,
+};

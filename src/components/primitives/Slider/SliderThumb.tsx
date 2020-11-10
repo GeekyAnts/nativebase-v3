@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, Animated } from 'react-native';
 import { SliderContext } from './index';
-import { Box, Icon } from 'native-base';
+import { Box, Icon, usePropsConfig } from 'native-base';
 import type { ISliderProps, ISliderContextProps } from './props';
 
 const SliderThumb = ({ children, ...props }: ISliderProps) => {
+  const { ...newProps } = usePropsConfig('SliderThumb', props);
   const {
     sliderOffset,
     panResponder,
@@ -21,6 +22,7 @@ const SliderThumb = ({ children, ...props }: ISliderProps) => {
       alignItems: 'center',
     },
   });
+  console.log('newProps = ', newProps);
 
   const sizedIcon = () =>
     React.cloneElement(
@@ -41,12 +43,11 @@ const SliderThumb = ({ children, ...props }: ISliderProps) => {
         position="relative"
         borderRadius={999}
         backgroundColor="light.0"
-        shadow={1}
         p={1}
         display="flex"
         justifyContent="center"
         alignItems="center"
-        {...props}
+        {...newProps}
       >
         {children ? (
           sizedIcon()
