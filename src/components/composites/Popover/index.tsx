@@ -137,6 +137,7 @@ export const PopoverContent = ({
   return (
     <StyledPopover
       {...newProps.popoverContentProps}
+      width={newProps._width || newProps.size || '45%'}
       backgroundColor={backgroundColor}
       borderColor={borderColor}
       borderWidth={borderWidth}
