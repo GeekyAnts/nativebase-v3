@@ -18,10 +18,10 @@ export default function () {
       <Slider
         defaultValue={70}
         colorScheme="cyan"
-        onChange={(v) => {
+        onChange={(v: any) => {
           setOnChangeValue(Math.floor(v));
         }}
-        onChangeEnd={(v) => {
+        onChangeEnd={(v: any) => {
           v && setOnChangeEndValue(Math.floor(v));
         }}
       >

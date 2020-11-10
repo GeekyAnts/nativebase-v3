@@ -4,7 +4,8 @@ import {
   FormControlContext,
   IFormControlContext,
 } from '../../composites/FormControl';
-import { Box, usePropsConfig } from 'native-base';
+import { Box } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import type { ISliderProps } from './props';
 
 export const SliderContext = React.createContext({});
