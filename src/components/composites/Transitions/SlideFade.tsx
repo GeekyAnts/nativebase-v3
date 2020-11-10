@@ -5,7 +5,7 @@ import type { ISlideFadeProps } from './props';
 
 const SlideFade = ({ children, ...props }: ISlideFadeProps) => {
   const { in: animationState, duration, offsetX, offsetY } = usePropsConfig(
-    'ScaleFade',
+    'SlideFade',
     props
   );
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
@@ -18,7 +18,6 @@ const SlideFade = ({ children, ...props }: ISlideFadeProps) => {
       duration: duration,
       useNativeDriver: true,
     }).start();
-
     Animated.timing(slideAnimX, {
       toValue: 0,
       duration: duration,

@@ -27,13 +27,13 @@ export const Slide = {
   defaultProps: slideDefaultProps,
 };
 
-//SildeFade
+//SlideFade
 const slideFadeDefaultProps = {
   duration: 500,
   offsetX: 10,
   offsetY: 10,
 };
 
-export const SildeFade = {
+export const SlideFade = {
   defaultProps: slideFadeDefaultProps,
 };

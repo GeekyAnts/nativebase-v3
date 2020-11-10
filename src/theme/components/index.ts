@@ -14,7 +14,7 @@ import Divider from './divider';
 import BreadCrumb from './breadcrumb';
 import PinInput from './pin-input';
 import { default as NumberInput, NumberInputStepper } from './number-input';
-import { Fade, ScaleFade, Slide, SildeFade } from './transitions';
+import { Fade, ScaleFade, Slide, SlideFade } from './transitions';
 import { default as Menu, MenuItem, MenuGroup } from './menu';
 import Link from './link';
 import Checkbox from './checkbox';
@@ -55,7 +55,7 @@ export default {
   Fade,
   ScaleFade,
   Slide,
-  SildeFade,
+  SlideFade,
   Kbd,
   TextArea,
   Input,
