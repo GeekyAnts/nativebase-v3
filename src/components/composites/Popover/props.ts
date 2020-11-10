@@ -32,8 +32,8 @@ export type IPopoverProps = ColorProps &
     initialFocusRef?: any;
     finalFocusRef?: any;
     children: JSX.Element | JSX.Element[];
-    onOpen?: any;
-    onClose?: any;
+    onOpen?: Function;
+    onClose?: Function;
     closeOnBlur?: boolean;
     id?: any;
     size?: SpaceType | string | number;

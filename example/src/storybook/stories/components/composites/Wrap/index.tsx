@@ -12,7 +12,7 @@ storiesOf('Wrap', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
-      <View flex={1} justifyContent="center" alignItems="center">
+      <View bg="gray.0" flex={1} justifyContent="center" alignItems="center">
         {getStory()}
       </View>
     </ThemeProvider>
