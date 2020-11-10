@@ -14,6 +14,7 @@ import Divider from './divider';
 import BreadCrumb from './breadcrumb';
 import PinInput from './pin-input';
 import { default as NumberInput, NumberInputStepper } from './number-input';
+import { Fade, ScaleFade, Slide, SlideFade } from './transitions';
 import { default as Menu, MenuItem, MenuGroup } from './menu';
 import Link from './link';
 import Checkbox from './checkbox';
@@ -23,6 +24,7 @@ import Progress from './progress';
 import Container from './container';
 import Skeleton from './skeleton';
 import SkeletonText from './skeletonText';
+import { default as Slider, SliderThumb } from './slider';
 import IconButton from './icon-button';
 import Flex from './flex';
 import TextArea from './textarea';
@@ -53,6 +55,10 @@ export default {
   PinInput,
   NumberInput,
   NumberInputStepper,
+  Fade,
+  ScaleFade,
+  Slide,
+  SlideFade,
   Kbd,
   TextArea,
   Input,
@@ -61,6 +67,8 @@ export default {
   Container,
   Skeleton,
   SkeletonText,
+  Slider,
+  SliderThumb,
   Flex,
   Button,
   IconButton,

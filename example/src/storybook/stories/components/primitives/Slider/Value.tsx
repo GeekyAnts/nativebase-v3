@@ -17,7 +17,7 @@ export default function () {
       <Text>onChangeEndValue - {onChangeEndValue}</Text>
       <Slider
         defaultValue={70}
-        colorScheme="cyan.2"
+        colorScheme="cyan"
         onChange={(v) => {
           setOnChangeValue(Math.floor(v));
         }}
