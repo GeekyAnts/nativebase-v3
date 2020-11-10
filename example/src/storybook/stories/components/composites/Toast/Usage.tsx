@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toast, Button, useToast } from 'native-base';
+import { ToastProvider, Button, useToast } from 'native-base';
 
 export default function () {
   const toast = useToast();
@@ -9,14 +9,33 @@ export default function () {
       <Button
         onPress={() => {
           toast({
-            title: 'Toast ',
-            description: 'description : include a lot of words',
+            position: 'top',
+            title: 'Toast Top',
           });
         }}
       >
         Buttom
       </Button>
-      <Toast />
+      <Button
+        onPress={() => {
+          toast({
+            position: 'center',
+            title: 'Toast Center',
+          });
+        }}
+      >
+        Buttom
+      </Button>
+      <Button
+        onPress={() => {
+          toast({
+            title: 'Toast Bottom Hey heyere ',
+          });
+        }}
+      >
+        Buttom
+      </Button>
+      <ToastProvider />
     </>
   );
 }
