@@ -15,19 +15,19 @@ export const useToastManager = () => {
       duration = 2000;
     }
     setTimeout(() => {
-      currentState['toasts'].splice(0, 1);
+      currentState.toasts.splice(0, 1);
       setAllToast({ ...currentState });
-      if (currentState['toasts'].length) {
-        recursivelyTimeout(currentState['toasts'][0]['duration']);
+      if (currentState.toasts.length) {
+        recursivelyTimeout(currentState.toasts[0].duration);
       }
     }, duration);
   };
   const updateToast = ({ position, duration, ...rest }: IToastProps) => {
-    if (!currentState['toasts'].length) {
+    if (!currentState.toasts.length) {
       recursivelyTimeout(duration);
     }
 
-    currentState['toasts'].push({
+    currentState.toasts.push({
       ...rest,
       position,
       duration,
