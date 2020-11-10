@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
 import { color, space, typography } from 'styled-system';
-import { usePropsConfig } from '../../..';
+import { usePropsConfig } from '../../../theme';
 import styled from 'styled-components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';

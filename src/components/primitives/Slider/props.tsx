@@ -1,4 +1,4 @@
-import type { IBoxProps } from '../../..';
+import type { IBoxProps } from '../../primitives';
 
 export type ISliderProps = IBoxProps & {
   value?: number;

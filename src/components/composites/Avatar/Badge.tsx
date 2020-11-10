@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, usePropsConfig } from '../../..';
+import { Box } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import type { IAvatarBadgeProps } from './props';
 
 export const AvatarBadge = (props: IAvatarBadgeProps) => {

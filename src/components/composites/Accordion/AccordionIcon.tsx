@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '../../..';
+import { Icon } from '../../primitives';
 import type { IAccordionIconProps, IAccordionItemContextProps } from './props';
 import { AccordionItemContext } from './AccordionItem';
 

@@ -3,7 +3,7 @@ import { TouchableOpacity, Modal, I18nManager } from 'react-native';
 import Triangle from './Triangle';
 import { ScreenWidth, ScreenHeight, isIOS } from './helpers';
 import getTooltipCoordinate from './getTooltipCoordinate';
-import { View } from '../../..';
+import { View } from '../../primitives';
 type State = {
   isVisible: boolean;
   yOffset: number;

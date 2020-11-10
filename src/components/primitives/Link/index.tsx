@@ -18,8 +18,8 @@ import {
 import { addTextAndPropsToStrings } from '../../../utils';
 import React from 'react';
 import type { ILinkProps } from './props';
-import { Box } from '../../..';
-import { usePropsConfig } from '../../..';
+import { Box } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 
 const StyledLink = styled(View)<ILinkProps>(
   color,

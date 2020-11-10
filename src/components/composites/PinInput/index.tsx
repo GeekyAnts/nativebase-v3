@@ -1,5 +1,6 @@
 import React from 'react';
-import { Stack, usePropsConfig } from '../../..';
+import { Stack } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import type {
   IPinInputProps,
   IPinInputFieldProps,

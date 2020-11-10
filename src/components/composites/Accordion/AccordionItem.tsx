@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../../..';
+import { Box } from '../../primitives';
 import { AccordionContext } from './index';
 import type { IAccordionItemProps, IAccordionContextProps } from './props';
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, usePropsConfig } from '../../..';
+import { Box } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import type { IFlexProps } from './props';
 
 const Flex = ({

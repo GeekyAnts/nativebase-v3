@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '../../..';
+import { Input } from '../../primitives';
 import type { IPinInputFieldProps, IPinInputContext } from './props';
 import { PinInputContext } from './index';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Box } from '../../..';
+import { Box } from '../../primitives';
 import { space, layout, border } from 'styled-system';
 import { Animated } from 'react-native';
 import type { ISlideFadeProps } from './props';

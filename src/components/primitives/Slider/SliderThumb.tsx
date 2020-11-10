@@ -4,7 +4,7 @@ import { ThemeContext } from '../../../theme';
 import { SliderContext } from './index';
 import styled from 'styled-components/native';
 import { space, color, layout, typography } from 'styled-system';
-import { Box } from '../../..';
+import { Box } from '../../primitives';
 import type { ISliderProps, ISliderContextProps } from './props';
 
 const NBSliderThumb = ({ children, ...props }: ISliderProps) => {

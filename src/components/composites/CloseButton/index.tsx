@@ -1,5 +1,6 @@
 import React from 'react';
-import { IIconButtonProps, IconButton, Icon } from '../../..';
+import { Icon } from '../../primitives';
+import { IIconButtonProps, IconButton } from '../../composites';
 
 export type ICloseButtonProps = IIconButtonProps;
 

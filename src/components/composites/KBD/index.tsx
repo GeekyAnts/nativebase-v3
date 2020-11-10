@@ -1,7 +1,8 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import styled from 'styled-components/native';
-import { usePropsConfig, Box, Text } from '../../..';
+import { Box, Text } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import type { IKbdProps } from './props';
 
 const StyledKbd = styled(Box)<IKbdProps>({});

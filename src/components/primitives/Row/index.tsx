@@ -1,2 +1,2 @@
-import { HStack } from '../../..';
+import { HStack } from '../../primitives';
 export { HStack as Row };

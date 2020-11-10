@@ -1,4 +1,4 @@
-import type { IBoxProps, IIconProps } from '../../..';
+import type { IBoxProps, IIconProps } from '../../primitives';
 
 export type IAccordionProps = IBoxProps & {
   allowMultiple?: boolean;

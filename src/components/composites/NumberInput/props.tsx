@@ -1,4 +1,4 @@
-import type { IInputProps, IBoxProps } from '../../..';
+import type { IInputProps, IBoxProps } from '../../primitives';
 
 export type INumberInputProps = IInputProps &
   IBoxProps & {

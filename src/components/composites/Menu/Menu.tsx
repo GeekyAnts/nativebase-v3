@@ -9,14 +9,9 @@ import {
   View,
 } from 'react-native';
 import { getContainerStyles } from './utils/getContainerStyles';
-
-const STATES = {
-  HIDDEN: 'HIDDEN',
-  ANIMATING: 'ANIMATING',
-  SHOWN: 'SHOWN',
-};
 import type { IMenuProps, IMenuContextProps } from './props';
-import { usePropsConfig, IBoxProps, themeTools } from '../../..';
+import type { IBoxProps } from '../../primitives';
+import { usePropsConfig, themeTools } from '../../../theme';
 import styled from 'styled-components/native';
 import {
   border,
@@ -35,6 +30,12 @@ import {
   customShadow,
   customTypography,
 } from '../../../utils/customProps';
+
+const STATES = {
+  HIDDEN: 'HIDDEN',
+  ANIMATING: 'ANIMATING',
+  SHOWN: 'SHOWN',
+};
 const animationDuration = 300;
 const EASING = Easing.bezier(0.4, 0, 0.2, 1);
 

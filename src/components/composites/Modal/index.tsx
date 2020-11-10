@@ -12,14 +12,9 @@ import {
 } from '../../../utils/customProps';
 
 import type { IModalProps, IModalSemiProps } from './props';
-import {
-  Box,
-  CloseButton,
-  View,
-  usePropsConfig,
-  IBoxProps,
-  ICloseButtonProps,
-} from '../../..';
+import { Box, View, IBoxProps } from '../../primitives';
+import { CloseButton, ICloseButtonProps } from '../../composites';
+import { usePropsConfig } from '../../../theme';
 
 const StyledModal = styled(RNModal)<IModalSemiProps>(
   color,

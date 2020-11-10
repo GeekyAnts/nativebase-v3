@@ -1,2 +1,2 @@
-import { VStack } from '../../..';
+import { VStack } from '../../primitives';
 export { VStack as Column };

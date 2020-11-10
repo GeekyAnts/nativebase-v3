@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Text, ThemeContext } from '../../..';
+import { Box, Text } from '../../primitives';
+import { ThemeContext } from '../../../theme';
 import { FormControlContext } from './FormControl';
 import type { IFormLabelProps, IFormControlContext } from './props';
 

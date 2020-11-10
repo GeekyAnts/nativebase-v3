@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, ThemeContext } from '../../..';
+import { Box } from '../../primitives';
+import { ThemeContext } from '../../../theme';
 import { FormControlContext } from './FormControl';
 import type { IFormErrorMessageProps, IFormControlContext } from './props';
 

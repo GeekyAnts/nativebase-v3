@@ -1,4 +1,4 @@
-import type { IInputProps } from '../../..';
+import type { IInputProps } from '../../primitives';
 
 export type IPinInputProps = IInputProps & {
   children?: JSX.Element[] | JSX.Element;

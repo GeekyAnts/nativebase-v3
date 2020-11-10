@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '../../..';
+import { Input } from '../../primitives';
 import type { INumberInputFieldProps } from './props';
 import { NumberInputContext, INumberInputContext } from './index';
 

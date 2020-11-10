@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
 import { color, space, position, get } from 'styled-system';
-import { ThemeContext, usePropsConfig } from '../../..';
+import { ThemeContext, usePropsConfig } from '../../../theme';
 import type { ISpinnerProps } from './props';
 export type { ISpinnerProps };
 

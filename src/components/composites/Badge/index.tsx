@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Box } from '../../..';
+import { Box } from '../../primitives';
 import { space } from 'styled-system';
 import type { IBadgeProps } from './props';
 export type { IBadgeProps };

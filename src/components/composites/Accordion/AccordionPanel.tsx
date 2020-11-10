@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, ThemeContext } from '../../..';
+import { Box } from '../../primitives';
+import { ThemeContext } from '../../../theme';
 import { AccordionItemContext } from './AccordionItem';
 import Collapse from '../Collapse';
 import type { IAccordionPanelProps, IAccordionItemContextProps } from './props';
