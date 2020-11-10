@@ -7,7 +7,8 @@ export const ThemeContext = React.createContext({
   theme,
 });
 
-export default class ThemeProvider extends React.Component {
+// NOTE: Not being used
+export default class NativeBaseProvider extends React.Component {
   defaultTheme: any;
   state: any;
   constructor(props: any) {

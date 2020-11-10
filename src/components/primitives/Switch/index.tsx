@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, ViewStyle, Switch as RNSwitch } from 'react-native';
 import styled from 'styled-components/native';
 import { isNil } from 'lodash';
-import { ThemeContext, usePropsConfig } from '../../../theme';
+import { useTheme, usePropsConfig } from '../../../theme';
 import { border, color, flexbox, layout, space } from 'styled-system';
 import {
   customBorder,
@@ -44,7 +44,7 @@ const Switch = ({
   const [isActive, setIsActive] = useState(
     !isNil(defaultIsChecked) ? defaultIsChecked : false
   );
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   const checked = !isNil(isChecked) ? isChecked : isActive;
   const newProps = usePropsConfig('Switch', {
     ...props,

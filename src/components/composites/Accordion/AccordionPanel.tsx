@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box } from '../../primitives';
-import { ThemeContext } from '../../../theme';
+import { useTheme } from '../../../theme';
 import { AccordionItemContext } from './AccordionItem';
 import Collapse from '../Collapse';
 import type { IAccordionPanelProps, IAccordionItemContextProps } from './props';
 
 const AccordionPanel = ({ children, ...props }: IAccordionPanelProps) => {
-  const theme = React.useContext(ThemeContext);
+  const theme = useTheme();
   const { isOpen }: IAccordionItemContextProps = React.useContext(
     AccordionItemContext
   );
