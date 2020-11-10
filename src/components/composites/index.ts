@@ -38,7 +38,7 @@ export {
   ISkeletonTextProps,
 } from './Skeleton';
 export {
-  default as Accordion,
+  Accordion,
   IAccordionProps,
   AccordionItem,
   IAccordionItemProps,
