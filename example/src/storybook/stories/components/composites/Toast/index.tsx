@@ -4,6 +4,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import Usage from './Usage';
 import Position from './Position';
+import Offset from './Offset';
 
 type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Toast', module)
@@ -16,4 +17,5 @@ storiesOf('Toast', module)
     </ThemeProvider>
   ))
   .add('Usage', () => <Usage />)
-  .add('Position', () => <Position />);
+  .add('Position', () => <Position />)
+  .add('Offset', () => <Offset />);

@@ -9,27 +9,10 @@ export default function () {
       <Button
         onPress={() => {
           toast({
-            position: 'top',
-            title: 'Toast Top',
-          });
-        }}
-      >
-        Buttom
-      </Button>
-      <Button
-        onPress={() => {
-          toast({
             position: 'center',
+            duration: 1000,
             title: 'Toast Center',
-          });
-        }}
-      >
-        Buttom
-      </Button>
-      <Button
-        onPress={() => {
-          toast({
-            title: 'Toast Bottom Hey heyere ',
+            offset: { x: 100, y: 100 },
           });
         }}
       >
