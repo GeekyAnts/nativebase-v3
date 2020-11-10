@@ -15,7 +15,7 @@ storiesOf('Button', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
     <ThemeProvider theme={theme}>
-      <Box flex={1} justifyContent="center" alignItems="center">
+      <Box bg="gray.0" flex={1} justifyContent="center" alignItems="center">
         {getStory()}
       </Box>
     </ThemeProvider>

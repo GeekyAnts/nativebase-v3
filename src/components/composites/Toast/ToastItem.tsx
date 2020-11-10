@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Text } from 'native-base';
 import type { IToastProps } from './props';
 
-const ToastItem = ({ position, title, offset, ...props }: IToastProps) => {
+const ToastItem = ({ title, offset, ...props }: IToastProps) => {
   return (
     <Box
       p={3}
