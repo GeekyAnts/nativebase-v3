@@ -1,17 +1,17 @@
 import React from 'react';
 import { StyleSheet, Animated } from 'react-native';
-import { ThemeContext } from '../../../theme';
 import { SliderContext } from './index';
-import styled from 'styled-components/native';
-import { space, color, layout, typography } from 'styled-system';
-import { Box } from 'native-base';
+import { Box, Icon, usePropsConfig } from 'native-base';
 import type { ISliderProps, ISliderContextProps } from './props';
 
-const NBSliderThumb = ({ children, ...props }: ISliderProps) => {
-  const theme = React.useContext(ThemeContext);
-  const { sliderOffset, panResponder }: ISliderContextProps = React.useContext(
-    SliderContext
-  );
+const SliderThumb = ({ children, ...props }: ISliderProps) => {
+  const { ...newProps } = usePropsConfig('SliderThumb', props);
+  const {
+    sliderOffset,
+    panResponder,
+    colorScheme,
+    thumbSize,
+  }: ISliderContextProps = React.useContext(SliderContext);
 
   const customStyle = StyleSheet.create({
     SliderThumb: {
@@ -22,6 +22,17 @@ const NBSliderThumb = ({ children, ...props }: ISliderProps) => {
       alignItems: 'center',
     },
   });
+  console.log('newProps = ', newProps);
+
+  const sizedIcon = () =>
+    React.cloneElement(
+      children,
+      {
+        size: thumbSize,
+        color: children.props.color ? children.props.color : colorScheme,
+      },
+      children.props.children
+    );
 
   return (
     <Animated.View
@@ -30,36 +41,28 @@ const NBSliderThumb = ({ children, ...props }: ISliderProps) => {
     >
       <Box
         position="relative"
-        borderRadius={theme.radii.full}
-        backgroundColor={theme.colors.white}
-        shadow={1}
-        // minHeight={theme.sizes[5]}
-        // maxHeight={theme.sizes[5]}
-        // maxWidth={theme.sizes[5]}
-        // minWidth={theme.sizes[5]}
-        height={theme.sizes[5]}
-        width={theme.sizes[5]}
+        borderRadius={999}
+        backgroundColor="light.0"
+        p={1}
         display="flex"
         justifyContent="center"
         alignItems="center"
-        {...props}
+        {...newProps}
       >
-        {children}
+        {children ? (
+          sizedIcon()
+        ) : (
+          <Icon
+            name="circle-medium"
+            type="MaterialCommunityIcons"
+            color={colorScheme}
+            size={thumbSize}
+            opacity={0}
+          />
+        )}
       </Box>
     </Animated.View>
   );
-};
-
-const StyledSlider = styled(NBSliderThumb)<ISliderProps>(
-  space,
-  color,
-  layout,
-  typography
-);
-StyledSlider.defaultProps = {};
-
-const SliderThumb = ({ ...props }: ISliderProps) => {
-  return <StyledSlider {...props} />;
 };
 
 export default SliderThumb;

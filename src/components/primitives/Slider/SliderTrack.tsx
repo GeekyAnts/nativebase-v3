@@ -1,18 +1,17 @@
 import React from 'react';
-import { ThemeContext } from '../../../theme';
-import styled from 'styled-components/native';
-import { space, color, layout, typography } from 'styled-system';
+import { SliderContext } from './index';
 import { Box } from 'native-base';
-import type { ISliderProps } from './props';
+import type { ISliderProps, ISliderContextProps } from './props';
 
-const NBSliderTrack = ({ children, ...props }: ISliderProps) => {
-  const theme = React.useContext(ThemeContext);
+const SliderTrack = ({ children, ...props }: ISliderProps) => {
+  const { sliderSize }: ISliderContextProps = React.useContext(SliderContext);
+
   return (
     <Box
       position="absolute"
-      backgroundColor={theme.colors.gray[3]}
-      height={theme.sizes[1]}
-      borderRadius={theme.radii.md}
+      backgroundColor="muted.0"
+      height={sliderSize}
+      borderRadius={999}
       width="100%"
       {...props}
       overflow="hidden"
@@ -20,18 +19,6 @@ const NBSliderTrack = ({ children, ...props }: ISliderProps) => {
       {children}
     </Box>
   );
-};
-
-const StyledSlider = styled(NBSliderTrack)<ISliderProps>(
-  space,
-  color,
-  layout,
-  typography
-);
-// StyledSlider.defaultProps = {};
-
-const SliderTrack = ({ ...props }: ISliderProps) => {
-  return <StyledSlider {...props} />;
 };
 
 export default SliderTrack;
