@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, HStack } from 'native-base';
+import { Avatar, HStack } from '@native-base/v3';
 
 export default function () {
   return (

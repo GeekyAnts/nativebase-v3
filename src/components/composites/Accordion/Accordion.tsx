@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box } from 'native-base';
 import { remove } from 'lodash';
+import { Box } from '../../primitives';
 import type { IAccordionProps } from './props';
 
 export const AccordionContext = React.createContext({});

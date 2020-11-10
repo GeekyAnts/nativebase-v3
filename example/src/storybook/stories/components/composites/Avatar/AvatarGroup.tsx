@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, AvatarGroup } from 'native-base';
+import { Avatar, AvatarGroup } from '@native-base/v3';
 
 export default function () {
   return (

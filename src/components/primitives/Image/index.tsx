@@ -3,7 +3,8 @@ import { Image as RNImage } from 'react-native';
 import styled from 'styled-components';
 import { border, flex, layout, space } from 'styled-system';
 import { customBorder } from '../../../utils/customProps';
-import { usePropsConfig, Text } from 'native-base';
+import { Text } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import type { IImageProps } from './props';
 
 const StyledImage = styled(RNImage)<IImageProps>(

@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
-import { View, theme, ThemeProvider } from 'native-base';
+import { View, theme, ThemeProvider } from '@native-base/v3';
 import TextArea from './example';
 import Invalid from './invalid';
 import Size from './size';

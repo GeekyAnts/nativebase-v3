@@ -5,7 +5,7 @@ import {
   TagLabel,
   Avatar,
   AvatarBadge,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { VStack, Text, Divider, Heading } from 'native-base';
+import { VStack, Text, Divider, Heading } from '@native-base/v3';
 import { number } from '@storybook/addon-knobs';
 
 export default function () {

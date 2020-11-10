@@ -1,5 +1,5 @@
 import React from 'react';
-import { CloseButton, HStack } from 'native-base';
+import { CloseButton, HStack } from '@native-base/v3';
 export default function () {
   return (
     <HStack space="md">

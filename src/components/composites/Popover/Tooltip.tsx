@@ -3,7 +3,7 @@ import { TouchableOpacity, Modal, I18nManager } from 'react-native';
 import Triangle from './Triangle';
 import { ScreenWidth, ScreenHeight, isIOS } from './helpers';
 import getTooltipCoordinate from './getTooltipCoordinate';
-import { View } from '../../..';
+import { View } from '../../primitives';
 type State = {
   isVisible: boolean;
   yOffset: number;
@@ -222,7 +222,7 @@ class Tooltip extends React.Component<Props, State> {
     const { onClose, withOverlay, onOpen, overlayColor } = this.props;
 
     return (
-      <View collapsable={false} ref={(e) => (this.renderedElement = e)}>
+      <View collapsable={false} ref={(e: any) => (this.renderedElement = e)}>
         {this.renderContent(false)}
         <Modal
           animationType="fade"

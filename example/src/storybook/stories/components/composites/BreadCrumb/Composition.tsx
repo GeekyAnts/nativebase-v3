@@ -5,7 +5,7 @@ import {
   BreadCrumbLink,
   Box,
   Heading,
-} from 'native-base';
+} from '@native-base/v3';
 import { text } from '@storybook/addon-knobs';
 export default function () {
   return (

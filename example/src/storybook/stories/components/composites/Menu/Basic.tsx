@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, MenuItem, Divider, IconButton, Icon } from 'native-base';
+import { Menu, MenuItem, Divider, IconButton, Icon } from '@native-base/v3';
 
 export default function () {
   return (

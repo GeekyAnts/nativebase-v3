@@ -1,5 +1,5 @@
 import React from 'react';
-import { PinInput, PinInputField, Stack } from 'native-base';
+import { PinInput, PinInputField, Stack } from '@native-base/v3';
 
 export default function () {
   return (

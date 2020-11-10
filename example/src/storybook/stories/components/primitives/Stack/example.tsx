@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Box } from 'native-base';
+import { Stack, Box } from '@native-base/v3';
 import { number } from '@storybook/addon-knobs';
 
 export default function () {

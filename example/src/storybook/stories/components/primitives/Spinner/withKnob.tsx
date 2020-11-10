@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spinner, View } from 'native-base';
+import { Spinner, View } from '@native-base/v3';
 import { color, select } from '@storybook/addon-knobs';
 
 export default function () {

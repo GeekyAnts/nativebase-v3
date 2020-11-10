@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Link, View, Text, Box } from 'native-base';
+import { Heading, Link, View, Text, Box } from '@native-base/v3';
 
 export const DefaultLink = () => {
   return (

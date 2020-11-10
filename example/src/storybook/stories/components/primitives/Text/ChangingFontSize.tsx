@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, VStack } from 'native-base';
+import { Text, VStack } from '@native-base/v3';
 
 export default function () {
   return (

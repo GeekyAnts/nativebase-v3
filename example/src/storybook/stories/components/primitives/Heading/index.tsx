@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
-import { View, theme, ThemeProvider } from 'native-base';
+import { View, theme, ThemeProvider } from '@native-base/v3';
 import Basic from './Basic';
 import Sizes from './Sizes';
 import Truncate from './Truncate';

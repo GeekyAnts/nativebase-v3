@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, IBoxProps, Text, ITextProps, Icon } from '../../..';
+import { Box, IBoxProps, Text, ITextProps, Icon } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
 
 export const StatLabel = ({ style, ...props }: ITextProps) => {

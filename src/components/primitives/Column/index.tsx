@@ -1,2 +1,2 @@
-import { VStack } from 'native-base';
+import { VStack } from '../../primitives';
 export { VStack as Column };

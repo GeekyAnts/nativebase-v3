@@ -1,6 +1,6 @@
 import React from 'react';
+import { Box } from '../../primitives';
 import { SliderContext } from './index';
-import { Box } from 'native-base';
 import type { ISliderProps, ISliderContextProps } from './props';
 
 const SliderTrack = ({ children, ...props }: ISliderProps) => {

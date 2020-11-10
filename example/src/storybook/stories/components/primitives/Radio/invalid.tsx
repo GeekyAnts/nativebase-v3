@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radio, Text } from 'native-base';
+import { Radio, Text } from '@native-base/v3';
 
 export default function () {
   return (

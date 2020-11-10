@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, IconButton, Icon } from 'native-base';
+import { HStack, IconButton, Icon } from '@native-base/v3';
 export default function () {
   return (
     <HStack space={4}>
