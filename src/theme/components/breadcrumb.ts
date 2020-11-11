@@ -5,6 +5,7 @@ const baseStyle = {
   flexDirection: 'row',
 };
 const defaultProps = {
+  direction: 'row',
   wrap: 'wrap',
 };
 
