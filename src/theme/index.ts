@@ -7,5 +7,6 @@ const theme = {
   components,
 };
 
-export { darkTheme, theme, tools as themeTools };
+export type ITheme = typeof theme;
+export { theme, darkTheme, tools as themeTools };
 export * from './hooks';

@@ -17,6 +17,7 @@ export * from './components/composites/Code';
 export * from './components/composites/Collapse';
 export * from './components/primitives/Column';
 export * from './components/composites/Container';
+export * from './theme/Heading';
 export * from './components/composites/Divider';
 export * from './components/primitives/Flex';
 export * from './components/composites/FormControl';
