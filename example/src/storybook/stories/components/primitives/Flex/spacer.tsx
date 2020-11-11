@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Text, Spacer, Center } from 'native-base';
+import { Flex, Text, Spacer, Center } from '@native-base/v3';
 
 export const SpacerExample = () => {
   return (

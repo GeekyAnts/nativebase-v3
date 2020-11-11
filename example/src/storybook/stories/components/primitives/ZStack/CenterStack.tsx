@@ -1,5 +1,5 @@
 import React from 'react';
-import { ZStack, Box, Text } from 'native-base';
+import { ZStack, Box, Text } from '@native-base/v3';
 
 export default function () {
   return (

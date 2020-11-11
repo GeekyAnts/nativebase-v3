@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Text, ThemeContext } from 'native-base';
+import { Box, Text } from '../../primitives';
+import { useToken } from '../../../theme';
 import { FormControlContext } from './FormControl';
 import type { IFormLabelProps, IFormControlContext } from './props';
 
@@ -16,8 +17,8 @@ const FormLabel = ({
     isRequired,
     isDisabled,
   }: IFormControlContext = React.useContext(FormControlContext);
-  const theme = React.useContext(ThemeContext);
-  const requiredAsterisk = () => <Text color={theme.colors.red[3]}>*</Text>;
+  const textColor = useToken('colors', 'red.3');
+  const requiredAsterisk = () => <Text color={textColor}>*</Text>;
 
   return (
     <Box

@@ -5,7 +5,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Box,
-} from 'native-base';
+} from '@native-base/v3';
 import { number, text } from '@storybook/addon-knobs';
 
 export default function () {

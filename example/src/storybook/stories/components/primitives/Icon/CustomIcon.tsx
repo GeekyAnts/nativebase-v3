@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Path } from 'native-base';
+import { Icon, Path } from '@native-base/v3';
 export default function () {
   return (
     <Icon viewBox="0 0 200 200" color="blue.3" size={12}>

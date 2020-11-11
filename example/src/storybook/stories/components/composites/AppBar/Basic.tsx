@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, IconButton, Text, Icon } from 'native-base';
+import { AppBar, IconButton, Text, Icon } from '@native-base/v3';
 import { text } from '@storybook/addon-knobs';
 
 export default function () {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, Text, Divider, Heading, Stack } from 'native-base';
+import { HStack, Text, Divider, Heading, Stack } from '@native-base/v3';
 
 export default function () {
   return (

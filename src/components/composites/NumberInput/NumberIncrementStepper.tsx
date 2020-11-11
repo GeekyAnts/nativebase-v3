@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Icon, usePropsConfig } from 'native-base';
+import { Box, Icon } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import type { INumberInputFieldProps } from './props';
 import { NumberInputContext, INumberInputContext } from './index';
 import { TouchableOpacity } from 'react-native';

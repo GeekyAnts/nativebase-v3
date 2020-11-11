@@ -1,7 +1,8 @@
 import React from 'react';
 import type { IMenuContextProps } from './props';
 import { MenuContext } from './Menu';
-import { usePropsConfig, Text, themeTools } from 'native-base';
+import { Text } from '../../primitives';
+import { usePropsConfig, themeTools } from '../../../theme';
 import { TouchableItem } from './TouchableItem';
 import type { IMenuItemProps } from './props';
 

@@ -200,15 +200,8 @@ import {
   IListItemProps,
 } from './components/primitives';
 
-import {
-  darkTheme,
-  theme,
-  ThemeProvider,
-  ThemeConsumer,
-  ThemeContext,
-  usePropsConfig,
-  themeTools,
-} from './theme';
+export * from './theme';
+export * from './core';
 
 export {
   AppBar,
@@ -278,13 +271,6 @@ export {
   ISpinnerProps,
   Image,
   IImageProps,
-  darkTheme,
-  theme,
-  ThemeProvider,
-  ThemeConsumer,
-  ThemeContext,
-  usePropsConfig,
-  themeTools,
   Switch,
   Flex,
   Kbd,

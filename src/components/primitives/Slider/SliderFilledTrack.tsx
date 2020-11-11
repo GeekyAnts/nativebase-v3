@@ -1,6 +1,6 @@
 import React from 'react';
 import { SliderContext } from './index';
-import { Box } from 'native-base';
+import { Box } from '../../primitives';
 import type { ISliderProps, ISliderContextProps } from './props';
 
 const SliderFilledTrack = ({ ...props }: ISliderProps) => {

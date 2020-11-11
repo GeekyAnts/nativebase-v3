@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, VStack } from 'native-base';
+import { Heading, VStack } from '@native-base/v3';
 
 export default function () {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PinInput, PinInputField } from 'native-base';
+import { PinInput, PinInputField } from '@native-base/v3';
 import { select, text } from '@storybook/addon-knobs';
 
 export default function () {

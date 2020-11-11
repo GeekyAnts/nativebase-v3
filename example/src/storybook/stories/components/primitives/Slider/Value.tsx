@@ -6,7 +6,7 @@ import {
   SliderThumb,
   Stack,
   Text,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   const [onChangeValue, setOnChangeValue] = React.useState(70);
@@ -18,10 +18,10 @@ export default function () {
       <Slider
         defaultValue={70}
         colorScheme="cyan"
-        onChange={(v) => {
+        onChange={(v: any) => {
           setOnChangeValue(Math.floor(v));
         }}
-        onChangeEnd={(v) => {
+        onChangeEnd={(v: any) => {
           v && setOnChangeEndValue(Math.floor(v));
         }}
       >

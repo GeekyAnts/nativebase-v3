@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skeleton, Text } from 'native-base';
+import { Skeleton, Text } from '@native-base/v3';
 export default function () {
   return (
     <Skeleton isLoaded>

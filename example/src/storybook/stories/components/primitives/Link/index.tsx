@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
-import { View, theme, ThemeProvider } from 'native-base';
+import Wrapper from './../../Wrapper';
 import {
   DefaultLink,
   ExternalLink,
@@ -10,16 +10,9 @@ import {
   CompositeLink,
 } from './example';
 
-type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Link', module)
   .addDecorator(withKnobs)
-  .addDecorator((getStory: GetStory) => (
-    <ThemeProvider theme={theme}>
-      <View bg="gray.0" flex={1} justifyContent="center" alignItems="center">
-        {getStory()}
-      </View>
-    </ThemeProvider>
-  ))
+  .addDecorator((getStory: any) => <Wrapper>{getStory()}</Wrapper>)
   .add('Default Link', () => <DefaultLink />)
   .add('External Link', () => <ExternalLink />)
   .add('Underlined False Link', () => <StyledLink />)

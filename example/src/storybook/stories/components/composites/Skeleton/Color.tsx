@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skeleton, VStack } from 'native-base';
+import { Skeleton, VStack } from '@native-base/v3';
 export default function () {
   return (
     <VStack space={5} width="90%">

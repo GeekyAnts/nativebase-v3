@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Center, Box } from 'native-base';
+import { Divider, Center, Box } from '@native-base/v3';
 
 export default function () {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextArea, Heading, Center, Text, Stack } from 'native-base';
+import { TextArea, Heading, Center, Text, Stack } from '@native-base/v3';
 
 export default function () {
   const [textAreaValue, setTextAreaValue] = useState('Value Controlled');

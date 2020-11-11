@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space, variant } from 'styled-system';
@@ -10,7 +10,7 @@ import {
   customExtra,
   customShadow,
 } from '../../../utils/customProps';
-import { ThemeContext } from '../../../theme';
+import { useTheme } from '../../../theme';
 import { CloseButton, Icon } from '../../../index';
 import type { IAlertProps } from './props';
 export type { IAlertProps };
@@ -118,7 +118,7 @@ StyledAlert.defaultProps = {
   status: 'default',
 };
 const Alert = ({ style, ...props }: IAlertProps) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   let structureColor = theme.colors.default[2];
   let childStatusStyle: any;
   let variantStyle;

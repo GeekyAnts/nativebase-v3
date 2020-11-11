@@ -5,7 +5,7 @@ import {
   Input,
   FormErrorMessage,
   FormHelperText,
-} from 'native-base';
+} from '@native-base/v3';
 import { boolean } from '@storybook/addon-knobs';
 
 export default function () {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastProvider, Button, useToast } from 'native-base';
+import { ToastProvider, Button, useToast } from '@native-base/v3';
 
 export default function () {
   const toast = useToast();

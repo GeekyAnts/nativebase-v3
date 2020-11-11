@@ -10,7 +10,7 @@ import {
   Button,
   Center,
   Input,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   const [modalVisible, setModalVisible] = React.useState(false);

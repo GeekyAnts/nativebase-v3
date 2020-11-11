@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, Text, View } from 'native-base';
+import { Checkbox, Text, View } from '@native-base/v3';
 import { boolean, select, text } from '@storybook/addon-knobs';
 
 export default function () {

@@ -1,6 +1,6 @@
 {
-  "name": "native-base",
-  "version": "0.1.0",
+  "name": "@native-base/v3",
+  "version": "0.2.4",
   "description": "Essential cross-platform UI components for React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -13,7 +13,7 @@
     "android",
     "ios",
     "cpp",
-    "native-base.podspec",
+    "@native-base/v3.podspec",
     "!lib/typescript/example",
     "!**/__tests__",
     "!**/__fixtures__",
@@ -73,7 +73,9 @@
     "react": "*",
     "react-native": "*",
     "react-native-svg": "*",
-    "react-native-vector-icons": "*"
+    "react-native-vector-icons": "*",
+    "styled-components": "*",
+    "styled-system": "*"
   },
   "jest": {
     "preset": "react-native",

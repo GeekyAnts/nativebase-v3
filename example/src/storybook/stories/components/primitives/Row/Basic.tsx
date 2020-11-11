@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Box } from 'native-base';
+import { Row, Box } from '@native-base/v3';
 
 export default function () {
   return (

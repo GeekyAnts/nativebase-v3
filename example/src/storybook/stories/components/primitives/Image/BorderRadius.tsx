@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from 'native-base';
+import { Image } from '@native-base/v3';
 export default function () {
   return (
     <Image
