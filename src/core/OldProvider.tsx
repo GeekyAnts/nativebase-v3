@@ -1,7 +1,6 @@
 import React from 'react';
 import deepmerge from 'deepmerge';
-import darkTheme from './darkTheme';
-import { theme } from './';
+import { theme, darkTheme } from './../theme';
 
 export const ThemeContext = React.createContext({
   theme,
