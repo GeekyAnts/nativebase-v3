@@ -9,7 +9,7 @@ import {
 
 export default function () {
   return (
-    <Stack space={3}>
+    <Stack space={3} mx={3}>
       <Alert status="error">
         <AlertIcon />
         <AlertDescription>

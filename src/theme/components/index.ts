@@ -4,6 +4,7 @@ import Badge from './badge';
 import Tag from './tag';
 import Avatar from './avatar';
 import AvatarBadge from './avatar-badge';
+import { Alert, AlertTitle, AlertDescription } from './alert';
 import Center from './center';
 import Switch from './switch';
 import Image from './image';
@@ -34,6 +35,9 @@ import Modal from './modal';
 import Popover from './popover';
 
 export default {
+  Alert,
+  AlertTitle,
+  AlertDescription,
   Heading,
   Code,
   Badge,

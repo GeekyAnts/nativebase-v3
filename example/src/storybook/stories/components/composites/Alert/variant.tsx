@@ -9,7 +9,7 @@ import {
 
 export default function () {
   return (
-    <Stack space={4}>
+    <Stack space={4} mx={3}>
       <Alert variant="solid" status="success">
         <AlertIcon />
         <AlertTitle>Alert Solid Variant</AlertTitle>

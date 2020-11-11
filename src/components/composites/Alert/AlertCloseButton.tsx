@@ -1,8 +1,23 @@
 import React from 'react';
-import { Box } from '../../primitives';
+import { Box, Icon } from 'native-base';
+import { AlertContext, IAlertContext } from './index';
+import { omitUndefined } from '../../../theme/tools/utils';
 
-const AlertCloseButton = (props: any) => {
-  return <Box {...props} />;
+const AlertCloseButton = ({ children, ...props }: any) => {
+  const newProps = omitUndefined(props);
+  const { iconColor }: IAlertContext = React.useContext(AlertContext);
+  return (
+    <Box position="absolute" top={3} right={3}>
+      {children || (
+        <Icon
+          name="close"
+          type="MaterialCommunityIcons"
+          color={iconColor}
+          size={6}
+          {...newProps}
+        />
+      )}
+    </Box>
+  );
 };
-
 export default AlertCloseButton;

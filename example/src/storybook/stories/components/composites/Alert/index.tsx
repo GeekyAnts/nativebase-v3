@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import { View, theme, ThemeProvider } from 'native-base';
 import Playground from './knobEnabled';
-// import Composition from './composition';
+import Composition from './composition';
 import Usage from './usage';
 import Variant from './variant';
 import Status from './status';
@@ -21,5 +21,5 @@ storiesOf('Alert', module)
   .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
   .add('Status', () => <Status />)
-  .add('Variant', () => <Variant />);
-// .add('Composition', () => <Composition />);
+  .add('Variant', () => <Variant />)
+  .add('Composition', () => <Composition />);
