@@ -21,14 +21,11 @@ const Alert = ({ children, ...props }: IAlertProps) => {
       }}
     >
       <Box
-        py={3}
-        px={3}
         minW="100%"
         position="relative"
         flexDirection="row"
         alignItems="center"
         justifyContent="flex-start"
-        borderRadius="md"
         {...newProps}
       >
         {children}

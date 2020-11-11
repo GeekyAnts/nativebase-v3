@@ -1,14 +1,5 @@
 // Alert
-const baseStyle = (props: Record<string, any>) => {
-  console.log('props of baseStyle =====', props);
-  // return {
-  //   variantStyle: variants(props),
-  // };
-};
-
 const subtleStyle = (props: Record<string, any>) => {
-  console.log('props of subtlestyle =====', props);
-
   let { status, theme } = props;
   status = status === 'info' ? 'default' : status;
   return {
@@ -65,17 +56,17 @@ const variants = {
 const defaultAlertProps = {
   status: 'default',
   variant: 'subtle',
+  p: 3,
+  borderRadius: 'md',
 };
 
 export const Alert = {
-  baseStyle,
   defaultProps: defaultAlertProps,
   variants,
 };
 
 // AlertTitle
 const defaultAlertTitleProps = {
-  // color: 'white',
   fontSize: 'lg',
   fontWeight: 'bold',
 };
@@ -87,7 +78,6 @@ export const AlertTitle = {
 // AlertDescription
 const defaultAlertDescriptionProps = {
   fontSize: 'lg',
-  // color: 'white',
 };
 
 export const AlertDescription = {
