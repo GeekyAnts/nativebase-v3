@@ -1,5 +1,5 @@
 import React from 'react';
-import { SlideFade, Button, Box } from 'native-base';
+import { SlideFade, Button, Box } from '@native-base/v3';
 export default function () {
   const [isOpen, setIsOpen] = React.useState(false);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, HStack, Text } from 'native-base';
+import { Checkbox, HStack, Text } from '@native-base/v3';
 
 export default function () {
   return (

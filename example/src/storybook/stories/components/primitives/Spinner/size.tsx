@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spinner, HStack } from 'native-base';
+import { Spinner, HStack } from '@native-base/v3';
 
 export default function () {
   return (

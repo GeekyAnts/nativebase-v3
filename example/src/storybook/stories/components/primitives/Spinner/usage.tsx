@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spinner } from 'native-base';
+import { Spinner } from '@native-base/v3';
 
 export default function () {
   return <Spinner />;

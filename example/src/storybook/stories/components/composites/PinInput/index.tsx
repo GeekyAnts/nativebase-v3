@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
-import { View, theme, ThemeProvider } from 'native-base';
+import Wrapper from './../../Wrapper';
 import Usage from './Usage';
 import ManageFocus from './ManageFocus';
 import DefaultValue from './DefaultValue';
@@ -11,16 +11,9 @@ import Variants from './Variants';
 import FormControlled from './FormControlled';
 import Placeholder from './Placeholder';
 
-type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('PinInput', module)
   .addDecorator(withKnobs)
-  .addDecorator((getStory: GetStory) => (
-    <ThemeProvider theme={theme}>
-      <View flex={1} justifyContent="center" alignItems="center">
-        {getStory()}
-      </View>
-    </ThemeProvider>
-  ))
+  .addDecorator((getStory: any) => <Wrapper>{getStory()}</Wrapper>)
   .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
   .add('Size', () => <Size />)

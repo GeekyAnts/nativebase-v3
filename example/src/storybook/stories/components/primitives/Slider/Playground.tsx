@@ -5,7 +5,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Box,
-} from 'native-base';
+} from '@native-base/v3';
 import { number, text } from '@storybook/addon-knobs';
 
 export default function () {
@@ -18,7 +18,7 @@ export default function () {
           max: 100,
           step: 1,
         })}
-        colorScheme={text('colorScheme', 'purple.3')}
+        colorScheme={text('colorScheme', 'purple')}
       >
         <SliderTrack>
           <SliderFilledTrack />

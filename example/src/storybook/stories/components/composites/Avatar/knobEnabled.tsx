@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, AvatarBadge } from 'native-base';
+import { Avatar, AvatarBadge } from '@native-base/v3';
 import { color, select, number, text } from '@storybook/addon-knobs';
 
 export default function () {

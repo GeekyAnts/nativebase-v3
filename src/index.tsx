@@ -166,6 +166,8 @@ import {
   SliderThumb,
   SliderTrack,
   SliderFilledTrack,
+  ISliderProps,
+  ISliderContextProps,
   Icon,
   createIcon,
   IIconProps,
@@ -198,15 +200,8 @@ import {
   IListItemProps,
 } from './components/primitives';
 
-import {
-  darkTheme,
-  theme,
-  ThemeProvider,
-  ThemeConsumer,
-  ThemeContext,
-  usePropsConfig,
-  themeTools,
-} from './theme';
+export * from './theme';
+export * from './core';
 
 export {
   AppBar,
@@ -261,6 +256,8 @@ export {
   SliderThumb,
   SliderTrack,
   SliderFilledTrack,
+  ISliderProps,
+  ISliderContextProps,
   Icon,
   createIcon,
   IIconProps,
@@ -274,13 +271,6 @@ export {
   ISpinnerProps,
   Image,
   IImageProps,
-  darkTheme,
-  theme,
-  ThemeProvider,
-  ThemeConsumer,
-  ThemeContext,
-  usePropsConfig,
-  themeTools,
   Switch,
   Flex,
   Kbd,

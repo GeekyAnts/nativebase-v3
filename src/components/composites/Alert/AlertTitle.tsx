@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, usePropsConfig } from 'native-base';
+import { Text } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import { AlertContext, IAlertContext } from './index';
 
 const AlertTitle = ({ children, ...props }: any) => {

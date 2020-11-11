@@ -5,12 +5,12 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Box,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   return (
     <Box mx={5}>
-      <Slider step={10} defaultValue={70} colorScheme="cyan.2">
+      <Slider defaultValue={70}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>

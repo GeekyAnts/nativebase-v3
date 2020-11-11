@@ -1,4 +1,5 @@
-import type { IBoxProps, IFormControlContext } from 'native-base';
+import type { IBoxProps } from '../../primitives';
+import type { IFormControlContext } from '../../composites';
 
 export type IRadioProps = IBoxProps & {
   id?: string;

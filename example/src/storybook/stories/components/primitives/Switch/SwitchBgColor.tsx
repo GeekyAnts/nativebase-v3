@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'native-base';
+import { Switch } from '@native-base/v3';
 
 export default function () {
   return (

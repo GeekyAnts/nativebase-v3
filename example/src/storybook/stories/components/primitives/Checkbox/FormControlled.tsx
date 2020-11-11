@@ -9,7 +9,7 @@ import {
   VStack,
   Text,
   Container,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   const [groupValue, setGroupValue] = React.useState(['Item 1 ', 'Item 3 ']);

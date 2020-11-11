@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag, TagLabel, TagLeftIcon, HStack } from 'native-base';
+import { Tag, TagLabel, TagLeftIcon, HStack } from '@native-base/v3';
 
 export default function () {
   return (

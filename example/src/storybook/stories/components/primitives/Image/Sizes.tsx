@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, Image } from 'native-base';
+import { HStack, Image } from '@native-base/v3';
 export default function () {
   return (
     <HStack alignItems="center">

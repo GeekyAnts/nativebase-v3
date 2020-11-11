@@ -2,7 +2,7 @@ import type {
   ImageProps as RNImageProps,
   ImageSourcePropType,
 } from 'react-native';
-import type { ITextProps } from 'native-base';
+import type { ITextProps } from '../../primitives';
 import type {
   BorderProps,
   FlexboxProps,

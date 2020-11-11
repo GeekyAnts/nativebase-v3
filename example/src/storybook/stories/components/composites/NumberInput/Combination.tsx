@@ -9,7 +9,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-} from 'native-base';
+} from '@native-base/v3';
 export default function () {
   const [value, setValue] = React.useState(20);
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { VStack, Switch } from 'native-base';
+import { VStack, Switch } from '@native-base/v3';
 import { select, boolean } from '@storybook/addon-knobs';
 
 export default function () {

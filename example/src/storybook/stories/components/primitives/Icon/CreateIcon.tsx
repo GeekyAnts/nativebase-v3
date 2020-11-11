@@ -1,5 +1,5 @@
 import React from 'react';
-import { createIcon, Path } from 'native-base';
+import { createIcon, Path } from '@native-base/v3';
 export default function () {
   const CustomIcon = createIcon({
     viewBox: '0 0 200 200',

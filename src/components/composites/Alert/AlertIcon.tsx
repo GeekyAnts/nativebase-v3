@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Icon } from 'native-base';
+import { Box, Icon } from '../../primitives';
 import { AlertContext, IAlertContext } from './index';
 import { omitUndefined } from '../../../theme/tools/utils';
 

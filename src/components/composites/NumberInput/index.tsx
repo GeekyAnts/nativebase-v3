@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePropsConfig } from 'native-base';
+import { usePropsConfig } from '../../../theme';
 import { FormControlContext, IFormControlContext } from '../FormControl';
 
 import type {

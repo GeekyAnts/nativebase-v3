@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, ThemeContext } from 'native-base';
+import { Box } from '../../primitives';
+import { useToken } from '../../../theme';
 import type {
   IAccordionButtonProps,
   IAccordionItemContextProps,
@@ -14,8 +15,6 @@ const AccordionButton = ({
   _disabled,
   ...props
 }: IAccordionButtonProps) => {
-  const theme = React.useContext(ThemeContext);
-
   const {
     isOpen,
     isDisabled,
@@ -26,7 +25,7 @@ const AccordionButton = ({
   const pressHandler = () => {
     isOpen ? onClose && onClose() : onOpen && onOpen();
   };
-
+  const borderColor = useToken('colors', 'muted.2');
   return (
     <TouchableOpacity
       activeOpacity={1}
@@ -39,7 +38,7 @@ const AccordionButton = ({
         p={3}
         borderTopWidth={1}
         borderBottomWidth={1}
-        borderColor={theme.colors.muted[2]}
+        borderColor={borderColor}
         display="flex"
         flexDirection="row"
         justifyContent="space-between"

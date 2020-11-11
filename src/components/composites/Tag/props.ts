@@ -14,7 +14,7 @@ import type {
   customExtraProps,
   customShadowProps,
 } from '../../../utils/customProps';
-import type { IBoxProps } from '../../..';
+import type { IBoxProps } from '../../primitives';
 
 export type ITagProps = IBoxProps &
   ColorProps &

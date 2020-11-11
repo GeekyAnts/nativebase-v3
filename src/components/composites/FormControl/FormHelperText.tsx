@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, ThemeContext } from 'native-base';
+import { Box } from '../../primitives';
+import { useToken } from '../../../theme';
 import { FormControlContext } from './FormControl';
 import type { IFormHelperTextProps, IFormControlContext } from './props';
 
@@ -15,12 +16,12 @@ const FormHelperText = ({
     FormControlContext
   );
 
-  const theme = React.useContext(ThemeContext);
+  const mutedColor = useToken('colors', 'muted.2');
   return (
     <Box
       {...props}
       fontSize="xs"
-      color={theme.colors.muted[2]}
+      color={mutedColor}
       style={[style, isInvalid && _invalid, isDisabled && _disabled]}
     >
       {children}

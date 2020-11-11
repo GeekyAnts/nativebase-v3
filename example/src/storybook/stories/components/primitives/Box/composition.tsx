@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Heading, Divider, Flex } from 'native-base';
+import { Box, Heading, Divider, Flex } from '@native-base/v3';
 export const Composite = () => {
   return (
     <Box width="100%" bg="blue.0" p={4} color="blue.7">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { VStack, Box, Text, IIconProps, Icon } from '../../..';
+import { VStack, Box, Text, IIconProps, Icon } from '../../primitives';
 import type { IListProps, IListItemProps } from './props';
 
 const List = ({ style, children, spacing, ...props }: IListProps) => {

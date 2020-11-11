@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, Text } from 'native-base';
+import { Checkbox, Text } from '@native-base/v3';
 
 export default function () {
   return (

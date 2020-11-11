@@ -13,7 +13,7 @@ import {
 } from '../../../utils/customProps';
 import type { IWrapProps } from './props';
 import { usePropsConfig } from '../../../theme';
-import { Box } from '../../..';
+import { Box } from '../../primitives';
 
 const StyledWrap = styled(Box)<IWrapProps>(
   color,
