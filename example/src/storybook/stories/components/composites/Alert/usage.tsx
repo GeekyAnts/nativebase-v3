@@ -1,21 +1,21 @@
 import React from 'react';
 import {
-  View,
   Alert,
   AlertDescription,
   AlertTitle,
   AlertIcon,
   AlertCloseButton,
+  Box,
 } from '@native-base/v3';
 export default function () {
   return (
-    <View display="flex" justifyContent="space-between" alignItems="center">
+    <Box mx={3}>
       <Alert status="error">
         <AlertIcon />
         <AlertTitle>Error Alert</AlertTitle>
-        <AlertDescription>description goes here </AlertDescription>
+        <AlertDescription>description goes here</AlertDescription>
         <AlertCloseButton />
       </Alert>
-    </View>
+    </Box>
   );
 }

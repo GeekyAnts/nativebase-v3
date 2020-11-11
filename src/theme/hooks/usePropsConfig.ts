@@ -58,6 +58,7 @@ export function usePropsConfig(component: string, props: any) {
     const colorScheme =
       newProps.colorScheme || componentTheme.defaultProps.colorScheme;
     let variantProps = componentTheme.variants[newProps.variant]({
+      ...newProps,
       colorScheme,
       theme,
     });

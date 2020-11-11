@@ -4,7 +4,7 @@ export { default as AppBar } from './AppBar';
 export { default as Badge, IBadgeProps } from './Badge';
 export { default as IconButton, IIconButtonProps } from './IconButton';
 export {
-  default as Alert,
+  Alert,
   IAlertProps,
   AlertTitle,
   AlertDescription,
