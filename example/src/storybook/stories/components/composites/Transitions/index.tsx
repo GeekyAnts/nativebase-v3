@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
-import { View, theme, NativeBaseProvider } from '@native-base/v3';
+import Wrapper from './../../Wrapper';
 
 import Fade from './Fade';
 import ScaleFade from './ScaleFade';
@@ -10,16 +10,9 @@ import SlideComposition from './SlideComposition';
 import SlideWrapped from './SlideWrapped';
 import SlideFade from './SlideFade';
 
-type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Transitions', module)
   .addDecorator(withKnobs)
-  .addDecorator((getStory: GetStory) => (
-    <NativeBaseProvider theme={theme}>
-      <View bg="gray.0" flex={1} justifyContent="center" alignItems="center">
-        {getStory()}
-      </View>
-    </NativeBaseProvider>
-  ))
+  .addDecorator((getStory: any) => <Wrapper>{getStory()}</Wrapper>)
   .add('Fade', () => <Fade />)
   .add('ScaleFade', () => <ScaleFade />)
   .add('Slide', () => <Slide />)

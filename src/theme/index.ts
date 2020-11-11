@@ -7,14 +7,5 @@ const theme = {
   components,
 };
 
-import { ThemeConsumer, ThemeContext, ThemeProvider } from 'styled-components';
-
-export {
-  darkTheme,
-  theme,
-  ThemeProvider as NativeBaseProvider,
-  ThemeConsumer as NativeBaseConsumer,
-  ThemeContext as NativeBaseContext,
-  tools as themeTools,
-};
+export { darkTheme, theme, tools as themeTools };
 export * from './hooks';

@@ -201,6 +201,7 @@ import {
 } from './components/primitives';
 
 export * from './theme';
+export * from './core';
 
 export {
   AppBar,
