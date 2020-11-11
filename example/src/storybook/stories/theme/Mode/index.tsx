@@ -18,7 +18,7 @@ const customTheme = extendTheme({
   },
 });
 
-storiesOf('Custom Theme', module)
+storiesOf('Mode', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: any) => (
     <Wrapper theme={customTheme}>{getStory()}</Wrapper>
