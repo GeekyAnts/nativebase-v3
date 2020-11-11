@@ -1,32 +1,14 @@
 import React from 'react';
-import type { TextStyle } from 'react-native';
-import { Button, IButtonProps, Icon, IIconProps } from 'native-base';
+import { Button, IButtonProps } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 
-type IconProps = IIconProps & {
-  iconStyle?: TextStyle;
-  iconProps?: IIconProps;
+export type IIconButtonProps = IButtonProps & {
+  icon?: JSX.Element;
 };
 
-type IconButtonProps = IButtonProps & IconProps;
-
-const IconButton = ({
-  name,
-  type,
-  iconStyle,
-  iconProps,
-  ...props
-}: IconButtonProps & any) => {
-  const iconButtonDefaultprops: IButtonProps = {
-    borderRadius: 40,
-    padding: 1,
-    overflow: 'hidden',
-  };
-
-  return (
-    <Button {...iconButtonDefaultprops} variant="ghost" {...props}>
-      <Icon type={type} name={name} {...iconProps} style={iconStyle} />
-    </Button>
-  );
+const IconButton = ({ icon, ...props }: IIconButtonProps) => {
+  const newProps = usePropsConfig('IconButton', props);
+  return <Button {...newProps}>{icon}</Button>;
 };
 
 export default IconButton;

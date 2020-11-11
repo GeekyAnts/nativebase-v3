@@ -9,14 +9,14 @@ import {
   PopoverTrigger,
   Button,
   Input,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   const initialFocusRef = React.useRef();
   return (
     <Popover initialFocusRef={initialFocusRef} closeOnBlur={false}>
       <PopoverTrigger>
-        <Button isDisabled>Trigger</Button>
+        <Button>Trigger</Button>
       </PopoverTrigger>
       <PopoverContent width={250}>
         <PopoverCloseButton />

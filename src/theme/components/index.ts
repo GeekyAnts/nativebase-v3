@@ -3,6 +3,7 @@ import Code from './code';
 import Badge from './badge';
 import Tag from './tag';
 import Avatar from './avatar';
+import AvatarBadge from './avatar-badge';
 import Center from './center';
 import Switch from './switch';
 import Image from './image';
@@ -11,14 +12,28 @@ import Wrap from './wrap';
 import Icon from './icon';
 import Divider from './divider';
 import BreadCrumb from './breadcrumb';
+import PinInput from './pin-input';
+import { default as NumberInput, NumberInputStepper } from './number-input';
+import { Fade, ScaleFade, Slide, SlideFade } from './transitions';
+import { default as Menu, MenuItem, MenuGroup } from './menu';
 import Link from './link';
+import Checkbox from './checkbox';
+import Radio from './radio';
 import Kbd from './kbd';
-import Text from './text';
 import Progress from './progress';
 import Container from './container';
-import Box from './box';
-import CloseButton from './close-button';
+import Skeleton from './skeleton';
+import SkeletonText from './skeletonText';
+import { default as Slider, SliderThumb } from './slider';
+import IconButton from './icon-button';
 import Flex from './flex';
+import TextArea from './textarea';
+import Input from './input';
+import Stat from './stat';
+import Spinner from './spinner';
+import CircularProgress from './circular-progress';
+import Modal from './modal';
+import Popover from './popover';
 
 export default {
   Heading,
@@ -27,45 +42,41 @@ export default {
   Tag,
   Center,
   Avatar,
+  AvatarBadge,
   Switch,
   Wrap,
   Image,
   Divider,
   Link,
+  Checkbox,
+  Radio,
   Icon,
   BreadCrumb,
+  PinInput,
+  NumberInput,
+  NumberInputStepper,
+  Fade,
+  ScaleFade,
+  Slide,
+  SlideFade,
   Kbd,
-  Text,
-  // not done
+  TextArea,
+  Input,
+  Stat,
   Progress,
   Container,
-  Box,
+  Skeleton,
+  SkeletonText,
+  Slider,
+  SliderThumb,
   Flex,
   Button,
-  CloseButton,
+  IconButton,
+  Menu,
+  MenuItem,
+  MenuGroup,
+  Spinner,
+  CircularProgress,
+  Modal,
+  Popover,
 };
-
-export type IThemeComponents =
-  | 'Avatar'
-  | 'Button'
-  | 'Badge'
-  | 'Center'
-  | 'Code'
-  | 'Divider'
-  | 'Heading'
-  | 'Icon'
-  | 'Divider'
-  | 'Kbd'
-  | 'Text'
-  | 'Image'
-  | 'Kbd'
-  | 'Progress'
-  | 'Link'
-  | 'Switch'
-  | 'Tag'
-  | 'Wrap'
-  | 'Container'
-  | 'BreadCrumb'
-  | 'Box'
-  | 'CloseButton'
-  | 'Flex';

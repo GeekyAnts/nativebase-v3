@@ -9,13 +9,33 @@ import {
   View,
 } from 'react-native';
 import { getContainerStyles } from './utils/getContainerStyles';
+import type { IMenuProps, IMenuContextProps } from './props';
+import type { IBoxProps } from '../../primitives';
+import { usePropsConfig, themeTools } from '../../../theme';
+import styled from 'styled-components/native';
+import {
+  border,
+  color,
+  flexbox,
+  layout,
+  space,
+  typography,
+} from 'styled-system';
+import {
+  customBorder,
+  customBackground,
+  customOutline,
+  customLayout,
+  customExtra,
+  customShadow,
+  customTypography,
+} from '../../../utils/customProps';
 
 const STATES = {
   HIDDEN: 'HIDDEN',
   ANIMATING: 'ANIMATING',
   SHOWN: 'SHOWN',
 };
-import type { IMenuProps, IMenuContextProps } from './props';
 const animationDuration = 300;
 const EASING = Easing.bezier(0.4, 0, 0.2, 1);
 
@@ -24,7 +44,22 @@ export const MenuContext = React.createContext<IMenuContextProps>({
   closeMenu: () => {},
 });
 
-export class Menu extends React.Component<IMenuProps, any> {
+const StyleAnimatedView = styled(Animated.View)<IBoxProps>(
+  color,
+  space,
+  layout,
+  flexbox,
+  border,
+  typography,
+  customBorder,
+  customBackground,
+  customOutline,
+  customShadow,
+  customExtra,
+  customTypography,
+  customLayout
+);
+class MenuClass extends React.Component<IMenuProps, any> {
   _container = null;
   constructor(props: any) {
     super(props);
@@ -128,8 +163,8 @@ export class Menu extends React.Component<IMenuProps, any> {
     } = this.state;
 
     let { menuSize, menuContainerStyle } = getContainerStyles(
-      this.state.top + 76,
-      this.state.left + 18,
+      this.state.top,
+      this.state.left,
       menuSizeAnimation,
       menuWidth,
       menuHeight,
@@ -167,6 +202,16 @@ export class Menu extends React.Component<IMenuProps, any> {
       },
       { open: this.state.open }
     );
+    const [shadowContainerProps] = themeTools.extractInObject(this.props, [
+      'borderRadius',
+      'bg',
+      'backgroundColor',
+      'shadowOffset',
+      'shadowColor',
+      'elevation',
+      'shadowOpacity',
+      'shadowRadius',
+    ]);
     return (
       <MenuContext.Provider
         value={{ open: this.state.open, closeMenu, closeOnSelect }}
@@ -193,20 +238,17 @@ export class Menu extends React.Component<IMenuProps, any> {
           >
             <TouchableWithoutFeedback onPress={this._hide}>
               <View style={StyleSheet.absoluteFill}>
-                <Animated.View
+                <StyleAnimatedView
                   onLayout={this._onMenuLayout}
-                  style={[
-                    styles.shadowMenuContainer,
-                    menuContainerStyle,
-                    style,
-                  ]}
+                  position="absolute"
+                  opacity={0}
+                  {...shadowContainerProps}
+                  style={[menuContainerStyle, style]}
                 >
-                  <Animated.View
-                    style={[styles.menuContainer, animationStarted && menuSize]}
-                  >
+                  <StyleAnimatedView style={[animationStarted && menuSize]}>
                     {children}
-                  </Animated.View>
-                </Animated.View>
+                  </StyleAnimatedView>
+                </StyleAnimatedView>
               </View>
             </TouchableWithoutFeedback>
           </Modal>
@@ -216,25 +258,7 @@ export class Menu extends React.Component<IMenuProps, any> {
   }
 }
 
-const styles = StyleSheet.create({
-  shadowMenuContainer: {
-    position: 'absolute',
-    backgroundColor: 'white',
-    borderRadius: 4,
-    opacity: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.14,
-        shadowRadius: 2,
-      },
-      android: {
-        elevation: 8,
-      },
-    }),
-  },
-  menuContainer: {
-    overflow: 'hidden',
-  },
-});
+export const Menu = (props: IMenuProps) => {
+  const newProps = usePropsConfig('Menu', props);
+  return <MenuClass {...newProps} />;
+};

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CircularProgress, Heading, Center } from 'native-base';
+import { CircularProgress, Heading, Center } from '@native-base/v3';
 export default function () {
   return (
     <Center>

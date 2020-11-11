@@ -17,7 +17,8 @@ import {
   customExtra,
   customShadow,
 } from '../../../utils/customProps';
-import { usePropsConfig, Text, themeTools } from 'native-base';
+import { Text } from '../../primitives';
+import { usePropsConfig, themeTools } from '../../../theme';
 import { Spinner, Box, IBoxProps, Flex } from '../../primitives';
 import type { IButtonProps } from './IButtonProps';
 const StyledView = styled(View)<
@@ -91,50 +92,29 @@ const Button = (
     ...props,
     size,
   });
-  let {
-    fontWeight,
-    fontSize,
-    textDecorationLine,
-    color,
-    m,
-    margin,
-    mt,
-    marginTop,
-    mr,
-    marginRight,
-    mb,
-    marginBottom,
-    ml,
-    marginLeft,
-    mx,
-    marginX,
-    my,
-    marginY,
-    ...viewProps
-  } = newProps;
+  let [textProps, remainingProps] = themeTools.extractInObject(newProps, [
+    'fontWeight',
+    'fontSize',
+    'textDecorationLine',
+    'color',
+  ]);
+  let [layoutProps, viewProps] = themeTools.extractInObject(remainingProps, [
+    'm',
+    'margin',
+    'mt',
+    'marginTop',
+    'mr',
+    'marginRight',
+    'mb',
+    'marginBottom',
+    'ml',
+    'marginLeft',
+    'mx',
+    'marginX',
+    'my',
+    'marginY',
+  ]);
 
-  const layoutProps = themeTools.omitUndefined({
-    m,
-    margin,
-    mt,
-    marginTop,
-    mr,
-    marginRight,
-    mb,
-    marginBottom,
-    ml,
-    marginLeft,
-    mx,
-    marginX,
-    my,
-    marginY,
-  });
-  const textProps = {
-    fontWeight,
-    fontSize,
-    textDecorationLine,
-    color,
-  };
   const innerButton = (
     <StyledView {...viewProps} opacity={isLoading ? 0.5 : 1} style={style}>
       {leftIcon ? <Box mr={viewProps.px / 2 || 2}>{leftIcon}</Box> : null}

@@ -7,15 +7,15 @@ import {
   PopoverHeader,
   PopoverTrigger,
   Button,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   return (
     <Popover>
       <PopoverTrigger>
-        <Button isDisabled>Trigger</Button>
+        <Button>Trigger</Button>
       </PopoverTrigger>
-      <PopoverContent width={250}>
+      <PopoverContent>
         <PopoverCloseButton />
         <PopoverHeader>Confirmation!</PopoverHeader>
         <PopoverBody>Are you sure you want to have that milkshake?</PopoverBody>

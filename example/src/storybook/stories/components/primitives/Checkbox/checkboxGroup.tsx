@@ -3,20 +3,19 @@ import {
   Checkbox,
   CheckboxGroup,
   Heading,
-  Inline,
+  HStack,
   Text,
   View,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   const [groupValue, setGroupValue] = React.useState(['Item 1 ', 'Item 3 ']);
   return (
     <View display="flex" justifyContent="space-between" alignItems="center">
-      <Inline mb={2} alignItems="baseline">
+      <HStack mb={2} alignItems="baseline">
         <Heading mt={3}>CheckboxGroup </Heading>
-      </Inline>
+      </HStack>
       <CheckboxGroup
-        spacing={2}
         colorScheme="green"
         defaultValue={groupValue}
         onChange={(values) => {
@@ -32,16 +31,20 @@ export default function () {
         <Checkbox value="Item 3 ">
           <Text mx={2}>Item 3</Text>
         </Checkbox>
-        <Checkbox isIndeterminate value="Indeterminate Item ">
+        <Checkbox
+          colorScheme="orange"
+          isIndeterminate
+          value="Indeterminate Item "
+        >
           <Text mx={2}>Indeterminate Item</Text>
         </Checkbox>
       </CheckboxGroup>
-      <Inline mt={3} alignItems="baseline">
+      <HStack mt={3} alignItems="baseline">
         <Text fontSize="md">Selected Values: </Text>
         <Text fontSize="md" bold>
           {groupValue}
         </Text>
-      </Inline>
+      </HStack>
     </View>
   );
 }

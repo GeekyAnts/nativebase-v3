@@ -1,33 +1,27 @@
 import React from 'react';
-import { List, Heading, ListItem, Box } from 'native-base';
+import { Li, Heading, Ul, Ol, Box } from '@native-base/v3';
 
 export default function () {
   return (
     <Box height="50%">
-      <Heading size="4xl" color="indigo.5">
+      <Heading fontSize={32} color="indigo.5">
         Unordered List
       </Heading>
-      <List mt={2} fontSize={24} spacing={4} ul color="red.2">
-        <ListItem>Inferno</ListItem>
-        <ListItem>Mirage</ListItem>
-        <ListItem>Dust 2</ListItem>
-        <ListItem>Nuke</ListItem>
-        <ListItem>Overpass</ListItem>
-        <ListItem>Cobblestone</ListItem>
-        <ListItem>Train</ListItem>
-      </List>
-      <Heading size="4xl" color="indigo.5">
+      <Ol my={2} fontSize={24} spacing={4} color="red.2">
+        <Li>Inferno</Li>
+        <Li>Mirage</Li>
+        <Li>Dust 2</Li>
+        <Li>Nuke</Li>
+      </Ol>
+      <Heading fontSize={32} color="indigo.5">
         Ordered List
       </Heading>
-      <List mt={2} fontSize={24} spacing={4} ol color="red.2">
-        <ListItem>Inferno</ListItem>
-        <ListItem>Mirage</ListItem>
-        <ListItem>Dust 2</ListItem>
-        <ListItem>Nuke</ListItem>
-        <ListItem>Overpass</ListItem>
-        <ListItem>Cobblestone</ListItem>
-        <ListItem>Train</ListItem>
-      </List>
+      <Ul mt={2} fontSize={24} spacing={4} color="red.2">
+        <Li>Inferno</Li>
+        <Li>Mirage</Li>
+        <Li>Dust 2</Li>
+        <Li>Nuke</Li>
+      </Ul>
     </Box>
   );
 }

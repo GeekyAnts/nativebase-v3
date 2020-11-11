@@ -1,11 +1,10 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { space } from 'styled-system';
-import { Box, ThemeContext } from 'native-base';
+import { Box } from '../../primitives';
+import { useTheme } from '../../../theme';
 import { FormControlContext } from './FormControl';
 import type { IFormHelperTextProps, IFormControlContext } from './props';
 
-const NBFormHelperText = ({
+const FormHelperText = ({
   children,
   style,
   _disabled,
@@ -17,7 +16,7 @@ const NBFormHelperText = ({
     FormControlContext
   );
 
-  const theme = React.useContext(ThemeContext);
+  const theme = useTheme();
   return (
     <Box
       {...props}
@@ -28,13 +27,6 @@ const NBFormHelperText = ({
       {children}
     </Box>
   );
-};
-
-const StyledFormHelperText = styled(NBFormHelperText)<IFormHelperTextProps>(
-  space
-);
-const FormHelperText = ({ children, ...props }: IFormHelperTextProps) => {
-  return <StyledFormHelperText {...props}>{children}</StyledFormHelperText>;
 };
 
 export default FormHelperText;

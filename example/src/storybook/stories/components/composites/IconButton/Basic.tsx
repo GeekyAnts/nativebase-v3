@@ -1,12 +1,11 @@
 import React from 'react';
-import { IconButton } from 'native-base';
-import { text } from '@storybook/addon-knobs';
+import { IconButton, Icon } from '@native-base/v3';
 export default function () {
   return (
     <IconButton
-      type="MaterialIcons"
-      name={text('name', 'menu')}
-      bg={text('bg', 'blue.2')}
+      colorScheme="blue"
+      variant="outline"
+      icon={<Icon name={'search'} size={'lg'} />}
     />
   );
 }

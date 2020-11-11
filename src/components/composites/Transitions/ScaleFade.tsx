@@ -1,17 +1,14 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { Box } from 'native-base';
-import { space, layout, border } from 'styled-system';
+import { Box } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import { Animated } from 'react-native';
 import type { IScaleFadeProps } from './props';
 
-const NBScaleFade = ({
-  children,
-  in: animationState,
-  duration = 500,
-  initialScale = 0.9,
-  ...props
-}: IScaleFadeProps) => {
+const ScaleFade = ({ children, ...props }: IScaleFadeProps) => {
+  const { in: animationState, duration, initialScale } = usePropsConfig(
+    'ScaleFade',
+    props
+  );
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const scaleAnim = React.useRef(new Animated.Value(initialScale)).current;
 
@@ -59,16 +56,6 @@ const NBScaleFade = ({
       {children}
     </Animated.View>
   );
-};
-
-const StyledScaleFade = styled(NBScaleFade)<IScaleFadeProps>(
-  space,
-  layout,
-  border
-);
-
-const ScaleFade = ({ children, ...props }: IScaleFadeProps) => {
-  return <StyledScaleFade {...props}>{children}</StyledScaleFade>;
 };
 
 export default ScaleFade;

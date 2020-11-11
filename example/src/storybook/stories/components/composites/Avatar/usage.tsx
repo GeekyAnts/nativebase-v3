@@ -1,33 +1,51 @@
 import React from 'react';
-import { Avatar, HStack, View } from 'native-base';
+import { Avatar, HStack } from '@native-base/v3';
 
 export default function () {
   return (
-    <View display="flex" justifyContent="space-between" alignItems="center">
-      <HStack>
-        <Avatar mr={2} name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-        <Avatar
-          mr={2}
-          name="Kola Tioluwani"
-          src="https://bit.ly/tioluwani-kolawole"
-        />
-        <Avatar
-          mr={2}
-          name="Ryan Florence"
-          src="https://bit.ly/ryan-florence"
-        />
-        <Avatar
-          mr={2}
-          name="Prosper Otemuyiwa"
-          src="https://bit.ly/prosper-baba"
-        />
-        <Avatar
-          mr={2}
-          name="Christian Nwamba"
-          src="https://bit.ly/code-beast"
-        />
-        <Avatar mr={2} name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
-      </HStack>
-    </View>
+    <HStack space={2}>
+      <Avatar
+        name="Sanket Sahu"
+        source={{
+          uri:
+            'https://pbs.twimg.com/profile_images/1188747996843761665/8CiUdKZW_400x400.jpg',
+        }}
+      />
+      <Avatar
+        name="Gaurav Guha"
+        source={{
+          uri:
+            'https://pbs.twimg.com/profile_images/1177303899243343872/B0sUJIH0_400x400.jpg',
+        }}
+      />
+      <Avatar
+        name="Rohit Singh"
+        source={{
+          uri:
+            'https://pbs.twimg.com/profile_images/1260766060401188864/ySJfMIbZ_400x400.jpg',
+        }}
+      />
+      <Avatar
+        name="Ankur Kedia"
+        source={{
+          uri:
+            'https://pbs.twimg.com/profile_images/1309797238651060226/18cm6VhQ_400x400.jpg',
+        }}
+      />
+      <Avatar
+        name="Suraj Ahmed"
+        source={{
+          uri:
+            'https://pbs.twimg.com/profile_images/983582580372004864/h9ccP0Ea_400x400.jpg',
+        }}
+      />
+      <Avatar
+        name="Rehman Baig"
+        source={{
+          uri:
+            'https://pbs.twimg.com/profile_images/1320985200663293952/lE_Kg6vr_400x400.jpg',
+        }}
+      />
+    </HStack>
   );
 }

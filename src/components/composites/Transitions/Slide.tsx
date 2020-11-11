@@ -1,19 +1,13 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { Box } from 'native-base';
-import { space, layout, border } from 'styled-system';
+import { Box } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import { Animated } from 'react-native';
 import type { ISlideProps } from './props';
 
-const NBSlide = ({
-  children,
-  in: animationState,
-  duration = 500,
-  placement = 'bottom',
-  ...props
-}: ISlideProps) => {
+const Slide = ({ children, ...props }: ISlideProps) => {
   // TODO: Overiding placement props to bottom only, as other placement required implementation.
-  placement = 'bottom';
+  const { in: animationState, duration } = usePropsConfig('Slide', props);
+  let placement = 'bottom';
   const [size, setSize] = React.useState(10000);
   const provideSize = (layoutSize: any) => {
     if (placement === 'right' || placement === 'left')
@@ -76,13 +70,6 @@ const NBSlide = ({
       </Animated.View>
     </Box>
   );
-};
-
-const StyledSlide = styled(NBSlide)<ISlideProps>(space, layout, border);
-StyledSlide.defaultProps = {};
-
-const Slide = ({ children, ...props }: ISlideProps) => {
-  return <StyledSlide {...props}>{children}</StyledSlide>;
 };
 
 export default Slide;

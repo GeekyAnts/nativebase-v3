@@ -1,6 +1,7 @@
-import type { SpaceProps } from 'styled-system';
+import type { IBoxProps } from '../../primitives';
+import type { IFormControlContext } from '../../composites';
 
-export type IRadioProps = SpaceProps & {
+export type IRadioProps = IBoxProps & {
   id?: string;
   name?: string;
   value?: string | number;
@@ -13,23 +14,30 @@ export type IRadioProps = SpaceProps & {
   size?: 'sm' | 'md' | 'lg';
   icon?: JSX.Element;
   children?: JSX.Element;
-  onChange?: (event?: any, value?: string | number | undefined) => void;
+  onChange?: (value?: string | number) => void;
   // onBlur?: (event: any) => void;
   // onFocus?: (event: any) => void;
   ariaLabel?: string;
   // ariaLabelledby?: string;
   // Custom Props
-  style?: any | undefined;
+  style?: any;
 };
-export type IRadioGroupProps = SpaceProps & {
+export type IRadioGroupProps = IBoxProps & {
   id?: string;
   value?: string | number;
   defaultValue?: string | number;
   colorScheme?: string;
   size?: 'sm' | 'md' | 'lg';
-  spacing?: string | number;
-  children: JSX.Element[];
-  onChange?: (value: string | number, event?: any) => void;
+  children: React.ReactNode;
+  onChange?: (value: string | number) => void;
   // Custom props
-  style?: any | undefined;
+  style?: any;
+};
+export type IRadioContext = IFormControlContext & {
+  value?: string | number;
+  colorScheme?: string;
+  size?: 'sm' | 'md' | 'lg';
+  onChangeHandler?: (value: string | number) => void;
+  // Custom props
+  style?: any;
 };

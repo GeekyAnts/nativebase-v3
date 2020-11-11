@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
-import { View, theme, ThemeProvider } from 'native-base';
+import { View, theme, NativeBaseProvider } from '@native-base/v3';
 
 import Basic from './Basic';
 import Variants from './Variants';
@@ -10,11 +10,11 @@ type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Code', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
-    <ThemeProvider theme={theme}>
-      <View flex={1} justifyContent="center" alignItems="center">
+    <NativeBaseProvider theme={theme}>
+      <View bg="gray.0" flex={1} justifyContent="center" alignItems="center">
         {getStory()}
       </View>
-    </ThemeProvider>
+    </NativeBaseProvider>
   ))
   .add('Basic', () => <Basic />)
   .add('Variants', () => <Variants />);

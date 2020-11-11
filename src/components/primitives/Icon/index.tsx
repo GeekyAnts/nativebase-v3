@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
 import { color, space, typography } from 'styled-system';
-import { usePropsConfig } from 'native-base';
+import { usePropsConfig } from '../../../theme';
 import styled from 'styled-components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -27,7 +27,7 @@ const Icon = (iconProps: IIconProps) => {
     return <SVGIcon {...iconProps} />;
   }
   const flattenedIconStyle: TextStyle = StyleSheet.flatten([
-    { fontSize: parseInt(newProps.size, 10) },
+    { fontSize: parseInt(newProps.dimension || newProps.size, 10) },
     style,
   ]);
   switch (type) {

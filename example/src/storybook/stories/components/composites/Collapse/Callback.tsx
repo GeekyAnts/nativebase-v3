@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Stack, Heading, Button, Box, Text } from 'native-base';
+import { Collapse, Stack, Heading, Button, Box, Text } from '@native-base/v3';
 export default function () {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
@@ -12,9 +12,9 @@ export default function () {
         ? 'Collapse is open'
         : 'This text would change when the collapse animation start'
     );
-  const [color, setColor] = React.useState('default');
+  const [color, setColor] = React.useState('indigo');
   const handleColorToggle = () =>
-    setColor(color === 'green' ? 'default' : 'green');
+    setColor(color === 'green' ? 'indigo' : 'green');
   return (
     <Stack space={4}>
       <Heading>onAnimationStart & onAnimationEnd</Heading>

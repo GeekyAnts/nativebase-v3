@@ -1,19 +1,21 @@
 import React from 'react';
 import { ViewStyle, StyleSheet, Animated, Easing } from 'react-native';
 
-import { Box, IBoxProps, ITextProps, Text } from '../../..';
+import { Box, IBoxProps, ITextProps, Text } from '../../primitives';
 import styled from 'styled-components';
 import { color, border } from 'styled-system';
+import { usePropsConfig } from '../../../theme';
+type sizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
 
 export type ICircularProgressProps = IBoxProps & {
   style?: ViewStyle;
   children?: JSX.Element | JSX.Element[];
   value: number;
-  size?: number;
+  size?: number | sizes;
   thickness?: number;
   color?: string;
   trackColor?: string;
-  isIndeterminate?: any | undefined;
+  isIndeterminate?: any;
   max?: number;
   min?: number;
 };
@@ -34,11 +36,21 @@ const CircularProgress = ({
   if (min) {
     value = value - min;
   }
-  let defaultSize = 50;
-  let defaultThickness = 5;
-  if (size) {
-    defaultSize = size;
+  if (!size) {
+    size = 'md';
   }
+  let sizeProps;
+  let newProps = usePropsConfig('CircularProgress', { size: size });
+  if (typeof size === 'string') {
+    sizeProps = {
+      height: newProps.height,
+      width: newProps.width,
+    };
+  } else {
+    sizeProps = { height: size, width: size };
+  }
+
+  let defaultThickness = 4;
   if (thickness) {
     defaultThickness = thickness;
   }
@@ -53,45 +65,32 @@ const CircularProgress = ({
       })
     ).start();
   }
+  const defaultStyling: any = {
+    borderRadius: 100,
+    position: 'absolute',
+    borderLeftColor: 'transparent',
+    borderBottomColor: 'transparent',
+    ...sizeProps,
+  };
   const styles = StyleSheet.create({
     firstProgressLayer: {
-      width: defaultSize,
-      height: defaultSize,
       borderWidth: defaultThickness,
-      borderRadius: 100,
-      position: 'absolute',
-      borderLeftColor: 'transparent',
-      borderBottomColor: 'transparent',
+      ...defaultStyling,
       transform: [{ rotateZ: '-135deg' }],
     },
     secondProgressLayer: {
-      width: defaultSize,
-      height: defaultSize,
-      position: 'absolute',
       borderWidth: defaultThickness,
-      borderRadius: 100,
-      borderLeftColor: 'transparent',
-      borderBottomColor: 'transparent',
+      ...defaultStyling,
       transform: [{ rotateZ: '45deg' }],
     },
     offsetLayer: {
-      width: defaultSize,
-      height: defaultSize,
-      position: 'absolute',
       borderWidth: defaultThickness,
-      borderRadius: 100,
-      borderLeftColor: 'transparent',
-      borderBottomColor: 'transparent',
+      ...defaultStyling,
       transform: [{ rotateZ: '-135deg' }],
     },
     animateStyle: {
-      width: defaultSize,
-      height: defaultSize,
       borderWidth: defaultThickness,
-      borderRadius: 100,
-      position: 'absolute',
-      borderLeftColor: 'transparent',
-      borderBottomColor: 'transparent',
+      ...defaultStyling,
       borderTopColor: 'transparent',
       transform: [
         {
@@ -141,8 +140,7 @@ const CircularProgress = ({
 
   return (
     <Box
-      height={defaultSize}
-      width={defaultSize}
+      {...sizeProps}
       rounded={100}
       borderWidth={defaultThickness}
       borderColor={trackColor ? trackColor : 'gray.2'}
@@ -157,7 +155,7 @@ const CircularProgress = ({
             style={[styles.firstProgressLayer, firstProgressLayerStyle]}
           />
           {renderThirdLayer(value)}
-          <Box fontSize={size ? size / 4 : 14}>{props.children}</Box>
+          <Box fontSize={sizeProps.height / 4}>{props.children}</Box>
         </>
       ) : (
         <StyleAnimatedView

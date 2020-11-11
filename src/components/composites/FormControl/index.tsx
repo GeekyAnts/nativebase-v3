@@ -1,4 +1,4 @@
-export { default as FormControl } from './FormControl';
+export { default as FormControl, FormControlContext } from './FormControl';
 export { default as FormLabel } from './FormLabel';
 export { default as FormErrorMessage } from './FormErrorMessage';
 export { default as FormHelperText } from './FormHelperText';

@@ -1,41 +1,40 @@
-import * as React from 'react';
-import type { IuseToast } from './props';
+import React from 'react';
+import type { IToastProps } from './props';
 
 const currentState: any = {
-  topcenter: [],
-  topleft: [],
-  topright: [],
-  bottomcenter: [],
-  bottomleft: [],
-  bottomright: [],
+  toasts: [],
 };
 export const useToastManager = () => {
   const [allToast, setAllToast] = React.useState({
     ...currentState,
   });
-  const updateToast = ({
-    position = 'bottom',
-    duration = 5000,
-    ...rest
-  }: IuseToast) => {
-    const verticalPostion = position.includes('top') ? 'top' : 'bottom';
-    let horizontalPostion = 'center';
-    if (position.includes('right')) horizontalPostion = 'right';
-    else if (position.includes('left')) horizontalPostion = 'left';
-    const postionKey = verticalPostion + horizontalPostion;
-
-    // Removing Toast after 5sec (default)
+  const recursivelyTimeout = (duration: any) => {
+    if (duration === 'long') {
+      duration = 4000;
+    } else if (!duration || duration === 'short') {
+      duration = 2000;
+    }
     setTimeout(() => {
-      currentState[postionKey].pop();
+      currentState.toasts.splice(0, 1);
       setAllToast({ ...currentState });
+      if (currentState.toasts.length) {
+        recursivelyTimeout(currentState.toasts[0].duration);
+      }
     }, duration);
+  };
+  const updateToast = ({ position, duration, ...rest }: IToastProps) => {
+    if (!currentState.toasts.length) {
+      recursivelyTimeout(duration);
+    }
 
-    currentState[postionKey].push({
+    currentState.toasts.push({
       ...rest,
+      position,
+      duration,
     });
     setAllToast({ ...currentState });
   };
-  return [allToast, updateToast];
+  return [allToast.toasts, updateToast];
 };
 
 export const useToast = () => {

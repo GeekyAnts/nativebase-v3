@@ -1,11 +1,10 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { space } from 'styled-system';
-import { Box, Text, ThemeContext } from 'native-base';
+import { Box, Text } from '../../primitives';
+import { useTheme } from '../../../theme';
 import { FormControlContext } from './FormControl';
 import type { IFormLabelProps, IFormControlContext } from './props';
 
-const NBFormLabel = ({
+const FormLabel = ({
   children,
   style,
   _disabled,
@@ -18,7 +17,7 @@ const NBFormLabel = ({
     isRequired,
     isDisabled,
   }: IFormControlContext = React.useContext(FormControlContext);
-  const theme = React.useContext(ThemeContext);
+  const theme = useTheme();
   const requiredAsterisk = () => <Text color={theme.colors.red[3]}>*</Text>;
 
   return (
@@ -34,10 +33,4 @@ const NBFormLabel = ({
     </Box>
   );
 };
-
-const StyledFormLabel = styled(NBFormLabel)<IFormLabelProps>(space);
-const FormLabel = ({ children, ...props }: IFormLabelProps) => {
-  return <StyledFormLabel {...props}>{children}</StyledFormLabel>;
-};
-
 export default FormLabel;

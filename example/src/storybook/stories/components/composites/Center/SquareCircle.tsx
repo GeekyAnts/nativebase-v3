@@ -1,5 +1,5 @@
 import React from 'react';
-import { Circle, Square, Box, HStack, Icon } from 'native-base';
+import { Circle, Square, Box, HStack, Icon } from '@native-base/v3';
 export default function () {
   return (
     <HStack>

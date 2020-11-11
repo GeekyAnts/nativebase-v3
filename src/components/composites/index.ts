@@ -2,7 +2,7 @@ export { Variants } from '../../@types/enums';
 export { default as AspectRatio, IAspectRatioProps } from './AspectRatio';
 export { default as AppBar } from './AppBar';
 export { default as Badge, IBadgeProps } from './Badge';
-export { default as IconButton } from './IconButton';
+export { default as IconButton, IIconButtonProps } from './IconButton';
 export {
   default as Alert,
   IAlertProps,
@@ -11,7 +11,7 @@ export {
   AlertIcon,
   AlertCloseButton,
 } from './Alert';
-export { default as Avatar, AvatarBadge } from './Avatar';
+export { Avatar, AvatarBadge, AvatarGroup } from './Avatar';
 export {
   default as BreadCrumb,
   BreadCrumbItem,
@@ -38,7 +38,7 @@ export {
   ISkeletonTextProps,
 } from './Skeleton';
 export {
-  default as Accordion,
+  Accordion,
   IAccordionProps,
   AccordionItem,
   IAccordionItemProps,
@@ -90,14 +90,7 @@ export {
   ISquareProps,
 } from './Center';
 export { default as Wrap, IWrapProps } from './Wrap';
-export {
-  Toast,
-  IToastProps,
-  useToast,
-  ToastCard,
-  IToastCardProps,
-  IuseToast,
-} from './Toast';
+export { IToastProps, useToast, ToastProvider } from './Toast';
 export {
   default as PinInput,
   IPinInputProps,

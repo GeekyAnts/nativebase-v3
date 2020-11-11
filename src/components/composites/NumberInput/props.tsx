@@ -1,6 +1,6 @@
-import type { IInputBoxProps, IBoxProps } from 'native-base';
+import type { IInputProps, IBoxProps } from '../../primitives';
 
-export type INumberInputProps = IInputBoxProps &
+export type INumberInputProps = IInputProps &
   IBoxProps & {
     onChange?: (value: number) => void;
     min?: number;
@@ -19,6 +19,10 @@ export type INumberInputProps = IInputBoxProps &
   };
 
 export type INumberInputFieldProps = INumberInputProps & {};
+export type INumberInputStepperProps = INumberInputProps & {
+  _disabled?: any;
+  _active?: any;
+};
 export type INumberInputContext = INumberInputProps & {
   numberInputValue?: number;
   value?: number;

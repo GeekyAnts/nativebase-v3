@@ -1,16 +1,11 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { Box } from 'native-base';
-import { space, layout, border } from 'styled-system';
+import { Box } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import { Animated } from 'react-native';
 import type { IFadeProps } from './props';
 
-const NBFade = ({
-  children,
-  in: animationState,
-  duration = 500,
-  ...props
-}: IFadeProps) => {
+const Fade = ({ children, ...props }: IFadeProps) => {
+  const { in: animationState, duration } = usePropsConfig('Fade', props);
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
 
   const fadeIn = () => {
@@ -36,13 +31,6 @@ const NBFade = ({
       {children}
     </Animated.View>
   );
-};
-
-const StyledFade = styled(NBFade)<IFadeProps>(space, layout, border);
-StyledFade.defaultProps = {};
-
-const Fade = ({ children, ...props }: IFadeProps) => {
-  return <StyledFade {...props}>{children}</StyledFade>;
 };
 
 export default Fade;

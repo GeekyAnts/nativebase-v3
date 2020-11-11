@@ -1,17 +1,21 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { space } from 'styled-system';
-import { Box, Icon } from 'native-base';
-import type { INumberInputFieldProps } from './props';
+import { Box, Icon } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
+import type { INumberInputStepperProps } from './props';
 import { NumberInputContext, INumberInputContext } from './index';
 import { TouchableOpacity } from 'react-native';
 
-const NBNumberDecrementStepper = ({
+const NumberDecrementStepper = ({
   children,
   isDisabled: pIsDisabled,
   ariaLabel,
   ...props
-}: INumberInputFieldProps) => {
+}: INumberInputStepperProps) => {
+  // TODO: Needs refactoring after input is refactored.
+  const { style, _active, _disabled, ...newProps } = usePropsConfig(
+    'NumberInputStepper',
+    props
+  );
   const {
     numberInputValue = 0,
     step = 1,
@@ -27,35 +31,19 @@ const NBNumberDecrementStepper = ({
     <TouchableOpacity
       activeOpacity={1}
       disabled={numberInputValue - step < min || isDisabled}
-      onPress={() => pressHandler()}
-      accessible={true}
+      onPress={pressHandler}
+      accessible
       accessibilityLabel={ariaLabel}
     >
       <Box
-        {...props}
-        style={[
-          (numberInputValue - step < min || isDisabled) && {
-            backgroundColor: 'lightgray',
-          },
-        ]}
+        {...newProps}
+        {..._active}
+        {...(numberInputValue - step < min || isDisabled ? _disabled : {})}
+        style={style}
       >
         {children || <Icon name="arrow-drop-down" type="MaterialIcons" />}
       </Box>
     </TouchableOpacity>
-  );
-};
-
-const StyledNumberDecrementStepper = styled(NBNumberDecrementStepper)<
-  INumberInputFieldProps
->(space);
-const NumberDecrementStepper = ({
-  children,
-  ...props
-}: INumberInputFieldProps) => {
-  return (
-    <StyledNumberDecrementStepper {...props}>
-      {children}
-    </StyledNumberDecrementStepper>
   );
 };
 

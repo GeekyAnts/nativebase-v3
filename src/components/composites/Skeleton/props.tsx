@@ -1,4 +1,4 @@
-import type { IBoxProps } from 'native-base';
+import type { IBoxProps } from '../../primitives';
 
 export type ISkeletonProps = IBoxProps & {
   isLoaded?: boolean;
@@ -10,4 +10,5 @@ export type ISkeletonCircleProps = ISkeletonProps & {
 };
 export type ISkeletonTextProps = ISkeletonProps & {
   noOfLines?: number;
+  lineSize?: number;
 };

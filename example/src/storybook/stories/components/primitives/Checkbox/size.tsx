@@ -1,20 +1,23 @@
 import React from 'react';
-import { Checkbox, Inline, Text, View } from 'native-base';
+import { Checkbox, HStack, Text, Icon } from '@native-base/v3';
 
 export default function () {
   return (
-    <View display="flex" justifyContent="space-between" alignItems="center">
-      <Inline>
-        <Checkbox colorScheme="red" size="sm" defaultIsChecked>
-          <Text mx={2}>Checkbox</Text>
-        </Checkbox>
-        <Checkbox colorScheme="green" size="md" defaultIsChecked>
-          <Text mx={2}>Checkbox</Text>
-        </Checkbox>
-        <Checkbox colorScheme="yellow" size="lg" defaultIsChecked>
-          <Text mx={2}>Checkbox</Text>
-        </Checkbox>
-      </Inline>
-    </View>
+    <HStack>
+      <Checkbox colorScheme="red" size="sm" defaultIsChecked>
+        <Text mx={2}>Checkbox</Text>
+      </Checkbox>
+      <Checkbox
+        colorScheme="green"
+        size="md"
+        icon={<Icon name="done" type="MaterialIcons" size={40} />}
+        defaultIsChecked
+      >
+        <Text mx={2}>Checkbox</Text>
+      </Checkbox>
+      <Checkbox colorScheme="yellow" size="lg" defaultIsChecked>
+        <Text mx={2}>Checkbox</Text>
+      </Checkbox>
+    </HStack>
   );
 }

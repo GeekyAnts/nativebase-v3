@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
-import { View, theme, ThemeProvider } from 'native-base';
+import { View, theme, NativeBaseProvider } from '@native-base/v3';
 import Composition from './Composition';
 import Basic from './Basic';
 import Rounded from './Rounded';
@@ -12,11 +12,11 @@ type GetStory = () => JSX.Element | JSX.Element[] | any;
 storiesOf('Progress', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: GetStory) => (
-    <ThemeProvider theme={theme}>
-      <View flex={1} justifyContent="center" alignItems="center">
+    <NativeBaseProvider theme={theme}>
+      <View bg="gray.0" flex={1} justifyContent="center" alignItems="center">
         {getStory()}
       </View>
-    </ThemeProvider>
+    </NativeBaseProvider>
   ))
   .add('Default Progress Bar', () => <Basic />)
   .add('ColorSchemes', () => <ColorScheme />)

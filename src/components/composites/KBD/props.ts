@@ -1,5 +1,5 @@
 import type { ViewStyle, TextStyle } from 'react-native';
-import type { IBoxProps } from 'native-base';
+import type { IBoxProps } from '../../primitives';
 export type IKbdProps = IBoxProps & {
   style?: ViewStyle;
   textStyle?: TextStyle;

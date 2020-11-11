@@ -5,14 +5,14 @@ import {
   TagLabel,
   Avatar,
   AvatarBadge,
-} from 'native-base';
+} from '@native-base/v3';
 
 export default function () {
   return (
     <Tag colorScheme="red" rounded={100} size="md">
       <Avatar
         mr={3}
-        src={'https://nativebase.io/assets/img/front-page-icon.png'}
+        source={{ uri: 'https://nativebase.io/assets/img/front-page-icon.png' }}
         name={'Native Base'}
         width={10}
         height={10}

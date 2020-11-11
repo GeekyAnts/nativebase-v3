@@ -1,31 +1,7 @@
 import React from 'react';
-import { ScrollView, ScrollViewProps } from 'react-native';
-import styled from 'styled-components/native';
-import { border, color, layout, space, typography } from 'styled-system';
-import {
-  customBorder,
-  customBackground,
-  customOutline,
-  customLayout,
-  customExtra,
-  customTypography,
-} from '../../../utils/customProps';
-import { VStack, Box, Text, IIconProps, Icon } from '../../..';
+import { VStack, Box, Text, IIconProps, Icon } from '../../primitives';
 import type { IListProps, IListItemProps } from './props';
 
-const StyledList = styled(ScrollView)<ScrollViewProps>(
-  color,
-  space,
-  layout,
-  border,
-  typography,
-  customBorder,
-  customBackground,
-  customOutline,
-  customExtra,
-  customLayout,
-  customTypography
-);
 const List = ({ style, children, spacing, ...props }: IListProps) => {
   // add props to children
   children = React.Children.map(children, (child: any, ind: number) => {
@@ -36,11 +12,45 @@ const List = ({ style, children, spacing, ...props }: IListProps) => {
     );
   });
   return (
-    <StyledList {...props} style={style}>
+    <Box {...props} style={style}>
       <VStack space={spacing} {...props}>
         {children}
       </VStack>
-    </StyledList>
+    </Box>
+  );
+};
+export const Ol = ({ style, children, spacing, ...props }: IListProps) => {
+  // add props to children
+  children = React.Children.map(children, (child: any, ind: number) => {
+    return React.cloneElement(
+      child,
+      { index: ind, ...props, ol: true },
+      child.props.children
+    );
+  });
+  return (
+    <Box {...props} style={style}>
+      <VStack space={spacing} {...props}>
+        {children}
+      </VStack>
+    </Box>
+  );
+};
+export const Ul = ({ style, children, spacing, ...props }: IListProps) => {
+  // add props to children
+  children = React.Children.map(children, (child: any, ind: number) => {
+    return React.cloneElement(
+      child,
+      { index: ind, ...props, ul: true },
+      child.props.children
+    );
+  });
+  return (
+    <Box {...props} style={style}>
+      <VStack space={spacing} {...props}>
+        {children}
+      </VStack>
+    </Box>
   );
 };
 

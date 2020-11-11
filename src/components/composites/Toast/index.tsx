@@ -1,4 +1,3 @@
-export { default as Toast } from './Toast';
-export { default as ToastCard } from './ToastCard';
-export { useToast, useToastManager } from './hooks';
-export type { IToastProps, IToastCardProps, IuseToast } from './props';
+export { default as ToastProvider } from './ToastProvider';
+export { useToast } from './hooks';
+export type { IToastProps } from './props';

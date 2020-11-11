@@ -1,6 +1,7 @@
-import type { SpaceProps } from 'styled-system';
+import type { IBoxProps } from '../../primitives';
+import type { IFormControlContext } from '../../composites';
 
-export type ICheckboxProps = SpaceProps & {
+export type ICheckboxProps = IBoxProps & {
   id?: string;
   name?: string;
   value?: string | number;
@@ -14,28 +15,32 @@ export type ICheckboxProps = SpaceProps & {
   size?: 'sm' | 'md' | 'lg';
   icon?: JSX.Element;
   children?: JSX.Element;
-  onChange?: (
-    event?: any,
-    value?: string | number | undefined,
-    currentState?: boolean
-  ) => void;
+  onChange?: (value: string | number, currentState?: boolean) => void;
   // onBlur?: (event: any) => void;
   // onFocus?: (event: any) => void;
   ariaLabel?: string;
   // ariaLabelledby?: string;
   // Custom Props
-  style?: any | undefined;
+  style?: any;
 };
 
-export type ICheckboxGroupProps = SpaceProps & {
+export type ICheckboxGroupProps = IBoxProps & {
   id?: string;
   value?: Array<any>;
   defaultValue?: Array<any>;
   colorScheme?: string;
   size?: 'sm' | 'md' | 'lg';
-  spacing?: string | number;
-  children: JSX.Element[];
-  onChange?: (values: Array<any>, event?: any) => void;
+  children: React.ReactNode;
+  onChange?: (values: Array<any>) => void;
   // Custom props
-  style?: any | undefined;
+  style?: any;
+};
+export type ICheckboxContext = IFormControlContext & {
+  value?: Array<any>;
+  colorScheme?: string;
+  size?: 'sm' | 'md' | 'lg';
+  groupValueChangeHandler?: (
+    value: string | number,
+    currentState: boolean
+  ) => void;
 };

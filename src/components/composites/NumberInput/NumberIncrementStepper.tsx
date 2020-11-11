@@ -1,17 +1,20 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { space } from 'styled-system';
-import { Box, Icon } from 'native-base';
+import { Box, Icon } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 import type { INumberInputFieldProps } from './props';
 import { NumberInputContext, INumberInputContext } from './index';
 import { TouchableOpacity } from 'react-native';
 
-const NBNumberIncrementStepper = ({
+const NumberIncrementStepper = ({
   children,
   isDisabled: pIsDisabled,
   ariaLabel,
   ...props
 }: INumberInputFieldProps) => {
+  const { style, _active, _disabled, ...newProps } = usePropsConfig(
+    'NumberInputStepper',
+    props
+  );
   const {
     numberInputValue = 0,
     step = 1,
@@ -32,31 +35,14 @@ const NBNumberIncrementStepper = ({
       accessibilityLabel={ariaLabel}
     >
       <Box
-        borderBottomWidth={1}
-        {...props}
-        style={[
-          (numberInputValue + step > max || isDisabled) && {
-            backgroundColor: 'lightgray',
-          },
-        ]}
+        {...newProps}
+        {..._active}
+        {...(numberInputValue + step > max || isDisabled ? _disabled : {})}
+        style={style}
       >
         {children || <Icon name="arrow-drop-up" type="MaterialIcons" />}
       </Box>
     </TouchableOpacity>
-  );
-};
-
-const StyledNumberIncrementStepper = styled(NBNumberIncrementStepper)<
-  INumberInputFieldProps
->(space);
-const NumberIncrementStepper = ({
-  children,
-  ...props
-}: INumberInputFieldProps) => {
-  return (
-    <StyledNumberIncrementStepper {...props}>
-      {children}
-    </StyledNumberIncrementStepper>
   );
 };
 

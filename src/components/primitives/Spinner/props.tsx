@@ -5,6 +5,5 @@ export type ISpinnerProps = ColorProps &
   PositionProps & {
     color?: string | undefined;
     style?: any | undefined;
-    show?: boolean | undefined;
-    hideWhenStopped?: boolean | undefined; // IOS only
+    size?: 'sm' | 'lg' | 'small' | 'large';
   };

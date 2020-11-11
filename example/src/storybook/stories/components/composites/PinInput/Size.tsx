@@ -1,35 +1,35 @@
 import React from 'react';
-import { PinInput, PinInputField, Stack } from 'native-base';
+import { PinInput, PinInputField, Stack } from '@native-base/v3';
 
 export default function () {
   return (
     <Stack space={5}>
-      <PinInput inputSize="2xl">
+      <PinInput size="2xl">
         <PinInputField />
         <PinInputField />
         <PinInputField />
       </PinInput>
-      <PinInput inputSize="xl">
+      <PinInput size="xl">
         <PinInputField />
         <PinInputField />
         <PinInputField />
       </PinInput>
-      <PinInput inputSize="lg">
+      <PinInput size="lg">
         <PinInputField />
         <PinInputField />
         <PinInputField />
       </PinInput>
-      <PinInput inputSize="md">
+      <PinInput size="md">
         <PinInputField />
         <PinInputField />
         <PinInputField />
       </PinInput>
-      <PinInput inputSize="sm">
+      <PinInput size="sm">
         <PinInputField />
         <PinInputField />
         <PinInputField />
       </PinInput>
-      <PinInput inputSize="xsm">
+      <PinInput size="xsm">
         <PinInputField />
         <PinInputField />
         <PinInputField />

@@ -1,11 +1,10 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { Box } from 'native-base';
-import { space } from 'styled-system';
+import { Box } from '../../primitives';
 import type { IFormControlProps } from './props';
 
 export const FormControlContext = React.createContext({});
-const NBFormControl = ({
+
+const FormControl = ({
   children,
   isInvalid,
   isRequired,
@@ -27,12 +26,6 @@ const NBFormControl = ({
       </Box>
     </FormControlContext.Provider>
   );
-};
-
-const StyledFormControl = styled(NBFormControl)<IFormControlProps>(space);
-
-const FormControl = ({ children, ...props }: IFormControlProps) => {
-  return <StyledFormControl {...props}>{children}</StyledFormControl>;
 };
 
 export default FormControl;

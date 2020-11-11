@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Stack, Heading, Button, Box } from 'native-base';
+import { Collapse, Stack, Heading, Button, Box } from '@native-base/v3';
 import { number } from '@storybook/addon-knobs';
 export default function () {
   const [show, setShow] = React.useState(false);

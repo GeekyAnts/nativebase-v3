@@ -1,9 +1,9 @@
 import React from 'react';
-import { PinInput, PinInputField } from 'native-base';
+import { PinInput, PinInputField } from '@native-base/v3';
 
 export default function () {
   return (
-    <PinInput inputSize="md" value="32" defaultValue="98">
+    <PinInput size="md" value="32" defaultValue="98">
       <PinInputField />
       <PinInputField />
       <PinInputField />

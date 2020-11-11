@@ -1,16 +1,18 @@
-import type { IBoxProps } from 'native-base';
+import type { IBoxProps } from '../../primitives';
 
 export type IFormControlProps = IBoxProps & {
   isInvalid?: boolean;
   isRequired?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
+  id?: number;
 };
 export type IFormControlContext = {
   isInvalid?: boolean;
   isRequired?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
+  id?: number;
 };
 export type IFormLabelProps = IFormControlProps & {
   style?: any;

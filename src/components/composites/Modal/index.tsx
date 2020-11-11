@@ -12,7 +12,9 @@ import {
 } from '../../../utils/customProps';
 
 import type { IModalProps, IModalSemiProps } from './props';
-import { Box, Heading, CloseButton, View } from '../../..';
+import { Box, View, IBoxProps } from '../../primitives';
+import { CloseButton, ICloseButtonProps } from '../../composites';
+import { usePropsConfig } from '../../../theme';
 
 const StyledModal = styled(RNModal)<IModalSemiProps>(
   color,
@@ -32,7 +34,19 @@ const ModalContext = React.createContext({
   visible: false,
   toggleVisible: (_bool: boolean) => {},
   toggleOnClose: (_bool: boolean) => {},
-  modalSize: 'lg',
+  newProps: {
+    _width: '60%',
+    size: 'md',
+    modalOverlayStyle: {},
+    closeOnOverlayClick: true,
+    modalCloseButtonStyle: {},
+    modalCloseButtonProps: {},
+    modalFooterProps: {},
+    modalBodyProps: {},
+    modalContentProps: {},
+    modalHeaderProps: {},
+    modalOverlayProps: {},
+  },
 });
 
 const Modal = (
@@ -43,7 +57,6 @@ const Modal = (
     isCentered,
     initialFocusRef,
     finalFocusRef,
-    size,
     justifyContent,
     alignItems,
     id,
@@ -56,12 +69,12 @@ const Modal = (
   React.useEffect(() => {
     setIsVisible(isOpen);
   }, [isOpen]);
-
+  const newProps = usePropsConfig('Modal', props);
   const value: any = {
     visible: isVisible,
     toggleVisible: setIsVisible,
     toggleOnClose: onClose,
-    modalSize: size,
+    newProps: newProps,
   };
 
   return (
@@ -81,8 +94,7 @@ const Modal = (
           ref={ref}
         >
           <Box
-            width="100%"
-            height="100%"
+            {...newProps.modalProps}
             justifyContent={isCentered ? 'center' : justifyContent}
             alignItems={isCentered ? 'center' : alignItems}
           >
@@ -94,100 +106,70 @@ const Modal = (
   );
 };
 
-export const ModalHeader = (props: any) => {
-  return <Heading mb={4} pl={4} {...props} />;
+export const ModalHeader = (props: IBoxProps) => {
+  const { newProps } = React.useContext(ModalContext);
+  return <Box {...newProps.modalHeaderProps} {...props} />;
 };
-export const ModalContent = (props: any) => {
-  const { modalSize } = React.useContext(ModalContext);
-  let width: string = modalSize;
-  if (typeof modalSize === 'string') {
-    switch (modalSize) {
-      case 'xs':
-        width = '40%';
-        break;
-      case 'sm':
-        width = '48%';
-        break;
-      case 'md':
-        width = '60%';
-        break;
-      case 'lg':
-        width = '75%';
-        break;
-      case 'xl':
-        width = '90%';
-        break;
-      case 'full':
-        width = '100%';
-        break;
-      default:
-        width = modalSize;
-        break;
-    }
-  } else {
-    width = modalSize;
-  }
-  return (
-    <Box
-      bg="gray.1"
-      width={width}
-      style={{ position: 'relative' }}
-      {...props}
-    />
-  );
-};
-export const ModalBody = (props: any) => {
-  return <Box mb={3} px={4} {...props} />;
-};
-export const ModalFooter = (props: any) => {
-  return (
-    <Box
-      px={4}
-      pb={4}
-      flexDirection="row"
-      justifyContent="flex-end"
-      {...props}
-    />
-  );
-};
-export const ModalCloseButton = (props: any) => {
-  const { toggleVisible, toggleOnClose } = React.useContext(ModalContext);
 
+export const ModalContent = (props: IBoxProps) => {
+  const { newProps } = React.useContext(ModalContext);
   return (
-    <CloseButton
-      size="lg"
-      mr={2}
-      ml="auto"
-      mt={2}
+    <Box
+      {...newProps.modalContentProps}
+      width={newProps._width || newProps.size}
       {...props}
-      onClick={() => {
-        toggleVisible(false);
-        toggleOnClose(false);
-      }}
     />
   );
 };
-export const ModalOverlay = ({ children, ...props }: any) => {
-  const { toggleVisible, toggleOnClose } = React.useContext(ModalContext);
+
+export const ModalBody = (props: IBoxProps) => {
+  const { newProps } = React.useContext(ModalContext);
+  return <Box {...newProps.modalBodyProps} {...props} />;
+};
+
+export const ModalFooter = (props: IBoxProps) => {
+  const { newProps } = React.useContext(ModalContext);
+  return <Box {...newProps.modalFooterProps} {...props} />;
+};
+
+export const ModalCloseButton = (props: ICloseButtonProps) => {
+  const { toggleVisible, toggleOnClose, newProps } = React.useContext(
+    ModalContext
+  );
   return (
-    <Box
-      {...props}
-      style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }}
-    >
-      <TouchableOpacity
-        style={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          opacity: 0.5,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'black',
-        }}
+    <View style={newProps.modalCloseButtonStyle}>
+      <CloseButton
+        {...newProps.modalCloseButtonProps}
+        {...props}
         onPress={() => {
           toggleVisible(false);
           toggleOnClose(false);
         }}
+      />
+    </View>
+  );
+};
+
+export const ModalOverlay = ({ children, ...props }: any) => {
+  const { toggleVisible, toggleOnClose, newProps } = React.useContext(
+    ModalContext
+  );
+  return (
+    <Box
+      {...newProps.modalOverlayProps}
+      {...props}
+      style={newProps.modalOverlayStyle}
+    >
+      <TouchableOpacity
+        style={newProps.modalOverlayStyle}
+        onPress={
+          newProps.closeOnOverlayClick === false
+            ? () => {}
+            : () => {
+                toggleVisible(false);
+                toggleOnClose(false);
+              }
+        }
       />
       {children}
     </Box>

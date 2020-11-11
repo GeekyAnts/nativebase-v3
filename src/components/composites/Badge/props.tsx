@@ -1,4 +1,4 @@
-import type { IBoxProps } from 'native-base';
+import type { IBoxProps } from '../../primitives';
 
 export type IBadgeProps = IBoxProps & {
   variant?: 'solid' | 'subtle' | 'outline';

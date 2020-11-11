@@ -1,5 +1,5 @@
 import React from 'react';
-import { AspectRatio, Image } from 'native-base';
+import { AspectRatio, Image } from '@native-base/v3';
 export default function () {
   return (
     <AspectRatio ratio={0.5} height={200}>

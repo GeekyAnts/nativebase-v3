@@ -1,20 +1,20 @@
 import React from 'react';
-import { Avatar, HStack, AvatarBadge } from 'native-base';
+import { Avatar, HStack, AvatarBadge } from '@native-base/v3';
 
 export default function () {
   return (
     <HStack>
       <Avatar
-        src={'https://nativebase.io/assets/img/front-page-icon.png'}
+        source={{ uri: 'https://nativebase.io/assets/img/front-page-icon.png' }}
         name={'Native Base'}
       >
-        <AvatarBadge bg={'red'} boxSize={3} />
+        <AvatarBadge bg={'red.2'} />
       </Avatar>
       <Avatar
-        src={'https://nativebase.io/assets/img/front-page-icon.png'}
+        source={{ uri: 'https://nativebase.io/assets/img/front-page-icon.png' }}
         name={'Native Base'}
       >
-        <AvatarBadge borderColor="papayawhip" bg="tomato" boxSize={3} />
+        <AvatarBadge borderColor="papayawhip" bg="tomato" />
       </Avatar>
     </HStack>
   );

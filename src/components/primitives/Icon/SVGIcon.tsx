@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePropsConfig } from 'native-base';
+import { usePropsConfig } from '../../../theme';
 import styled from 'styled-components';
 import { color, space, typography } from 'styled-system';
 import Svg, { G, Path, Circle } from 'react-native-svg';
@@ -18,8 +18,8 @@ const SVGIcon = ({
   const newProps = usePropsConfig('Icon', { size });
   return (
     <SVG
-      height={parseInt(newProps.size, 10)}
-      width={parseInt(newProps.size, 10)}
+      height={parseInt(newProps.dimension || newProps.size, 10)}
+      width={parseInt(newProps.dimension || newProps.size, 10)}
       viewBox={viewBox}
       color={colorProp}
       stroke={stroke}

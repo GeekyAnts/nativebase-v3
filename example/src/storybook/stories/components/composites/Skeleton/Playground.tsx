@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skeleton, Stack, Text, Heading } from 'native-base';
+import { Skeleton, Stack, Text, Heading } from '@native-base/v3';
 import { boolean, color } from '@storybook/addon-knobs';
 export default function () {
   return (
