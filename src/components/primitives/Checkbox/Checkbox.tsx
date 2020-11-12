@@ -10,7 +10,7 @@ import {
 import { CheckboxContext } from './CheckboxGroup';
 import type { ICheckboxProps, ICheckboxContext } from './props';
 
-const Checkbox = ({ children, ...props }: ICheckboxProps) => {
+const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
   const formControlContext: IFormControlContext = React.useContext(
     FormControlContext
   );
@@ -70,6 +70,7 @@ const Checkbox = ({ children, ...props }: ICheckboxProps) => {
       accessible
       accessibilityLabel={ariaLabel}
       accessibilityRole="checkbox"
+      ref={ref}
     >
       <Center {...newProps} flexDirection="row">
         <Center
@@ -96,4 +97,4 @@ const Checkbox = ({ children, ...props }: ICheckboxProps) => {
   );
 };
 
-export default Checkbox;
+export default React.forwardRef(Checkbox);

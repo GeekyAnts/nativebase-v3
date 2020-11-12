@@ -66,4 +66,4 @@ const SliderThumb = ({ children, ...props }: ISliderProps) => {
   );
 };
 
-export default SliderThumb;
+export default React.forwardRef(SliderThumb);

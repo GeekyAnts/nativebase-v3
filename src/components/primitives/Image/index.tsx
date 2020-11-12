@@ -15,15 +15,18 @@ const StyledImage = styled(RNImage)<IImageProps>(
   customBorder
 );
 
-const Image = ({
-  style,
-  alt,
-  fallbackSource,
-  source,
-  ignoreFallback,
-  textProps,
-  ...props
-}: IImageProps) => {
+const Image = (
+  {
+    style,
+    alt,
+    fallbackSource,
+    source,
+    ignoreFallback,
+    textProps,
+    ...props
+  }: IImageProps,
+  ref: any
+) => {
   let [renderedSource, setSource] = useState(source);
   let [alternate, setAlternate] = useState(false);
   let onImageLoadError = (event: any) => {
@@ -48,9 +51,10 @@ const Image = ({
       source={renderedSource}
       {...newProps}
       onError={props.onError ? props.onError : onImageLoadError}
+      ref={ref}
     />
   );
 };
 
-export default Image;
+export default React.forwardRef(Image);
 export { IImageProps } from './props';
