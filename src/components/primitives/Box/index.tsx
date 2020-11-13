@@ -69,7 +69,6 @@ const Box = (
     whiteSpace,
     overflowWrap,
   };
-
   return (
     <StyledBox ref={ref} {...props}>
       {addTextAndPropsToStrings(children, textProps)}
