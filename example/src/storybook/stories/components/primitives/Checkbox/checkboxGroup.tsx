@@ -19,7 +19,7 @@ export default function () {
         colorScheme="green"
         defaultValue={groupValue}
         onChange={(values) => {
-          setGroupValue(values);
+          setGroupValue(values || []);
         }}
       >
         <Checkbox value="Item 1 ">

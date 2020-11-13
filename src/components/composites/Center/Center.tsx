@@ -3,9 +3,9 @@ import { Box } from '../../primitives';
 import type { ICenterProps } from './props';
 import { usePropsConfig } from '../../../theme';
 
-const Center = ({ style, ...props }: ICenterProps) => {
+const Center = ({ style, ...props }: ICenterProps, ref: any) => {
   let newProps = usePropsConfig('Center', props);
-  return <Box {...newProps} style={style} />;
+  return <Box ref={ref} {...newProps} style={style} />;
 };
 
-export default Center;
+export default React.forwardRef(Center);
