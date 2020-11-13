@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack } from '../../primitives';
+import { HStack } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
 import type {
   IPinInputProps,
@@ -11,10 +11,13 @@ import { FormControlContext, IFormControlContext } from '../FormControl';
 export const PinInputContext = React.createContext({});
 
 const PinInput = ({ children, ...props }: IPinInputProps) => {
-  const { manageFocus, defaultValue, value, ...newProps } = usePropsConfig(
-    'PinInput',
-    props
-  );
+  const {
+    manageFocus,
+    defaultValue,
+    value,
+    space,
+    ...newProps
+  } = usePropsConfig('PinInput', props);
   const formControlContext: IFormControlContext = React.useContext(
     FormControlContext
   );
@@ -75,7 +78,11 @@ const PinInput = ({ children, ...props }: IPinInputProps) => {
         value: pinInputValue,
       }}
     >
-      {children && <Stack flexDirection="row">{indexSetter(children)}</Stack>}
+      {children && (
+        <HStack flexDirection="row" space={space}>
+          {indexSetter(children)}
+        </HStack>
+      )}
     </PinInputContext.Provider>
   );
 };

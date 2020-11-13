@@ -37,7 +37,6 @@ const PinInputFiled = ({
 
   return (
     <Input
-      p={2}
       ref={myRef}
       {...context}
       {...props}
