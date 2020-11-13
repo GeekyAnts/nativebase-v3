@@ -1,7 +1,5 @@
 import React from 'react';
-
-export type ColorMode = 'light' | 'dark';
-
+import type { ColorMode, StorageManager } from './utils';
 export interface ColorModeOptions {
   initialColorMode?: ColorMode;
   useSystemColorMode?: boolean;
@@ -11,7 +9,7 @@ export interface ColorModeProviderProps {
   value?: ColorMode;
   children?: React.ReactNode;
   options: ColorModeOptions;
-  colorModeManager?: any;
+  colorModeManager?: StorageManager;
 }
 
 interface ColorModeContextType {
@@ -31,14 +29,13 @@ export function ColorModeProvider(props: any) {
   } = props;
 
   const [colorMode, rawSetColorMode] = React.useState<ColorMode | undefined>(
-    // colorModeManager.get
-    //   ? colorModeManager.get(initialColorMode)
-    //   :
-    initialColorMode
+    colorModeManager ? colorModeManager.get(initialColorMode) : initialColorMode
   );
   const setColorMode = React.useCallback(
     (value: ColorMode) => {
-      // colorModeManager.set(value);
+      if (colorModeManager) {
+        colorModeManager.set(value);
+      }
       rawSetColorMode(value);
     },
     [colorModeManager]

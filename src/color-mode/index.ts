@@ -4,4 +4,6 @@ export {
   ColorModeContext,
   useColorModeValue,
   useColorMode,
-} from './ColorModeProvider';
+} from './provider';
+
+export { ColorMode, StorageManager } from './utils';
