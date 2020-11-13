@@ -49,6 +49,7 @@ export * from './components/primitives/Text';
 export * from './components/primitives/TextArea';
 export * from './components/composites/Toast';
 export * from './components/composites/Transitions';
+export * from './components/hooks/useClipboard';
 export * from './components/primitives/VStack';
 export * from './components/composites/Wrap';
 export * from './components/primitives/ZStack';
