@@ -28,6 +28,7 @@ export type IIconProps = TypographyProps &
     focusable?: boolean;
     children?: JSX.Element[] | JSX.Element;
     stroke?: string;
+    strokeWidth?: string;
   };
 
 export type ICreateIconProps = {
