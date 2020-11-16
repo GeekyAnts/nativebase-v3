@@ -1,10 +1,10 @@
 import { get, isNil, mergeWith } from 'lodash';
-import { useTheme } from './useTheme';
+import { useNativeBase } from './../../hooks';
 import { themePropertyMap } from './../base';
 import { omitUndefined } from './../tools/';
 
 export function usePropsConfig(component: string, props: any) {
-  const theme = useTheme();
+  const { theme, ...colorModeProps } = useNativeBase();
   if (!props) {
     props = {};
   }
@@ -26,7 +26,12 @@ export function usePropsConfig(component: string, props: any) {
   let componentBaseStyle =
     typeof componentTheme.baseStyle !== 'function'
       ? componentTheme.baseStyle
-      : componentTheme.baseStyle({ theme, ...newProps, ...props });
+      : componentTheme.baseStyle({
+          theme,
+          ...newProps,
+          ...props,
+          ...colorModeProps,
+        });
 
   newProps = mergeWith(
     newProps,
@@ -61,6 +66,7 @@ export function usePropsConfig(component: string, props: any) {
       ...newProps,
       colorScheme,
       theme,
+      ...colorModeProps,
     });
     // @ts-ignore
     newProps = mergeWith(newProps, variantProps, (objValue, srcValue, key) => {

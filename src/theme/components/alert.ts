@@ -47,8 +47,8 @@ const topAccentStyle = (props: Record<string, any>) => {
 };
 
 const variants = {
-  'subtle': subtleStyle,
-  'solid': solidStyle,
+  subtle: subtleStyle,
+  solid: solidStyle,
   'left-accent': leftAccentStyle,
   'top-accent': topAccentStyle,
 };
