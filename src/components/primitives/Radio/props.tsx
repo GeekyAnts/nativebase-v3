@@ -13,7 +13,6 @@ export type IRadioProps = IBoxProps & {
   isInvalid?: boolean;
   size?: 'sm' | 'md' | 'lg';
   icon?: JSX.Element;
-  children?: JSX.Element;
   onChange?: (value?: string | number) => void;
   // onBlur?: (event: any) => void;
   // onFocus?: (event: any) => void;
@@ -29,7 +28,7 @@ export type IRadioGroupProps = IBoxProps & {
   colorScheme?: string;
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
-  onChange?: (value: string | number) => void;
+  onChange?: (value?: string | number) => void;
   // Custom props
   style?: any;
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import ButtonGroup from './ButtonGroup';
+import WithRef from './WithRef';
 import Sizes from './sizes';
 import Usage from './usage';
 import Variants from './variants';
@@ -19,4 +20,5 @@ storiesOf('Button', module)
   .add('Loading', () => <Loading />)
   .add('Icons', () => <Icons />)
   .add('ButtonGroup', () => <ButtonGroup />)
-  .add('Composition', () => <Composition />);
+  .add('Composition', () => <Composition />)
+  .add('WithRef', () => <WithRef />);

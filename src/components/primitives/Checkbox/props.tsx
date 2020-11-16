@@ -14,8 +14,7 @@ export type ICheckboxProps = IBoxProps & {
   isInvalid?: boolean;
   size?: 'sm' | 'md' | 'lg';
   icon?: JSX.Element;
-  children?: JSX.Element;
-  onChange?: (value: string | number, currentState?: boolean) => void;
+  onChange?: (value?: string | number, currentState?: boolean) => void;
   // onBlur?: (event: any) => void;
   // onFocus?: (event: any) => void;
   ariaLabel?: string;
@@ -30,8 +29,7 @@ export type ICheckboxGroupProps = IBoxProps & {
   defaultValue?: Array<any>;
   colorScheme?: string;
   size?: 'sm' | 'md' | 'lg';
-  children: React.ReactNode;
-  onChange?: (values: Array<any>) => void;
+  onChange?: (values?: Array<any>) => void;
   // Custom props
   style?: any;
 };

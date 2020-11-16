@@ -3,7 +3,10 @@ import { Input } from '../../primitives';
 import type { INumberInputFieldProps } from './props';
 import { NumberInputContext, INumberInputContext } from './index';
 
-const NumberInputFiled = ({ isDisabled, ...props }: INumberInputFieldProps) => {
+const NumberInputFiled = (
+  { isDisabled, ...props }: INumberInputFieldProps,
+  ref: any
+) => {
   const {
     handleChange,
     handleChangeWithoutCheck,
@@ -42,8 +45,9 @@ const NumberInputFiled = ({ isDisabled, ...props }: INumberInputFieldProps) => {
       value={`${numberInputValue}`}
       style={[context.style, props.style]}
       InputRightElement={numberInputStepper}
+      ref={ref}
     />
   );
 };
 
-export default NumberInputFiled;
+export default React.forwardRef(NumberInputFiled);

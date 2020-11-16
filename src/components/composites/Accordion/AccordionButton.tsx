@@ -8,13 +8,10 @@ import type {
 import { AccordionItemContext } from './AccordionItem';
 import { TouchableOpacity } from 'react-native';
 
-const AccordionButton = ({
-  children,
-  style,
-  _expanded,
-  _disabled,
-  ...props
-}: IAccordionButtonProps) => {
+const AccordionButton = (
+  { children, style, _expanded, _disabled, ...props }: IAccordionButtonProps,
+  ref: any
+) => {
   const {
     isOpen,
     isDisabled,
@@ -27,29 +24,33 @@ const AccordionButton = ({
   };
   const borderColor = useToken('colors', 'muted.2');
   return (
-    <TouchableOpacity
-      activeOpacity={1}
-      disabled={isDisabled}
-      onPress={() => pressHandler()}
-      accessible={true}
-      accessibilityRole="checkbox"
-    >
-      <Box
-        p={3}
-        borderTopWidth={1}
-        borderBottomWidth={1}
-        borderColor={borderColor}
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="center"
-        {...props}
-        style={[style, isOpen && _expanded, isDisabled && _disabled]}
+    <>
+      <TouchableOpacity
+        activeOpacity={1}
+        disabled={isDisabled}
+        onPress={() => pressHandler()}
+        accessible={true}
+        accessibilityRole="checkbox"
+        ref={ref}
       >
-        {children}
-      </Box>
-    </TouchableOpacity>
+        <Box
+          p={3}
+          borderTopWidth={1}
+          borderBottomWidth={1}
+          borderColor={borderColor}
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="center"
+          {...props}
+          style={[style, isOpen && _expanded, isDisabled && _disabled]}
+        >
+          {children}
+        </Box>
+      </TouchableOpacity>
+      <Box>kfkdshfdjsakf</Box>
+    </>
   );
 };
 
-export default AccordionButton;
+export default React.forwardRef(AccordionButton);

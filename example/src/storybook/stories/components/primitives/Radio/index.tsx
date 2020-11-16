@@ -10,6 +10,7 @@ import CustomIcon from './customeIcon';
 import Size from './size';
 import Invalid from './invalid';
 import FormControlled from './formControlled';
+import WithRef from './withRef';
 
 storiesOf('Radio', module)
   .addDecorator(withKnobs)
@@ -21,4 +22,5 @@ storiesOf('Radio', module)
   .add('Size', () => <Size />)
   .add('Custom Color', () => <CustomColor />)
   .add('Custom Icon', () => <CustomIcon />)
-  .add('Form Controlled', () => <FormControlled />);
+  .add('Form Controlled', () => <FormControlled />)
+  .add('With Ref', () => <WithRef />);
