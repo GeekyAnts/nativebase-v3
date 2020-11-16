@@ -202,6 +202,7 @@ import {
 
 export * from './theme';
 export * from './core';
+export * from './hooks';
 export * from './color-mode';
 
 export {
