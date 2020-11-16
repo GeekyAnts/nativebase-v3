@@ -5,9 +5,9 @@ export type ITextAreaProps = IInputProps & {
   totalLines?: number;
 };
 
-const TextArea = ({ totalLines, ...props }: ITextAreaProps) => {
+const TextArea = ({ totalLines, ...props }: ITextAreaProps, ref: any) => {
   const newProps = usePropsConfig('TextArea', props);
-  return <Input {...newProps} numberOfLines={totalLines} />;
+  return <Input {...newProps} numberOfLines={totalLines} ref={ref} />;
 };
 
-export default TextArea;
+export default React.forwardRef(TextArea);

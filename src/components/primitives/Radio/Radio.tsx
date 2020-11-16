@@ -5,7 +5,7 @@ import { usePropsConfig } from '../../../theme';
 import { RadioContext } from './RadioGroup';
 import type { IRadioProps, IRadioContext } from './props';
 
-const Radio = ({ children, ...props }: IRadioProps) => {
+const Radio = ({ children, ...props }: IRadioProps, ref: any) => {
   const {
     onChangeHandler,
     value: cValue,
@@ -50,6 +50,7 @@ const Radio = ({ children, ...props }: IRadioProps) => {
       accessible={true}
       accessibilityLabel={ariaLabel}
       accessibilityRole="checkbox"
+      ref={ref}
     >
       <Box
         {...newProps}
@@ -84,4 +85,4 @@ const Radio = ({ children, ...props }: IRadioProps) => {
   );
 };
 
-export default Radio;
+export default React.forwardRef(Radio);
