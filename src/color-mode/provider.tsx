@@ -32,11 +32,11 @@ export function ColorModeProvider(props: any) {
     colorModeManager ? colorModeManager.get(initialColorMode) : initialColorMode
   );
   const setColorMode = React.useCallback(
-    (value: ColorMode) => {
+    (val: ColorMode) => {
       if (colorModeManager) {
-        colorModeManager.set(value);
+        colorModeManager.set(val);
       }
-      rawSetColorMode(value);
+      rawSetColorMode(val);
     },
     [colorModeManager]
   );

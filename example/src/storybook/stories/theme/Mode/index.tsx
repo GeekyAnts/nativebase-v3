@@ -3,14 +3,14 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import Wrapper from './../../components/Wrapper';
 import Basic from './Basic';
-import { extendTheme, useColorModeValue } from '@native-base/v3';
+import { extendTheme, themeTools } from '@native-base/v3';
 
 const customTheme = extendTheme({
   components: {
     Heading: {
-      baseStyle: () => {
+      baseStyle: (props: any) => {
         return {
-          color: useColorModeValue('red.3', 'blue.3'),
+          color: themeTools.mode('red.3', 'blue.3')(props),
           fontWeight: 'bold',
         };
       },
