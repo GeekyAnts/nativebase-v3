@@ -38,6 +38,7 @@ export * from './components/composites/PinInput';
 export * from './components/composites/Popover';
 export * from './components/composites/Progress';
 export * from './components/primitives/Radio';
+export * from './theme/Responsive';
 export * from './components/primitives/Row';
 export * from './components/composites/Skeleton';
 export * from './components/primitives/Slider';
