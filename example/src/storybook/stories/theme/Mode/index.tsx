@@ -10,7 +10,7 @@ const customTheme = extendTheme({
     Heading: {
       baseStyle: (props: any) => {
         return {
-          color: themeTools.mode('red.3', 'blue.3')(props),
+          color: themeTools.mode('red.300', 'blue.300')(props),
           fontWeight: 'bold',
         };
       },

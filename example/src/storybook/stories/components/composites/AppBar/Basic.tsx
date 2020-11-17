@@ -21,7 +21,7 @@ export default function () {
           icon={<Icon name="loop" type="MaterialIcons" />}
         />,
       ]}
-      bg="blue.4"
+      bg="blue.400"
     />
   );
 }

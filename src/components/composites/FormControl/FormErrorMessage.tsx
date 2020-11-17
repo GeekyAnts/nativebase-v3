@@ -9,7 +9,7 @@ const FormErrorMessage = ({ children, ...props }: IFormErrorMessageProps) => {
   );
 
   return isInvalid ? (
-    <Box {...props} fontSize="xs" color="red.4">
+    <Box {...props} fontSize="xs" color="red.400">
       {children}
     </Box>
   ) : null;

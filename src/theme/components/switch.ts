@@ -3,7 +3,7 @@ import { get } from 'lodash';
 function baseStyleTrack(props: Record<string, any>) {
   const { colorScheme: c, theme } = props;
   return c
-    ? { false: theme.colors.light[0], true: theme.colors[c][2] }
+    ? { false: theme.colors.light[50], true: theme.colors[c][200] }
     : undefined;
 }
 function baseStyleThumb(props: Record<string, any>) {

@@ -2,9 +2,9 @@ import { isDark, randomColor, mode } from './../tools';
 
 const baseStyle = (props: Record<string, any>) => {
   const { name, theme, ...colorModeProps } = props;
-  const bg = name ? randomColor({ string: name }) : 'gray.4';
-  const color = name ? (isDark(bg)(theme) ? 'dark.1' : 'light.0') : 'white';
-  const borderColor = mode('gray.8', 'white')(colorModeProps);
+  const bg = name ? randomColor({ string: name }) : 'gray.400';
+  const color = name ? (isDark(bg)(theme) ? 'dark.100' : 'light.000') : 'white';
+  const borderColor = mode('gray.800', 'white')(colorModeProps);
   return {
     bg,
     color,

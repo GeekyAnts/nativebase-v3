@@ -8,7 +8,7 @@ export default function () {
         source={{ uri: 'https://nativebase.io/assets/img/front-page-icon.png' }}
         name={'Native Base'}
       >
-        <AvatarBadge bg={'red.2'} />
+        <AvatarBadge bg={'red.200'} />
       </Avatar>
       <Avatar
         source={{ uri: 'https://nativebase.io/assets/img/front-page-icon.png' }}

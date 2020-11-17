@@ -10,7 +10,7 @@ export default function () {
         size={80}
         thickness={10}
         value={20}
-        trackColor={text('Track Color', 'blue.1')}
+        trackColor={text('Track Color', 'blue.100')}
       />
     </Center>
   );

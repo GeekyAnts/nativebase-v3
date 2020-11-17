@@ -6,7 +6,7 @@ export default function () {
       <Circle size={98} bg="tomato">
         <Icon name="audiotrack" type="MaterialIcons" color="white" size={8} />
       </Circle>
-      <Square size="lg" bg="blue.3">
+      <Square size="lg" bg="blue.300">
         <Box fontWeight="bold" fontSize="lg" color="white">
           20
         </Box>
