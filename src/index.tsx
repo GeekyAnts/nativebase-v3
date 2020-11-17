@@ -199,6 +199,7 @@ import {
   IListProps,
   IListItemProps,
   Grid,
+  GridItem,
 } from './components/primitives';
 
 export * from './theme';
@@ -399,4 +400,5 @@ export {
   IMenuGroupProps,
   IMenuOptionGroupProps,
   Grid,
+  GridItem,
 };

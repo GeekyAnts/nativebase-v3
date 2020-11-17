@@ -1,7 +1,31 @@
 import React from 'react';
-import { Grid } from '@native-base/v3';
+import { Grid, GridItem, Text } from '@native-base/v3';
 
 export default function BasicGrid() {
-  //@ts-ignore
-  return <Grid templateColumns="1 2 1 1" templateRows="1 4 3 2"></Grid>;
+  return (
+    //@ts-ignore
+    <Grid templateColumns="1 2 3 1 2 1">
+      <GridItem>
+        <Text>1</Text>
+      </GridItem>
+      <GridItem colSpan={2}>
+        <Text>2</Text>
+      </GridItem>
+      <GridItem>
+        <Text>3</Text>
+      </GridItem>
+      <GridItem>
+        <Text>4</Text>
+      </GridItem>
+      <GridItem>
+        <Text>5</Text>
+      </GridItem>
+      <GridItem>
+        <Text>6</Text>
+      </GridItem>
+      <GridItem>
+        <Text>7</Text>
+      </GridItem>
+    </Grid>
+  );
 }
