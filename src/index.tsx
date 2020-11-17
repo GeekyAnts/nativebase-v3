@@ -198,6 +198,7 @@ import {
   Ul,
   IListProps,
   IListItemProps,
+  Grid,
 } from './components/primitives';
 
 export * from './theme';
@@ -397,4 +398,5 @@ export {
   IMenuItemOptionProps,
   IMenuGroupProps,
   IMenuOptionGroupProps,
+  Grid,
 };
