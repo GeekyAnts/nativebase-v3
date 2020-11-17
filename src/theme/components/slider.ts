@@ -9,7 +9,7 @@ const activeColorSetter = (props: Record<string, any>) => {
   const { theme, colorScheme, isDisabled } = props;
   const simpleColorScheme = colorScheme.split('.')[0];
 
-  if (isDisabled) return 'gray.3';
+  if (isDisabled) return 'gray.300';
   else if (simpleColorScheme in theme.colors) {
     return theme.colors[simpleColorScheme][0] === '#'
       ? simpleColorScheme

@@ -6,7 +6,11 @@ export default function () {
     <Menu
       trigger={(triggerProps: any) => {
         return (
-          <IconButton icon={<Icon name="menu" />} {...triggerProps} bg="teal.2">
+          <IconButton
+            icon={<Icon name="menu" />}
+            {...triggerProps}
+            bg="teal.200"
+          >
             Show Menu
           </IconButton>
         );

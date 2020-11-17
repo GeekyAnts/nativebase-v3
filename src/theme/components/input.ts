@@ -2,18 +2,18 @@ function roundedStyle() {
   return {
     borderRadius: '50',
     borderWidth: 1,
-    borderColor: 'gray.4',
+    borderColor: 'gray.400',
   };
 }
 function defaultStyle() {
   return {
     borderWidth: 1,
-    borderColor: 'gray.4',
+    borderColor: 'gray.400',
   };
 }
 function filledStyle() {
   return {
-    backgroundColor: 'gray.2',
+    backgroundColor: 'gray.200',
   };
 }
 function unstyledStyle() {
@@ -25,7 +25,7 @@ function underlinedStyle() {
   return {
     borderRadius: 0,
     borderWidth: 0,
-    borderColor: 'gray.4',
+    borderColor: 'gray.400',
     borderBottomWidth: 1,
   };
 }
@@ -41,11 +41,11 @@ const variants = {
 
 const sizes = {
   '2xl': { fontSize: '2xl' },
-  'xl': { fontSize: 'xl' },
-  'lg': { fontSize: 'lg' },
-  'md': { fontSize: 'md' },
-  'sm': { fontSize: 'sm' },
-  'xs': { fontSize: 'xs' },
+  xl: { fontSize: 'xl' },
+  lg: { fontSize: 'lg' },
+  md: { fontSize: 'md' },
+  sm: { fontSize: 'sm' },
+  xs: { fontSize: 'xs' },
 };
 
 const defaultProps = {
@@ -53,8 +53,8 @@ const defaultProps = {
   size: 'md',
   variant: 'default',
   _isDisabledProps: {
-    backgroundColor: 'gray.1',
-    borderColor: 'gray.3',
+    backgroundColor: 'gray.100',
+    borderColor: 'gray.300',
   },
 };
 

@@ -8,7 +8,7 @@ export default function () {
         <Tag
           colorScheme="green"
           variant="solid"
-          bg="red.2"
+          bg=" red.200"
           rounded={100}
           size={size}
         >

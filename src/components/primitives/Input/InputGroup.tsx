@@ -5,7 +5,7 @@ import Flex from '../Flex';
 
 const addonsDefaultStyle = {
   p: 3,
-  borderColor: 'gray.3',
+  borderColor: 'gray.300',
   borderWidth: 1,
 };
 
@@ -15,7 +15,7 @@ export const InputLeftAddon = (props: IBoxProps & IInputProps) => {
       {...addonsDefaultStyle}
       borderRightWidth={0}
       roundedLeft={4}
-      bg="gray.2"
+      bg="gray.200"
       {...props}
     >
       <Box m="auto">{props.children}</Box>
@@ -28,7 +28,7 @@ export const InputRightAddon = (props: IBoxProps & IInputProps) => {
       {...addonsDefaultStyle}
       borderLeftWidth={0}
       roundedRight={4}
-      bg="gray.2"
+      bg="gray.200"
       {...props}
     >
       <Box m="auto">{props.children}</Box>

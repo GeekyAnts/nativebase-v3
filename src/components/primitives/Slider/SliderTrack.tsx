@@ -9,7 +9,7 @@ const SliderTrack = ({ children, ...props }: ISliderProps) => {
   return (
     <Box
       position="absolute"
-      backgroundColor="muted.0"
+      backgroundColor="muted.50"
       height={sliderSize}
       borderRadius={999}
       width="100%"

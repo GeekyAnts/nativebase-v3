@@ -4,8 +4,8 @@ function baseStyle(props: Record<string, any>) {
   return {
     borderRadius: 'full',
     borderWidth: 2,
-    borderColor: mode('light.0', 'gray.8')(props),
-    bg: mode('gray.6', 'light.1')(props),
+    borderColor: mode('light.50', 'gray.800')(props),
+    bg: mode('gray.600', 'light.100')(props),
   };
 }
 
