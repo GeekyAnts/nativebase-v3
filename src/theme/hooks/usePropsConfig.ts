@@ -1,92 +1,51 @@
 import { get, isNil, mergeWith } from 'lodash';
-import { useWindowDimensions } from 'react-native';
 import { useNativeBase } from './../../hooks';
 import { themePropertyMap } from './../base';
-import {
-  omitUndefined,
-  getClosestBreakpoint,
-  inValidBreakpointProps,
-  breakpoints,
-} from './../tools/';
+import { omitUndefined } from './../tools/';
 
 export function usePropsConfig(component: string, props: any) {
   const { theme, ...colorModeProps } = useNativeBase();
-  let windowWidth = useWindowDimensions()?.width;
-  let currentBreakpoint = getClosestBreakpoint(theme.breakpoints, windowWidth);
   if (!props) {
     props = {};
   }
   const componentTheme = get(theme, `components.${component}`);
-  props = omitUndefined(props);
-  let newProps: any = {};
-  if (componentTheme) {
-    // Extracting props from defaultProps
-    newProps = extractProps(
-      componentTheme.defaultProps,
-      theme,
-      componentTheme,
-      currentBreakpoint
+  if (!componentTheme) {
+    console.warn(
+      `NB Warning: If you are seeing this, you probably don't need to use usePropsConfig in ${component}.`
     );
-
-    // Extracting props from base style
-    let componentBaseStyle =
-      typeof componentTheme.baseStyle !== 'function'
-        ? componentTheme.baseStyle
-        : componentTheme.baseStyle({
-            theme,
-            ...newProps,
-            ...props,
-            ...colorModeProps,
-          });
-
-    newProps = mergeWith(
-      newProps,
-      componentBaseStyle,
-      // @ts-ignore
-      (objValue, srcValue, key) => {
-        if (!isNil(objValue)) {
-          delete newProps[key];
-        }
-      }
-    );
-
-    // Extracting props from variant
-    if (
-      componentTheme.variants &&
-      newProps.variant &&
-      componentTheme.variants[newProps.variant]
-    ) {
-      const colorScheme =
-        newProps.colorScheme || componentTheme.defaultProps.colorScheme;
-      let variantProps = componentTheme.variants[newProps.variant]({
-        ...newProps,
-        colorScheme,
-        theme,
-        ...colorModeProps,
-      });
-      // added this to handle order of props
-      newProps = mergeWith(
-        newProps,
-        variantProps,
-        // @ts-ignore
-        (objValue, srcValue, key) => {
-          if (!isNil(objValue)) {
-            delete newProps[key];
-          }
-        }
-      );
-      delete newProps.variant;
-      delete newProps.colorScheme;
-    }
+    return props;
   }
+  props = omitUndefined(props);
+  // Extracting props from defaultProps
+  let newProps = extractProps(
+    componentTheme.defaultProps,
+    theme,
+    componentTheme
+  );
+  // Extracting props from base style
+  let componentBaseStyle =
+    typeof componentTheme.baseStyle !== 'function'
+      ? componentTheme.baseStyle
+      : componentTheme.baseStyle({
+          theme,
+          ...newProps,
+          ...props,
+          ...colorModeProps,
+        });
+
+  newProps = mergeWith(
+    newProps,
+    componentBaseStyle,
+    // @ts-ignore
+    (objValue, srcValue, key) => {
+      if (!isNil(objValue)) {
+        delete newProps[key];
+      }
+    }
+  );
 
   // Extracting props from normal props
-  let extractedProps = extractProps(
-    props,
-    theme,
-    componentTheme,
-    currentBreakpoint
-  );
+  let extractedProps = extractProps(props, theme, componentTheme);
   // added this to handle order of props
   // @ts-ignore
   newProps = mergeWith(newProps, extractedProps, (objValue, srcValue, key) => {
@@ -94,6 +53,30 @@ export function usePropsConfig(component: string, props: any) {
       delete newProps[key];
     }
   });
+
+  // Extracting props from variant
+  if (
+    componentTheme.variants &&
+    newProps.variant &&
+    componentTheme.variants[newProps.variant]
+  ) {
+    const colorScheme =
+      newProps.colorScheme || componentTheme.defaultProps.colorScheme;
+    let variantProps = componentTheme.variants[newProps.variant]({
+      ...newProps,
+      colorScheme,
+      theme,
+      ...colorModeProps,
+    });
+    // @ts-ignore
+    newProps = mergeWith(newProps, variantProps, (objValue, srcValue, key) => {
+      if (!isNil(objValue)) {
+        delete newProps[key];
+      }
+    });
+    delete newProps.variant;
+    delete newProps.colorScheme;
+  }
   newProps = omitUndefined(newProps);
   return newProps;
 }
@@ -101,12 +84,7 @@ export function usePropsConfig(component: string, props: any) {
 /*
  Extract props from theme props and omit those from props
 */
-function extractProps(
-  props: any,
-  theme: any,
-  componentTheme: any,
-  currentBreakpoint: number
-) {
+function extractProps(props: any, theme: any, componentTheme: any) {
   let newProps: any = {};
   for (let property in props) {
     // If the property exists in theme map then get its value
@@ -134,49 +112,11 @@ function extractProps(
           newProps = { ...newProps, ...shadowProps };
         }
       } else {
-        newProps[property] = resolveValue(
-          props[property],
-          currentBreakpoint,
-          property
-        );
+        newProps[property] = props[property];
       }
     } else {
-      newProps[property] = resolveValue(
-        props[property],
-        currentBreakpoint,
-        property
-      );
+      newProps[property] = props[property];
     }
   }
   return newProps;
 }
-
-// Checks the property and resolves it if it has breakpoints
-const resolveValue = (
-  values: any,
-  currentBreakpoint: number,
-  property: any
-) => {
-  if (
-    inValidBreakpointProps.indexOf(property) !== -1 ||
-    (inValidBreakpointProps.indexOf(property) === -1 &&
-      typeof values !== 'object')
-  ) {
-    return values;
-  } else {
-    return findLastValidBreakpoint(values, currentBreakpoint);
-  }
-};
-
-const findLastValidBreakpoint = (values: any, currentBreakpoint: number) => {
-  let valArray = Array.isArray(values)
-    ? values
-    : breakpoints.map((bPoint: string) => values[bPoint]);
-  return (
-    valArray[currentBreakpoint] ??
-    valArray
-      .slice(0, currentBreakpoint + 1)
-      .filter((v: any) => v ?? null)
-      .pop()
-  );
-};

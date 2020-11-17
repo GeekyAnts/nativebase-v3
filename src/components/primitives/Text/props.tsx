@@ -28,12 +28,7 @@ export type ITextProps = ColorProps &
   customBackgroundProps &
   customTypographyProps & {
     children?: React.ReactNode | string;
-    fontSize?:
-      | typeof sizes[number]
-      | number
-      | Array<number>
-      | Array<string>
-      | Record<string, string>;
+    fontSize?: typeof sizes[number] | number;
     noOfLines?: number;
     style?: any;
     bold?: boolean;

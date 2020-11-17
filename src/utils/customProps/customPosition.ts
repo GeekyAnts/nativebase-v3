@@ -1,6 +1,5 @@
 import type * as CSS from 'csstype';
 import { Config, system } from 'styled-system';
-import type { ResponsiveValue } from './responsiveValue';
 
 const config: Config = {
   pos: {
@@ -27,19 +26,19 @@ export interface customPositionProps {
   /**
    * The CSS `left`, `right`, `top`, `bottom` property
    */
-  inset?: ResponsiveValue<CSS.Property.Left>;
+  inset?: CSS.Property.Left;
   /**
    * The CSS `left`, and `right` property
    */
-  insetX?: ResponsiveValue<CSS.Property.Left>;
+  insetX?: CSS.Property.Left;
   /**
    * The CSS `top`, and `bottom` property
    */
-  insetY?: ResponsiveValue<CSS.Property.Left>;
+  insetY?: CSS.Property.Left;
   /**
    * The CSS `position` property
    */
-  pos?: ResponsiveValue<CSS.Property.Position>;
+  pos?: CSS.Property.Position;
 }
 
 export const customPosition = system(config);
