@@ -26,6 +26,7 @@ export type IImageProps = RNImageProps &
   SpaceProps &
   LayoutProps &
   FlexboxProps &
+  BorderProps &
   customExtraProps &
   customBorderProps &
   customShadowProps &

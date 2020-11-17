@@ -13,14 +13,13 @@ export function extractInObject(parent: any, values: Array<string>) {
   ];
 }
 
-// export const breakpoints = Object.freeze(['base', 'sm', 'md', 'lg', 'xl']);
+export const breakpoints = Object.freeze(['base', 'sm', 'md', 'lg', 'xl']);
 
 export function getClosestBreakpoint(
   values: Record<string, any>,
   point: number
 ) {
   let dimValues = Object.values(values);
-  let dimKeys = Object.keys(values);
   let index = -1;
   for (let i = 0; i < dimValues.length; i++) {
     if (dimValues[i] === point) {
@@ -31,7 +30,7 @@ export function getClosestBreakpoint(
       break;
     }
   }
-  return { index, key: index !== -1 ? dimKeys[index] : -1 };
+  return index;
 }
 
 export const inValidBreakpointProps = ['style'];

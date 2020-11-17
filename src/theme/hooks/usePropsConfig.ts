@@ -6,6 +6,7 @@ import {
   omitUndefined,
   getClosestBreakpoint,
   inValidBreakpointProps,
+  breakpoints,
 } from './../tools/';
 
 export function usePropsConfig(component: string, props: any) {
@@ -93,7 +94,6 @@ export function usePropsConfig(component: string, props: any) {
       delete newProps[key];
     }
   });
-
   newProps = omitUndefined(newProps);
   return newProps;
 }
@@ -105,7 +105,7 @@ function extractProps(
   props: any,
   theme: any,
   componentTheme: any,
-  currentBreakpoint: { index: number; key: number | string }
+  currentBreakpoint: number
 ) {
   let newProps: any = {};
   for (let property in props) {
@@ -154,17 +154,29 @@ function extractProps(
 // Checks the property and resolves it if it has breakpoints
 const resolveValue = (
   values: any,
-  currentBreakpoint: { index: number; key: number | string },
+  currentBreakpoint: number,
   property: any
 ) => {
   if (
     inValidBreakpointProps.indexOf(property) !== -1 ||
     (inValidBreakpointProps.indexOf(property) === -1 &&
-      !Array.isArray(values) &&
       typeof values !== 'object')
   ) {
     return values;
   } else {
-    return values[currentBreakpoint[Array.isArray(values) ? 'index' : 'key']];
+    return findLastValidBreakpoint(values, currentBreakpoint);
   }
+};
+
+const findLastValidBreakpoint = (values: any, currentBreakpoint: number) => {
+  let valArray = Array.isArray(values)
+    ? values
+    : breakpoints.map((bPoint: string) => values[bPoint]);
+  return (
+    valArray[currentBreakpoint] ??
+    valArray
+      .slice(0, currentBreakpoint + 1)
+      .filter((v: any) => v ?? null)
+      .pop()
+  );
 };

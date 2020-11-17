@@ -2,17 +2,17 @@ import React from 'react';
 import { Box, Text, Image, Link } from '@native-base/v3';
 export default () => {
   return (
-    <Box p={4} flexDirection="row">
+    <Box flexDir={{ base: 'column', sm: 'column', md: 'row' }}>
       <Box flexShrink={0}>
         <Image
           rounded={10}
-          width={20}
-          height={20}
+          width={40}
+          height={40}
           source={{ uri: 'https://bit.ly/2jYM25F' }}
           alt="Woman paying for a purchase"
         />
       </Box>
-      <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
+      <Box mt={{ base: 4, md: 0 }} ml={{ md: 2 }}>
         <Text
           fontWeight="bold"
           textTransform="uppercase"

@@ -47,9 +47,8 @@ const config: Config = {
 };
 
 export interface customBackgroundProps {
-  w?: CSS.Property.Width;
-
   bg?: CSS.Property.BackgroundColor;
+
   bgColor?: CSS.Property.BackgroundColor;
 
   backgroundColor?: CSS.Property.BackgroundColor;
