@@ -9,7 +9,7 @@ import {
   flexbox,
   border,
 } from 'styled-system';
-
+import { usePropsConfig } from '../../../theme';
 import {
   customBorder,
   customBackground,
@@ -52,6 +52,7 @@ const Text = ({
   strikeThrough,
   ...props
 }: ITextProps) => {
+  const newProps = usePropsConfig('Text', props);
   return (
     <StyledText
       numberOfLines={noOfLines ? noOfLines : isTruncated ? 1 : 999}
@@ -61,8 +62,8 @@ const Text = ({
       textDecorationLine={
         underline ? 'underline' : strikeThrough ? 'line-through' : undefined
       }
-      {...props}
-      fontSize={sub ? 10 : props.fontSize}
+      {...newProps}
+      fontSize={sub ? 10 : newProps.fontSize}
       style={style}
     >
       {children}
