@@ -4609,6 +4609,11 @@ graphql@^14.0.0:
   dependencies:
     iterall "^1.2.2"
 
+grid-template-parser@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/grid-template-parser/-/grid-template-parser-0.3.2.tgz#096046bc66a485c6058133a0884272a6fe7f43f4"
+  integrity sha1-CWBGvGakhcYFgTOgiEJypv5/Q/Q=
+
 growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"

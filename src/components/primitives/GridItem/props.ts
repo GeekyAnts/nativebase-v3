@@ -9,4 +9,5 @@ export type IGridItemProps = IBoxProps & {
   colEnd?: CSS.Property.GridColumnEnd;
   rowStart?: CSS.Property.GridColumnStart;
   rowEnd?: CSS.Property.GridColumnEnd;
+  area?: string;
 };

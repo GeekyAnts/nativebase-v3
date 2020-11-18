@@ -3,6 +3,8 @@ import Flex from '../Flex';
 import type { IGridProps } from './props';
 import type { IGridItemProps } from '../GridItem/props';
 import { Box } from '..';
+//@ts-ignore
+import { grid } from 'grid-template-parser';
 
 export default function Grid({
   children,
@@ -11,15 +13,119 @@ export default function Grid({
   gap,
   columnGap,
   rowGap,
+  templateAreas,
   ...props
 }: IGridProps): JSX.Element {
-  const cols = templateColumns
-    ? templateColumns.split(' ').map(parseFloat)
-    : [];
-  const rows = templateRows ? templateRows.split(' ').map(parseFloat) : [];
+  let cols = templateColumns ? templateColumns.split(' ').map(parseFloat) : [];
+  let rows = templateRows ? templateRows.split(' ').map(parseFloat) : [];
+
+  // Template areas
+  if (templateAreas) {
+    // let templateAreasArr = templateAreas.split("")
+    const parsedTemplate = grid(templateAreas);
+    const { width: colCount, height: rowCount } = parsedTemplate;
+    cols = Array(colCount).fill(1);
+    rows = Array(rowCount).fill(1);
+    const totalColumnSum = cols.reduce(
+      (prevVal, currentVal) => currentVal + prevVal,
+      0
+    );
+    const totalRowSum = rows.reduce(
+      (prevVal, currentVal) => currentVal + prevVal,
+      0
+    );
+
+    // return null;
+    return (
+      <Row {...props}>
+        {React.Children.map(children, (element) => {
+          if (!React.isValidElement(element)) return null;
+
+          const { area: gridAreaarea } = element.props as any;
+          const area = parsedTemplate.areas[gridAreaarea];
+          const colStart = area.column.start - 1;
+          const rowStart = area.row.start - 1;
+          const colEnd = area.column.end - 1;
+          const rowEnd = area.row.end - 1;
+
+          let colGrow = 0;
+          let rowGrow = 0;
+
+          let topGrow = 0;
+          let leftGrow = 0;
+          for (let i = 0; i < colStart; i++) {
+            leftGrow += cols[i];
+          }
+
+          for (let i = 0; i < rowStart; i++) {
+            topGrow += rows[i];
+          }
+
+          for (let i = colStart; i < colEnd; i++) {
+            colGrow += cols[i];
+          }
+
+          for (let i = rowStart; i < rowEnd; i++) {
+            rowGrow += rows[i];
+          }
+
+          let widthVal = (100 * colGrow) / totalColumnSum;
+          let heightVal = (100 * rowGrow) / totalRowSum;
+
+          let topVal = (100 * topGrow) / totalRowSum;
+          let leftVal = (100 * leftGrow) / totalColumnSum;
+
+          const width = `${widthVal}%`;
+          const height = `${heightVal}%`;
+          const top = `${topVal}%`;
+          const left = `${leftVal}%`;
+
+          gap = gap ?? 0;
+          rowGap = rowGap ?? gap;
+          columnGap = columnGap ?? gap;
+
+          let padding = {
+            paddingTop: rowGap,
+            paddingBottom: rowGap,
+            paddingLeft: columnGap,
+            paddingRight: columnGap,
+          };
+
+          if (rowStart === 0) {
+            padding.paddingTop = 0;
+          }
+
+          if (colStart === 0) {
+            padding.paddingLeft = 0;
+          }
+
+          if (rowEnd === rows.length) {
+            padding.paddingBottom = 0;
+          }
+
+          if (colEnd === cols.length) {
+            padding.paddingRight = 0;
+          }
+
+          return (
+            <Box
+              position="absolute"
+              left={left}
+              top={top}
+              width={width}
+              height={height}
+              style={{ ...padding }}
+            >
+              {element}
+            </Box>
+          );
+        })}
+      </Row>
+    );
+  }
 
   // Auto rows
-  if (rows.length === 0 && cols.length > 0) {
+  else if (rows.length === 0 && cols.length > 0) {
     const totalColumnSum = cols.reduce(
       (prevVal, currentVal) => currentVal + prevVal,
       0
@@ -105,16 +211,6 @@ export default function Grid({
           const height = `${heightVal}%`;
           const top = `${topVal}%`;
           const left = `${leftVal}%`;
-
-          console.log('element ', {
-            rowStart,
-            rowEnd,
-            colStart,
-            colEnd,
-            element,
-            left,
-            top,
-          });
 
           if (currentRow === rows.length) {
             currentRow = 0;
