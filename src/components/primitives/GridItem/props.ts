@@ -3,7 +3,7 @@ import type { IBoxProps } from '../../primitives';
 
 export type IGridItemProps = IBoxProps & {
   gap?: CSS.Property.Gap;
-  rowSpan?: CSS.Property.ColumnSpan;
+  rowSpan?: number;
   colSpan?: number;
   colStart?: CSS.Property.GridColumnStart;
   colEnd?: CSS.Property.GridColumnEnd;

@@ -3,7 +3,6 @@ import { Grid, GridItem, Text } from '@native-base/v3';
 
 export default function BasicGrid() {
   return (
-    //@ts-ignore
     <Grid templateColumns="1 2 3 1 2 1">
       <GridItem>
         <Text>1</Text>
