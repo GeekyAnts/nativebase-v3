@@ -200,6 +200,7 @@ import {
   IListItemProps,
   Grid,
   GridItem,
+  SimpleGrid,
 } from './components/primitives';
 
 export * from './theme';
@@ -401,4 +402,5 @@ export {
   IMenuOptionGroupProps,
   Grid,
   GridItem,
+  SimpleGrid,
 };

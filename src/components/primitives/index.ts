@@ -52,3 +52,4 @@ export {
   IListItemProps,
 } from './List';
 export { default as Grid, GridItem } from './Grid';
+export { default as SimpleGrid } from './SimpleGrid';
