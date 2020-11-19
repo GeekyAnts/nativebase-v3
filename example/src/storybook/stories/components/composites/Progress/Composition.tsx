@@ -12,7 +12,13 @@ export default function () {
       <Text>Try different sizes using knobs </Text>
       <Progress rounded="50" size="lg" colorScheme="danger" mb={4} value={65} />
       <Text>You can pass custom background color using bg </Text>
-      <Progress size="xl" colorScheme="warning" bg="teal.2" mb={4} value={75} />
+      <Progress
+        size="xl"
+        colorScheme="warning"
+        bg="teal.200"
+        mb={4}
+        value={75}
+      />
       {/* <Text>
         You can add isIndeterminate for loading animation progress bar
       </Text>

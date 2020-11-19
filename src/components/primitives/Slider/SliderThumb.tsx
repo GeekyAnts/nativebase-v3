@@ -43,7 +43,7 @@ const SliderThumb = ({ children, ...props }: ISliderProps) => {
       <Box
         position="relative"
         borderRadius={999}
-        backgroundColor="light.0"
+        backgroundColor="light.50"
         p={1}
         display="flex"
         justifyContent="center"

@@ -16,7 +16,7 @@ export default function () {
         max={number('Max', 1000)}
         min={number('Min', 100)}
         size={100}
-        color={text('Color', 'red.2')}
+        color={text('Color', 'red.200')}
       >
         <CircularProgressLabel>550%</CircularProgressLabel>
       </CircularProgress>

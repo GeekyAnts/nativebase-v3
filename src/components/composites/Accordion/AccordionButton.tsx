@@ -22,7 +22,7 @@ const AccordionButton = (
   const pressHandler = () => {
     isOpen ? onClose && onClose() : onOpen && onOpen();
   };
-  const borderColor = useToken('colors', 'muted.2');
+  const borderColor = useToken('colors', 'muted.200');
   return (
     <TouchableOpacity
       activeOpacity={1}

@@ -57,7 +57,7 @@ const Text = ({
       numberOfLines={noOfLines ? noOfLines : isTruncated ? 1 : 999}
       fontWeight={bold ? 'bold' : undefined}
       fontStyle={italic ? 'italic' : undefined}
-      bg={highlight ? 'yellow.2' : undefined}
+      bg={highlight ? 'yellow.200' : undefined}
       textDecorationLine={
         underline ? 'underline' : strikeThrough ? 'line-through' : undefined
       }
