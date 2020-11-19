@@ -1,12 +1,5 @@
 import React, { forwardRef } from 'react';
-import {
-  View,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  TouchableNativeFeedback,
-  TouchableNativeFeedbackProps,
-  Platform,
-} from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
 import {
@@ -21,41 +14,8 @@ import { Text } from '../../primitives';
 import { usePropsConfig, themeTools } from '../../../theme';
 import { Spinner, Box, IBoxProps, Flex } from '../../primitives';
 import type { IButtonProps } from './IButtonProps';
-const StyledView = styled(View)<
-  IButtonProps & {
-    colorScheme?: string | undefined;
-    variant?: string | undefined;
-  }
->(
-  color,
-  space,
-  layout,
-  flexbox,
-  border,
-  customBorder,
-  customBackground,
-  customOutline,
-  customShadow,
-  customExtra,
-  customLayout
-);
 
-const StyledAndroidButton = styled(TouchableNativeFeedback)<
-  IButtonProps & TouchableNativeFeedbackProps
->(
-  color,
-  space,
-  layout,
-  flexbox,
-  border,
-  customBorder,
-  customBackground,
-  customOutline,
-  customShadow,
-  customExtra,
-  customLayout
-);
-const StyledIOSButton = styled(TouchableOpacity)<
+const StyledButton = styled(TouchableOpacity)<
   IButtonProps & TouchableOpacityProps
 >(
   color,
@@ -116,7 +76,7 @@ const Button = (
   ]);
 
   const innerButton = (
-    <StyledView {...viewProps} opacity={isLoading ? 0.5 : 1} style={style}>
+    <Box {...viewProps} opacity={isLoading ? 0.5 : 1} style={style}>
       {leftIcon ? <Box mr={viewProps.px / 2 || 2}>{leftIcon}</Box> : null}
       {isLoading ? (
         <Flex direction="row">
@@ -132,40 +92,23 @@ const Button = (
         </Text>
       )}
       {rightIcon ? <Box ml={viewProps.px / 2 || 2}>{rightIcon}</Box> : null}
-    </StyledView>
+    </Box>
   );
 
-  if (Platform.OS === 'android' && Platform.Version >= 21) {
-    return (
-      <StyledAndroidButton
-        accessible
-        accessibilityLabel={ariaLabel}
-        accessibilityRole="button"
-        disabled={isLoading || isDisabled}
-        onPress={onPress ? onPress : () => {}}
-        background={TouchableNativeFeedback.Ripple(textProps.color, false)}
-        ref={ref}
-        {...layoutProps}
-      >
-        {innerButton}
-      </StyledAndroidButton>
-    );
-  } else {
-    return (
-      <StyledIOSButton
-        accessible
-        accessibilityLabel={ariaLabel}
-        accessibilityRole="button"
-        disabled={isLoading || isDisabled}
-        onPress={onPress ? onPress : () => {}}
-        activeOpacity={highlight ? highlight : 0.8}
-        ref={ref}
-        {...layoutProps}
-      >
-        {innerButton}
-      </StyledIOSButton>
-    );
-  }
+  return (
+    <StyledButton
+      accessible
+      accessibilityLabel={ariaLabel}
+      accessibilityRole="button"
+      disabled={isLoading || isDisabled}
+      onPress={onPress ? onPress : () => {}}
+      activeOpacity={highlight ? highlight : 0.8}
+      ref={ref}
+      {...layoutProps}
+    >
+      {innerButton}
+    </StyledButton>
+  );
 };
 
 export { IButtonProps } from './IButtonProps';
