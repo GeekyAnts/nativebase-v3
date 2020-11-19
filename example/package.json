@@ -6,13 +6,16 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start"
+    "start": "./node_modules/.bin/webpack-dev-server -d --config ./web/webpack.config.js --inline --hot --colors",
+    "storybook": "start-storybook"
   },
   "dependencies": {
+    "@storybook/react": "^6.0.28",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-svg": "^12.1.0",
     "react-native-vector-icons": "^7.1.0",
+    "react-native-web": "^0.13.9",
     "styled-components": "^5.2.1",
     "styled-system": "^5.1.5",
     "ts-loader": "^8.0.11"
