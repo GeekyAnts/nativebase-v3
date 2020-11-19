@@ -6,5 +6,5 @@ export type IGridProps = IBoxProps & {
   templateRows?: string;
   rowGap?: number;
   columnGap?: number;
-  templateAreas?: string;
+  templateAreas: string;
 };

@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useMemo, useRef } from 'react';
 import Flex from '../Flex';
 import type { IGridProps } from './props';
 import type { IGridItemProps } from '../GridItem/props';
 import { Box } from '..';
 //@ts-ignore
 import { grid } from 'grid-template-parser';
+
+const get2DArray = (template: string) => {
+  const rows = template.split('\n');
+  let array2D: any = [];
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i].split(' ');
+    array2D[i] = [];
+    row.forEach((item: any) => {
+      array2D[i].push(item.replace('"', ''));
+    });
+  }
+
+  return array2D;
+};
 
 export default function Grid({
   children,
@@ -18,19 +32,154 @@ export default function Grid({
 }: IGridProps): JSX.Element {
   let cols = templateColumns ? templateColumns.split(' ').map(parseFloat) : [];
   let rows = templateRows ? templateRows.split(' ').map(parseFloat) : [];
+  const templateIn2DArray = useMemo(() => get2DArray(templateAreas), [
+    templateAreas,
+  ]);
+
+  const parsedTemplate = grid(templateAreas);
+  const { width: colCount, height: rowCount } = parsedTemplate;
+  let prevRowHeight: any = [];
+
+  const gridItemsRef = useRef<any>({});
+
+  const onLayoutChange = () => {
+    recomputeLayout();
+  };
 
   // Template areas
+  const recomputeLayout = () => {
+    let onHeightCalculationComplete = (areaHeightKeys: any) => {
+      let rowHeight: any = [];
+      for (let i = 0; i < templateIn2DArray.length; i++) {
+        let maxHeightOfCurrentRow = 0;
+        for (let j = 0; j < templateIn2DArray[i].length; j++) {
+          const cell = templateIn2DArray[i][j];
+          const currentRowSpan = parsedTemplate.areas[cell].row.span;
+          const cellHeight = areaHeightKeys[cell] / currentRowSpan;
+          // console.log('template areas ', templateIn2DArray[i][j]);
+
+          if (cellHeight > maxHeightOfCurrentRow) {
+            maxHeightOfCurrentRow = cellHeight;
+          }
+        }
+
+        rowHeight[i] = maxHeightOfCurrentRow;
+      }
+
+      // const totalHeight = rowHeight.reduce(
+      //   (prev, currentVal) => currentVal + prev,
+      //   0
+      // );
+
+      if (JSON.stringify(prevRowHeight) === JSON.stringify(rowHeight)) {
+        return;
+      }
+
+      prevRowHeight = rowHeight;
+      let top = 0;
+      let topsOfEachCell: any = {};
+      for (let j = 0; j < templateIn2DArray[0].length; j++) {
+        topsOfEachCell[templateIn2DArray[0][j]] = 0;
+      }
+
+      for (let i = 1; i < templateIn2DArray.length; i++) {
+        top += rowHeight[i - 1];
+        for (let j = 0; j < templateIn2DArray[i].length; j++) {
+          const cell = templateIn2DArray[i][j];
+          if (topsOfEachCell[cell] === undefined) {
+            topsOfEachCell[cell] = top;
+          }
+        }
+      }
+
+      Object.keys(topsOfEachCell).forEach((key) => {
+        gridItemsRef.current[key].setNativeProps({
+          top: topsOfEachCell[key],
+        });
+      });
+
+      // Set height of span elements
+      Object.keys(parsedTemplate.areas).forEach((key) => {
+        // if (parsedTemplate.areas[key].row.span > 1) {
+        console.log('row start ', key, parsedTemplate.areas[key].row.start);
+        gridItemsRef.current[key].setNativeProps({
+          height:
+            parsedTemplate.areas[key].row.span *
+            rowHeight[parsedTemplate.areas[key].row.start - 1],
+        });
+        // }
+      });
+
+      //   prevRowHeight = rowHeight;
+      //   let numOfRows = templateIn2DArray.length;
+      //   // console.log('max height ', templateIn2DArray);
+
+      //   for (let i = 1; i < templateIn2DArray.length; i++) {
+      //     // top += rowHeight[i - 1];
+      //     // let alreadyIncreased = false;
+      //     for (let j = 0; j < templateIn2DArray[i].length; j++) {
+      //       let k = i - 1;
+      //       let top = areaHeightKeys[templateIn2DArray[0][j]];
+      //       let prevArea = null;
+      //       while (k !== 0) {
+      //         const area = templateIn2DArray[k][j];
+      //         if (area !== prevArea) {
+      //           const upperCellHeight = Math.max(
+      //             areaHeightKeys[area],
+      //             rowHeight[i - 1]
+      //           );
+      //           top += upperCellHeight;
+      //           prevArea = area;
+      //         }
+
+      //         // if (area === "k") {
+
+      //         // }
+      //         k--;
+      //       }
+      //       const cell = templateIn2DArray[i][j];
+      //       console.log('upper cell eeefef ', cell, top);
+
+      //       // console.log('celllellel ', cell);
+      //       if (cell !== templateIn2DArray[i - 1][j]) {
+      //         gridItemsRef.current[cell].setNativeProps({
+      //           top,
+      //         });
+      //       }
+      //     }
+      //   }
+    };
+
+    const areaKeys = Object.keys(parsedTemplate.areas);
+    const heightOfAreas: any = {};
+    areaKeys.forEach((key) => {
+      gridItemsRef.current[key].measure(
+        (_fx: any, _fy: any, _width: any, height: any, _px: any, _py: any) => {
+          heightOfAreas[key] = height;
+          if (Object.keys(heightOfAreas).length === areaKeys.length) {
+            onHeightCalculationComplete(heightOfAreas);
+          }
+        }
+      );
+    });
+
+    // for (let i = 0; i<templateIn2DArray.length; i++) {
+
+    // for (let j = 0; j<templateIn2DArray.length; j++) {
+    //   let
+    //   heightOfAreas[]
+
+    // }
+    // }
+
+    // setRecomputeLayout(false);
+  };
+
   if (templateAreas) {
     // let templateAreasArr = templateAreas.split("")
-    const parsedTemplate = grid(templateAreas);
-    const { width: colCount, height: rowCount } = parsedTemplate;
     cols = Array(colCount).fill(1);
     rows = Array(rowCount).fill(1);
     const totalColumnSum = cols.reduce(
-      (prevVal, currentVal) => currentVal + prevVal,
-      0
-    );
-    const totalRowSum = rows.reduce(
       (prevVal, currentVal) => currentVal + prevVal,
       0
     );
@@ -49,35 +198,20 @@ export default function Grid({
           const rowEnd = area.row.end - 1;
 
           let colGrow = 0;
-          let rowGrow = 0;
 
-          let topGrow = 0;
           let leftGrow = 0;
           for (let i = 0; i < colStart; i++) {
             leftGrow += cols[i];
-          }
-
-          for (let i = 0; i < rowStart; i++) {
-            topGrow += rows[i];
           }
 
           for (let i = colStart; i < colEnd; i++) {
             colGrow += cols[i];
           }
 
-          for (let i = rowStart; i < rowEnd; i++) {
-            rowGrow += rows[i];
-          }
-
           let widthVal = (100 * colGrow) / totalColumnSum;
-          let heightVal = (100 * rowGrow) / totalRowSum;
-
-          let topVal = (100 * topGrow) / totalRowSum;
           let leftVal = (100 * leftGrow) / totalColumnSum;
 
           const width = `${widthVal}%`;
-          const height = `${heightVal}%`;
-          const top = `${topVal}%`;
           const left = `${leftVal}%`;
 
           gap = gap ?? 0;
@@ -111,9 +245,23 @@ export default function Grid({
             <Box
               position="absolute"
               left={left}
-              top={top}
+              // flex={4}
+              onLayout={onLayoutChange}
+              ref={(node: any) => {
+                gridItemsRef.current = {
+                  ...gridItemsRef.current,
+                  [gridAreaarea]: node,
+                };
+                // if (!gridItemsRef.current[area]) {
+                // gridItemsRef.current[area] = {} as any;
+                // }
+                // gridItemsRef.current[area] = node;
+              }}
+              // top={top}
               width={width}
-              height={height}
+              // flex={1}
+              // border="1px solid black"
+              // height={height}
               style={{ ...padding }}
             >
               {element}
