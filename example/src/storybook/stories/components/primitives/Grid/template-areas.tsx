@@ -1,17 +1,25 @@
 import React from 'react';
 import { Box, Grid, GridItem, Text } from '@native-base/v3';
-// "c t t t t g g"
-// "s t t t t g g"
-// "d k f f f g g"
+// `"c c t t t g "
+// "s s t t t g g"
+// "d k f f f g g"`
 export default function LayoutGrid() {
   return (
     <Grid
-      width="100%"
-      templateAreas={`"c c t t t g g"
-"s s t t t g g"
-"d k f f f g g"`}
+      templateAreas={`"c c t t g g"
+"d s t t g g"
+"d space1 f space2 g g"
+"j j j k g g"`}
       gap={2}
+      width="100%"
     >
+      <GridItem area="space1">
+        <Box justifyContent="center" alignItems="center"></Box>
+      </GridItem>
+      <GridItem area="space2">
+        <Box justifyContent="center" alignItems="center"></Box>
+      </GridItem>
+
       <GridItem area="s">
         <Box justifyContent="center" alignItems="center">
           <Text>s</Text>
@@ -25,6 +33,12 @@ export default function LayoutGrid() {
       <GridItem area="d">
         <Box justifyContent="center" alignItems="center">
           <Text>d</Text>
+        </Box>
+      </GridItem>
+
+      <GridItem area="j">
+        <Box flex={1} bg="#fff" justifyContent="center" alignItems="center">
+          <Text>j</Text>
         </Box>
       </GridItem>
 

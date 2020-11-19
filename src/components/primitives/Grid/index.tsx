@@ -66,11 +66,6 @@ export default function Grid({
         rowHeight[i] = maxHeightOfCurrentRow;
       }
 
-      // const totalHeight = rowHeight.reduce(
-      //   (prev, currentVal) => currentVal + prev,
-      //   0
-      // );
-
       if (JSON.stringify(prevRowHeight) === JSON.stringify(rowHeight)) {
         return;
       }
@@ -92,6 +87,7 @@ export default function Grid({
         }
       }
 
+      // Set top of elements
       Object.keys(topsOfEachCell).forEach((key) => {
         gridItemsRef.current[key].setNativeProps({
           top: topsOfEachCell[key],
@@ -100,54 +96,17 @@ export default function Grid({
 
       // Set height of span elements
       Object.keys(parsedTemplate.areas).forEach((key) => {
-        // if (parsedTemplate.areas[key].row.span > 1) {
-        console.log('row start ', key, parsedTemplate.areas[key].row.start);
+        let rowStart = parsedTemplate.areas[key].row.start - 1;
+        let rowEnd = parsedTemplate.areas[key].row.end - 1;
+        let totalHeight = 0;
+        for (let i = rowStart; i < rowEnd; i++) {
+          totalHeight += rowHeight[i];
+        }
+
         gridItemsRef.current[key].setNativeProps({
-          height:
-            parsedTemplate.areas[key].row.span *
-            rowHeight[parsedTemplate.areas[key].row.start - 1],
+          height: totalHeight,
         });
-        // }
       });
-
-      //   prevRowHeight = rowHeight;
-      //   let numOfRows = templateIn2DArray.length;
-      //   // console.log('max height ', templateIn2DArray);
-
-      //   for (let i = 1; i < templateIn2DArray.length; i++) {
-      //     // top += rowHeight[i - 1];
-      //     // let alreadyIncreased = false;
-      //     for (let j = 0; j < templateIn2DArray[i].length; j++) {
-      //       let k = i - 1;
-      //       let top = areaHeightKeys[templateIn2DArray[0][j]];
-      //       let prevArea = null;
-      //       while (k !== 0) {
-      //         const area = templateIn2DArray[k][j];
-      //         if (area !== prevArea) {
-      //           const upperCellHeight = Math.max(
-      //             areaHeightKeys[area],
-      //             rowHeight[i - 1]
-      //           );
-      //           top += upperCellHeight;
-      //           prevArea = area;
-      //         }
-
-      //         // if (area === "k") {
-
-      //         // }
-      //         k--;
-      //       }
-      //       const cell = templateIn2DArray[i][j];
-      //       console.log('upper cell eeefef ', cell, top);
-
-      //       // console.log('celllellel ', cell);
-      //       if (cell !== templateIn2DArray[i - 1][j]) {
-      //         gridItemsRef.current[cell].setNativeProps({
-      //           top,
-      //         });
-      //       }
-      //     }
-      //   }
     };
 
     const areaKeys = Object.keys(parsedTemplate.areas);
@@ -245,6 +204,7 @@ export default function Grid({
             <Box
               position="absolute"
               left={left}
+              border="1px solid red"
               // flex={4}
               onLayout={onLayoutChange}
               ref={(node: any) => {
@@ -397,6 +357,7 @@ export default function Grid({
 
           return (
             <Box
+              border="1px solid red"
               position="absolute"
               left={left}
               top={top}
