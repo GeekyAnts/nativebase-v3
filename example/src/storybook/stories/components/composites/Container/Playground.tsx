@@ -5,7 +5,7 @@ import { boolean, text } from '@storybook/addon-knobs';
 export default function () {
   return (
     <Container
-      centerContent={boolean('defaultIsChecked', true)}
+      centerContent={boolean('centerContent', true)}
       maxWidth={text('override default max-width', '80%')}
     >
       <Heading>Benefits to a joint design and development system</Heading>

@@ -24,32 +24,29 @@ const AccordionButton = (
   };
   const borderColor = useToken('colors', 'muted.2');
   return (
-    <>
-      <TouchableOpacity
-        activeOpacity={1}
-        disabled={isDisabled}
-        onPress={() => pressHandler()}
-        accessible={true}
-        accessibilityRole="checkbox"
-        ref={ref}
+    <TouchableOpacity
+      activeOpacity={1}
+      disabled={isDisabled}
+      onPress={() => pressHandler()}
+      accessible={true}
+      accessibilityRole="checkbox"
+      ref={ref}
+    >
+      <Box
+        p={3}
+        borderTopWidth={1}
+        borderBottomWidth={1}
+        borderColor={borderColor}
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+        {...props}
+        style={[style, isOpen && _expanded, isDisabled && _disabled]}
       >
-        <Box
-          p={3}
-          borderTopWidth={1}
-          borderBottomWidth={1}
-          borderColor={borderColor}
-          display="flex"
-          flexDirection="row"
-          justifyContent="space-between"
-          alignItems="center"
-          {...props}
-          style={[style, isOpen && _expanded, isDisabled && _disabled]}
-        >
-          {children}
-        </Box>
-      </TouchableOpacity>
-      <Box>kfkdshfdjsakf</Box>
-    </>
+        {children}
+      </Box>
+    </TouchableOpacity>
   );
 };
 

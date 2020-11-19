@@ -11,7 +11,7 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import com.nativebase.NativeBasePackage;
+//import com.nativebase.NativeBasePackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -28,7 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for NativeBaseExample:
           // packages.add(new MyReactNativePackage());
-          packages.add(new NativeBasePackage());
+          // packages.add(new NativeBasePackage());
 
           return packages;
         }
