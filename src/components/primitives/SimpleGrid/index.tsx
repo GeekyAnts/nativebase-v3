@@ -1,5 +1,5 @@
 import React from 'react';
-import Flex from '../Flex';
+import Flex, { IFlexProps } from '../Flex';
 import type { ISimpleGridProps } from './props';
 // const isDebug = process.env.NODE_ENV !== 'production';
 
@@ -79,17 +79,17 @@ export default function SimpleGrid({
   return <></>;
 }
 
-const Col = ({ size, children, ...props }: any = { size: 1 }) => {
+const Col = ({ children, ...props }: IFlexProps) => {
   return (
-    <Flex direction="column" flex={size} {...props}>
+    <Flex direction="column" {...props}>
       {children}
     </Flex>
   );
 };
 
-const Row = ({ size, children, ...props }: any = { size: 1 }) => {
+const Row = ({ children, ...props }: IFlexProps) => {
   return (
-    <Flex direction="row" flex={size} {...props}>
+    <Flex direction="row" {...props}>
       {children}
     </Flex>
   );
