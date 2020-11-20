@@ -51,4 +51,3 @@ export {
   IListProps,
   IListItemProps,
 } from './List';
-export { default as SimpleGrid } from './SimpleGrid';

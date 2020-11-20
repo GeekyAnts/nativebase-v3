@@ -8,12 +8,14 @@ const Flex = ({
   direction,
   align,
   justify,
+  wrap,
   basis,
   grow,
   shrink,
   ...props
 }: IFlexProps) => {
   let newProps = usePropsConfig('Flex', props);
+
   return (
     <Box
       {...newProps}
@@ -23,6 +25,7 @@ const Flex = ({
       flexGrow={grow}
       flexBasis={basis}
       flexShrink={shrink}
+      flexWrap={wrap}
       style={style}
     />
   );

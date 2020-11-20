@@ -137,6 +137,8 @@ import {
   IMenuItemOptionProps,
   IMenuGroupProps,
   IMenuOptionGroupProps,
+  SimpleGrid,
+  ISimpleGridProps,
 } from './components/composites';
 
 import {
@@ -198,9 +200,6 @@ import {
   Ul,
   IListProps,
   IListItemProps,
-  Grid,
-  GridItem,
-  SimpleGrid,
 } from './components/primitives';
 
 export * from './theme';
@@ -400,7 +399,6 @@ export {
   IMenuItemOptionProps,
   IMenuGroupProps,
   IMenuOptionGroupProps,
-  Grid,
-  GridItem,
   SimpleGrid,
+  ISimpleGridProps,
 };

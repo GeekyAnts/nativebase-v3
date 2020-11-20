@@ -54,4 +54,4 @@ export * from './components/hooks/useDisclose';
 export * from './components/primitives/VStack';
 export * from './components/composites/Wrap';
 export * from './components/primitives/ZStack';
-export * from './components/primitives/SimpleGrid';
+export * from './components/composites/SimpleGrid';

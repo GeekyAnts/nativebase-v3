@@ -1,5 +1,5 @@
 import React from 'react';
-import Flex, { IFlexProps } from '../Flex';
+import { Flex, IFlexProps } from '../../primitives';
 import type { ISimpleGridProps } from './props';
 // const isDebug = process.env.NODE_ENV !== 'production';
 
@@ -17,13 +17,17 @@ const DEBUG_STYLES = false
       cols: {},
     };
 
-export default function SimpleGrid({
+export function SimpleGrid({
   columns,
   spacing,
+  spacingX,
+  spacingY,
   minChildWidth,
   children,
 }: ISimpleGridProps): JSX.Element {
   let cellSpacing = spacing ?? 0;
+  let cellSpacingX = spacingX ?? cellSpacing;
+  let cellSpacingY = spacingY ?? cellSpacing;
 
   const childrenArray = React.Children.toArray(children);
   if (columns) {
@@ -36,12 +40,13 @@ export default function SimpleGrid({
       <>
         {rowSlices.map((row, rowIndex) => {
           return (
-            <Row flexWrap="wrap" key={rowIndex} mx={-1 * cellSpacing}>
+            <Row wrap="wrap" key={rowIndex} mx={-1 * cellSpacingX}>
               {row.map((col, colIndex) => {
                 return (
                   <Col
                     {...DEBUG_STYLES.cols}
-                    m={cellSpacing}
+                    my={cellSpacingY}
+                    mx={cellSpacingX}
                     flex={1}
                     key={colIndex}
                   >
@@ -56,17 +61,20 @@ export default function SimpleGrid({
     );
   } else if (minChildWidth) {
     return (
-      <Row {...DEBUG_STYLES.rows} flexWrap="wrap" mx={-1 * cellSpacing}>
+      <Row
+        {...DEBUG_STYLES.rows}
+        wrap="wrap"
+        mx={-1 * cellSpacingX}
+        justify="space-between"
+      >
         {childrenArray.map((col, colIndex) => {
           return (
             <Col
               {...DEBUG_STYLES.cols}
               key={colIndex}
-              margin={cellSpacing}
-              flex={1}
-              style={{
-                minWidth: minChildWidth,
-              }}
+              mx={cellSpacingX}
+              my={cellSpacingY}
+              width={minChildWidth}
             >
               {col}
             </Col>

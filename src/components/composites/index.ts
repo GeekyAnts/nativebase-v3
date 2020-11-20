@@ -153,3 +153,5 @@ export {
   IMenuGroupProps,
   IMenuOptionGroupProps,
 } from './Menu';
+
+export { SimpleGrid, ISimpleGridProps } from './SimpleGrid';

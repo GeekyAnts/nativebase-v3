@@ -4,11 +4,11 @@ import React from 'react';
 const items = 12;
 const data = Array(items).fill(0);
 
-export default function MinChildWidthSimpleGrid() {
+export default function NumberOfColumnsSimpleGrid() {
   return (
-    <SimpleGrid minChildWidth={100} spacing={1}>
+    <SimpleGrid columns={3} spacing={2}>
       {data.map((_item, index) => {
-        return <Box key={index} bg="#d2d2d2" height={100}></Box>;
+        return <Box key={index} height={100} bg="#d1d1d1"></Box>;
       })}
     </SimpleGrid>
   );
