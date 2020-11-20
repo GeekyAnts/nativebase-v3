@@ -11,7 +11,7 @@ export default function () {
     });
   }, [myRef]);
   return (
-    <Box width="100%" bg="orange.3" p={4} color="white" ref={myRef}>
+    <Box width="100%" bg="orange.300" p={4} color="white" ref={myRef}>
       This is a Box
     </Box>
   );

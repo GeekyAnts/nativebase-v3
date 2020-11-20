@@ -9,7 +9,7 @@ export default function () {
   return (
     <Center>
       <Heading>Adding label</Heading>
-      <CircularProgress mt={6} value={45} size={60} color="red.2">
+      <CircularProgress mt={6} value={45} size={60} color="red.200">
         <CircularProgressLabel>45%</CircularProgressLabel>
       </CircularProgress>
     </Center>

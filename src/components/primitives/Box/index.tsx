@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
 import { View } from 'react-native';
 import styled from 'styled-components/native';
-import { usePropsConfig, themeTools } from '../../../theme';
 import { addTextAndPropsToStrings } from '../../../utils';
 import {
   border,
@@ -38,24 +37,40 @@ const StyledBox = styled(View)<IBoxProps>(
   customLayout
 );
 
-const Box = ({ children, ...props }: IBoxProps, ref: any) => {
+const Box = (
+  {
+    children,
+    fontSize,
+    color: colorProp,
+    textDecoration,
+    txtDecor,
+    wordBreak,
+    textOverflow,
+    textTransform,
+    whiteSpace,
+    overflowWrap,
+    fontFamily,
+    fontWeight,
+    ...props
+  }: IBoxProps,
+  ref: any
+) => {
   // TextProps that contain all the props related to text and gets added to child text components using addTextAndPropsToStrings() method
-  let [textProps, remainingProps] = themeTools.extractInObject(props, [
-    'fontWeight',
-    'fontFamily',
-    'fontSize',
-    'color',
-    'textDecoration',
-    'txtDecor',
-    'wordBreak',
-    'textOverflow',
-    'textTransform',
-    'whiteSpace',
-    'overflowWrap',
-  ]);
-  const boxProps = usePropsConfig('Box', remainingProps);
+  const textProps = {
+    fontWeight,
+    fontFamily,
+    fontSize,
+    color: colorProp,
+    textDecoration,
+    txtDecor,
+    wordBreak,
+    textOverflow,
+    textTransform,
+    whiteSpace,
+    overflowWrap,
+  };
   return (
-    <StyledBox ref={ref} {...boxProps}>
+    <StyledBox ref={ref} {...props}>
       {addTextAndPropsToStrings(children, textProps)}
     </StyledBox>
   );

@@ -1,5 +1,4 @@
 import { Config, system } from 'styled-system';
-import type { ResponsiveValue } from './responsiveValue';
 import type * as CSS from 'csstype';
 
 const config: Config = {
@@ -20,35 +19,35 @@ export interface customTypographyProps {
   /**
    * The CSS `word-break` property
    */
-  wordBreak?: ResponsiveValue<CSS.Property.WordBreak>;
+  wordBreak?: CSS.Property.WordBreak;
   /**
    * The CSS `overflow-wrap` property
    */
-  overflowWrap?: ResponsiveValue<CSS.Property.OverflowWrap>;
+  overflowWrap?: CSS.Property.OverflowWrap;
   /**
    * The CSS `text-overflow` property
    */
-  textOverflow?: ResponsiveValue<CSS.Property.TextOverflow>;
+  textOverflow?: CSS.Property.TextOverflow;
   /**
    * The CSS `text-transform` property
    */
-  textTransform?: ResponsiveValue<CSS.Property.TextTransform>;
+  textTransform?: CSS.Property.TextTransform;
   /**
    * The CSS `white-space` property
    */
-  whiteSpace?: ResponsiveValue<CSS.Property.WhiteSpace>;
+  whiteSpace?: CSS.Property.WhiteSpace;
   /**
    * The CSS `text-decoration` property
    */
-  textDecoration?: ResponsiveValue<CSS.Property.TextDecoration>;
+  textDecoration?: CSS.Property.TextDecoration;
   /**
    * The CSS `text-decoration` property
    */
-  txtDecor?: ResponsiveValue<CSS.Property.TextDecoration>;
+  txtDecor?: CSS.Property.TextDecoration;
   /**
    * The CSS `text-decoration-line` property
    */
-  textDecorationLine?: ResponsiveValue<CSS.Property.TextDecorationLine>;
+  textDecorationLine?: CSS.Property.TextDecorationLine;
 }
 
 export const customTypography = system(config);

@@ -1,5 +1,4 @@
 import type * as CSS from 'csstype';
-import type { ResponsiveValue } from './responsiveValue';
 import { Config, system } from 'styled-system';
 
 const config: Config = {
@@ -44,39 +43,39 @@ export interface customLayoutProps {
   /**
    * The CSS `display` property
    */
-  d?: ResponsiveValue<CSS.Property.Display>;
+  d?: CSS.Property.Display;
   /**
    * The CSS `width` property
    */
-  w?: ResponsiveValue<CSS.Property.Width>;
+  w?: CSS.Property.Width;
   /**
    * The CSS `width` and `height` property
    */
-  boxSize?: ResponsiveValue<CSS.Property.Width>;
+  boxSize?: CSS.Property.Width;
   /**
    * The CSS `max-width` property
    */
-  maxW?: ResponsiveValue<CSS.Property.MaxWidth>;
+  maxW?: CSS.Property.MaxWidth;
   /**
    * The CSS `min-width` property
    */
-  minW?: ResponsiveValue<CSS.Property.MinWidth>;
+  minW?: CSS.Property.MinWidth;
   /**
    * The CSS `height` property
    */
-  h?: ResponsiveValue<CSS.Property.Height>;
+  h?: CSS.Property.Height;
   /**
    * The CSS `max-height` property
    */
-  maxH?: ResponsiveValue<CSS.Property.MaxHeight>;
+  maxH?: CSS.Property.MaxHeight;
   /**
    * The CSS `min-height` property
    */
-  minH?: ResponsiveValue<CSS.Property.MinHeight>;
+  minH?: CSS.Property.MinHeight;
   /**
    * The CSS `box-sizing` property
    */
-  boxSizing?: ResponsiveValue<CSS.Property.BoxSizing>;
+  boxSizing?: CSS.Property.BoxSizing;
 }
 
 export const customLayout = system(config);

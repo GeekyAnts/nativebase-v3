@@ -9,26 +9,22 @@ import type {
   LayoutProps,
   SpaceProps,
   PositionProps,
-  BorderRadiusProps,
 } from 'styled-system';
 import type {
   customLayoutProps,
   customExtraProps,
   customShadowProps,
-  customBorderProps,
 } from '../../../utils/customProps';
 
 export type IImageProps = RNImageProps &
   LayoutProps &
   SpaceProps &
-  BorderRadiusProps &
+  BorderProps &
   FlexboxProps &
   SpaceProps &
   LayoutProps &
   FlexboxProps &
-  BorderProps &
   customExtraProps &
-  customBorderProps &
   customShadowProps &
   customLayoutProps &
   PositionProps & {

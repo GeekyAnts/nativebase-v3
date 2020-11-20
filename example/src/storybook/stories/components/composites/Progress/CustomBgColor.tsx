@@ -7,7 +7,13 @@ export default function () {
       <Center mb={8}>
         <Heading>Custom Track Color</Heading>
       </Center>
-      <Progress size="lg" colorScheme="warning" bg="teal.2" mb={4} value={75} />
+      <Progress
+        size="lg"
+        colorScheme="warning"
+        bg="teal.200"
+        mb={4}
+        value={75}
+      />
     </Box>
   );
 }

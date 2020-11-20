@@ -9,7 +9,7 @@ export default function () {
         Click Me to {isOpen ? 'hide' : 'show'}
       </Button>
       <SlideFade in={isOpen}>
-        <Box p="40px" color="white" mt="4" bg="teal.5" rounded="md">
+        <Box p="40px" color="white" mt="4" bg="teal.500" rounded="md">
           SlideFade
         </Box>
       </SlideFade>

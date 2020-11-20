@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout } from 'styled-system';
 import {
@@ -84,13 +84,13 @@ const Input = (
   const focusProps = isFocused
     ? {
         borderWidth: 1,
-        borderColor: focusBorderColor ? focusBorderColor : 'default.0',
+        borderColor: focusBorderColor ? focusBorderColor : 'default.50',
       }
     : {};
 
   const isInvalidProps = isInvalid
     ? {
-        borderColor: errorBorderColor ? errorBorderColor : 'danger.2',
+        borderColor: errorBorderColor ? errorBorderColor : 'danger.200',
       }
     : {};
 
@@ -101,7 +101,7 @@ const Input = (
     flexDirection: 'row',
     ...focusProps,
     ...isInvalidProps,
-    p: !isNil(p) ? p : 3,
+    p: !isNil(p) ? p : Platform.OS === 'android' ? 0 : 3, // Android's input have default padding.
     pr,
     pl,
     pt,
@@ -145,7 +145,10 @@ const Input = (
       </Box>
 
       {isInvalid && errorMessage ? (
-        <Text ml={2} color={errorMessageColor ? errorMessageColor : 'danger.2'}>
+        <Text
+          ml={2}
+          color={errorMessageColor ? errorMessageColor : 'danger.200'}
+        >
           {errorMessage}
         </Text>
       ) : null}
