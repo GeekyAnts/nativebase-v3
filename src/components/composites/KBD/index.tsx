@@ -1,17 +1,15 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import styled from 'styled-components/native';
 import { Box, Text } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
 import type { IKbdProps } from './props';
 
-const StyledKbd = styled(Box)<IKbdProps>({});
 const Kbd = ({ style, textStyle, children, ...props }: IKbdProps) => {
   let newProps = usePropsConfig('Kbd', props);
   let { fontWeight, fontSize, lineHeight, ...viewProps } = newProps;
   const textProps = { fontWeight, fontSize, lineHeight };
   return (
-    <StyledKbd {...viewProps} style={style}>
+    <Box {...viewProps} style={style}>
       <Text
         {...textProps}
         fontFamily={
@@ -25,7 +23,7 @@ const Kbd = ({ style, textStyle, children, ...props }: IKbdProps) => {
       >
         {children}
       </Text>
-    </StyledKbd>
+    </Box>
   );
 };
 

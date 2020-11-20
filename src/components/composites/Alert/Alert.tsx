@@ -22,10 +22,12 @@ const Alert = ({ children, ...props }: IAlertProps) => {
     >
       <Box
         minW="100%"
+        maxW="100%"
         position="relative"
         flexDirection="row"
         alignItems="center"
         justifyContent="flex-start"
+        flexWrap="wrap"
         {...newProps}
       >
         {children}

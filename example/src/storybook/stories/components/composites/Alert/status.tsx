@@ -12,31 +12,25 @@ export default function () {
     <Stack space={3} mx={3}>
       <Alert status="error">
         <AlertIcon />
-        <AlertDescription>
-          There was an error processing your request
-        </AlertDescription>
+        <AlertDescription>There was an error.</AlertDescription>
         <AlertCloseButton />
       </Alert>
 
       <Alert status="success">
         <AlertIcon />
-        <AlertDescription>
-          Data uploaded to the server. Fire on!
-        </AlertDescription>
+        <AlertDescription>Data uploaded to the server.</AlertDescription>
         <AlertCloseButton />
       </Alert>
 
       <Alert status="warning">
         <AlertIcon />
-        <AlertDescription>Seems your account is about expire</AlertDescription>
+        <AlertDescription>Your account is about expire</AlertDescription>
         <AlertCloseButton />
       </Alert>
 
       <Alert status="default">
         <AlertIcon />
-        <AlertDescription>
-          NativeBase is going live soon . Get ready!
-        </AlertDescription>
+        <AlertDescription>NativeBase is going live soon.</AlertDescription>
         <AlertCloseButton />
       </Alert>
     </Stack>

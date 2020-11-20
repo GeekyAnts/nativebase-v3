@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout } from 'styled-system';
 import {
@@ -101,7 +101,7 @@ const Input = (
     flexDirection: 'row',
     ...focusProps,
     ...isInvalidProps,
-    p: !isNil(p) ? p : 3,
+    p: !isNil(p) ? p : Platform.OS === 'android' ? 0 : 3, // Android's input have default padding.
     pr,
     pl,
     pt,
