@@ -14,8 +14,9 @@ type SubQuery = {
 type Query = Array<SubQuery>;
 
 export function useMediaQuery(query: SubQuery | Query) {
-  const height = useWindowDimensions()?.height;
-  const width = useWindowDimensions()?.width;
+  let dims = useWindowDimensions();
+  const height = dims?.height;
+  const width = dims?.width;
   return iterateQuery(query, height, width);
 }
 
