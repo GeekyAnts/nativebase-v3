@@ -23,8 +23,6 @@ const SliderThumb = ({ children, ...props }: ISliderProps) => {
       alignItems: 'center',
     },
   });
-  console.log('newProps = ', newProps);
-
   const sizedIcon = () =>
     React.cloneElement(
       children,
