@@ -1,0 +1,21 @@
+import React from 'react';
+import { Tag, TagLabel, TagRightIcon, HStack } from '@native-base/v3';
+
+export default function () {
+  return (
+    <HStack space={4} alignItems="flex-start">
+      {['sm', 'md', 'lg'].map((size) => (
+        <Tag
+          colorScheme="green"
+          variant="solid"
+          bg=" red.200"
+          rounded={100}
+          size={size}
+        >
+          <TagLabel>Menu</TagLabel>
+          <TagRightIcon name={'menu'} type="MaterialIcons" color="white" />
+        </Tag>
+      ))}
+    </HStack>
+  );
+}

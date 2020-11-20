@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ViewProps } from 'react-native';
+import { ViewProps, View } from 'react-native';
 import styled from 'styled-components/native';
 import {
   BorderProps,
@@ -24,24 +24,25 @@ export type IZStackProps =
   | FlexboxProps
   | BorderProps;
 
-const StyledZStack = styled.View<IZStackProps>`
-  ${color}
-  ${spacing}
-  ${layout}
-  ${flexbox}
-  ${border}
-  ${position}
-`;
+const StyledZStack = styled(View)<IZStackProps>(
+  color,
+  spacing,
+  layout,
+  flexbox,
+  border,
+  position
+);
 
 type ZStackProps = IZStackProps &
   ViewProps & {
     children: JSX.Element[] | JSX.Element;
+    reversed?: boolean;
   };
 
-const ZStack = ({ children, ...props }: ZStackProps) => {
+const ZStack = ({ children, reversed, ...props }: ZStackProps) => {
   return (
-    <StyledZStack width="100%" alignItems="center" {...props}>
-      {getAbsoluteChildren(children)}
+    <StyledZStack {...props}>
+      {getAbsoluteChildren(children, reversed)}
     </StyledZStack>
   );
 };

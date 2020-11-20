@@ -1,33 +1,60 @@
-import React, { forwardRef } from 'react';
-import { Image, ImageProps } from 'react-native';
+import React, { useState } from 'react';
+import { Image as RNImage } from 'react-native';
 import styled from 'styled-components';
-import {
-  BorderProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  flex,
+import { border, flex, layout, space } from 'styled-system';
+import { customBorder } from '../../../utils/customProps';
+import { Text } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
+import type { IImageProps } from './props';
+
+const StyledImage = styled(RNImage)<IImageProps>(
   layout,
   space,
-} from 'styled-system';
+  border,
+  flex,
+  customBorder
+);
 
-type NBImageProps = ImageProps &
-  LayoutProps &
-  SpaceProps &
-  BorderProps &
-  FlexboxProps;
-
-const StyledImage = styled(Image)<NBImageProps>(layout, space, border, flex);
-
-const defaultImageProps: any = {
-  width: 100,
-  height: 100,
+const Image = (
+  {
+    style,
+    alt,
+    fallbackSource,
+    source,
+    ignoreFallback,
+    textProps,
+    ...props
+  }: IImageProps,
+  ref: any
+) => {
+  let [renderedSource, setSource] = useState(source);
+  let [alternate, setAlternate] = useState(false);
+  let onImageLoadError = (event: any) => {
+    console.warn(event.nativeEvent.error);
+    if (
+      !ignoreFallback &&
+      fallbackSource &&
+      fallbackSource !== renderedSource
+    ) {
+      setSource(fallbackSource);
+    } else {
+      setAlternate(true);
+    }
+  };
+  const newProps = usePropsConfig('Image', props);
+  if (alternate) {
+    return <Text {...textProps}>{alt}</Text>;
+  }
+  return (
+    <StyledImage
+      style={style}
+      source={renderedSource}
+      {...newProps}
+      onError={props.onError ? props.onError : onImageLoadError}
+      ref={ref}
+    />
+  );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const NBImage = (props: NBImageProps, ref: any) => {
-  return <StyledImage {...defaultImageProps} ref={ref} {...props} />;
-};
-
-export default forwardRef(NBImage);
+export default React.forwardRef(Image);
+export { IImageProps } from './props';

@@ -1,6 +1,6 @@
 {
-  "name": "native-base",
-  "version": "0.1.0",
+  "name": "@native-base/v3",
+  "version": "0.2.5",
   "description": "Essential cross-platform UI components for React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -13,7 +13,7 @@
     "android",
     "ios",
     "cpp",
-    "native-base.podspec",
+    "@native-base/v3.podspec",
     "!lib/typescript/example",
     "!**/__tests__",
     "!**/__fixtures__",
@@ -34,7 +34,10 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/geekyants/native-base",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geekyants/native-base.git"
+  },
   "author": "GeekyAnts <npm@geekyants.com> (https://github.com/geekyants)",
   "license": "MIT",
   "bugs": {
@@ -47,8 +50,10 @@
     "@react-native-community/eslint-config": "^2.0.0",
     "@release-it/conventional-changelog": "^1.1.4",
     "@types/jest": "^26.0.0",
+    "@types/lodash": "^4.14.162",
     "@types/react": "^16.9.19",
     "@types/react-native": "0.62.13",
+    "@types/react-native-vector-icons": "^6.4.6",
     "@types/styled-components": "^5.0.1",
     "@types/styled-system": "^5.1.9",
     "commitlint": "^8.3.5",
@@ -66,7 +71,11 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-svg": "*",
+    "react-native-vector-icons": "*",
+    "styled-components": "*",
+    "styled-system": "*"
   },
   "jest": {
     "preset": "react-native",
@@ -103,24 +112,6 @@
       }
     }
   },
-  "eslintConfig": {
-    "extends": [
-      "@react-native-community",
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "quoteProps": "consistent",
-          "singleQuote": true,
-          "tabWidth": 2,
-          "trailingComma": "es5",
-          "useTabs": false
-        }
-      ]
-    }
-  },
   "eslintIgnore": [
     "node_modules/",
     "lib/"
@@ -143,10 +134,22 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.6",
+    "@types/tinycolor2": "^1.4.2",
+    "babel-eslint": "^10.1.0",
+    "deepmerge": "^4.2.2",
     "expo-font": "^8.3.0",
+    "hoist-non-react-statics": "^3.3.2",
+    "lodash": "^4.17.20",
     "react-native-material-ripple": "^0.9.1",
+    "react-native-svg": "^12.1.0",
     "react-native-unimodules": "~0.10.1",
+    "react-native-vector-icons": "^7.1.0",
     "styled-components": "^5.2.0",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "tinycolor2": "^1.4.2"
+  },
+  "directories": {
+    "example": "example",
+    "lib": "lib"
   }
 }

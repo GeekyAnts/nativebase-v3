@@ -1,229 +1,57 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { storiesOf } from '@storybook/react-native';
-import { color, number, select, text, withKnobs } from '@storybook/addon-knobs';
-import {
-  AppBar,
-  Alert,
-  AlertHeading,
-  Badge,
-  Button,
-  IconButton,
-  Box,
-  Column,
-  Columns,
-  HStack,
-  Icon,
-  Stack,
-  Text,
-  VStack,
-  View,
-  ZStack,
-  Theme,
-  Spinner,
-} from 'native-base';
-
-type GetStory = () => JSX.Element | JSX.Element[] | any;
-
-storiesOf('Primitives', module)
-  .addDecorator(withKnobs)
-  .addDecorator((getStory: GetStory) => (
-    <ThemeProvider theme={Theme}>
-      <View
-        flexGrow={1}
-        bg="white"
-        alignItems="center"
-        p={3}
-        justifyContent="center"
-      >
-        {getStory()}
-      </View>
-    </ThemeProvider>
-  ))
-  .add('Alert', () => (
-    <Alert variant="solid" status="success">
-      <AlertHeading>Alert Heading</AlertHeading>This is an NativeBase Alert
-    </Alert>
-  ))
-  .add('Spinner', () => <Spinner size={60} color="#ea6989" />)
-  .add('VStack', () => (
-    <VStack space={8}>
-      <Text>Test Text</Text>
-      <Text>Testing this text with Stacks</Text>
-    </VStack>
-  ))
-  .add('HStack', () => (
-    <HStack space={8}>
-      <Text>Test Text</Text>
-      <Text>Testing this text with HStacks</Text>
-    </HStack>
-  ))
-  .add('ZStack', () => (
-    <ZStack>
-      <Text>Test Text</Text>
-      <Text>Testing this text with ZStacks</Text>
-    </ZStack>
-  ))
-  .add('Web Layout', () => (
-    <Stack flexGrow={number('flexGrow', 1)}>
-      <Box bg="gray.3" height={55} justifyContent="center" alignItems="center">
-        <Text>Header</Text>
-      </Box>
-      <Columns flexGrow={number('flexGrow', 1)}>
-        <Column
-          bg="gray.1"
-          width={0.15 / 1}
-          justifyContent="center"
-          alignItems="center"
-          flexGrow={number('flexGrow', 1)}
-        >
-          <Text>Left Panel</Text>
-        </Column>
-        <Column bg="gray.2" width={0.65 / 1} flexGrow={number('flexGrow', 1)}>
-          <Stack
-            height={number('height', 200)}
-            flexGrow={number('flexGrow', 1)}
-          >
-            <Box bg="gray.5" height={65} />
-            <Columns flexGrow={number('flexGrow', 1)} m={30}>
-              <Column
-                bg="green.2"
-                borderRadius={number('borderRadius', 4)}
-                shadow={number('shadow', 1)}
-                flexGrow={number('flexGrow', 1)}
-                mx={20}
-              />
-              <Column
-                bg="green.2"
-                borderRadius={number('borderRadius', 4)}
-                shadow={number('shadow', 1)}
-                flexGrow={number('flexGrow', 1)}
-                mx={20}
-              />
-              <Column
-                bg="green.2"
-                borderRadius={number('borderRadius', 4)}
-                shadow={number('shadow', 1)}
-                flexGrow={number('flexGrow', 1)}
-                mx={20}
-              />
-            </Columns>
-
-            <Box
-              bg="gray.4"
-              height={number('height', 80)}
-              flexGrow={number('flexGrow', 1)}
-            />
-          </Stack>
-        </Column>
-        <Column
-          bg="gray.1"
-          width={0.2 / 1}
-          justifyContent="center"
-          alignItems="center"
-          flexGrow={number('flexGrow', 1)}
-        >
-          <Text>Right Panel</Text>
-        </Column>
-      </Columns>
-    </Stack>
-  ))
-  .add('Box', () => <Box height={70} width={[1, 1 / 2, 1 / 4]} bg="orange" />)
-  .add('Columns', () => (
-    <Columns
-      space={number('space', 3)}
-      height={number('height', 100)}
-      mb={number('mb', 3)}
-    >
-      <Column
-        borderRadius={number('borderRadius', 4)}
-        shadow={number('shadow', 1)}
-        flexGrow={number('flexGrow', 1)}
-        bg="green.5"
-      />
-      <Column
-        borderRadius={number('borderRadius', 4)}
-        shadow={number('shadow', 1)}
-        width={1 / 2.5}
-        bg="pink.3"
-      />
-      <Column
-        borderRadius={number('borderRadius', 4)}
-        shadow={number('shadow', 1)}
-        flexGrow={number('flexGrow', 1.5)}
-        bg="indigo.8"
-      />
-    </Columns>
-  ))
-  .add('Stack', () => (
-    <Stack space={number('space', 3)} mb={number('mb', 3)}>
-      <Box
-        borderRadius={number('borderRadius', 4)}
-        height={number('height', 70)}
-        shadow={number('shadow', 1)}
-        bg="blue.3"
-      />
-      <Box
-        borderRadius={number('borderRadius', 4)}
-        shadow={number('shadow', 1)}
-        height={number('height', 70)}
-        bg="purple.5"
-      />
-      <Box
-        borderRadius={number('borderRadius', 4)}
-        shadow={number('shadow', 1)}
-        height={number('height', 70)}
-        bg="yellow.4"
-      />
-    </Stack>
-  ))
-  .add('Icon', () => <Icon name={text('name', 'menu')} type="MaterialIcons" />);
-
-storiesOf('Composites', module)
-  .addDecorator((getStory: GetStory) => (
-    <ThemeProvider theme={Theme}>
-      <View flexGrow={1} justifyContent="center" p={3} bg="white">
-        {getStory()}
-      </View>
-    </ThemeProvider>
-  ))
-  .add('Button', () => <Button colorScheme="danger">Press Me</Button>)
-
-  .add('Badge', () => (
-    <Badge variant="success" variantType="solid">
-      NativeBase Badge
-    </Badge>
-  ))
-  .add('AppBar', () => (
-    <AppBar
-      leading={
-        <IconButton
-          name={select(
-            'icon',
-            {
-              menu: 'menu',
-              account: 'account-circle',
-              back: 'arrow-back',
-              home: 'home',
-            },
-            'menu'
-          )}
-          type="MaterialIcons"
-        />
-      }
-      title={<Text>{text('title', 'Header')}</Text>}
-      actions={[
-        <IconButton key="chat" name="chat" type="MaterialIcons" />,
-        <IconButton key="favourite" name="favorite" type="MaterialIcons" />,
-        <IconButton key="loop" name="loop" type="MaterialIcons" />,
-      ]}
-      bg={color('bg', 'blue.6')}
-    />
-  ))
-  .add('IconButton', () => (
-    <IconButton
-      type="MaterialIcons"
-      name={text('name', 'menu')}
-      bg={text('bg', 'blue.5')}
-    />
-  ));
+// Older version
+// export * from './components/composites/AppBar';
+export * from './components/composites/Accordion';
+export * from './components/composites/Alert';
+export * from './components/composites/AlertDialog';
+export * from './components/composites/AspectRatio';
+export * from './components/composites/Avatar';
+export * from './components/composites/Badge';
+export * from './components/primitives/Box';
+export * from './components/composites/BreadCrumb';
+export * from './components/primitives/Button';
+export * from './components/composites/Center';
+export * from './components/primitives/Checkbox';
+export * from './components/composites/CircularProgress';
+export * from './components/composites/CloseButton';
+export * from './components/composites/Code';
+export * from './components/composites/Collapse';
+export * from './components/primitives/Column';
+export * from './components/composites/Container';
+export * from './theme/Custom';
+export * from './components/composites/Divider';
+export * from './components/primitives/Flex';
+export * from './components/composites/FormControl';
+export * from './components/primitives/Heading';
+export * from './components/primitives/HStack';
+export * from './components/primitives/Icon';
+export * from './components/composites/IconButton';
+export * from './components/primitives/Image';
+export * from './components/primitives/Input';
+export * from './components/composites/Kbd';
+export * from './components/primitives/Link';
+export * from './components/primitives/List';
+export * from './components/composites/Menu';
+export * from './components/composites/Modal';
+export * from './theme/Mode';
+export * from './components/composites/NumberInput';
+export * from './components/composites/PinInput';
+export * from './components/composites/Popover';
+export * from './components/composites/Progress';
+export * from './components/primitives/Radio';
+export * from './components/primitives/Row';
+export * from './components/composites/Skeleton';
+export * from './components/primitives/Slider';
+export * from './components/primitives/Spinner';
+export * from './components/primitives/Stack';
+export * from './components/composites/Stat';
+export * from './components/primitives/Switch';
+export * from './components/composites/Tag';
+export * from './components/primitives/Text';
+export * from './components/primitives/TextArea';
+export * from './components/composites/Toast';
+export * from './components/composites/Transitions';
+export * from './hooks/useDisclose';
+export * from './hooks/useMediaQuery';
+export * from './components/primitives/VStack';
+export * from './components/composites/Wrap';
+export * from './components/primitives/ZStack';

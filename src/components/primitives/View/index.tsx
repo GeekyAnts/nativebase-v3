@@ -22,12 +22,12 @@ export type IViewProps =
   | BorderProps
   | IBoxProps;
 
-const View = styled(Box)<IViewProps>`
-  ${color}
-  ${space}
-  ${layout}
-  ${flexbox}
-  ${border}
-`;
+const View: any = styled(Box)<IViewProps>(
+  color,
+  space,
+  layout,
+  flexbox,
+  border
+);
 
 export default View;

@@ -1,32 +1,18 @@
-import React, { useContext } from 'react';
-import type { TextStyle } from 'react-native';
-import { ThemeContext } from 'styled-components';
+import React, { forwardRef } from 'react';
+import { Button, IButtonProps } from '../../primitives';
+import { usePropsConfig } from '../../../theme';
 
-import { Icon, IconProps } from '../../primitives';
-
-import Button, { IButtonProps } from '../Button';
-
-type iconProps = IconProps & {
-  iconStyle?: TextStyle | {};
+export type IIconButtonProps = IButtonProps & {
+  icon?: JSX.Element;
 };
 
-type IconButtonProps = IButtonProps & iconProps;
-
-const IconButton = ({ name, type, iconStyle, ...props }: IconButtonProps) => {
-  const theme: Theme = useContext(ThemeContext);
-
-  const iconButtonDefaultprops: IButtonProps = {
-    borderRadius: 40,
-    padding: 4,
-    overflow: 'hidden',
-    highlightColor: theme.colors.white,
-  };
-
+const IconButton = ({ icon, ...props }: IIconButtonProps, ref: any) => {
+  const newProps = usePropsConfig('IconButton', props);
   return (
-    <Button {...iconButtonDefaultprops} variant="ghost" {...props}>
-      <Icon type={type} style={iconStyle} name={name} />
+    <Button ref={ref} {...newProps}>
+      {icon}
     </Button>
   );
 };
 
-export default IconButton;
+export default forwardRef(IconButton);

@@ -1,30 +1,20 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
-import { color, layout, space } from 'styled-system';
+import { color, space, position } from 'styled-system';
+import { useToken, usePropsConfig } from '../../../theme';
+import type { ISpinnerProps } from './props';
+export type { ISpinnerProps };
 
-export type ISpinnerProps = {
-  color?: string | undefined;
-  style?: any | undefined;
-  show?: boolean | undefined;
-  hideWhenStopped?: boolean | undefined; // IOS only
-  size?: 'large' | 'small' | number | undefined;
-};
-
-const StyledActivityIndicator = styled(ActivityIndicator)<ISpinnerProps>(
+const StyledSpinner = styled(ActivityIndicator)<ISpinnerProps>(
   color,
   space,
-  layout
+  position
 );
-const Spinner = ({ size, show, hideWhenStopped, ...props }: ISpinnerProps) => {
-  return (
-    <StyledActivityIndicator
-      size={size ? size : 'small'}
-      animating={show ? show : true}
-      hidesWhenStopped={hideWhenStopped ? hideWhenStopped : true}
-      {...props}
-    />
-  );
+const Spinner = (props: ISpinnerProps) => {
+  const newProps = usePropsConfig('Spinner', props);
+  const spinnerColor = useToken('colors', newProps.color);
+  return <StyledSpinner {...newProps} color={spinnerColor} />;
 };
 
 export default Spinner;

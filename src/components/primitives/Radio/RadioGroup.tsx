@@ -1,0 +1,46 @@
+import React from 'react';
+import { Box } from '../../primitives';
+import {
+  FormControlContext,
+  IFormControlContext,
+} from '../../composites/FormControl';
+import type { IRadioGroupProps } from './props';
+
+export const RadioContext = React.createContext({});
+
+const RadioGroup = ({
+  size,
+  children,
+  onChange,
+  colorScheme,
+  value,
+  defaultValue,
+  ...props
+}: IRadioGroupProps) => {
+  const formControlContext: IFormControlContext = React.useContext(
+    FormControlContext
+  );
+  const [selected, setSelected] = React.useState(value || defaultValue || []);
+  const onChangeHandler = (radioValue: string | number) => {
+    setSelected(radioValue);
+    onChange && onChange(radioValue);
+  };
+
+  return (
+    <RadioContext.Provider
+      value={{
+        ...formControlContext,
+        onChangeHandler,
+        size,
+        colorScheme,
+        value: selected,
+      }}
+    >
+      <Box alignItems="flex-start" {...props}>
+        {children}
+      </Box>
+    </RadioContext.Provider>
+  );
+};
+
+export default RadioGroup;

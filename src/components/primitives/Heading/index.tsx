@@ -1,50 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, TextStyle } from 'react-native';
+import { Text } from 'react-native';
 import styled from 'styled-components/native';
 import {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
   border,
   color,
   flexbox,
   layout,
   space,
-  variant,
+  typography,
 } from 'styled-system';
 import {
   customBorder,
-  customBorderProps,
   customBackground,
-  customBackgroundProps,
   customOutline,
-  customOutlineProps,
   customLayout,
-  customLayoutProps,
   customExtra,
-  customExtraProps,
-  customShadowProps,
   customShadow,
+  customTypography,
 } from '../../../utils/customProps';
-import theme from '../../../theme';
-export type IHeadingProps = ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  customBackgroundProps &
-  BorderProps & {
-    style?: TextStyle;
-    children?: string | undefined | JSX.Element[] | JSX.Element;
-    fontSize?: string | undefined;
-    isTruncated?: any | undefined;
-  };
+import { usePropsConfig } from '../../../theme';
+import type { IHeadingProps } from './props';
 
 const StyledHeading = styled(Text)<IHeadingProps>(
   color,
@@ -52,43 +27,26 @@ const StyledHeading = styled(Text)<IHeadingProps>(
   layout,
   flexbox,
   border,
+  typography,
   customBorder,
   customBackground,
   customOutline,
   customShadow,
   customExtra,
   customLayout,
-  variant({
-    prop: 'size',
-    variants: {
-      '2xl': { fontSize: theme.fontSizes[5] },
-      'xl': { fontSize: theme.fontSizes[4] },
-      'lg': { fontSize: theme.fontSizes[3] },
-      'md': { fontSize: theme.fontSizes[2] },
-      'sm': { fontSize: theme.fontSizes[1] },
-      'xsm': { fontSize: theme.fontSizes[0] },
-    },
-  })
+  customTypography
 );
-StyledHeading.defaultProps = {
-  size: 'lg',
-};
-const Heading = ({ style, isTruncated, ...props }: IHeadingProps) => {
-  let computedStyle: any = style;
-  computedStyle = StyleSheet.flatten([
-    style,
-    {
-      fontWeight: '700',
-    },
-    props.fontSize ? { fontSize: props.fontSize } : {},
-  ]);
+
+const Heading = ({ isTruncated, style, ...props }: IHeadingProps) => {
+  const newProps = usePropsConfig('Heading', props);
   return (
     <StyledHeading
       numberOfLines={isTruncated ? 1 : 999999}
-      {...props}
-      style={computedStyle}
+      {...newProps}
+      style={style}
     />
   );
 };
 
 export default Heading;
+export type { IHeadingProps };

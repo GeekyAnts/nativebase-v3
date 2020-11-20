@@ -1,48 +1,25 @@
-import React from 'react';
-import { View, ViewProps, ViewStyle } from 'react-native';
+import React, { forwardRef } from 'react';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
+import { addTextAndPropsToStrings } from '../../../utils';
 import {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
   border,
   color,
   flexbox,
   layout,
   space,
+  typography,
 } from 'styled-system';
 import {
   customBorder,
-  customBorderProps,
   customBackground,
-  customBackgroundProps,
   customOutline,
-  customOutlineProps,
   customLayout,
-  customLayoutProps,
   customExtra,
-  customExtraProps,
-  customShadowProps,
   customShadow,
+  customTypography,
 } from '../../../utils/customProps';
-
-export type IBoxProps = ViewProps &
-  ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  customBorderProps &
-  customExtraProps &
-  customOutlineProps &
-  customShadowProps &
-  customLayoutProps &
-  customBackgroundProps &
-  BorderProps & {
-    style?: ViewStyle;
-    children?: JSX.Element | JSX.Element[];
-  };
+import type { IBoxProps } from './props';
 
 const StyledBox = styled(View)<IBoxProps>(
   color,
@@ -50,15 +27,55 @@ const StyledBox = styled(View)<IBoxProps>(
   layout,
   flexbox,
   border,
+  typography,
   customBorder,
   customBackground,
   customOutline,
   customShadow,
   customExtra,
+  customTypography,
   customLayout
 );
-const Box = (props: IBoxProps) => {
-  return <StyledBox {...props} style={props.style} />;
+
+const Box = (
+  {
+    children,
+    fontSize,
+    color: colorProp,
+    textDecoration,
+    txtDecor,
+    wordBreak,
+    textOverflow,
+    textTransform,
+    whiteSpace,
+    overflowWrap,
+    fontFamily,
+    fontWeight,
+    ...props
+  }: IBoxProps,
+  ref: any
+) => {
+  // TextProps that contain all the props related to text and gets added to child text components using addTextAndPropsToStrings() method
+  const textProps = {
+    fontWeight,
+    fontFamily,
+    fontSize,
+    color: colorProp,
+    textDecoration,
+    txtDecor,
+    wordBreak,
+    textOverflow,
+    textTransform,
+    whiteSpace,
+    overflowWrap,
+  };
+  return (
+    <StyledBox ref={ref} {...props}>
+      {addTextAndPropsToStrings(children, textProps)}
+    </StyledBox>
+  );
 };
 
-export default Box;
+export { IBoxProps } from './props';
+
+export default forwardRef(Box);

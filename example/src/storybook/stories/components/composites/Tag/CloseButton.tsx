@@ -1,0 +1,21 @@
+import React from 'react';
+import { Tag, TagLabel, TagCloseButton, HStack } from '@native-base/v3';
+
+export default function () {
+  return (
+    <HStack space={2} alignItems="flex-start">
+      {['sm', 'md', 'lg'].map((size) => (
+        <Tag
+          colorScheme="green"
+          variant="solid"
+          bg="red.200"
+          rounded={100}
+          size={size}
+        >
+          <TagLabel>NativeBase</TagLabel>
+          <TagCloseButton />
+        </Tag>
+      ))}
+    </HStack>
+  );
+}

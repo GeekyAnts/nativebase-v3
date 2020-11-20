@@ -1,3 +1,2 @@
-import Column from '../Box';
-
-export default Column;
+import { VStack } from '../../primitives';
+export { VStack as Column };

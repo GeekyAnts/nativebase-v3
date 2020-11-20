@@ -1,64 +1,33 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
-import {
-  // ColorProps,
-  SpaceProps,
-  TypographyProps,
-  color,
-  space,
-  typography,
-} from 'styled-system';
-import styled, { ThemeContext } from 'styled-components';
-import {
-  AntDesign,
-  Entypo,
-  EvilIcons,
-  Feather,
-  FontAwesome,
-  FontAwesome5,
-  Foundation,
-  Ionicons,
-  MaterialCommunityIcons,
-  MaterialIcons,
-  Octicons,
-  SimpleLineIcons,
-  Zocial,
-} from '@expo/vector-icons';
+import { color, space, typography } from 'styled-system';
+import { usePropsConfig } from '../../../theme';
+import styled from 'styled-components';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import Feather from 'react-native-vector-icons/Feather';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Foundation from 'react-native-vector-icons/Foundation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Octicons from 'react-native-vector-icons/Octicons';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import Zocial from 'react-native-vector-icons/Zocial';
+import type { IIconProps } from './props';
+import { SVGIcon } from './SVGIcon';
+import { Path } from 'react-native-svg';
 
-export type IconType =
-  | 'AntDesign'
-  | 'Entypo'
-  | 'EvilIcons'
-  | 'Feather'
-  | 'FontAwesome'
-  | 'FontAwesome5'
-  | 'Foundation'
-  | 'Ionicons'
-  | 'MaterialCommunityIcons'
-  | 'MaterialIcons'
-  | 'Octicons'
-  | 'SimpleLineIcons'
-  | 'Zocial';
-
-export type IconProps = TypographyProps &
-  // ColorProps &
-  SpaceProps & {
-    name: string;
-    type?: IconType;
-    style?: TextStyle | {};
-  };
-
-const Icon = ({ name, type, style, ...props }: IconProps) => {
-  const theme: Theme = useContext(ThemeContext);
-  const styles = StyleSheet.create({
-    iconDefaultStyle: {
-      fontSize: 30,
-      color: theme.colors.black,
-    },
-  });
-
+const Icon = (iconProps: IIconProps) => {
+  const { name, type, size, style, ...props } = iconProps;
+  const newProps = usePropsConfig('Icon', { size });
+  if (!name) {
+    return <SVGIcon {...iconProps} />;
+  }
   const flattenedIconStyle: TextStyle = StyleSheet.flatten([
-    styles.iconDefaultStyle,
+    { fontSize: parseInt(newProps.dimension || newProps.size, 10) },
     style,
   ]);
   switch (type) {
@@ -86,10 +55,6 @@ const Icon = ({ name, type, style, ...props }: IconProps) => {
           {...props}
         />
       );
-    case 'MaterialIcons':
-      return (
-        <MaterialIcons name={name} style={flattenedIconStyle} {...props} />
-      );
     case 'Octicons':
       return <Octicons name={name} style={flattenedIconStyle} {...props} />;
     case 'SimpleLineIcons':
@@ -105,10 +70,9 @@ const Icon = ({ name, type, style, ...props }: IconProps) => {
   }
 };
 
-const styledIcon = styled(Icon)<IconProps>`
-  ${color}
-  ${space}
-${typography}
-`;
+const styledIcon = styled(Icon)<IIconProps>(color, space, typography);
 
 export default styledIcon;
+export { Path };
+export { IIconProps, IconType } from './props';
+export { createIcon } from './createIcon';
