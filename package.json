@@ -141,6 +141,7 @@
     "grid-template-parser": "^0.3.2",
     "hoist-non-react-statics": "^3.3.2",
     "lodash": "^4.17.20",
+    "react-native-easy-grid": "^0.2.2",
     "react-native-material-ripple": "^0.9.1",
     "react-native-svg": "^12.1.0",
     "react-native-unimodules": "~0.10.1",
