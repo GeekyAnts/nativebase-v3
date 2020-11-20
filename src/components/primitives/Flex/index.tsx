@@ -3,17 +3,20 @@ import { Box } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
 import type { IFlexProps } from './props';
 
-const Flex = ({
-  style,
-  direction,
-  align,
-  justify,
-  wrap,
-  basis,
-  grow,
-  shrink,
-  ...props
-}: IFlexProps) => {
+const Flex = (
+  {
+    style,
+    direction,
+    align,
+    justify,
+    wrap,
+    basis,
+    grow,
+    shrink,
+    ...props
+  }: IFlexProps,
+  ref: any
+) => {
   let newProps = usePropsConfig('Flex', props);
 
   return (
@@ -27,6 +30,7 @@ const Flex = ({
       flexShrink={shrink}
       flexWrap={wrap}
       style={style}
+      ref={ref}
     />
   );
 };
@@ -37,4 +41,4 @@ export const Spacer = (props: any) => {
 };
 
 export { IFlexProps } from './props';
-export default Flex;
+export default React.forwardRef(Flex);

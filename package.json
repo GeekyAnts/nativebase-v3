@@ -138,7 +138,6 @@
     "babel-eslint": "^10.1.0",
     "deepmerge": "^4.2.2",
     "expo-font": "^8.3.0",
-    "grid-template-parser": "^0.3.2",
     "hoist-non-react-statics": "^3.3.2",
     "lodash": "^4.17.20",
     "react-native-material-ripple": "^0.9.1",
