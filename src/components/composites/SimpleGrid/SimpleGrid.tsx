@@ -41,14 +41,14 @@ export function SimpleGrid({
         {rowSlices.map((row, rowIndex) => {
           return (
             <Row wrap="wrap" key={rowIndex} mx={-1 * cellSpacingX}>
-              {row.map((col, colIndex) => {
+              {row.map((col: any) => {
                 return (
                   <Col
                     {...DEBUG_STYLES.cols}
                     my={cellSpacingY}
                     mx={cellSpacingX}
                     flex={1}
-                    key={colIndex}
+                    key={col.key}
                   >
                     {col}
                   </Col>
@@ -67,13 +67,13 @@ export function SimpleGrid({
         mx={-1 * cellSpacingX}
         justify="space-between"
       >
-        {childrenArray.map((col, colIndex) => {
+        {childrenArray.map((col: any) => {
           return (
             <Col
               {...DEBUG_STYLES.cols}
-              key={colIndex}
               mx={cellSpacingX}
               my={cellSpacingY}
+              key={col.key}
               width={minChildWidth}
             >
               {col}
