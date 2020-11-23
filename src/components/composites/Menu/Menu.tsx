@@ -92,8 +92,8 @@ class MenuClass extends React.Component<IMenuProps, any> {
         Animated.parallel([
           Animated.timing(this.state.menuSizeAnimation, {
             toValue: { x: width, y: height },
-            duration: animationDuration,
-            easing: EASING,
+            duration: Platform.OS === 'ios' ? animationDuration : 10,
+            easing: Easing.bezier(0.01, 1.3, 0.77, 0.91),
             useNativeDriver: false,
           }),
           Animated.timing(this.state.opacityAnimation, {
