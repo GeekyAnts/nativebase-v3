@@ -68,7 +68,7 @@ const Collapse = ({
     wasOpen.updatePrevious(isOpen);
   }
   return (
-    <Box style={animatedStyle}>
+    <Box style={animatedStyle} overflow="hidden">
       <Box overflow="scroll" {...props} />
     </Box>
   );
