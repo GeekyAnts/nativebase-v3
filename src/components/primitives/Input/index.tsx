@@ -101,7 +101,7 @@ const Input = (
     flexDirection: 'row',
     ...focusProps,
     ...isInvalidProps,
-    p: !isNil(p) ? p : Platform.OS === 'android' ? 0 : 3, // Android's input have default padding.
+    p: !isNil(p) ? p : Platform.OS === 'android' ? 2 : 3, // Android's input have default padding.
     pr,
     pl,
     pt,
@@ -134,7 +134,8 @@ const Input = (
             handleFocus(false, onBlur ? onBlur : () => {});
           }}
           placeholder={placeholder}
-          p={1}
+          padding={0}
+          margin={0}
           editable={isDisabled || isReadOnly ? false : true}
           borderRadius={undefined} //Remove variant props from StyledInput
           borderWidth={undefined}
