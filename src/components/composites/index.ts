@@ -153,3 +153,17 @@ export {
   IMenuGroupProps,
   IMenuOptionGroupProps,
 } from './Menu';
+
+export {
+  Tabs,
+  TabBar,
+  Tab,
+  TabViews,
+  TabView,
+  ITabsProps,
+  ITabBarProps,
+  ITabProps,
+  ITabViewsProps,
+  ITabViewProps,
+  ITabsContextProps,
+} from './Tabs';

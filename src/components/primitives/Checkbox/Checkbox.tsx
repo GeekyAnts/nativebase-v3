@@ -72,7 +72,7 @@ const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
       accessibilityRole="checkbox"
       ref={ref}
     >
-      <Center {...newProps} flexDirection="row">
+      <Center flexDirection="row" {...newProps}>
         <Center
           backgroundColor={checkboxState ? activeColor : 'transparent'}
           borderColor={checkboxState ? activeColor : borderColor}
