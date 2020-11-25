@@ -26,9 +26,9 @@ const PinInputFiled = ({
       handleChange && handleChange('', fieldIndex);
     }
   };
-  const multiValueHandler = (value: any) => {
-    if (value.length > 2)
-      handleMultiValueChange && handleMultiValueChange(value);
+  const textChangeHandler = (value: any) => {
+    // Also used to handle change for Android.
+    handleMultiValueChange && handleMultiValueChange(value, fieldIndex);
   };
   const myRef = React.useRef(null);
   React.useEffect(() => {
@@ -41,7 +41,7 @@ const PinInputFiled = ({
       {...context}
       {...props}
       onKeyPress={(event) => keyPressHandler(event)}
-      onChangeText={(value) => multiValueHandler(value)}
+      onChangeText={(value) => textChangeHandler(value)}
       keyboardType="numeric"
       defaultValue={pDefaultValue || cDefaultValue}
       value={cValue}
