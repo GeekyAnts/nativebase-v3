@@ -137,6 +137,17 @@ import {
   IMenuItemOptionProps,
   IMenuGroupProps,
   IMenuOptionGroupProps,
+  Tabs,
+  TabBar,
+  Tab,
+  TabViews,
+  TabView,
+  ITabsProps,
+  ITabBarProps,
+  ITabProps,
+  ITabViewsProps,
+  ITabViewProps,
+  ITabsContextProps,
 } from './components/composites';
 
 import {
@@ -397,4 +408,15 @@ export {
   IMenuItemOptionProps,
   IMenuGroupProps,
   IMenuOptionGroupProps,
+  Tabs,
+  TabBar,
+  Tab,
+  TabViews,
+  TabView,
+  ITabsProps,
+  ITabBarProps,
+  ITabProps,
+  ITabViewsProps,
+  ITabViewProps,
+  ITabsContextProps,
 };
