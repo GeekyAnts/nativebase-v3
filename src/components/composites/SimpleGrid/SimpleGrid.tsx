@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, IFlexProps } from '../../primitives';
+import { Box, HStack, VStack } from '../../primitives';
 import type { ISimpleGridProps } from './props';
 // const isDebug = process.env.NODE_ENV !== 'production';
 
@@ -37,68 +37,44 @@ export function SimpleGrid({
     }
 
     return (
-      <>
+      <VStack {...DEBUG_STYLES.rows} space={cellSpacingY}>
         {rowSlices.map((row, rowIndex) => {
           return (
-            <Row wrap="wrap" key={rowIndex} mx={-1 * cellSpacingX}>
+            <HStack space={cellSpacingX} key={rowIndex}>
               {row.map((col: any) => {
                 return (
-                  <Col
-                    {...DEBUG_STYLES.cols}
-                    my={cellSpacingY}
-                    mx={cellSpacingX}
-                    flex={1}
-                    key={col.key}
-                  >
+                  <Box {...DEBUG_STYLES.cols} key={col.key}>
                     {col}
-                  </Col>
+                  </Box>
                 );
               })}
-            </Row>
+            </HStack>
           );
         })}
-      </>
+      </VStack>
     );
-  } else if (minChildWidth) {
+  }
+  // Needs more work for empty spacing i.e. auto-fit. Current workaround is to use wrap and let the columns be created dynamically
+  // https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
+  else if (minChildWidth) {
     return (
-      <Row
-        {...DEBUG_STYLES.rows}
-        wrap="wrap"
-        mx={-1 * cellSpacingX}
-        justify="space-between"
-      >
+      <Box flexDirection="row" flexWrap="wrap" justifyContent="center">
         {childrenArray.map((col: any) => {
           return (
-            <Col
+            <Box
               {...DEBUG_STYLES.cols}
               mx={cellSpacingX}
               my={cellSpacingY}
               key={col.key}
-              width={minChildWidth}
+              minWidth={minChildWidth}
             >
               {col}
-            </Col>
+            </Box>
           );
         })}
-      </Row>
+      </Box>
     );
   }
 
   return <></>;
 }
-
-const Col = ({ children, ...props }: IFlexProps) => {
-  return (
-    <Flex direction="column" {...props}>
-      {children}
-    </Flex>
-  );
-};
-
-const Row = ({ children, ...props }: IFlexProps) => {
-  return (
-    <Flex direction="row" {...props}>
-      {children}
-    </Flex>
-  );
-};

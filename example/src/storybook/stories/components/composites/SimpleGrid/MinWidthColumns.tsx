@@ -6,9 +6,9 @@ const data = Array(items).fill(0);
 
 export default function MinChildWidthSimpleGrid() {
   return (
-    <SimpleGrid minChildWidth={100} spacing={4}>
+    <SimpleGrid minChildWidth={60} spacing={4}>
       {data.map((_item, index) => {
-        return <Box key={index} bg="#d2d2d2" height={100}></Box>;
+        return <Box key={index} bg="#d2d2d2" height={60} width={60}></Box>;
       })}
     </SimpleGrid>
   );
