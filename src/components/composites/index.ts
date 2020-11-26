@@ -167,3 +167,16 @@ export {
   ITabViewProps,
   ITabsContextProps,
 } from './Tabs';
+
+export {
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetFooter,
+  ActionsheetHeader,
+  ActionsheetItem,
+  IActionsheetProps,
+  IActionsheetContentProps,
+  IActionsheetFooterProps,
+  IActionsheetHeaderProps,
+  IActionsheetItemProps,
+} from './Actionsheet';
