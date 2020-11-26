@@ -75,14 +75,13 @@ function variantLink(props: Dict) {
   };
 }
 
-const variantUnstyled = {
-  bg: 'none',
-  color: 'inherit',
-  display: 'inline',
-  lineHeight: 'inherit',
-  m: 0,
-  p: 0,
-};
+function variantUnstyled() {
+  return {
+    m: 0,
+    p: 0,
+  };
+}
+
 const variants = {
   ghost: variantGhost,
   outline: variantOutline,
