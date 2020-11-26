@@ -4,7 +4,7 @@ import { VStack, Tabs, TabBar, TabViews, Tab, TabView } from '@native-base/v3';
 export default function () {
   return (
     <VStack width="100%" p={3} space={7}>
-      <Tabs variant="solid-rounded" colorScheme="danger">
+      <Tabs colorScheme="danger">
         <TabBar>
           <Tab>One</Tab>
           <Tab>Two</Tab>
@@ -16,7 +16,7 @@ export default function () {
           <TabView>Three</TabView>
         </TabViews>
       </Tabs>
-      <Tabs variant="solid-rounded" colorScheme="warning">
+      <Tabs colorScheme="warning">
         <TabBar>
           <Tab>One</Tab>
           <Tab>Two</Tab>
@@ -28,7 +28,7 @@ export default function () {
           <TabView>Three</TabView>
         </TabViews>
       </Tabs>
-      <Tabs variant="solid-rounded" colorScheme="teal">
+      <Tabs colorScheme="teal">
         <TabBar>
           <Tab>One</Tab>
           <Tab>Two</Tab>
@@ -40,7 +40,7 @@ export default function () {
           <TabView>Three</TabView>
         </TabViews>
       </Tabs>
-      <Tabs variant="solid-rounded" colorScheme="orange">
+      <Tabs colorScheme="orange">
         <TabBar>
           <Tab>One</Tab>
           <Tab>Two</Tab>
@@ -52,7 +52,7 @@ export default function () {
           <TabView>Three</TabView>
         </TabViews>
       </Tabs>
-      <Tabs variant="solid-rounded" colorScheme="info">
+      <Tabs colorScheme="info">
         <TabBar>
           <Tab>One</Tab>
           <Tab>Two</Tab>

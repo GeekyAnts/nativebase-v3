@@ -148,6 +148,16 @@ import {
   ITabViewsProps,
   ITabViewProps,
   ITabsContextProps,
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetFooter,
+  ActionsheetHeader,
+  ActionsheetItem,
+  IActionsheetProps,
+  IActionsheetContentProps,
+  IActionsheetFooterProps,
+  IActionsheetHeaderProps,
+  IActionsheetItemProps,
 } from './components/composites';
 
 import {
@@ -419,4 +429,14 @@ export {
   ITabViewsProps,
   ITabViewProps,
   ITabsContextProps,
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetFooter,
+  ActionsheetHeader,
+  ActionsheetItem,
+  IActionsheetProps,
+  IActionsheetContentProps,
+  IActionsheetFooterProps,
+  IActionsheetHeaderProps,
+  IActionsheetItemProps,
 };

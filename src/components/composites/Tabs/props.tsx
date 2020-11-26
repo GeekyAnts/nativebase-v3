@@ -10,12 +10,16 @@ export type ITabsProps = IBoxProps & {
   isLazy?: boolean;
   isManual?: boolean;
   orientation?: 'horizontal' | 'vertical';
-  size?: string;
+  size?: 'sm' | 'md' | 'lg';
   variant?: string;
   onChange?: (index?: number) => void;
 };
 
-export type ITabBarProps = IBoxProps & {};
+export type ITabBarProps = IBoxProps & {
+  align?: 'center' | 'end' | 'start';
+  isFitted?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+};
 export type ITabProps = IBoxProps & {
   index?: number;
   isSelected?: boolean;
