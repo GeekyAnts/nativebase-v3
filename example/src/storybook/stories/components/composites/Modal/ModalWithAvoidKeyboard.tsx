@@ -8,15 +8,21 @@ import {
   ModalHeader,
   ModalOverlay,
   Button,
-  Center,
   Input,
+  VStack,
+  Text,
 } from '@native-base/v3';
 
 export default function () {
   const [modalVisible, setModalVisible] = React.useState(false);
   return (
     <>
-      <Modal isCentered isOpen={modalVisible} onClose={setModalVisible}>
+      <Modal
+        isCentered
+        isOpen={modalVisible}
+        onClose={setModalVisible}
+        avoidKeyboard
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
@@ -44,7 +50,7 @@ export default function () {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <Center>
+      <VStack space={2}>
         <Button
           onPress={() => {
             setModalVisible(!modalVisible);
@@ -52,7 +58,10 @@ export default function () {
         >
           Open Modal
         </Button>
-      </Center>
+        <Text>
+          Open modal and focus on the input element to see the effect.
+        </Text>
+      </VStack>
     </>
   );
 }
