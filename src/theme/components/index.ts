@@ -36,6 +36,7 @@ import Spinner from './spinner';
 import CircularProgress from './circular-progress';
 import Modal from './modal';
 import Popover from './popover';
+import Text from './text';
 
 export default {
   Alert,
@@ -85,4 +86,5 @@ export default {
   CircularProgress,
   Modal,
   Popover,
+  Text,
 };
