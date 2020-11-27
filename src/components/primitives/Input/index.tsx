@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from 'react';
-import { TextInput, Platform } from 'react-native';
+import { TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout } from 'styled-system';
 import {
@@ -14,7 +14,6 @@ import { Box, Text } from '..';
 import type { IInputProps } from './IInputProps';
 import { InputRightAddon, InputGroup, InputLeftAddon } from './InputGroup';
 import { usePropsConfig } from '../../../theme';
-import { isNil } from 'lodash';
 
 const StyledInput = styled(TextInput)<IInputProps>(
   color,
@@ -57,11 +56,6 @@ const Input = (
     ml,
     mt,
     mb,
-    p,
-    pr,
-    pl,
-    pt,
-    pb,
     ...props
   }: IInputProps,
   ref: any
@@ -101,11 +95,6 @@ const Input = (
     flexDirection: 'row',
     ...focusProps,
     ...isInvalidProps,
-    p: !isNil(p) ? p : Platform.OS === 'android' ? 2 : 3, // Android's input have default padding.
-    pr,
-    pl,
-    pt,
-    pb,
     h,
     height,
   };
