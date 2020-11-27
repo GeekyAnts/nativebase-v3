@@ -88,7 +88,7 @@ const Modal = (
           onDismiss={() => {
             finalFocusRef?.current?.focus();
           }}
-          animationType={motionPreset || 'slide'}
+          animationType={motionPreset || 'fade'}
           transparent
           {...props}
           ref={ref}

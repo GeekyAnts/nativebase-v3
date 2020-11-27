@@ -158,6 +158,8 @@ import {
   IActionsheetFooterProps,
   IActionsheetHeaderProps,
   IActionsheetItemProps,
+  Snackbar,
+  ISnackbarProps,
 } from './components/composites';
 
 import {
@@ -219,6 +221,12 @@ import {
   Ul,
   IListProps,
   IListItemProps,
+  Overlay,
+  OverlayList,
+  useOverlay,
+  IOverlayProps,
+  IuseOverlay,
+  IOverlayListProps,
 } from './components/primitives';
 
 export * from './theme';
@@ -381,6 +389,12 @@ export {
   Ul,
   IListProps,
   IListItemProps,
+  Overlay,
+  OverlayList,
+  useOverlay,
+  IOverlayProps,
+  IuseOverlay,
+  IOverlayListProps,
   TagLabel,
   TagLeftIcon,
   TagRightIcon,
@@ -439,4 +453,6 @@ export {
   IActionsheetFooterProps,
   IActionsheetHeaderProps,
   IActionsheetItemProps,
+  Snackbar,
+  ISnackbarProps,
 };
