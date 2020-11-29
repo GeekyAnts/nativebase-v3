@@ -158,6 +158,8 @@ import {
   IActionsheetFooterProps,
   IActionsheetHeaderProps,
   IActionsheetItemProps,
+  Snackbar,
+  ISnackbarProps,
 } from './components/composites';
 
 import {
@@ -439,4 +441,6 @@ export {
   IActionsheetFooterProps,
   IActionsheetHeaderProps,
   IActionsheetItemProps,
+  Snackbar,
+  ISnackbarProps,
 };

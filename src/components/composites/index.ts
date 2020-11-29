@@ -180,3 +180,5 @@ export {
   IActionsheetHeaderProps,
   IActionsheetItemProps,
 } from './Actionsheet';
+
+export { Snackbar, ISnackbarProps } from './Snackbar';

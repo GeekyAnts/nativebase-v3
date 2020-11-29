@@ -42,6 +42,7 @@ export * from './components/primitives/Radio';
 export * from './components/primitives/Row';
 export * from './components/composites/Skeleton';
 export * from './components/primitives/Slider';
+export * from './components/composites/Snackbar';
 export * from './components/primitives/Spinner';
 export * from './components/primitives/Stack';
 export * from './components/composites/Stat';
