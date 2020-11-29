@@ -51,11 +51,3 @@ export {
   IListProps,
   IListItemProps,
 } from './List';
-export {
-  Overlay,
-  OverlayList,
-  useOverlay,
-  IOverlayProps,
-  IuseOverlay,
-  IOverlayListProps,
-} from './Overlay';

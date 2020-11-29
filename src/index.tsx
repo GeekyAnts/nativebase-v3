@@ -221,12 +221,6 @@ import {
   Ul,
   IListProps,
   IListItemProps,
-  Overlay,
-  OverlayList,
-  useOverlay,
-  IOverlayProps,
-  IuseOverlay,
-  IOverlayListProps,
 } from './components/primitives';
 
 export * from './theme';
@@ -389,12 +383,6 @@ export {
   Ul,
   IListProps,
   IListItemProps,
-  Overlay,
-  OverlayList,
-  useOverlay,
-  IOverlayProps,
-  IuseOverlay,
-  IOverlayListProps,
   TagLabel,
   TagLeftIcon,
   TagRightIcon,

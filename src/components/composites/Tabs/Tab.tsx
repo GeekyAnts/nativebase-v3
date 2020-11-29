@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '../../primitives';
-import { TabsContext, ITabProps, ITabsContextProps } from './index';
+import { TabBarContext, ITabProps, ITabsContextProps } from './index';
 import { TouchableOpacity } from 'react-native';
 import { omitUndefined } from '../../../theme/tools/utils';
 
@@ -19,7 +19,7 @@ const Tab = ({
     inactiveTabStyle,
     activeTabStyle,
     changeHandler,
-  }: ITabsContextProps = React.useContext(TabsContext);
+  }: ITabsContextProps = React.useContext(TabBarContext);
   const isOpen = activeIndex === index;
   const tabStyle = isOpen ? activeTabStyle : inactiveTabStyle;
   const pressHandler = () => {
