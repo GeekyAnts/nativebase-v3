@@ -122,12 +122,25 @@ function varientSolidRounded(props: Record<string, any>) {
   };
 }
 
+function varientSolidBox(props: Record<string, any>) {
+  const activeColor = getColorFormColorScheme(props);
+  return {
+    activeTabStyle: {
+      bg: activeColor,
+      color: 'white',
+    },
+    inactiveTabStyle: {},
+    tabBarStyle: {},
+  };
+}
+
 const variants = {
   'line': variantLine,
   'enclosed': variantEnclosed,
   'enclosed-colored': variantEnclosedColor,
   'soft-rounded': varientSoftRounded,
   'solid-rounded': varientSolidRounded,
+  'solid-box': varientSolidBox,
 };
 
 const defaultProps = {

@@ -3,8 +3,6 @@ import getIndexedChildren from '../../../utils/getIndexedChildren';
 import { Box } from '../../primitives';
 import { TabsContext, ITabsContextProps, ITabBarProps } from './index';
 
-export const TabBarContext = React.createContext({});
-
 const TabBar = ({ children, ...props }: ITabBarProps) => {
   const { tabBarStyle, align, isFitted }: ITabsContextProps = React.useContext(
     TabsContext

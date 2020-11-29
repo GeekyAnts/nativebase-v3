@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import Wrapper from '../../Wrapper';
 import Usage from './Usage';
+import TabBarOnly from './TabBarOnly';
 import FittedTabs from './FittedTabs';
 import Size from './Size';
 import Colors from './Colors';
@@ -19,4 +20,5 @@ storiesOf('Tabs', module)
   .add('TabsAlignment', () => <TabsAlignment />)
   .add('Colors', () => <Colors />)
   .add('Size', () => <Size />)
-  .add('FittedTabs', () => <FittedTabs />);
+  .add('FittedTabs', () => <FittedTabs />)
+  .add('TabBarOnly', () => <TabBarOnly />);
