@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from '../../primitives';
 import type { INumberInputFieldProps } from './props';
 import { NumberInputContext, INumberInputContext } from './index';
+import type { TextInput } from 'react-native';
 
 const NumberInputFiled = (
   { isDisabled, ...props }: INumberInputFieldProps,
@@ -50,4 +51,6 @@ const NumberInputFiled = (
   );
 };
 
-export default React.forwardRef(NumberInputFiled);
+export default React.forwardRef<TextInput, INumberInputFieldProps>(
+  NumberInputFiled
+);

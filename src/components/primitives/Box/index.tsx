@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import { View } from 'react-native';
+import type { View as ViewType } from 'react-native';
 import styled from 'styled-components/native';
 import { addTextAndPropsToStrings } from '../../../utils';
 import {
@@ -81,4 +82,4 @@ const Box = (
 
 export { IBoxProps } from './props';
 
-export default forwardRef(Box);
+export default forwardRef<ViewType, IBoxProps>(Box);

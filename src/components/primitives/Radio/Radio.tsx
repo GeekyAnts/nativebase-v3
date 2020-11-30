@@ -85,4 +85,4 @@ const Radio = ({ children, ...props }: IRadioProps, ref: any) => {
   );
 };
 
-export default React.forwardRef(Radio);
+export default React.forwardRef<TouchableOpacity, IRadioProps>(Radio);
