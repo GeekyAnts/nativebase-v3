@@ -35,6 +35,7 @@ export * from './components/composites/Menu';
 export * from './components/composites/Modal';
 export * from './theme/Mode';
 export * from './components/composites/NumberInput';
+export * from './components/primitives/Overlay';
 export * from './components/composites/PinInput';
 export * from './components/composites/Popover';
 export * from './components/composites/Progress';
