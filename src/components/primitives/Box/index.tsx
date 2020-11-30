@@ -20,7 +20,7 @@ import {
   customTypography,
 } from '../../../utils/customProps';
 import type { IBoxProps } from './props';
-import { usePropsConfig } from '../../../theme/hooks';
+import { usePropsConfig } from '../../../theme';
 
 const StyledBox = styled(View)<IBoxProps>(
   color,
