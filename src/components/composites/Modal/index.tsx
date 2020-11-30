@@ -1,5 +1,10 @@
 import React from 'react';
-import { Modal as RNModal, TouchableOpacity } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Modal as RNModal,
+  TouchableOpacity,
+  Platform,
+} from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
 import {
@@ -61,6 +66,7 @@ const Modal = (
     alignItems,
     id,
     motionPreset,
+    avoidKeyboard,
     ...props
   }: IModalProps,
   ref: any
@@ -77,6 +83,16 @@ const Modal = (
     newProps: newProps,
   };
 
+  const modalChildren = (
+    <Box
+      {...newProps.modalProps}
+      justifyContent={isCentered ? 'center' : justifyContent}
+      alignItems={isCentered ? 'center' : alignItems}
+    >
+      {children}
+    </Box>
+  );
+
   return (
     <ModalContext.Provider value={value}>
       <View nativeID={id}>
@@ -88,18 +104,20 @@ const Modal = (
           onDismiss={() => {
             finalFocusRef?.current?.focus();
           }}
-          animationType={motionPreset || 'slide'}
+          animationType={motionPreset || 'fade'}
           transparent
           {...props}
           ref={ref}
         >
-          <Box
-            {...newProps.modalProps}
-            justifyContent={isCentered ? 'center' : justifyContent}
-            alignItems={isCentered ? 'center' : alignItems}
-          >
-            {children}
-          </Box>
+          {avoidKeyboard ? (
+            <KeyboardAvoidingView
+              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            >
+              {modalChildren}
+            </KeyboardAvoidingView>
+          ) : (
+            modalChildren
+          )}
         </StyledModal>
       </View>
     </ModalContext.Provider>

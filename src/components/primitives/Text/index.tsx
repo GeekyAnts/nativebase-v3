@@ -21,6 +21,7 @@ import {
 } from '../../../utils/customProps';
 import type { ITextProps } from './props';
 import { Text as NativeText } from 'react-native';
+import { usePropsConfig } from '../../../';
 
 const StyledText = styled(NativeText)<ITextProps>(
   color,
@@ -52,6 +53,7 @@ const Text = ({
   strikeThrough,
   ...props
 }: ITextProps) => {
+  const newProps = usePropsConfig('Text', props);
   return (
     <StyledText
       numberOfLines={noOfLines ? noOfLines : isTruncated ? 1 : 999}
@@ -61,7 +63,7 @@ const Text = ({
       textDecorationLine={
         underline ? 'underline' : strikeThrough ? 'line-through' : undefined
       }
-      {...props}
+      {...newProps}
       fontSize={sub ? 10 : props.fontSize}
       style={style}
     >

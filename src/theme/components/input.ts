@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 function roundedStyle() {
   return {
     borderRadius: '50',
@@ -13,7 +15,7 @@ function defaultStyle() {
 }
 function filledStyle() {
   return {
-    backgroundColor: 'gray.200',
+    bg: 'gray.200',
   };
 }
 function unstyledStyle() {
@@ -41,11 +43,11 @@ const variants = {
 
 const sizes = {
   '2xl': { fontSize: '2xl' },
-  xl: { fontSize: 'xl' },
-  lg: { fontSize: 'lg' },
-  md: { fontSize: 'md' },
-  sm: { fontSize: 'sm' },
-  xs: { fontSize: 'xs' },
+  'xl': { fontSize: 'xl' },
+  'lg': { fontSize: 'lg' },
+  'md': { fontSize: 'md' },
+  'sm': { fontSize: 'sm' },
+  'xs': { fontSize: 'xs' },
 };
 
 const defaultProps = {
@@ -53,9 +55,10 @@ const defaultProps = {
   size: 'md',
   variant: 'default',
   _isDisabledProps: {
-    backgroundColor: 'gray.100',
+    bg: 'gray.100',
     borderColor: 'gray.300',
   },
+  p: Platform.OS === 'android' ? 2 : 3, // Android's input have default padding.
 };
 
 export default {

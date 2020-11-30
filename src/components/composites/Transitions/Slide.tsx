@@ -5,18 +5,28 @@ import { Animated } from 'react-native';
 import type { ISlideProps } from './props';
 
 const Slide = ({ children, ...props }: ISlideProps) => {
-  // TODO: Overiding placement props to bottom only, as other placement required implementation.
-  const { in: animationState, duration } = usePropsConfig('Slide', props);
-  let placement = 'bottom';
-  const [size, setSize] = React.useState(10000);
+  // TODO: Slide from right and left needs implmentation.
+  const {
+    in: animationState,
+    delay,
+    placement: pPlacement,
+    duration,
+  } = usePropsConfig('Slide', props);
+  let placement = pPlacement === 'top' ? 'top' : 'bottom';
+  const [containerOpacity, setContainerOpacity] = React.useState(0);
+  const [size, setSize] = React.useState(1000);
   const provideSize = (layoutSize: any) => {
     if (placement === 'right' || placement === 'left')
       setSize(layoutSize.width);
     else setSize(layoutSize.height);
+    setTimeout(() => {
+      setContainerOpacity(1);
+    }, 300);
   };
   const slideAnim = React.useRef(new Animated.Value(size)).current;
   const slideIn = () => {
     Animated.timing(slideAnim, {
+      delay,
       toValue: 0,
       duration: duration,
       useNativeDriver: true,
@@ -25,7 +35,7 @@ const Slide = ({ children, ...props }: ISlideProps) => {
 
   const slideOut = () => {
     Animated.timing(slideAnim, {
-      toValue: size,
+      toValue: placement === 'top' ? -size : size,
       duration: duration,
       useNativeDriver: true,
     }).start();
@@ -62,7 +72,12 @@ const Slide = ({ children, ...props }: ISlideProps) => {
 
   animationState ? slideIn() : slideOut();
   return (
-    <Box position="absolute" overflow="hidden" style={holderStyle[placement]}>
+    <Box
+      position="absolute"
+      overflow="hidden"
+      style={holderStyle[placement]}
+      opacity={containerOpacity}
+    >
       <Animated.View style={animatioStyle[placement]}>
         <Box {...props} onLayout={(e) => provideSize(e.nativeEvent.layout)}>
           {children}

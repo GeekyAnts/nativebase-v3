@@ -1,6 +1,7 @@
 // Older version
 // export * from './components/composites/AppBar';
 export * from './components/composites/Accordion';
+export * from './components/composites/Actionsheet';
 export * from './components/composites/Alert';
 export * from './components/composites/AlertDialog';
 export * from './components/composites/AspectRatio';
@@ -41,10 +42,12 @@ export * from './components/primitives/Radio';
 export * from './components/primitives/Row';
 export * from './components/composites/Skeleton';
 export * from './components/primitives/Slider';
+export * from './components/composites/Snackbar';
 export * from './components/primitives/Spinner';
 export * from './components/primitives/Stack';
 export * from './components/composites/Stat';
 export * from './components/primitives/Switch';
+export * from './components/composites/Tabs';
 export * from './components/composites/Tag';
 export * from './components/primitives/Text';
 export * from './components/primitives/TextArea';

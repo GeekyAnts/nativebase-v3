@@ -21,7 +21,7 @@ const Radio = ({ children, ...props }: IRadioProps, ref: any) => {
     ariaLabel,
     icon,
     size,
-    newProps,
+    ...newProps
   } = usePropsConfig('Radio', {
     ...context,
     ...props,
@@ -53,10 +53,10 @@ const Radio = ({ children, ...props }: IRadioProps, ref: any) => {
       ref={ref}
     >
       <Box
-        {...newProps}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
+        {...newProps}
       >
         <Box
           backgroundColor={radioState ? activeColor : 'transparent'}

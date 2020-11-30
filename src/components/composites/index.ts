@@ -153,3 +153,32 @@ export {
   IMenuGroupProps,
   IMenuOptionGroupProps,
 } from './Menu';
+
+export {
+  Tabs,
+  TabBar,
+  Tab,
+  TabViews,
+  TabView,
+  ITabsProps,
+  ITabBarProps,
+  ITabProps,
+  ITabViewsProps,
+  ITabViewProps,
+  ITabsContextProps,
+} from './Tabs';
+
+export {
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetFooter,
+  ActionsheetHeader,
+  ActionsheetItem,
+  IActionsheetProps,
+  IActionsheetContentProps,
+  IActionsheetFooterProps,
+  IActionsheetHeaderProps,
+  IActionsheetItemProps,
+} from './Actionsheet';
+
+export { Snackbar, ISnackbarProps } from './Snackbar';
