@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Icon } from '../../primitives';
+import { Box, Icon } from '../../primitives';
 import { Center } from '../../composites';
 import { usePropsConfig } from '../../../theme';
 import {
@@ -72,7 +72,7 @@ const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
       accessibilityRole="checkbox"
       ref={ref}
     >
-      <Center flexDirection="row" {...newProps}>
+      <Box flexDirection="row" alignItems="center" {...newProps}>
         <Center
           backgroundColor={checkboxState ? activeColor : 'transparent'}
           borderColor={checkboxState ? activeColor : borderColor}
@@ -92,7 +92,7 @@ const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
           )}
         </Center>
         {children}
-      </Center>
+      </Box>
     </TouchableOpacity>
   );
 };
