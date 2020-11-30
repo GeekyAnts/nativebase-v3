@@ -3,9 +3,13 @@ import { Text } from '../index';
 
 export const addTextAndPropsToStrings = (children: any, props: any) => {
   if (Array.isArray(children)) {
-    return React.Children.map(children, (child: JSX.Element) => {
+    return React.Children.map(children, (child: JSX.Element, index: number) => {
       if (typeof child === 'string') {
-        return <Text {...props}>{child}</Text>;
+        return (
+          <Text key={index} {...props}>
+            {child}
+          </Text>
+        );
       } else {
         if (child) {
           const computedProp = { ...props, ...child.props };
