@@ -12,7 +12,7 @@ export const addTextAndPropsToStrings = (children: any, props: any) => {
         );
       } else {
         if (child) {
-          const computedProp = { ...props, ...child.props };
+          const computedProp = { key: index, ...props, ...child.props };
           return React.cloneElement(child, computedProp, child.props.children);
         } else {
           return child;
