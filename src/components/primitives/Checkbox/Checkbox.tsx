@@ -97,4 +97,4 @@ const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
   );
 };
 
-export default React.forwardRef(Checkbox);
+export default React.forwardRef<TouchableOpacity, ICheckboxProps>(Checkbox);

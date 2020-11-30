@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal as RNModal, TouchableOpacity } from 'react-native';
+import type { Modal as ModalType } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
 import {
@@ -175,6 +176,6 @@ export const ModalOverlay = ({ children, ...props }: any) => {
     </Box>
   );
 };
-export default React.forwardRef(Modal);
+export default React.forwardRef<ModalType, IModalProps>(Modal);
 
 export type { IModalProps };
