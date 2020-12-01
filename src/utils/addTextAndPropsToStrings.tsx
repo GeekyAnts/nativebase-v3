@@ -6,13 +6,14 @@ export const addTextAndPropsToStrings = (children: any, props: any) => {
     if (typeof child === 'string') {
       return <Text {...props}>{child}</Text>;
     } else {
-      const newProps = {
+      if (!child) {
+        return null;
+      }
+      return React.cloneElement(child, {
         ...props,
         ...child.props,
-      };
-      return React.cloneElement(child, newProps);
+      });
     }
   });
-
   return childArray;
 };
