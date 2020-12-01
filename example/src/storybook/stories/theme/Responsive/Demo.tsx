@@ -18,14 +18,14 @@ export default () => {
           textTransform="uppercase"
           fontSize="sm"
           letterSpacing="wide"
-          color="teal.6"
+          color="teal.600"
         >
           Marketing
         </Text>
         <Link mt={1} fontSize="lg" fontWeight="semibold" href="#">
           Finding customers for your new business
         </Link>
-        <Text mt={2} color="gray.5">
+        <Text mt={2} color="gray.500">
           Getting a new business off the ground is a lot of hard work. Here are
           five ideas you can use to find your first customers.
         </Text>
