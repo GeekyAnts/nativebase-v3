@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { OverlayContext, IOverlayContextProps } from './index';
+import {
+  OverlayContext,
+  IOverlayContextProps,
+  IuseOverlayProps,
+} from './index';
 
-export const useOverlay = () => {
+export const useOverlay: IuseOverlayProps = () => {
   const {
     setOverlayItem,
     defaultConfig,
@@ -15,12 +19,9 @@ export const useOverlay = () => {
     position?: string;
     backgroundColor?: string;
   };
-  const setOverlayComponent = (
-    component: React.ReactNode,
-    config?: configtype
-  ) => {
+  const setOverlay = (component: React.ReactNode, config?: configtype) => {
     config && setConfig({ ...defaultConfig, ...config });
     setOverlayItem(component);
   };
-  return { closeOverlay, setOverlayComponent };
+  return { closeOverlay, setOverlay };
 };

@@ -13,7 +13,6 @@ export type IOverlayContextProps = {
   setConfig?: any;
 };
 
-// TODO: Define props correctly once done.
 type configtype = {
   disableOverlay?: boolean;
   position?: string;
@@ -21,9 +20,6 @@ type configtype = {
 };
 type IuseOverlayPropsReturn = {
   closeOverlay: () => void;
-  setOverlayComponent: (
-    component: React.ReactNode,
-    config?: configtype
-  ) => void;
+  setOverlay: (component: React.ReactNode, config?: configtype) => void;
 };
 export type IuseOverlayProps = () => IuseOverlayPropsReturn;

@@ -3,13 +3,13 @@ import { ToastProvider, Button, useOverlay, VStack } from '@native-base/v3';
 
 export default function () {
   const [disableOverlay, setDisableOverlay] = React.useState(false);
-  const { closeOverlay, setOverlayComponent } = useOverlay();
+  const { closeOverlay, setOverlay } = useOverlay();
 
   return (
     <VStack space={3}>
       <Button
         onPress={() =>
-          setOverlayComponent(
+          setOverlay(
             <Button onPress={closeOverlay}>Press to close Overlay</Button>,
             { disableOverlay, position: 'top', backgroundColor: '#5511ff44' }
           )

@@ -159,7 +159,9 @@ import {
   IActionsheetHeaderProps,
   IActionsheetItemProps,
   Snackbar,
+  useSnackbar,
   ISnackbarProps,
+  IuseSnackbarProps,
 } from './components/composites';
 
 import {
@@ -452,5 +454,7 @@ export {
   IActionsheetHeaderProps,
   IActionsheetItemProps,
   Snackbar,
+  useSnackbar,
   ISnackbarProps,
+  IuseSnackbarProps,
 };
