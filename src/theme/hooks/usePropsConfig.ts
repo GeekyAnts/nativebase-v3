@@ -1,4 +1,4 @@
-import { get, isNil, mergeWith } from 'lodash';
+import { get, isNil, mergeWith, cloneDeep } from 'lodash';
 import { useNativeBase } from './../../hooks';
 import { themePropertyMap } from './../base';
 import { omitUndefined } from './../tools/';
@@ -8,13 +8,8 @@ export function usePropsConfig(component: string, props: any) {
   if (!props) {
     props = {};
   }
-  const componentTheme = get(theme, `components.${component}`);
-  if (!componentTheme) {
-    console.warn(
-      `NB Warning: If you are seeing this, you probably don't need to use usePropsConfig in ${component}.`
-    );
-    return props;
-  }
+  const componentTheme = get(theme, `components.${component}`, {});
+
   props = omitUndefined(props);
   // Extracting props from defaultProps
   let newProps = extractProps(
@@ -32,7 +27,6 @@ export function usePropsConfig(component: string, props: any) {
           ...props,
           ...colorModeProps,
         });
-
   newProps = mergeWith(
     newProps,
     componentBaseStyle,
@@ -118,5 +112,5 @@ function extractProps(props: any, theme: any, componentTheme: any) {
       newProps[property] = props[property];
     }
   }
-  return newProps;
+  return cloneDeep(newProps);
 }

@@ -1,9 +1,12 @@
 import { get } from 'lodash';
 
 function baseStyleTrack(props: Record<string, any>) {
-  const { colorScheme: c, theme } = props;
+  const { colorScheme: c, theme, offTrackColor: o } = props;
   return c
-    ? { false: theme.colors.light[50], true: theme.colors[c][200] }
+    ? {
+        false: o ? theme.colors[o][100] : theme.colors.light[50],
+        true: theme.colors[c][200],
+      }
     : undefined;
 }
 function baseStyleThumb(props: Record<string, any>) {

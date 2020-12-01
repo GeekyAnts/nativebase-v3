@@ -8,7 +8,6 @@ import {
   ModalHeader,
   ModalOverlay,
   Button,
-  Center,
   Input,
 } from '@native-base/v3';
 
@@ -17,7 +16,7 @@ export default function () {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   return (
-    <Center>
+    <>
       <Modal
         isCentered
         isOpen={modalVisible}
@@ -60,6 +59,6 @@ export default function () {
         Open Modal
       </Button>
       <Input mt={4} ref={finalRef} placeholder="I'll receive focus on close" />
-    </Center>
+    </>
   );
 }

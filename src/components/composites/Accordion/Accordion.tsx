@@ -2,6 +2,7 @@ import React from 'react';
 import { remove } from 'lodash';
 import { Box } from '../../primitives';
 import type { IAccordionProps } from './props';
+import getIndexedChildren from '../../../utils/getIndexedChildren';
 
 export const AccordionContext = React.createContext({});
 
@@ -37,28 +38,10 @@ const Accordion = ({
     onChange && onChange(indexCopy);
   };
 
-  const addingIndexToChildren = () => {
-    let accordionItemCounter = -1;
-    return React.Children.map(children, (child: JSX.Element) => {
-      if (child.type.name !== 'AccordionItem') {
-        return child;
-      } else {
-        accordionItemCounter++;
-        return React.cloneElement(
-          child,
-          {
-            index: accordionItemCounter,
-          },
-          child.props.children
-        );
-      }
-    });
-  };
-
   return (
     <AccordionContext.Provider value={{ index: index, changeHandler }}>
       <Box style={style} {...props}>
-        {addingIndexToChildren()}
+        {getIndexedChildren(children, 'AccordionItem')}
       </Box>
     </AccordionContext.Provider>
   );

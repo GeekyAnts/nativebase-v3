@@ -34,8 +34,6 @@ const AccordionButton = (
     >
       <Box
         p={3}
-        borderTopWidth={1}
-        borderBottomWidth={1}
         borderColor={borderColor}
         display="flex"
         flexDirection="row"
@@ -50,4 +48,6 @@ const AccordionButton = (
   );
 };
 
-export default React.forwardRef(AccordionButton);
+export default React.forwardRef<TouchableOpacity, IAccordionButtonProps>(
+  AccordionButton
+);

@@ -1,6 +1,8 @@
+import { getColorFormColorScheme } from '../tools';
+
 const baseStyle = (props: Record<string, any>) => {
   const { isInvalid } = props;
-  const activeColor = activeColorSetter(props);
+  const activeColor = getColorFormColorScheme(props);
   return {
     activeColor,
     borderColor: isInvalid ? 'danger.200' : 'muted.50',
@@ -8,18 +10,6 @@ const baseStyle = (props: Record<string, any>) => {
   };
 };
 
-const activeColorSetter = (props: Record<string, any>) => {
-  const { theme, colorScheme, isDisabled } = props;
-  const simpleColorScheme = colorScheme.split('.')[0];
-
-  if (isDisabled) return 'gray.300';
-  else if (simpleColorScheme in theme.colors) {
-    return theme.colors[simpleColorScheme][0] === '#'
-      ? simpleColorScheme
-      : theme.colors[simpleColorScheme][400] ||
-          theme.colors[simpleColorScheme][200];
-  } else return 'default.200';
-};
 const sizes = {
   lg: { size: 5 },
   md: { size: 4 },
