@@ -48,4 +48,6 @@ const AccordionButton = (
   );
 };
 
-export default React.forwardRef(AccordionButton);
+export default React.forwardRef<TouchableOpacity, IAccordionButtonProps>(
+  AccordionButton
+);

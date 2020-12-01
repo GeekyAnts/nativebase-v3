@@ -8,13 +8,8 @@ export function usePropsConfig(component: string, props: any) {
   if (!props) {
     props = {};
   }
-  const componentTheme = get(theme, `components.${component}`);
-  if (!componentTheme) {
-    console.warn(
-      `NB Warning: If you are seeing this, you probably don't need to use usePropsConfig in ${component}.`
-    );
-    return props;
-  }
+  const componentTheme = get(theme, `components.${component}`, {});
+
   props = omitUndefined(props);
   // Extracting props from defaultProps
   let newProps = extractProps(

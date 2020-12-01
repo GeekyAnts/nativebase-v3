@@ -149,4 +149,4 @@ const Input = (
 //-------------------------------- InputGroup and other Child components -------------------------------
 export { InputRightAddon, InputGroup, InputLeftAddon };
 export { IInputProps } from './IInputProps';
-export default forwardRef(Input);
+export default forwardRef<TextInput, IInputProps>(Input);
