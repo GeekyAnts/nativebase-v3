@@ -1,21 +1,29 @@
 import { get, isNil, mergeWith, cloneDeep } from 'lodash';
+import { useWindowDimensions } from 'react-native';
 import { useNativeBase } from './../../hooks';
 import { themePropertyMap } from './../base';
-import { omitUndefined } from './../tools/';
+import {
+  omitUndefined,
+  getClosestBreakpoint,
+  inValidBreakpointProps,
+  breakpoints,
+} from './../tools/';
 
 export function usePropsConfig(component: string, props: any) {
   const { theme, ...colorModeProps } = useNativeBase();
+  let windowWidth = useWindowDimensions()?.width;
+  let currentBreakpoint = getClosestBreakpoint(theme.breakpoints, windowWidth);
   if (!props) {
     props = {};
   }
   const componentTheme = get(theme, `components.${component}`, {});
-
   props = omitUndefined(props);
   // Extracting props from defaultProps
   let newProps = extractProps(
     componentTheme.defaultProps,
     theme,
-    componentTheme
+    componentTheme,
+    currentBreakpoint
   );
   // Extracting props from base style
   let componentBaseStyle =
@@ -38,16 +46,6 @@ export function usePropsConfig(component: string, props: any) {
     }
   );
 
-  // Extracting props from normal props
-  let extractedProps = extractProps(props, theme, componentTheme);
-  // added this to handle order of props
-  // @ts-ignore
-  newProps = mergeWith(newProps, extractedProps, (objValue, srcValue, key) => {
-    if (!isNil(objValue)) {
-      delete newProps[key];
-    }
-  });
-
   // Extracting props from variant
   if (
     componentTheme.variants &&
@@ -62,15 +60,35 @@ export function usePropsConfig(component: string, props: any) {
       theme,
       ...colorModeProps,
     });
-    // @ts-ignore
-    newProps = mergeWith(newProps, variantProps, (objValue, srcValue, key) => {
-      if (!isNil(objValue)) {
-        delete newProps[key];
+    // added this to handle order of props
+    newProps = mergeWith(
+      newProps,
+      variantProps,
+      // @ts-ignore
+      (objValue, srcValue, key) => {
+        if (!isNil(objValue)) {
+          delete newProps[key];
+        }
       }
-    });
+    );
     delete newProps.variant;
     delete newProps.colorScheme;
   }
+
+  // Extracting props from normal props
+  let extractedProps = extractProps(
+    props,
+    theme,
+    componentTheme,
+    currentBreakpoint
+  );
+  // added this to handle order of props
+  // @ts-ignore
+  newProps = mergeWith(newProps, extractedProps, (objValue, srcValue, key) => {
+    if (!isNil(objValue)) {
+      delete newProps[key];
+    }
+  });
   newProps = omitUndefined(newProps);
   return newProps;
 }
@@ -78,7 +96,12 @@ export function usePropsConfig(component: string, props: any) {
 /*
  Extract props from theme props and omit those from props
 */
-function extractProps(props: any, theme: any, componentTheme: any) {
+function extractProps(
+  props: any,
+  theme: any,
+  componentTheme: any,
+  currentBreakpoint: number
+) {
   let newProps: any = {};
   for (let property in props) {
     // If the property exists in theme map then get its value
@@ -106,11 +129,49 @@ function extractProps(props: any, theme: any, componentTheme: any) {
           newProps = { ...newProps, ...shadowProps };
         }
       } else {
-        newProps[property] = props[property];
+        newProps[property] = resolveValue(
+          props[property],
+          currentBreakpoint,
+          property
+        );
       }
     } else {
-      newProps[property] = props[property];
+      newProps[property] = resolveValue(
+        props[property],
+        currentBreakpoint,
+        property
+      );
     }
   }
   return cloneDeep(newProps);
 }
+
+// Checks the property and resolves it if it has breakpoints
+const resolveValue = (
+  values: any,
+  currentBreakpoint: number,
+  property: any
+) => {
+  if (
+    inValidBreakpointProps.indexOf(property) !== -1 ||
+    (inValidBreakpointProps.indexOf(property) === -1 &&
+      typeof values !== 'object')
+  ) {
+    return values;
+  } else {
+    return findLastValidBreakpoint(values, currentBreakpoint);
+  }
+};
+
+const findLastValidBreakpoint = (values: any, currentBreakpoint: number) => {
+  let valArray = Array.isArray(values)
+    ? values
+    : breakpoints.map((bPoint: string) => values[bPoint]);
+  return (
+    valArray[currentBreakpoint] ??
+    valArray
+      .slice(0, currentBreakpoint + 1)
+      .filter((v: any) => v ?? null)
+      .pop()
+  );
+};
