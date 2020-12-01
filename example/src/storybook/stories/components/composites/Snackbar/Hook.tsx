@@ -24,6 +24,7 @@ export default function () {
         onPress={() =>
           setSnackbar(template, {
             enableOverlay: true,
+            placement: 'top',
           })
         }
       >
