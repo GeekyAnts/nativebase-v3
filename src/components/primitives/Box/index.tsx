@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import { View } from 'react-native';
 import type { View as ViewType } from 'react-native';
 import styled from 'styled-components/native';
+import { usePropsConfig, themeTools } from '../../../theme';
 import { addTextAndPropsToStrings } from '../../../utils';
 import {
   border,
@@ -21,7 +22,6 @@ import {
   customTypography,
 } from '../../../utils/customProps';
 import type { IBoxProps } from './props';
-import { usePropsConfig } from '../../../theme';
 
 const StyledBox = styled(View)<IBoxProps>(
   color,
@@ -39,42 +39,24 @@ const StyledBox = styled(View)<IBoxProps>(
   customLayout
 );
 
-const Box = (
-  {
-    children,
-    fontSize,
-    color: colorProp,
-    textDecoration,
-    txtDecor,
-    wordBreak,
-    textOverflow,
-    textTransform,
-    whiteSpace,
-    overflowWrap,
-    fontFamily,
-    fontWeight,
-    ...props
-  }: IBoxProps,
-  ref: any
-) => {
-  let newProps = usePropsConfig('Box', props);
-
+const Box = ({ children, ...props }: IBoxProps, ref: any) => {
   // TextProps that contain all the props related to text and gets added to child text components using addTextAndPropsToStrings() method
-  const textProps = {
-    fontWeight,
-    fontFamily,
-    fontSize,
-    color: colorProp,
-    textDecoration,
-    txtDecor,
-    wordBreak,
-    textOverflow,
-    textTransform,
-    whiteSpace,
-    overflowWrap,
-  };
+  let [textProps, remainingProps] = themeTools.extractInObject(props, [
+    'fontWeight',
+    'fontFamily',
+    'fontSize',
+    'color',
+    'textDecoration',
+    'txtDecor',
+    'wordBreak',
+    'textOverflow',
+    'textTransform',
+    'whiteSpace',
+    'overflowWrap',
+  ]);
+  const boxProps = usePropsConfig('Box', remainingProps);
   return (
-    <StyledBox ref={ref} {...newProps}>
+    <StyledBox ref={ref} {...boxProps}>
       {addTextAndPropsToStrings(children, textProps)}
     </StyledBox>
   );

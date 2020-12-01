@@ -9,7 +9,7 @@ import {
   flexbox,
   border,
 } from 'styled-system';
-
+import { usePropsConfig } from '../../../theme';
 import {
   customBorder,
   customBackground,
@@ -21,7 +21,6 @@ import {
 } from '../../../utils/customProps';
 import type { ITextProps } from './props';
 import { Text as NativeText } from 'react-native';
-import { usePropsConfig } from '../../../';
 
 const StyledText = styled(NativeText)<ITextProps>(
   color,
@@ -64,7 +63,7 @@ const Text = ({
         underline ? 'underline' : strikeThrough ? 'line-through' : undefined
       }
       {...newProps}
-      fontSize={sub ? 10 : props.fontSize}
+      fontSize={sub ? 10 : newProps.fontSize}
       style={style}
     >
       {children}
