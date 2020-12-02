@@ -6,14 +6,14 @@ export const BreadCrumbItem = (
   props: IBreadCrumbProps & { isCurrentPage?: boolean }
 ) => {
   const { children, isCurrentPage, ...remainingProps } = props;
-  const computedProps = { ...remainingProps, isUnderlined: false };
   return (
     <Flex {...remainingProps}>
-      {React.Children.map(children, (child: any) => {
-        return React.cloneElement(
-          child,
-          isCurrentPage ? computedProps : remainingProps
-        );
+      {React.Children.map(children, (child: any, index: number) => {
+        return React.cloneElement(child, {
+          key: `breadcrumb-item-${index}`,
+          ...remainingProps,
+          ...{ isUnderlined: isCurrentPage ? false : undefined },
+        });
       })}
     </Flex>
   );
