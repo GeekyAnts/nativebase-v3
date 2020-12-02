@@ -1,6 +1,5 @@
-import type { IBoxProps } from 'lib/typescript/src';
 import React from 'react';
-import { Box } from '../../primitives';
+import { Box, IBoxProps } from '../../primitives';
 
 export type IAppBarContentProps = IBoxProps;
 

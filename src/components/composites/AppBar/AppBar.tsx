@@ -2,10 +2,9 @@ import React from 'react';
 import AppBarLeft from './AppBarLeft';
 import AppBarRight from './AppBarRight';
 import AppBarContent from './AppBarContent';
-import { Box, HStack, View } from '../../primitives';
+import { Box, HStack, View, IBoxProps } from '../../primitives';
 import { APPROX_STATUSBAR_HEIGHT } from './utils';
 import { SafeAreaView } from 'react-native';
-import type { IBoxProps } from 'lib/typescript/src';
 
 export type IAppBarProps = IBoxProps & {
   statusBarHeight?: number;
