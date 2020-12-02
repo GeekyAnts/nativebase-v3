@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import Wrapper from './../../Wrapper';
 
-import Examples from './Basic';
+import Examples from './AppBarExamples';
 
 storiesOf('AppBar', module)
   .addDecorator(withKnobs)
