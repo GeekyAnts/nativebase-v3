@@ -31,11 +31,9 @@ export const BreadCrumbSeparator = (
       );
     }
     result = result.slice(1, -1);
-    return result.map((child: any, index: number) => {
-      return React.cloneElement(child, {
-        ...props,
-        key: `breadcrumb-separator-${index}`,
-      });
+
+    return result.map((child: any) => {
+      return React.cloneElement(child, props);
     });
   } else {
     return children;

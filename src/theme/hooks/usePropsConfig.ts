@@ -5,8 +5,8 @@ import { themePropertyMap } from './../base';
 import {
   omitUndefined,
   getClosestBreakpoint,
-  findLastValidBreakpoint,
-  hasValidBreakpointFormat,
+  inValidBreakpointProps,
+  breakpoints,
 } from './../tools/';
 
 // Remove props from defaultProps that are already present in props
@@ -118,6 +118,7 @@ function extractProps(
 
   for (let property in props) {
     // If the property exists in theme map then get its value
+
     if (themePropertyMap[property]) {
       let propValues;
       // If property is functional in componentTheme get its returned object
@@ -182,9 +183,26 @@ const resolveValue = (
   currentBreakpoint: number,
   property: any
 ) => {
-  if (hasValidBreakpointFormat(property, values)) {
-    return findLastValidBreakpoint(values, currentBreakpoint);
-  } else {
+  if (
+    inValidBreakpointProps.indexOf(property) !== -1 ||
+    (inValidBreakpointProps.indexOf(property) === -1 &&
+      typeof values !== 'object')
+  ) {
     return values;
+  } else {
+    return findLastValidBreakpoint(values, currentBreakpoint);
   }
+};
+
+const findLastValidBreakpoint = (values: any, currentBreakpoint: number) => {
+  let valArray = Array.isArray(values)
+    ? values
+    : breakpoints.map((bPoint: string) => values[bPoint]);
+  return (
+    valArray[currentBreakpoint] ??
+    valArray
+      .slice(0, currentBreakpoint + 1)
+      .filter((v: any) => v ?? null)
+      .pop()
+  );
 };
