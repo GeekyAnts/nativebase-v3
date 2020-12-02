@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box } from '@native-base/v3';
+import { Box, useBreakpointValue } from '@native-base/v3';
 export default () => {
+  const color = useBreakpointValue({ base: 'red.200', md: 'blue.200' });
   return (
-    <Box bg="red.200" w={['100px', '400px', '560px']}>
+    <Box bg={color} w={['100px', '400px', '560px']}>
       This is a box
     </Box>
   );
