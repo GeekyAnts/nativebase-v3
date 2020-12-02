@@ -1,4 +1,4 @@
-import { get, isNil, mergeWith, cloneDeep } from 'lodash';
+import { get, isNil, mergeWith, cloneDeep, omit } from 'lodash';
 import { useWindowDimensions } from 'react-native';
 import { useNativeBase } from './../../hooks';
 import { themePropertyMap } from './../base';
@@ -8,6 +8,17 @@ import {
   inValidBreakpointProps,
   breakpoints,
 } from './../tools/';
+
+// Remove props from defaultProps that are already present in props
+function filterDefaultProps(props: any, defaultProps: any) {
+  let resultProps = defaultProps;
+  for (let prop in props) {
+    if (defaultProps && prop in defaultProps) {
+      resultProps = omit(resultProps, prop);
+    }
+  }
+  return resultProps;
+}
 
 export function usePropsConfig(component: string, props: any) {
   const { theme, ...colorModeProps } = useNativeBase();
@@ -20,11 +31,12 @@ export function usePropsConfig(component: string, props: any) {
   props = omitUndefined(props);
   // Extracting props from defaultProps
   let newProps = extractProps(
-    componentTheme.defaultProps,
+    filterDefaultProps(props, componentTheme.defaultProps),
     theme,
     componentTheme,
     currentBreakpoint
   );
+
   // Extracting props from base style
   let componentBaseStyle =
     typeof componentTheme.baseStyle !== 'function'
@@ -117,12 +129,12 @@ function extractProps(
           ...props,
         });
         // Check if returned object from componentTheme is a nested object
-        var isNested = Object.keys(funcProps).some(function (key) {
+        let isNested = Object.keys(funcProps).some(function (key) {
           return funcProps[key] && typeof funcProps[key] === 'object';
         });
         propValues = isNested
-          ? get(funcProps, `${props[property]}`)
-          : funcProps;
+          ? cloneDeep(get(funcProps, `${props[property]}`))
+          : cloneDeep(funcProps);
       } else {
         propValues = get(
           componentTheme,
