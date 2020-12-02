@@ -1,4 +1,5 @@
 import { Config, system } from 'styled-system';
+import type { ResponsiveValue } from './responsiveValue';
 
 const config: Config = {
   borderRadius: {
@@ -76,22 +77,22 @@ const config: Config = {
 };
 
 export interface customBorderProps {
-  rounded?: string | number;
-  roundedTopLeft?: string | number;
-  roundedTopRight?: string | number;
-  borderTopLeftRadius?: string | number;
-  borderTopRightRadius?: string | number;
-  roundedBottomLeft?: string | number;
-  roundedBottomRight?: string | number;
-  borderBottomLeftRadius?: string | number;
-  borderBottomRightRadius?: string | number;
-  borderTopRadius?: string | number;
-  roundedTop?: string | number;
-  borderBottomRadius?: string | number;
-  roundedBottom?: string | number;
-  borderLeftRadius?: string | number;
-  roundedLeft?: string | number;
-  borderRightRadius?: string | number;
-  roundedRight?: string | number;
+  rounded?: ResponsiveValue<string | number>;
+  roundedTopLeft?: ResponsiveValue<string | number>;
+  roundedTopRight?: ResponsiveValue<string | number>;
+  borderTopLeftRadius?: ResponsiveValue<string | number>;
+  borderTopRightRadius?: ResponsiveValue<string | number>;
+  roundedBottomLeft?: ResponsiveValue<string | number>;
+  roundedBottomRight?: ResponsiveValue<string | number>;
+  borderBottomLeftRadius?: ResponsiveValue<string | number>;
+  borderBottomRightRadius?: ResponsiveValue<string | number>;
+  borderTopRadius?: ResponsiveValue<string | number>;
+  roundedTop?: ResponsiveValue<string | number>;
+  borderBottomRadius?: ResponsiveValue<string | number>;
+  roundedBottom?: ResponsiveValue<string | number>;
+  borderLeftRadius?: ResponsiveValue<string | number>;
+  roundedLeft?: ResponsiveValue<string | number>;
+  borderRightRadius?: ResponsiveValue<string | number>;
+  roundedRight?: ResponsiveValue<string | number>;
 }
 export const customBorder = system(config);

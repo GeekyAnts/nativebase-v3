@@ -1,4 +1,5 @@
 import type * as CSS from 'csstype';
+import type { ResponsiveValue } from './responsiveValue';
 import { Config, system } from 'styled-system';
 
 const config: Config = {
@@ -14,7 +15,7 @@ export interface customFlexboxProps {
   /**
    * The CSS `flex-direction` property
    */
-  flexDir?: CSS.Property.FlexDirection;
+  flexDir?: ResponsiveValue<CSS.Property.FlexDirection>;
 }
 
 export const customFlexBox = system(config);

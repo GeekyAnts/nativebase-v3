@@ -16,6 +16,8 @@ import type {
   customExtraProps,
   customShadowProps,
   customTypographyProps,
+  customTransformProps,
+  customFlexboxProps,
 } from '../../../utils/customProps';
 
 export type IBoxProps = ViewProps &
@@ -23,6 +25,8 @@ export type IBoxProps = ViewProps &
   SpaceProps &
   LayoutProps &
   FlexboxProps &
+  TypographyProps &
+  PositionProps &
   customBorderProps &
   customExtraProps &
   customOutlineProps &
@@ -30,8 +34,8 @@ export type IBoxProps = ViewProps &
   customLayoutProps &
   customTypographyProps &
   customBackgroundProps &
-  TypographyProps &
-  PositionProps &
+  customTransformProps &
+  customFlexboxProps &
   BorderProps & {
     style?: ViewStyle;
     children?: JSX.Element | JSX.Element[] | string | any;

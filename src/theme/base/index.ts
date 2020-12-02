@@ -1,17 +1,19 @@
+import borders from './borders';
+import breakpoints from './breakpoints';
 import colors from './colors';
 import radii from './radius';
+import shadows from './shadows';
 import sizes, { baseSizes } from './sizes';
 import typography from './typography';
-import borders from './borders';
-import shadows from './shadows';
 
 const theme = {
-  radii,
+  borders,
+  breakpoints,
   colors,
+  radii,
   ...typography,
   sizes,
   space: baseSizes,
-  borders,
   shadows,
 };
 

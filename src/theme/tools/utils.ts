@@ -25,3 +25,25 @@ export function getColorFormColorScheme(props: Record<string, any>) {
           theme.colors[simpleColorScheme][200];
   } else return 'default.200';
 }
+
+export const breakpoints = Object.freeze(['base', 'sm', 'md', 'lg', 'xl']);
+
+export function getClosestBreakpoint(
+  values: Record<string, any>,
+  point: number
+) {
+  let dimValues = Object.values(values);
+  let index = -1;
+  for (let i = 0; i < dimValues.length; i++) {
+    if (dimValues[i] === point) {
+      index = i;
+      break;
+    } else if (dimValues[i] > point && i !== 0) {
+      index = i - 1;
+      break;
+    }
+  }
+  return index;
+}
+
+export const inValidBreakpointProps = ['style'];
