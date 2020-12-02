@@ -5,7 +5,9 @@ import { theme } from '..';
 export function useBreakpointValue(values: any) {
   let windowWidth = useWindowDimensions()?.width;
   let currentBreakpoint = getClosestBreakpoint(theme.breakpoints, windowWidth);
-  return findLastValidBreakpoint(values, currentBreakpoint);
+  return typeof values === 'object'
+    ? findLastValidBreakpoint(values, currentBreakpoint)
+    : values;
 }
 
 const findLastValidBreakpoint = (values: any, currentBreakpoint: number) => {
