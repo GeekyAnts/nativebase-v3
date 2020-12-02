@@ -46,4 +46,4 @@ export function getClosestBreakpoint(
   return index;
 }
 
-export const inValidBreakpointProps = ['style'];
+export const inValidBreakpointProps = ['style', 'children', 'shadowOffset'];
