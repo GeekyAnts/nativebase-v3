@@ -154,6 +154,7 @@ export {
   IMenuOptionGroupProps,
 } from './Menu';
 
+export { SimpleGrid, ISimpleGridProps } from './SimpleGrid';
 export {
   Tabs,
   TabBar,
