@@ -182,7 +182,7 @@ const resolveValue = (
   currentBreakpoint: number,
   property: any
 ) => {
-  if (hasValidBreakpointFormat(property, values)) {
+  if (hasValidBreakpointFormat(values, property)) {
     return findLastValidBreakpoint(values, currentBreakpoint);
   } else {
     return values;
