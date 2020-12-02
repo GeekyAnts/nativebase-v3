@@ -12,8 +12,8 @@ import {
 // Remove props from defaultProps that are already present in props
 function filterDefaultProps(props: any, defaultProps: any) {
   let resultProps = defaultProps;
-  for (let prop in props) {
-    if (defaultProps && prop in defaultProps) {
+  for (let prop in defaultProps) {
+    if (defaultProps && prop in props) {
       resultProps = omit(resultProps, prop);
     }
   }
