@@ -81,13 +81,32 @@ export function usePropsConfig(component: string, props: any) {
 */
 function extractProps(props: any, theme: any, componentTheme: any) {
   let newProps: any = {};
+
   for (let property in props) {
     // If the property exists in theme map then get its value
+
     if (themePropertyMap[property]) {
-      let propValues = get(
-        componentTheme,
-        `${themePropertyMap[property]}.${props[property]}`
-      );
+      let propValues;
+      // If property is functional in componentTheme get its returned object
+      if (typeof componentTheme[themePropertyMap[property]] === 'function') {
+        let funcProps = componentTheme[themePropertyMap[property]]({
+          theme,
+          componentTheme,
+          ...props,
+        });
+        // Check if returned object from componentTheme is a nested object
+        var isNested = Object.keys(funcProps).some(function (key) {
+          return funcProps[key] && typeof funcProps[key] === 'object';
+        });
+        propValues = isNested
+          ? get(funcProps, `${props[property]}`)
+          : funcProps;
+      } else {
+        propValues = get(
+          componentTheme,
+          `${themePropertyMap[property]}.${props[property]}`
+        );
+      }
       if (typeof propValues === 'string' || typeof propValues === 'number') {
         newProps[property] = propValues;
       } else if (!isNil(propValues)) {
