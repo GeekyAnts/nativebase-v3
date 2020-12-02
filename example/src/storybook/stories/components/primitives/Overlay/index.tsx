@@ -2,11 +2,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import Wrapper from '../../Wrapper';
-import Hook from './Hook';
 import Usage from './Usage';
+import Customized from './Customized';
 
-storiesOf('Snackbar', module)
+storiesOf('Overlay', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: any) => <Wrapper>{getStory()}</Wrapper>)
   .add('Usage', () => <Usage />)
-  .add('Using Hook', () => <Hook />);
+  .add('Customized', () => <Customized />);

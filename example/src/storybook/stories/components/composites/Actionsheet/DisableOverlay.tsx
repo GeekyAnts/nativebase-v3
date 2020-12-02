@@ -23,7 +23,7 @@ export default function () {
           <ActionsheetItem>Option 3</ActionsheetItem>
         </ActionsheetContent>
         <ActionsheetFooter>
-          <Button onPress={onClose}>Cancel</Button>
+          <ActionsheetItem onPress={onClose}>Cancel</ActionsheetItem>
         </ActionsheetFooter>
       </Actionsheet>
     </>

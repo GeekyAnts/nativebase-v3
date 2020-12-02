@@ -1,2 +1,3 @@
 export { default as Snackbar } from './Snackbar';
-export type { ISnackbarProps } from './props';
+export { useSnackbar } from './hooks';
+export type { ISnackbarProps, IsetSnackbar, IuseSnackbarProps } from './props';
