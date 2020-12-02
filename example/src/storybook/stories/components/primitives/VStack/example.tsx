@@ -5,7 +5,7 @@ import { number } from '@storybook/addon-knobs';
 export default function () {
   return (
     <VStack
-      divider={<Divider borderColor="red.2" />}
+      divider={<Divider borderColor="red.200" />}
       space={number('Space', 4)}
       width="100%"
     >

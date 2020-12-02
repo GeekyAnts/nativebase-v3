@@ -40,7 +40,7 @@ export const StatArrow = ({
       type="Entypo"
       name={type === 'increase' ? 'triangle-up' : 'triangle-down'}
       {...props}
-      color={type === 'increase' ? 'green.5' : 'red.5'}
+      color={type === 'increase' ? 'green.500' : 'red.500'}
     />
   );
 };

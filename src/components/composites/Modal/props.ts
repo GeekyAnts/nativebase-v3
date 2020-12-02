@@ -32,6 +32,7 @@ export type IModalSemiProps = ModalProps &
     initialFocusRef?: any;
     finalFocusRef?: any;
     children: JSX.Element | JSX.Element[];
+    avoidKeyboard?: boolean;
     size?: SpaceType | string | number;
     id?: any;
     motionPreset?: 'slide' | 'fade' | 'none';

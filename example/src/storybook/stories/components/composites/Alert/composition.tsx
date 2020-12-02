@@ -6,11 +6,12 @@ import {
   AlertIcon,
   AlertCloseButton,
   Box,
+  VStack,
 } from '@native-base/v3';
 
 export default function () {
   return (
-    <Box mx={3}>
+    <VStack mx={3} space={3}>
       <Alert
         status="success"
         variant="subtle"
@@ -31,6 +32,18 @@ export default function () {
 
         <AlertCloseButton />
       </Alert>
-    </Box>
+
+      <Alert status="success">
+        <AlertIcon />
+        <Box flex={1}>
+          <AlertTitle>Success!</AlertTitle>
+          <AlertDescription>
+            Your application has been received. We will review your application
+            and respond within the next 48 hours.
+          </AlertDescription>
+        </Box>
+        <AlertCloseButton />
+      </Alert>
+    </VStack>
   );
 }

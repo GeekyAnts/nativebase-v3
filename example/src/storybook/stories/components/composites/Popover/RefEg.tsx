@@ -10,9 +10,10 @@ import {
   Button,
   Input,
 } from '@native-base/v3';
+import type { TextInput } from 'react-native';
 
 export default function () {
-  const initialFocusRef = React.useRef();
+  const initialFocusRef = React.useRef<TextInput>(null);
   return (
     <Popover initialFocusRef={initialFocusRef} closeOnBlur={false}>
       <PopoverTrigger>

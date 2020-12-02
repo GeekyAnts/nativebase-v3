@@ -17,7 +17,7 @@ const FormLabel = ({
     isRequired,
     isDisabled,
   }: IFormControlContext = React.useContext(FormControlContext);
-  const textColor = useToken('colors', 'red.3');
+  const textColor = useToken('colors', 'red.300');
   const requiredAsterisk = () => <Text color={textColor}>*</Text>;
 
   return (

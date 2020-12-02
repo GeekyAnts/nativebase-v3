@@ -46,7 +46,7 @@ const defaultProps = {
     px: 4,
   },
   modalContentProps: {
-    bg: 'gray.1',
+    bg: 'gray.100',
   },
   modalOverlayProps: {
     bg: 'black',

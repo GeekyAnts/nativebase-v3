@@ -22,7 +22,7 @@ export const SizeInput = () => {
       <Center>
         <Heading>Size Input</Heading>
       </Center>
-      <Input w="90%" size="xs" placeholder="xsm Input" />
+      <Input w="90%" size="xs" placeholder="xs Input" />
       <Input w="90%" size="sm" placeholder="sm Input" />
       <Input w="90%" size="md" placeholder="md Input" />
       <Input w="90%" size="lg" placeholder="lg Input" />

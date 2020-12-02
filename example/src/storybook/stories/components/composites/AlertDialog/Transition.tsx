@@ -10,11 +10,12 @@ import {
   AlertDialogCloseButton,
   Center,
 } from '@native-base/v3';
+import type { TouchableOpacity } from 'react-native';
 
 export default function () {
   const [isOpen, setIsOpen] = React.useState(false);
   const onClose = () => setIsOpen(false);
-  const cancelRef = React.useRef();
+  const cancelRef = React.useRef<TouchableOpacity>(null);
   return (
     <Center>
       <AlertDialog
