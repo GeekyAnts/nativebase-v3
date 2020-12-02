@@ -11,7 +11,11 @@ export default function () {
   return (
     <Box>
       <Heading mb={4}>BreadCrumb Composition</Heading>
-      <BreadCrumb spacing={2} fontSize={text('FontSize', 'lg')} color="green.5">
+      <BreadCrumb
+        spacing={2}
+        fontSize={text('FontSize', 'lg')}
+        color="green.500"
+      >
         <BreadCrumbItem isCurrentPage>
           <BreadCrumbLink>Home (This is currently active)</BreadCrumbLink>
         </BreadCrumbItem>

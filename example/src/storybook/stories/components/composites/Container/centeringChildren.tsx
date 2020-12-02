@@ -2,8 +2,8 @@ import React from 'react';
 import { Container, Text, Heading } from '@native-base/v3';
 export default function () {
   return (
-    <Container maxW="50%" centerContent>
-      <Heading>Benefits to a joint design and development system</Heading>
+    <Container centerContent>
+      <Heading>Benefits</Heading>
       <Text>
         There are many benefits to a joint design and development system. Not
         only does it bring benefits to the design team, but it also brings

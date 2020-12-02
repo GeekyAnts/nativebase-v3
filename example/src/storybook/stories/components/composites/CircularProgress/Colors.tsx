@@ -5,7 +5,7 @@ export default function () {
   return (
     <Center>
       <Heading>Changing the color</Heading>
-      <CircularProgress mt={6} value={50} color={text('Color', 'red.2')} />
+      <CircularProgress mt={6} value={50} color={text('Color', 'red.200')} />
     </Center>
   );
 }

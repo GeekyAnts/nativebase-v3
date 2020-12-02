@@ -1,5 +1,6 @@
 import type * as CSS from 'csstype';
 import { Config, system } from 'styled-system';
+import type { ResponsiveValue } from './responsiveValue';
 
 const config: Config = {
   animation: true,
@@ -19,47 +20,47 @@ export interface customExtraProps {
   /**
    * The CSS `animation` property
    */
-  animation?: CSS.Property.Animation;
+  animation?: ResponsiveValue<CSS.Property.Animation>;
   /**
    * The CSS `appearance` property
    */
-  appearance?: CSS.Property.Appearance;
+  appearance?: ResponsiveValue<CSS.Property.Appearance>;
   /**
    * The CSS `visibility` property
    */
-  visibility?: CSS.Property.Visibility;
+  visibility?: ResponsiveValue<CSS.Property.Visibility>;
   /**
    * The CSS `user-select` property
    */
-  userSelect?: CSS.Property.UserSelect;
+  userSelect?: ResponsiveValue<CSS.Property.UserSelect>;
   /**
    * The CSS `pointer-events` property
    */
-  pointerEvents?: CSS.Property.PointerEvents;
+  pointerEvents?: ResponsiveValue<CSS.Property.PointerEvents>;
   /**
    * The CSS `cursor` property
    */
-  cursor?: CSS.Property.Cursor;
+  cursor?: ResponsiveValue<CSS.Property.Cursor>;
   /**
    * The CSS `resize` property
    */
-  resize?: CSS.Property.Resize;
+  resize?: ResponsiveValue<CSS.Property.Resize>;
   /**
    * The CSS `object-fit` property
    */
-  objectFit?: CSS.Property.ObjectFit;
+  objectFit?: ResponsiveValue<CSS.Property.ObjectFit>;
   /**
    * The CSS `object-psition` property
    */
-  objectPosition?: CSS.Property.ObjectPosition;
+  objectPosition?: ResponsiveValue<CSS.Property.ObjectPosition>;
   /**
    * The CSS `float` property
    */
-  float?: CSS.Property.Float;
+  float?: ResponsiveValue<CSS.Property.Float>;
   /**
    * The CSS `will-change` property
    */
-  willChange?: CSS.Property.WillChange;
+  willChange?: ResponsiveValue<CSS.Property.WillChange>;
 }
 
 export const customExtra = system(config);

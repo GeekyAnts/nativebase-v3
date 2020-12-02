@@ -29,7 +29,7 @@ export default function () {
         <PinInputField />
         <PinInputField />
       </PinInput>
-      <PinInput size="xsm">
+      <PinInput size="xs">
         <PinInputField />
         <PinInputField />
         <PinInputField />

@@ -5,6 +5,7 @@ import Wrapper from './../../Wrapper';
 import Basic from './Basic';
 import Sizes from './Sizes';
 import BorderRadius from './BorderRadius';
+import WithRef from './WithRef';
 import FallbackSupport from './FallbackSupport';
 
 storiesOf('Image', module)
@@ -13,4 +14,5 @@ storiesOf('Image', module)
   .add('Basic', () => <Basic />)
   .add('Sizes', () => <Sizes />)
   .add('BorderRadius', () => <BorderRadius />)
-  .add('FallbackSupport', () => <FallbackSupport />);
+  .add('FallbackSupport', () => <FallbackSupport />)
+  .add('WithRef', () => <WithRef />);

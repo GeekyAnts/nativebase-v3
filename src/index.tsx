@@ -137,6 +137,29 @@ import {
   IMenuItemOptionProps,
   IMenuGroupProps,
   IMenuOptionGroupProps,
+  Tabs,
+  TabBar,
+  Tab,
+  TabViews,
+  TabView,
+  ITabsProps,
+  ITabBarProps,
+  ITabProps,
+  ITabViewsProps,
+  ITabViewProps,
+  ITabsContextProps,
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetFooter,
+  ActionsheetHeader,
+  ActionsheetItem,
+  IActionsheetProps,
+  IActionsheetContentProps,
+  IActionsheetFooterProps,
+  IActionsheetHeaderProps,
+  IActionsheetItemProps,
+  Snackbar,
+  ISnackbarProps,
 } from './components/composites';
 
 import {
@@ -203,6 +226,7 @@ import {
 export * from './theme';
 export * from './core';
 export * from './hooks';
+export * from './color-mode';
 
 export {
   AppBar,
@@ -396,4 +420,27 @@ export {
   IMenuItemOptionProps,
   IMenuGroupProps,
   IMenuOptionGroupProps,
+  Tabs,
+  TabBar,
+  Tab,
+  TabViews,
+  TabView,
+  ITabsProps,
+  ITabBarProps,
+  ITabProps,
+  ITabViewsProps,
+  ITabViewProps,
+  ITabsContextProps,
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetFooter,
+  ActionsheetHeader,
+  ActionsheetItem,
+  IActionsheetProps,
+  IActionsheetContentProps,
+  IActionsheetFooterProps,
+  IActionsheetHeaderProps,
+  IActionsheetItemProps,
+  Snackbar,
+  ISnackbarProps,
 };

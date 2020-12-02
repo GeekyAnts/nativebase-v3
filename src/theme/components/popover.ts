@@ -31,8 +31,8 @@ const defaultProps = {
     p: 0,
   },
   popoverProps: {
-    backgroundColor: 'gray.1',
-    borderColor: 'gray.3',
+    backgroundColor: 'gray.100',
+    borderColor: 'gray.300',
     borderWidth: 1,
   },
   popoverBodyProps: {

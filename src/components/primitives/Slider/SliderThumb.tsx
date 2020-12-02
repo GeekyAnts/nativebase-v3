@@ -23,7 +23,6 @@ const SliderThumb = ({ children, ...props }: ISliderProps) => {
       alignItems: 'center',
     },
   });
-  console.log('newProps = ', newProps);
 
   const sizedIcon = () =>
     React.cloneElement(
@@ -43,7 +42,7 @@ const SliderThumb = ({ children, ...props }: ISliderProps) => {
       <Box
         position="relative"
         borderRadius={999}
-        backgroundColor="light.0"
+        backgroundColor="light.50"
         p={1}
         display="flex"
         justifyContent="center"

@@ -28,23 +28,26 @@ const StyledNBSwitch = styled(RNSwitch)<ISwitchProps>(
   customLayout
 );
 
-const Switch = ({
-  style,
-  onToggle,
-  isDisabled,
-  isInvalid,
-  iosBgColor,
-  isChecked,
-  defaultIsChecked,
-  ariaLabel,
-  onColor,
-  offColor,
-  ...props
-}: ISwitchProps) => {
+const Switch = (
+  {
+    style,
+    onToggle,
+    isDisabled,
+    isInvalid,
+    iosBgColor,
+    isChecked,
+    defaultIsChecked,
+    ariaLabel,
+    onColor,
+    offColor,
+    ...props
+  }: ISwitchProps,
+  ref: any
+) => {
   const [isActive, setIsActive] = useState(
     !isNil(defaultIsChecked) ? defaultIsChecked : false
   );
-  const borderColorInvalid = useToken('colors', 'danger.2');
+  const borderColorInvalid = useToken('colors', 'danger.200');
   const checked = !isNil(isChecked) ? isChecked : isActive;
   const newProps = usePropsConfig('Switch', {
     ...props,
@@ -73,9 +76,10 @@ const Switch = ({
       style={computedStyle}
       accessibilityLabel={ariaLabel}
       accessibilityRole="switch"
+      ref={ref}
     />
   );
 };
 
-export default Switch;
+export default React.forwardRef<RNSwitch, ISwitchProps>(Switch);
 export { ISwitchProps } from './props';

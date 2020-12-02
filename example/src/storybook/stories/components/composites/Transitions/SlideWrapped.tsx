@@ -25,7 +25,7 @@ export default function () {
         and nonsense.
       </Center>
       <Slide in={isOpen}>
-        <Box p="40px" color="white" mt="4" bg="teal.5" rounded="md">
+        <Box p="40px" color="white" mt="4" bg="teal.500" rounded="md">
           Slide
         </Box>
       </Slide>

@@ -1,5 +1,11 @@
-import { Animated, I18nManager, Dimensions, StatusBar } from 'react-native';
-const SCREEN_INDENT = 8;
+import {
+  Animated,
+  I18nManager,
+  Dimensions,
+  StatusBar,
+  Platform,
+} from 'react-native';
+const SCREEN_INDENT = 0;
 
 export function getContainerStyles(
   top: any,
@@ -30,10 +36,7 @@ export function getContainerStyles(
     transforms.push({
       translateX: Animated.multiply(menuSizeAnimation.x, -1),
     });
-
-    left = Math.min(windowWidth - SCREEN_INDENT, left + buttonWidth);
-  } else if (left < SCREEN_INDENT) {
-    left = SCREEN_INDENT;
+    left = Math.min(windowWidth, left + buttonWidth);
   }
 
   // Flip by Y axis if menu hits bottom screen border
@@ -43,13 +46,12 @@ export function getContainerStyles(
     });
     top = windowHeight - SCREEN_INDENT;
     top = Math.min(
-      windowHeight - menuHeight + SCREEN_INDENT,
+      windowHeight -
+        menuHeight +
+        SCREEN_INDENT +
+        (Platform.OS === 'android' ? 3 : 2) * buttonHeight,
       top + buttonHeight
     );
-  } else if (top < SCREEN_INDENT) {
-    top = SCREEN_INDENT + 50;
-  } else {
-    top += 50;
   }
   const menuContainerStyle = {
     opacity: opacityAnimation,

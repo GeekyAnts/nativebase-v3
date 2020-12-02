@@ -10,8 +10,8 @@ import {
 export default function () {
   return (
     <Slider defaultValue={70} colorScheme="purple">
-      <SliderTrack bg="orange.1">
-        <SliderFilledTrack bg="orange.4" />
+      <SliderTrack bg="orange.100">
+        <SliderFilledTrack bg="orange.400" />
       </SliderTrack>
       <SliderThumb>
         <Icon name="circle" type="MaterialIcons" />

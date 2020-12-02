@@ -1,19 +1,21 @@
+import { Platform } from 'react-native';
+
 function roundedStyle() {
   return {
     borderRadius: '50',
     borderWidth: 1,
-    borderColor: 'gray.4',
+    borderColor: 'gray.400',
   };
 }
 function defaultStyle() {
   return {
     borderWidth: 1,
-    borderColor: 'gray.4',
+    borderColor: 'gray.400',
   };
 }
 function filledStyle() {
   return {
-    backgroundColor: 'gray.2',
+    bg: 'gray.200',
   };
 }
 function unstyledStyle() {
@@ -25,7 +27,7 @@ function underlinedStyle() {
   return {
     borderRadius: 0,
     borderWidth: 0,
-    borderColor: 'gray.4',
+    borderColor: 'gray.400',
     borderBottomWidth: 1,
   };
 }
@@ -53,9 +55,10 @@ const defaultProps = {
   size: 'md',
   variant: 'default',
   _isDisabledProps: {
-    backgroundColor: 'gray.1',
-    borderColor: 'gray.3',
+    bg: 'gray.100',
+    borderColor: 'gray.300',
   },
+  p: Platform.OS === 'android' ? 2 : 3, // Android's input have default padding.
 };
 
 export default {

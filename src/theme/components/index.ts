@@ -29,12 +29,14 @@ import { default as Slider, SliderThumb } from './slider';
 import IconButton from './icon-button';
 import Flex from './flex';
 import TextArea from './textarea';
+import Tabs from './tabs';
 import Input from './input';
 import Stat from './stat';
 import Spinner from './spinner';
 import CircularProgress from './circular-progress';
 import Modal from './modal';
 import Popover from './popover';
+import Text from './text';
 
 export default {
   Alert,
@@ -65,6 +67,7 @@ export default {
   SlideFade,
   Kbd,
   TextArea,
+  Tabs,
   Input,
   Stat,
   Progress,
@@ -83,4 +86,5 @@ export default {
   CircularProgress,
   Modal,
   Popover,
+  Text,
 };

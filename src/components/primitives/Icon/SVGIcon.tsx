@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig, useToken } from '../../../theme';
 import styled from 'styled-components';
 import { color, space, typography } from 'styled-system';
 import Svg, { G, Path, Circle } from 'react-native-svg';
@@ -10,41 +10,47 @@ const SVGIcon = ({
   viewBox,
   color: colorProp,
   stroke,
+  strokeWidth,
   children,
   focusable,
   size,
   style,
 }: IIconProps) => {
   const newProps = usePropsConfig('Icon', { size });
+  let strokeColor = useToken('colors', stroke || '');
   return (
     <SVG
       height={parseInt(newProps.dimension || newProps.size, 10)}
       width={parseInt(newProps.dimension || newProps.size, 10)}
       viewBox={viewBox}
       color={colorProp}
-      stroke={stroke}
+      stroke={strokeColor}
+      strokeWidth={strokeWidth}
       focusable={focusable}
       accessibilityRole={'image'}
       style={style}
     >
       {React.Children.count(children) > 0 ? (
         <G>
-          {React.Children.map(children, ({ props: childProps, type }: any) => {
-            if (type.name === 'Path') {
-              return (
-                <Path
-                  {...childProps}
-                  fill={childProps.fill ? childProps.fill : 'currentColor'}
-                />
-              );
-            }
-            return null;
-          })}
+          {React.Children.map(children, ({ props: childProps, type }: any) =>
+            type.name === 'Path' ? <ChildPath {...childProps} /> : null
+          )}
         </G>
       ) : (
         getDefaultIcon()
       )}
     </SVG>
+  );
+};
+const ChildPath = ({ fill, stroke: pathStroke, ...remainingProps }: any) => {
+  let pathStrokeColor = useToken('colors', pathStroke || '');
+  let fillColor = useToken('colors', fill || '');
+  return (
+    <Path
+      {...remainingProps}
+      fill={fillColor ? fillColor : 'currentColor'}
+      stroke={pathStrokeColor}
+    />
   );
 };
 const getDefaultIcon = () => {

@@ -39,8 +39,8 @@ export const MenuItem = {
     disabledTextColor: '#bdbdbd',
     underlayColor: 'gray',
     _disabled: {
-      bg: 'gray.1',
-      color: 'gray.5',
+      bg: 'gray.100',
+      color: 'gray.500',
     },
   },
 };

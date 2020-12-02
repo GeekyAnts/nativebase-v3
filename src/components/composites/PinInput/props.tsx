@@ -12,7 +12,7 @@ export type IPinInputFieldProps = IInputProps & {
 
 export type IPinInputContext = IPinInputProps & {
   handleChange?: (value: string, index: number) => void;
-  handleMultiValueChange?: (value: string) => void;
+  handleMultiValueChange?: (value: string, index: number) => void;
   value?: string[] | string;
   size?: string;
   defaultValue?: string[] | string;

@@ -12,7 +12,8 @@ export type IScaleFadeProps = IBoxProps & {
 export type ISlideProps = IBoxProps & {
   in?: boolean;
   duration?: number;
-  placement?: string;
+  delay?: number;
+  placement?: 'top' | 'bottom';
 };
 export type ISlideFadeProps = IBoxProps & {
   in?: boolean;

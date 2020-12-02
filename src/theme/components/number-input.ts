@@ -19,7 +19,7 @@ export default {
 const stepperDefaultProps = {
   _active: {},
   _disabled: {
-    bg: 'gray.3',
+    bg: 'gray.300',
   },
 };
 
