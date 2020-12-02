@@ -80,12 +80,7 @@ function IOSLike() {
               size={10}
               color="blue.500"
             ></Icon>
-            <Text
-              lineHeight={0}
-              fontWeight={'bold'}
-              color="blue.500"
-              fontSize="md"
-            >
+            <Text fontWeight={'bold'} color="blue.500" fontSize="md">
               Back
             </Text>
           </HStack>
@@ -111,7 +106,7 @@ function IOSLike() {
 
 function Customized() {
   return (
-    <AppBar bg="orange.400" shadow={1}>
+    <AppBar bg="blue.900" shadow={1}>
       <AppBar.Left>
         <IconButton
           icon={
@@ -142,7 +137,7 @@ function Customized() {
 
 function CustomizedWithBorder() {
   return (
-    <AppBar bg="teal.50" shadow={1} borderRadius={200} px={4} space={3}>
+    <AppBar bg="white" shadow={3} px={4} space={3}>
       <AppBar.Left>
         <IconButton
           icon={<Icon name="menu" type="MaterialIcons" size={6}></Icon>}
