@@ -8,6 +8,8 @@ const DEFAULT_STATUSBAR_HEIGHT_EXPO = expo?.Constants
   ? expo.Constants.statusBarHeight
   : 0;
 
+// https://docs.expo.io/versions/latest/sdk/constants/
+// Try to get height from expo if app is using expo env
 // IOS >= 11 is handled using SafeAreaView
 export const APPROX_STATUSBAR_HEIGHT = Platform.select({
   android: DEFAULT_STATUSBAR_HEIGHT_EXPO

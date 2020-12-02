@@ -13,6 +13,7 @@ export type IAppBarProps = IBoxProps & {
 
 const APPBAR_HEADER_HEIGHT = 56;
 const DEFAULT_SPACING_BETWEEN_LEFT_CONTENT_AND_RIGHT = 2;
+const DEFAULT_HORIZONTAL_PADDING = 2;
 
 const AppBar = ({
   height = APPBAR_HEADER_HEIGHT,
@@ -40,7 +41,7 @@ const AppBar = ({
   return (
     <Wrapper>
       <View style={defaultStyle}>
-        <Box flex={1} px={2} {...props}>
+        <Box flex={1} px={DEFAULT_HORIZONTAL_PADDING} {...props}>
           <HStack space={space} flex={1}>
             {childMap.get(AppBarLeft)}
             {childMap.get(AppBarContent)}
