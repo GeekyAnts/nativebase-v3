@@ -8,7 +8,7 @@ export default function NumberOfColumnsSimpleGrid() {
   return (
     <SimpleGrid columns={3} spacing={4}>
       {data.map((_item, index) => {
-        return <Box key={index} bg="#d1d1d1" height={100} width={100}></Box>;
+        return <Box key={index} bg="#d1d1d1" height={100} width={100} />;
       })}
     </SimpleGrid>
   );

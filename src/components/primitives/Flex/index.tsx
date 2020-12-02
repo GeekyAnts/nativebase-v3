@@ -18,7 +18,6 @@ const Flex = (
   ref: any
 ) => {
   let newProps = usePropsConfig('Flex', props);
-
   return (
     <Box
       {...newProps}
