@@ -3,6 +3,7 @@ const radii = {
   sm: 2,
   md: 4,
   lg: 8,
+  pill: 25,
   full: 9999,
 };
 

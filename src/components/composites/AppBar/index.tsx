@@ -16,7 +16,7 @@ const defaultAppBarProps: IBoxProps = {
   height: 64,
   flexDirection: 'row',
   alignItems: 'center',
-  backgroundColor: 'blue.4',
+  backgroundColor: 'blue.400',
   px: 4,
 };
 

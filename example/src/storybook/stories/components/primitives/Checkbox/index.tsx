@@ -9,6 +9,7 @@ import CustomColor from './customColor';
 import Size from './size';
 import CustomIcon from './customIcon';
 import Invalid from './invalid';
+import WithRef from './withRef';
 import FormControlled from './FormControlled';
 import CheckboxGroup from './checkboxGroup';
 
@@ -23,4 +24,5 @@ storiesOf('Checkbox', module)
   .add('Custom Color', () => <CustomColor />)
   .add('Custom Icon', () => <CustomIcon />)
   .add('Checkbox Group', () => <CheckboxGroup />)
-  .add('Form Controlled', () => <FormControlled />);
+  .add('Form Controlled', () => <FormControlled />)
+  .add('With Ref', () => <WithRef />);

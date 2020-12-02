@@ -14,7 +14,6 @@ import { Box, Text } from '..';
 import type { IInputProps } from './IInputProps';
 import { InputRightAddon, InputGroup, InputLeftAddon } from './InputGroup';
 import { usePropsConfig } from '../../../theme';
-import { isNil } from 'lodash';
 
 const StyledInput = styled(TextInput)<IInputProps>(
   color,
@@ -57,11 +56,6 @@ const Input = (
     ml,
     mt,
     mb,
-    p,
-    pr,
-    pl,
-    pt,
-    pb,
     ...props
   }: IInputProps,
   ref: any
@@ -84,13 +78,13 @@ const Input = (
   const focusProps = isFocused
     ? {
         borderWidth: 1,
-        borderColor: focusBorderColor ? focusBorderColor : 'default.0',
+        borderColor: focusBorderColor ? focusBorderColor : 'default.50',
       }
     : {};
 
   const isInvalidProps = isInvalid
     ? {
-        borderColor: errorBorderColor ? errorBorderColor : 'danger.2',
+        borderColor: errorBorderColor ? errorBorderColor : 'danger.200',
       }
     : {};
 
@@ -101,11 +95,6 @@ const Input = (
     flexDirection: 'row',
     ...focusProps,
     ...isInvalidProps,
-    p: !isNil(p) ? p : 3,
-    pr,
-    pl,
-    pt,
-    pb,
     h,
     height,
   };
@@ -134,7 +123,8 @@ const Input = (
             handleFocus(false, onBlur ? onBlur : () => {});
           }}
           placeholder={placeholder}
-          p={1}
+          padding={0}
+          margin={0}
           editable={isDisabled || isReadOnly ? false : true}
           borderRadius={undefined} //Remove variant props from StyledInput
           borderWidth={undefined}
@@ -145,7 +135,10 @@ const Input = (
       </Box>
 
       {isInvalid && errorMessage ? (
-        <Text ml={2} color={errorMessageColor ? errorMessageColor : 'danger.2'}>
+        <Text
+          ml={2}
+          color={errorMessageColor ? errorMessageColor : 'danger.200'}
+        >
           {errorMessage}
         </Text>
       ) : null}
@@ -156,4 +149,4 @@ const Input = (
 //-------------------------------- InputGroup and other Child components -------------------------------
 export { InputRightAddon, InputGroup, InputLeftAddon };
 export { IInputProps } from './IInputProps';
-export default forwardRef(Input);
+export default forwardRef<TextInput, IInputProps>(Input);

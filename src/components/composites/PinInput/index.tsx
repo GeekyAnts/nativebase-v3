@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack } from '../../primitives';
+import { HStack } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
 import type {
   IPinInputProps,
@@ -7,14 +7,18 @@ import type {
   IPinInputContext,
 } from './props';
 import { FormControlContext, IFormControlContext } from '../FormControl';
+import { Platform } from 'react-native';
 
 export const PinInputContext = React.createContext({});
 
 const PinInput = ({ children, ...props }: IPinInputProps) => {
-  const { manageFocus, defaultValue, value, ...newProps } = usePropsConfig(
-    'PinInput',
-    props
-  );
+  const {
+    manageFocus,
+    defaultValue,
+    value,
+    space,
+    ...newProps
+  } = usePropsConfig('PinInput', props);
   const formControlContext: IFormControlContext = React.useContext(
     FormControlContext
   );
@@ -36,14 +40,22 @@ const PinInput = ({ children, ...props }: IPinInputProps) => {
       RefList[fieldIndex - 1].current.focus();
     return temp.join('');
   };
-  const handleMultiValueChange = (newValue: string) => {
+  const handleMultiValueChange = (newValue: string, fieldIndex: number) => {
     const pinFieldLength = RefList.length;
     const newValueLength = newValue.length;
-    if (newValueLength >= pinFieldLength) {
+    if (newValueLength >= pinFieldLength && newValueLength > 2) {
       let splicedValue = newValue ? [...newValue] : [];
       splicedValue.splice(pinFieldLength);
       RefList[pinFieldLength - 1].current.focus();
       setPinInputValue(splicedValue.join(''));
+    }
+    if (Platform.OS === 'android' && newValue) {
+      const temp = pinInputValue ? [...pinInputValue] : [];
+      temp[fieldIndex] = JSON.stringify(parseInt(newValue, 10) % 10);
+      if (newValue && manageFocus && fieldIndex + 1 < RefList.length)
+        RefList[fieldIndex + 1].current.focus();
+      // Backward focus is handled by handle change function.
+      setPinInputValue(temp.join(''));
     }
   };
 
@@ -75,7 +87,11 @@ const PinInput = ({ children, ...props }: IPinInputProps) => {
         value: pinInputValue,
       }}
     >
-      {children && <Stack flexDirection="row">{indexSetter(children)}</Stack>}
+      {children && (
+        <HStack flexDirection="row" space={space}>
+          {indexSetter(children)}
+        </HStack>
+      )}
     </PinInputContext.Provider>
   );
 };

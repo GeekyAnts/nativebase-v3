@@ -1,7 +1,7 @@
 {
   "name": "native-base-example",
   "description": "Example app for native-base",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -9,6 +9,7 @@
     "start": "react-native start"
   },
   "dependencies": {
+    "formik": "^2.2.5",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-svg": "^12.1.0",

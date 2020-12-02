@@ -15,7 +15,7 @@ import {
 export default function () {
   const [modalVisible, setModalVisible] = React.useState(false);
   return (
-    <Center>
+    <>
       <Modal isCentered isOpen={modalVisible} onClose={setModalVisible}>
         <ModalOverlay />
         <ModalContent>
@@ -44,13 +44,15 @@ export default function () {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <Button
-        onPress={() => {
-          setModalVisible(!modalVisible);
-        }}
-      >
-        Open Modal
-      </Button>
-    </Center>
+      <Center>
+        <Button
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          Open Modal
+        </Button>
+      </Center>
+    </>
   );
 }

@@ -9,7 +9,7 @@ const ToastItem = ({ title, offset, ...props }: IToastProps) => {
       ml={offset?.x}
       mt={offset?.y}
       borderRadius={'full'}
-      backgroundColor={'gray.2'}
+      backgroundColor={'gray.200'}
       opacity={0.9}
       {...props}
     >

@@ -21,7 +21,7 @@ export default function () {
           colorScheme="green"
           defaultValue={groupValue}
           onChange={(values) => {
-            setGroupValue(values);
+            setGroupValue(values || []);
           }}
           alignItems="flex-start"
         >
@@ -35,7 +35,7 @@ export default function () {
             <Text mx={2}>Item 3</Text>
           </Checkbox>
           <Checkbox
-            colorScheme="orange.3"
+            colorScheme="orange.300"
             isIndeterminate
             value="Indeterminate Item "
           >

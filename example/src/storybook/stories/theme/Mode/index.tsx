@@ -3,28 +3,24 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import Wrapper from './../../components/Wrapper';
 import Basic from './Basic';
-import { extendTheme } from '@native-base/v3';
+import { extendTheme, themeTools } from '@native-base/v3';
 
-const theme = extendTheme({
-  colors: {
-    custom: {
-      1: '#f7c',
-      2: '#faa',
-      3: '#1ac',
-    },
-  },
+const customTheme = extendTheme({
   components: {
     Heading: {
-      baseStyle: {
-        color: 'custom.1',
+      baseStyle: (props: any) => {
+        return {
+          color: themeTools.mode('red.300', 'blue.300')(props),
+          fontWeight: 'bold',
+        };
       },
     },
   },
 });
 
-storiesOf('Custom Theme', module)
+storiesOf('Mode', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: any) => (
-    <Wrapper theme={theme}>{getStory()}</Wrapper>
+    <Wrapper theme={customTheme}>{getStory()}</Wrapper>
   ))
   .add('Basic', () => <Basic />);

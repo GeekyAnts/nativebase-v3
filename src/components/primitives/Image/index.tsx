@@ -6,6 +6,7 @@ import { customBorder } from '../../../utils/customProps';
 import { Text } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
 import type { IImageProps } from './props';
+import type { Image as ImageType } from 'react-native';
 
 const StyledImage = styled(RNImage)<IImageProps>(
   layout,
@@ -15,15 +16,18 @@ const StyledImage = styled(RNImage)<IImageProps>(
   customBorder
 );
 
-const Image = ({
-  style,
-  alt,
-  fallbackSource,
-  source,
-  ignoreFallback,
-  textProps,
-  ...props
-}: IImageProps) => {
+const Image = (
+  {
+    style,
+    alt,
+    fallbackSource,
+    source,
+    ignoreFallback,
+    textProps,
+    ...props
+  }: IImageProps,
+  ref: any
+) => {
   let [renderedSource, setSource] = useState(source);
   let [alternate, setAlternate] = useState(false);
   let onImageLoadError = (event: any) => {
@@ -48,9 +52,10 @@ const Image = ({
       source={renderedSource}
       {...newProps}
       onError={props.onError ? props.onError : onImageLoadError}
+      ref={ref}
     />
   );
 };
 
-export default Image;
+export default React.forwardRef<ImageType, IImageProps>(Image);
 export { IImageProps } from './props';

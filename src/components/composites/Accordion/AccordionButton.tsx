@@ -8,13 +8,10 @@ import type {
 import { AccordionItemContext } from './AccordionItem';
 import { TouchableOpacity } from 'react-native';
 
-const AccordionButton = ({
-  children,
-  style,
-  _expanded,
-  _disabled,
-  ...props
-}: IAccordionButtonProps) => {
+const AccordionButton = (
+  { children, style, _expanded, _disabled, ...props }: IAccordionButtonProps,
+  ref: any
+) => {
   const {
     isOpen,
     isDisabled,
@@ -25,7 +22,7 @@ const AccordionButton = ({
   const pressHandler = () => {
     isOpen ? onClose && onClose() : onOpen && onOpen();
   };
-  const borderColor = useToken('colors', 'muted.2');
+  const borderColor = useToken('colors', 'muted.200');
   return (
     <TouchableOpacity
       activeOpacity={1}
@@ -33,11 +30,10 @@ const AccordionButton = ({
       onPress={() => pressHandler()}
       accessible={true}
       accessibilityRole="checkbox"
+      ref={ref}
     >
       <Box
         p={3}
-        borderTopWidth={1}
-        borderBottomWidth={1}
         borderColor={borderColor}
         display="flex"
         flexDirection="row"
@@ -52,4 +48,6 @@ const AccordionButton = ({
   );
 };
 
-export default AccordionButton;
+export default React.forwardRef<TouchableOpacity, IAccordionButtonProps>(
+  AccordionButton
+);

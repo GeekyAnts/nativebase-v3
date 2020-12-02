@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Icon } from '../../primitives';
+import { Box, Icon } from '../../primitives';
 import { Center } from '../../composites';
 import { usePropsConfig } from '../../../theme';
 import {
@@ -10,7 +10,7 @@ import {
 import { CheckboxContext } from './CheckboxGroup';
 import type { ICheckboxProps, ICheckboxContext } from './props';
 
-const Checkbox = ({ children, ...props }: ICheckboxProps) => {
+const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
   const formControlContext: IFormControlContext = React.useContext(
     FormControlContext
   );
@@ -70,8 +70,9 @@ const Checkbox = ({ children, ...props }: ICheckboxProps) => {
       accessible
       accessibilityLabel={ariaLabel}
       accessibilityRole="checkbox"
+      ref={ref}
     >
-      <Center {...newProps} flexDirection="row">
+      <Box flexDirection="row" alignItems="center" {...newProps}>
         <Center
           backgroundColor={checkboxState ? activeColor : 'transparent'}
           borderColor={checkboxState ? activeColor : borderColor}
@@ -91,9 +92,9 @@ const Checkbox = ({ children, ...props }: ICheckboxProps) => {
           )}
         </Center>
         {children}
-      </Center>
+      </Box>
     </TouchableOpacity>
   );
 };
 
-export default Checkbox;
+export default React.forwardRef<TouchableOpacity, ICheckboxProps>(Checkbox);

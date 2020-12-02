@@ -5,7 +5,7 @@ import { usePropsConfig } from '../../../theme';
 import { RadioContext } from './RadioGroup';
 import type { IRadioProps, IRadioContext } from './props';
 
-const Radio = ({ children, ...props }: IRadioProps) => {
+const Radio = ({ children, ...props }: IRadioProps, ref: any) => {
   const {
     onChangeHandler,
     value: cValue,
@@ -21,7 +21,7 @@ const Radio = ({ children, ...props }: IRadioProps) => {
     ariaLabel,
     icon,
     size,
-    newProps,
+    ...newProps
   } = usePropsConfig('Radio', {
     ...context,
     ...props,
@@ -50,12 +50,13 @@ const Radio = ({ children, ...props }: IRadioProps) => {
       accessible={true}
       accessibilityLabel={ariaLabel}
       accessibilityRole="checkbox"
+      ref={ref}
     >
       <Box
-        {...newProps}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
+        {...newProps}
       >
         <Box
           backgroundColor={radioState ? activeColor : 'transparent'}
@@ -84,4 +85,4 @@ const Radio = ({ children, ...props }: IRadioProps) => {
   );
 };
 
-export default Radio;
+export default React.forwardRef<TouchableOpacity, IRadioProps>(Radio);
