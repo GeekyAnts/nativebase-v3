@@ -13,15 +13,15 @@ const Slide = ({ children, ...props }: ISlideProps) => {
     duration,
   } = usePropsConfig('Slide', props);
   let placement = pPlacement === 'top' ? 'top' : 'bottom';
-  const [containerOpacity, setContainerOpacity] = React.useState(0);
-  const [size, setSize] = React.useState(1000);
+  const [containerOpacity, setContainerOpacity] = React.useState(1);
+  const [size, setSize] = React.useState(placement === 'top' ? -1000 : 1000);
   const provideSize = (layoutSize: any) => {
     if (placement === 'right' || placement === 'left')
       setSize(layoutSize.width);
     else setSize(layoutSize.height);
     setTimeout(() => {
       setContainerOpacity(1);
-    }, 300);
+    }, duration);
   };
   const slideAnim = React.useRef(new Animated.Value(size)).current;
   const slideIn = () => {
@@ -70,7 +70,7 @@ const Slide = ({ children, ...props }: ISlideProps) => {
     left: { transform: [{ translateX: slideAnim }] },
   };
 
-  animationState ? slideIn() : slideOut();
+  animationState && size ? slideIn() : slideOut();
   return (
     <Box
       position="absolute"

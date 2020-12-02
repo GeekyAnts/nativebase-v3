@@ -153,6 +153,7 @@ export {
   IMenuOptionGroupProps,
 } from './Menu';
 
+export { SimpleGrid, ISimpleGridProps } from './SimpleGrid';
 export {
   Tabs,
   TabBar,
@@ -180,5 +181,10 @@ export {
   IActionsheetItemProps,
 } from './Actionsheet';
 
-export { Snackbar, ISnackbarProps } from './Snackbar';
+export {
+  Snackbar,
+  useSnackbar,
+  ISnackbarProps,
+  IuseSnackbarProps,
+} from './Snackbar';
 export { AppBar } from './AppBar';

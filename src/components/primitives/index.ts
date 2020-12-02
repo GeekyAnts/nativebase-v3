@@ -57,3 +57,10 @@ export {
   IListProps,
   IListItemProps,
 } from './List';
+export {
+  Overlay,
+  useOverlay,
+  IOverlayProps,
+  IOverlayContextProps,
+  IuseOverlayProps,
+} from './Overlay';

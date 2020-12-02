@@ -1,18 +1,18 @@
 import React from 'react';
 import { Slide } from '../../composites';
-import type { ISnackbarProps } from './props';
+import type { ISnackbarProps } from './index';
 
 const Snackbar = ({ children, duration = 5000, ...props }: ISnackbarProps) => {
-  const [isVisible, setIsVisible] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(true);
   React.useEffect(() => {
-    isVisible &&
+    isOpen &&
       setTimeout(() => {
-        setIsVisible(false);
+        setIsOpen(false);
       }, duration);
-  }, [isVisible, duration]);
+  }, [isOpen, duration]);
   // const newProps = usePropsConfig('Snackbar', props);
   return (
-    <Slide in={isVisible} {...props}>
+    <Slide in={isOpen} {...props}>
       {children}
     </Slide>
   );
