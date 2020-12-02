@@ -27,6 +27,38 @@ export function getColorFormColorScheme(props: Record<string, any>) {
 }
 
 export const breakpoints = Object.freeze(['base', 'sm', 'md', 'lg', 'xl']);
+export const inValidBreakpointProps = ['style', 'children', 'shadowOffset'];
+
+export function hasValidBreakpointFormat(property: string, breaks: any) {
+  if (inValidBreakpointProps.indexOf(property) !== -1) {
+    return false;
+  } else if (Array.isArray(breaks)) {
+    return true;
+  } else if (typeof breaks === 'object') {
+    for (const key in Object.keys(breaks)) {
+      if (breakpoints.indexOf(key) === -1) return false;
+    }
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export function findLastValidBreakpoint(
+  values: any,
+  currentBreakpoint: number
+) {
+  let valArray = Array.isArray(values)
+    ? values
+    : breakpoints.map((bPoint: string) => values[bPoint]);
+  return (
+    valArray[currentBreakpoint] ??
+    valArray
+      .slice(0, currentBreakpoint + 1)
+      .filter((v: any) => v ?? null)
+      .pop()
+  );
+}
 
 export function getClosestBreakpoint(
   values: Record<string, any>,
@@ -45,5 +77,3 @@ export function getClosestBreakpoint(
   }
   return index;
 }
-
-export const inValidBreakpointProps = ['style', 'children', 'shadowOffset'];
