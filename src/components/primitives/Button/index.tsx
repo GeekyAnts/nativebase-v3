@@ -95,7 +95,6 @@ const Button = (
       {rightIcon ? <Box ml={viewProps.px / 2 || 2}>{rightIcon}</Box> : null}
     </Box>
   );
-
   return (
     <StyledButton
       accessible

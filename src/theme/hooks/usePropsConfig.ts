@@ -34,7 +34,6 @@ export function usePropsConfig(component: string, propsReceived: any) {
       componentTheme,
       currentBreakpoint
     );
-
     // Extracting props from base style
     let componentBaseStyle =
       typeof componentTheme.baseStyle !== 'function'
@@ -55,16 +54,18 @@ export function usePropsConfig(component: string, propsReceived: any) {
         }
       }
     );
-
+    const variant =
+      props.variant || get(componentTheme, 'defaultProps.variant');
     // Extracting props from variant
     if (
+      variant &&
       componentTheme.variants &&
-      newProps.variant &&
-      componentTheme.variants[newProps.variant]
+      componentTheme.variants[variant]
     ) {
       const colorScheme =
-        newProps.colorScheme || componentTheme.defaultProps.colorScheme;
-      let variantProps = componentTheme.variants[newProps.variant]({
+        props.colorScheme || get(componentTheme, 'defaultProps.colorScheme');
+      let variantProps = componentTheme.variants[variant]({
+        ...props,
         ...newProps,
         colorScheme,
         theme,
@@ -115,7 +116,6 @@ function extractProps(
   currentBreakpoint: number
 ) {
   let newProps: any = {};
-
   for (let property in props) {
     // If the property exists in theme map then get its value
     if (themePropertyMap[property]) {
@@ -144,14 +144,14 @@ function extractProps(
           newProps = { ...newProps, ...shadowProps };
         }
       } else {
-        newProps[property] = resolveValue(
+        newProps[property] = resolveValueWithBreakpoint(
           props[property],
           currentBreakpoint,
           property
         );
       }
     } else {
-      newProps[property] = resolveValue(
+      newProps[property] = resolveValueWithBreakpoint(
         props[property],
         currentBreakpoint,
         property
@@ -206,7 +206,7 @@ const extractPropertyFromFunction = (
 /*
 Checks the property and resolves it if it has breakpoints
 */
-const resolveValue = (
+const resolveValueWithBreakpoint = (
   values: any,
   currentBreakpoint: number,
   property: any

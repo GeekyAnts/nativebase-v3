@@ -1,5 +1,5 @@
 // Alert
-const subtleStyle = (props: Record<string, any>) => {
+const variantSubtle = (props: Record<string, any>) => {
   let { status, theme } = props;
   status = status === 'info' ? 'default' : status;
   return {
@@ -10,7 +10,7 @@ const subtleStyle = (props: Record<string, any>) => {
     textColor: 'black',
   };
 };
-const solidStyle = (props: Record<string, any>) => {
+const variantSolid = (props: Record<string, any>) => {
   let { status, theme } = props;
   status = status === 'info' ? 'default' : status;
   return {
@@ -21,7 +21,7 @@ const solidStyle = (props: Record<string, any>) => {
     textColor: 'white',
   };
 };
-const leftAccentStyle = (props: Record<string, any>) => {
+const variantLeftAccent = (props: Record<string, any>) => {
   let { status, theme } = props;
   status = status === 'info' ? 'default' : status;
   return {
@@ -33,7 +33,7 @@ const leftAccentStyle = (props: Record<string, any>) => {
     textColor: 'black',
   };
 };
-const topAccentStyle = (props: Record<string, any>) => {
+const variantTopAccent = (props: Record<string, any>) => {
   let { status, theme } = props;
   status = status === 'info' ? 'default' : status;
   return {
@@ -47,10 +47,10 @@ const topAccentStyle = (props: Record<string, any>) => {
 };
 
 const variants = {
-  subtle: subtleStyle,
-  solid: solidStyle,
-  'left-accent': leftAccentStyle,
-  'top-accent': topAccentStyle,
+  subtle: variantSubtle,
+  solid: variantSolid,
+  'left-accent': variantLeftAccent,
+  'top-accent': variantTopAccent,
 };
 
 const defaultAlertProps = {
