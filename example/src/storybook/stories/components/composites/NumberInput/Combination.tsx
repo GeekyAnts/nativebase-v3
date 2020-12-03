@@ -29,7 +29,7 @@ export default function () {
       <Slider
         my={10}
         defaultValue={value}
-        colorScheme="cyan.200"
+        colorScheme="cyan"
         onChange={(v) => {
           setValue(Math.floor(v));
         }}
