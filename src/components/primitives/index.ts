@@ -33,7 +33,13 @@ export {
   ISliderProps,
   ISliderContextProps,
 } from './Slider';
-export { default as Stack, VStack, HStack, IStackProps } from './Stack';
+export {
+  default as Stack,
+  VStack,
+  HStack,
+  IStackProps,
+  StackProps,
+} from './Stack';
 export { default as ZStack } from './ZStack';
 export { default as Image, IImageProps } from './Image';
 export { default as Spinner, ISpinnerProps } from './Spinner';

@@ -1,6 +1,5 @@
 export { Variants } from '../../@types/enums';
 export { default as AspectRatio, IAspectRatioProps } from './AspectRatio';
-export { default as AppBar } from './AppBar';
 export { default as Badge, IBadgeProps } from './Badge';
 export { default as IconButton, IIconButtonProps } from './IconButton';
 export {
@@ -188,3 +187,4 @@ export {
   ISnackbarProps,
   IuseSnackbarProps,
 } from './Snackbar';
+export { AppBar } from './AppBar';
