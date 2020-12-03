@@ -1,4 +1,4 @@
-import { get, isNil, mergeWith, cloneDeep, omit } from 'lodash';
+import { get, isNil, mergeWith, cloneDeep } from 'lodash';
 import { useWindowDimensions } from 'react-native';
 import { useNativeBase } from './../../hooks';
 import { themePropertyMap } from './../base';
@@ -7,75 +7,47 @@ import {
   getClosestBreakpoint,
   findLastValidBreakpoint,
   hasValidBreakpointFormat,
+  extractInObject,
 } from './../tools/';
 
-// Remove props from defaultProps that are already present in props
-function filterDefaultProps(props: any, defaultProps: any) {
-  let resultProps = defaultProps;
-  for (let prop in defaultProps) {
-    if (defaultProps && prop in props) {
-      resultProps = omit(resultProps, prop);
-    }
-  }
-  return resultProps;
-}
-
-export function usePropsConfig(component: string, props: any) {
+export function usePropsConfig(component: string, propsReceived: any) {
   const { theme, ...colorModeProps } = useNativeBase();
   let windowWidth = useWindowDimensions()?.width;
   let currentBreakpoint = getClosestBreakpoint(theme.breakpoints, windowWidth);
-  if (!props) {
-    props = {};
+  if (!propsReceived) {
+    propsReceived = {};
   }
-  const componentTheme = get(theme, `components.${component}`, {});
+
+  // Extracting out children and style, as they do not contribute in props calculation
+  let [ignoredProps, props] = extractInObject(propsReceived, [
+    'children',
+    'style',
+  ]);
+  const componentTheme = get(theme, `components.${component}`);
   props = omitUndefined(props);
-  // Extracting props from defaultProps
-  let newProps = extractProps(
-    filterDefaultProps(props, componentTheme.defaultProps),
-    theme,
-    componentTheme,
-    currentBreakpoint
-  );
-
-  // Extracting props from base style
-  let componentBaseStyle =
-    typeof componentTheme.baseStyle !== 'function'
-      ? componentTheme.baseStyle
-      : componentTheme.baseStyle({
-          theme,
-          ...newProps,
-          ...props,
-          ...colorModeProps,
-        });
-  newProps = mergeWith(
-    newProps,
-    componentBaseStyle,
-    // @ts-ignore
-    (objValue, srcValue, key) => {
-      if (!isNil(objValue)) {
-        delete newProps[key];
-      }
-    }
-  );
-
-  // Extracting props from variant
-  if (
-    componentTheme.variants &&
-    newProps.variant &&
-    componentTheme.variants[newProps.variant]
-  ) {
-    const colorScheme =
-      newProps.colorScheme || componentTheme.defaultProps.colorScheme;
-    let variantProps = componentTheme.variants[newProps.variant]({
-      ...newProps,
-      colorScheme,
+  let newProps: any;
+  if (componentTheme) {
+    // Extracting props from defaultProps
+    newProps = extractProps(
+      filterDefaultProps(props, componentTheme.defaultProps),
       theme,
-      ...colorModeProps,
-    });
-    // added this to handle order of props
+      componentTheme,
+      currentBreakpoint
+    );
+
+    // Extracting props from base style
+    let componentBaseStyle =
+      typeof componentTheme.baseStyle !== 'function'
+        ? componentTheme.baseStyle
+        : componentTheme.baseStyle({
+            theme,
+            ...newProps,
+            ...props,
+            ...colorModeProps,
+          });
     newProps = mergeWith(
       newProps,
-      variantProps,
+      componentBaseStyle,
       // @ts-ignore
       (objValue, srcValue, key) => {
         if (!isNil(objValue)) {
@@ -83,8 +55,35 @@ export function usePropsConfig(component: string, props: any) {
         }
       }
     );
-    delete newProps.variant;
-    delete newProps.colorScheme;
+
+    // Extracting props from variant
+    if (
+      componentTheme.variants &&
+      newProps.variant &&
+      componentTheme.variants[newProps.variant]
+    ) {
+      const colorScheme =
+        newProps.colorScheme || componentTheme.defaultProps.colorScheme;
+      let variantProps = componentTheme.variants[newProps.variant]({
+        ...newProps,
+        colorScheme,
+        theme,
+        ...colorModeProps,
+      });
+      // added this to handle order of props
+      newProps = mergeWith(
+        newProps,
+        variantProps,
+        // @ts-ignore
+        (objValue, srcValue, key) => {
+          if (!isNil(objValue)) {
+            delete newProps[key];
+          }
+        }
+      );
+      delete newProps.variant;
+      delete newProps.colorScheme;
+    }
   }
 
   // Extracting props from normal props
@@ -94,6 +93,7 @@ export function usePropsConfig(component: string, props: any) {
     componentTheme,
     currentBreakpoint
   );
+
   // added this to handle order of props
   // @ts-ignore
   newProps = mergeWith(newProps, extractedProps, (objValue, srcValue, key) => {
@@ -102,7 +102,7 @@ export function usePropsConfig(component: string, props: any) {
     }
   });
   newProps = omitUndefined(newProps);
-  return newProps;
+  return { ...newProps, ...ignoredProps };
 }
 
 /*
@@ -119,27 +119,12 @@ function extractProps(
   for (let property in props) {
     // If the property exists in theme map then get its value
     if (themePropertyMap[property]) {
-      let propValues;
-      // If property is functional in componentTheme get its returned object
-      if (typeof componentTheme[themePropertyMap[property]] === 'function') {
-        let funcProps = componentTheme[themePropertyMap[property]]({
-          theme,
-          componentTheme,
-          ...props,
-        });
-        // Check if returned object from componentTheme is a nested object
-        let isNested = Object.keys(funcProps).some(function (key) {
-          return funcProps[key] && typeof funcProps[key] === 'object';
-        });
-        propValues = isNested
-          ? cloneDeep(get(funcProps, `${props[property]}`))
-          : cloneDeep(funcProps);
-      } else {
-        propValues = get(
-          componentTheme,
-          `${themePropertyMap[property]}.${props[property]}`
-        );
-      }
+      let propValues = extractPropertyFromFunction(
+        property,
+        props,
+        theme,
+        componentTheme
+      );
       if (typeof propValues === 'string' || typeof propValues === 'number') {
         newProps[property] = propValues;
       } else if (!isNil(propValues)) {
@@ -176,7 +161,51 @@ function extractProps(
   return cloneDeep(newProps);
 }
 
-// Checks the property and resolves it if it has breakpoints
+/*
+Remove props from defaultProps that are already present in props
+*/
+function filterDefaultProps(props: any, defaultProps: any) {
+  let [, resultProps] = extractInObject(defaultProps, Object.keys(props));
+  return resultProps;
+}
+
+/*
+If property is functional in componentTheme, get its returned object
+*/
+const extractPropertyFromFunction = (
+  property: string,
+  props: any,
+  theme: any,
+  componentTheme: any
+) => {
+  let propValues;
+  if (
+    componentTheme &&
+    typeof componentTheme[themePropertyMap[property]] === 'function'
+  ) {
+    let funcProps = componentTheme[themePropertyMap[property]]({
+      theme,
+      ...props,
+    });
+    // Check if returned object from componentTheme is a nested object
+    let isNested = Object.keys(funcProps).some(function (key) {
+      return funcProps[key] && typeof funcProps[key] === 'object';
+    });
+    propValues = isNested
+      ? { ...get(funcProps, `${props[property]}`) }
+      : { ...funcProps };
+  } else {
+    propValues = get(
+      componentTheme,
+      `${themePropertyMap[property]}.${props[property]}`
+    );
+  }
+  return propValues;
+};
+
+/*
+Checks the property and resolves it if it has breakpoints
+*/
 const resolveValue = (
   values: any,
   currentBreakpoint: number,
