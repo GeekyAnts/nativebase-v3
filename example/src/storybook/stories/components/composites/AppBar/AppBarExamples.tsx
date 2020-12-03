@@ -79,7 +79,7 @@ function IOSLike() {
               type="FontAwesome"
               size={10}
               color="blue.500"
-            ></Icon>
+            />
             <Text fontWeight={'bold'} color="blue.500" fontSize="md">
               Back
             </Text>
@@ -115,7 +115,7 @@ function Customized() {
               type="FontAwesome"
               size={10}
               color="white"
-            ></Icon>
+            />
           }
         />
       </AppBar.Left>
@@ -139,9 +139,7 @@ function CustomizedWithBorder() {
   return (
     <AppBar bg="white" shadow={3} px={4} space={3}>
       <AppBar.Left>
-        <IconButton
-          icon={<Icon name="menu" type="MaterialIcons" size={6}></Icon>}
-        />
+        <IconButton icon={<Icon name="menu" type="MaterialIcons" size={6} />} />
       </AppBar.Left>
       <AppBar.Content>
         <Text isTruncated fontWeight="bold" fontSize={20}>
@@ -170,7 +168,7 @@ const LeftArrowIconButton = () => {
           type="MaterialCommunityIcons"
           size={8}
           color="white"
-        ></Icon>
+        />
       }
     />
   );
@@ -180,20 +178,13 @@ const HeartIcon = () => {
   return (
     <IconButton
       icon={
-        <Icon
-          name="heart-outline"
-          type="Ionicons"
-          size={6}
-          color="white"
-        ></Icon>
+        <Icon name="heart-outline" type="Ionicons" size={6} color="white" />
       }
     />
   );
 };
 const SearchIcon = () => {
-  return (
-    <IconButton icon={<Icon name="search" size={6} color="white"></Icon>} />
-  );
+  return <IconButton icon={<Icon name="search" size={6} color="white" />} />;
 };
 const MoreIcon = () => {
   return (
@@ -204,7 +195,7 @@ const MoreIcon = () => {
           type="MaterialCommunityIcons"
           size={6}
           color="white"
-        ></Icon>
+        />
       }
     />
   );
