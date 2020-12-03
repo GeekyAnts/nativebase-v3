@@ -17,34 +17,33 @@ export default function () {
   const cancelRef = React.useRef<TouchableOpacity>(null);
   return (
     <Center>
+      <Button colorScheme="danger" onPress={() => setIsOpen(!isOpen)}>
+        Delete Customer
+      </Button>
       <AlertDialog
         leastDestructiveRef={cancelRef}
         isOpen={isOpen}
         onClose={onClose}
         motionPreset={'fade'}
       >
-        <AlertDialogOverlay justifyContent="center">
-          <AlertDialogContent>
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Delete Customer
-            </AlertDialogHeader>
-            <AlertDialogBody>
-              Are you sure? You can't undo this action afterwards.
-            </AlertDialogBody>
-            <AlertDialogFooter>
-              <Button ref={cancelRef} onPress={onClose}>
-                Cancel
-              </Button>
-              <Button colorScheme="red" onPress={onClose} ml={3}>
-                Delete
-              </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialogOverlay>
+        <AlertDialogOverlay />
+        <AlertDialogContent>
+          <AlertDialogHeader fontSize="lg" fontWeight="bold">
+            Delete Customer
+          </AlertDialogHeader>
+          <AlertDialogBody>
+            Are you sure? You can't undo this action afterwards.
+          </AlertDialogBody>
+          <AlertDialogFooter>
+            <Button ref={cancelRef} onPress={onClose}>
+              Cancel
+            </Button>
+            <Button colorScheme="red" onPress={onClose} ml={3}>
+              Delete
+            </Button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
       </AlertDialog>
-      <Button colorScheme="danger" onPress={() => setIsOpen(!isOpen)}>
-        Delete Customer
-      </Button>
     </Center>
   );
 }
