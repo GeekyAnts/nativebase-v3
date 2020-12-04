@@ -62,11 +62,13 @@ export {
   IFormControlContext,
 } from './FormControl';
 export {
-  default as NumberInput,
+  NumberInput,
   INumberInputProps,
   NumberInputField,
   INumberInputFieldProps,
   NumberInputStepper,
+  INumberInputSteppersProps,
+  INumberInputStepperProps,
   NumberIncrementStepper,
   NumberDecrementStepper,
   INumberInputContext,
