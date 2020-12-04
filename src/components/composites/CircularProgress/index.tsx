@@ -65,8 +65,18 @@ const CircularProgress = ({
       })
     ).start();
   }
+  const [viewHeight, setViewHeight] = React.useState(0);
+  const layout = (e: any) => {
+    let height = e.nativeEvent.layout.height;
+    setViewHeight(height);
+  };
   const defaultStyling: any = {
-    borderRadius: 100,
+    borderBottomLeftRadius: viewHeight / 2,
+    borderBottomRightRadius: viewHeight / 2,
+    borderTopLeftRadius: viewHeight / 2,
+    borderTopRightRadius: viewHeight / 2,
+    borderLeftWidth: defaultThickness,
+    borderBottomWidth: defaultThickness,
     position: 'absolute',
     borderLeftColor: 'transparent',
     borderBottomColor: 'transparent',
@@ -74,24 +84,28 @@ const CircularProgress = ({
   };
   const styles = StyleSheet.create({
     firstProgressLayer: {
-      borderWidth: defaultThickness,
+      borderTopWidth: defaultThickness,
+      borderRightWidth: defaultThickness,
       ...defaultStyling,
       transform: [{ rotateZ: '-135deg' }],
     },
     secondProgressLayer: {
-      borderWidth: defaultThickness,
+      borderTopWidth: defaultThickness,
+      borderRightWidth: defaultThickness,
       ...defaultStyling,
       transform: [{ rotateZ: '45deg' }],
     },
     offsetLayer: {
-      borderWidth: defaultThickness,
+      borderTopWidth: defaultThickness,
+      borderRightWidth: defaultThickness,
       ...defaultStyling,
+      borderRadius: viewHeight / 2,
       transform: [{ rotateZ: '-135deg' }],
     },
     animateStyle: {
-      borderWidth: defaultThickness,
+      borderTopWidth: defaultThickness,
+      borderRightWidth: defaultThickness,
       ...defaultStyling,
-      borderTopColor: 'transparent',
       transform: [
         {
           rotateZ: degree.interpolate({
@@ -115,7 +129,8 @@ const CircularProgress = ({
     if (percent > halfSide) {
       return (
         <Box
-          borderColor={colorProp ? colorProp : 'green.400'}
+          borderTopColor={colorProp ? colorProp : 'green.400'}
+          borderRightColor={colorProp ? colorProp : 'green.400'}
           style={[
             styles.secondProgressLayer,
             propStyle(percent - halfSide, 45),
@@ -125,7 +140,8 @@ const CircularProgress = ({
     } else {
       return (
         <Box
-          borderColor={trackColor ? trackColor : 'gray.200'}
+          borderTopColor={trackColor ? trackColor : 'gray.200'}
+          borderRightColor={trackColor ? trackColor : 'gray.200'}
           style={styles.offsetLayer}
         />
       );
@@ -151,7 +167,9 @@ const CircularProgress = ({
       {!isIndeterminate ? (
         <>
           <Box
-            borderColor={colorProp ? colorProp : 'green.400'}
+            onLayout={layout}
+            borderTopColor={colorProp ? colorProp : 'green.400'}
+            borderRightColor={colorProp ? colorProp : 'green.400'}
             style={[styles.firstProgressLayer, firstProgressLayerStyle]}
           />
           {renderThirdLayer(value)}
@@ -159,7 +177,9 @@ const CircularProgress = ({
         </>
       ) : (
         <StyleAnimatedView
-          borderColor={colorProp}
+          onLayout={layout}
+          borderTopColor={colorProp ? colorProp : 'green.400'}
+          borderRightColor={colorProp ? colorProp : 'green.400'}
           style={styles.animateStyle}
         />
       )}
