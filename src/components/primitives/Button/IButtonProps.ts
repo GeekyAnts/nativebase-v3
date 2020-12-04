@@ -1,4 +1,4 @@
-import type { ViewProps, ViewStyle } from 'react-native';
+import type { ViewStyle } from 'react-native';
 import type {
   customBorderProps,
   customOutlineProps,
@@ -13,9 +13,17 @@ import type {
   LayoutProps,
   SpaceProps,
 } from 'styled-system';
+import type { AccessibilityRole, AccessibilityState } from 'react-native';
 
-export type IButtonProps = ViewProps &
-  ColorProps &
+export type IButtonAccessibilityProps = {
+  accessible?: boolean;
+  accessibilityRole?: AccessibilityRole;
+  accessibilityState?: AccessibilityState;
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
+};
+
+export type IButtonProps = ColorProps &
   SpaceProps &
   LayoutProps &
   FlexboxProps &
@@ -24,7 +32,8 @@ export type IButtonProps = ViewProps &
   customOutlineProps &
   customShadowProps &
   customLayoutProps &
-  BorderProps & {
+  BorderProps &
+  IButtonAccessibilityProps & {
     style?: ViewStyle;
     children?: any;
     highlight?: number | 0 | 1 | 0.5 | 0.25 | 0.75;
@@ -39,5 +48,4 @@ export type IButtonProps = ViewProps &
     isLoadingText?: string;
     spinner?: JSX.Element;
     isDisabled?: boolean;
-    ariaLabel?: string;
   };

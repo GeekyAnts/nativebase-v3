@@ -13,8 +13,9 @@ import {
 } from '../../../utils/customProps';
 import { Text } from '../../primitives';
 import { usePropsConfig, themeTools } from '../../../theme';
-import { Spinner, Box, IBoxProps, Flex } from '../../primitives';
+import { Spinner, Box, Flex } from '../../primitives';
 import type { IButtonProps } from './IButtonProps';
+import { useButton } from './useButton';
 
 const StyledButton = styled(TouchableOpacity)<
   IButtonProps & TouchableOpacityProps
@@ -39,14 +40,11 @@ const Button = (
     isLoading,
     isLoadingText,
     size,
-    onPress,
     leftIcon,
     rightIcon,
-    isDisabled,
     spinner,
-    ariaLabel,
     ...props
-  }: IButtonProps & IBoxProps,
+  }: IButtonProps,
   ref: any
 ) => {
   const newProps = usePropsConfig('Button', {
@@ -76,9 +74,27 @@ const Button = (
     'marginY',
   ]);
 
+  let [
+    additionalButtonProps,
+    innerButtonProps,
+  ] = themeTools.extractInObject(viewProps, [
+    'accessible',
+    'accessibilityRole',
+    'accessibilityState',
+    'accessibilityLabel',
+    'accessibilityHint',
+    'isDisabled',
+    'onPress',
+  ]);
+
+  additionalButtonProps.isDisabled =
+    additionalButtonProps.isDisabled || isLoading;
+
   const innerButton = (
-    <Box {...viewProps} opacity={isLoading ? 0.5 : 1} style={style}>
-      {leftIcon ? <Box mr={viewProps.px / 2 || 2}>{leftIcon}</Box> : null}
+    <Box {...innerButtonProps} opacity={isLoading ? 0.5 : 1} style={style}>
+      {leftIcon ? (
+        <Box mr={innerButtonProps.px / 2 || 2}>{leftIcon}</Box>
+      ) : null}
       {isLoading ? (
         <Flex direction="row">
           {spinner ? spinner : <Spinner color={textProps.color} size="sm" />}
@@ -92,19 +108,20 @@ const Button = (
           {children}
         </Text>
       )}
-      {rightIcon ? <Box ml={viewProps.px / 2 || 2}>{rightIcon}</Box> : null}
+      {rightIcon ? (
+        <Box ml={innerButtonProps.px / 2 || 2}>{rightIcon}</Box>
+      ) : null}
     </Box>
   );
+
+  const { buttonProps } = useButton(additionalButtonProps, ref);
+
   return (
     <StyledButton
-      accessible
-      accessibilityLabel={ariaLabel}
-      accessibilityRole="button"
-      disabled={isLoading || isDisabled}
-      onPress={onPress ? onPress : () => {}}
       activeOpacity={highlight ? highlight : 0.8}
       ref={ref}
       {...layoutProps}
+      {...buttonProps}
     >
       {innerButton}
     </StyledButton>
@@ -113,6 +130,4 @@ const Button = (
 
 export { IButtonProps } from './IButtonProps';
 export { ButtonGroup, ButtonGroupProps } from './ButtonGroup';
-export default forwardRef<TouchableOpacityType, IButtonProps & IBoxProps>(
-  Button
-);
+export default forwardRef<TouchableOpacityType, IButtonProps>(Button);
