@@ -1,48 +1,57 @@
-// Alert
+import { mode, getColor, transparentize } from './../tools';
+
+function getBg(props: Record<string, any>) {
+  const { theme, status } = props;
+  const lightBg = getColor(theme, `${status}.50`, status);
+  const darkBg = transparentize(`${status}.200`, 0.5)(theme);
+  return mode(lightBg, darkBg)(props);
+}
+
 const variantSubtle = (props: Record<string, any>) => {
-  let { status, theme } = props;
+  let { status } = props;
   status = status === 'info' ? 'default' : status;
-  return {
+  let a = {
     border: 6,
     borderColor: 'transparent',
-    bg: theme.colors[status][50],
-    iconColor: theme.colors[status][100],
-    textColor: 'black',
+    bg: getBg(props),
+    iconColor: mode(`${status}.400`, `${status}.50`)(props),
+    textColor: mode('gray', 'white')(props),
   };
+  return a;
 };
 const variantSolid = (props: Record<string, any>) => {
-  let { status, theme } = props;
+  let { status } = props;
   status = status === 'info' ? 'default' : status;
   return {
     border: 6,
     borderColor: 'transparent',
-    bg: theme.colors[status][100],
-    iconColor: 'white',
-    textColor: 'white',
+    bg: getBg(props),
+    iconColor: mode(`${status}.400`, `${status}.50`)(props),
+    textColor: mode('gray', 'white')(props),
   };
 };
 const variantLeftAccent = (props: Record<string, any>) => {
   let { status, theme } = props;
   status = status === 'info' ? 'default' : status;
   return {
-    bg: theme.colors[status][50],
     border: 6,
+    bg: getBg(props),
+    iconColor: mode(`${status}.400`, `${status}.50`)(props),
+    textColor: mode('gray', 'white')(props),
     borderColor: 'transparent',
     borderLeftColor: theme.colors[status][100],
-    iconColor: theme.colors[status][100],
-    textColor: 'black',
   };
 };
 const variantTopAccent = (props: Record<string, any>) => {
   let { status, theme } = props;
   status = status === 'info' ? 'default' : status;
   return {
-    bg: theme.colors[status][50],
     border: 6,
     borderColor: 'transparent',
     borderTopColor: theme.colors[status][100],
-    iconColor: theme.colors[status][100],
-    textColor: 'black',
+    bg: getBg(props),
+    iconColor: mode(`${status}.400`, `${status}.50`)(props),
+    textColor: mode('gray', 'white')(props),
   };
 };
 

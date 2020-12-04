@@ -9,7 +9,6 @@ function baseStyle(props: Record<string, any>) {
     borderRadius: 'md',
     fontSize: 'sm',
     fontWeight: 'bold',
-    // whiteSpace: 'nowrap',
     px: 2,
   };
 }

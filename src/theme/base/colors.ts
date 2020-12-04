@@ -20,27 +20,6 @@ const colors = {
   neutral: '#747474',
   info: '#274788',
   promote: '#8c5bb2',
-  success: {
-    50: '#c6f7d4',
-    100: '#21543d',
-    200: '#38a169',
-    300: '#38a169',
-    400: '#38a169',
-  },
-  danger: {
-    50: '#f8d7d9',
-    100: '#731c23',
-    200: '#e53e3e',
-    300: '#e53e3e',
-    400: '#e53e3e',
-  },
-  error: {
-    50: '#f8d7d9',
-    100: '#731c23',
-    200: '#e53e3e',
-    300: '#e53e3e',
-    400: '#e53e3e',
-  },
   warning: {
     50: '#fff3cd',
     100: '#866407',
@@ -246,7 +225,13 @@ const colors = {
     700: '#434190',
     800: '#3c366b',
   },
+  danger: {},
+  error: {},
+  success: {},
 };
+colors.danger = colors.red;
+colors.error = colors.red;
+colors.success = colors.green;
 
 export default colors;
 export type IColors = typeof colors;

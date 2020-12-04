@@ -28,7 +28,7 @@ const AccordionButton = (
       activeOpacity={1}
       disabled={isDisabled}
       onPress={() => pressHandler()}
-      accessible={true}
+      accessible
       accessibilityRole="checkbox"
       ref={ref}
     >

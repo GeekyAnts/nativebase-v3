@@ -1,5 +1,4 @@
 const defaultProps = {
-  bg: 'gray.200',
   colorScheme: 'default',
   size: 'md',
 };
@@ -7,6 +6,7 @@ const defaultProps = {
 function baseStyle(props: Record<string, any>) {
   return {
     innerBg: `${props.colorScheme}.200`,
+    bg: 'gray.200',
   };
 }
 

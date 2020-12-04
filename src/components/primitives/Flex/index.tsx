@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
 import type { IFlexProps } from './props';
 
 const Flex = (
@@ -17,11 +16,11 @@ const Flex = (
   }: IFlexProps,
   ref: any
 ) => {
-  let newProps = usePropsConfig('Flex', props);
   return (
     <Box
-      {...newProps}
-      flexDirection={direction}
+      {...props}
+      display="flex"
+      flexDirection={direction || 'column'}
       alignItems={align}
       justifyContent={justify}
       flexGrow={grow}

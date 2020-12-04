@@ -1,27 +1,22 @@
-const baseStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-};
-
+// For Square and circle variation
 const sizes = {
-  'xs': {
+  xs: {
     height: 10,
     width: 10,
   },
-  'sm': {
+  sm: {
     height: 12,
     width: 12,
   },
-  'md': {
+  md: {
     height: 16,
     width: 16,
   },
-  'lg': {
+  lg: {
     height: 24,
     width: 24,
   },
-  'xl': {
+  xl: {
     height: 32,
     width: 32,
   },
@@ -32,6 +27,5 @@ const sizes = {
 };
 
 export default {
-  baseStyle,
   sizes,
 };
