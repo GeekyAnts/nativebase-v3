@@ -2,7 +2,7 @@ import { mode } from './../tools';
 
 function baseStyle(props: Record<string, any>) {
   return {
-    bg: mode(`#fff`, `gray.700`)(props),
+    bg: mode(`#fff`, `gray.700`)(props), // change this to match theme
     py: 2,
     zIndex: 1,
     borderRadius: 'md',
@@ -36,7 +36,7 @@ export const MenuItem = {
   },
   defaultProps: {
     disabled: false,
-    disabledTextColor: '#bdbdbd',
+    disabledTextColor: '#bdbdbd', // change this to match theme
     underlayColor: 'gray',
     _disabled: {
       bg: 'gray.100',

@@ -50,6 +50,9 @@ const Image = (
     <StyledImage
       style={style}
       source={renderedSource}
+      maxWidth="100%"
+      height="100%"
+      width="auto"
       {...newProps}
       onError={props.onError ? props.onError : onImageLoadError}
       ref={ref}

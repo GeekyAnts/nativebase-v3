@@ -7,7 +7,6 @@ import AvatarBadge from './avatar-badge';
 import { Alert, AlertTitle, AlertDescription } from './alert';
 import Center from './center';
 import Switch from './switch';
-import Image from './image';
 import Button from './button';
 import Wrap from './wrap';
 import Icon from './icon';
@@ -27,7 +26,6 @@ import Skeleton from './skeleton';
 import SkeletonText from './skeletonText';
 import { default as Slider, SliderThumb } from './slider';
 import IconButton from './icon-button';
-import Flex from './flex';
 import TextArea from './textarea';
 import Tabs from './tabs';
 import Input from './input';
@@ -51,7 +49,6 @@ export default {
   AvatarBadge,
   Switch,
   Wrap,
-  Image,
   Divider,
   Link,
   Checkbox,
@@ -76,7 +73,6 @@ export default {
   SkeletonText,
   Slider,
   SliderThumb,
-  Flex,
   Button,
   IconButton,
   Menu,
