@@ -47,7 +47,7 @@ const Switch = (
   const [isActive, setIsActive] = useState(
     !isNil(defaultIsChecked) ? defaultIsChecked : false
   );
-  const borderColorInvalid = useToken('colors', 'danger.2');
+  const borderColorInvalid = useToken('colors', 'danger.200');
   const checked = !isNil(isChecked) ? isChecked : isActive;
   const newProps = usePropsConfig('Switch', {
     ...props,
@@ -81,5 +81,5 @@ const Switch = (
   );
 };
 
-export default React.forwardRef(Switch);
+export default React.forwardRef<RNSwitch, ISwitchProps>(Switch);
 export { ISwitchProps } from './props';

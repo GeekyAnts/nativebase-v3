@@ -1,6 +1,5 @@
 export { Variants } from '../../@types/enums';
 export { default as AspectRatio, IAspectRatioProps } from './AspectRatio';
-export { default as AppBar } from './AppBar';
 export { default as Badge, IBadgeProps } from './Badge';
 export { default as IconButton, IIconButtonProps } from './IconButton';
 export {
@@ -63,11 +62,13 @@ export {
   IFormControlContext,
 } from './FormControl';
 export {
-  default as NumberInput,
+  NumberInput,
   INumberInputProps,
   NumberInputField,
   INumberInputFieldProps,
   NumberInputStepper,
+  INumberInputSteppersProps,
+  INumberInputStepperProps,
   NumberIncrementStepper,
   NumberDecrementStepper,
   INumberInputContext,
@@ -153,3 +154,39 @@ export {
   IMenuGroupProps,
   IMenuOptionGroupProps,
 } from './Menu';
+
+export { SimpleGrid, ISimpleGridProps } from './SimpleGrid';
+export {
+  Tabs,
+  TabBar,
+  Tab,
+  TabViews,
+  TabView,
+  ITabsProps,
+  ITabBarProps,
+  ITabProps,
+  ITabViewsProps,
+  ITabViewProps,
+  ITabsContextProps,
+} from './Tabs';
+
+export {
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetFooter,
+  ActionsheetHeader,
+  ActionsheetItem,
+  IActionsheetProps,
+  IActionsheetContentProps,
+  IActionsheetFooterProps,
+  IActionsheetHeaderProps,
+  IActionsheetItemProps,
+} from './Actionsheet';
+
+export {
+  Snackbar,
+  useSnackbar,
+  ISnackbarProps,
+  IuseSnackbarProps,
+} from './Snackbar';
+export { AppBar } from './AppBar';

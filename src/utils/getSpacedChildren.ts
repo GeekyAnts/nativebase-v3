@@ -80,10 +80,14 @@ export default (
   if (reverse === 'reverse') {
     const trailingChildrenWithSpacingReverse = trailingChildren
       .reverse()
-      .map((child: any) => {
+      .map((child: any, index: number) => {
         return React.cloneElement(
           child,
-          { ...child.props, ...marginProp },
+          {
+            key: `reverse-spaced-child-${index}`,
+            ...child.props,
+            ...marginProp,
+          },
           child.props.children
         );
       });
@@ -93,13 +97,15 @@ export default (
       trailingChildrenWithSpacingReverse,
     ];
   } else {
-    const trailingChildrenWithSpacing = trailingChildren.map((child: any) => {
-      return React.cloneElement(
-        child,
-        { ...child.props, ...marginProp },
-        child.props.children
-      );
-    });
+    const trailingChildrenWithSpacing = trailingChildren.map(
+      (child: any, index: number) => {
+        return React.cloneElement(
+          child,
+          { key: `spaced-child-${index}`, ...child.props, ...marginProp },
+          child.props.children
+        );
+      }
+    );
     return [childrenArray[0], trailingChildrenWithSpacing];
   }
 };

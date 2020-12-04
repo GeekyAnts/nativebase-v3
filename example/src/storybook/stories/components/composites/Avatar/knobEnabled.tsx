@@ -18,7 +18,7 @@ export default function () {
       name={text('name', 'NativeBase')}
     >
       <AvatarBadge
-        bg={color('bg', 'red.2')}
+        bg={color('bg', 'red.200')}
         boxSize={number('badgeSize', 5, {
           range: true,
           min: 0,

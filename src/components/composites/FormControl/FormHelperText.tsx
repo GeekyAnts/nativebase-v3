@@ -16,7 +16,7 @@ const FormHelperText = ({
     FormControlContext
   );
 
-  const mutedColor = useToken('colors', 'muted.2');
+  const mutedColor = useToken('colors', 'muted.200');
   return (
     <Box
       {...props}

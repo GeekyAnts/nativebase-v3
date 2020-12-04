@@ -10,7 +10,7 @@ import {
 export default function () {
   return (
     <Box mx={5}>
-      <Slider defaultValue={70} colorScheme="pink.2">
+      <Slider defaultValue={70} colorScheme="red">
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>

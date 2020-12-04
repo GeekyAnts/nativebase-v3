@@ -9,16 +9,10 @@ const AccordionPanel = ({ children, ...props }: IAccordionPanelProps) => {
   const { isOpen }: IAccordionItemContextProps = React.useContext(
     AccordionItemContext
   );
-  const borderColor = useToken('colors', 'muted.2');
+  const borderColor = useToken('colors', 'muted.200');
   return (
     <Collapse isOpen={isOpen}>
-      <Box
-        p={3}
-        borderTopWidth={1}
-        borderBottomWidth={1}
-        borderColor={borderColor}
-        {...props}
-      >
+      <Box p={3} borderColor={borderColor} {...props}>
         {children}
       </Box>
     </Collapse>

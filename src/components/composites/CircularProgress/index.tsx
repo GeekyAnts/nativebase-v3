@@ -115,7 +115,7 @@ const CircularProgress = ({
     if (percent > halfSide) {
       return (
         <Box
-          borderColor={colorProp ? colorProp : 'green.4'}
+          borderColor={colorProp ? colorProp : 'green.400'}
           style={[
             styles.secondProgressLayer,
             propStyle(percent - halfSide, 45),
@@ -125,7 +125,7 @@ const CircularProgress = ({
     } else {
       return (
         <Box
-          borderColor={trackColor ? trackColor : 'gray.2'}
+          borderColor={trackColor ? trackColor : 'gray.200'}
           style={styles.offsetLayer}
         />
       );
@@ -143,7 +143,7 @@ const CircularProgress = ({
       {...sizeProps}
       rounded={100}
       borderWidth={defaultThickness}
-      borderColor={trackColor ? trackColor : 'gray.2'}
+      borderColor={trackColor ? trackColor : 'gray.200'}
       justifyContent="center"
       alignItems="center"
       {...props}
@@ -151,7 +151,7 @@ const CircularProgress = ({
       {!isIndeterminate ? (
         <>
           <Box
-            borderColor={colorProp ? colorProp : 'green.4'}
+            borderColor={colorProp ? colorProp : 'green.400'}
             style={[styles.firstProgressLayer, firstProgressLayerStyle]}
           />
           {renderThirdLayer(value)}

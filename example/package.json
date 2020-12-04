@@ -1,14 +1,16 @@
 {
   "name": "native-base-example",
   "description": "Example app for native-base",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start"
+    "start": "react-native start",
+    "postinstall": "patch-package"
   },
   "dependencies": {
+    "formik": "^2.2.5",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-svg": "^12.1.0",
@@ -28,6 +30,7 @@
     "@storybook/react-native": "^5.3.18",
     "@storybook/react-native-server": "^5.3.18",
     "babel-plugin-module-resolver": "^4.0.0",
-    "metro-react-native-babel-preset": "^0.59.0"
+    "metro-react-native-babel-preset": "^0.59.0",
+    "patch-package": "^6.2.2"
   }
 }

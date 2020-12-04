@@ -12,7 +12,7 @@ export default function () {
     <Box m={3}>
       <Accordion allowMultiple>
         <AccordionItem>
-          <AccordionButton _expanded={{ backgroundColor: 'orange.3' }}>
+          <AccordionButton _expanded={{ backgroundColor: 'orange.300' }}>
             <Box>Click me to see a different style</Box>
             <AccordionIcon />
           </AccordionButton>
@@ -24,7 +24,7 @@ export default function () {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem id={9} isDisabled>
-          <AccordionButton _disabled={{ backgroundColor: 'gray.3' }}>
+          <AccordionButton _disabled={{ backgroundColor: 'gray.300' }}>
             <Box>I'm Disabled 😢</Box>
             <AccordionIcon />
           </AccordionButton>

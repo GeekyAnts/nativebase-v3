@@ -35,7 +35,7 @@ export default function () {
             <Text mx={2}>Item 3</Text>
           </Checkbox>
           <Checkbox
-            colorScheme="orange.3"
+            colorScheme="orange"
             isIndeterminate
             value="Indeterminate Item "
           >

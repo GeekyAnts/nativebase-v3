@@ -209,5 +209,5 @@ export const PopoverCloseButton = (props: any) => {
   );
 };
 
-export default React.forwardRef(Popover);
+export default Popover;
 export type { IPopoverProps };

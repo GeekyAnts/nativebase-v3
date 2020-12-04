@@ -10,14 +10,14 @@ const baseStyle = {
 
 function getActiveColor(props: Record<string, any>) {
   const { colorScheme, theme } = props;
-  let activeColor = theme.colors.default[2];
+  let activeColor = theme.colors.default[200];
   if (colorScheme[0] === '#') activeColor = colorScheme;
   else if (colorScheme in theme.colors && theme.colors[colorScheme]) {
     activeColor =
       typeof theme.colors[colorScheme] === 'string'
         ? theme.colors[colorScheme]
-        : theme.colors[colorScheme][5] || theme.colors[colorScheme][2];
-  } else activeColor = theme.colors.muted[2];
+        : theme.colors[colorScheme][500] || theme.colors[colorScheme][200];
+  } else activeColor = theme.colors.muted[200];
 
   return activeColor;
 }

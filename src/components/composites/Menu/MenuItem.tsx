@@ -47,10 +47,10 @@ export const MenuItem = ({
       }}
     >
       <>
-        {React.Children.map(children, (child) => {
+        {React.Children.map(children, (child, index: any) => {
           if (typeof child === 'string') {
             return (
-              <Text {...textProps} style={textStyle}>
+              <Text {...textProps} key={`menu-item-${index}`} style={textStyle}>
                 {child}
               </Text>
             );

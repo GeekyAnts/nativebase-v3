@@ -1,4 +1,4 @@
-import type { IInputProps, IBoxProps } from '../../primitives';
+import type { IInputProps, IBoxProps, IStackProps } from '../../primitives';
 
 export type INumberInputProps = IInputProps &
   IBoxProps & {
@@ -19,7 +19,11 @@ export type INumberInputProps = IInputProps &
   };
 
 export type INumberInputFieldProps = INumberInputProps & {};
-export type INumberInputStepperProps = INumberInputProps & {
+export type INumberInputSteppersProps = IStackProps & {
+  children: JSX.Element[] | JSX.Element;
+};
+export type INumberInputStepperProps = IBoxProps & {
+  isDisabled?: boolean;
   _disabled?: any;
   _active?: any;
 };

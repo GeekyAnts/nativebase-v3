@@ -1,56 +1,56 @@
 // Alert
-const subtleStyle = (props: Record<string, any>) => {
+const variantSubtle = (props: Record<string, any>) => {
   let { status, theme } = props;
   status = status === 'info' ? 'default' : status;
   return {
     border: 6,
     borderColor: 'transparent',
-    bg: theme.colors[status][0],
-    iconColor: theme.colors[status][1],
+    bg: theme.colors[status][50],
+    iconColor: theme.colors[status][100],
     textColor: 'black',
   };
 };
-const solidStyle = (props: Record<string, any>) => {
+const variantSolid = (props: Record<string, any>) => {
   let { status, theme } = props;
   status = status === 'info' ? 'default' : status;
   return {
     border: 6,
     borderColor: 'transparent',
-    bg: theme.colors[status][1],
+    bg: theme.colors[status][100],
     iconColor: 'white',
     textColor: 'white',
   };
 };
-const leftAccentStyle = (props: Record<string, any>) => {
+const variantLeftAccent = (props: Record<string, any>) => {
   let { status, theme } = props;
   status = status === 'info' ? 'default' : status;
   return {
-    bg: theme.colors[status][0],
+    bg: theme.colors[status][50],
     border: 6,
     borderColor: 'transparent',
-    borderLeftColor: theme.colors[status][1],
-    iconColor: theme.colors[status][1],
+    borderLeftColor: theme.colors[status][100],
+    iconColor: theme.colors[status][100],
     textColor: 'black',
   };
 };
-const topAccentStyle = (props: Record<string, any>) => {
+const variantTopAccent = (props: Record<string, any>) => {
   let { status, theme } = props;
   status = status === 'info' ? 'default' : status;
   return {
-    bg: theme.colors[status][0],
+    bg: theme.colors[status][50],
     border: 6,
     borderColor: 'transparent',
-    borderTopColor: theme.colors[status][1],
-    iconColor: theme.colors[status][1],
+    borderTopColor: theme.colors[status][100],
+    iconColor: theme.colors[status][100],
     textColor: 'black',
   };
 };
 
 const variants = {
-  subtle: subtleStyle,
-  solid: solidStyle,
-  'left-accent': leftAccentStyle,
-  'top-accent': topAccentStyle,
+  subtle: variantSubtle,
+  solid: variantSolid,
+  'left-accent': variantLeftAccent,
+  'top-accent': variantTopAccent,
 };
 
 const defaultAlertProps = {

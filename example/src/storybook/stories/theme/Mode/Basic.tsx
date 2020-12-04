@@ -14,7 +14,7 @@ const LocalWrapper = ({ children }: any) => {
     <Center
       height="100%"
       width="100%"
-      bg={useColorModeValue(`gray.2`, `dark.1`)}
+      bg={useColorModeValue(`gray.200`, `dark.100`)}
     >
       {children}
     </Center>

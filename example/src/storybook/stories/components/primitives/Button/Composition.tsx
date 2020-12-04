@@ -8,7 +8,7 @@ export default function () {
       height="48px"
       width="200px"
       border="2px"
-      borderColor="green.5"
+      borderColor="green.500"
     >
       Button
     </Button>

@@ -6,6 +6,7 @@ import { customBorder } from '../../../utils/customProps';
 import { Text } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
 import type { IImageProps } from './props';
+import type { Image as ImageType } from 'react-native';
 
 const StyledImage = styled(RNImage)<IImageProps>(
   layout,
@@ -56,5 +57,5 @@ const Image = (
   );
 };
 
-export default React.forwardRef(Image);
+export default React.forwardRef<ImageType, IImageProps>(Image);
 export { IImageProps } from './props';

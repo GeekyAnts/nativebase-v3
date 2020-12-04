@@ -6,6 +6,7 @@ import Usage from './Usage';
 import CustomStyle from './CustomStyle';
 // import DefaultValue from './DefaultValue';
 import Playground from './Playground';
+import FormikExample from './FormikExample';
 // import MinMax from './MinMax';
 
 storiesOf('FormControl', module)
@@ -13,6 +14,7 @@ storiesOf('FormControl', module)
   .addDecorator((getStory: any) => <Wrapper>{getStory()}</Wrapper>)
   .add('Playground', () => <Playground />)
   .add('Usage', () => <Usage />)
+  .add('Formik Example', () => <FormikExample />)
   // .add('DefaultValue', () => <DefaultValue />)
   // .add('MinMax', () => <MinMax />)
   .add('CustomStyle', () => <CustomStyle />);
