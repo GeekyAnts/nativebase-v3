@@ -50,7 +50,6 @@ export function ColorModeProvider(props: any) {
     toggleColorMode: value ? () => {} : toggleColorMode,
     setColorMode: value ? () => {} : setColorMode,
   };
-
   return (
     <ColorModeContext.Provider value={context}>
       {children}
