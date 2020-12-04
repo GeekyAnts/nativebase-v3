@@ -1,21 +1,16 @@
 import React from 'react';
-import { Box, Icon } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
-import type { INumberInputStepperProps } from './props';
-import { NumberInputContext, INumberInputContext } from './index';
-import { TouchableOpacity } from 'react-native';
+import {
+  NumberInputContext,
+  INumberInputContext,
+  INumberInputStepperProps,
+  NBStepper,
+} from './index';
 
 const NumberDecrementStepper = ({
   children,
   isDisabled: pIsDisabled,
-  ariaLabel,
   ...props
 }: INumberInputStepperProps) => {
-  // TODO: Needs refactoring after input is refactored.
-  const { style, _active, _disabled, ...newProps } = usePropsConfig(
-    'NumberInputStepper',
-    props
-  );
   const {
     numberInputValue = 0,
     step = 1,
@@ -23,27 +18,21 @@ const NumberDecrementStepper = ({
     handleChange,
     ...context
   }: INumberInputContext = React.useContext(NumberInputContext);
+
   const isDisabled = pIsDisabled || context.isDisabled;
   const pressHandler = () => {
     handleChange && handleChange(numberInputValue - step);
   };
   return (
-    <TouchableOpacity
-      activeOpacity={1}
-      disabled={numberInputValue - step < min || isDisabled}
-      onPress={pressHandler}
-      accessible
-      accessibilityLabel={ariaLabel}
+    <NBStepper
+      isIncrement={false}
+      isDisabled={isDisabled}
+      pressHandler={pressHandler}
+      disablitityCheck={numberInputValue - step < min}
+      {...props}
     >
-      <Box
-        {...newProps}
-        {..._active}
-        {...(numberInputValue - step < min || isDisabled ? _disabled : {})}
-        style={style}
-      >
-        {children || <Icon name="arrow-drop-down" type="MaterialIcons" />}
-      </Box>
-    </TouchableOpacity>
+      {children}
+    </NBStepper>
   );
 };
 
