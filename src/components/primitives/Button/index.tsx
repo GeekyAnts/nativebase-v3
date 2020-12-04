@@ -16,6 +16,7 @@ import { usePropsConfig, themeTools } from '../../../theme';
 import { Spinner, Box, Flex } from '../../primitives';
 import type { IButtonProps } from './IButtonProps';
 import { useButton } from './useButton';
+import type { IBoxProps } from '../Box';
 
 const StyledButton = styled(TouchableOpacity)<
   IButtonProps & TouchableOpacityProps
@@ -44,7 +45,7 @@ const Button = (
     rightIcon,
     spinner,
     ...props
-  }: IButtonProps,
+  }: IButtonProps & IBoxProps,
   ref: any
 ) => {
   const newProps = usePropsConfig('Button', {
@@ -130,4 +131,6 @@ const Button = (
 
 export { IButtonProps } from './IButtonProps';
 export { ButtonGroup, ButtonGroupProps } from './ButtonGroup';
-export default forwardRef<TouchableOpacityType, IButtonProps>(Button);
+export default forwardRef<TouchableOpacityType, IButtonProps & IBoxProps>(
+  Button
+);

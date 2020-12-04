@@ -1,4 +1,4 @@
-import type { ViewStyle } from 'react-native';
+import type { ViewProps, ViewStyle } from 'react-native';
 import type {
   customBorderProps,
   customOutlineProps,
@@ -23,7 +23,8 @@ export type IButtonAccessibilityProps = {
   accessibilityHint?: string;
 };
 
-export type IButtonProps = ColorProps &
+export type IButtonProps = ViewProps &
+  ColorProps &
   SpaceProps &
   LayoutProps &
   FlexboxProps &
