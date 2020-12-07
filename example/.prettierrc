@@ -6,5 +6,6 @@
     "tslintIntegration": true,
     "parser": "typescript",
     "requireConfig": false,
-    "stylelintIntegration": false
+    "stylelintIntegration": false,
+    "endOfLine": "auto"
 }
