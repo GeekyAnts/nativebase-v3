@@ -117,7 +117,9 @@
   },
   "eslintIgnore": [
     "node_modules/",
-    "lib/"
+    "lib/",
+    "example/webpack.config.js",
+     "example/babel.config.js"
   ],
   "prettier": {
     "quoteProps": "consistent",
