@@ -3,10 +3,14 @@ import { RadioGroup, Radio, Icon } from '@native-base/v3';
 
 export default function () {
   const myRef: any = React.useRef({});
+  const [state, setState] = React.useState<any>(null);
+
   return (
     <RadioGroup
+      name="exampleGroup"
       colorScheme="success"
       onChange={(value) => {
+        setState(value);
         if (value === '2')
           myRef?.current.setNativeProps({ backgroundColor: '#00de0050' });
         else
@@ -14,6 +18,7 @@ export default function () {
             backgroundColor: '#fa000050',
           });
       }}
+      value={state}
     >
       <Radio
         colorScheme="success"

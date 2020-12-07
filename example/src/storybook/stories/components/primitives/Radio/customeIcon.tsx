@@ -3,7 +3,7 @@ import { Radio, RadioGroup, Text, Icon } from '@native-base/v3';
 
 export default function () {
   return (
-    <RadioGroup defaultValue="1" size="lg">
+    <RadioGroup defaultValue="1" size="lg" name="exampleGroup">
       <Radio
         colorScheme="green"
         value="1"
