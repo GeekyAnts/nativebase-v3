@@ -1,10 +1,12 @@
 import type { IBoxProps } from '../../primitives';
 import type { IFormControlContext } from '../../composites';
 
+export type ICheckboxValue = string | number;
+
 export type ICheckboxProps = IBoxProps & {
   id?: string;
   name?: string;
-  value?: string | number;
+  value: ICheckboxValue;
   colorScheme?: string | 'default';
   defaultIsChecked?: boolean;
   isChecked?: boolean;
@@ -14,10 +16,9 @@ export type ICheckboxProps = IBoxProps & {
   isInvalid?: boolean;
   size?: 'sm' | 'md' | 'lg';
   icon?: JSX.Element;
-  onChange?: (value?: string | number, currentState?: boolean) => void;
+  onChange?: (value: ICheckboxValue, currentState: boolean) => void;
   // onBlur?: (event: any) => void;
   // onFocus?: (event: any) => void;
-  ariaLabel?: string;
   // ariaLabelledby?: string;
   // Custom Props
   style?: any;
@@ -29,7 +30,7 @@ export type ICheckboxGroupProps = IBoxProps & {
   defaultValue?: Array<any>;
   colorScheme?: string;
   size?: 'sm' | 'md' | 'lg';
-  onChange?: (values?: Array<any>) => void;
+  onChange?: (values: Array<any>) => void;
   // Custom props
   style?: any;
 };
@@ -37,8 +38,5 @@ export type ICheckboxContext = IFormControlContext & {
   value?: Array<any>;
   colorScheme?: string;
   size?: 'sm' | 'md' | 'lg';
-  groupValueChangeHandler?: (
-    value: string | number,
-    currentState: boolean
-  ) => void;
+  onChange?: (value: ICheckboxValue, currentState: boolean) => void;
 };
