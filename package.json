@@ -1,6 +1,6 @@
 {
   "name": "@native-base/v3",
-  "version": "0.3.2",
+  "version": "0.4.0-1",
   "description": "Essential cross-platform UI components for React Native",
   "main": "lib/commonjs/index",
   "module": "dist/bundle.web.js",
@@ -72,7 +72,7 @@
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
-  	"@expo/vector-icons": "^12.0.0",
+    "@expo/vector-icons": "^12.0.0",
     "react": "*",
     "react-native": "*",
     "react-native-svg": "*",
@@ -137,6 +137,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.6",
+    "@types/styled-components": "^5.0.1",
     "@types/tinycolor2": "^1.4.2",
     "babel-eslint": "^10.1.0",
     "deepmerge": "^4.2.2",
@@ -149,8 +150,7 @@
     "react-native-vector-icons": "^7.1.0",
     "styled-components": "^5.2.0",
     "styled-system": "^5.1.5",
-    "tinycolor2": "^1.4.2",
-    "@types/styled-components": "^5.0.1"
+    "tinycolor2": "^1.4.2"
   },
   "directories": {
     "example": "example",
