@@ -5,43 +5,34 @@ import {
   IFormControlContext,
 } from '../../composites/FormControl';
 import type { ICheckboxGroupProps } from './props';
+import { useCheckboxGroup } from './useCheckboxGroup';
 
 export const CheckboxContext = React.createContext({});
 
 const CheckboxGroup = ({
   size,
   children,
-  onChange,
   colorScheme,
-  value,
-  defaultValue,
   ...props
 }: ICheckboxGroupProps) => {
   const formControlContext: IFormControlContext = React.useContext(
     FormControlContext
   );
-  const [values, setValues] = React.useState(value || defaultValue || []);
-  const groupValueChangeHandler = (
-    checkboxValue: string | number,
-    isChecked: boolean
-  ) => {
-    const valuesSet = new Set(values);
-    if (isChecked) valuesSet.add(checkboxValue);
-    else valuesSet.delete(checkboxValue);
-    setValues([...valuesSet]);
-    onChange && onChange([...valuesSet]);
-  };
+
+  const { checkboxGroupProps } = useCheckboxGroup(props, null, null);
+  const { onChange, values, ...restCheckboxGroupProps } = checkboxGroupProps;
+
   return (
     <CheckboxContext.Provider
       value={{
         ...formControlContext,
-        groupValueChangeHandler,
         size,
         colorScheme,
+        onChange,
         value: values,
       }}
     >
-      <Box alignItems="flex-start" {...props}>
+      <Box alignItems="flex-start" {...restCheckboxGroupProps} {...props}>
         {children}
       </Box>
     </CheckboxContext.Provider>
