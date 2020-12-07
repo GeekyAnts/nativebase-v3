@@ -1,13 +1,10 @@
-import type { ICheckboxProps, ICheckboxContext } from './props';
+import type {
+  ICheckboxProps,
+  ICheckboxContext,
+  IUseCheckboxReturnType,
+} from './props';
 import React from 'react';
 import { useControllableProp } from '../../../hooks';
-import type { TouchableOpacityProps } from 'react-native';
-
-type IUseCheckboxReturnType = {
-  inputProps: {
-    checked: boolean;
-  } & Partial<TouchableOpacityProps>;
-};
 
 export function useCheckbox(
   props: ICheckboxProps,

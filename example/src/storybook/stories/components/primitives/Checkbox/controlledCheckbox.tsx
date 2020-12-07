@@ -10,10 +10,10 @@ export default function ControlledCheckbox() {
   return (
     <CheckboxGroup onChange={setGroupValues} value={groupValues}>
       <Checkbox value="one">
-        <Text>Hello world</Text>
+        <Text>One</Text>
       </Checkbox>
       <Checkbox value="two">
-        <Text>Hello world</Text>
+        <Text>Two</Text>
       </Checkbox>
     </CheckboxGroup>
   );

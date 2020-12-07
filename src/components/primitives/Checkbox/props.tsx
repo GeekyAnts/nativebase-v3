@@ -1,5 +1,6 @@
 import type { IBoxProps } from '../../primitives';
 import type { IFormControlContext } from '../../composites';
+import type { TouchableOpacityProps } from 'react-native';
 
 export type ICheckboxValue = string | number;
 
@@ -30,7 +31,7 @@ export type ICheckboxGroupProps = IBoxProps & {
   defaultValue?: Array<any>;
   colorScheme?: string;
   size?: 'sm' | 'md' | 'lg';
-  onChange?: (values: Array<any>) => void;
+  onChange?: (values: any) => any;
   // Custom props
   style?: any;
 };
@@ -39,4 +40,17 @@ export type ICheckboxContext = IFormControlContext & {
   colorScheme?: string;
   size?: 'sm' | 'md' | 'lg';
   onChange?: (value: ICheckboxValue, currentState: boolean) => void;
+};
+
+export type IUseCheckboxReturnType = {
+  inputProps: {
+    checked: boolean;
+  } & Partial<TouchableOpacityProps>;
+};
+
+export type IUseCheckboxGroupReturnType = {
+  checkboxGroupProps: {
+    onChange: (checkboxValue: ICheckboxValue, isChecked: boolean) => any;
+    values: Array<ICheckboxValue>;
+  };
 };
