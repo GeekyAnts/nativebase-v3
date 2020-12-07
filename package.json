@@ -1,6 +1,6 @@
 {
   "name": "@native-base/v3",
-  "version": "0.4.0-2",
+  "version": "0.4.0-3",
   "description": "Essential cross-platform UI components for React Native",
   "main": "lib/commonjs/index",
   "module": "dist/bundle.web.js",
@@ -119,7 +119,7 @@
     "node_modules/",
     "lib/",
     "example/webpack.config.js",
-     "example/babel.config.js"
+    "example/babel.config.js"
   ],
   "prettier": {
     "quoteProps": "consistent",
