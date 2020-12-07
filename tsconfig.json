@@ -2,8 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@native-base/v3": [
-        "./src/index"
+      "@native-base/v3": ["./src/index"],
+      "@native-base/v3/Box": ["./src/components/primitives/Box/index"],
+      "@native-base/v3/Accordion": [
+        "./src/components/composites/Accordion/index"
       ]
     },
     "allowUnreachableCode": false,
@@ -12,9 +14,7 @@
     "importsNotUsedAsValues": "error",
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,

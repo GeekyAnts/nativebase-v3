@@ -1,12 +1,12 @@
 import React from 'react';
+import Box from '@native-base/v3/Box';
 import {
   Accordion,
   AccordionItem,
+  AccordionIcon,
   AccordionButton,
   AccordionPanel,
-  AccordionIcon,
-  Box,
-} from '@native-base/v3';
+} from '@native-base/v3/Accordion';
 export default function () {
   return (
     <Box m={3}>
