@@ -1,27 +1,34 @@
 import React from 'react';
-import { Radio, RadioGroup, Text, View } from '@native-base/v3';
+import { IRadioValue, Radio, RadioGroup, Text, View } from '@native-base/v3';
 import { boolean, select, text } from '@storybook/addon-knobs';
+import { useState } from 'react';
 
 export default function () {
-  const [toggleCheckBox] = React.useState(true);
-  const radioValue = text('value', 'Cool');
+  const [value, setValue] = useState<IRadioValue>('');
+
   return (
     <View display="flex" justifyContent="space-between" alignItems="center">
-      <RadioGroup name="exampleGroup">
+      <RadioGroup value={value} onChange={setValue} name="exampleGroup">
         <Radio
           colorScheme={text('colorScheme', 'default')}
           size={select('size', ['sm', 'md', 'lg'], 'md')}
           isDisabled={boolean('isDisabled', false)}
           isInvalid={boolean('isInvalid', false)}
-          value={radioValue}
+          value={'cool'}
         >
           <Text mx={2}>Are you Awesome?</Text>
         </Radio>
-        <Text>
-          {toggleCheckBox ? 'Yes, you are and also ' : 'No, But you are '}
-          {radioValue}
-        </Text>
+        <Radio
+          colorScheme={text('colorScheme', 'default')}
+          size={select('size', ['sm', 'md', 'lg'], 'md')}
+          isDisabled={boolean('isDisabled', false)}
+          isInvalid={boolean('isInvalid', false)}
+          value={'awesome'}
+        >
+          <Text mx={2}>Are you Cool?</Text>
+        </Radio>
       </RadioGroup>
+      <Text>{'Yes, you are ' + value}</Text>
     </View>
   );
 }
