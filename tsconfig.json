@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@native-base/v3": ["./src/index"],
-      "@native-base/v3/Box": ["./src/components/primitives/Box/index"],
+      "@nativebase/Box": ["./src/components/primitives/Box/index"],
       "@native-base/v3/Accordion": [
         "./src/components/composites/Accordion/index"
       ]
