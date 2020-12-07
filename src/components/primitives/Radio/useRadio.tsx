@@ -10,9 +10,10 @@ export function useRadio(
 
   let hasChildren = children != null;
   let hasAccessibilityLabel = accessibilityLabel != null;
+
   if (!hasChildren && !hasAccessibilityLabel) {
     console.warn(
-      'If you do not provide children, you must specify an aria-label for accessibility'
+      'If you do not provide children, you must specify an accessibilityLabel for accessibility'
     );
   }
 
