@@ -43,6 +43,11 @@ const Image = (
     }
   };
   const newProps = usePropsConfig('Image', props);
+
+  if (!alt) {
+    console.warn('Please pass alt prop to Image component');
+  }
+
   if (alternate) {
     return <Text {...textProps}>{alt}</Text>;
   }
@@ -53,6 +58,9 @@ const Image = (
       maxWidth="100%"
       height="100%"
       width="auto"
+      accessibilityLabel={alt}
+      accessibilityRole="image"
+      accessible
       {...newProps}
       onError={props.onError ? props.onError : onImageLoadError}
       ref={ref}
