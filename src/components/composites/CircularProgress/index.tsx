@@ -61,7 +61,7 @@ const CircularProgress = ({
         toValue: 1,
         duration: 600,
         easing: Easing.linear,
-        useNativeDriver: true,
+        useNativeDriver: false,
       })
     ).start();
   }

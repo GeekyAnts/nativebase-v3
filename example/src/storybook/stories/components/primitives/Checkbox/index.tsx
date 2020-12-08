@@ -12,10 +12,14 @@ import Invalid from './invalid';
 import WithRef from './withRef';
 import FormControlled from './FormControlled';
 import CheckboxGroup from './checkboxGroup';
+import ControlledCheckbox from './controlledCheckbox';
+import UnControlledCheckbox from './uncontrolledCheckbox';
 
 storiesOf('Checkbox', module)
   .addDecorator(withKnobs)
   .addDecorator((getStory: any) => <Wrapper>{getStory()}</Wrapper>)
+  .add('Controlled checkbox', () => <ControlledCheckbox />)
+  .add('Uncontrolled checkbox', () => <UnControlledCheckbox />)
   .add('Playgroud', () => <Playground />)
   .add('Usage', () => <Usage />)
   .add('Disabled', () => <Disabled />)

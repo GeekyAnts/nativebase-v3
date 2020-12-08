@@ -3,8 +3,10 @@ import { RadioGroup, Radio, Icon } from '@native-base/v3';
 
 export default function () {
   const myRef: any = React.useRef({});
+
   return (
     <RadioGroup
+      name="exampleGroup"
       colorScheme="success"
       onChange={(value) => {
         if (value === '2')

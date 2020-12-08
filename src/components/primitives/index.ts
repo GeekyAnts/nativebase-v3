@@ -14,7 +14,13 @@ export {
   CheckboxGroup,
   ICheckboxGroupProps,
 } from './Checkbox';
-export { Radio, IRadioProps, RadioGroup, IRadioGroupProps } from './Radio';
+export {
+  Radio,
+  IRadioProps,
+  RadioGroup,
+  IRadioGroupProps,
+  IRadioValue,
+} from './Radio';
 export {
   default as Icon,
   IIconProps,

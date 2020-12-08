@@ -15,7 +15,7 @@ export default function () {
     <Container>
       <FormControl isRequired isInvalid>
         <FormLabel>Select One</FormLabel>
-        <RadioGroup defaultValue="1">
+        <RadioGroup defaultValue="1" name="exampleGroup">
           <Radio value="1">
             <Text mx={2}>First</Text>
           </Radio>
