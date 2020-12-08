@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet, ViewStyle, Platform } from 'react-native';
 import { Box, IBoxProps } from '../../primitives';
 import { isNil } from 'lodash';
 
@@ -9,6 +9,29 @@ export type IAspectRatioProps = IBoxProps & {
   children: JSX.Element;
 };
 
+function AspectView(props: any) {
+  const [layout, setLayout] = React.useState();
+  const { aspectRatio = props.aspectRatio, ...inputStyle } =
+    StyleSheet.flatten(props.style) || {};
+  const style = [inputStyle];
+  if (layout) {
+    // @ts-ignore
+    let { width = 0, height = 0 } = layout;
+    if (width === 0) {
+      style.push({ width: height * aspectRatio, height });
+    } else {
+      style.push({ width, height: width / aspectRatio });
+    }
+  }
+  return (
+    <Box
+      {...props}
+      style={style}
+      onLayout={({ nativeEvent: { layout } }: any) => setLayout(layout)}
+    />
+  );
+}
+
 const AspectRatio = ({
   style,
   ratio,
@@ -16,23 +39,31 @@ const AspectRatio = ({
   ...props
 }: IAspectRatioProps) => {
   let computedStyle: ViewStyle | undefined = style;
-  // DOC:  It uses a aspectRatio property of React Native
-  let aspectRatio = !isNil(ratio) ? ratio : 4 / 3;
-  computedStyle = StyleSheet.flatten([style, { aspectRatio }]);
   let newChildWithProps = React.cloneElement(
     children,
     {
       ...children.props,
-      ...{ position: 'absolute', top: 0, bottom: 0, right: 0, left: 0 },
+      style: StyleSheet.absoluteFillObject,
     },
     children.props.children
   );
+  let aspectRatio = !isNil(ratio) ? ratio : 4 / 3;
 
-  return (
-    <Box {...props} style={computedStyle}>
-      {newChildWithProps}
-    </Box>
-  );
+  // DOC:  It uses a aspectRatio property of React Native and manually calculate on Web
+  if (Platform.OS === 'web') {
+    return (
+      <AspectView {...props} aspectRatio={aspectRatio} style={style}>
+        {newChildWithProps}
+      </AspectView>
+    );
+  } else {
+    computedStyle = StyleSheet.flatten([style, { aspectRatio }]);
+    return (
+      <Box {...props} style={computedStyle}>
+        {newChildWithProps}
+      </Box>
+    );
+  }
 };
 
 export default AspectRatio;
