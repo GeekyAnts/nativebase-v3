@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 import { color, space, position } from 'styled-system';
 import { useToken, usePropsConfig } from '../../../theme';
 import type { ISpinnerProps } from './props';
-export type { ISpinnerProps };
 
 const StyledSpinner = styled(ActivityIndicator)<ISpinnerProps>(
   color,
@@ -18,3 +17,4 @@ const Spinner = (props: ISpinnerProps) => {
 };
 
 export default Spinner;
+export type { ISpinnerProps };

@@ -65,4 +65,4 @@ const Wrap = ({
 };
 
 export default Wrap;
-export { IWrapProps } from './props';
+export type { IWrapProps };

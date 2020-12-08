@@ -3,7 +3,7 @@ export { MenuGroup } from './MenuGroup';
 export { MenuItem } from './MenuItem';
 export { MenuItemOption } from './MenuItemOption';
 export { MenuOptionGroup } from './MenuOptionGroup';
-export {
+export type {
   IMenuProps,
   IMenuItemProps,
   IMenuItemOptionProps,

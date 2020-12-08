@@ -62,6 +62,6 @@ const Box = ({ children, ...props }: IBoxProps, ref: any) => {
   );
 };
 
-export { IBoxProps } from './props';
+export type { IBoxProps } from './props';
 
 export default forwardRef<ViewType, IBoxProps>(Box);

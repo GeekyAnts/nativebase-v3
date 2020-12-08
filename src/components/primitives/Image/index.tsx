@@ -61,4 +61,4 @@ const Image = (
 };
 
 export default React.forwardRef<ImageType, IImageProps>(Image);
-export { IImageProps } from './props';
+export type { IImageProps };

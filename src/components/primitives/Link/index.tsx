@@ -132,4 +132,4 @@ const Link = ({
 };
 
 export default Link;
-export { ILinkProps } from './props';
+export type { ILinkProps };
