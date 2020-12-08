@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Image as RNImage } from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { border, flex, layout, space } from 'styled-system';
 import { customBorder } from '../../../utils/customProps';
 import { Text } from '../../primitives';

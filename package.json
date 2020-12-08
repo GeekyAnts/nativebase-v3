@@ -1,9 +1,9 @@
 {
   "name": "@native-base/v3",
-  "version": "0.3.2",
+  "version": "0.4.0-3",
   "description": "Essential cross-platform UI components for React Native",
   "main": "lib/commonjs/index",
-  "module": "lib/module/index",
+  "module": "dist/bundle.web.js",
   "types": "lib/typescript/src/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
@@ -27,7 +27,8 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods"
+    "bootstrap": "yarn example && yarn && yarn pods",
+    "build:web": "rollup --config"
   },
   "keywords": [
     "react-native",
@@ -66,14 +67,17 @@
     "react": "16.11.0",
     "react-native": "0.62.2",
     "release-it": "^13.5.8",
+    "rollup": "^2.34.1",
+    "rollup-plugin-flow": "^1.1.1",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
+    "@expo/vector-icons": "^12.0.0",
     "react": "*",
     "react-native": "*",
     "react-native-svg": "*",
     "react-native-vector-icons": "*",
-    "styled-components": "*",
+    "styled-components": "^5.2.1",
     "styled-system": "*"
   },
   "jest": {
@@ -113,7 +117,9 @@
   },
   "eslintIgnore": [
     "node_modules/",
-    "lib/"
+    "lib/",
+    "example/webpack.config.js",
+    "example/babel.config.js"
   ],
   "prettier": {
     "quoteProps": "consistent",
@@ -133,6 +139,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.6",
+    "@types/styled-components": "^5.0.1",
     "@types/tinycolor2": "^1.4.2",
     "babel-eslint": "^10.1.0",
     "deepmerge": "^4.2.2",
@@ -143,10 +150,8 @@
     "react-native-svg": "^12.1.0",
     "react-native-unimodules": "~0.10.1",
     "react-native-vector-icons": "^7.1.0",
-    "styled-components": "^5.2.0",
     "styled-system": "^5.1.5",
-    "tinycolor2": "^1.4.2",
-    "@types/styled-components": "^5.0.1"
+    "tinycolor2": "^1.4.2"
   },
   "directories": {
     "example": "example",
