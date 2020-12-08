@@ -28,4 +28,4 @@ const Kbd = ({ style, textStyle, children, ...props }: IKbdProps) => {
 };
 
 export default Kbd;
-export { IKbdProps } from './props';
+export type { IKbdProps };

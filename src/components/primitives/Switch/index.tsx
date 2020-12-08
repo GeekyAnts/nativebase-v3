@@ -82,4 +82,4 @@ const Switch = (
 };
 
 export default React.forwardRef<RNSwitch, ISwitchProps>(Switch);
-export { ISwitchProps } from './props';
+export type { ISwitchProps };

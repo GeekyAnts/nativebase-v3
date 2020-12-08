@@ -38,5 +38,5 @@ export const Spacer = (props: any) => {
   return <Box flexGrow={1} {...props} />;
 };
 
-export { IFlexProps } from './props';
+export type { IFlexProps };
 export default React.forwardRef(Flex);

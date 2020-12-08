@@ -60,3 +60,4 @@ const BreadCrumb = ({
 };
 
 export default BreadCrumb;
+export type { IBreadCrumbProps };
