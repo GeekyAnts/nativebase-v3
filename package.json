@@ -77,7 +77,7 @@
     "react-native": "*",
     "react-native-svg": "*",
     "react-native-vector-icons": "*",
-    "styled-components": "*",
+    "styled-components": "^5.2.1",
     "styled-system": "*"
   },
   "jest": {
@@ -150,7 +150,6 @@
     "react-native-svg": "^12.1.0",
     "react-native-unimodules": "~0.10.1",
     "react-native-vector-icons": "^7.1.0",
-    "styled-components": "^5.2.0",
     "styled-system": "^5.1.5",
     "tinycolor2": "^1.4.2"
   },
