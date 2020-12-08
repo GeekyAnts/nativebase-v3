@@ -18,6 +18,7 @@ const SVGIcon = ({
 }: IIconProps) => {
   const newProps = usePropsConfig('Icon', { size });
   let strokeColor = useToken('colors', stroke || '');
+  colorProp = useToken('colors', colorProp || '');
   return (
     <SVG
       height={parseInt(newProps.dimension || newProps.size, 10)}
