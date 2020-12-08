@@ -3,7 +3,7 @@ import { Checkbox, Text } from '@native-base/v3';
 
 export default function () {
   return (
-    <Checkbox isInvalid>
+    <Checkbox isInvalid value="invalid">
       <Text mx={2}>Checkbox</Text>
     </Checkbox>
   );

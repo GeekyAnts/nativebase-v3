@@ -4,16 +4,16 @@ import { Checkbox, HStack, Text } from '@native-base/v3';
 export default function () {
   return (
     <HStack>
-      <Checkbox colorScheme="critical" defaultIsChecked>
+      <Checkbox value="critical" colorScheme="critical" defaultIsChecked>
         <Text mx={2}>Critical</Text>
       </Checkbox>
-      <Checkbox colorScheme="info" defaultIsChecked>
+      <Checkbox value="info" colorScheme="info" defaultIsChecked>
         <Text mx={2}>Info</Text>
       </Checkbox>
-      <Checkbox colorScheme="orange" defaultIsChecked>
+      <Checkbox value="orange" colorScheme="orange" defaultIsChecked>
         <Text mx={2}>Orange</Text>
       </Checkbox>
-      <Checkbox colorScheme="purple" defaultIsChecked>
+      <Checkbox value="purple" colorScheme="purple" defaultIsChecked>
         <Text mx={2}>Purple</Text>
       </Checkbox>
     </HStack>
