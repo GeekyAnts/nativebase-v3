@@ -7,6 +7,7 @@ export const useSnackbar: IuseSnackbarProps = () => {
   const defaultConfig = {
     enableOverlay: false,
     duration: 5000,
+    accessibilityAnnouncement: '',
   };
 
   const setSnackbar: IsetSnackbar = (component, config) => {
