@@ -11,22 +11,20 @@ export type IAspectRatioProps = IBoxProps & {
 
 function AspectView(props: any) {
   const [layout, setLayout] = React.useState();
-  const { aspectRatio = props.aspectRatio, ...inputStyle } =
-    StyleSheet.flatten(props.style) || {};
-  const style = [inputStyle];
+  const inputStyle = [StyleSheet.flatten(props.style) || {}];
   if (layout) {
     // @ts-ignore
     let { width = 0, height = 0 } = layout;
     if (width === 0) {
-      style.push({ width: height * aspectRatio, height });
+      inputStyle.push({ width: height * props.aspectRatio, height });
     } else {
-      style.push({ width, height: width / aspectRatio });
+      inputStyle.push({ width, height: width / props.aspectRatio });
     }
   }
   return (
     <Box
       {...props}
-      style={style}
+      style={inputStyle}
       onLayout={({ nativeEvent: { layout } }: any) => setLayout(layout)}
     />
   );
