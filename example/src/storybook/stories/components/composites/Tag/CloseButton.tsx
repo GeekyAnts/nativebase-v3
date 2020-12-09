@@ -6,6 +6,7 @@ export default function () {
     <HStack space={2} alignItems="flex-start">
       {['sm', 'md', 'lg'].map((size) => (
         <Tag
+          key={size}
           colorScheme="green"
           variant="solid"
           bg="red.200"
