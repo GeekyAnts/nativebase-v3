@@ -12,6 +12,7 @@ export interface IColorHues {
 }
 
 const colors = {
+  // Singleton colors
   white: '#FFFFFF',
   black: '#000000',
   critical: '#d42f77',
@@ -20,6 +21,7 @@ const colors = {
   neutral: '#747474',
   promote: '#8c5bb2',
 
+  // Primary colors
   whiteAlpha: {
     50: 'rgba(255, 255, 255, 0.04)',
     100: 'rgba(255, 255, 255, 0.06)',
@@ -322,6 +324,7 @@ const colors = {
     900: '#0f172a',
   },
 
+  // Derived colors
   danger: {},
   error: {},
   success: {},
@@ -333,6 +336,7 @@ const colors = {
   dark: {},
   light: {},
 };
+
 colors.danger = colors.rose;
 colors.error = colors.red;
 colors.success = colors.green;
