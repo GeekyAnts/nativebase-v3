@@ -18,8 +18,6 @@ export default {
 
 //Steppers
 const stepperbaseStyle = (props: Record<string, any>) => {
-  console.log('kigode = ', props);
-
   return {
     bg: 'transparent',
     iconColor: mode('gray.400', 'muted.100')(props),

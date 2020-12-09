@@ -16,7 +16,7 @@ function MyWrapper({ children }: any) {
       width="100%"
       justifyContent="center"
       alignItems="center"
-      bg={useColorModeValue(`gray.50`, `dark.100`)}
+      bg={useColorModeValue(`gray.50`, `gray.800`)}
     >
       <Switch
         onToggle={toggleColorMode}

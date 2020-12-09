@@ -34,7 +34,6 @@ const variantSolid = (props: Record<string, any>) => {
 const variantLeftAccent = (props: Record<string, any>) => {
   let { status, theme } = props;
   status = getColorScheme(props, status);
-  console.log('kigode = ', mode(`${status}.700`, `${status}.50`)(props));
   return {
     border: 6,
     bg: getBg(props),

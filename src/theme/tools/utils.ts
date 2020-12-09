@@ -31,41 +31,9 @@ export function getColorScheme(
 ) {
   let { theme, colorScheme } = props;
   colorScheme = customColorScheme || colorScheme;
-  if (!(colorScheme in theme.colors)) return 'indigo';
-
-  switch (colorScheme) {
-    case 'white':
-      return 'gray';
-    case 'black':
-      return 'gray';
-    case 'caution':
-      return 'orange';
-    case 'positive':
-      return 'green';
-    case 'neutral':
-      return 'gray';
-    case 'info':
-      return 'blue';
-    case 'promote':
-      return 'purple';
-    case 'dark':
-      return 'gray';
-    case 'light':
-      return 'gray';
-    case 'default':
-      return 'indigo';
-    case 'warning':
-      return 'yellow';
-    case 'success':
-      return 'green';
-    case 'error':
-      return 'red';
-    case 'critical':
-      return 'red';
-    case 'muted':
-      return 'gray';
-    default:
-      return colorScheme;
+  if (!(colorScheme in theme.colors)) return 'default';
+  else {
+    if (typeof theme.colors[colorScheme] === 'object') return colorScheme;
   }
 }
 
