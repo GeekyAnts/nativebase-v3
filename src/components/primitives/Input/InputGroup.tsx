@@ -37,7 +37,7 @@ export const InputRightAddon = (props: IBoxProps & IInputProps) => {
 };
 
 type InputGroupProps = {
-  children: Element | Element[];
+  children: JSX.Element | JSX.Element[];
   variant?: string;
   size?: string;
 };
