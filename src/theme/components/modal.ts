@@ -48,9 +48,11 @@ const defaultProps = {
   modalContentProps: {
     bg: 'gray.100',
   },
-  modalOverlayProps: {
-    bg: 'black',
-  },
+
+  // NOTE: using Overlay component instead
+  // modalOverlayProps: {
+  //   bg: 'black',
+  // },
   modalHeaderProps: {
     pb: 3,
     px: 3,
