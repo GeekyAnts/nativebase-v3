@@ -43,6 +43,7 @@ const Slide = ({ children, ...props }: ISlideProps) => {
 
   const holderStyle: any = {
     top: {
+      position: 'absolute',
       top: 0,
       right: 0,
       left: 0,
@@ -73,9 +74,8 @@ const Slide = ({ children, ...props }: ISlideProps) => {
   animationState && size ? slideIn() : slideOut();
   return (
     <Box
-      position="absolute"
       overflow="hidden"
-      style={holderStyle[placement]}
+      style={[{ position: 'absolute' }, holderStyle[placement]]}
       opacity={containerOpacity}
     >
       <Animated.View style={animatioStyle[placement]}>
