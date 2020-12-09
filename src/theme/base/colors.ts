@@ -15,11 +15,6 @@ const colors = {
   // Singleton colors
   white: '#FFFFFF',
   black: '#000000',
-  critical: '#d42f77',
-  caution: '#f7c744',
-  positive: '#408728',
-  neutral: '#747474',
-  promote: '#8c5bb2',
 
   // Primary colors
   whiteAlpha: {
@@ -287,7 +282,7 @@ const colors = {
     800: '#27272a',
     900: '#18181b',
   },
-  invGray: {
+  dark: {
     50: '#18181b',
     100: '#27272a',
     200: '#3f3f46',
@@ -333,7 +328,6 @@ const colors = {
   default: {},
   info: {},
   secondary: {},
-  dark: {},
   light: {},
 };
 
@@ -345,7 +339,6 @@ colors.muted = colors.trueGray;
 colors.default = colors.blue;
 colors.info = colors.lightBlue;
 colors.secondary = colors.gray;
-colors.dark = colors.invGray;
 colors.light = colors.gray;
 
 export default colors;
