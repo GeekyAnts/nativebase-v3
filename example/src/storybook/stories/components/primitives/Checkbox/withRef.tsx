@@ -5,6 +5,7 @@ export default function () {
   const myRef: any = React.useRef({});
   return (
     <Checkbox
+      value="success"
       colorScheme="success"
       icon={<Icon name="bullseye" type="MaterialCommunityIcons" opacity={0} />}
       ref={myRef}

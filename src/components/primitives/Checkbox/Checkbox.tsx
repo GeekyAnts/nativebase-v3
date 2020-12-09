@@ -9,49 +9,34 @@ import {
 } from '../../composites/FormControl';
 import { CheckboxContext } from './CheckboxGroup';
 import type { ICheckboxProps, ICheckboxContext } from './props';
+import { useCheckbox } from './useCheckbox';
 
-const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
+const Checkbox = ({ ...props }: ICheckboxProps, ref: any) => {
   const formControlContext: IFormControlContext = React.useContext(
     FormControlContext
   );
-  const {
-    groupValueChangeHandler,
-    value: cValue = [],
-    ...context
-  }: ICheckboxContext = React.useContext(CheckboxContext);
+
+  const checkboxGroupContext: ICheckboxContext = React.useContext(
+    CheckboxContext
+  );
   const {
     activeColor,
     borderColor,
     iconColor,
-    isInvalid,
-    onChange,
-    isIndeterminate,
-    isChecked: pIsChecked,
-    defaultIsChecked,
-    isDisabled,
-    value: pValue,
-    ariaLabel,
     icon,
+    isInvalid,
     size,
     ...newProps
   } = usePropsConfig('Checkbox', {
-    ...context,
+    ...checkboxGroupContext,
     ...formControlContext,
     ...props,
   });
-  let isChecked = pIsChecked || cValue.includes(pValue);
 
-  const [checkboxState, setCheckboxState] = React.useState(
-    isChecked || defaultIsChecked
-  );
-  const pressHandler = () => {
-    isChecked = !checkboxState;
-    setCheckboxState(isChecked);
-    if (!isIndeterminate) {
-      groupValueChangeHandler && groupValueChangeHandler(pValue, isChecked);
-      onChange && onChange(pValue, isChecked);
-    }
-  };
+  const { inputProps } = useCheckbox(props, checkboxGroupContext, null);
+
+  const isChecked = inputProps.checked;
+  const isDisabled = inputProps.disabled;
 
   const sizedIcon = () =>
     React.cloneElement(
@@ -64,26 +49,14 @@ const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
     );
 
   return (
-    <TouchableOpacity
-      activeOpacity={1}
-      disabled={isDisabled}
-      onPress={() => pressHandler()}
-      accessible
-      accessibilityLabel={ariaLabel}
-      accessibilityRole="checkbox"
-      ref={ref}
-    >
+    <TouchableOpacity activeOpacity={1} ref={ref} {...inputProps}>
       <Box flexDirection="row" alignItems="center" {...newProps}>
         <Center
           backgroundColor={
-            checkboxState
-              ? isDisabled
-                ? borderColor
-                : activeColor
-              : 'transparent'
+            isChecked ? (isDisabled ? borderColor : activeColor) : 'transparent'
           }
           borderColor={
-            checkboxState
+            isChecked
               ? isDisabled || isInvalid
                 ? borderColor
                 : activeColor
@@ -92,7 +65,7 @@ const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
           borderWidth={2}
           borderRadius={5}
         >
-          {icon && checkboxState ? (
+          {icon && isChecked ? (
             sizedIcon()
           ) : (
             <Icon
@@ -100,11 +73,11 @@ const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
               type="MaterialCommunityIcons"
               size={size}
               color={iconColor}
-              opacity={checkboxState ? 1 : 0}
+              opacity={isChecked ? 1 : 0}
             />
           )}
         </Center>
-        {children}
+        {props.children}
       </Box>
     </TouchableOpacity>
   );

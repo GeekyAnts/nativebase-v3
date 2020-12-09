@@ -3,56 +3,38 @@ import { TouchableOpacity } from 'react-native';
 import { Icon, Box } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
 import { RadioContext } from './RadioGroup';
-import type { IRadioProps, IRadioContext } from './props';
+import type { IRadioProps } from './props';
+import { useRadio } from './useRadio';
 
-const Radio = ({ children, ...props }: IRadioProps, ref: any) => {
-  const {
-    onChangeHandler,
-    value: cValue,
-    ...context
-  }: IRadioContext = React.useContext(RadioContext);
+const Radio = (props: IRadioProps, ref: any) => {
+  const { children } = props;
+
+  const contextState = React.useContext(RadioContext);
+
   const {
     activeColor,
     borderColor,
     iconColor,
-    onChange,
-    isDisabled,
-    isInvalid,
-    value: pValue,
-    ariaLabel,
     icon,
     size,
+    isInvalid,
     ...newProps
   } = usePropsConfig('Radio', {
-    ...context,
+    ...contextState,
     ...props,
   });
-  const radioState = cValue ? cValue === pValue : false;
-  const pressHandler = () => {
-    onChangeHandler && onChangeHandler(pValue);
-    onChange && onChange(pValue);
-  };
 
   const sizedIcon = () =>
-    React.cloneElement(
-      icon,
-      {
-        size,
-        color: icon.props.color ? icon.props.color : iconColor,
-      },
-      icon.props.children
-    );
+    React.cloneElement(icon, {
+      size,
+      color: icon.props.color ? icon.props.color : iconColor,
+    });
+
+  const { inputProps } = useRadio(props, contextState, null);
+  const { checked, disabled: isDisabled } = inputProps;
 
   return (
-    <TouchableOpacity
-      activeOpacity={1}
-      disabled={isDisabled}
-      onPress={() => pressHandler()}
-      accessible={true}
-      accessibilityLabel={ariaLabel}
-      accessibilityRole="checkbox"
-      ref={ref}
-    >
+    <TouchableOpacity activeOpacity={1} ref={ref} {...inputProps}>
       <Box
         flexDirection="row"
         justifyContent="center"
@@ -61,14 +43,10 @@ const Radio = ({ children, ...props }: IRadioProps, ref: any) => {
       >
         <Box
           backgroundColor={
-            radioState
-              ? isDisabled
-                ? borderColor
-                : activeColor
-              : 'transparent'
+            checked ? (isDisabled ? borderColor : activeColor) : 'transparent'
           }
           borderColor={
-            radioState
+            checked
               ? isDisabled || isInvalid
                 ? borderColor
                 : activeColor
@@ -80,7 +58,7 @@ const Radio = ({ children, ...props }: IRadioProps, ref: any) => {
           alignItems="center"
           borderRadius={999}
         >
-          {icon && radioState ? (
+          {icon && checked ? (
             sizedIcon()
           ) : (
             <Icon
@@ -88,7 +66,7 @@ const Radio = ({ children, ...props }: IRadioProps, ref: any) => {
               type="MaterialCommunityIcons"
               size={size}
               color={iconColor}
-              opacity={radioState ? 1 : 0}
+              opacity={checked ? 1 : 0}
             />
           )}
         </Box>
