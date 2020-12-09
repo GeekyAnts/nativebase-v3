@@ -63,9 +63,9 @@ const Switch = (
 
   let computedStyle: ViewStyle = StyleSheet.flatten([
     style,
+    { transform: newProps.transform ?? undefined },
     isInvalid ? inValidPropFactors : {},
   ]);
-
   return (
     <StyledNBSwitch
       {...newProps}
