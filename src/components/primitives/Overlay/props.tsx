@@ -4,6 +4,7 @@ export type IOverlayProps = ViewProps & {
   children?: React.ReactNode;
   disableOverlay?: boolean;
   position?: string;
+  animationDuration?: number;
   defaultBackgroundColor?: string;
 };
 
@@ -17,6 +18,7 @@ type configtype = {
   disableOverlay?: boolean;
   position?: string;
   backgroundColor?: string;
+  animationDuration?: number;
 };
 type IuseOverlayPropsReturn = {
   closeOverlay: () => void;
