@@ -25,6 +25,49 @@ export function getColorFormColorScheme(props: Record<string, any>) {
           theme.colors[simpleColorScheme][200];
   } else return 'default.200';
 }
+export function getColorScheme(
+  props: Record<string, any>,
+  customColorScheme?: string
+) {
+  let { theme, colorScheme } = props;
+  colorScheme = customColorScheme || colorScheme;
+  if (!(colorScheme in theme.colors)) return 'indigo';
+
+  switch (colorScheme) {
+    case 'white':
+      return 'gray';
+    case 'black':
+      return 'gray';
+    case 'caution':
+      return 'orange';
+    case 'positive':
+      return 'green';
+    case 'neutral':
+      return 'gray';
+    case 'info':
+      return 'blue';
+    case 'promote':
+      return 'purple';
+    case 'dark':
+      return 'gray';
+    case 'light':
+      return 'gray';
+    case 'default':
+      return 'indigo';
+    case 'warning':
+      return 'yellow';
+    case 'success':
+      return 'green';
+    case 'error':
+      return 'red';
+    case 'critical':
+      return 'red';
+    case 'muted':
+      return 'gray';
+    default:
+      return colorScheme;
+  }
+}
 
 export const breakpoints = Object.freeze(['base', 'sm', 'md', 'lg', 'xl']);
 export const inValidBreakpointProps = ['style', 'children', 'shadowOffset'];

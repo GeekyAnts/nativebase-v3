@@ -23,6 +23,7 @@ const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
     activeColor,
     borderColor,
     iconColor,
+    isInvalid,
     onChange,
     isIndeterminate,
     isChecked: pIsChecked,
@@ -74,8 +75,20 @@ const Checkbox = ({ children, ...props }: ICheckboxProps, ref: any) => {
     >
       <Box flexDirection="row" alignItems="center" {...newProps}>
         <Center
-          backgroundColor={checkboxState ? activeColor : 'transparent'}
-          borderColor={checkboxState ? activeColor : borderColor}
+          backgroundColor={
+            checkboxState
+              ? isDisabled
+                ? borderColor
+                : activeColor
+              : 'transparent'
+          }
+          borderColor={
+            checkboxState
+              ? isDisabled || isInvalid
+                ? borderColor
+                : activeColor
+              : borderColor
+          }
           borderWidth={2}
           borderRadius={5}
         >

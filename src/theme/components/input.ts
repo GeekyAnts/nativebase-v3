@@ -1,21 +1,41 @@
 import { Platform } from 'react-native';
+import { mode } from '../tools';
 
-function roundedStyle() {
+const baseStyle = (props: Record<string, any>) => {
+  const { colors } = props.theme;
+  return {
+    w: '100%',
+    p: Platform.OS === 'android' ? 2 : 3, // Android's input have default padding.
+    color: mode('black', 'white')(props),
+    borderRadius: 'sm',
+    placeholderTextColor: mode(
+      colors.blackAlpha[600],
+      colors.whiteAlpha[600]
+    )(props),
+    _isDisabledProps: {
+      color: mode('blgray.300', 'muted.100')(props),
+      bg: mode('gray.100', 'transparent')(props),
+      borderColor: mode('gray.300', 'muted.100')(props),
+    },
+  };
+};
+
+function roundedStyle(props: Record<string, any>) {
   return {
     borderRadius: '50',
     borderWidth: 1,
-    borderColor: 'gray.400',
+    borderColor: mode('gray.400', 'gray.500')(props),
   };
 }
-function defaultStyle() {
+function defaultStyle(props: Record<string, any>) {
   return {
     borderWidth: 1,
-    borderColor: 'gray.400',
+    borderColor: mode('gray.400', 'gray.500')(props),
   };
 }
-function filledStyle() {
+function filledStyle(props: Record<string, any>) {
   return {
-    bg: 'gray.200',
+    bg: props.bg || mode('gray.200', 'gray.600')(props),
   };
 }
 function unstyledStyle() {
@@ -23,11 +43,11 @@ function unstyledStyle() {
     borderWidth: 0,
   };
 }
-function underlinedStyle() {
+function underlinedStyle(props: Record<string, any>) {
   return {
     borderRadius: 0,
     borderWidth: 0,
-    borderColor: 'gray.400',
+    borderColor: mode('gray.400', 'gray.500')(props),
     borderBottomWidth: 1,
   };
 }
@@ -51,17 +71,12 @@ const sizes = {
 };
 
 const defaultProps = {
-  w: '100%',
   size: 'md',
   variant: 'default',
-  _isDisabledProps: {
-    bg: 'gray.100',
-    borderColor: 'gray.300',
-  },
-  p: Platform.OS === 'android' ? 2 : 3, // Android's input have default padding.
 };
 
 export default {
+  baseStyle,
   variants,
   sizes,
   defaultProps,

@@ -5,7 +5,11 @@ import { omitUndefined } from '../../../theme/tools/utils';
 
 const ActionsheetItem = ({ children, ...props }: IActionsheetItemProps) => {
   const newProps = omitUndefined(props);
-  return <Button {...newProps}>{children}</Button>;
+  return (
+    <Button bg="transparent" {...newProps}>
+      {children}
+    </Button>
+  );
 };
 
 export default ActionsheetItem;

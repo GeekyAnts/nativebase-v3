@@ -1,48 +1,40 @@
-import { transparentize } from '../tools';
+import { mode, getColorScheme } from '../tools';
 
 const baseStyle = {
   px: 1,
+  py: '2px',
   textTransform: 'uppercase',
   fontSize: 'xs',
   borderRadius: 'sm',
   fontWeight: 'bold',
 };
 
-function getActiveColor(props: Record<string, any>) {
-  const { colorScheme, theme } = props;
-  let activeColor = theme.colors.default[200];
-  if (colorScheme[0] === '#') activeColor = colorScheme;
-  else if (colorScheme in theme.colors && theme.colors[colorScheme]) {
-    activeColor =
-      typeof theme.colors[colorScheme] === 'string'
-        ? theme.colors[colorScheme]
-        : theme.colors[colorScheme][500] || theme.colors[colorScheme][200];
-  } else activeColor = theme.colors.muted[200];
-
-  return activeColor;
-}
 function variantSolid(props: Record<string, any>) {
-  let activeColor = getActiveColor(props);
+  let colorScheme = getColorScheme(props);
   return {
-    bg: activeColor,
-    color: props.theme.colors.white,
+    bg: mode(`${colorScheme}.700`, `${colorScheme}.100`)(props),
+    color: mode(`${colorScheme}.100`, `${colorScheme}.700`)(props),
+    borderWidth: 1,
+    borderColor: 'transparent',
   };
 }
 
 function variantSubtle(props: Record<string, any>) {
-  let activeColor = getActiveColor(props);
+  let colorScheme = getColorScheme(props);
   return {
-    bg: transparentize(activeColor, 0.16)(props.theme),
-    color: activeColor,
+    bg: mode(`${colorScheme}.100`, `${colorScheme}.700`)(props),
+    color: mode(`${colorScheme}.700`, `${colorScheme}.100`)(props),
+    borderWidth: 1,
+    borderColor: 'transparent',
   };
 }
 
 function variantOutline(props: Record<string, any>) {
-  let activeColor = getActiveColor(props);
+  let colorScheme = getColorScheme(props);
   return {
-    borderColor: activeColor,
-    color: activeColor,
-    borderWidth: 2,
+    borderColor: mode(`${colorScheme}.700`, `${colorScheme}.100`)(props),
+    color: mode(`${colorScheme}.700`, `${colorScheme}.100`)(props),
+    borderWidth: 1,
   };
 }
 

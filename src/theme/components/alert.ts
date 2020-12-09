@@ -1,42 +1,44 @@
-import { mode, getColor, transparentize } from './../tools';
+import { mode, getColor, getColorScheme } from '../tools';
 
 function getBg(props: Record<string, any>) {
-  const { theme, status } = props;
-  const lightBg = getColor(theme, `${status}.50`, status);
-  const darkBg = transparentize(`${status}.200`, 0.5)(theme);
+  let { theme, status } = props;
+  status = getColorScheme(props, status);
+  const lightBg = getColor(theme, `${status}.100`, status);
+  const darkBg = getColor(theme, `${status}.700`, status);
   return mode(lightBg, darkBg)(props);
 }
 
 const variantSubtle = (props: Record<string, any>) => {
   let { status } = props;
-  status = status === 'info' ? 'default' : status;
+  status = getColorScheme(props, status);
   let a = {
     border: 6,
     borderColor: 'transparent',
     bg: getBg(props),
-    iconColor: mode(`${status}.400`, `${status}.50`)(props),
+    iconColor: mode(`${status}.700`, `${status}.200`)(props),
     textColor: mode('gray', 'white')(props),
   };
   return a;
 };
 const variantSolid = (props: Record<string, any>) => {
   let { status } = props;
-  status = status === 'info' ? 'default' : status;
+  status = getColorScheme(props, status);
   return {
     border: 6,
     borderColor: 'transparent',
     bg: getBg(props),
-    iconColor: mode(`${status}.400`, `${status}.50`)(props),
+    iconColor: mode(`${status}.700`, `${status}.200`)(props),
     textColor: mode('gray', 'white')(props),
   };
 };
 const variantLeftAccent = (props: Record<string, any>) => {
   let { status, theme } = props;
-  status = status === 'info' ? 'default' : status;
+  status = getColorScheme(props, status);
+  console.log('kigode = ', mode(`${status}.700`, `${status}.50`)(props));
   return {
     border: 6,
     bg: getBg(props),
-    iconColor: mode(`${status}.400`, `${status}.50`)(props),
+    iconColor: mode(`${status}.700`, `${status}.200`)(props),
     textColor: mode('gray', 'white')(props),
     borderColor: 'transparent',
     borderLeftColor: theme.colors[status][100],
@@ -44,20 +46,20 @@ const variantLeftAccent = (props: Record<string, any>) => {
 };
 const variantTopAccent = (props: Record<string, any>) => {
   let { status, theme } = props;
-  status = status === 'info' ? 'default' : status;
+  status = getColorScheme(props, status);
   return {
     border: 6,
     borderColor: 'transparent',
     borderTopColor: theme.colors[status][100],
     bg: getBg(props),
-    iconColor: mode(`${status}.400`, `${status}.50`)(props),
+    iconColor: mode(`${status}.700`, `${status}.200`)(props),
     textColor: mode('gray', 'white')(props),
   };
 };
 
 const variants = {
-  subtle: variantSubtle,
-  solid: variantSolid,
+  'subtle': variantSubtle,
+  'solid': variantSolid,
   'left-accent': variantLeftAccent,
   'top-accent': variantTopAccent,
 };

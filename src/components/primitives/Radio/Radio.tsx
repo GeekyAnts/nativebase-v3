@@ -17,6 +17,7 @@ const Radio = ({ children, ...props }: IRadioProps, ref: any) => {
     iconColor,
     onChange,
     isDisabled,
+    isInvalid,
     value: pValue,
     ariaLabel,
     icon,
@@ -59,8 +60,20 @@ const Radio = ({ children, ...props }: IRadioProps, ref: any) => {
         {...newProps}
       >
         <Box
-          backgroundColor={radioState ? activeColor : 'transparent'}
-          borderColor={radioState ? activeColor : borderColor}
+          backgroundColor={
+            radioState
+              ? isDisabled
+                ? borderColor
+                : activeColor
+              : 'transparent'
+          }
+          borderColor={
+            radioState
+              ? isDisabled || isInvalid
+                ? borderColor
+                : activeColor
+              : borderColor
+          }
           borderWidth={2}
           display="flex"
           justifyContent="center"
