@@ -134,3 +134,4 @@ export { ButtonGroup, ButtonGroupProps } from './ButtonGroup';
 export default forwardRef<TouchableOpacityType, IButtonProps & IBoxProps>(
   Button
 );
+export { useButton } from './useButton';

@@ -7,6 +7,7 @@ import type {
 } from './props';
 import { AccordionItemContext } from './AccordionItem';
 import { TouchableOpacity } from 'react-native';
+import { useAccordianButton } from './useAccordianButton';
 
 const AccordionButton = (
   { children, style, _expanded, _disabled, ...props }: IAccordionButtonProps,
@@ -22,16 +23,17 @@ const AccordionButton = (
   const pressHandler = () => {
     isOpen ? onClose && onClose() : onOpen && onOpen();
   };
+
+  const accordianButtonProps = useAccordianButton({
+    isOpen,
+    isDisabled: _disabled || isDisabled,
+    onPress: pressHandler,
+    ...props,
+  });
+
   const borderColor = useToken('colors', 'muted.200');
   return (
-    <TouchableOpacity
-      activeOpacity={1}
-      disabled={isDisabled}
-      onPress={() => pressHandler()}
-      accessible
-      accessibilityRole="checkbox"
-      ref={ref}
-    >
+    <TouchableOpacity activeOpacity={1} {...accordianButtonProps} ref={ref}>
       <Box
         p={3}
         borderColor={borderColor}

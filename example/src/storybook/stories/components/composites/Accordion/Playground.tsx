@@ -16,7 +16,7 @@ export default function () {
         allowToggle={boolean('allowToggle', false)}
       >
         <AccordionItem>
-          <AccordionButton>
+          <AccordionButton accessibilityLabel="Section 1 title">
             <Box>Section 1 title</Box>
             <AccordionIcon />
           </AccordionButton>
@@ -28,7 +28,7 @@ export default function () {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
-          <AccordionButton>
+          <AccordionButton accessibilityLabel="Section 2 title">
             <Box>Section 2 title</Box>
             <AccordionIcon />
           </AccordionButton>
@@ -40,7 +40,7 @@ export default function () {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
-          <AccordionButton>
+          <AccordionButton accessibilityLabel="Section 3 title">
             <Box>Section 3 title</Box>
             <AccordionIcon />
           </AccordionButton>

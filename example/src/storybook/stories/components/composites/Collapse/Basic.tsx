@@ -17,7 +17,12 @@ export default function () {
         tart.
         <Box p={8} bg="black" />
       </Collapse>
-      <CollapseButton size="sm" onPress={handleToggle} isOpen={show}>
+      <CollapseButton
+        size="sm"
+        onPress={handleToggle}
+        isOpen={show}
+        accessibilityLabel={`Show ${show ? 'Less' : 'More'}`}
+      >
         Show {show ? 'Less' : 'More'}
       </CollapseButton>
     </Stack>

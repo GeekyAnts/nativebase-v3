@@ -12,7 +12,7 @@ export default function () {
     <Box m={3}>
       <Accordion index={[0, 1]}>
         <AccordionItem>
-          <AccordionButton>
+          <AccordionButton accessibilityLabel="Section 1 title">
             <Box>Section 1 title</Box>
             <AccordionIcon />
           </AccordionButton>

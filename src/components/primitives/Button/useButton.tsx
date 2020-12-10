@@ -21,19 +21,20 @@ export interface ButtonAria {
 
 export function useButton(
   props: Partial<IUseButtonProps>,
-  _ref: RefObject<any>
+  _ref?: RefObject<any>
 ): ButtonAria {
   const [isPressed, setIsPressed] = useState(false);
   const disabled = !!props.isDisabled;
 
   const buttonProps = {
+    ...props,
     accessible: props.accessible ?? true,
     accessibilityRole: props.accessibilityRole ?? 'button',
-    accessibilityState: props.accessibilityState ?? {
+    accessibilityState: {
+      ...props.accessibilityState,
       disabled,
     },
     disabled,
-    ...props,
     onPress: (e: GestureResponderEvent) => {
       props.onPress && props.onPress(e);
     },

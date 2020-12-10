@@ -30,7 +30,12 @@ export {
 } from './Icon';
 export { Column } from './Column';
 export { Row } from './Row';
-export { default as Button, IButtonProps, ButtonGroup } from './Button';
+export {
+  default as Button,
+  IButtonProps,
+  ButtonGroup,
+  useButton,
+} from './Button';
 export {
   Slider,
   SliderThumb,
