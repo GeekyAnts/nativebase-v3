@@ -1,9 +1,12 @@
-import { getColorFormColorScheme } from '../tools';
+import { mode, getColorScheme } from '../tools';
 
 const baseStyle = (props: Record<string, any>) => {
-  const activeColor = getColorFormColorScheme(props);
+  const simplifiedColorScheme = getColorScheme(props);
   return {
-    activeColor,
+    activeColor: mode(
+      `${simplifiedColorScheme}.500`,
+      `${simplifiedColorScheme}.200`
+    )(props),
   };
 };
 

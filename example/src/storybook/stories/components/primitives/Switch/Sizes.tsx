@@ -4,9 +4,9 @@ import { Switch } from '@native-base/v3';
 export default function () {
   return (
     <>
-      <Switch size="sm" />
-      <Switch size="md" />
-      <Switch size="lg" />
+      <Switch size="sm" colorScheme="success" />
+      <Switch size="md" colorScheme="default" />
+      <Switch size="lg" colorScheme="orange" />
     </>
   );
 }

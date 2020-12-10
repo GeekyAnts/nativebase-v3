@@ -15,6 +15,7 @@ export const NBStepper = ({ children, ...props }: any) => {
     isDisabled,
     ariaLabel,
     pressHandler,
+    iconColor,
     ...newProps
   } = usePropsConfig('NumberInputStepper', props);
   return (
@@ -32,9 +33,9 @@ export const NBStepper = ({ children, ...props }: any) => {
         style={style}
       >
         {children || isIncrement ? (
-          <Icon name="arrow-drop-up" type="MaterialIcons" />
+          <Icon name="arrow-drop-up" type="MaterialIcons" color={iconColor} />
         ) : (
-          <Icon name="arrow-drop-up" type="MaterialIcons" />
+          <Icon name="arrow-drop-down" type="MaterialIcons" color={iconColor} />
         )}
       </Box>
     </TouchableOpacity>
@@ -45,8 +46,15 @@ const NumberInputStepper = ({
   children,
   ...props
 }: INumberInputSteppersProps) => {
+  const { iconColor } = usePropsConfig('NumberInputStepper', props);
   return (
-    <VStack divider={<Divider />} {...props}>
+    <VStack
+      border={1}
+      borderColor="transparent"
+      borderLeftColor={iconColor}
+      divider={<Divider borderColor={iconColor} />}
+      {...props}
+    >
       {children}
     </VStack>
   );

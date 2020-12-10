@@ -24,6 +24,7 @@ const Checkbox = ({ ...props }: ICheckboxProps, ref: any) => {
     borderColor,
     iconColor,
     icon,
+    isInvalid,
     size,
     ...newProps
   } = usePropsConfig('Checkbox', {
@@ -35,6 +36,7 @@ const Checkbox = ({ ...props }: ICheckboxProps, ref: any) => {
   const { inputProps } = useCheckbox(props, checkboxGroupContext, null);
 
   const isChecked = inputProps.checked;
+  const isDisabled = inputProps.disabled;
 
   const sizedIcon = () =>
     React.cloneElement(
@@ -50,8 +52,16 @@ const Checkbox = ({ ...props }: ICheckboxProps, ref: any) => {
     <TouchableOpacity activeOpacity={1} ref={ref} {...inputProps}>
       <Box flexDirection="row" alignItems="center" {...newProps}>
         <Center
-          backgroundColor={isChecked ? activeColor : 'transparent'}
-          borderColor={isChecked ? activeColor : borderColor}
+          backgroundColor={
+            isChecked ? (isDisabled ? borderColor : activeColor) : 'transparent'
+          }
+          borderColor={
+            isChecked
+              ? isDisabled || isInvalid
+                ? borderColor
+                : activeColor
+              : borderColor
+          }
           borderWidth={2}
           borderRadius={5}
         >

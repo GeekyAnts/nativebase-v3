@@ -17,6 +17,7 @@ const Radio = (props: IRadioProps, ref: any) => {
     iconColor,
     icon,
     size,
+    isInvalid,
     ...newProps
   } = usePropsConfig('Radio', {
     ...contextState,
@@ -30,7 +31,7 @@ const Radio = (props: IRadioProps, ref: any) => {
     });
 
   const { inputProps } = useRadio(props, contextState, null);
-  const { checked } = inputProps;
+  const { checked, disabled: isDisabled } = inputProps;
 
   return (
     <TouchableOpacity activeOpacity={1} ref={ref} {...inputProps}>
@@ -41,8 +42,16 @@ const Radio = (props: IRadioProps, ref: any) => {
         {...newProps}
       >
         <Box
-          backgroundColor={checked ? activeColor : 'transparent'}
-          borderColor={checked ? activeColor : borderColor}
+          backgroundColor={
+            checked ? (isDisabled ? borderColor : activeColor) : 'transparent'
+          }
+          borderColor={
+            checked
+              ? isDisabled || isInvalid
+                ? borderColor
+                : activeColor
+              : borderColor
+          }
           borderWidth={2}
           display="flex"
           justifyContent="center"
