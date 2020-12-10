@@ -31,6 +31,7 @@ const CircularProgress = ({
   trackColor,
   max,
   min,
+  accessibilityLabel,
   ...props
 }: ICircularProgressProps) => {
   if (min) {
@@ -154,6 +155,22 @@ const CircularProgress = ({
     firstProgressLayerStyle = propStyle(value, -135);
   }
 
+  let accessibilityProps: any = {
+    accessible: true,
+    accessibilityLabel: accessibilityLabel ?? 'In Progress',
+  };
+
+  if (!isIndeterminate) {
+    accessibilityProps = {
+      ...accessibilityProps,
+      accessibilityValue: {
+        min: min ?? 0,
+        max: max ?? 100,
+        now: value,
+      },
+    };
+  }
+
   return (
     <Box
       {...sizeProps}
@@ -162,6 +179,7 @@ const CircularProgress = ({
       borderColor={trackColor ? trackColor : 'gray.200'}
       justifyContent="center"
       alignItems="center"
+      {...accessibilityProps}
       {...props}
     >
       {!isIndeterminate ? (
