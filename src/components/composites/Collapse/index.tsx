@@ -1,6 +1,6 @@
 import isNil from 'lodash/isNil';
 import React, { useEffect, useRef } from 'react'; //import  also
-import { ViewStyle, LayoutAnimation } from 'react-native';
+import { ViewStyle, LayoutAnimation, UIManager, Platform } from 'react-native';
 import { Box, IBoxProps } from '../../primitives';
 
 export type ICollapseProps = IBoxProps & {
@@ -35,10 +35,14 @@ const Collapse = ({
   onAnimationStart,
   ...props
 }: ICollapseProps) => {
+  if (Platform.OS === 'android') {
+    UIManager.setLayoutAnimationEnabledExperimental &&
+      UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
   const CustomLayoutLinear = {
     duration: duration ? duration : 400,
     create: {
-      type: LayoutAnimation.Types.linear,
+      type: LayoutAnimation.Types.easeInEaseOut,
       property: LayoutAnimation.Properties.opacity,
     },
     update: {
@@ -69,7 +73,7 @@ const Collapse = ({
   }
   return (
     <Box style={animatedStyle} overflow="hidden">
-      <Box overflow="scroll" {...props} />
+      <Box {...props} />
     </Box>
   );
 };
