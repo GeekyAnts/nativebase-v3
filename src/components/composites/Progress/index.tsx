@@ -14,7 +14,12 @@ export type IProgressProps = IBoxProps & {
   isIndeterminate?: any;
 };
 
-const Progress = ({ value, isIndeterminate, ...props }: IProgressProps) => {
+const Progress = ({
+  value,
+  isIndeterminate,
+  accessibilityLabel,
+  ...props
+}: IProgressProps) => {
   // const width = new Animated.Value(0);
   // useEffect(() => {
   //   Animated.loop(
@@ -39,8 +44,24 @@ const Progress = ({ value, isIndeterminate, ...props }: IProgressProps) => {
     justifyContent: 'center',
     color: 'white',
   };
+
+  let accessibilityProps: any = {
+    accessible: true,
+    accessibilityRole: 'progressbar',
+    accessibilityLabel: accessibilityLabel ?? 'In Progress',
+  };
+
+  accessibilityProps = {
+    ...accessibilityProps,
+    accessibilityValue: {
+      min: 0,
+      max: 100,
+      now: value,
+    },
+  };
+
   return (
-    <Box {...newProps} style={props.style}>
+    <Box style={props.style} {...accessibilityProps} {...newProps}>
       {isIndeterminate ? (
         // <Animated.View
         //   style={[
