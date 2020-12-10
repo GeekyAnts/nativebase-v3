@@ -91,7 +91,7 @@ export {
   ISquareProps,
 } from './Center';
 export { default as Wrap, IWrapProps } from './Wrap';
-export { IToastProps, useToast, ToastProvider } from './Toast';
+export { IToastProps, useToast } from './Toast';
 export {
   default as PinInput,
   IPinInputProps,
