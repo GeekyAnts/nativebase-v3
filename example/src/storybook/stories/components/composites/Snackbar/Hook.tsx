@@ -17,7 +17,13 @@ export default function () {
   );
   return (
     <VStack space={3}>
-      <Button onPress={() => setSnackbar(template)}>
+      <Button
+        onPress={() =>
+          setSnackbar(template, {
+            accessibilityAnnouncement: 'Welldone, we are proud of you.',
+          })
+        }
+      >
         Get Default Snackbar
       </Button>
       <Button
@@ -25,6 +31,7 @@ export default function () {
           setSnackbar(template, {
             enableOverlay: true,
             placement: 'top',
+            accessibilityAnnouncement: 'Welldone, we are proud of you.',
           })
         }
       >
