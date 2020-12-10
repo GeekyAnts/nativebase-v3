@@ -25,6 +25,17 @@ export function getColorFormColorScheme(props: Record<string, any>) {
           theme.colors[simpleColorScheme][200];
   } else return 'default.200';
 }
+export function getColorScheme(
+  props: Record<string, any>,
+  customColorScheme?: string
+) {
+  let { theme, colorScheme } = props;
+  colorScheme = customColorScheme || colorScheme;
+  if (!(colorScheme in theme.colors)) return 'default';
+  else {
+    if (typeof theme.colors[colorScheme] === 'object') return colorScheme;
+  }
+}
 
 export const breakpoints = Object.freeze(['base', 'sm', 'md', 'lg', 'xl']);
 export const inValidBreakpointProps = ['style', 'children', 'shadowOffset'];

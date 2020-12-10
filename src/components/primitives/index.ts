@@ -75,3 +75,4 @@ export {
   IOverlayContextProps,
   IuseOverlayProps,
 } from './Overlay';
+export { VisuallyHidden } from './VisuallyHidden';

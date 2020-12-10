@@ -24,7 +24,7 @@ export default function () {
         leastDestructiveRef={cancelRef}
         isOpen={isOpen}
         onClose={onClose}
-        motionPreset={'fade'}
+        motionPreset={'slide'}
       >
         <AlertDialogOverlay />
         <AlertDialogContent>

@@ -14,7 +14,7 @@ const LocalWrapper = ({ children }: any) => {
     <Center
       height="100%"
       width="100%"
-      bg={useColorModeValue(`gray.200`, `dark.100`)}
+      bg={useColorModeValue('gray.200', 'gray.800')}
     >
       {children}
     </Center>
@@ -27,7 +27,7 @@ export default function () {
     <LocalWrapper>
       <Heading> I'm a Heading</Heading>
       <Button
-        colorScheme={colorMode === 'light' ? `blue` : `red`}
+        colorScheme={colorMode === 'light' ? 'blue' : 'red'}
         onPress={() => {
           toggleColorMode();
         }}

@@ -10,7 +10,12 @@ import {
 export default function () {
   return (
     <Box mx={5}>
-      <Slider defaultValue={70}>
+      <Slider
+        defaultValue={70}
+        accessibilityIncrementSteps={10}
+        accessibilityDecrementSteps={5}
+        accessibilityLabel="This is a test slider"
+      >
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>

@@ -20,3 +20,9 @@ export type ILinkProps = ITextProps &
     onClick?: any;
     isExternal?: boolean;
   };
+
+export type IUseLinkProp = {
+  href?: string;
+  isExternal?: boolean;
+  onClick: any;
+};
