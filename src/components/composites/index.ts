@@ -100,6 +100,7 @@ export {
 } from './PinInput';
 export {
   Fade,
+  useFadeAnimation,
   IFadeProps,
   ScaleFade,
   IScaleFadeProps,

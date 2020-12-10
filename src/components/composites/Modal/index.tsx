@@ -18,7 +18,7 @@ import {
 } from '../../../utils/customProps';
 
 import type { IModalProps, IModalSemiProps } from './props';
-import { Box, View, IBoxProps } from '../../primitives';
+import { Box, View, IBoxProps, useOverlay } from '../../primitives';
 import { CloseButton, ICloseButtonProps } from '../../composites';
 import { usePropsConfig } from '../../../theme';
 
@@ -72,10 +72,18 @@ const Modal = (
   }: IModalProps,
   ref: any
 ) => {
+  const { closeOverlay, setOverlay } = useOverlay();
   const [isVisible, setIsVisible] = React.useState(true);
-  React.useEffect(() => {
-    setIsVisible(isOpen);
-  }, [isOpen]);
+  React.useEffect(
+    () => {
+      isOpen && setOverlay(<Box />);
+      !isOpen && closeOverlay();
+      setIsVisible(isOpen);
+    },
+    /*eslint-disable */
+    [isOpen]
+    /*eslint-enable */
+  );
   const newProps = usePropsConfig('Modal', props);
   const value: any = {
     visible: isVisible,
@@ -105,7 +113,7 @@ const Modal = (
           onDismiss={() => {
             finalFocusRef?.current?.focus();
           }}
-          animationType={motionPreset || 'fade'}
+          animationType={motionPreset || 'slide'}
           transparent
           {...props}
           ref={ref}
@@ -173,12 +181,9 @@ export const ModalOverlay = ({ children, ...props }: any) => {
   const { toggleVisible, toggleOnClose, newProps } = React.useContext(
     ModalContext
   );
+
   return (
-    <Box
-      {...newProps.modalOverlayProps}
-      {...props}
-      style={newProps.modalOverlayStyle}
-    >
+    <Box {...props} style={newProps.modalOverlayStyle}>
       <TouchableOpacity
         style={newProps.modalOverlayStyle}
         onPress={

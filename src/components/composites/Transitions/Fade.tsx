@@ -4,29 +4,43 @@ import { usePropsConfig } from '../../../theme';
 import { Animated } from 'react-native';
 import type { IFadeProps } from './props';
 
-const Fade = ({ children, ...props }: IFadeProps) => {
-  const { in: animationState, duration } = usePropsConfig('Fade', props);
-  const fadeAnim = React.useRef(new Animated.Value(0)).current;
+export const useFadeAnimation = (
+  duration = 500,
+  initValue = 0,
+  finalValue = 1
+) => {
+  const fadeValue = React.useRef(new Animated.Value(0)).current;
 
   const fadeIn = () => {
-    Animated.timing(fadeAnim, {
-      toValue: 1,
+    Animated.timing(fadeValue, {
+      toValue: finalValue,
       duration: duration,
       useNativeDriver: true,
     }).start();
   };
 
   const fadeOut = () => {
-    Animated.timing(fadeAnim, {
-      toValue: 0,
+    Animated.timing(fadeValue, {
+      toValue: initValue,
       duration: duration,
       useNativeDriver: true,
     }).start();
   };
 
+  return {
+    fadeValue,
+    fadeIn,
+    fadeOut,
+  };
+};
+
+const Fade = ({ children, ...props }: IFadeProps) => {
+  const { in: animationState, duration } = usePropsConfig('Fade', props);
+  const { fadeValue, fadeIn, fadeOut } = useFadeAnimation(duration);
+
   animationState ? fadeIn() : fadeOut();
   return (
-    <Animated.View style={{ opacity: fadeAnim }}>
+    <Animated.View style={{ opacity: fadeValue }}>
       <Box {...props} />
       {children}
     </Animated.View>

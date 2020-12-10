@@ -51,9 +51,10 @@ const baseStyle = (props: Record<string, any>) => {
     modalContentProps: {
       bg: mode('gray.100', 'gray.700')(props),
     },
-    modalOverlayProps: {
-      bg: 'black',
-    },
+    // NOTE: Now using custom overlay.
+    // modalOverlayProps: {
+    //   bg: 'black',
+    // },
     modalHeaderProps: {
       pb: 3,
       px: 3,
