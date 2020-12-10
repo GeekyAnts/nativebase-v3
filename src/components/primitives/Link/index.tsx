@@ -1,9 +1,4 @@
-import {
-  View,
-  Linking,
-  TouchableWithoutFeedback,
-  StyleSheet,
-} from 'react-native';
+import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
 import {
@@ -20,6 +15,7 @@ import React from 'react';
 import type { ILinkProps } from './props';
 import { Box } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
+import { useLink } from './useLink';
 
 const StyledLink = styled(View)<ILinkProps>(
   color,
@@ -35,9 +31,6 @@ const StyledLink = styled(View)<ILinkProps>(
   customLayout,
   customTypography
 );
-const linkToHREF = (URL: string) => {
-  Linking.openURL(URL).catch((err) => console.error('An error occurred', err));
-};
 
 const addStyleAndPropsToChild = (
   props: any,
@@ -56,15 +49,6 @@ const addStyleAndPropsToChild = (
       child.props.children
     );
   });
-};
-
-const addOnPressFunctionality = (
-  href: string | any,
-  isExternal: any,
-  callback: any
-) => {
-  href && isExternal ? linkToHREF(href) : '';
-  callback ? callback() : () => {};
 };
 
 const Link = ({
@@ -107,14 +91,12 @@ const Link = ({
     height,
   };
   let newProps = usePropsConfig('Link', props);
+
+  const { linkProps } = useLink({ href, onClick, isExternal });
+
   return (
     <Box {...layoutProps}>
-      <TouchableWithoutFeedback
-        onPress={() => {
-          addOnPressFunctionality(href, isExternal, onClick);
-        }}
-        {...newProps}
-      >
+      <TouchableWithoutFeedback {...linkProps} {...newProps}>
         <StyledLink
           {...newProps}
           textDecorationLine={isUnderlined ? 'underline' : 'none'}
