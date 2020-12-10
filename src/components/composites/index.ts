@@ -109,7 +109,7 @@ export {
   SlideFade,
   ISlideFadeProps,
 } from './Transitions';
-export { default as Collapse } from './Collapse';
+export { default as Collapse, CollapseButton } from './Collapse';
 export {
   default as CircularProgress,
   CircularProgressLabel,

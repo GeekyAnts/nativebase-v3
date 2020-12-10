@@ -1,5 +1,12 @@
 import React from 'react';
-import { Collapse, Stack, Heading, Button, Box, Text } from '@native-base/v3';
+import {
+  Collapse,
+  Stack,
+  Heading,
+  Box,
+  Text,
+  CollapseButton,
+} from '@native-base/v3';
 export default function () {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
@@ -35,9 +42,14 @@ export default function () {
         tart.
         <Box p={8} bg="black" />
       </Collapse>
-      <Button colorScheme={color} size="sm" onPress={handleToggle}>
+      <CollapseButton
+        isOpen={show}
+        colorScheme={color}
+        size="sm"
+        onPress={handleToggle}
+      >
         Show {show ? 'Less' : 'More'}
-      </Button>
+      </CollapseButton>
     </Stack>
   );
 }

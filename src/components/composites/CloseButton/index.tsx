@@ -6,7 +6,11 @@ export type ICloseButtonProps = IIconButtonProps;
 
 const CloseButton = (props: ICloseButtonProps) => {
   return (
-    <IconButton {...props} icon={<Icon name={'close'} size={props.size} />} />
+    <IconButton
+      {...props}
+      icon={<Icon name={'close'} size={props.size} />}
+      accessibilityLabel="Close"
+    />
   );
 };
 

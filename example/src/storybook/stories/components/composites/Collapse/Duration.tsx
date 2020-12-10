@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Stack, Heading, Button, Box } from '@native-base/v3';
+import { Collapse, Stack, Heading, CollapseButton, Box } from '@native-base/v3';
 import { number } from '@storybook/addon-knobs';
 export default function () {
   const [show, setShow] = React.useState(false);
@@ -23,9 +23,9 @@ export default function () {
         tart.
         <Box p={8} bg="black" />
       </Collapse>
-      <Button size="sm" onPress={handleToggle}>
+      <CollapseButton size="sm" onPress={handleToggle} isOpen={show}>
         Show {show ? 'Less' : 'More'}
-      </Button>
+      </CollapseButton>
     </Stack>
   );
 }

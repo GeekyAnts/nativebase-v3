@@ -1,18 +1,8 @@
+import type { ICollapseProps } from './props';
 import { isNil } from 'lodash';
 import React, { useEffect, useRef } from 'react'; //import  also
-import { ViewStyle, LayoutAnimation } from 'react-native';
-import { Box, IBoxProps } from '../../primitives';
-
-export type ICollapseProps = IBoxProps & {
-  style?: ViewStyle;
-  endingHeight?: number;
-  startingHeight?: number;
-  duration?: number;
-  animateOpacity?: boolean;
-  isOpen?: boolean;
-  onAnimationEnd?: Function;
-  onAnimationStart?: Function;
-};
+import { LayoutAnimation } from 'react-native';
+import { Box } from '../../primitives';
 
 function usePrevious(value: any) {
   const ref = useRef();
@@ -75,3 +65,4 @@ const Collapse = ({
 };
 
 export default Collapse;
+export { CollapseButton } from './CollapseButton';
