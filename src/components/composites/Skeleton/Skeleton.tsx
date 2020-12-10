@@ -2,10 +2,12 @@ import React from 'react';
 import { Box } from '../../primitives';
 import type { ISkeletonProps } from './props';
 import Bones from './Bones';
+import type { AccessibilityProps } from 'react-native';
 
 export const Skeleton = ({
   children,
   isLoaded,
+  accessibilityLabel,
   ...props
 }: ISkeletonProps & { circle?: boolean }) => {
   if (isLoaded) return <Box {...props}>{children}</Box>;
@@ -20,8 +22,14 @@ export const Skeleton = ({
     });
   };
 
+  const accessibilityProps: AccessibilityProps = {
+    accessible: true,
+    accessibilityRole: 'progressbar',
+    accessibilityLabel,
+  };
+
   return (
-    <Bones width="100%" {...props}>
+    <Bones width="100%" {...accessibilityProps} {...props}>
       {children ? hideChildren() : null}
     </Bones>
   );

@@ -5,6 +5,7 @@ export default function () {
   return (
     <Stack width="90%">
       <Skeleton
+        accessibilityLabel="Loading posts"
         startColor={color('startColor', 'gray')}
         endColor={color('endColor', 'transparent')}
         isLoaded={boolean('isLoaded', false)}
