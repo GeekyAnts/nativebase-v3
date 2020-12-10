@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '../../primitives';
 import { TabsContext, ITabProps, ITabsContextProps } from './index';
-import { TouchableOpacity } from 'react-native';
+import { AccessibilityProps, TouchableOpacity } from 'react-native';
 import { omitUndefined } from '../../../theme/tools/utils';
 
 const Tab = ({
@@ -25,13 +25,22 @@ const Tab = ({
   const pressHandler = () => {
     changeHandler && changeHandler(index);
   };
+
+  const accessibilityProps: AccessibilityProps = {
+    accessible: true,
+    accessibilityRole: 'tab',
+    accessibilityState: {
+      disabled: _disabled,
+      selected: isOpen,
+    },
+  };
+
   return (
     <TouchableOpacity
       activeOpacity={1}
       disabled={isDisabled}
       onPress={() => pressHandler()}
-      accessible={true}
-      accessibilityRole="radio"
+      {...accessibilityProps}
     >
       <Box
         {...tabStyle}
