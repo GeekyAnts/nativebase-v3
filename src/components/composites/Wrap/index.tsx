@@ -1,4 +1,4 @@
-import { isNil } from 'lodash';
+import isNil from 'lodash/isNil';
 import React from 'react';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';

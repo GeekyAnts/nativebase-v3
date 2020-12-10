@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
-import { isNil } from 'lodash';
+import isNil from 'lodash/isNil';
 import type { IAvatarProps } from './props';
 import { Avatar } from './Avatar';
 
