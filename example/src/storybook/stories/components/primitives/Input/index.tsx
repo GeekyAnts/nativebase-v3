@@ -7,7 +7,7 @@ import {
   SizeInput,
   VariantInput,
   InputAddons,
-  InputELements,
+  InputElements,
   PasswordInput,
   ControlledInput,
   FocusErrorBorderColor,
@@ -20,7 +20,7 @@ storiesOf('Input', module)
   .add('Size Input', () => <SizeInput />)
   .add('Input Variants', () => <VariantInput />)
   .add('Input Addons', () => <InputAddons />)
-  .add('Input Elements', () => <InputELements />)
+  .add('Input Elements', () => <InputElements />)
   .add('Input Password', () => <PasswordInput />)
   .add('Value Controlled Input', () => <ControlledInput />)
   .add('Focus and Error Border Color Change', () => <FocusErrorBorderColor />);

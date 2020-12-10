@@ -56,7 +56,7 @@ export const InputAddons = () => {
     </Stack>
   );
 };
-export const InputELements = () => {
+export const InputElements = () => {
   return (
     <Input
       w="90%"

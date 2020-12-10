@@ -94,13 +94,13 @@ class MenuClass extends React.Component<IMenuProps, any> {
             toValue: { x: width, y: height },
             duration: Platform.OS === 'ios' ? animationDuration : 10,
             easing: Easing.bezier(0.01, 1.3, 0.77, 0.91),
-            useNativeDriver: false,
+            useNativeDriver: Platform.OS !== 'web',
           }),
           Animated.timing(this.state.opacityAnimation, {
             toValue: 1,
             duration: animationDuration,
             easing: EASING,
-            useNativeDriver: false,
+            useNativeDriver: Platform.OS !== 'web',
           }),
         ]).start();
       }
@@ -129,7 +129,7 @@ class MenuClass extends React.Component<IMenuProps, any> {
       toValue: 0,
       duration: animationDuration,
       easing: EASING,
-      useNativeDriver: false,
+      useNativeDriver: Platform.OS !== 'web',
     }).start(() => {
       this.setState(
         {

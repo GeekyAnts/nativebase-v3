@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
-import { Animated } from 'react-native';
+import { Animated, Platform } from 'react-native';
 import type { ISlideProps } from './props';
 
 const Slide = ({ children, ...props }: ISlideProps) => {
@@ -29,7 +29,7 @@ const Slide = ({ children, ...props }: ISlideProps) => {
       delay,
       toValue: 0,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
   };
 
@@ -37,7 +37,7 @@ const Slide = ({ children, ...props }: ISlideProps) => {
     Animated.timing(slideAnim, {
       toValue: placement === 'top' ? -size : size,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
   };
 

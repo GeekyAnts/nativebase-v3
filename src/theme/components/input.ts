@@ -43,17 +43,18 @@ const variants = {
 
 const sizes = {
   '2xl': { fontSize: '2xl' },
-  'xl': { fontSize: 'xl' },
-  'lg': { fontSize: 'lg' },
-  'md': { fontSize: 'md' },
-  'sm': { fontSize: 'sm' },
-  'xs': { fontSize: 'xs' },
+  xl: { fontSize: 'xl' },
+  lg: { fontSize: 'lg' },
+  md: { fontSize: 'md' },
+  sm: { fontSize: 'sm' },
+  xs: { fontSize: 'xs' },
 };
 
 const defaultProps = {
   w: '100%',
   size: 'md',
   variant: 'default',
+  borderRadius: 'sm',
   _isDisabledProps: {
     bg: 'gray.100',
     borderColor: 'gray.300',

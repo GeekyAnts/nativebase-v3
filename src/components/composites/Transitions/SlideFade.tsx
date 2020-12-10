@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '../../primitives';
 import { usePropsConfig } from '../../../theme';
-import { Animated } from 'react-native';
+import { Animated, Platform } from 'react-native';
 import type { ISlideFadeProps } from './props';
 
 const SlideFade = ({ children, ...props }: ISlideFadeProps) => {
@@ -17,36 +17,36 @@ const SlideFade = ({ children, ...props }: ISlideFadeProps) => {
     Animated.timing(fadeAnim, {
       toValue: 1,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
     Animated.timing(slideAnimX, {
       toValue: 0,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
     Animated.timing(slideAnimY, {
       toValue: 0,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
   };
   const animOut = () => {
     Animated.timing(fadeAnim, {
       toValue: 0,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
     offsetX &&
       Animated.timing(slideAnimX, {
         toValue: offsetX,
         duration: duration,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== 'web',
       }).start();
     offsetY &&
       Animated.timing(slideAnimY, {
         toValue: offsetY,
         duration: duration,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== 'web',
       }).start();
   };
   animationState ? animIn() : animOut();
