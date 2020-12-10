@@ -9,6 +9,7 @@ export type ISliderProps = IBoxProps & {
   onChange?: (value: number) => void;
   onChangeEnd?: (value: number) => void;
   isReadOnly?: boolean;
+  trackColor?: string;
   // TODO: need to be implemented
   // onFocus?: () => void;
   // onBlur?: () => void;
@@ -27,6 +28,7 @@ export type ISliderProps = IBoxProps & {
   isReversed?: boolean;
 };
 export type ISliderContextProps = {
+  trackColor?: string;
   sliderOffset?: number;
   colorScheme?: string;
   activeColor?: string;
