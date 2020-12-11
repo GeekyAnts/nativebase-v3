@@ -15,6 +15,7 @@ export {
   default as BreadCrumb,
   BreadCrumbItem,
   BreadCrumbLink,
+  IBreadCrumbProps,
 } from './BreadCrumb';
 export { default as CloseButton, ICloseButtonProps } from './CloseButton';
 export { default as Container, IContainerProps } from './Container';
@@ -79,6 +80,7 @@ export {
   TagLabel,
   TagLeftIcon,
   TagRightIcon,
+  ITagProps,
 } from './Tag';
 export { default as Kbd, IKbdProps } from './KBD';
 export { default as Code } from './Code';

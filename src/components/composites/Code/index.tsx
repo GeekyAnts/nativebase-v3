@@ -18,5 +18,5 @@ const Code = ({ style, ...props }: ICodeProps) => {
   );
 };
 
-export { ICodeProps } from './props';
+export type { ICodeProps };
 export default Code;

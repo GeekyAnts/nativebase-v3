@@ -33,12 +33,12 @@ const baseStyle = (props: Record<string, any>) => ({
 
 const sizes = {
   sm: {
-    transform: [{ scale: 0.5 }],
+    transform: [{ scale: 0.75 }],
   },
   md: {},
   lg: {
-    transform: [{ scale: 1.5 }],
-    margin: 4,
+    transform: [{ scale: 1.25 }],
+    margin: 1,
   },
 };
 

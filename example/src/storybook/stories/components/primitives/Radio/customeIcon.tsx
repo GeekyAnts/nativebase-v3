@@ -21,7 +21,7 @@ export default function () {
       <Radio
         colorScheme="warning"
         value="3"
-        icon={<Icon name="exclamation-thick" type="MaterialCommunityIcons" />}
+        icon={<Icon name="exclamation" type="MaterialCommunityIcons" />}
       >
         <Text mx={2}>Warning</Text>
       </Radio>

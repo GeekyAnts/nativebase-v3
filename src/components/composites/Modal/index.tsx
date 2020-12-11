@@ -75,15 +75,41 @@ const Modal = (
     id,
     motionPreset,
     avoidKeyboard,
+    overlayColor,
+    overlayVisible,
     ...props
   }: IModalProps,
   ref: any
 ) => {
   const { closeOverlay, setOverlay } = useOverlay();
   const [isVisible, setIsVisible] = React.useState(true);
+  const closeOverlayInMobile = () => {
+    setIsVisible(false);
+    onClose(false);
+  };
   React.useEffect(
     () => {
-      isOpen && setOverlay(<Box />);
+      isOpen && Platform.OS === 'web'
+        ? setOverlay(
+            <ModalContext.Provider value={value}>
+              <Box ref={ref} nativeID={id} h="100%">
+                {modalChildren}
+              </Box>
+            </ModalContext.Provider>,
+            {
+              onClose: onClose,
+              closeOnPress: true,
+              backgroundColor: overlayColor ? overlayColor : undefined,
+              disableOverlay: overlayVisible === false ? true : false,
+            }
+          )
+        : setOverlay(<Box />, {
+            onClose: closeOverlayInMobile,
+            closeOnPress: true,
+            backgroundColor: overlayColor ? overlayColor : undefined,
+            disableOverlay: overlayVisible === false ? true : false,
+          });
+
       !isOpen && closeOverlay();
       setIsVisible(isOpen);
     },
@@ -114,7 +140,7 @@ const Modal = (
     </Box>
   );
 
-  return (
+  return Platform.OS !== 'web' ? (
     <ModalContext.Provider value={value}>
       <View nativeID={id}>
         <StyledModal
@@ -134,6 +160,7 @@ const Modal = (
           {...props}
           ref={ref}
         >
+          <ModalOverlay />
           {avoidKeyboard ? (
             <KeyboardAvoidingView
               behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -146,6 +173,8 @@ const Modal = (
         </StyledModal>
       </View>
     </ModalContext.Provider>
+  ) : (
+    <Box />
   );
 };
 

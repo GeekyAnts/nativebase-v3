@@ -63,9 +63,9 @@ const Switch = (
 
   let computedStyle: ViewStyle = StyleSheet.flatten([
     style,
+    { transform: newProps.transform ?? undefined },
     isInvalid ? inValidPropFactors : {},
   ]);
-
   return (
     <StyledNBSwitch
       {...newProps}
@@ -82,4 +82,4 @@ const Switch = (
 };
 
 export default React.forwardRef<RNSwitch, ISwitchProps>(Switch);
-export { ISwitchProps } from './props';
+export type { ISwitchProps };

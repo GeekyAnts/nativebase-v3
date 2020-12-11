@@ -129,8 +129,9 @@ const Button = (
   );
 };
 
-export { IButtonProps } from './IButtonProps';
-export { ButtonGroup, ButtonGroupProps } from './ButtonGroup';
+export type { IButtonProps };
+export type { ButtonGroupProps } from './ButtonGroup';
+export { ButtonGroup } from './ButtonGroup';
 export default forwardRef<TouchableOpacityType, IButtonProps & IBoxProps>(
   Button
 );

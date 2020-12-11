@@ -10,9 +10,7 @@ export default function () {
             icon={<Icon name="menu" />}
             {...triggerProps}
             bg="teal.200"
-          >
-            Show Menu
-          </IconButton>
+          />
         );
       }}
     >

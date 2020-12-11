@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
 import { color, space, typography } from 'styled-system';
 import { usePropsConfig } from '../../../theme';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -16,7 +16,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Zocial from 'react-native-vector-icons/Zocial';
-import type { IIconProps } from './props';
+import type { IIconProps, IconType } from './props';
 import { SVGIcon } from './SVGIcon';
 import { Path } from 'react-native-svg';
 
@@ -74,5 +74,5 @@ const styledIcon = styled(Icon)<IIconProps>(color, space, typography);
 
 export default styledIcon;
 export { Path };
-export { IIconProps, IconType } from './props';
+export type { IIconProps, IconType };
 export { createIcon } from './createIcon';

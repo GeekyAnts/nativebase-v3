@@ -1,1 +1,2 @@
-export { default as AppBar, IAppBarProps } from './AppBar';
+export { default as AppBar } from './AppBar';
+export type { IAppBarProps } from './AppBar';

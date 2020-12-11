@@ -25,3 +25,4 @@ const Tag = ({ style, ...props }: ITagProps) => {
 };
 
 export default Tag;
+export type { ITagProps };

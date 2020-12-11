@@ -89,5 +89,6 @@ export const ListItem = (props: IListItemProps) => {
 export const ListIcon = (props: IIconProps) => {
   return <Icon mr={2} {...props} />;
 };
-export { IListProps, IListItemProps } from './props';
+
+export type { IListProps, IListItemProps };
 export default List;

@@ -37,7 +37,7 @@ export const InputRightAddon = (props: IBoxProps & IInputProps) => {
 };
 
 type InputGroupProps = {
-  children: Element | Element[];
+  children: JSX.Element | JSX.Element[];
   variant?: string;
   size?: string;
 };
@@ -50,7 +50,7 @@ const supplyPropsToChildren = (children: any, props: any) => {
 
 export const InputGroup = ({ children, ...props }: InputGroupProps) => {
   return (
-    <Flex direction="row" wrap="wrap">
+    <Flex direction="row">
       {supplyPropsToChildren(getAttachedChildren(children), props)}
     </Flex>
   );
