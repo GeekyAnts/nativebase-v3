@@ -109,7 +109,6 @@ const Modal = (
     },
     /*eslint-disable */
     [isOpen]
-    /*eslint-enable */
   );
   const newProps = usePropsConfig('Modal', props);
   const value: any = {
