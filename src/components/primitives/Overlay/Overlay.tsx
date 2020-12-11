@@ -68,7 +68,9 @@ const Overlay = ({
         style={[providerStyle.provider, { opacity: fadeValue }]}
         pointerEvents={pointerEventsSetter()}
       >
-        <Box style={{ zIndex: 999999 }}>{overlayItem}</Box>
+        <Box style={{ zIndex: 999999 }} w="100%">
+          {overlayItem}
+        </Box>
         <Box
           bg={
             config.disableOverlay
