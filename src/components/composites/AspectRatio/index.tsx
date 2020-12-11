@@ -25,7 +25,9 @@ function AspectView(props: any) {
     <Box
       {...props}
       style={inputStyle}
-      onLayout={({ nativeEvent: { layout } }: any) => setLayout(layout)}
+      onLayout={({ nativeEvent: { layout: inLayout } }: any) =>
+        setLayout(inLayout)
+      }
     />
   );
 }
