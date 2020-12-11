@@ -6,7 +6,6 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay,
   Button,
   Center,
   Input,
@@ -28,7 +27,6 @@ export default function () {
         onClose={setModalVisible}
         size={size}
       >
-        <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
           <ModalHeader fontSize="4xl" fontWeight="bold">

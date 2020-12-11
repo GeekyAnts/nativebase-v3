@@ -6,7 +6,6 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay,
   Button,
   Input,
 } from '@native-base/v3';
@@ -24,7 +23,6 @@ export default function () {
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
       >
-        <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
           <ModalHeader fontSize="4xl" fontWeight="bold">

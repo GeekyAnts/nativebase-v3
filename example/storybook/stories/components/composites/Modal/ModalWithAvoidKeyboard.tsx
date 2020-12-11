@@ -6,7 +6,6 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay,
   Button,
   Input,
   VStack,
@@ -23,7 +22,6 @@ export default function () {
         onClose={setModalVisible}
         avoidKeyboard
       >
-        <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
           <ModalHeader fontSize="4xl" fontWeight="bold">

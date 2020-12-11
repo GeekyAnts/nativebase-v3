@@ -6,6 +6,8 @@ export type IOverlayProps = ViewProps & {
   position?: string;
   animationDuration?: number;
   defaultBackgroundColor?: string;
+  closeOnPress?: boolean;
+  onClose?: Function;
 };
 
 export type IOverlayContextProps = {
@@ -19,6 +21,8 @@ type configtype = {
   position?: string;
   backgroundColor?: string;
   animationDuration?: number;
+  onClose?: Function;
+  closeOnPress?: boolean;
 };
 type IuseOverlayPropsReturn = {
   closeOverlay: () => void;
