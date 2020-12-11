@@ -1,6 +1,6 @@
 import React from 'react';
-import { Slide } from '../../composites';
-import type { ISnackbarProps } from './index';
+import { Slide } from '../Transitions';
+import type { ISnackbarProps } from './props';
 
 const Snackbar = ({ children, duration = 5000, ...props }: ISnackbarProps) => {
   const [isOpen, setIsOpen] = React.useState(true);

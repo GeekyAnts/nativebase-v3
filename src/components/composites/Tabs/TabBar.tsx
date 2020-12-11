@@ -1,7 +1,8 @@
 import React from 'react';
 import getIndexedChildren from '../../../utils/getIndexedChildren';
-import { Box } from '../../primitives';
-import { TabsContext, ITabsContextProps, ITabBarProps } from './index';
+import Box from '../../primitives/Box';
+import { TabsContext } from './Context';
+import type { ITabsContextProps, ITabBarProps } from './props';
 
 const TabBar = ({ children, ...props }: ITabBarProps) => {
   const { tabBarStyle, align, isFitted }: ITabsContextProps = React.useContext(

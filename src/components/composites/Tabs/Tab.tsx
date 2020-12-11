@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box } from '../../primitives';
-import { TabsContext, ITabProps, ITabsContextProps } from './index';
 import { TouchableOpacity } from 'react-native';
+import Box from '../../primitives/Box';
+import { TabsContext } from './Context';
+import type { ITabProps, ITabsContextProps } from './props';
 import { omitUndefined } from '../../../theme/tools/utils';
 
 const Tab = ({

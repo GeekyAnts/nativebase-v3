@@ -122,7 +122,8 @@
     "node_modules/",
     "lib/",
     "example/webpack.config.js",
-    "example/babel.config.js"
+    "example/babel.config.js",
+    "example/metro.config.js"
   ],
   "prettier": {
     "quoteProps": "consistent",
