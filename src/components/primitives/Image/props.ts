@@ -32,7 +32,7 @@ export type IImageProps = RNImageProps &
   customShadowProps &
   customLayoutProps &
   PositionProps & {
-    alt?: string;
+    alt: string;
     fallbackSource?: ImageSourcePropType;
     ignoreFallback?: boolean;
     textProps?: ITextProps;

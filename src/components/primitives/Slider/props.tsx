@@ -16,9 +16,6 @@ export type ISliderProps = IBoxProps & {
   // onMouse?: () => void;
   // orientation?: string;
   // getAriaValueText?: (value?: number) => string;
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
-  ariaValueText?: string;
   size?: 'sm' | 'md' | 'lg';
   colorScheme?: string;
   name?: string;
@@ -26,6 +23,11 @@ export type ISliderProps = IBoxProps & {
   children?: React.ReactNode;
   isDisabled?: boolean;
   isReversed?: boolean;
+  // Steps when using volume up/down gestures or Swipe up/down gestures on iOS.
+  accessibilityIncrementSteps?: number;
+
+  // Steps when using volume up/down gestures or Swipe up/down gestures on iOS.
+  accessibilityDecrementSteps?: number;
 };
 export type ISliderContextProps = {
   trackColor?: string;

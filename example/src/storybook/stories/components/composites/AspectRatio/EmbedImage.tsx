@@ -8,6 +8,7 @@ export default function () {
         source={{
           uri: 'https://reactnative.dev/img/tiny_logo.png',
         }}
+        alt="nativebase tiny logo"
       />
     </AspectRatio>
   );
