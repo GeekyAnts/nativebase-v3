@@ -2,8 +2,7 @@ import React from 'react';
 import { Box } from '../../primitives';
 import type { ITabsProps } from './props';
 import { usePropsConfig } from '../../../theme';
-
-export const TabsContext = React.createContext({});
+import { TabsContext } from './Context';
 
 const Tabs = ({ children, ...props }: ITabsProps) => {
   const {
