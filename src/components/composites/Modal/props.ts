@@ -37,6 +37,8 @@ export type IModalSemiProps = ModalProps &
     id?: any;
     motionPreset?: 'slide' | 'fade' | 'none';
     closeOnOverlayClick?: boolean;
+    overlayVisible?: boolean;
+    overlayColor?: string;
   };
 
 export type IModalProps = IModalSemiProps & { isOpen: boolean; onClose: any };
