@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, ViewStyle, Platform } from 'react-native';
 import { Box, IBoxProps } from '../../primitives';
-import { isNil } from 'lodash';
+import isNil from 'lodash/isNil';
 
 export type IAspectRatioProps = IBoxProps & {
   style?: ViewStyle;

@@ -8,6 +8,7 @@ import type {
 } from './props';
 import { FormControlContext, IFormControlContext } from '../FormControl';
 import { Platform } from 'react-native';
+import isNil from 'lodash/isNil';
 
 export const PinInputContext = React.createContext({});
 
@@ -33,10 +34,9 @@ const PinInput = ({ children, ...props }: IPinInputProps) => {
     let temp = (pinInputValue && [...pinInputValue]) || [];
     temp[fieldIndex] = newValue;
     setPinInputValue(temp.join(''));
-
-    if (newValue && manageFocus && fieldIndex + 1 < RefList.length)
+    if (!isNil(newValue) && manageFocus && fieldIndex + 1 < RefList.length)
       RefList[fieldIndex + 1].current.focus();
-    if (!newValue && manageFocus && fieldIndex - 1 > -1)
+    if (isNil(newValue) && manageFocus && fieldIndex - 1 > -1)
       RefList[fieldIndex - 1].current.focus();
     return temp.join('');
   };

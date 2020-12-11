@@ -12,7 +12,9 @@ export default function () {
         <Text>TextArea with different font sizes</Text>
       </Center>
       {Sizes.map((value: string) => {
-        return <TextArea w="90%" size={value} placeholder={value} />;
+        return (
+          <TextArea key={value} w="90%" size={value} placeholder={value} />
+        );
       })}
     </Stack>
   );

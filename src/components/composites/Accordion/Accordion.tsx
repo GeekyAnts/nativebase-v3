@@ -1,5 +1,5 @@
 import React from 'react';
-import { remove } from 'lodash';
+import remove from 'lodash/remove';
 import { Box } from '../../primitives';
 import type { IAccordionProps } from './props';
 import getIndexedChildren from '../../../utils/getIndexedChildren';
