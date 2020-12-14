@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text as NativeText } from 'react-native';
 import styled from 'styled-components/native';
 import {
   color,
@@ -20,7 +21,6 @@ import {
   customTypography,
 } from '../../../utils/customProps';
 import type { ITextProps } from './props';
-import { Text as NativeText } from 'react-native';
 
 const StyledText = styled(NativeText)<ITextProps>(
   color,

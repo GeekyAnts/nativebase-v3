@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Animated } from 'react-native';
-import { SliderContext } from './index';
-import { Box, Icon } from '../../primitives';
+import { SliderContext } from './Context';
+import Box from '../Box';
+import Icon from '../Icon';
 import { usePropsConfig } from '../../../theme';
 import type { ISliderProps, ISliderContextProps } from './props';
 

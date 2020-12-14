@@ -19,7 +19,9 @@ import {
   customShadow,
   customTypography,
 } from '../../../utils/customProps';
-import { Box, Text, Flex } from '..';
+import Box from '../Box';
+import Text from '../Text';
+import Flex from '../Flex';
 import type { IInputProps } from './IInputProps';
 import { InputRightAddon, InputGroup, InputLeftAddon } from './InputGroup';
 import { usePropsConfig, themeTools } from '../../../theme';

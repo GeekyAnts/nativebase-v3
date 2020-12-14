@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   View,
   Linking,
@@ -16,9 +17,8 @@ import {
   customTypography,
 } from '../../../utils/customProps';
 import { addTextAndPropsToStrings } from '../../../utils';
-import React from 'react';
 import type { ILinkProps } from './props';
-import Box from '../../primitives/Box';
+import Box from '../Box';
 import { usePropsConfig } from '../../../theme';
 
 const StyledLink = styled(View)<ILinkProps>(

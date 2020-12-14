@@ -1,9 +1,6 @@
-import * as React from 'react';
-import {
-  OverlayContext,
-  IOverlayContextProps,
-  IuseOverlayProps,
-} from './index';
+import React from 'react';
+import type { IOverlayContextProps, IuseOverlayProps } from './props';
+import { OverlayContext } from './Context';
 
 export const useOverlay: IuseOverlayProps = () => {
   const {

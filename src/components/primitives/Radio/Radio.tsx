@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Icon, Box } from '../../primitives';
+import Icon from '../Icon';
+import Box from '../Box';
 import { usePropsConfig } from '../../../theme';
 import { RadioContext } from './RadioGroup';
 import type { IRadioProps } from './props';

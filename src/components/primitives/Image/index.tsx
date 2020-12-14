@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Image as RNImage } from 'react-native';
+import type { Image as ImageType } from 'react-native';
 import styled from 'styled-components/native';
 import { border, flex, layout, space } from 'styled-system';
 import { customBorder } from '../../../utils/customProps';
-import { Text } from '../../primitives';
+import Text from '../Text';
 import { usePropsConfig } from '../../../theme';
 import type { IImageProps } from './props';
-import type { Image as ImageType } from 'react-native';
 
 const StyledImage = styled(RNImage)<IImageProps>(
   layout,

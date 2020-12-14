@@ -1,7 +1,8 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Box, Icon } from '../../primitives';
-import { Center } from '../../composites';
+import Box from '../Box';
+import Icon from '../Icon';
+import { Center } from '../../composites/Center';
 import { usePropsConfig } from '../../../theme';
 import {
   FormControlContext,

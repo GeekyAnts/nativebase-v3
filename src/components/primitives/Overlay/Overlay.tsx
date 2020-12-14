@@ -1,9 +1,8 @@
 import React from 'react';
-import { useFadeAnimation } from '../../composites';
+import { useFadeAnimation } from '../../composites/Transitions';
 import { Animated, StyleSheet } from 'react-native';
-import type { IOverlayProps } from './index';
-
-export const OverlayContext = React.createContext({});
+import type { IOverlayProps } from './props';
+import { OverlayContext } from './Context';
 
 const Overlay = ({
   children,
