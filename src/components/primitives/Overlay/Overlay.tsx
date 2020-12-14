@@ -1,8 +1,9 @@
 import React from 'react';
 import { useFadeAnimation } from '../../composites/Transitions';
-import { Animated, StyleSheet } from 'react-native';
+import { Animated, StyleSheet, TouchableOpacity } from 'react-native';
 import type { IOverlayProps } from './props';
 import { OverlayContext } from './Context';
+import Box from '../Box';
 
 const Overlay = ({
   children,
@@ -10,6 +11,7 @@ const Overlay = ({
   position,
   animationDuration,
   defaultBackgroundColor,
+  closeOnPress,
 }: IOverlayProps) => {
   const [overlayItem, setOverlayItem] = React.useState(null);
   const [config, setConfig] = React.useState({
@@ -17,6 +19,8 @@ const Overlay = ({
     position: position || 'center',
     backgroundColor: defaultBackgroundColor || '#161616cc',
     animationDuration: animationDuration || 500,
+    closeOnPress: !closeOnPress ? false : true,
+    onClose: (_a: any) => {},
   });
 
   const { fadeValue, fadeIn, fadeOut } = useFadeAnimation(animationDuration);
@@ -29,10 +33,11 @@ const Overlay = ({
       left: 0,
       zIndex: 99999,
       alignItems: 'center',
+      opacity: 0.5,
 
-      backgroundColor: config.disableOverlay
-        ? 'transparent'
-        : config.backgroundColor,
+      // backgroundColor: config.disableOverlay
+      //   ? 'transparent'
+      //   : config.backgroundColor,
       justifyContent:
         config.position === 'top'
           ? 'flex-start'
@@ -62,7 +67,28 @@ const Overlay = ({
         style={[providerStyle.provider, { opacity: fadeValue }]}
         pointerEvents={pointerEventsSetter()}
       >
-        {overlayItem}
+        <Box style={{ zIndex: 999999 }} w="100%">
+          {overlayItem}
+        </Box>
+        <Box
+          bg={
+            config.disableOverlay
+              ? 'transparent'
+              : config.backgroundColor
+              ? config.backgroundColor
+              : '#161616cc'
+          }
+          style={providerStyle.provider}
+        />
+        {config.closeOnPress ? (
+          <TouchableOpacity
+            style={[providerStyle.provider, { backgroundColor: 'transparent' }]}
+            onPress={() => {
+              setOverlayItem(null);
+              config.onClose ? config.onClose(false) : null;
+            }}
+          />
+        ) : null}
       </Animated.View>
     </OverlayContext.Provider>
   );

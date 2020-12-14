@@ -6,7 +6,6 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay,
   Button,
   Center,
   Input,
@@ -16,8 +15,12 @@ export default function () {
   const [modalVisible, setModalVisible] = React.useState(false);
   return (
     <>
-      <Modal isCentered isOpen={modalVisible} onClose={setModalVisible}>
-        <ModalOverlay />
+      <Modal
+        isCentered
+        isOpen={modalVisible}
+        onClose={setModalVisible}
+        overlayVisible={true}
+      >
         <ModalContent>
           <ModalCloseButton />
           <ModalHeader fontSize="4xl" fontWeight="bold">

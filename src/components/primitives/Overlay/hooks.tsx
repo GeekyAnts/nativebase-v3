@@ -15,6 +15,8 @@ export const useOverlay: IuseOverlayProps = () => {
     disableOverlay?: boolean;
     position?: string;
     backgroundColor?: string;
+    onClose?: any;
+    closeOnPress?: boolean;
   };
   const setOverlay = (component: React.ReactNode, config?: configtype) => {
     config && setConfig({ ...defaultConfig, ...config });
