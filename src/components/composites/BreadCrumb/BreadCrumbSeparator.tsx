@@ -1,6 +1,6 @@
 import React from 'react';
 import isNil from 'lodash/isNil';
-import { Text } from '../../primitives';
+import Text from '../../primitives/Text';
 
 export const BreadCrumbSeparator = (
   children: JSX.Element[] | JSX.Element | any,

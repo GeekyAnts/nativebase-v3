@@ -1,9 +1,9 @@
 import React from 'react';
-import { VStack, Box, Icon } from '../../primitives';
-import { Divider } from '../../composites';
-import { usePropsConfig } from '../../../theme';
-import type { INumberInputSteppersProps } from './index';
 import { TouchableOpacity } from 'react-native';
+import { VStack, Box, Icon } from '../../primitives';
+import Divider from '../Divider';
+import { usePropsConfig } from '../../../theme';
+import type { INumberInputSteppersProps } from './props';
 
 export const NBStepper = ({ children, ...props }: any) => {
   const {

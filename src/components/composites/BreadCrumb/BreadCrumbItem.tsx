@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex } from '../../primitives';
+import Flex from '../../primitives/Flex';
 import type { IBreadCrumbProps } from './props';
 
 export const BreadCrumbItem = (

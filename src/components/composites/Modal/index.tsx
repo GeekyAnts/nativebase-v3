@@ -19,7 +19,10 @@ import {
 
 import type { IModalProps, IModalSemiProps } from './props';
 import { Box, View, IBoxProps, useOverlay } from '../../primitives';
-import { CloseButton, ICloseButtonProps } from '../../composites';
+import {
+  default as CloseButton,
+  ICloseButtonProps,
+} from '../../composites/CloseButton';
 import { usePropsConfig } from '../../../theme';
 
 const StyledModal = styled(RNModal)<IModalSemiProps>(

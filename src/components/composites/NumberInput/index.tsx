@@ -1,4 +1,5 @@
-export { default as NumberInput, NumberInputContext } from './NumberInput';
+export { default as NumberInput } from './NumberInput';
+export { NumberInputContext } from './Context';
 export { default as NumberInputField } from './NumberInputField';
 export { default as NumberInputStepper, NBStepper } from './NumberInputStepper';
 export { default as NumberIncrementStepper } from './NumberIncrementStepper';

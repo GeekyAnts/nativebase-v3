@@ -50,3 +50,10 @@ export type IButtonProps = ViewProps &
     spinner?: JSX.Element;
     isDisabled?: boolean;
   };
+
+export type IButtonGroupProps = {
+  children: JSX.Element | Array<JSX.Element>;
+  variant?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+  spacing?: string | number;
+};
