@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Image as RNImage } from 'react-native';
-import styled from 'styled-components';
+import type { Image as ImageType } from 'react-native';
+import styled from 'styled-components/native';
 import { border, flex, layout, space } from 'styled-system';
 import { customBorder } from '../../../utils/customProps';
-import { Text } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import Text from '../Text';
+import { usePropsConfig } from '../../../hooks';
 import type { IImageProps } from './props';
-import type { Image as ImageType } from 'react-native';
 
 const StyledImage = styled(RNImage)<IImageProps>(
   layout,
@@ -43,6 +43,11 @@ const Image = (
     }
   };
   const newProps = usePropsConfig('Image', props);
+
+  if (!alt) {
+    console.warn('Please pass alt prop to Image component');
+  }
+
   if (alternate) {
     return <Text {...textProps}>{alt}</Text>;
   }
@@ -53,6 +58,9 @@ const Image = (
       maxWidth="100%"
       height="100%"
       width="auto"
+      accessibilityLabel={alt}
+      accessibilityRole="image"
+      accessible
       {...newProps}
       onError={props.onError ? props.onError : onImageLoadError}
       ref={ref}
@@ -61,4 +69,4 @@ const Image = (
 };
 
 export default React.forwardRef<ImageType, IImageProps>(Image);
-export { IImageProps } from './props';
+export type { IImageProps };

@@ -11,7 +11,8 @@ import {
 import { getContainerStyles } from './utils/getContainerStyles';
 import type { IMenuProps, IMenuContextProps } from './props';
 import type { IBoxProps } from '../../primitives';
-import { usePropsConfig, themeTools } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
+import { extractInObject } from '../../../theme/tools/utils';
 import styled from 'styled-components/native';
 import {
   border,
@@ -94,13 +95,13 @@ class MenuClass extends React.Component<IMenuProps, any> {
             toValue: { x: width, y: height },
             duration: Platform.OS === 'ios' ? animationDuration : 10,
             easing: Easing.bezier(0.01, 1.3, 0.77, 0.91),
-            useNativeDriver: false,
+            useNativeDriver: Platform.OS !== 'web',
           }),
           Animated.timing(this.state.opacityAnimation, {
             toValue: 1,
             duration: animationDuration,
             easing: EASING,
-            useNativeDriver: false,
+            useNativeDriver: Platform.OS !== 'web',
           }),
         ]).start();
       }
@@ -129,7 +130,7 @@ class MenuClass extends React.Component<IMenuProps, any> {
       toValue: 0,
       duration: animationDuration,
       easing: EASING,
-      useNativeDriver: false,
+      useNativeDriver: Platform.OS !== 'web',
     }).start(() => {
       this.setState(
         {
@@ -202,7 +203,7 @@ class MenuClass extends React.Component<IMenuProps, any> {
       },
       { open: this.state.open }
     );
-    const [shadowContainerProps] = themeTools.extractInObject(this.props, [
+    const [shadowContainerProps] = extractInObject(this.props, [
       'borderRadius',
       'bg',
       'backgroundColor',

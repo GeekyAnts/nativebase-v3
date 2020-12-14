@@ -13,8 +13,8 @@ import {
 
 import type { IPopoverProps } from './props';
 import { Box, View, IBoxProps } from '../../primitives';
-import { CloseButton } from '../../composites';
-import { usePropsConfig } from '../../../theme';
+import CloseButton from '../CloseButton';
+import { usePropsConfig } from '../../../hooks';
 
 const StyledPopover = styled(Tooltip)<IPopoverProps>(
   color,

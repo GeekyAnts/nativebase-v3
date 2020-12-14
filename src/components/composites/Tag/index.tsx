@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Box, IIconProps, Icon, Text, ITextProps } from '../../primitives';
-import { CloseButton } from '../../composites';
-import { usePropsConfig } from '../../../theme';
+import CloseButton from '../CloseButton';
+import { usePropsConfig } from '../../../hooks';
 
 export { CloseButton as TagCloseButton };
 import type { ITagProps } from './props';
@@ -25,3 +25,4 @@ const Tag = ({ style, ...props }: ITagProps) => {
 };
 
 export default Tag;
+export type { ITagProps };

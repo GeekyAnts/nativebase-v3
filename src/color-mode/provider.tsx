@@ -5,12 +5,12 @@ export interface ColorModeOptions {
   useSystemColorMode?: boolean;
 }
 
-export interface ColorModeProviderProps {
+export type IColorModeProviderProps = {
   value?: ColorMode;
   children?: React.ReactNode;
   options: ColorModeOptions;
   colorModeManager?: StorageManager;
-}
+};
 
 interface ColorModeContextType {
   colorMode: ColorMode;

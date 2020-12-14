@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
-import { Animated } from 'react-native';
+import Box from '../../primitives/Box';
+import { usePropsConfig } from '../../../hooks/usePropsConfig';
+import { Animated, Platform } from 'react-native';
 import type { IScaleFadeProps } from './props';
 
 const ScaleFade = ({ children, ...props }: IScaleFadeProps) => {
@@ -16,28 +16,28 @@ const ScaleFade = ({ children, ...props }: IScaleFadeProps) => {
     Animated.timing(fadeAnim, {
       toValue: 1,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
   };
   const fadeOut = () => {
     Animated.timing(fadeAnim, {
       toValue: 0,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
   };
   const scaleIn = () => {
     Animated.timing(scaleAnim, {
       toValue: 1,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
   };
   const scaleOut = () => {
     Animated.timing(scaleAnim, {
       toValue: initialScale,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
   };
 

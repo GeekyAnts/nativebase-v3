@@ -1,7 +1,7 @@
 import React from 'react';
-import { Input } from '../../primitives';
+import Input from '../../primitives/Input';
 import type { IPinInputFieldProps, IPinInputContext } from './props';
-import { PinInputContext } from './index';
+import { PinInputContext } from './Context';
 
 const PinInputFiled = ({
   fieldIndex = 0,

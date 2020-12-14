@@ -1,10 +1,10 @@
 import React from 'react';
+import { SafeAreaView } from 'react-native';
 import AppBarLeft from './AppBarLeft';
 import AppBarRight from './AppBarRight';
 import AppBarContent from './AppBarContent';
 import { Box, HStack, View, IBoxProps } from '../../primitives';
 import { APPROX_STATUSBAR_HEIGHT } from './utils';
-import { SafeAreaView } from 'react-native';
 
 export type IAppBarProps = IBoxProps & {
   statusBarHeight?: number;

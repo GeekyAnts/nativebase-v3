@@ -1,9 +1,9 @@
 {
   "name": "@native-base/v3",
-  "version": "0.3.2",
+  "version": "0.4.0-4",
   "description": "Essential cross-platform UI components for React Native",
   "main": "lib/commonjs/index",
-  "module": "lib/module/index",
+  "module": "dist/bundle.web.js",
   "types": "lib/typescript/src/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
@@ -27,7 +27,8 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods"
+    "bootstrap": "yarn example && yarn && yarn pods",
+    "build:web": "rollup --config"
   },
   "keywords": [
     "react-native",
@@ -46,6 +47,7 @@
   "homepage": "https://github.com/geekyants/native-base#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
+    "@expo/vector-icons": "^12.0.2",
     "@react-native-community/bob": "^0.16.2",
     "@react-native-community/eslint-config": "^2.0.0",
     "@release-it/conventional-changelog": "^1.1.4",
@@ -65,15 +67,20 @@
     "prettier": "^2.0.5",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-svg": "^12.1.0",
+    "react-native-vector-icons": "^7.1.0",
     "release-it": "^13.5.8",
+    "rollup": "^2.34.1",
+    "rollup-plugin-flow": "^1.1.1",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*",
-    "react-native-svg": "*",
-    "react-native-vector-icons": "*",
-    "styled-components": "*",
+    "@expo/vector-icons": "^12.0.2",
+    "react": "16.11.0",
+    "react-native": "0.62.2",
+    "react-native-svg": "^12.1.0",
+    "react-native-vector-icons": "^7.1.0",
+    "styled-components": "^5.2.1",
     "styled-system": "*"
   },
   "jest": {
@@ -113,7 +120,10 @@
   },
   "eslintIgnore": [
     "node_modules/",
-    "lib/"
+    "lib/",
+    "example/webpack.config.js",
+    "example/babel.config.js",
+    "example/metro.config.js"
   ],
   "prettier": {
     "quoteProps": "consistent",
@@ -132,21 +142,18 @@
     ]
   },
   "dependencies": {
-    "@expo/vector-icons": "^10.0.6",
+    "@types/styled-components": "^5.0.1",
     "@types/tinycolor2": "^1.4.2",
     "babel-eslint": "^10.1.0",
     "deepmerge": "^4.2.2",
+    "expo-constants": "^9.3.5",
     "expo-font": "^8.3.0",
     "hoist-non-react-statics": "^3.3.2",
     "lodash": "^4.17.20",
     "react-native-material-ripple": "^0.9.1",
-    "react-native-svg": "^12.1.0",
     "react-native-unimodules": "~0.10.1",
-    "react-native-vector-icons": "^7.1.0",
-    "styled-components": "^5.2.0",
     "styled-system": "^5.1.5",
-    "tinycolor2": "^1.4.2",
-    "@types/styled-components": "^5.0.1"
+    "tinycolor2": "^1.4.2"
   },
   "directories": {
     "example": "example",

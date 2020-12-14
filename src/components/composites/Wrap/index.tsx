@@ -1,4 +1,4 @@
-import { isNil } from 'lodash';
+import isNil from 'lodash/isNil';
 import React from 'react';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
@@ -12,8 +12,8 @@ import {
   customFlexBox,
 } from '../../../utils/customProps';
 import type { IWrapProps } from './props';
-import { usePropsConfig } from '../../../theme';
-import { Box } from '../../primitives';
+import { usePropsConfig } from '../../../hooks';
+import Box from '../../primitives/Box';
 
 const StyledWrap = styled(Box)<IWrapProps>(
   color,
@@ -65,4 +65,4 @@ const Wrap = ({
 };
 
 export default Wrap;
-export { IWrapProps } from './props';
+export type { IWrapProps };

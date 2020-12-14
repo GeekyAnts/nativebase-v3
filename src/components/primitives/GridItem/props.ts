@@ -1,5 +1,5 @@
 import type * as CSS from 'csstype';
-import type { IBoxProps } from '../../primitives';
+import type { IBoxProps } from '../Box';
 
 export type IGridItemProps = IBoxProps & {
   gap?: CSS.Property.Gap;

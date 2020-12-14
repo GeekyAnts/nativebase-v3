@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../../primitives';
+import Box from '../Box';
 import {
   FormControlContext,
   IFormControlContext,
@@ -16,9 +16,7 @@ const RadioGroup = ({ size, colorScheme, ...props }: IRadioGroupProps) => {
   const formControlContext: IFormControlContext = React.useContext(
     FormControlContext
   );
-
   const { radioGroupProps } = useRadioGroup(props, null);
-
   const { onChange, value, name, ...restRadioGroupProps } = radioGroupProps;
 
   return (

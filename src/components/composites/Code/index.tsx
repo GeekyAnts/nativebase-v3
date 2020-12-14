@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { Text } from '../../primitives';
 import type { ICodeProps } from './props';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 
 const StyledCode = styled(Text)<ICodeProps>({});
 
@@ -18,5 +18,5 @@ const Code = ({ style, ...props }: ICodeProps) => {
   );
 };
 
-export { ICodeProps } from './props';
+export type { ICodeProps };
 export default Code;

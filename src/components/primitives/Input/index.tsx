@@ -1,7 +1,15 @@
 import React, { forwardRef, useState } from 'react';
 import { TextInput } from 'react-native';
 import styled from 'styled-components/native';
-import { border, color, flexbox, layout } from 'styled-system';
+import {
+  border,
+  flex,
+  space,
+  color,
+  flexbox,
+  layout,
+  typography,
+} from 'styled-system';
 import {
   customBorder,
   customBackground,
@@ -9,22 +17,30 @@ import {
   customLayout,
   customExtra,
   customShadow,
+  customTypography,
 } from '../../../utils/customProps';
-import { Box, Text } from '..';
+import Box from '../Box';
+import Text from '../Text';
+import Flex from '../Flex';
 import type { IInputProps } from './IInputProps';
 import { InputRightAddon, InputGroup, InputLeftAddon } from './InputGroup';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
+import { themeTools } from '../../../theme';
 
 const StyledInput = styled(TextInput)<IInputProps>(
+  flex,
   color,
+  space,
   layout,
   flexbox,
   border,
+  typography,
   customBorder,
   customBackground,
   customOutline,
   customShadow,
   customExtra,
+  customTypography,
   customLayout
 );
 
@@ -60,7 +76,7 @@ const Input = (
   }: IInputProps,
   ref: any
 ) => {
-  const LayoutProps = {
+  const layoutProps = {
     w,
     width,
     m,
@@ -98,20 +114,34 @@ const Input = (
     h,
     height,
   };
+  let [padding, rem] = themeTools.extractInObject(newProps, [
+    'p',
+    'px',
+    'py',
+    'pt',
+    'pb',
+    'pl',
+    'pr',
+  ]);
   return (
-    <Box w={isFullWidth ? '100%' : 'auto'} {...LayoutProps}>
+    <Box w={isFullWidth ? '100%' : 'auto'} {...layoutProps}>
       <Box
-        {...newProps}
+        {...rem}
         {...(isDisabled ? newProps._isDisabledProps : {})}
         {...computedProps}
         style={style}
       >
-        <Box left={0}>{InputLeftElement}</Box>
+        {InputLeftElement ? (
+          <Flex justify="center" align="center" p={2} left={0}>
+            {InputLeftElement}
+          </Flex>
+        ) : null}
         <StyledInput
           {...newProps}
+          {...padding}
           flex={1}
-          secureTextEntry={type === 'password' ? true : false}
-          accessible={true}
+          secureTextEntry={type === 'password'}
+          accessible
           accessibilityLabel={ariaLabel}
           onKeyPress={(e: any) => {
             e.persist();
@@ -123,15 +153,16 @@ const Input = (
             handleFocus(false, onBlur ? onBlur : () => {});
           }}
           placeholder={placeholder}
-          padding={0}
-          margin={0}
           editable={isDisabled || isReadOnly ? false : true}
-          borderRadius={undefined} //Remove variant props from StyledInput
+          // borderRadius={50} //Remove variant props from StyledInput
           borderWidth={undefined}
-          borderBottomWidth={undefined}
           ref={ref}
         />
-        <Box right={0}>{InputRightElement}</Box>
+        {InputRightElement ? (
+          <Flex justify="center" align="center" p={2} right={0}>
+            {InputRightElement}
+          </Flex>
+        ) : null}
       </Box>
 
       {isInvalid && errorMessage ? (
@@ -148,5 +179,5 @@ const Input = (
 
 //-------------------------------- InputGroup and other Child components -------------------------------
 export { InputRightAddon, InputGroup, InputLeftAddon };
-export { IInputProps } from './IInputProps';
-export default forwardRef<TextInput, IInputProps>(Input);
+export type { IInputProps };
+export default forwardRef<any, IInputProps>(Input);

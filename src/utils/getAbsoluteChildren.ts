@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Platform } from 'react-native';
 export default (children: JSX.Element[] | JSX.Element, reverse?: boolean) => {
   let childrenArray = React.Children.toArray(children);
   if (reverse) {
@@ -11,7 +11,9 @@ export default (children: JSX.Element[] | JSX.Element, reverse?: boolean) => {
   const trailingChildrenWithSpacing = childrenArray.map((child: any) => {
     return React.cloneElement(
       child,
-      { position: 'absolute' },
+      Platform.OS === 'web'
+        ? { style: { position: 'absolute' } }
+        : { position: 'absolute' },
       child.props.children
     );
   });

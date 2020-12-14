@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { View } from '../../primitives';
+import View from '../../primitives/View';
 
 type Props = {
   style: any;
