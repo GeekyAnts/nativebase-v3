@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box } from '../../primitives';
+import { TouchableOpacity } from 'react-native';
+import Box from '../../primitives/Box';
 import { useToken } from '../../../theme';
 import type {
   IAccordionButtonProps,
   IAccordionItemContextProps,
 } from './props';
-import { AccordionItemContext } from './AccordionItem';
-import { TouchableOpacity } from 'react-native';
+import { AccordionItemContext } from './Context';
 
 const AccordionButton = (
   { children, style, _expanded, _disabled, ...props }: IAccordionButtonProps,

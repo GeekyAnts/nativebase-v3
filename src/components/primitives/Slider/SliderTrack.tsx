@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../../primitives';
+import Box from '../../primitives/Box';
 import { SliderContext } from './index';
 import type { ISliderProps, ISliderContextProps } from './props';
 

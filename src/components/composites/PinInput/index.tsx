@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack } from '../../primitives';
+import { HStack } from '../../primitives/Stack';
 import { usePropsConfig } from '../../../theme';
 import type {
   IPinInputProps,
@@ -9,8 +9,7 @@ import type {
 import { FormControlContext, IFormControlContext } from '../FormControl';
 import { Platform } from 'react-native';
 import isNil from 'lodash/isNil';
-
-export const PinInputContext = React.createContext({});
+import { PinInputContext } from './Context';
 
 const PinInput = ({ children, ...props }: IPinInputProps) => {
   const {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex } from '../../primitives';
+import Flex from '../../primitives/Flex';
 import { usePropsConfig } from '../../../theme';
 import isNil from 'lodash/isNil';
 import type { IAvatarProps } from './props';

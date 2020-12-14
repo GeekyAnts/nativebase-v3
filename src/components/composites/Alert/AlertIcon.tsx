@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Icon } from '../../primitives';
-import { AlertContext, IAlertContext } from './index';
+import type { IAlertContext } from './index';
+import { AlertContext } from './Context';
 import { omitUndefined } from '../../../theme/tools/utils';
 
 const AlertIcon = ({ children, ...props }: any) => {

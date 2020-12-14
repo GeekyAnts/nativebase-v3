@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../../primitives';
+import Box from '../../primitives/Box';
 import { useToken } from '../../../theme';
 import { FormControlContext } from './FormControl';
 import type { IFormHelperTextProps, IFormControlContext } from './props';

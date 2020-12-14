@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../../primitives';
+import Box from '../../primitives/Box';
 import { usePropsConfig } from '../../../theme';
 import { Animated, Platform } from 'react-native';
 import type { ISlideProps } from './props';

@@ -1,4 +1,5 @@
-export { default as Alert, AlertContext } from './Alert';
+export { default as Alert } from './Alert';
+export { AlertContext } from './Context';
 export { default as AlertCloseButton } from './AlertCloseButton';
 export { default as AlertDescription } from './AlertDescription';
 export { default as AlertIcon } from './AlertIcon';

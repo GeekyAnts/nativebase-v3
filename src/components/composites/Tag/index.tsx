@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Box, IIconProps, Icon, Text, ITextProps } from '../../primitives';
-import { CloseButton } from '../../composites';
+import CloseButton from '../CloseButton';
 import { usePropsConfig } from '../../../theme';
 
 export { CloseButton as TagCloseButton };

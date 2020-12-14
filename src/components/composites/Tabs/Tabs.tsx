@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../../primitives';
+import Box from '../../primitives/Box';
 import type { ITabsProps } from './props';
 import { usePropsConfig } from '../../../theme';
 import { TabsContext } from './Context';

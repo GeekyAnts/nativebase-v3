@@ -1,10 +1,10 @@
 import React from 'react';
 import remove from 'lodash/remove';
-import { Box } from '../../primitives';
+import Box from '../../primitives/Box';
 import type { IAccordionProps } from './props';
 import getIndexedChildren from '../../../utils/getIndexedChildren';
 
-export const AccordionContext = React.createContext({});
+import { AccordionContext } from './Context';
 
 const Accordion = ({
   children,

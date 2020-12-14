@@ -4,7 +4,7 @@ import {
   FormControlContext,
   IFormControlContext,
 } from '../../composites/FormControl';
-import { Box } from '../../primitives';
+import Box from '../../primitives/Box';
 import { usePropsConfig } from '../../../theme';
 import type { ISliderProps } from './props';
 
