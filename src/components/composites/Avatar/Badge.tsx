@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import Box from '../../primitives/Box';
+import { usePropsConfig } from '../../../hooks';
 import type { IAvatarBadgeProps } from './props';
 
 export const AvatarBadge = (props: IAvatarBadgeProps) => {

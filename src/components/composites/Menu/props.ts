@@ -38,7 +38,7 @@ export type IMenuProps = BorderProps &
   TypographyProps &
   PositionProps &
   BorderProps & {
-    trigger: (_props: any, state: { open: boolean }) => Element;
+    trigger: (_props: any, state: { open: boolean }) => JSX.Element;
     children: JSX.Element | Array<JSX.Element>;
     onOpen?: () => void;
     onClose?: () => void;

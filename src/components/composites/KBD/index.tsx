@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { Box, Text } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type { IKbdProps } from './props';
 
 const Kbd = ({ style, textStyle, children, ...props }: IKbdProps) => {
@@ -28,4 +28,4 @@ const Kbd = ({ style, textStyle, children, ...props }: IKbdProps) => {
 };
 
 export default Kbd;
-export { IKbdProps } from './props';
+export type { IKbdProps };

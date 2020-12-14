@@ -2,7 +2,8 @@ import React from 'react';
 import type { IMenuContextProps } from './props';
 import { MenuContext } from './Menu';
 import { Text } from '../../primitives';
-import { usePropsConfig, themeTools } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
+import { themeTools } from '../../../theme';
 import { TouchableItem } from './TouchableItem';
 import type { IMenuItemProps } from './props';
 

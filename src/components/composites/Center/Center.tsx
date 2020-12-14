@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box } from '../../primitives';
+import Box from '../../primitives/Box';
 import type { ICenterProps } from './props';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type { View } from 'react-native';
 
 const Center = (props: ICenterProps, ref: any) => {

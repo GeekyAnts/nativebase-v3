@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
-import { Animated } from 'react-native';
+import Box from '../../primitives/Box';
+import { usePropsConfig } from '../../../hooks/usePropsConfig';
+import { Animated, Platform } from 'react-native';
 import type { IFadeProps } from './props';
 
 export const useFadeAnimation = (
@@ -15,7 +15,7 @@ export const useFadeAnimation = (
     Animated.timing(fadeValue, {
       toValue: finalValue,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
   };
 
@@ -23,7 +23,7 @@ export const useFadeAnimation = (
     Animated.timing(fadeValue, {
       toValue: initValue,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
   };
 

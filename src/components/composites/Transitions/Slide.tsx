@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
-import { Animated } from 'react-native';
+import Box from '../../primitives/Box';
+import { usePropsConfig } from '../../../hooks/usePropsConfig';
+import { Animated, Platform } from 'react-native';
 import type { ISlideProps } from './props';
 
 const Slide = ({ children, ...props }: ISlideProps) => {
@@ -29,7 +29,7 @@ const Slide = ({ children, ...props }: ISlideProps) => {
       delay,
       toValue: 0,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
   };
 
@@ -37,12 +37,13 @@ const Slide = ({ children, ...props }: ISlideProps) => {
     Animated.timing(slideAnim, {
       toValue: placement === 'top' ? -size : size,
       duration: duration,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start();
   };
 
   const holderStyle: any = {
     top: {
+      position: 'absolute',
       top: 0,
       right: 0,
       left: 0,
@@ -73,9 +74,8 @@ const Slide = ({ children, ...props }: ISlideProps) => {
   animationState && size ? slideIn() : slideOut();
   return (
     <Box
-      position="absolute"
       overflow="hidden"
-      style={holderStyle[placement]}
+      style={[{ position: 'absolute' }, holderStyle[placement]]}
       opacity={containerOpacity}
     >
       <Animated.View style={animatioStyle[placement]}>

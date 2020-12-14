@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
-import { Animated } from 'react-native';
+import Box from '../../primitives/Box';
+import { usePropsConfig } from '../../../hooks';
+import { Animated, Platform } from 'react-native';
 import type { ISkeletonProps } from './props';
 
 const Bones = (allProps: ISkeletonProps & { circle?: boolean }) => {
@@ -15,12 +15,12 @@ const Bones = (allProps: ISkeletonProps & { circle?: boolean }) => {
       Animated.timing(blinkAnim, {
         toValue: 1,
         duration: 1000,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== 'web',
       }),
       Animated.timing(blinkAnim, {
         toValue: 0,
         duration: 1000,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== 'web',
       }),
     ]);
     Animated.loop(blink).start();

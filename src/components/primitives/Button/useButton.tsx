@@ -1,6 +1,6 @@
 import { RefObject, useState } from 'react';
 import type { GestureResponderEvent } from 'react-native';
-import type { IButtonAccessibilityProps } from './IButtonProps';
+import type { IButtonAccessibilityProps } from './props';
 
 type IUseButtonProps = {
   isDisabled: boolean;

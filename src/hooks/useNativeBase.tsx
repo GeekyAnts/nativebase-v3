@@ -1,5 +1,5 @@
 import { useColorMode } from './../color-mode';
-import { useTheme } from './../theme';
+import { useTheme } from './useTheme';
 
 export function useNativeBase() {
   const colorModeResult = useColorMode();

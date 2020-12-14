@@ -12,7 +12,7 @@ import {
 } from '../../../utils/customProps';
 
 import type { IDividerProps } from './props';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 
 const StyledDivider = styled(View)<IDividerProps>(
   color,

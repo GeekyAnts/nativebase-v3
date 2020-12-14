@@ -1,4 +1,5 @@
-import type { IBoxProps, IButtonProps } from '../../primitives';
+import type { IButtonProps } from '../../primitives/Button';
+import type { IBoxProps } from '../../primitives/Box';
 
 export type IActionsheetProps = IBoxProps & {
   isOpen?: boolean;

@@ -19,6 +19,12 @@ import {
 
 import type { IModalProps, IModalSemiProps } from './props';
 import {
+  default as CloseButton,
+  ICloseButtonProps,
+} from '../../composites/CloseButton';
+
+import { usePropsConfig } from '../../../hooks';
+import {
   Box,
   View,
   IBoxProps,
@@ -26,8 +32,6 @@ import {
   VisuallyHidden,
   Text,
 } from '../../primitives';
-import { CloseButton, ICloseButtonProps } from '../../composites';
-import { usePropsConfig } from '../../../theme';
 
 const StyledModal = styled(RNModal)<IModalSemiProps>(
   color,
@@ -75,21 +79,47 @@ const Modal = (
     id,
     motionPreset,
     avoidKeyboard,
+    overlayColor,
+    overlayVisible,
+    closeOnOverlayClick,
     ...props
   }: IModalProps,
   ref: any
 ) => {
   const { closeOverlay, setOverlay } = useOverlay();
   const [isVisible, setIsVisible] = React.useState(true);
+  const closeOverlayInMobile = () => {
+    setIsVisible(false);
+    onClose(false);
+  };
   React.useEffect(
     () => {
-      isOpen && setOverlay(<Box />);
+      isOpen && Platform.OS === 'web'
+        ? setOverlay(
+            <ModalContext.Provider value={value}>
+              <Box ref={ref} nativeID={id} h="100%">
+                {modalChildren}
+              </Box>
+            </ModalContext.Provider>,
+            {
+              onClose: onClose,
+              closeOnPress: closeOnOverlayClick === false ? false : true,
+              backgroundColor: overlayColor ? overlayColor : undefined,
+              disableOverlay: overlayVisible === false ? true : false,
+            }
+          )
+        : setOverlay(<Box />, {
+            onClose: closeOverlayInMobile,
+            closeOnPress: closeOnOverlayClick === false ? false : true,
+            backgroundColor: overlayColor ? overlayColor : undefined,
+            disableOverlay: overlayVisible === false ? true : false,
+          });
+
       !isOpen && closeOverlay();
       setIsVisible(isOpen);
     },
     /*eslint-disable */
     [isOpen]
-    /*eslint-enable */
   );
   const newProps = usePropsConfig('Modal', props);
   const value: any = {
@@ -105,6 +135,7 @@ const Modal = (
       justifyContent={isCentered ? 'center' : justifyContent}
       alignItems={isCentered ? 'center' : alignItems}
     >
+      {closeOnOverlayClick === false ? <Box /> : <ModalOverlay />}
       {children}
       <VisuallyHidden>
         <TouchableOpacity onPress={() => onClose(false)}>
@@ -114,7 +145,7 @@ const Modal = (
     </Box>
   );
 
-  return (
+  return Platform.OS !== 'web' ? (
     <ModalContext.Provider value={value}>
       <View nativeID={id}>
         <StyledModal
@@ -146,6 +177,8 @@ const Modal = (
         </StyledModal>
       </View>
     </ModalContext.Provider>
+  ) : (
+    <Box />
   );
 };
 

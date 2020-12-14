@@ -1,5 +1,8 @@
 import React from 'react';
-import { VStack, Box, Text, IIconProps, Icon } from '../../primitives';
+import { VStack } from '../Stack';
+import Box from '../Box';
+import Text from '../Text';
+import { IIconProps, default as Icon } from '../Icon';
 import type { IListProps, IListItemProps } from './props';
 
 const List = ({ style, children, spacing, ...props }: IListProps) => {
@@ -89,5 +92,6 @@ export const ListItem = (props: IListItemProps) => {
 export const ListIcon = (props: IIconProps) => {
   return <Icon mr={2} {...props} />;
 };
-export { IListProps, IListItemProps } from './props';
+
+export type { IListProps, IListItemProps };
 export default List;

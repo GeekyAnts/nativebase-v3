@@ -11,12 +11,14 @@ import {
   customExtra,
   customShadow,
 } from '../../../utils/customProps';
-import { Text } from '../../primitives';
-import { usePropsConfig, themeTools } from '../../../theme';
-import { Spinner, Box, Flex } from '../../primitives';
-import type { IButtonProps } from './IButtonProps';
+import Text from '../../primitives/Text';
+import { usePropsConfig } from '../../../hooks';
+import { themeTools } from '../../../theme';
+import Spinner from '../Spinner';
+import { default as Box, IBoxProps } from '../Box';
+import Flex from '../Flex';
+import type { IButtonProps, IButtonGroupProps } from './props';
 import { useButton } from './useButton';
-import type { IBoxProps } from '../Box';
 
 const StyledButton = styled(TouchableOpacity)<
   IButtonProps & TouchableOpacityProps
@@ -129,8 +131,8 @@ const Button = (
   );
 };
 
-export { IButtonProps } from './IButtonProps';
-export { ButtonGroup, ButtonGroupProps } from './ButtonGroup';
+export type { IButtonProps, IButtonGroupProps };
+export { ButtonGroup } from './ButtonGroup';
 export default forwardRef<TouchableOpacityType, IButtonProps & IBoxProps>(
   Button
 );

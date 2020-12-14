@@ -1,12 +1,16 @@
 import React from 'react';
-import { ThemeConsumer, ThemeContext, ThemeProvider } from 'styled-components';
+import {
+  ThemeConsumer,
+  ThemeContext,
+  ThemeProvider,
+} from 'styled-components/native';
 import { theme as defaultTheme, ITheme } from './../theme';
-import { ColorModeProviderProps, ColorModeProvider } from './../color-mode';
-import { Overlay } from '../components/primitives';
+import { IColorModeProviderProps, ColorModeProvider } from './../color-mode';
+import { Overlay } from '../components/primitives/Overlay';
 
 export interface NativeBaseProviderProps {
   theme?: ITheme;
-  colorModeManager?: ColorModeProviderProps['colorModeManager'];
+  colorModeManager?: IColorModeProviderProps['colorModeManager'];
   children?: React.ReactNode;
 }
 

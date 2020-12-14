@@ -1,9 +1,6 @@
-import * as React from 'react';
-import {
-  OverlayContext,
-  IOverlayContextProps,
-  IuseOverlayProps,
-} from './index';
+import React from 'react';
+import type { IOverlayContextProps, IuseOverlayProps } from './props';
+import { OverlayContext } from './Context';
 
 export const useOverlay: IuseOverlayProps = () => {
   const {
@@ -18,6 +15,8 @@ export const useOverlay: IuseOverlayProps = () => {
     disableOverlay?: boolean;
     position?: string;
     backgroundColor?: string;
+    onClose?: any;
+    closeOnPress?: boolean;
   };
   const setOverlay = (component: React.ReactNode, config?: configtype) => {
     config && setConfig({ ...defaultConfig, ...config });

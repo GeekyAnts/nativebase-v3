@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex, Link as BreadCrumbLink } from '../../primitives';
 import type { IBreadCrumbProps } from './props';
 import { BreadCrumbSeparator } from './BreadCrumbSeparator';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 export { BreadCrumbItem } from './BreadCrumbItem';
 export { BreadCrumbLink };
 
@@ -60,3 +60,4 @@ const BreadCrumb = ({
 };
 
 export default BreadCrumb;
+export type { IBreadCrumbProps };

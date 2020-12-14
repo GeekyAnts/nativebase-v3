@@ -1,6 +1,7 @@
 import React from 'react';
-import { usePropsConfig, useToken } from '../../../theme';
-import styled from 'styled-components';
+import { usePropsConfig } from '../../../hooks';
+import { useToken } from '../../../theme';
+import styled from 'styled-components/native';
 import { color, space, typography } from 'styled-system';
 import Svg, { G, Path, Circle } from 'react-native-svg';
 import type { IIconProps } from './props';
@@ -18,6 +19,7 @@ const SVGIcon = ({
 }: IIconProps) => {
   const newProps = usePropsConfig('Icon', { size });
   let strokeColor = useToken('colors', stroke || '');
+  colorProp = useToken('colors', colorProp || '');
   return (
     <SVG
       height={parseInt(newProps.dimension || newProps.size, 10)}

@@ -1,14 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
+import type { IButtonGroupProps } from './props';
 
-export type ButtonGroupProps = {
-  children: JSX.Element | Array<JSX.Element>;
-  variant?: string;
-  size?: 'xs' | 'sm' | 'md' | 'lg';
-  spacing?: string | number;
-};
-const StyledButtonGroup = styled.View<ButtonGroupProps>(
+const StyledButtonGroup = styled.View<IButtonGroupProps>(
   color,
   space,
   layout,
@@ -21,7 +16,7 @@ export const ButtonGroup = ({
   children,
   spacing,
   ...props
-}: ButtonGroupProps) => {
+}: IButtonGroupProps) => {
   return (
     <StyledButtonGroup>
       {React.Children.map(children, (child: JSX.Element, index: number) => {

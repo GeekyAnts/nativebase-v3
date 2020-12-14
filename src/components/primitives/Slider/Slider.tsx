@@ -4,11 +4,11 @@ import {
   FormControlContext,
   IFormControlContext,
 } from '../../composites/FormControl';
-import { Box } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import Box from '../Box';
+import { usePropsConfig } from '../../../hooks';
 import type { ISliderProps } from './props';
+import { SliderContext } from './Context';
 
-export const SliderContext = React.createContext({});
 type StateType = {
   barSize: number | null;
   deltaValue: number;

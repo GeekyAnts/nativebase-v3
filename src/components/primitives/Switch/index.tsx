@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, ViewStyle, Switch as RNSwitch } from 'react-native';
 import styled from 'styled-components/native';
-import { isNil } from 'lodash';
-import { useToken, usePropsConfig } from '../../../theme';
+import isNil from 'lodash/isNil';
+import { useToken, usePropsConfig } from '../../../hooks';
 import { border, color, flexbox, layout, space } from 'styled-system';
 import {
   customBorder,
@@ -63,9 +63,9 @@ const Switch = (
 
   let computedStyle: ViewStyle = StyleSheet.flatten([
     style,
+    { transform: newProps.transform ?? undefined },
     isInvalid ? inValidPropFactors : {},
   ]);
-
   return (
     <StyledNBSwitch
       {...newProps}
@@ -82,4 +82,4 @@ const Switch = (
 };
 
 export default React.forwardRef<RNSwitch, ISwitchProps>(Switch);
-export { ISwitchProps } from './props';
+export type { ISwitchProps };

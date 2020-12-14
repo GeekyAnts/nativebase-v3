@@ -4,6 +4,7 @@ import type {
   LayoutProps,
   FlexboxProps,
   BorderProps,
+  TypographyProps,
 } from 'styled-system';
 import type { TextInputProps, TextStyle } from 'react-native';
 import type {
@@ -13,6 +14,7 @@ import type {
   customShadowProps,
   customLayoutProps,
   customBackgroundProps,
+  customTypographyProps,
 } from '../../../utils/customProps';
 
 export type IInputProps = ColorProps &
@@ -20,16 +22,17 @@ export type IInputProps = ColorProps &
   SpaceProps &
   LayoutProps &
   FlexboxProps &
+  TypographyProps &
   customBorderProps &
   customExtraProps &
   customOutlineProps &
   customShadowProps &
   customLayoutProps &
+  customTypographyProps &
   customBackgroundProps &
   BorderProps & {
     style?: TextStyle;
     children?: string | JSX.Element[] | JSX.Element;
-    fontSize?: number | any;
     placeholder?: string;
     isInvalid?: boolean;
     variant?: string;

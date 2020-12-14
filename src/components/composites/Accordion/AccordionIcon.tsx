@@ -1,7 +1,7 @@
 import React from 'react';
-import { Icon } from '../../primitives';
+import Icon from '../../primitives/Icon';
 import type { IAccordionIconProps, IAccordionItemContextProps } from './props';
-import { AccordionItemContext } from './AccordionItem';
+import { AccordionItemContext } from './Context';
 
 const AccordionButton = ({ ...props }: IAccordionIconProps) => {
   const { isOpen }: IAccordionItemContextProps = React.useContext(

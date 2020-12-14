@@ -1,4 +1,5 @@
-export { default as Overlay, OverlayContext } from './Overlay';
+export { default as Overlay } from './Overlay';
+export { OverlayContext } from './Context';
 export { useOverlay } from './hooks';
 export type {
   IOverlayProps,

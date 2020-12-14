@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { border, flex, layout, space } from 'styled-system';
 import { customBorder } from '../../../utils/customProps';
 import { Box, Image, Text } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type { IAvatarProps } from './props';
 
 const initials = (name: string) => {
