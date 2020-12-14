@@ -60,10 +60,4 @@ export type { ILinkProps } from './Link';
 export { default as List, Ol, Ul, ListItem, ListIcon } from './List';
 export type { IListProps, IListItemProps } from './List';
 
-export { Overlay, useOverlay } from './Overlay';
-export type {
-  IOverlayProps,
-  IOverlayContextProps,
-  IuseOverlayProps,
-} from './Overlay';
 export { VisuallyHidden } from './VisuallyHidden';

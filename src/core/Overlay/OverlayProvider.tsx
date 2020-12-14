@@ -1,9 +1,9 @@
 import React from 'react';
-import { useFadeAnimation } from '../../composites/Transitions';
 import { Animated, StyleSheet, TouchableOpacity } from 'react-native';
+import { useFadeAnimation } from '../../components/composites/Transitions';
 import type { IOverlayProps } from './props';
 import { OverlayContext } from './Context';
-import Box from '../Box';
+import Box from '../../components/primitives/Box';
 
 const Overlay = ({
   children,

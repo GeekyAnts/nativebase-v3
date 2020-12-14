@@ -6,7 +6,7 @@ import {
 } from 'styled-components/native';
 import { theme as defaultTheme, ITheme } from './../theme';
 import { IColorModeProviderProps, ColorModeProvider } from './../color-mode';
-import { Overlay } from '../components/primitives/Overlay';
+import OverlayProvider from './Overlay/OverlayProvider';
 
 export interface NativeBaseProviderProps {
   theme?: ITheme;
@@ -22,7 +22,7 @@ const NativeBaseProvider = (props: NativeBaseProviderProps) => {
         colorModeManager={colorModeManager}
         options={theme.config}
       >
-        <Overlay>{children}</Overlay>
+        <OverlayProvider>{children}</OverlayProvider>
       </ColorModeProvider>
     </ThemeProvider>
   );

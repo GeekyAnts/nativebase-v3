@@ -1,5 +1,5 @@
 import React from 'react';
-import { useOverlay } from '../../primitives/Overlay';
+import { useOverlay } from '../../../core/Overlay';
 import Snackbar from './Snackbar';
 import type { IsetSnackbar, IuseSnackbarProps } from './props';
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import { useOverlay } from '../../primitives';
-import { ToastItem, IsetToastProps } from './index';
+import { useOverlay } from '../../../core/Overlay';
+import ToastItem from './ToastItem';
+import type { IsetToastProps } from './props';
 
 export const useToast = () => {
   const { closeOverlay, setOverlay } = useOverlay();
