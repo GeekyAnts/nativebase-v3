@@ -168,6 +168,8 @@ import {
   useSnackbar,
   ISnackbarProps,
   IuseSnackbarProps,
+  Combobox,
+  useCombobox,
 } from './components/composites';
 
 import {
@@ -382,6 +384,8 @@ export {
   ActionsheetItem,
   Snackbar,
   useSnackbar,
+  Combobox,
+  useCombobox,
 };
 export type {
   IAlertProps,
