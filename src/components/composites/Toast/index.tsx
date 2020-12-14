@@ -1,3 +1,3 @@
-export { default as ToastProvider } from './ToastProvider';
 export { useToast } from './hooks';
-export type { IToastProps } from './props';
+export { default as ToastItem } from './ToastItem';
+export type { IToastProps, IsetToastProps } from './props';

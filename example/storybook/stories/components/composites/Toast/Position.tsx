@@ -1,14 +1,14 @@
 import React from 'react';
-import { ToastProvider, Button, useToast, VStack } from '@native-base/v3';
+import { Button, useToast, VStack } from '@native-base/v3';
 
 export default function () {
-  const toast = useToast();
+  const { setToast } = useToast();
   return (
     <>
       <VStack space={2}>
         <Button
           onPress={() => {
-            toast({
+            setToast({
               position: 'top',
               title: 'Top Toast',
             });
@@ -18,7 +18,7 @@ export default function () {
         </Button>
         <Button
           onPress={() => {
-            toast({
+            setToast({
               position: 'center',
               title: 'Center',
             });
@@ -29,7 +29,7 @@ export default function () {
         <Button
           mx={2}
           onPress={() => {
-            toast({
+            setToast({
               title: 'Bottom',
             });
           }}
@@ -37,7 +37,6 @@ export default function () {
           Bottom
         </Button>
       </VStack>
-      <ToastProvider />
     </>
   );
 }

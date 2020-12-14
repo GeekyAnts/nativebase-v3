@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastProvider, Button, useOverlay, VStack } from '@native-base/v3';
+import { Button, useOverlay, VStack } from '@native-base/v3';
 
 export default function () {
   const [disableOverlay, setDisableOverlay] = React.useState(false);
@@ -25,7 +25,6 @@ export default function () {
         {disableOverlay ? 'Enable ' : 'Disable '}Overlay
       </Button>
       <Button onPress={closeOverlay}>Hide Overlay</Button>
-      <ToastProvider />
     </VStack>
   );
 }

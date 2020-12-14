@@ -120,7 +120,7 @@ export type { ICenterProps, ICircleProps, ISquareProps } from './Center';
 export { default as Wrap } from './Wrap';
 export type { IWrapProps } from './Wrap';
 
-export { useToast, ToastProvider } from './Toast';
+export { useToast } from './Toast';
 export type { IToastProps } from './Toast';
 
 export { default as PinInput, PinInputField } from './PinInput';
