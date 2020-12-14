@@ -23,15 +23,9 @@ import {
   ICloseButtonProps,
 } from '../../composites/CloseButton';
 
+import { useOverlay } from '../../../core/Overlay';
 import { usePropsConfig } from '../../../hooks';
-import {
-  Box,
-  View,
-  IBoxProps,
-  useOverlay,
-  VisuallyHidden,
-  Text,
-} from '../../primitives';
+import { Box, View, IBoxProps, VisuallyHidden, Text } from '../../primitives';
 
 const StyledModal = styled(RNModal)<IModalSemiProps>(
   color,
