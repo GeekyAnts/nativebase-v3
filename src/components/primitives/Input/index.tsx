@@ -180,4 +180,4 @@ const Input = (
 //-------------------------------- InputGroup and other Child components -------------------------------
 export { InputRightAddon, InputGroup, InputLeftAddon };
 export type { IInputProps };
-export default forwardRef<TextInput, IInputProps>(Input);
+export default forwardRef<any, IInputProps>(Input);

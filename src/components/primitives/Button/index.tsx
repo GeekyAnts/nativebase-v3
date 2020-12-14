@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
-import type { TouchableOpacity as TouchableOpacityType } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
 import {
@@ -133,6 +132,4 @@ const Button = (
 
 export type { IButtonProps, IButtonGroupProps };
 export { ButtonGroup } from './ButtonGroup';
-export default forwardRef<TouchableOpacityType, IButtonProps & IBoxProps>(
-  Button
-);
+export default forwardRef<any, IButtonProps & IBoxProps>(Button);
