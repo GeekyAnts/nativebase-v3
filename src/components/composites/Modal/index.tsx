@@ -18,12 +18,20 @@ import {
 } from '../../../utils/customProps';
 
 import type { IModalProps, IModalSemiProps } from './props';
-import { Box, View, IBoxProps, useOverlay } from '../../primitives';
 import {
   default as CloseButton,
   ICloseButtonProps,
 } from '../../composites/CloseButton';
+
 import { usePropsConfig } from '../../../hooks';
+import {
+  Box,
+  View,
+  IBoxProps,
+  useOverlay,
+  VisuallyHidden,
+  Text,
+} from '../../primitives';
 
 const StyledModal = styled(RNModal)<IModalSemiProps>(
   color,
@@ -129,6 +137,11 @@ const Modal = (
     >
       {closeOnOverlayClick === false ? <Box /> : <ModalOverlay />}
       {children}
+      <VisuallyHidden>
+        <TouchableOpacity onPress={() => onClose(false)}>
+          <Text textAlign="center">Close dialog</Text>
+        </TouchableOpacity>
+      </VisuallyHidden>
     </Box>
   );
 
@@ -137,6 +150,10 @@ const Modal = (
       <View nativeID={id}>
         <StyledModal
           visible={isVisible}
+          onRequestClose={() => {
+            value.toggleVisible(false);
+            value.toggleOnClose(false);
+          }}
           onShow={() => {
             initialFocusRef?.current?.focus();
           }}
@@ -200,6 +217,7 @@ export const ModalCloseButton = (props: ICloseButtonProps) => {
       <CloseButton
         {...newProps.modalCloseButtonProps}
         {...props}
+        accessibilityLabel="Close dialog"
         onPress={() => {
           toggleVisible(false);
           toggleOnClose(false);
@@ -218,6 +236,7 @@ export const ModalOverlay = ({ children, ...props }: any) => {
     <Box {...props} style={newProps.modalOverlayStyle}>
       <TouchableOpacity
         style={newProps.modalOverlayStyle}
+        accessible={false}
         onPress={
           newProps.closeOnOverlayClick === false
             ? () => {}

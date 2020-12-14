@@ -2,14 +2,14 @@ import type { IBoxProps } from '../../primitives';
 
 export type IAlertProps = IBoxProps & {
   style?: any;
-  status?: string | undefined;
+  status?: 'info' | 'warning' | 'success' | 'error' | string;
   children?: JSX.Element | JSX.Element[] | any;
-  variant?: string | undefined;
-  fontSize?: number | undefined;
+  variant?: string;
+  fontSize?: number;
 };
 export type IAlertContext = {
-  status?: string | undefined;
-  variant?: string | undefined;
+  status?: string;
+  variant?: string;
   iconColor?: string;
   textColor?: string;
 };

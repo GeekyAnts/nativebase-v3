@@ -1,8 +1,9 @@
 import get from 'lodash/get';
-import { mode } from '../tools';
+import { mode, getColorScheme } from '../tools';
 
 function baseStyleTrack(props: Record<string, any>) {
   const { colorScheme, theme, offTrackColor } = props;
+  const simplifiedColorScheme = getColorScheme(props);
   return colorScheme && colorScheme !== 'default'
     ? {
         false: offTrackColor
@@ -12,8 +13,8 @@ function baseStyleTrack(props: Record<string, any>) {
             )(props)
           : mode(theme.colors.light[100], theme.colors.dark[50])(props),
         true: mode(
-          theme.colors[colorScheme][500],
-          theme.colors[colorScheme][200]
+          theme.colors[simplifiedColorScheme][500],
+          theme.colors[simplifiedColorScheme][200]
         )(props),
       }
     : undefined;

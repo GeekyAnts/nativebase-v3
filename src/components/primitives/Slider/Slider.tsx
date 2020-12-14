@@ -1,5 +1,5 @@
 import React from 'react';
-import { PanResponder } from 'react-native';
+import { PanResponder, View } from 'react-native';
 import {
   FormControlContext,
   IFormControlContext,
@@ -93,45 +93,95 @@ class NBSlider extends React.Component<
     return barSize * percentage;
   };
 
+  onAccessibilityAction = (event: any) => {
+    const max = this.props.max ?? 100;
+    const min = this.props.min ?? 0;
+
+    const incrementStep = this.props.accessibilityIncrementSteps ?? max / 10;
+    const decrementStep = this.props.accessibilityDecrementSteps ?? max / 10;
+
+    switch (event.nativeEvent.actionName) {
+      case 'increment':
+        this.setState({
+          value: Math.min(this.state.value + incrementStep, max),
+        });
+        break;
+      case 'decrement':
+        this.setState({
+          value: Math.max(this.state.value - decrementStep, min),
+        });
+        break;
+      default:
+        break;
+    }
+  };
+
   render() {
     const { value, deltaValue, barSize } = this.state;
+    const min = this.props.min ?? 0;
+    const max = this.props.max ?? 100;
     const cappedValue = this.capValueWithinRange(value + deltaValue, [
-      this.props.min || 0,
-      this.props.max || 100,
+      min,
+      max,
     ]);
+
     const sliderOffset = this.getOffsetFromValue(
       cappedValue,
-      this.props.min || 0,
-      this.props.max || 100,
+      min,
+      max,
       barSize
     );
 
     return (
-      <SliderContext.Provider
-        value={{
-          sliderOffset,
-          colorScheme: this.props.activeColor,
-          barSize: this.state.barSize,
-          panResponder: this.panResponder,
-          isReversed: this.props.isReversed,
-          thumbSize: this.props.thumbSize,
-          sliderSize: this.props.sliderSize,
+      <View
+        accessible
+        accessibilityRole="adjustable"
+        accessibilityLabel={this.props.accessibilityLabel ?? 'Slider'}
+        accessibilityValue={{
+          min,
+          max,
+          now: value,
         }}
+        accessibilityHint={this.props.accessibilityHint}
+        accessibilityActions={[
+          {
+            name: 'increment',
+            label: 'Increment',
+          },
+          {
+            name: 'decrement',
+            label: 'Decrement',
+          },
+        ]}
+        onAccessibilityAction={this.onAccessibilityAction}
       >
-        <Box
-          position="relative"
-          display="flex"
-          my={3}
-          justifyContent="center"
-          alignItems="center"
-          minHeight={3}
-          minWidth="100%"
-          {...this.props}
-          onLayout={this.onBarLayout}
+        <SliderContext.Provider
+          value={{
+            sliderOffset,
+            colorScheme: this.props.activeColor,
+            barSize: this.state.barSize,
+            panResponder: this.panResponder,
+            isReversed: this.props.isReversed,
+            thumbSize: this.props.thumbSize,
+            sliderSize: this.props.sliderSize,
+            value: this.state.value,
+          }}
         >
-          {this.state.barSize && this.state.value && this.props.children}
-        </Box>
-      </SliderContext.Provider>
+          <Box
+            position="relative"
+            display="flex"
+            my={3}
+            justifyContent="center"
+            alignItems="center"
+            minHeight={3}
+            minWidth="100%"
+            {...this.props}
+            onLayout={this.onBarLayout}
+          >
+            {this.state.barSize && this.state.value && this.props.children}
+          </Box>
+        </SliderContext.Provider>
+      </View>
     );
   }
 }

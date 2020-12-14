@@ -7,8 +7,8 @@ export default function () {
       <Radio colorScheme="red" value="1">
         <Text mx={2}>red</Text>
       </Radio>
-      <Radio colorScheme="black" value="2">
-        <Text mx={2}>black</Text>
+      <Radio colorScheme="dark" value="2">
+        <Text mx={2}>dark</Text>
       </Radio>
       <Radio colorScheme="success" value="3">
         <Text mx={2}>success</Text>

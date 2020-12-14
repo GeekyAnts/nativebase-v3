@@ -1,8 +1,12 @@
-const baseStyle = {
-  // fontFamily: 'heading',
-  // lineHeight: 'shorter',
-  fontWeight: 'bold',
+import { mode } from './../tools';
+
+const baseStyle = (props: Record<string, any>) => {
+  return {
+    color: mode('gray.800', 'white')(props),
+    fontWeight: 'bold',
+  };
 };
+
 const sizeArray = ['2xl', 'xl', 'lg', 'md', 'sm', 'xs'];
 
 function sizes(props: Record<string, any>) {

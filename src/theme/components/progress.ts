@@ -1,29 +1,32 @@
+import { mode, getColorScheme } from '../tools';
+
 const defaultProps = {
   colorScheme: 'default',
   size: 'md',
 };
 
 function baseStyle(props: Record<string, any>) {
+  const colorScheme = getColorScheme(props);
   return {
-    innerBg: `${props.colorScheme}.200`,
-    bg: 'gray.200',
+    innerBg: mode(`${colorScheme}.300`, `${colorScheme}.500`)(props),
+    bg: mode('gray.200', 'gray.600')(props),
   };
 }
 
 const sizes = {
-  xs: {
+  'xs': {
     height: 1,
   },
-  sm: {
+  'sm': {
     height: 2,
   },
-  md: {
+  'md': {
     height: 3,
   },
-  lg: {
+  'lg': {
     height: 4,
   },
-  xl: {
+  'xl': {
     height: 5,
   },
   '2xl': {

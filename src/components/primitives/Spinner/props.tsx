@@ -6,4 +6,5 @@ export type ISpinnerProps = ColorProps &
     color?: string | undefined;
     style?: any | undefined;
     size?: 'sm' | 'lg' | 'small' | 'large';
+    accessibilityLabel?: string;
   };

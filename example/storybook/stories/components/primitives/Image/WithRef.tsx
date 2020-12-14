@@ -12,6 +12,7 @@ export default function () {
         source={{
           uri: 'https://nativebase.io/assets/img/front-page-icon.png',
         }}
+        alt="nativebase logo"
       />
     </Box>
   );

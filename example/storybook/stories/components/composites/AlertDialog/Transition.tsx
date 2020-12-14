@@ -19,7 +19,7 @@ export default function () {
   return (
     <Center>
       <AlertDialog
-        motionPreset="fade"
+        motionPreset="slide"
         leastDestructiveRef={cancelRef}
         onClose={onClose}
         isOpen={isOpen}
