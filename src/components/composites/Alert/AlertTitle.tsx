@@ -1,6 +1,6 @@
 import React from 'react';
 import Text from '../../primitives/Text';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type { IAlertContext } from './index';
 import { AlertContext } from './Context';
 

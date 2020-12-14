@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import { FormControlContext, IFormControlContext } from '../FormControl';
 import type { INumberInputProps } from './props';
 import { NumberInputContext } from './Context';

@@ -3,7 +3,7 @@ import { StyleSheet, Animated } from 'react-native';
 import { SliderContext } from './Context';
 import Box from '../Box';
 import Icon from '../Icon';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type { ISliderProps, ISliderContextProps } from './props';
 
 const SliderThumb = ({ children, ...props }: ISliderProps) => {

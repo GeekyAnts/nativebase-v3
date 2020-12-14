@@ -1,6 +1,6 @@
 import React from 'react';
 import { HStack } from '../../primitives/Stack';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type {
   IPinInputProps,
   IPinInputFieldProps,

@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import Box from '../Box';
 import Icon from '../Icon';
 import { Center } from '../../composites/Center';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import {
   FormControlContext,
   IFormControlContext,

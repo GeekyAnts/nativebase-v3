@@ -23,7 +23,7 @@ import {
   default as CloseButton,
   ICloseButtonProps,
 } from '../../composites/CloseButton';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 
 const StyledModal = styled(RNModal)<IModalSemiProps>(
   color,

@@ -24,7 +24,8 @@ import Text from '../Text';
 import Flex from '../Flex';
 import type { IInputProps } from './IInputProps';
 import { InputRightAddon, InputGroup, InputLeftAddon } from './InputGroup';
-import { usePropsConfig, themeTools } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
+import { themeTools } from '../../../theme';
 
 const StyledInput = styled(TextInput)<IInputProps>(
   flex,

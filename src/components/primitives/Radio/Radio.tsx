@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from '../Icon';
 import Box from '../Box';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import { RadioContext } from './RadioGroup';
 import type { IRadioProps } from './props';
 import { useRadio } from './useRadio';

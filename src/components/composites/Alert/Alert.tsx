@@ -1,8 +1,7 @@
 import React from 'react';
 import Box from '../../primitives/Box';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type { IAlertProps } from './props';
-
 import { AlertContext } from './Context';
 
 const Alert = ({ children, ...props }: IAlertProps) => {

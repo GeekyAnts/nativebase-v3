@@ -4,7 +4,7 @@ import { ViewStyle, StyleSheet, Animated, Easing } from 'react-native';
 import { Box, IBoxProps, ITextProps, Text } from '../../primitives';
 import styled from 'styled-components/native';
 import { color, border } from 'styled-system';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 type sizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
 
 export type ICircularProgressProps = IBoxProps & {

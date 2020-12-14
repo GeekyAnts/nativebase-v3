@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import Box from '../../primitives/Box';
-import { useToken } from '../../../theme';
+import { useToken } from '../../../hooks';
 import type {
   IAccordionButtonProps,
   IAccordionItemContextProps,

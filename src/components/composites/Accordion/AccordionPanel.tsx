@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '../../primitives/Box';
-import { useToken } from '../../../theme';
+import { useToken } from '../../../hooks';
 import { AccordionItemContext } from './Context';
 import Collapse from '../Collapse';
 import type { IAccordionPanelProps, IAccordionItemContextProps } from './props';

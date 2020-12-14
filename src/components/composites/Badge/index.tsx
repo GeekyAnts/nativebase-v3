@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import Box from '../../primitives/Box';
 import { space } from 'styled-system';
 import type { IBadgeProps } from './props';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 
 const StyledBadge = styled(Box)<IBadgeProps>(space);
 

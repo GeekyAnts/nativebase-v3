@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { Button, IButtonProps } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type { TouchableHighlight, TouchableOpacity } from 'react-native';
 
 export type IIconButtonProps = IButtonProps & {

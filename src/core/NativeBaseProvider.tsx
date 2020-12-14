@@ -6,7 +6,7 @@ import {
 } from 'styled-components/native';
 import { theme as defaultTheme, ITheme } from './../theme';
 import { IColorModeProviderProps, ColorModeProvider } from './../color-mode';
-import { Overlay } from '../components/primitives';
+import { Overlay } from '../components/primitives/Overlay';
 
 export interface NativeBaseProviderProps {
   theme?: ITheme;

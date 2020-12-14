@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, ViewStyle, Switch as RNSwitch } from 'react-native';
 import styled from 'styled-components/native';
 import isNil from 'lodash/isNil';
-import { useToken, usePropsConfig } from '../../../theme';
+import { useToken, usePropsConfig } from '../../../hooks';
 import { border, color, flexbox, layout, space } from 'styled-system';
 import {
   customBorder,

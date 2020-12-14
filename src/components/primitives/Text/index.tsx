@@ -10,7 +10,7 @@ import {
   flexbox,
   border,
 } from 'styled-system';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import {
   customBorder,
   customBackground,

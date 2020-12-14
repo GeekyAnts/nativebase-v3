@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { VStack, Box, Icon } from '../../primitives';
 import Divider from '../Divider';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type { INumberInputSteppersProps } from './props';
 
 export const NBStepper = ({ children, ...props }: any) => {

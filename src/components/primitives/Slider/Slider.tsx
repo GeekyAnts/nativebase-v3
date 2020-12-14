@@ -5,7 +5,7 @@ import {
   IFormControlContext,
 } from '../../composites/FormControl';
 import Box from '../Box';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type { ISliderProps } from './props';
 import { SliderContext } from './Context';
 

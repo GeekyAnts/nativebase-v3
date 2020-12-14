@@ -1,5 +1,6 @@
 import React from 'react';
-import { usePropsConfig, useToken } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
+import { useToken } from '../../../theme';
 import styled from 'styled-components/native';
 import { color, space, typography } from 'styled-system';
 import Svg, { G, Path, Circle } from 'react-native-svg';

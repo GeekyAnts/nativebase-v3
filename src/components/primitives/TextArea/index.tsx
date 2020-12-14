@@ -1,7 +1,7 @@
 import React from 'react';
 import type { TextInput } from 'react-native';
 import { default as Input, IInputProps } from '../Input';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 export type ITextAreaProps = IInputProps & {
   totalLines?: number;
 };

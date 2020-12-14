@@ -12,7 +12,8 @@ import {
   customShadow,
 } from '../../../utils/customProps';
 import Text from '../../primitives/Text';
-import { usePropsConfig, themeTools } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
+import { themeTools } from '../../../theme';
 import Spinner from '../Spinner';
 import { default as Box, IBoxProps } from '../Box';
 import Flex from '../Flex';

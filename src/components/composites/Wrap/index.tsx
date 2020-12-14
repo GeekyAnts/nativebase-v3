@@ -12,7 +12,7 @@ import {
   customFlexBox,
 } from '../../../utils/customProps';
 import type { IWrapProps } from './props';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import Box from '../../primitives/Box';
 
 const StyledWrap = styled(Box)<IWrapProps>(

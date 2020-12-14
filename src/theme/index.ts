@@ -18,4 +18,3 @@ const theme = {
 
 export type ITheme = typeof theme;
 export { theme, darkTheme, tools as themeTools };
-export * from './hooks';

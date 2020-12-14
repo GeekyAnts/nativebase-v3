@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, IBoxProps, Text, ITextProps, Icon } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 
 export const StatLabel = ({ style, ...props }: ITextProps) => {
   return (

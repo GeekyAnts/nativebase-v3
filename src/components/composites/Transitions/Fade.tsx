@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '../../primitives/Box';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks/usePropsConfig';
 import { Animated, Platform } from 'react-native';
 import type { IFadeProps } from './props';
 

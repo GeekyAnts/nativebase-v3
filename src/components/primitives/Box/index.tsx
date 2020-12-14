@@ -2,7 +2,8 @@ import React, { forwardRef } from 'react';
 import { View } from 'react-native';
 import type { View as ViewType } from 'react-native';
 import styled from 'styled-components/native';
-import { usePropsConfig, themeTools } from '../../../theme';
+import { usePropsConfig } from '../../../hooks/usePropsConfig';
+import { themeTools } from '../../../theme';
 import { addTextAndPropsToStrings } from '../../../utils';
 import {
   border,

@@ -1,14 +1,14 @@
 import { get, isNil, mergeWith, cloneDeep } from 'lodash';
 import { useWindowDimensions } from 'react-native';
-import { useNativeBase } from './../../hooks';
-import { themePropertyMap } from './../base';
+import { useNativeBase } from './useNativeBase';
+import { themePropertyMap } from './../theme/base';
 import {
   omitUndefined,
   getClosestBreakpoint,
   findLastValidBreakpoint,
   hasValidBreakpointFormat,
   extractInObject,
-} from './../tools/';
+} from './../theme/tools/';
 
 export function usePropsConfig(component: string, propsReceived: any) {
   const { theme, ...colorModeProps } = useNativeBase();
