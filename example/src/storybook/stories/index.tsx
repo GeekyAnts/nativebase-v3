@@ -63,3 +63,4 @@ export * from './components/primitives/VStack';
 export * from './components/composites/Wrap';
 export * from './components/primitives/ZStack';
 export * from './components/composites/SimpleGrid';
+export * from './components/composites/Combobox';

@@ -191,3 +191,4 @@ export {
   IuseSnackbarProps,
 } from './Snackbar';
 export { AppBar } from './AppBar';
+export { Combobox, useCombobox } from './combobox';

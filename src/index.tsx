@@ -167,6 +167,8 @@ import {
   useSnackbar,
   ISnackbarProps,
   IuseSnackbarProps,
+  Combobox,
+  useCombobox,
 } from './components/composites';
 
 import {
@@ -469,4 +471,6 @@ export {
   useSnackbar,
   ISnackbarProps,
   IuseSnackbarProps,
+  Combobox,
+  useCombobox,
 };
