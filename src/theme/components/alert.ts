@@ -7,8 +7,6 @@ function getBg(props: Record<string, any>) {
   const lightBg = getColor(theme, `${status}.100`, status);
   // const darkBg = getColor(theme, `${status}.800`, status);
   const darkBg = transparentize(`${status}.300`, 0.2)(theme);
-  console.log('lightBg ===', lightBg);
-  console.log('darkBg ===', darkBg);
 
   return mode(lightBg, darkBg)(props);
 }

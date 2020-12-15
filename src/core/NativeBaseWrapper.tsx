@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box } from '../components/primitives';
-
 import OverlayProvider from './Overlay/OverlayProvider';
 import { useColorModeValue } from '../color-mode';
+
 const NativeBaseWrapper = ({ children, ...props }: any) => {
   return (
     <Box
