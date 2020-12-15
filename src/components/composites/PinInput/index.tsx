@@ -1,6 +1,6 @@
 import React from 'react';
-import { HStack } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import { HStack } from '../../primitives/Stack';
+import { usePropsConfig } from '../../../hooks';
 import type {
   IPinInputProps,
   IPinInputFieldProps,
@@ -8,8 +8,8 @@ import type {
 } from './props';
 import { FormControlContext, IFormControlContext } from '../FormControl';
 import { Platform } from 'react-native';
-
-export const PinInputContext = React.createContext({});
+import isNil from 'lodash/isNil';
+import { PinInputContext } from './Context';
 
 const PinInput = ({ children, ...props }: IPinInputProps) => {
   const {
@@ -33,10 +33,9 @@ const PinInput = ({ children, ...props }: IPinInputProps) => {
     let temp = (pinInputValue && [...pinInputValue]) || [];
     temp[fieldIndex] = newValue;
     setPinInputValue(temp.join(''));
-
-    if (newValue && manageFocus && fieldIndex + 1 < RefList.length)
+    if (!isNil(newValue) && manageFocus && fieldIndex + 1 < RefList.length)
       RefList[fieldIndex + 1].current.focus();
-    if (!newValue && manageFocus && fieldIndex - 1 > -1)
+    if (isNil(newValue) && manageFocus && fieldIndex - 1 > -1)
       RefList[fieldIndex - 1].current.focus();
     return temp.join('');
   };

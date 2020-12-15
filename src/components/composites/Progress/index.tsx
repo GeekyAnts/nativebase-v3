@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ViewStyle } from 'react-native';
 import { Box, IBoxProps } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 
 type SpaceType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 

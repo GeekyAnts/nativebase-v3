@@ -5,12 +5,12 @@ import {
   ThemeProvider,
 } from 'styled-components/native';
 import { theme as defaultTheme, ITheme } from './../theme';
-import { ColorModeProviderProps, ColorModeProvider } from './../color-mode';
-import { Overlay } from '../components/primitives';
+import { IColorModeProviderProps, ColorModeProvider } from './../color-mode';
+import OverlayProvider from './Overlay/OverlayProvider';
 
 export interface NativeBaseProviderProps {
   theme?: ITheme;
-  colorModeManager?: ColorModeProviderProps['colorModeManager'];
+  colorModeManager?: IColorModeProviderProps['colorModeManager'];
   children?: React.ReactNode;
 }
 
@@ -22,7 +22,7 @@ const NativeBaseProvider = (props: NativeBaseProviderProps) => {
         colorModeManager={colorModeManager}
         options={theme.config}
       >
-        <Overlay>{children}</Overlay>
+        <OverlayProvider>{children}</OverlayProvider>
       </ColorModeProvider>
     </ThemeProvider>
   );

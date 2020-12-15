@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '../index';
+import Text from '../components/primitives/Text';
 
 export const addTextAndPropsToStrings = (children: any, props: any) => {
   const childArray = React.Children.map(children, (child) => {

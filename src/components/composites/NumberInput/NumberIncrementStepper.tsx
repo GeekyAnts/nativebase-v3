@@ -1,10 +1,7 @@
 import React from 'react';
-import {
-  NumberInputContext,
-  INumberInputContext,
-  INumberInputStepperProps,
-  NBStepper,
-} from './index';
+import type { INumberInputContext, INumberInputStepperProps } from './props';
+import { NBStepper } from './NumberInputStepper';
+import { NumberInputContext } from './Context';
 
 const NumberIncrementStepper = ({
   children,

@@ -18,7 +18,7 @@ import {
   customShadow,
   customTypography,
 } from '../../../utils/customProps';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type { IHeadingProps } from './props';
 
 const StyledHeading = styled(Text)<IHeadingProps>(

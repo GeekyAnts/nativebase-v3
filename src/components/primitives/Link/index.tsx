@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { border, color, flexbox, layout, space } from 'styled-system';
@@ -11,10 +12,9 @@ import {
   customTypography,
 } from '../../../utils/customProps';
 import { addTextAndPropsToStrings } from '../../../utils';
-import React from 'react';
 import type { ILinkProps } from './props';
-import { Box } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import Box from '../Box';
+import { usePropsConfig } from '../../../hooks';
 import { useLink } from './useLink';
 
 const StyledLink = styled(View)<ILinkProps>(

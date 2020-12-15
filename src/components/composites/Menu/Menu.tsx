@@ -11,7 +11,8 @@ import {
 import { getContainerStyles } from './utils/getContainerStyles';
 import type { IMenuProps, IMenuContextProps } from './props';
 import type { IBoxProps } from '../../primitives';
-import { usePropsConfig, themeTools } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
+import { extractInObject } from '../../../theme/tools/utils';
 import styled from 'styled-components/native';
 import {
   border,
@@ -202,7 +203,7 @@ class MenuClass extends React.Component<IMenuProps, any> {
       },
       { open: this.state.open }
     );
-    const [shadowContainerProps] = themeTools.extractInObject(this.props, [
+    const [shadowContainerProps] = extractInObject(this.props, [
       'borderRadius',
       'bg',
       'backgroundColor',

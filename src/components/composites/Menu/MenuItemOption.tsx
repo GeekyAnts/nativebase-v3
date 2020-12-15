@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex, Icon } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import { MenuItem } from './MenuItem';
 import type { IMenuItemProps, IMenuOptionContextProps } from './props';
 import { MenuOptionContext } from './MenuOptionGroup';

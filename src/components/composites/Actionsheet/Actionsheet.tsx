@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, ModalOverlay } from '../../composites';
-import type { IActionsheetProps } from './index';
+import { default as Modal, ModalOverlay } from '../Modal';
+import type { IActionsheetProps } from './props';
 import { omitUndefined } from '../../../theme/tools/utils';
 
 const Actionsheet = ({ children, ...props }: IActionsheetProps) => {

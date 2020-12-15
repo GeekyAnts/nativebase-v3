@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
+import Text from '../../primitives/Text';
+import { usePropsConfig } from '../../../hooks';
 import { TouchableItem } from './TouchableItem';
 import type { IMenuGroupProps } from './props';
 

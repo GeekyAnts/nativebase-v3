@@ -73,6 +73,7 @@ const sizes = {
 const defaultProps = {
   size: 'md',
   variant: 'default',
+  borderRadius: 'sm',
 };
 
 export default {

@@ -1,4 +1,5 @@
-export { default as Tabs, TabsContext } from './Tabs';
+export { default as Tabs } from './Tabs';
+export { TabsContext } from './Context';
 export { default as TabBar } from './TabBar';
 export { default as Tab } from './Tab';
 export { default as TabViews } from './TabViews';

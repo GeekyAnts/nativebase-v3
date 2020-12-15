@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Stack } from '../../primitives';
 import { Skeleton } from './Skeleton';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 import type { ISkeletonTextProps } from './props';
 
 const NBSkeletonText = ({ ...props }: ISkeletonTextProps) => {

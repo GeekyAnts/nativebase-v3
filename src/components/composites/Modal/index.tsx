@@ -19,15 +19,13 @@ import {
 
 import type { IModalProps, IModalSemiProps } from './props';
 import {
-  Box,
-  View,
-  IBoxProps,
-  useOverlay,
-  VisuallyHidden,
-  Text,
-} from '../../primitives';
-import { CloseButton, ICloseButtonProps } from '../../composites';
-import { usePropsConfig } from '../../../theme';
+  default as CloseButton,
+  ICloseButtonProps,
+} from '../../composites/CloseButton';
+
+import { useOverlay } from '../../../core/Overlay';
+import { usePropsConfig } from '../../../hooks';
+import { Box, View, IBoxProps, VisuallyHidden, Text } from '../../primitives';
 
 const StyledModal = styled(RNModal)<IModalSemiProps>(
   color,
@@ -77,6 +75,7 @@ const Modal = (
     avoidKeyboard,
     overlayColor,
     overlayVisible,
+    closeOnOverlayClick,
     ...props
   }: IModalProps,
   ref: any
@@ -98,14 +97,14 @@ const Modal = (
             </ModalContext.Provider>,
             {
               onClose: onClose,
-              closeOnPress: true,
+              closeOnPress: closeOnOverlayClick === false ? false : true,
               backgroundColor: overlayColor ? overlayColor : undefined,
               disableOverlay: overlayVisible === false ? true : false,
             }
           )
         : setOverlay(<Box />, {
             onClose: closeOverlayInMobile,
-            closeOnPress: true,
+            closeOnPress: closeOnOverlayClick === false ? false : true,
             backgroundColor: overlayColor ? overlayColor : undefined,
             disableOverlay: overlayVisible === false ? true : false,
           });
@@ -115,7 +114,6 @@ const Modal = (
     },
     /*eslint-disable */
     [isOpen]
-    /*eslint-enable */
   );
   const newProps = usePropsConfig('Modal', props);
   const value: any = {
@@ -131,6 +129,7 @@ const Modal = (
       justifyContent={isCentered ? 'center' : justifyContent}
       alignItems={isCentered ? 'center' : alignItems}
     >
+      {closeOnOverlayClick === false ? <Box /> : <ModalOverlay />}
       {children}
       <VisuallyHidden>
         <TouchableOpacity onPress={() => onClose(false)}>
@@ -160,7 +159,6 @@ const Modal = (
           {...props}
           ref={ref}
         >
-          <ModalOverlay />
           {avoidKeyboard ? (
             <KeyboardAvoidingView
               behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

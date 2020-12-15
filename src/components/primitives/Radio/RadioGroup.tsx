@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../../primitives';
+import Box from '../Box';
 import {
   FormControlContext,
   IFormControlContext,

@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { Text } from '../../primitives';
 import type { ICodeProps } from './props';
-import { usePropsConfig } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
 
 const StyledCode = styled(Text)<ICodeProps>({});
 

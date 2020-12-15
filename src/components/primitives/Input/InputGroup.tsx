@@ -1,5 +1,6 @@
-import { IBoxProps, IInputProps, Box } from '..';
 import React from 'react';
+import { default as Box, IBoxProps } from '../Box';
+import type { IInputProps } from '../Input';
 import { getAttachedChildren } from '../../../utils';
 import Flex from '../Flex';
 

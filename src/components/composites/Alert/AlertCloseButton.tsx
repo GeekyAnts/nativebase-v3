@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Button, Icon } from '../../primitives';
-import { AlertContext, IAlertContext } from './index';
+import type { IAlertContext } from './props';
 import { omitUndefined } from '../../../theme/tools/utils';
+import { AlertContext } from './Context';
 
 const AlertCloseButton = ({ children, ...props }: any) => {
   const newProps = omitUndefined(props);

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Text } from '../../primitives';
+import Box from '../../primitives/Box';
+import Text from '../../primitives/Text';
 import type { IToastProps } from './props';
 
 const ToastItem = ({ title, offset, ...props }: IToastProps) => {

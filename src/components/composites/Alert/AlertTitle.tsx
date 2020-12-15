@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text } from '../../primitives';
-import { usePropsConfig } from '../../../theme';
-import { AlertContext, IAlertContext } from './index';
+import Text from '../../primitives/Text';
+import { usePropsConfig } from '../../../hooks';
+import type { IAlertContext } from './index';
+import { AlertContext } from './Context';
 
 const AlertTitle = ({ children, ...props }: any) => {
   const newProps = usePropsConfig('AlertTitle', props);

@@ -19,10 +19,13 @@ import {
   customShadow,
   customTypography,
 } from '../../../utils/customProps';
-import { Box, Text, Flex } from '..';
+import Box from '../Box';
+import Text from '../Text';
+import Flex from '../Flex';
 import type { IInputProps } from './IInputProps';
 import { InputRightAddon, InputGroup, InputLeftAddon } from './InputGroup';
-import { usePropsConfig, themeTools } from '../../../theme';
+import { usePropsConfig } from '../../../hooks';
+import { themeTools } from '../../../theme';
 
 const StyledInput = styled(TextInput)<IInputProps>(
   flex,
@@ -177,4 +180,4 @@ const Input = (
 //-------------------------------- InputGroup and other Child components -------------------------------
 export { InputRightAddon, InputGroup, InputLeftAddon };
 export type { IInputProps };
-export default forwardRef<TextInput, IInputProps>(Input);
+export default forwardRef<any, IInputProps>(Input);

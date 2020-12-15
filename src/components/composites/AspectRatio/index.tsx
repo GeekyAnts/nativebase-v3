@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, ViewStyle, Platform } from 'react-native';
 import { Box, IBoxProps } from '../../primitives';
-import { isNil } from 'lodash';
+import isNil from 'lodash/isNil';
 
 export type IAspectRatioProps = IBoxProps & {
   style?: ViewStyle;
@@ -25,7 +25,9 @@ function AspectView(props: any) {
     <Box
       {...props}
       style={inputStyle}
-      onLayout={({ nativeEvent: { layout } }: any) => setLayout(layout)}
+      onLayout={({ nativeEvent: { layout: inLayout } }: any) =>
+        setLayout(inLayout)
+      }
     />
   );
 }
