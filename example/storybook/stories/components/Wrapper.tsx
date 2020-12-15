@@ -4,7 +4,6 @@ import {
   NativeBaseProvider,
   Switch,
   useColorMode,
-  useColorModeValue,
 } from '@native-base/v3';
 
 function MyWrapper({ children }: any) {
@@ -16,14 +15,13 @@ function MyWrapper({ children }: any) {
       width="100%"
       justifyContent="center"
       alignItems="center"
-      bg={useColorModeValue(`gray.50`, `gray.800`)}
     >
+      {children}
       <Switch
         onToggle={toggleColorMode}
         isChecked={colorMode === 'dark'}
         style={{ position: 'absolute', top: 10, right: 10 }}
       />
-      {children}
     </View>
   );
 }

@@ -1,10 +1,15 @@
-import { mode, getColor, getColorScheme } from '../tools';
+import { mode, getColor, getColorScheme, transparentize } from '../tools';
 
 function getBg(props: Record<string, any>) {
   let { theme, status } = props;
+
   status = getColorScheme(props, status);
   const lightBg = getColor(theme, `${status}.100`, status);
-  const darkBg = getColor(theme, `${status}.700`, status);
+  // const darkBg = getColor(theme, `${status}.800`, status);
+  const darkBg = transparentize(`${status}.300`, 0.2)(theme);
+  console.log('lightBg ===', lightBg);
+  console.log('darkBg ===', darkBg);
+
   return mode(lightBg, darkBg)(props);
 }
 

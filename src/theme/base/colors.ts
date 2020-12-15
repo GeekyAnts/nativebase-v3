@@ -338,8 +338,8 @@ colors.warning = colors.orange;
 colors.muted = colors.trueGray;
 colors.default = colors.blue;
 colors.info = colors.lightBlue;
-colors.secondary = colors.gray;
-colors.light = colors.gray;
+colors.secondary = colors.coolGray;
+colors.light = colors.warmGray;
 
 export default colors;
 export type IColors = typeof colors;
