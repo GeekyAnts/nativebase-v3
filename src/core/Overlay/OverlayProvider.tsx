@@ -67,9 +67,6 @@ const Overlay = ({
         style={[providerStyle.provider, { opacity: fadeValue }]}
         pointerEvents={pointerEventsSetter()}
       >
-        <Box style={{ zIndex: 999999 }} w="100%">
-          {overlayItem}
-        </Box>
         <Box
           bg={
             config.disableOverlay
@@ -89,6 +86,9 @@ const Overlay = ({
             }}
           />
         ) : null}
+        <Box w="100%" h="100%" zIndex={999999}>
+          {overlayItem}
+        </Box>
       </Animated.View>
     </OverlayContext.Provider>
   );
