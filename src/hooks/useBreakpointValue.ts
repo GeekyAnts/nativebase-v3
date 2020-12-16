@@ -4,7 +4,7 @@ import {
   hasValidBreakpointFormat,
   findLastValidBreakpoint,
 } from '../theme/tools';
-import { useTheme } from './../hooks';
+import { useTheme } from './../hooks/useTheme';
 
 export function useBreakpointValue(values: any) {
   let windowWidth = useWindowDimensions()?.width;
