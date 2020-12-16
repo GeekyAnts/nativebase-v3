@@ -47,7 +47,7 @@ const Switch = (
   const [isActive, setIsActive] = useState(
     !isNil(defaultIsChecked) ? defaultIsChecked : false
   );
-  const borderColorInvalid = useToken('colors', 'danger.200');
+  const borderColorInvalid = useToken('colors', 'danger.600');
   const checked = !isNil(isChecked) ? isChecked : isActive;
   const newProps = usePropsConfig('Switch', {
     ...props,

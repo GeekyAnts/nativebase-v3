@@ -6,7 +6,7 @@ import {
 } from 'styled-components/native';
 import { theme as defaultTheme, ITheme } from './../theme';
 import { IColorModeProviderProps, ColorModeProvider } from './../color-mode';
-import OverlayProvider from './Overlay/OverlayProvider';
+import NativeBaseWrapper from './NativeBaseWrapper';
 
 export interface NativeBaseProviderProps {
   theme?: ITheme;
@@ -15,14 +15,14 @@ export interface NativeBaseProviderProps {
 }
 
 const NativeBaseProvider = (props: NativeBaseProviderProps) => {
-  const { children, colorModeManager, theme = defaultTheme } = props;
+  const { children, colorModeManager, theme = defaultTheme, ...rest } = props;
   return (
     <ThemeProvider theme={theme}>
       <ColorModeProvider
         colorModeManager={colorModeManager}
         options={theme.config}
       >
-        <OverlayProvider>{children}</OverlayProvider>
+        <NativeBaseWrapper {...rest}>{children}</NativeBaseWrapper>
       </ColorModeProvider>
     </ThemeProvider>
   );

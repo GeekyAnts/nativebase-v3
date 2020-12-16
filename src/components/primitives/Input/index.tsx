@@ -94,13 +94,13 @@ const Input = (
   const focusProps = isFocused
     ? {
         borderWidth: 1,
-        borderColor: focusBorderColor ? focusBorderColor : 'default.50',
+        borderColor: focusBorderColor ? focusBorderColor : 'default.200',
       }
     : {};
 
   const isInvalidProps = isInvalid
     ? {
-        borderColor: errorBorderColor ? errorBorderColor : 'danger.200',
+        borderColor: errorBorderColor ? errorBorderColor : 'danger.600',
       }
     : {};
 
@@ -168,7 +168,7 @@ const Input = (
       {isInvalid && errorMessage ? (
         <Text
           ml={2}
-          color={errorMessageColor ? errorMessageColor : 'danger.200'}
+          color={errorMessageColor ? errorMessageColor : 'danger.600'}
         >
           {errorMessage}
         </Text>

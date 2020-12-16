@@ -158,6 +158,7 @@ class NBSlider extends React.Component<
         <SliderContext.Provider
           value={{
             sliderOffset,
+            trackColor: this.props.trackColor,
             colorScheme: this.props.activeColor,
             barSize: this.state.barSize,
             panResponder: this.panResponder,

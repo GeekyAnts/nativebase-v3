@@ -7,6 +7,7 @@ const baseStyle = (props: Record<string, any>) => {
       `${simplifiedColorScheme}.500`,
       `${simplifiedColorScheme}.200`
     )(props),
+    trackColor: mode('gray.200', 'gray.700')(props),
   };
 };
 

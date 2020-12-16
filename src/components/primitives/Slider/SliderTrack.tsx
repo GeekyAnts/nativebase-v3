@@ -4,12 +4,14 @@ import { SliderContext } from './Context';
 import type { ISliderProps, ISliderContextProps } from './props';
 
 const SliderTrack = ({ children, ...props }: ISliderProps) => {
-  const { sliderSize }: ISliderContextProps = React.useContext(SliderContext);
+  const { sliderSize, trackColor }: ISliderContextProps = React.useContext(
+    SliderContext
+  );
 
   return (
     <Box
       position="absolute"
-      backgroundColor="muted.50"
+      backgroundColor={trackColor}
       height={sliderSize}
       borderRadius={999}
       width="100%"

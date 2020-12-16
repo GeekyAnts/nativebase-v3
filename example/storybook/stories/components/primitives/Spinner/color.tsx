@@ -7,7 +7,7 @@ export default function () {
       <Spinner color="danger.400" />
       <Spinner color="green.500" />
       <Spinner color="blue.500" />
-      <Spinner color="warning.100" />
+      <Spinner color="warning.500" />
     </HStack>
   );
 }

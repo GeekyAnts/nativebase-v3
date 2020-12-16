@@ -8,7 +8,7 @@ import type { IRadioProps } from './props';
 import { useRadio } from './useRadio';
 
 const Radio = (props: IRadioProps, ref: any) => {
-  const { children } = props;
+  const { children, icon } = props;
 
   const contextState = React.useContext(RadioContext);
 
@@ -16,7 +16,6 @@ const Radio = (props: IRadioProps, ref: any) => {
     activeColor,
     borderColor,
     iconColor,
-    icon,
     size,
     isInvalid,
     ...newProps
@@ -25,9 +24,12 @@ const Radio = (props: IRadioProps, ref: any) => {
     ...props,
   });
 
+  // only calling below function when icon exist.
   const sizedIcon = () =>
+    //@ts-ignore
     React.cloneElement(icon, {
       size,
+      //@ts-ignore
       color: icon.props.color ? icon.props.color : iconColor,
     });
 
