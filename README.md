@@ -1,6 +1,10 @@
-# native-base
+## NOTE: Deprecated. Merged into original [NativeBase](https://github.com/GeekyAnts/nativebase) repo.
+
+# native-base v3
 
 Essential cross-platform UI components for React Native
+
+
 
 ## Installation
 
